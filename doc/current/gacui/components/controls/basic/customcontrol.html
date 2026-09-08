@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title><CustomControl> -- GPU Accelerated C++ User Interface (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "gacui",
+    "components",
+    "controls",
+    "basic",
+    "customcontrol"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "GacUI",
+      "selected": false,
+      "path": [
+        "gacui",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": "-",
+          "name": "GacUI 组件",
+          "selected": false,
+          "path": [
+            "gacui",
+            "components",
+            "home"
+          ],
+          "subNodes": [
+            {
+              "icon": "-",
+              "name": "控件",
+              "selected": false,
+              "path": [
+                "gacui",
+                "components",
+                "controls",
+                "home"
+              ],
+              "subNodes": [
+                {
+                  "icon": "-",
+                  "name": "基础控件",
+                  "selected": false,
+                  "path": [
+                    "gacui",
+                    "components",
+                    "controls",
+                    "basic",
+                    "home"
+                  ],
+                  "subNodes": [
+                    {
+                      "icon": " ",
+                      "name": "ControlHost 与 <Window>",
+                      "selected": false,
+                      "path": [
+                        "gacui",
+                        "components",
+                        "controls",
+                        "basic",
+                        "window"
+                      ]
+                    },
+                    {
+                      "icon": " ",
+                      "name": "<CustomControl>",
+                      "selected": true,
+                      "path": [
+                        "gacui",
+                        "components",
+                        "controls",
+                        "basic",
+                        "customcontrol"
+                      ]
+                    },
+                    {
+                      "icon": " ",
+                      "name": "<Label>",
+                      "selected": false,
+                      "path": [
+                        "gacui",
+                        "components",
+                        "controls",
+                        "basic",
+                        "label"
+                      ]
+                    },
+                    {
+                      "icon": " ",
+                      "name": "<Button>",
+                      "selected": false,
+                      "path": [
+                        "gacui",
+                        "components",
+                        "controls",
+                        "basic",
+                        "Button"
+                      ]
+                    },
+                    {
+                      "icon": " ",
+                      "name": "GuiSelectableButton",
+                      "selected": false,
+                      "path": [
+                        "gacui",
+                        "components",
+                        "controls",
+                        "basic",
+                        "selectableButton"
+                      ]
+                    },
+                    {
+                      "icon": " ",
+                      "name": "GuiScroll",
+                      "selected": false,
+                      "path": [
+                        "gacui",
+                        "components",
+                        "controls",
+                        "basic",
+                        "scroll"
+                      ]
+                    },
+                    {
+                      "icon": " ",
+                      "name": "<DatePicker>",
+                      "selected": false,
+                      "path": [
+                        "gacui",
+                        "components",
+                        "controls",
+                        "basic",
+                        "datepicker"
+                      ]
+                    },
+                    {
+                      "icon": " ",
+                      "name": "<DateComboBox>",
+                      "selected": false,
+                      "path": [
+                        "gacui",
+                        "components",
+                        "controls",
+                        "basic",
+                        "datecombobox"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": true,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "<CustomControl>",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "List",
+            "ordered": false,
+            "items": [
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "<CustomControl/>"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "List",
+                    "ordered": false,
+                    "items": [
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "C++/Workflow"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": ": (vl::)presentation::controls::GuiCustomControl*"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Template Tag"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": ": <ControlTemplate/>"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Template Name"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": ": CustomControl"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "<CustomControl/>"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " is a control for making new controls in GacUI XML Resource.\n            "
+          },
+          {
+            "kind": "Program",
+            "code": "<Instance ref.CodeBehind=\"false\" ref.Class=\"demo::MyControl>\n  <CustomControl/>\n</Instance>"
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "<CustomControl/>"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " is usually a base class of an\n            "
+          },
+          {
+            "kind": "PageLink",
+            "href": "/gacui/xmlres/tag_instance.html",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                <Instance>\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": ".\n            Here we create a class "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "demo::MyControl"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 继承自 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "<CustomControl/>"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": ".\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            To add new properties and other members to the new control,\n            just define them in "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "Workflow"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " and put all of them in\n            "
+          },
+          {
+            "kind": "PageLink",
+            "href": "/gacui/xmlres/tag_instance.html",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "<ref.Members/>"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": ".\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            To make such control focusable,\n            use the "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "FocusableComposition"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " to specify a composition to receive keyboard and other related events.\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Adding something to a custom control",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "<CustomControl/>"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 只是一个控件。\n                窗口中的组合与控件会被添加到其 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "ContainerComposition"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "。\n                你无需显式使用 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "att.ContainerComposition"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                作为一个 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GuiInstanceRootObject"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "，\n                组件也可以添加到窗口中。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                请查看\n                "
+              },
+              {
+                "kind": "PageLink",
+                "href": "https://github.com/vczh-libraries/Release/tree/master/Tutorial/GacUI_Controls/TriplePhaseImageButton",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    本教程工程\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                了解更多详情。\n            "
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

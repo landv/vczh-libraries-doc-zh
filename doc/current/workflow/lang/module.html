@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Module -- GPU Accelerated C++ User Interface (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "workflow",
+    "lang",
+    "module"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "Workflow 脚本",
+      "selected": false,
+      "path": [
+        "workflow",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": "-",
+          "name": "语法",
+          "selected": false,
+          "path": [
+            "workflow",
+            "lang"
+          ],
+          "subNodes": [
+            {
+              "icon": " ",
+              "name": "模块",
+              "selected": true,
+              "path": [
+                "workflow",
+                "lang",
+                "module"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "函数与变量",
+              "selected": false,
+              "path": [
+                "workflow",
+                "lang",
+                "funcvar"
+              ]
+            },
+            {
+              "icon": "+",
+              "name": "类型",
+              "selected": false,
+              "path": [
+                "workflow",
+                "lang",
+                "type"
+              ]
+            },
+            {
+              "icon": "+",
+              "name": "表达式",
+              "selected": false,
+              "path": [
+                "workflow",
+                "lang",
+                "expr"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "语句",
+              "selected": false,
+              "path": [
+                "workflow",
+                "lang",
+                "stat"
+              ]
+            },
+            {
+              "icon": "+",
+              "name": "数据绑定",
+              "selected": false,
+              "path": [
+                "workflow",
+                "lang",
+                "bind"
+              ]
+            },
+            {
+              "icon": "+",
+              "name": "协程",
+              "selected": false,
+              "path": [
+                "workflow",
+                "lang",
+                "coroutine"
+              ]
+            },
+            {
+              "icon": "+",
+              "name": "状态机",
+              "selected": false,
+              "path": [
+                "workflow",
+                "lang",
+                "state"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "关键字索引",
+              "selected": false,
+              "path": [
+                "workflow",
+                "lang",
+                "index"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "错误索引",
+              "selected": false,
+              "path": [
+                "workflow",
+                "lang",
+                "error"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": true,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "模块",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            Any Workflow script file should be a module, written as:\n            "
+          },
+          {
+            "kind": "Program",
+            "code": "module NAME;\n\nusing system::*;\nusing presentation::compositions::Gui*Composition;\n\n/* ... */"
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            The module name does not matter,\n            but when multiple files are given to the compiler to build an assembly,\n            module names in this assembly are require to be unique.\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Using declaration",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                A "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "using"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " declaration imports names in this module.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "using system::*;"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " means that names under the namespace "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "system"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " can be used directly.\n                For example, you can use "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "system::DateTime"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " in a module.\n                But writing the namespace everywhere is annoying,\n                so when "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "using system::*"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 出现在某个模块中，\n                你可以使用 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "DateTime"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " directly.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                The wildcard is not required to be a complete name.\n                When you have "
+              },
+              {
+                "kind": "PageLink",
+                "href": "/home/registered/gacui.html",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GacUI types"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " loaded,\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "presentation::compositions::GuiTableComposition"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " is available.\n                But this name is too long,\n                even "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GuiTableComposition"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " is too long.\n                Now when "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "using presentation::compositions::Gui*Composition;"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 出现在某个模块中，\n                你可以使用 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Table"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " for that type.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                Because when you replace the wildcard by "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Table"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ",\n                it becomes "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "presentation::compositions::GuiTableComposition"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ",\n                which is exactly the full name of the type.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                Sometimes wildcards could create ambiguity,\n                for example,\n                "
+              },
+              {
+                "kind": "Program",
+                "code": "using presentation::compositions::Gui*Composition;\nusing presentation::controls::Gui*;\nusing presentation::templates::Gui*Template;"
+              },
+              {
+                "kind": "Text",
+                "text": "\n                When we try to use "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Window"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " in this module,\n                the compiler founds that all following types\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "presentation::compositions::GuiWindowComposition"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "presentation::controls::GuiWindow"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "presentation::templates::GuiWindowTemplate"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                exist,\n                it cannot determine which type to use,\n                so an error is generated.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                In order to resolve this issue,\n                you are able to just use the full name,\n                or "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GuiWindow"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " if "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "using presentation::controls::*"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " appears in the module,\n                or even "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "controls::GuiWindow"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " if "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "using presentation::*"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " appears in the module.\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Namespace declaration",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                You can create namespace by yourself like this:\n                "
+              },
+              {
+                "kind": "Program",
+                "code": "module test;\nusing system::*;\n\nnamespace mynamespace\n{\n    namespace another\n    {\n        func MyFunc(): string\n        {\n            return \"Hello, world!\";\n        }\n    }\n}"
+              },
+              {
+                "kind": "Text",
+                "text": "\n                Namespaces are allowed to be nested.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "IMPORTANT"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ":\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "using"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " declarations are not allowed to be in namespaces.\n                In fact they should be declared before any other declarations,\n                right below the module name.\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Static Initialization",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                Static initialization are statements in "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "static {}"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " declarations.\n                Multiple "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "static {}"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " declarations could appear in a module or a namespace.\n                Statemenets inside them will be executed when the module is loaded.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                When loading and executing workflow script in runtime,\n                such initialization happens when running the "
+              },
+              {
+                "kind": "PageLink",
+                "href": "/workflow/running/running.html",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "<initialize>"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " function,\n                after global variables are initialized.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                The execution order between multiple "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "static {}"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " declarations are not defined.\n            "
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

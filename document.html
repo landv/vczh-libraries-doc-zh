@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Gaclib -- 文档</title>
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/global.css" />
+<link rel="stylesheet" type="text/css" href="/article.css" />
+<link rel="stylesheet" type="text/css" href="/navigation.css" />
+<script src="/scripts/rootView.js"></script>
+<script src="/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "page": "document"
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const activeButton = "Document";
+  const article = {
+  "index": true,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "文档",
+    "content": [
+      {
+        "kind": "Topic",
+        "title": "Gaclib 2.0",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "PageLink",
+                "href": "https://github.com/vczh-libraries/Release/releases",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "最新版本"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                    "text": " 适用于 Gaclib 2.0。当 Gaclib 2.0 的所有开发工作完成之后，才会确定最终版本。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Gaclib 2.0 的文档："
+                  }
+                ]
+              },
+              {
+                "kind": "PageLink",
+                "href": "/doc/current/home.html",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "/doc/current/home.html"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                Gaclib 2.0 已升级到使用 C++20。\n                由源文件自动生成的文档页面，将在\n                "
+              },
+              {
+                "kind": "PageLink",
+                "href": "https://github.com/vczh-libraries/VlppParser2",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "VlppParser2"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 以及\n                "
+              },
+              {
+                "kind": "PageLink",
+                "href": "https://github.com/vczh-libraries/Document",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Document"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 就绪之后可用。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "自 Gaclib 1.0 以来的破坏性变更",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "List",
+                    "ordered": false,
+                    "items": [
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "PageLink",
+                            "href": "/doc/current/vlpp/upgrade.html",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Vlpp"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "PageLink",
+                            "href": "/doc/current/vlppos/upgrade.html",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "VlppOS"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "PageLink",
+                            "href": "/doc/current/vlppregex/upgrade.html",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "VlppRegex"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "PageLink",
+                            "href": "/doc/current/vlppreflection/upgrade.html",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "VlppReflection"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "VlppParser：该库已被弃用"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "VlppParser2：该库自 Gaclib 2.0 起创建"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "PageLink",
+                            "href": "/doc/current/workflow/upgrade.html",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Workflow"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "PageLink",
+                            "href": "/doc/current/gacui/upgrade.html",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "GacUI"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Gaclib 1.0 候选版 3",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "PageLink",
+                "href": "https://github.com/vczh-libraries/Release/releases/tag/1.0-rc-3",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Gaclib 1.0-rc3"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 是 Gaclib 1.0 的最新版本。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Gaclib 1.0 的文档："
+                  }
+                ]
+              },
+              {
+                "kind": "PageLink",
+                "href": "/doc/ver1/home.html",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "/doc/ver1/home.html"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                文档页面中还包含指向类和函数已索引源代码的链接。\n            "
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.activeButton"] = activeButton;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

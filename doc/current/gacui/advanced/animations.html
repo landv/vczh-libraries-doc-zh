@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Animations -- GPU Accelerated C++ User Interface (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "gacui",
+    "advanced",
+    "animations"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "GacUI",
+      "selected": false,
+      "path": [
+        "gacui",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": "-",
+          "name": "高级主题",
+          "selected": false,
+          "path": [
+            "gacui",
+            "advanced",
+            "home"
+          ],
+          "subNodes": [
+            {
+              "icon": " ",
+              "name": "与 C++ 视图模型的互操作",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "vm"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "数据绑定",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "bindings"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "动画",
+              "selected": true,
+              "path": [
+                "gacui",
+                "advanced",
+                "animations"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "本地化",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "localization"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "跨 XML 资源引用",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "cxrr"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "ALT 序列与控件焦点",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "alt"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "TAB 与控件焦点",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "tab"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "创建新的列表控件",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "impllistcontrol"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "将 GacUI 移植到其它平台",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "implosprovider"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": true,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "动画",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            The GacUI XML\n            "
+          },
+          {
+            "kind": "PageLink",
+            "href": "/gacui/xmlres/tag_animation.html",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "<Animation/>"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "\n            资源会为动画创建辅助类。\n            它会创建一个像这样的类：\n            "
+          },
+          {
+            "kind": "Program",
+            "code": "class MyAnimation\n{\n    prop Current: STATE_CLASS^{}\n    new (current: STATE_CLASS^){}\n    func CreateAnimation(target: STATE_CLASS^, time: UInt64);\n}"
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "STATE_CLASS"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 是一个字段为数字类型或……的类 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "Color"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "。\n            通过在窗口中创建 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "MyAnimation^"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " （像这样放在窗口里）：\n            "
+          },
+          {
+            "kind": "Program",
+            "code": "<Instance ...>\n    <ref.Members><![CDATA[\n        var myAnimation : MyAnimation^ = new MyAnimation(initial_state);\n    ]]></ref.Members>\n    <Window ref.Name=\"self\">\n        <Something PropertyToAnimate-bind=\"self.myAnimation.Current.FIELD\"/>\n    </Window>\n</Instance>"
+          },
+          {
+            "kind": "Text",
+            "text": "\n            你可以把该表达式绑定 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "self.myAnimation.Current.FIELD"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 到任何兼容的属性。\n            当动画运行时，\n            ……中的字段 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "self.myAnimation.Current"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 会持续更新，\n            从而实现 UI 动画。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Interpolation Functions",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                要动画化……中的字段，第一步 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "self.myAnimation.Current"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 是设置合适的插值函数，\n                相关内容在……中有描述\n                "
+              },
+              {
+                "kind": "PageLink",
+                "href": "/gacui/xmlres/tag_animation.html",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "<Animation/>"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "。\n                只有被……提及的字段 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "<Target/>"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 标签才能被动画化。\n                所有参与动画的字段都必须关联一个插值函数。\n                这里也有一个用于默认插值函数的位置，\n                除非在……中指定了某个函数，否则它会被应用到所有参与动画的字段上 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "<Target/>"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                插值函数是一个函数类型的 Workflow 表达式，\n                它接收一个 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "double"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 并返回一个 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "double"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                函数参数是从……开始的动画进度 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "0"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 到 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "1"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "。\n                如果一个动画持续 10 秒，\n                那么 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "0"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 是开始，\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "1"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 是结束，\n                而 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "0.4"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " means "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "10 seconds * 0.4"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 位于第 4 秒结束时。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                返回值是从……开始的动画插值 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "0"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 到 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "1"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "。\n                如果起始状态是 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "5"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 而结束状态是 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "15"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "，\n                那么返回 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "0"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " means "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "5"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ",\n                returning "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "1"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " means "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "15"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "，\n                而返回 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "0.4"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 表示 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "5 + (15 - 5) * 0.4"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 即是 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "9"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                插值函数计算在给定动画进度时字段应到达的位置。\n                如果希望使用线性插值函数，\n                直接返回参数即可。\n                这样的函数通常写成：\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "\n                        用于 "
+                      },
+                      {
+                        "kind": "PageLink",
+                        "href": "/workflow/lang/expr.html#Ordered-lambda-expression-1-2-",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "有序匿名函数（ordered lambda）表达式"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "\n                        : "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "[$1]"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "\n                        用于 "
+                      },
+                      {
+                        "kind": "PageLink",
+                        "href": "/workflow/lang/expr.html#Lambda-expression-func-x-int-y-int-int-return-x-y-",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "匿名函数（lambda）表达式"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "\n                        ：例如： "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "func (progress: double) : double { return progress; }"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                有时让字段在前半段加速、后半段减速会更好，\n                这样的函数可以很方便地用以下方式创建：\n                "
+              },
+              {
+                "kind": "Program",
+                "code": "func (x: double): double\n{\n    if (x < 0.5) { return x * x * 2; } else { return 1 - (1 - x) * (1 - x) * 2; }\n}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Running an Animation",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                在该 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "<Animation/>"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 生成的类中，\n                有一个 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "CreateAnimation(state, time)"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 函数，\n                意思是动画从当前状态开始，\n                并朝……运行 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "state"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 在……中 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "time"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " milliseconds.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                调用此函数并不会让动画立刻运行，\n                而是返回一个 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "(vl::)presentation::controls::IGuiAnimation^"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " object.\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "AddAnimation"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 以及 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "KillAnimation"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 所属的\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "(vl::)presentation::controls::GuiInstanceRootObject"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                控制动画如何运行。\n                此类是所有 UI 的基类\n                "
+              },
+              {
+                "kind": "PageLink",
+                "href": "/gacui/xmlres/instance/root_instance.html",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    根实例\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ",\n                so "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "AddAnimation"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 以及 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "KillAnimation"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "，\n或 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "self.AddAnimation"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 以及 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "self.KillAnimation"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "，\n                可以在 XML 中访问。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "AddAnimation"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 把一个 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "IGuiAnimation"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 对象添加到 UI 对象上，\n                并立即开始动画。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "KillAnimation"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 停止一个 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "IGuiAnimation"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 已添加到 UI 对象上的……对象，\n                并立即停止动画。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                对于需要多次在状态间切换的动画（例如鼠标移入移出时的按钮），\n                有一种控制动画的模式：\n                "
+              },
+              {
+                "kind": "Program",
+                "code": "<ref.Members><![CDATA[\n    var myAnimation : MyAnimation^ = new MyAnimation(initial_state);\n    var lastAnimation : IGuiAnimation^ = null;\n]]></ref.Members>\n...\nvar newAnimation = myAnimation.CreateAnimation(newState, animationLengthInMilliseconds);\nKillAnimation(lastAnimation);\nlastAnimation = newAnimation;\nAddAnimation(lastAnimation);"
+              },
+              {
+                "kind": "Text",
+                "text": "\n                当动画运行中需要把状态迁移到新状态时，\n                这段代码会停止当前正在运行的动画，\n                并用一个新的动画替换它。\n                新动画会把当前状态从所在位置平滑地移动到新状态，\n                视觉上应该很平滑。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "KillAnimation"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 可以接受 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "null"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "，\n                而它不会做任何事。\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Managing Multiple Animations",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                为每个动画复制上述模式多次是很容易的。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                请记住，\n                所创建的 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "lastAnimation"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 会改变 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "myAnimation.Current.FIELD"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                在执行期间会改变，\n                因此如果多个动画需要同时运行，\n                就需要同时创建多个 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "lastAnimation"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 以及 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "myAnimation"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 请在创建时给它们起好名字，让代码看起来更清晰。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                当 UI 对象正在销毁时（例如点击窗口上的关闭按钮），\n                所有动画都会被关闭，\n                此时调用 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "AddAnimation"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 将导致异常。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                把所有字段拆分到多个动画对象也是可行的。\n                但如果多个字段表示的是同一动画的不同部分，\n                请尽量让所有这些字段共用一个动画，以提高性能。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                在\n                "
+              },
+              {
+                "kind": "PageLink",
+                "href": "https://github.com/vczh-libraries/Release/blob/master/SampleForDoc/GacUI/XmlRes/kb_animation/Resource.xml",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    本教程工程\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "，\n                一个按钮由 4 种颜色控制，\n                这些颜色在同一个动画中变化，因为它们表示同一动画的不同部分。\n                因此只需要一个 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "<Animation/>"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 并且一个按钮只需要它的一个实例。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                下面是它的样子：\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "源代码： "
+                      },
+                      {
+                        "kind": "PageLink",
+                        "href": "https://github.com/vczh-libraries/Release/blob/master/SampleForDoc/GacUI/XmlRes/kb_animation/Resource.xml",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "kb_animation"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Image",
+                        "src": "/gacui/kb_animation.gif"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

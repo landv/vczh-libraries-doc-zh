@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title><GridEditorTemplate> -- GPU Accelerated C++ User Interface (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "gacui",
+    "components",
+    "itemplates",
+    "grideditortemplate"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "GacUI",
+      "selected": false,
+      "path": [
+        "gacui",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": "-",
+          "name": "GacUI 组件",
+          "selected": false,
+          "path": [
+            "gacui",
+            "components",
+            "home"
+          ],
+          "subNodes": [
+            {
+              "icon": "-",
+              "name": "项模板",
+              "selected": false,
+              "path": [
+                "gacui",
+                "components",
+                "itemplates",
+                "home"
+              ],
+              "subNodes": [
+                {
+                  "icon": " ",
+                  "name": "<ListItemTemplate>",
+                  "selected": false,
+                  "path": [
+                    "gacui",
+                    "components",
+                    "itemplates",
+                    "listitemtemplate"
+                  ]
+                },
+                {
+                  "icon": " ",
+                  "name": "<TextListItemTemplate>",
+                  "selected": false,
+                  "path": [
+                    "gacui",
+                    "components",
+                    "itemplates",
+                    "textlistitemtemplate"
+                  ]
+                },
+                {
+                  "icon": " ",
+                  "name": "<TreeItemTemplate>",
+                  "selected": false,
+                  "path": [
+                    "gacui",
+                    "components",
+                    "itemplates",
+                    "treeitemtemplate"
+                  ]
+                },
+                {
+                  "icon": " ",
+                  "name": "<GridVisualizerTemplate>",
+                  "selected": false,
+                  "path": [
+                    "gacui",
+                    "components",
+                    "itemplates",
+                    "gridvisualizertemplate"
+                  ]
+                },
+                {
+                  "icon": " ",
+                  "name": "<GridEditorTemplate>",
+                  "selected": true,
+                  "path": [
+                    "gacui",
+                    "components",
+                    "itemplates",
+                    "grideditortemplate"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": true,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "<GridEditorTemplate>",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "List",
+            "ordered": false,
+            "items": [
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "<GridEditorTemplate/>"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "List",
+                    "ordered": false,
+                    "items": [
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "C++/Workflow"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": ": (vl::)presentation::templates::GuiGridEditorTemplate*"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "<GridEditorTemplate/>"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 派生自 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "<ControlTemplate/>"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "。\n除其基类中的属性外，它还具有以下属性：\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Input Property",
+        "content": [
+          {
+            "kind": "Topic",
+            "title": "PrimaryTextColor",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    该属性由列表控件赋值。\n它来自 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "PrimaryTextColor"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 的属性 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "<ListViewTemplate/>"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " ，它应用于该列表控件。\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    列表控件不会跟踪 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "PrimaryTextColor"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 的属性 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "<ListViewTemplate/>"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "的变化。\n如果它被更改，\n                    "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "PrimaryTextColor"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 属性不会随项模板自动更新。\n但是当一个列表控件被分配了新的控件模板时，\n                    "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "PrimaryTextColor"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 属性也会随项模板一起更新。\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "SecondaryTextColor",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    该属性由列表控件赋值。\n它来自 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "SecondaryTextColor"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 的属性 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "<ListViewTemplate/>"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " ，它应用于该列表控件。\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    列表控件不会跟踪 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "SecondaryTextColor"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 的属性 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "<ListViewTemplate/>"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "的变化。\n如果它被更改，\n                    "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "SecondaryTextColor"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 属性不会随项模板自动更新。\n但是当一个列表控件被分配了新的控件模板时，\n                    "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "SecondaryTextColor"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 属性也会随项模板一起更新。\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "ItemSeparatorColor",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    该属性由列表控件赋值。\n它来自 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "ItemSeparatorColor"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 的属性 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "<ListViewTemplate/>"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " ，它应用于该列表控件。\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    列表控件不会跟踪 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "ItemSeparatorColor"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 的属性 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "<ListViewTemplate/>"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "的变化。\n如果它被更改，\n                    "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "ItemSeparatorColor"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 属性不会随项模板自动更新。\n但是当一个列表控件被分配了新的控件模板时，\n                    "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "ItemSeparatorColor"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 属性也会随项模板一起更新。\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "LargeImage",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    此属性由列表控件赋值。\n                    它是该项的大图标。\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "SmallImage",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    此属性由列表控件赋值。\n                    它是该项的小图标。\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "RowValue",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    此属性由列表控件赋值。\n                    这是该项对应的行对象。\n                "
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Output Property",
+        "content": [
+          {
+            "kind": "Topic",
+            "title": "CellValueSaved",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    此属性由项模板赋值。\n                    默认值是 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "true"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ".\n                    When a cell is being editing but the value has not been updated to the "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "CellValue"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 属性，\n                    请将此属性更新为 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "false"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ".\n                    When a new value is updated to the "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "CellValue"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 属性，\n                    请将此属性更新为 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "true"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ".\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "FocusControl",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    此属性由项模板赋值。\n                    默认值是 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "null"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ".\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    When an editor is opened for a cell,\n                    if "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "FocusControl"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 不是 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "null"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ",\n                    "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "FocusControl"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " will receive the focus.\n                "
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Exchange Property",
+        "content": [
+          {
+            "kind": "Topic",
+            "title": "CellValue",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    This property is assigned by the list control and the item template.\n                    This is the cell object for the cell.\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    When an editor believes a new value is ready for this cell,\n                    update this property with the new value.\n                    For example,\n                    an editor with a text box could update this property whenever the text in the text box is changed.\n                "
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Sample",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "源代码： "
+                      },
+                      {
+                        "kind": "PageLink",
+                        "href": "https://github.com/vczh-libraries/Release/blob/master/SampleForDoc/GacUI/XmlRes/control_datagrid_editor/Resource.xml",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "control_datagrid_editor"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Image",
+                        "src": "/gacui/control_datagrid_editor.gif"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "源代码： "
+                      },
+                      {
+                        "kind": "PageLink",
+                        "href": "https://github.com/vczh-libraries/Release/blob/master/Tutorial/GacUI_Controls/DataGrid/UI/Resource.xml",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "Tutorial/GacUI_Controls/DataGrid/UI/Resource.xml"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Image",
+                        "src": "/gacui/kb_controls_datagrid.gif"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

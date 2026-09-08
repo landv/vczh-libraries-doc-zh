@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>远程协议通道层 -- GPU 加速的 C++ 用户界面 (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "gacui",
+    "modes",
+    "remote_communication"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "GacUI",
+      "selected": false,
+      "path": [
+        "gacui",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": "-",
+          "name": "托管模式与远程协议",
+          "selected": false,
+          "path": [
+            "gacui",
+            "modes",
+            "home"
+          ],
+          "subNodes": [
+            {
+              "icon": " ",
+              "name": "远程协议核心应用",
+              "selected": false,
+              "path": [
+                "gacui",
+                "modes",
+                "remote_core"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "远程协议客户端应用",
+              "selected": false,
+              "path": [
+                "gacui",
+                "modes",
+                "remote_client"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "远程协议通道层",
+              "selected": true,
+              "path": [
+                "gacui",
+                "modes",
+                "remote_communication"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": true,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "远程协议通道层",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            GacUI 远程协议通道化在底层使用 vl::inter_process 通道桥以及 INetworkProtocolConnection、INetworkProtocolCallback、INetworkProtocolClient 与 INetworkProtocolServer 接口。\n            GacUI 层仍然是无头核心与渲染器之间的渲染协议。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            各层如下：\n            "
+          },
+          {
+            "kind": "List",
+            "ordered": false,
+            "items": [
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "IGuiRemoteProtocol 与 IGuiRemoteEventProcessor：强类型化的 GacUI 远程协议。"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GuiRemoteProtocolCoreChannel 与 GuiRemoteProtocolRendererChannel：在强类型协议与 JSON 通道包之间进行转换。"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GuiRemoteProtocolNetworkChannelServer、GuiRemoteProtocolLocalChannelClient 与 GuiRemoteProtocolChannelClient：vl::inter_process JSON 通道桥。"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "vl::inter_process::async_tcp_socket::NetworkProtocolServer<TAsyncSocketServer>"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 与 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "NetworkProtocolClient<TAsyncSocketClient>"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "、"
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "vl::inter_process::async_tcp_socket::SocketHttpServer"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 与 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "SocketHttpClient"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "，以及仅限 Windows 的命名管道与 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "windows_http"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 实现，或者自定义的 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "INetworkProtocol"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 实现，即底层的数据传输机制。"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            该 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "INetworkProtocol"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 和 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "IChannel"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " interface families and channel bridge can be reused directly, but VlppOS provides them only for test-purpose local cross-process communication.\n            强烈建议产品代码提供自己的实现，而不是把随附的传输与通道栈当作生产级网络。\n            GacUI JSON 通道层在这些实现之上保持不变。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            GacUI 的 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "/MiniHttp"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 测试会创建平台默认的异步 TCP 套接字，并把它们包装进 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "SocketHttpServer"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 和 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "SocketHttpClient"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "。\n            核心可以在完全相同的 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "IAsyncSocketServer"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 上注册其远程协议前缀与自动化前缀，而每个前缀都可以独立停止。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            JSON 通道包的类型是 Ptr<glr::json::JsonNode>。\n            远程协议通道名是 GacUIRemoteProtocolChannelName，其值为 GacUIRemoteProtocol。\n            进程内核心客户端应被分配 GacUIRemoteProtocolCoreClientId。\n            渲染器侧的数据包会发送到该核心客户端 id，而核心侧的数据包会发送到从 ControllerConnect 得知的渲染器客户端 id。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            ChannelPackageInfo 描述远程协议的封装格式：\n            "
+          },
+          {
+            "kind": "List",
+            "ordered": false,
+            "items": [
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "semantic：Message、Request、Response 或 Event。"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "id：请求或响应 id；当数据包不需要 id 时则为 -1。"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "name：生成的远程协议消息、请求、响应或事件名称。"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            JsonChannelPack 与 JsonChannelUnpack 会把这个封装及其可选的 arguments 节点与 JSON 对象互相转换。\n            除非要进行日志记录、调试或构建非 C++ 渲染器，否则应用代码通常不需要调用这些函数。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "用户代码拥有什么",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                普通 C++ 应用在启动时配置远程协议通道。\n                在 GuiRemoteProtocolCoreChannel 与 GuiRemoteProtocolRendererChannel 连接之后，\n                库会在强类型协议与 JSON 通道包之间逐个路由远程协议消息。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                用户代码通常只拥有：\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "围绕 GuiRemoteProtocolNetworkChannelServer 的一小段服务器策略（如果核心需要等待渲染器、拒绝无效客户端或替换之前的渲染器）。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "一个底层数据传输实现，由 INetworkProtocolConnection、INetworkProtocolCallback、INetworkProtocolClient 与 INetworkProtocolServer 表示。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "通过重写 GuiRemoteProtocolChannelClient::OnReadError、OnLocalError 或 OnDisconnected 实现可选的渲染器侧错误处理。"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                GuiRemoteProtocolCoreChannel 暴露 BeforeWrite 与 BeforeOnRead。\n                GuiRemoteProtocolRendererChannel 暴露相同的事件。\n                使用这些事件来跟踪包流向或诊断渲染器与核心行为不匹配的问题。\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "添加传输实现",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                通过实现 vl::inter_process 的 INetworkProtocolConnection、INetworkProtocolCallback、INetworkProtocolClient 与 INetworkProtocolServer 接口，\n                可以在 GacUI 之下添加新的底层数据传输实现。\n                这些名称虽然叫网络协议，但契约只是异步的 WString 消息交换。\n                该实现可以是管道、套接字、stdio 流、共享内存、DLL 函数调用、WebAssembly/JavaScript 桥，\n                或任何其它能满足 INetworkProtocolConnection、INetworkProtocolCallback、INetworkProtocolClient 与 INetworkProtocolServer 的机制。\n                然后复用 GacUI JSON 通道类即可。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                核心侧把 INetworkProtocolServer 实现选为模板参数：\n                "
+              },
+              {
+                "kind": "Program",
+                "code": "using MyRemoteCoreServer =\n    GuiRemoteProtocolNetworkChannelServer<MyTransportServer>;\n\nauto jsonParser = Ptr(new glr::json::Parser);\nMyRemoteCoreServer server(jsonParser, /* transport server constructor arguments */);\nserver.Start();\n\nauto coreClient = Ptr(new GuiRemoteProtocolLocalChannelClient(jsonParser));\nserver.ConnectLocalClient(coreClient);",
+                "language": "c++"
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                渲染器侧包装一个 INetworkProtocolClient 对象：\n                "
+              },
+              {
+                "kind": "Program",
+                "code": "auto jsonParser = Ptr(new glr::json::Parser);\nauto networkClient = Ptr(new MyTransportClient(/* connection arguments */));\n\nGuiRemoteProtocolChannelClient channelClient(networkClient, jsonParser);\nchannelClient.WaitForServer();",
+                "language": "c++"
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                相同的通道设置在\n                "
+              },
+              {
+                "kind": "PageLink",
+                "href": "/gacui/modes/remote_core.html",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "远程协议核心应用"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 与\n                "
+              },
+              {
+                "kind": "PageLink",
+                "href": "/gacui/modes/remote_client.html",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "远程协议客户端应用"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 中展示的通道设置在传输对象连接后即可正常工作。\n                参见 "
+              },
+              {
+                "kind": "PageLink",
+                "href": "/vlppos/using-inter-process.html",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "使用跨进程通道"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                了解跨进程协议与通道接口的约定。\n            "
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

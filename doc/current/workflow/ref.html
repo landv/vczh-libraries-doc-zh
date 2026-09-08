@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>References -- GPU Accelerated C++ User Interface (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "workflow",
+    "ref"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "Workflow 脚本",
+      "selected": false,
+      "path": [
+        "workflow",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": "+",
+          "name": "运行脚本",
+          "selected": false,
+          "path": [
+            "workflow",
+            "running"
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "语法",
+          "selected": false,
+          "path": [
+            "workflow",
+            "lang"
+          ]
+        },
+        {
+          "icon": " ",
+          "name": "特性",
+          "selected": false,
+          "path": [
+            "workflow",
+            "attributes"
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "RPC",
+          "selected": false,
+          "path": [
+            "workflow",
+            "rpc"
+          ]
+        },
+        {
+          "icon": " ",
+          "name": "运行时指令",
+          "selected": false,
+          "path": [
+            "workflow",
+            "ins"
+          ]
+        },
+        {
+          "icon": " ",
+          "name": "C++ 代码生成",
+          "selected": false,
+          "path": [
+            "workflow",
+            "codegen"
+          ]
+        },
+        {
+          "icon": " ",
+          "name": "自 1.0 以来的破坏性变更",
+          "selected": false,
+          "path": [
+            "workflow",
+            "upgrade"
+          ]
+        },
+        {
+          "icon": "-",
+          "name": "参考",
+          "selected": true,
+          "path": [
+            "workflow",
+            "ref"
+          ],
+          "subNodes": [
+            {
+              "icon": " ",
+              "name": "命名空间",
+              "selected": false,
+              "path": [
+                "workflow",
+                "ref",
+                "namespaces"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": false,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "API References for Workflow",
+    "content": [
+      {
+        "kind": "Topic",
+        "title": "Resources",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "PageLink",
+                        "href": "/gacui/running.html",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "Tutorial"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：构建你的第一个 GacUI 应用程序。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "PageLink",
+                        "href": "/home/download.html",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "Download"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：下载本库。"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                如果你不需要对 C++ 类进行运行时反射，\n建议添加 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "VCZH_DEBUG_NO_REFLECTION"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 到 "
+              },
+              {
+                "kind": "PageLink",
+                "href": "https://docs.microsoft.com/en-us/cpp/build/reference/d-preprocessor-definitions",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "预处理器定义"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "。\n通过这样做，可以消除不必要的代码，从而显著减小可执行文件与对象的大小。\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Source Files for Workflow",
+        "content": [
+          {
+            "kind": "Topic",
+            "title": "VlppWorkflowLibrary.h and VlppWorkflowLibrary.cpp",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    They are needed for using Workflow. They contain.\n                    "
+                  },
+                  {
+                    "kind": "List",
+                    "ordered": false,
+                    "items": [
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "Predefined libraries for Workflow script."
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "Helper functions for C++ code that generated from Workflow script."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "VlppWorkflowRuntime.h and VlppWorkflowRuntime.cpp",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    They are needed for executing compiled binaries from Workflow script.\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    There are 2 ways to run Workflow script:\n                    "
+                  },
+                  {
+                    "kind": "List",
+                    "ordered": false,
+                    "items": [
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "Generate C++ code from Workflow script, and add them to your project. This is highly recommended especially for running GacUI applications."
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "Load compiled binaries from Workflow script and run classes at runtime."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    An in-process debugger interface is also included.\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "VlppWorkflowCompiler.h and VlppWorkflowCompiler.cpp",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    They are needed for compiling Workflow script.\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    There is no IO or other data exchange functionalities in predefined libraries.\n                    In order to make Workflow script works,\n                    usually you need to provide your own API to your script.\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    Typically, this is done by writing reflectable C++ class,\n                    loading type information and then running the compiler in the same process.\n                    And then you get a binary from compiled scripts,\n                    all classes defined in scripts are accessible.\n                    You can use "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "VlppReflection"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " to run classes in scripts.\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    The Workflow compiler can also generate C++ code.\n                    Using generated C++ code directly is always highly recommended when possible.\n                "
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Dependencies",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "Vlpp"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "VlppOS"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "VlppRegex"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "VlppReflection"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "VlppParser2"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

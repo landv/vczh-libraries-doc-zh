@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>AutomationService 与基础计算机操作 -- GPU 加速的 C++ 用户界面 (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "coding-agent",
+    "gacui-debugging"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "使用 Coding Agent",
+      "selected": false,
+      "path": [
+        "coding-agent",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": " ",
+          "name": "安装所需工具",
+          "selected": false,
+          "subNodes": [
+            {
+              "icon": " ",
+              "name": "Windows",
+              "selected": false,
+              "path": [
+                "coding-agent",
+                "installing",
+                "windows"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "Linux",
+              "selected": false,
+              "path": [
+                "coding-agent",
+                "installing",
+                "linux"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "macOS",
+              "selected": false,
+              "path": [
+                "coding-agent",
+                "installing",
+                "macos"
+              ]
+            }
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "准备上下文文件",
+          "selected": false,
+          "path": [
+            "coding-agent",
+            "context"
+          ]
+        },
+        {
+          "icon": " ",
+          "name": "调查与优化任务",
+          "selected": false,
+          "path": [
+            "coding-agent",
+            "jobs"
+          ]
+        },
+        {
+          "icon": " ",
+          "name": "AutomationService 与基础计算机操作",
+          "selected": true,
+          "path": [
+            "coding-agent",
+            "gacui-debugging"
+          ]
+        },
+        {
+          "icon": " ",
+          "name": "创建远程协议与外部视图模型",
+          "selected": false,
+          "path": [
+            "coding-agent",
+            "remoting"
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": true,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "AutomationService 与基础计算机操作",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            GacUI 应用需要一条应用级的自动化通道，使编码代理能够在调试时检查并操作 UI。\n            在 Windows 上，推荐的通道是在应用启动期间启动 GacUI AutomationService HTTP 端点。\n            这样代理就可以读取控件树或远程渲染器的 DOM，并发送 IO 命令，而无需使用操作系统的 UI Automation。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            从代理使用者的角度来看，这意味着：\n            "
+          },
+          {
+            "kind": "List",
+            "ordered": false,
+            "items": [
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "应用在运行时应暴露一个稳定的 localhost 自动化 URL。"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "对于常规的 GacUI 窗口与控件，代理应使用该自动化端点。"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "代理不应依赖 UI Automation 作为后备方案，因为当屏幕锁定时它可能无法工作。"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "用户可以继续使用电脑，因为代理无需为常规 GacUI 操作驱动物理指针。"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            请参阅 "
+          },
+          {
+            "kind": "PageLink",
+            "href": "/gacui/coding-agent/automation-service.html",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "AutomationService"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 了解服务设置、确切的 HTTP URL、设置函数用例以及平台实现细节。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "当代理被阻塞时",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                应用级自动化依赖于应用的 UI 线程。\n                原生崩溃对话框、消息框、文件对话框、颜色对话框或其他模态原生窗口都可能阻塞该线程。\n                发生这种情况时，代理应停止轮询应用的自动化端点，并从另一个进程检查原生窗口。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                复制而来的 "
+              },
+              {
+                "kind": "Name",
+                "text": ".github/Guidelines/Running-ComputerUse.md"
+              },
+              {
+                "kind": "Text",
+                "text": " 文件说明了解除阻塞的工作流程：\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "识别目标进程。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "使用 Win32 API 枚举顶层窗口与子窗口。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "读取类名、窗口文本、控件 ID 与矩形区域。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "优先使用直接控件消息，例如 "
+                      },
+                      {
+                        "kind": "Name",
+                        "text": "BM_CLICK"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "、"
+                      },
+                      {
+                        "kind": "Name",
+                        "text": "WM_SETTEXT"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 以及组合框消息。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "仅在需要视觉确认时才截取屏幕截图。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "在返回 AutomationService 之前，先关闭或应答原生对话框。"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "项目准备",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                如果应用包含 GacUI UI 相关工作，请在 "
+              },
+              {
+                "kind": "Name",
+                "text": "Project.md"
+              },
+              {
+                "kind": "Text",
+                "text": " 中说明其自动化端点。\n                请包括可执行项目名称、端口、URL 前缀、是否使用托管模式，以及常见出现的原生对话框。\n                这为代理提供了足够的上下文，使其优先选择 AutomationService，仅在应用被阻塞时才采用原生窗口处理。\n            "
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

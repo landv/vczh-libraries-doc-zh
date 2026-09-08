@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>构建你的第一个 GacUI 应用！-- GPU 加速的 C++ 用户界面 (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "gacui",
+    "running"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "GacUI",
+      "selected": false,
+      "path": [
+        "gacui",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": " ",
+          "name": "构建你的第一个 GacUI 应用！",
+          "selected": true,
+          "path": [
+            "gacui",
+            "running"
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "知识库",
+          "selected": false,
+          "path": [
+            "gacui",
+            "kb",
+            "home"
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "GacUI XML 资源",
+          "selected": false,
+          "path": [
+            "gacui",
+            "xmlres",
+            "home"
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "GacUI 组件",
+          "selected": false,
+          "path": [
+            "gacui",
+            "components",
+            "home"
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "高级主题",
+          "selected": false,
+          "path": [
+            "gacui",
+            "advanced",
+            "home"
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "托管模式与远程协议",
+          "selected": false,
+          "path": [
+            "gacui",
+            "modes",
+            "home"
+          ]
+        },
+        {
+          "icon": " ",
+          "name": "Coding Agent 支持",
+          "selected": false,
+          "subNodes": [
+            {
+              "icon": " ",
+              "name": "AutomationService",
+              "selected": false,
+              "path": [
+                "gacui",
+                "coding-agent",
+                "automation-service"
+              ]
+            }
+          ]
+        },
+        {
+          "icon": " ",
+          "name": "自 1.0 以来的破坏性变更",
+          "selected": false,
+          "path": [
+            "gacui",
+            "upgrade"
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "参考",
+          "selected": false,
+          "path": [
+            "gacui",
+            "ref"
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": true,
+  "numberBeforeTitle": true,
+  "topic": {
+    "kind": "Topic",
+    "title": "构建你的第一个 GacUI 应用！",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            这是在 GacUI 中构建 Hello World 应用程序的入门指南。\n            它基于 "
+          },
+          {
+            "kind": "PageLink",
+            "href": "https://github.com/vczh-libraries/Release/tree/master/Tutorial/GacUI_HelloWorlds/CppXml",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "随 GacUI 发布的一个示例项目"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "。\n            你需要先准备以下内容：\n            "
+          },
+          {
+            "kind": "List",
+            "ordered": false,
+            "items": [
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "PageLink",
+                    "href": "/home/download.html",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "下载"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 从 github 下载 GacUI。"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    在 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Windows"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 上，\n                    安装 Visual Studio 2022 Community 或更高版本\n                    "
+                  },
+                  {
+                    "kind": "List",
+                    "ordered": false,
+                    "items": [
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "前往 "
+                          },
+                          {
+                            "kind": "PageLink",
+                            "href": "https://visualstudio.microsoft.com",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "https://visualstudio.microsoft.com"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "或者使用 "
+                          },
+                          {
+                            "kind": "PageLink",
+                            "href": "https://code.visualstudio.com/",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Visual Studio Code"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "，并搭配 "
+                          },
+                          {
+                            "kind": "PageLink",
+                            "href": "https://visualstudio.microsoft.com/visual-cpp-build-tools/",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Visual C++ Build Tools"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " 来代替。"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    在 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "macOS"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 上，\n                    （文章待完善）\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    在 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Linux"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 上，\n                    （文章待完善）\n                "
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "准备你的文件夹结构",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "GacUI.xml"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "UI"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 文件夹\n                        "
+                      },
+                      {
+                        "kind": "List",
+                        "ordered": false,
+                        "items": [
+                          {
+                            "kind": "ContentListItem",
+                            "content": [
+                              {
+                                "kind": "Strong",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "Source"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "Text",
+                                "text": " 文件夹：开始时为空，用于存放由 Resource.xml 生成的 C++ 文件"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "ContentListItem",
+                            "content": [
+                              {
+                                "kind": "Strong",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "Resource.xml"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "Lib"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 文件夹：把文件从 "
+                      },
+                      {
+                        "kind": "PageLink",
+                        "href": "https://github.com/vczh-libraries/Release/tree/master/Import",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "此处"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 复制到此文件夹。再从 "
+                      },
+                      {
+                        "kind": "PageLink",
+                        "href": "/home/download.html",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "下载"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 页面的“Files you need for a typical GacUI application”部分中选择全部文件。\n                    "
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "Main.cpp"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "WinMain.cpp"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "GacUI.xml",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    GacUI 允许资源文件依赖于其他资源文件。\n                    GacUI.xml 放在根文件夹中。\n                    对 GacUI.xml 运行 GacBuild.ps1，它会递归搜索所有资源文件。\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    在本教程中，我们只有一个资源文件，\n                    即 UI\\Resource.xml。\n                    在这种情况下，GacUI.xml 的内容非常简单：\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Program",
+                    "code": "<GacUI/>",
+                    "language": "xml"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "UI\\Resource.xml",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    在这个文件中，我们要指定以下信息：\n                    "
+                  },
+                  {
+                    "kind": "List",
+                    "ordered": false,
+                    "items": [
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "生成的 C++ 文件的存放位置"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "生成的二进制资源文件的存放位置"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "包含 \"GacUI.h\"，因为我们不需要运行时反射"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "名字为 HelloWorld"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "描述 HelloWorld 窗口"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Program",
+                    "code": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<Resource>\n<Folder name=\"GacGenConfig\">\n    <Folder name=\"Cpp\">\n    <Text name=\"SourceFolder\">Source</Text>\n    <Text name=\"Resource\">..\\HelloWorld.bin</Text>\n    <Text name=\"NormalInclude\">GacUI.h</Text>\n    <Text name=\"Name\">HelloWorld</Text>\n    </Folder>\n</Folder>\n<Folder name=\"MainWindow\">\n    <Instance name=\"MainWindowResource\">\n        <Instance ref.CodeBehind=\"false\" ref.Class=\"helloworld::MainWindow\">\n            <Window Text=\"Hello, world!\" ClientSize=\"x:480 y:320\">\n                <att.BoundsComposition-set PreferredMinSize=\"x:480 y:320\"/>\n                <Label Text=\"Welcome to GacUI Library!\">\n                    <att.Font>fontFamily:\"Segoe UI\" size:32 antialias:true</att.Font>\n                </Label>\n            </Window>\n        </Instance>\n    </Instance>\n</Folder>\n</Resource>",
+                    "language": "xml"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "构建 GacUI 资源文件",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                在根文件夹中运行 "
+              },
+              {
+                "kind": "PageLink",
+                "href": "https://github.com/vczh-libraries/Release/tree/master/Tools",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GacBuild.ps1"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "，参数为 \"GacUI.xml\"。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GacBuild.ps1"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 会在你有多个 GacUI 资源文件时执行增量构建。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GacClear.ps1"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 会删除所有由 GacBuild.ps1 创建的日志文件，\n                从而让 GacBuild.ps1 在下次执行完整构建。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                如果构建成功，\n                你会在根文件夹中看到 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "HelloWorld.bin"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "，\n                并且也会在 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "UI\\Source"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 文件夹中看到一些文件。\n                我们只需要：\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "HelloWorld.h"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "HelloWorldPartialClasses.h"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "HelloWorldPartialClasses.cpp"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                还会创建一个 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Resource.xml.log"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 文件夹。\n                这个文件夹保存 GacBuild.ps1 用于增量构建的构建结果。\n                删除它是安全的。\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Main.cpp",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                要构建此文件，\n                你需要在你的 VC++ 项目中包含必要的文件：\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "UI\\Source"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "\\HelloWorld.h"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "UI\\Source"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "\\HelloWorldPartialClasses.h"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "UI\\Source"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "\\HelloWorldPartialClasses.cpp"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "在 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "Lib"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 文件夹中选择的文件。"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                本项目不需要运行时反射，\n                所以你必须定义一个空的 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "VCZH_DEBUG_NO_REFLECTION"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 宏，通过 "
+              },
+              {
+                "kind": "PageLink",
+                "href": "https://docs.microsoft.com/en-us/cpp/build/reference/d-preprocessor-definitions",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "预处理器定义"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 实现。\n                你可以通过修改项目属性来做到，\n                或者如果你使用 Visual Studio Code，也可以使用 /D 编译器选项。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                你需要把 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Lib"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 添加到你的 "
+              },
+              {
+                "kind": "PageLink",
+                "href": "https://docs.microsoft.com/en-us/cpp/build/reference/i-additional-include-directories",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "include folder list"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "。\n                你可以通过修改项目属性来做到，\n                或者如果你使用 Visual Studio Code，也可以使用 /I 编译器选项。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Program",
+                "code": "#define GAC_HEADER_USE_NAMESPACE\n#include \"UI/Source/HelloWorld.h\"\n\nusing namespace vl::collections;\nusing namespace vl::stream;\n\nvoid GuiMain()\n{\n    {\n        FileStream fileStream(L\"HelloWorld.bin\", FileStream::ReadOnly);\n        GetResourceManager()->LoadResourceOrPending(fileStream);\n    }\n    helloworld::MainWindow window;\n    window.MoveToScreenCenter();\n    GetApplication()->Run(&window);\n}",
+                "language": "c++"
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                请注意，你需要小心放置 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "HelloWorld.bin"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "，并在运行时查找该文件。\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\"HelloWorld.bin\""
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 是一个相对路径，\n                它会尝试在你的工作目录中查找该文件。\n                当你在 Visual Studio 中按 F5 时，工作目录是包含 \".vcxproj\" 文件的文件夹。\n                当你双击可执行文件时，工作目录就是可执行文件所在的文件夹。\n                建议你 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "根据可执行文件的完整路径计算绝对路径"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "。\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GetApplication()->GetExecutableFolder()"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 在这里很有用。\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "WinMain.cpp",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "WinMain"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 函数是 Windows GUI 程序的入口。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Program",
+                "code": "#define GAC_HEADER_USE_NAMESPACE\n#include <GacUI.h>\n#include <Skins\\DarkSkin\\DarkSkin.h>\n#include <Windows.h>\n\nclass DefaultSkinPlugin : public Object, public IGuiPlugin\n{\npublic:\n    GUI_PLUGIN_NAME(Custom_DefaultSkinPlugin)\n    {\n        GUI_PLUGIN_DEPEND(GacGen_DarkSkinResourceLoader);\n    }\n\n    void Load(bool, bool)override\n    {\n        RegisterTheme(Ptr(new darkskin::Theme));\n    }\n\n    void Unload(bool, bool)override\n    {\n    }\n};\nGUI_REGISTER_PLUGIN(DefaultSkinPlugin)\n\nint CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int CmdShow)\n{\n    return SetupWindowsDirect2DRenderer();\n}",
+                "language": "c++"
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "DefaultSkinPlugin"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 类使用预定义的 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "DarkSkin"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 作为默认控件模板。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                你可以编写自己的控件模板，为某些控件覆盖默认模板。\n                你也可以为所有控件编写控件模板，从而彻底摆脱 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "DarkSkin"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                要启动 GacUI 程序，每个控件都必须被分配一个默认控件模板。\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "构建并运行你的程序！",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Image",
+                "src": "/gacui/HelloWorld.png"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

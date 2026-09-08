@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>IO Interaction -- GPU Accelerated C++ User Interface (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "unittest",
+    "gacui_io"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "单元测试",
+      "selected": false,
+      "path": [
+        "unittest",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": "-",
+          "name": "在单元测试框架中运行 GacUI",
+          "selected": false,
+          "path": [
+            "unittest",
+            "gacui"
+          ],
+          "subNodes": [
+            {
+              "icon": " ",
+              "name": "快照与帧",
+              "selected": false,
+              "path": [
+                "unittest",
+                "gacui_frame"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "IO 交互",
+              "selected": true,
+              "path": [
+                "unittest",
+                "gacui_io"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "访问控件",
+              "selected": false,
+              "path": [
+                "unittest",
+                "gacui_controls"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "快照查看器",
+              "selected": false,
+              "path": [
+                "unittest",
+                "gacui_snapshots"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": true,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "IO 交互",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            To calculate the location of a control or a composition for a following mouse interaction,\n            use "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "protocol->LocationOf(controlOrComposition, ratioX?, ratioY?, offsetX?, offsetY?)"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": ".\n            It calculates the global location within an object using\n            "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "left + width * ratioX + offsetX"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 以及 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "top + height * ratioY + offsetY"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": ".\n            You can omit the last 4 parameters to get the center of the object.\n            Such location can be passed to mouse interaction functions directly.\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Mouse Interactions",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                Here are a list of available mouse interaction functions in the "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "protocol"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " object:\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "MouseMove(location) and MouseMove(location, ctrl, shift, alt, osSuper)"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ": move the mouse to the specified location with optional modifier keys."
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "_LDown(location?)"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ": trigger a left button down event."
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "_LUp(location?)"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ": trigger a left button up event."
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "_LDBClick(location?)"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ": trigger a left button double click event."
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "LClick(location?) and LClick(location, ctrl, shift, alt, osSuper)"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ": trigger multiple events to simulate a click with optional modifier keys."
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "LDBClick(location?) and LDBClick(location, ctrl, shift, alt, osSuper)"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ": trigger multiple events to simulate a double click with optional modifier keys."
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "M (middle), R (right), Mouse4, and Mouse5 versions of the down, up, click, and double-click functions are available."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Mouse Wheel Interactions",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                Here are a list of available mouse wheel interaction functions in the "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "protocol"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " object:\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "_Wheel(up, position?) and _Wheel(up, position, ctrl, shift, alt, osSuper)"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ": scroll the wheel forward. A negative number means backard. "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "WheelDown"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 或 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "WheelUp"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 用于以跳步方式滚动的快捷键时，一次跳跃的比例为 120。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "_HWheel(right, position?) and _HWheel(right, position, ctrl, shift, alt, osSuper)"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ": scroll the horizontal wheel towards right. A negative number means towards left. "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "HWheelLeft"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 或 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "HWheelRight"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 用于以跳步方式滚动的快捷键时，一次跳跃的比例为 120。"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Key Interactions",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                Here are a list of available key interaction functions in the "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "protocol"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " object:\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "_KeyDown(key)"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ": trigger a key down event."
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "_KeyDownRepeat(key)"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ": trigger a key down event triggers by keep pressing a key."
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "_KeyUp(key)"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ": trigger a key up event."
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "KeyPress(key) and KeyPress(key, ctrl, shift, alt, osSuper)"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ": trigger multiple events to simulate a key press with optional modifier keys."
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "TypeString(string) and TypeString(string, ctrl, shift, alt, osSuper)"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ": trigger a sequence of char events with optional modifier keys. Other key events will not be triggered."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

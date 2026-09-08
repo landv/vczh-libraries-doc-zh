@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Windows -- GPU 加速的 C++ 用户界面 (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "coding-agent",
+    "installing",
+    "windows"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "使用 Coding Agent",
+      "selected": false,
+      "path": [
+        "coding-agent",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": " ",
+          "name": "安装所需工具",
+          "selected": false,
+          "subNodes": [
+            {
+              "icon": " ",
+              "name": "Windows",
+              "selected": true,
+              "path": [
+                "coding-agent",
+                "installing",
+                "windows"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "Linux",
+              "selected": false,
+              "path": [
+                "coding-agent",
+                "installing",
+                "linux"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "macOS",
+              "selected": false,
+              "path": [
+                "coding-agent",
+                "installing",
+                "macos"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": true,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "在 Windows 上安装所需工具",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            Windows 代理脚本通过 Visual Studio 开发环境使用 MSBuild 构建，代理则直接用 CDB 调试。\n            请安装带 C++ 桌面工作负载的 Visual Studio、Windows SDK，以及提供 "
+          },
+          {
+            "kind": "Name",
+            "text": "cdb.exe"
+          },
+          {
+            "kind": "Text",
+            "text": " 的 Windows 调试工具。\n            如果 CDB 不可用，请从 Visual Studio 安装程序中安装 Windows 驱动程序工具包或 Windows 调试工具组件。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            在要求代理构建或调试之前，请定义以下环境变量：\n            "
+          },
+          {
+            "kind": "List",
+            "ordered": false,
+            "items": [
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Name",
+                    "text": "VLPP_VSDEVCMD_PATH"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ": 指向 "
+                  },
+                  {
+                    "kind": "Name",
+                    "text": "VsDevCmd.bat"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 的绝对路径，例如 "
+                  },
+                  {
+                    "kind": "Name",
+                    "text": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\Tools\\VsDevCmd.bat"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "。"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Name",
+                    "text": "CDBPATH"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ": 指向 "
+                  },
+                  {
+                    "kind": "Name",
+                    "text": "cdb.exe"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 的绝对路径，例如 "
+                  },
+                  {
+                    "kind": "Name",
+                    "text": "C:\\Program Files (x86)\\Windows Kits\\10\\Debuggers\\x64\\cdb.exe"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "。"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            复制 Release 的 "
+          },
+          {
+            "kind": "Name",
+            "text": ".github"
+          },
+          {
+            "kind": "Text",
+            "text": " 文件夹后，代理应使用以下脚本，而不是直接调用构建或执行工具：\n            "
+          },
+          {
+            "kind": "List",
+            "ordered": false,
+            "items": [
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Name",
+                    "text": ".github\\Scripts\\copilotBuild.ps1"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ": 从 "
+                  },
+                  {
+                    "kind": "Name",
+                    "text": "Project.md"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 的上下文找到并构建解决方案，并写入 "
+                  },
+                  {
+                    "kind": "Name",
+                    "text": "Build.log"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "。"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Name",
+                    "text": ".github\\Scripts\\copilotExecute.ps1"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ": 运行单元测试或 CLI 项目，并为单元测试写入 "
+                  },
+                  {
+                    "kind": "Name",
+                    "text": "Execute.log"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 的日志文件。"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            调试时请直接在交互式终端中运行 CDB。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            如果应用使用 Release 随附的工具，请从 Release 仓库构建它们：\n            "
+          },
+          {
+            "kind": "List",
+            "ordered": false,
+            "items": [
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "在 Visual Studio 中打开 "
+                  },
+                  {
+                    "kind": "Name",
+                    "text": "Tools\\Executables\\Executables.sln"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "。"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "构建 "
+                  },
+                  {
+                    "kind": "Name",
+                    "text": "Release"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 时使用 "
+                  },
+                  {
+                    "kind": "Name",
+                    "text": "x64"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "。"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "运行 "
+                  },
+                  {
+                    "kind": "Name",
+                    "text": "Tools\\CopyExecutables.ps1"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "。"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "确认 "
+                  },
+                  {
+                    "kind": "Name",
+                    "text": "CodePack.exe"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "、"
+                  },
+                  {
+                    "kind": "Name",
+                    "text": "CppMerge.exe"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "、"
+                  },
+                  {
+                    "kind": "Name",
+                    "text": "GacGen.exe"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 与 "
+                  },
+                  {
+                    "kind": "Name",
+                    "text": "GlrParserGen.exe"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 均存在于 "
+                  },
+                  {
+                    "kind": "Name",
+                    "text": "Release\\Tools"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "。"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            为了便于在调试器中阅读，请将 "
+          },
+          {
+            "kind": "Name",
+            "text": "Import\\vlpp.natvis"
+          },
+          {
+            "kind": "Text",
+            "text": " 从 Release 复制到 Visual Studio 的可视化工具文件夹。\n            在 CDB 中加载该 natvis 文件，以使用诸如 "
+          },
+          {
+            "kind": "Name",
+            "text": "dx"
+          },
+          {
+            "kind": "Text",
+            "text": " 之类的调试器命令。\n        "
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

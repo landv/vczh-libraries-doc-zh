@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>AST Definition -- GPU Accelerated C++ User Interface (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "vlppparser2",
+    "ast"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "Vlpp Parser2",
+      "selected": false,
+      "path": [
+        "vlppparser2",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": " ",
+          "name": "AST Definition",
+          "selected": true,
+          "path": [
+            "vlppparser2",
+            "ast"
+          ]
+        },
+        {
+          "icon": " ",
+          "name": "Lexer Definition",
+          "selected": false,
+          "path": [
+            "vlppparser2",
+            "lexer"
+          ]
+        },
+        {
+          "icon": " ",
+          "name": "Syntax Definition",
+          "selected": false,
+          "path": [
+            "vlppparser2",
+            "syntax"
+          ]
+        },
+        {
+          "icon": " ",
+          "name": "Generated APIs",
+          "selected": false,
+          "path": [
+            "vlppparser2",
+            "apis"
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "参考",
+          "selected": false,
+          "path": [
+            "vlppparser2",
+            "ref"
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": false,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "AST Definition",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            An AST definition consists of multiple "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "Enum"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 以及 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "Class"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": ".\n            A "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "@public"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 可以放在任何类型定义之前，使其在另一个 AST 定义文件中可见。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            可以使用……编写单行注释 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "//"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": ".\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Enum",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Program",
+                "code": "enum Season\n{\n    Spring,\n    Summer,\n    Autumn,\n    Winter,\n}",
+                "language": "AST"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Class",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Program",
+                "code": "class Base\n{\n    var name : token;\n}\n\nclass Derived : Base\n{\n    var season : Season;\n    var baseArray : Base[];\n}",
+                "language": "AST"
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                Inheriting between classes works as other programming languages.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                Here are a list of supported field types:\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "token"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ": vl::glr::ParsingToken"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "enum type"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "class type"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ": vl::Ptr<ClassType>"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "array to class type"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ": vl::collections::List<vl::Ptr<ClassType>>"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                A "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "@ambiguous"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " can be used before a class definition,\n                indicating that any syntax rule of exactly this type is allow to produce results with ambiguity.\n                The type of such rule is rewritten to "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "ClassTypeToResolve"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ",\n                with a member "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "var candidates : ClassType[];"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " to store all results that could be produced from the same input.\n                A rule of a sub type to an ambiguous type is not automatically allowed to be ambiguous,\n                but you can explicitly specific the type to make such rule use the ambiguous base type.\n            "
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

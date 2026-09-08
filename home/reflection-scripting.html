@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Gaclib -- 主页 -- C++ 反射与脚本</title>
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/global.css" />
+<link rel="stylesheet" type="text/css" href="/article.css" />
+<link rel="stylesheet" type="text/css" href="/navigation.css" />
+<link rel="stylesheet" type="text/css" href="/category.css" />
+<script src="/scripts/rootView.js"></script>
+<script src="/scripts/homeView.js"></script>
+<script src="/scripts/homeCategoryFeatureView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": "reflection-scripting"
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-HomeView"
+  },
+  {
+    "targetObject": "homeViewContainer",
+    "viewName": "Gaclib-HomeCategoryFeatureView"
+  }
+];
+  const activeButton = "Home";
+  const activeCategory = "Scripting";
+  const homeArticle = {
+  "index": false,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "欢迎使用 Gaclib！",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            Gaclib 是一个 GPU 加速的 C++ 用户界面库。\n            它灵活且高度可定制，内置了大量布局与控件，\n            并支持控件模板、列表项模板、MVVM、本地化、动画等特性。\n            更重要的是，即使界面非常复杂，在交互时依然拥有良好的性能。\n            你可以在这里找到它："
+          },
+          {
+            "kind": "PageLink",
+            "href": "https://github.com/vczh-libraries/Release",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "github"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "。\n            本库提供了许多实用的功能。\n            如果你不需要全部特性，\n            可以只使用发布版 C++ 文件中的一部分，以减小可执行文件的体积。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Image",
+            "src": "/resources/home/xml_HelloWorld.png"
+          }
+        ]
+      }
+    ]
+  }
+};
+  const featureList = {
+  "title": "C++ 反射与脚本",
+  "features": [
+    {
+      "image": "/resources/home/cat_scripting_registration.png",
+      "href": "reflection-scripting/registration.html",
+      "article": {
+        "index": false,
+        "numberBeforeTitle": false,
+        "topic": {
+          "kind": "Topic",
+          "title": "轻松注册",
+          "content": [
+            {
+              "kind": "Paragraph",
+              "content": [
+                {
+                  "kind": "Text",
+                  "text": "编写你的 C++ 类并注册到反射 API。"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "image": "/resources/home/cat_scripting_invoking.png",
+      "href": "reflection-scripting/invoking.html",
+      "article": {
+        "index": false,
+        "numberBeforeTitle": false,
+        "topic": {
+          "kind": "Topic",
+          "title": "动态调用",
+          "content": [
+            {
+              "kind": "Paragraph",
+              "content": [
+                {
+                  "kind": "Text",
+                  "text": "通过反射 API 调用你的 C++ 类。"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "image": "/resources/home/cat_scripting_scripting.png",
+      "href": "reflection-scripting/scripting.html",
+      "article": {
+        "index": false,
+        "numberBeforeTitle": false,
+        "topic": {
+          "kind": "Topic",
+          "title": "脚本与原生代码互操作",
+          "content": [
+            {
+              "kind": "Paragraph",
+              "content": [
+                {
+                  "kind": "Text",
+                  "text": "在 Workflow 脚本中调用你的 C++ 类。"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "image": "/resources/home/cat_scripting_executing.png",
+      "href": "reflection-scripting/executing.html",
+      "article": {
+        "index": false,
+        "numberBeforeTitle": false,
+        "topic": {
+          "kind": "Topic",
+          "title": "直接运行脚本",
+          "content": [
+            {
+              "kind": "Paragraph",
+              "content": [
+                {
+                  "kind": "Text",
+                  "text": "\n                即时编译并执行你的 Workflow 脚本。\n                编译后的 Workflow 脚本可以序列化到文件中。\n            "
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "image": "/resources/home/cat_scripting_codegen.png",
+      "href": "reflection-scripting/codegen.html",
+      "article": {
+        "index": false,
+        "numberBeforeTitle": false,
+        "topic": {
+          "kind": "Topic",
+          "title": "运行生成的 C++ 代码",
+          "content": [
+            {
+              "kind": "Paragraph",
+              "content": [
+                {
+                  "kind": "Text",
+                  "text": "\n                编译并将你的 Workflow 脚本输出为 C++ 代码。\n                链接这段 C++ 代码，然后直接调用即可！\n            "
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ]
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.activeButton"] = activeButton;
+  window["MVC-Resources.activeCategory"] = activeCategory;
+  window["MVC-Resources.homeArticle"] = homeArticle;
+  window["MVC-Resources.featureList"] = featureList;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

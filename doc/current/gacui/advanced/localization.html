@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Localization -- GPU Accelerated C++ User Interface (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "gacui",
+    "advanced",
+    "localization"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "GacUI",
+      "selected": false,
+      "path": [
+        "gacui",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": "-",
+          "name": "高级主题",
+          "selected": false,
+          "path": [
+            "gacui",
+            "advanced",
+            "home"
+          ],
+          "subNodes": [
+            {
+              "icon": " ",
+              "name": "与 C++ 视图模型的互操作",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "vm"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "数据绑定",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "bindings"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "动画",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "animations"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "本地化",
+              "selected": true,
+              "path": [
+                "gacui",
+                "advanced",
+                "localization"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "跨 XML 资源引用",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "cxrr"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "ALT 序列与控件焦点",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "alt"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "TAB 与控件焦点",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "tab"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "创建新的列表控件",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "impllistcontrol"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "将 GacUI 移植到其它平台",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "implosprovider"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": true,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "本地化",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            The GacUI XML "
+          },
+          {
+            "kind": "PageLink",
+            "href": "/gacui/xmlres/tag_localizedstrings.html",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "<LocalizedStrings/>"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 资源\n            会把多语言字符串模板创建为可绑定对象。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            The GacUI XML "
+          },
+          {
+            "kind": "PageLink",
+            "href": "/gacui/xmlres/tag_localizedstringsinjection.html",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "<LocalizedStringsInjection/>"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 资源\n            用于为现有的……添加更多语言 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "<LocalizedStrings/>"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": ".\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "<ref.LocalizedStrings/>",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "<ref.LocalizedStrings/>"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 把一个……导入 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "<LocalizedStrings/>"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 到当前 UI 实例：\n                "
+              },
+              {
+                "kind": "Program",
+                "code": "<ref.LocalizedStrings Name=\"Strings\" Class=\"demo::StringResource\" Default=\"true\"/>"
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "Name"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：\n                        该字符串资源的名称。\n                        它还会在当前 UI 实例中创建一个同名属性。\n                        该属性值可以在运行时改变。\n                        与……不同 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "<ref.Parameter/>"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "，\n                        该实例知道如何初始化字符串资源，\n                        因此不会创建构造函数参数。\n                    "
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "Class"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：\n                        字符串资源类的完整名称。\n                        该资源形如下文，才能用……引用 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "Class=\"demo::StringResource\""
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ":\n                        "
+                      },
+                      {
+                        "kind": "Program",
+                        "code": "<LocalizedStrings ref.Class=\"demo::StringResource\" DefaultLocale=\"en-US\">\n    ...\n</LocalizedStrings>"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "Default"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：\n                        指定一个默认字符串资源。\n                        如果存在多个 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "<LocalizedStrings/>"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "，\n                        那么其中只能有一个是默认字符串资源。\n                    "
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "-str 绑定",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                该……的值 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "-str"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 绑定必须是\n                "
+              },
+              {
+                "kind": "PageLink",
+                "href": "/workflow/lang/expr.html#Call-expression-FUNCTION-ARGUMENTS-",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    Workflow call expression\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "。\n                该函数可以是 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "METHOD"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 或 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "NAME.METHOD"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "METHOD"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：\n                        该语法使用 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "默认字符串资源"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ".\n                        "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "METHOD"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 必须是……之一 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "Name"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " ……属性（属于某个） "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "<String/>"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 在所引用的 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "<LocalizedStrings/>"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ".\n                    "
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "NAME.METHOD"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：\n                        与上述方式不同，\n                        该语法使用 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "<ref.LocalizedStrings/>"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " whose "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "Name"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 属性是 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "名称"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ".\n                    "
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                一旦定位到字符串资源与字符串项，\n                该 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "-str"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 绑定会检查参数是否符合类型要求。\n                请注意，同一个字符串项在不同语言中的参数类型必须完全相同（在同一 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "<LocalizedStrings/>"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "中），\n                因此当前 UI 语言是哪种并不重要。\n                这也能确保你可以在运行时切换 UI 语言。\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Using -bind or -format on String Resources",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                对于通过以下方式导入的字符串资源：\n                "
+              },
+              {
+                "kind": "Program",
+                "code": "<ref.LocalizedStrings Name=\"Strings\" Class=\"demo::StringResource\" Default=\"true\"/>"
+              },
+              {
+                "kind": "Text",
+                "text": "\n                该 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "-str"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 绑定也是一种数据绑定，\n                因此它知道……何时 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Strings"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 属性发生改变，\n                并更新属性值。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                假设默认字符串资源是 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Strings"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "，\n                那么下面的绑定代码\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "-str=\"Something(p1, p2, p3)\""
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "-str=\"Strings.Something(p1, p2, p3)\""
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                等价于\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "-bind=\"self.Strings.Something(p1, p2, p3)\""
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "-format=\"$(self.Strings.Something(p1, p2, p3))\""
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                当当前 UI 实例有一个 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "ref.Name=\"self\""
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " attribute.\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Switching the UI Language",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                指定 UI 语言的唯一方式是：\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "C++"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ": GetApplication()->SetLocale(LOCALE);"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "Workflow"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ": presentation::controls::GuiApplication.GetApplication().Locale = LOCALE;"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                此配置影响当前进程中的所有窗口。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                对于通过以下方式导入的字符串资源：\n                "
+              },
+              {
+                "kind": "Program",
+                "code": "<ref.LocalizedStrings Name=\"Strings\" Class=\"demo::StringResource\" Default=\"true\"/>"
+              },
+              {
+                "kind": "Text",
+                "text": "\n                当应用程序的区域设置改变时，\n                该 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Strings"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " （当前 UI 对象的）属性会被一个新对象替换，\n                该对象来自 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "<Strings/>"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 在所引用的 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "<LocalizedStrings/>"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " （用于该区域设置）。\n                如果该本地化字符串中不存在指定的区域设置，\n                将使用默认设置。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                Such "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "<LocalizedStrings/>"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 还会创建一个名为 demo:: 的接口"
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "I"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "StringResource"
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Strings"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "，\n                它将成为……的类型 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Strings"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 属性（如果使用上述方式导入） "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "<ref.LocalizedStrings/>"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "。\n                通常你不需要使用\n                生成的类 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "demo::StringResource"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "，\n                也不需要生成的接口 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "demo::IStringResourceStrings"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Interop with C++ View Model -- GPU Accelerated C++ User Interface (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "gacui",
+    "advanced",
+    "vm"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "GacUI",
+      "selected": false,
+      "path": [
+        "gacui",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": "-",
+          "name": "高级主题",
+          "selected": false,
+          "path": [
+            "gacui",
+            "advanced",
+            "home"
+          ],
+          "subNodes": [
+            {
+              "icon": " ",
+              "name": "与 C++ 视图模型的互操作",
+              "selected": true,
+              "path": [
+                "gacui",
+                "advanced",
+                "vm"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "数据绑定",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "bindings"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "动画",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "animations"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "本地化",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "localization"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "跨 XML 资源引用",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "cxrr"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "ALT 序列与控件焦点",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "alt"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "TAB 与控件焦点",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "tab"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "创建新的列表控件",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "impllistcontrol"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "将 GacUI 移植到其它平台",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "implosprovider"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": true,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "与 C++ 视图模型的互操作",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            建议使用\n            "
+          },
+          {
+            "kind": "PageLink",
+            "href": "https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "MVVM"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "\n            模式与 GacUI 配合：\n            "
+          },
+          {
+            "kind": "List",
+            "ordered": false,
+            "items": [
+              {
+                "kind": "ParagraphListItem",
+                "paragraphs": [
+                  {
+                    "kind": "Paragraph",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "Model"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：\n                        它指领域模型。\n                        ……中的代码 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "Model"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 解决用户真正需要的实际问题。\n                        它可以是一个领域的面向对象设计，\n                        也可以是访问数据库中数据的访问层，数据可来自互联网或任何可能的方式。\n                    "
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "ParagraphListItem",
+                "paragraphs": [
+                  {
+                    "kind": "Paragraph",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "ViewModel"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：\n                        它指一组以……的方式暴露……的接口 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "Model"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " （以便捷的方式为……） "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "Views"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "。\n                        ……中的数据组织 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "Model"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 不必是 UI 友好的。\n                        正是 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "ViewModel"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 暴露出一组正确的操作，\n                        从而使 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "Views"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " access "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "Model"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " convenient.\n                    "
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Paragraph",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "\n                        例如，\n                        许多应用程序为用户提供列表排序。\n                        ……中的数据 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "Model"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 并未排序，\n                        但可以有索引，\n                        因为排序方式非常多，\n                        缓存所有排序结果是存储的浪费。\n                        当用户以特定方式对数据排序时，\n                        正是 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "ViewModel"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 来处理排序。\n                        而 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "ViewModel"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 访问数据，\n                        并以排序后的方式返回数据组织。\n                    "
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "ParagraphListItem",
+                "paragraphs": [
+                  {
+                    "kind": "Paragraph",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "View"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ":\n                        A "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "View"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 可以是应用程序的实际 UI，\n                        也可以是一组单元测试。\n                        "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "Views"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " access "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "ViewModel"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "，\n                        通常它不访问 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "Model"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ".\n                    "
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            In GacUI,\n            "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "ViewModels"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 在……中被定义为一组接口\n            "
+          },
+          {
+            "kind": "PageLink",
+            "href": "/gacui/xmlres/tag_script.html",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "Workflow 脚本文件"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": ".\n            "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "Views"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 被定义为一组\n            "
+          },
+          {
+            "kind": "PageLink",
+            "href": "/gacui/xmlres/instance/root_instance.html",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "窗口与控件"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": ".\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            All "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "ViewModels"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 在一个……中所需的 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "View"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 被定义为\n            "
+          },
+          {
+            "kind": "PageLink",
+            "href": "/gacui/xmlres/tag_instance.html",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "<ref.Parameter/>"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "，\n            它表示传给该……的构造函数参数 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "View"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "。\n            该 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "Class"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " （这种……的）属性 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "<ref.Parameter/>"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 将作为……的接口 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "ViewModels"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": ".\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            在 GacUI 入口点（ "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "GuiMain"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 函数）中，\n            会创建主窗口。\n            如果主窗口需要 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "ViewModels"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "，\n            那么主窗口 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "<Instance/>"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 将有一个或多个 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "<ref.Parameter/>"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "，\n            那么主窗口的构造函数将有一个或多个构造函数参数。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            Now, "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "GuiMain"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 只需创建实现这些接口的类，\n            并把它们全部传给主窗口的构造函数，\n            然后 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "ViewModels"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 以及该 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "View"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 就连通了。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Sample",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "PageLink",
+                "href": "https://github.com/vczh-libraries/Release/tree/master/Tutorial/GacUI_HelloWorlds/MVVM",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "这个"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                是在 GacUI 中使用 MVVM 的一个非常简单的例子。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Image",
+                "src": "/gacui/adv_mvvm.gif"
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                该 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "ViewModel"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 是一个接口：\n                "
+              },
+              {
+                "kind": "Program",
+                "code": "interface IViewModel\n{\n    func GetUserName() : string;\n    func SetUserName(value : string) : void;\n    prop UserName : string {GetUserName, SetUserName}\n        \n    func GetPassword() : string;\n    func SetPassword(value : string) : void;\n    prop Password : string {GetPassword, SetPassword}\n        \n    func GetUserNameError() : string;\n    event UserNameErrorChanged();\n    prop UserNameError : string {GetUserNameError : UserNameErrorChanged}\n        \n    func GetPasswordError() : string;\n    event PasswordErrorChanged();\n    prop PasswordError : string {GetPasswordError : PasswordErrorChanged}\n        \n    func SignUp() : bool;\n}"
+              },
+              {
+                "kind": "Text",
+                "text": "\n                它定义了……需要知道的全部 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "View"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 内容：\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "访问用户名与密码。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "获取用户名与密码的验证结果。"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                当文本框的内容改变时，\n                数据会存储到视图模型中。\n                这是通过对视图模型对象的数据绑定实现的：\n                "
+              },
+              {
+                "kind": "Program",
+                "code": "<ref.Parameter Name=\"ViewModel\" Class=\"vm::IViewModel\"/>\n<Window ref.Name=\"self\" Text=\"Let's Sign Up!\" ClientSize=\"x:320 y:320\">\n    <att.ViewModel-set UserName-bind=\"textBoxUserName.Text\" Password-bind=\"textBoxPassword.Text\"/>\n    ..."
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                当验证结果改变时，\n                错误会立即显示到 UI 上。\n                这是通过对 UI 对象的数据绑定实现的：\n                "
+              },
+              {
+                "kind": "Program",
+                "code": "<SolidLabel Text-bind=\"ViewModel.UserNameError\"/>"
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                当用户名或密码存储到视图模型时，\n                验证结果会自动更新。\n                这是在一个继承该接口的 C++ 类中实现的：\n                "
+              },
+              {
+                "kind": "Program",
+                "code": "class ViewModel : public Object, public virtual vm::IViewModel\n{\nprivate:\n    WString userName;\n    WString password;\n    Regex regexLcLetters;\n    Regex regexUcLetters;\n    Regex regexNumbers;\n\npublic:\n    ViewModel()\n        :regexLcLetters(L\"[a-z]\")\n        , regexUcLetters(L\"[A-Z]\")\n        , regexNumbers(L\"[0-9]\")\n    {\n    }\n\n    ...\n\n    WString GetPassword()override\n    {\n        return password;\n    }\n\n    void SetPassword(const WString& value)override\n    {\n        password = value;\n        PasswordErrorChanged();\n    }\n\n    WString GetPasswordError()override\n    {\n        if (password == L\"\")\n        {\n            return L\"Password should not be empty.\";\n        }\n        bool containsLowerCases = regexLcLetters.Match(password);\n        bool containsUpperCases = regexUcLetters.Match(password);\n        bool containsNumbers = regexNumbers.Match(password);\n        if (!containsLowerCases || !containsUpperCases || !containsNumbers)\n        {\n            return L\"Password should contains at least one lower case letter, one upper case letter and one digit.\";\n        }\n        return L\"\";\n    }\n};"
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                连接……非常容易 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "ViewModel"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 到该 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "View"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ":\n                "
+              },
+              {
+                "kind": "Program",
+                "code": "void GuiMain()\n{\n    ...\n    auto viewModel = Ptr(new ViewModel);\n    auto window = new helloworld::MainWindow(viewModel);\n    ...\n}"
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                集合对象或树状对象可以绑定到\n                "
+              },
+              {
+                "kind": "PageLink",
+                "href": "/gacui/components/controls/list/home.html",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "列表控件"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                上。\n                数据绑定接受任何\n                "
+              },
+              {
+                "kind": "PageLink",
+                "href": "/workflow/lang/bind.html",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "workflow expressions"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                （能编译通过的表达式）。\n                GacUI 中的 MVVM 非常强大，\n                你可以自由选择任何方式来定义 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "ViewModel"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 接口，\n                而且总是可以把它绑定到 UI。\n            "
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

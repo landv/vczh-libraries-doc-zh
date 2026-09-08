@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>高级主题 -- GPU 加速的 C++ 用户界面 (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "gacui",
+    "advanced",
+    "home"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "GacUI",
+      "selected": false,
+      "path": [
+        "gacui",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": " ",
+          "name": "构建你的第一个 GacUI 应用！",
+          "selected": false,
+          "path": [
+            "gacui",
+            "running"
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "知识库",
+          "selected": false,
+          "path": [
+            "gacui",
+            "kb",
+            "home"
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "GacUI XML 资源",
+          "selected": false,
+          "path": [
+            "gacui",
+            "xmlres",
+            "home"
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "GacUI 组件",
+          "selected": false,
+          "path": [
+            "gacui",
+            "components",
+            "home"
+          ]
+        },
+        {
+          "icon": "-",
+          "name": "高级主题",
+          "selected": true,
+          "path": [
+            "gacui",
+            "advanced",
+            "home"
+          ],
+          "subNodes": [
+            {
+              "icon": " ",
+              "name": "与 C++ 视图模型的互操作",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "vm"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "数据绑定",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "bindings"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "动画",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "animations"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "本地化",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "localization"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "跨 XML 资源引用",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "cxrr"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "ALT 序列与控件焦点",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "alt"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "TAB 与控件焦点",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "tab"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "创建新的列表控件",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "impllistcontrol"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "将 GacUI 移植到其它平台",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "implosprovider"
+              ]
+            }
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "托管模式与远程协议",
+          "selected": false,
+          "path": [
+            "gacui",
+            "modes",
+            "home"
+          ]
+        },
+        {
+          "icon": " ",
+          "name": "Coding Agent 支持",
+          "selected": false,
+          "subNodes": [
+            {
+              "icon": " ",
+              "name": "AutomationService",
+              "selected": false,
+              "path": [
+                "gacui",
+                "coding-agent",
+                "automation-service"
+              ]
+            }
+          ]
+        },
+        {
+          "icon": " ",
+          "name": "自 1.0 以来的破坏性变更",
+          "selected": false,
+          "path": [
+            "gacui",
+            "upgrade"
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "参考",
+          "selected": false,
+          "path": [
+            "gacui",
+            "ref"
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": false,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "高级主题",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            以下是使用 GacUI 的一些高级主题。\n            使用 GacUI 创建工具时并不总是需要这些主题，\n            但对于拥有专业用户界面的应用来说，它们必不可少。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "List",
+            "ordered": false,
+            "items": [
+              {
+                "kind": "ParagraphListItem",
+                "paragraphs": [
+                  {
+                    "kind": "Paragraph",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "与 C++ 视图模型的互操作"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Paragraph",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "\n                        只有 UI 对象可用于 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "Workflow"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 脚本。\n                        如果你希望应用完成一些 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "真正的工作"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "，\n                        这通常需要与资源和操作系统进行互操作，\n                        此时你可能希望用原生语言来完成这些工作。\n                    "
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Paragraph",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "\n                        本节介绍一种方法，让 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "Workflow"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "（位于 GacUI XML 资源中）能够与你自己的 C++ 类和函数交互。\n                    "
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "ParagraphListItem",
+                "paragraphs": [
+                  {
+                    "kind": "Paragraph",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "数据绑定"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Paragraph",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "\n                        数据绑定是 Model-View-ViewModel（MVVM）模式的重要组成部分。\n                        它以软件工程师熟悉的方式来为应用逻辑（ViewModel）建模。\n                        你可以使用任何你喜欢的数据结构，\n                        不仅类或接口可以连接到 UI，\n                        列表和树等数据结构也能通过数据绑定连接到 UI。\n                    "
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Paragraph",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "\n                        这样 ViewModel 就可以单独测试，\n                        并且也非常容易与 UI 互操作。\n                    "
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "ParagraphListItem",
+                "paragraphs": [
+                  {
+                    "kind": "Paragraph",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "动画"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Paragraph",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "\n                        在 GacUI 1.0 中，\n                        你仍然需要编写代码来控制动画的细节。\n                        但借助与数据绑定结合的动画机制，\n                        其余工作都会由 GacUI 完成。\n                        你无需担心如何更新 UI 对象。\n                    "
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "ParagraphListItem",
+                "paragraphs": [
+                  {
+                    "kind": "Paragraph",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "本地化"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Paragraph",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "\n                        如果你的应用会被使用不同语言的人使用，\n                        那么本地化机制正适合你。\n                        借助数据绑定，\n                        你的应用可以随时切换语言，\n                        而你只需把 UI 文本单独指定出来即可。\n                    "
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "ParagraphListItem",
+                "paragraphs": [
+                  {
+                    "kind": "Paragraph",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "跨 XML 资源引用"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Paragraph",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "\n                        当你的应用规模变大时，\n                        控制 UI 对象与视图模型之间的依赖关系会变得困难。\n                        GacUI 允许不同的资源文件相互依赖。\n                    "
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Paragraph",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "\n                        GacUI XML 资源不仅可以引用数据资源，\n                        还可以使用另一个资源文件中生成的类和接口。\n                        这种依赖关系还能让 GacUI 支持增量构建，\n                        从而显著提升构建性能。\n                    "
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "ParagraphListItem",
+                "paragraphs": [
+                  {
+                    "kind": "Paragraph",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "ALT 序列与控件焦点"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Paragraph",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "\n                        在控件之间切换焦点是 UI 无障碍访问的重要部分。\n                        在 GacUI 应用中按 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "ALT"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 键时，\n                        UI 允许你通过可自定义的按键序列来定位控件。\n                    "
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "ParagraphListItem",
+                "paragraphs": [
+                  {
+                    "kind": "Paragraph",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "TAB 与控件焦点"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Paragraph",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "\n                        在控件之间切换焦点是 UI 无障碍访问的重要部分。\n                        在 GacUI 应用中按 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "TAB"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 键时，\n                        焦点会从一个控件跳到另一个控件，\n                        前提是当前聚焦的控件不把 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "TAB"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 当作按键输入。\n                    "
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "ParagraphListItem",
+                "paragraphs": [
+                  {
+                    "kind": "Paragraph",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "创建新的列表控件"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Paragraph",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "\n                        GacUI 已经提供了一组带强大数据绑定的列表控件。\n                        但如果它们仍无法满足你的需求，\n                        你可以使用 C++ 对列表控件进行深度定制。\n                    "
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Paragraph",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "\n                        在本节中你将学习如何自定义：\n                        "
+                      },
+                      {
+                        "kind": "List",
+                        "ordered": false,
+                        "items": [
+                          {
+                            "kind": "ContentListItem",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "键盘与鼠标控制"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "ContentListItem",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "虚拟列表项算法"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "ContentListItem",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "列表项布局"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "ContentListItem",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "数据访问"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "ContentListItem",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "创建自己的方式来执行数据绑定"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "ContentListItem",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "以及更多……"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "ParagraphListItem",
+                "paragraphs": [
+                  {
+                    "kind": "Paragraph",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "将 GacUI 移植到其它平台"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Paragraph",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "\n                        GacUI 从创建的第一天起就与任何操作系统、子系统乃至渲染器解耦。\n                        如果你喜欢 GacUI，但它无法在你的平台上运行，\n                        你可以把 GacUI 移植过去，\n                        无需修改 GacUI 本身，\n                        只需创建一个与操作系统通信的新适配器！\n                    "
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

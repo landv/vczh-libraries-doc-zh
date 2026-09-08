@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Workflow-Compiler -- GPU 加速的 C++ 用户界面 (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/unfinishedView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "home",
+    "registered",
+    "workflow-compiler"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-UnfinishedView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "Gaclib 文档",
+      "selected": false,
+      "path": [
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": "-",
+          "name": "已注册类型",
+          "selected": false,
+          "path": [
+            "home",
+            "registered"
+          ],
+          "subNodes": [
+            {
+              "icon": " ",
+              "name": "VlppReflection",
+              "selected": false,
+              "path": [
+                "home",
+                "registered",
+                "vlppreflection"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "VlppParser",
+              "selected": false,
+              "path": [
+                "home",
+                "registered",
+                "vlppparser"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "VlppParser2",
+              "selected": false,
+              "path": [
+                "home",
+                "registered",
+                "vlppparser2"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "Workflow-Runtime",
+              "selected": false,
+              "path": [
+                "home",
+                "registered",
+                "workflow-runtime"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "Workflow-Compiler",
+              "selected": true,
+              "path": [
+                "home",
+                "registered",
+                "workflow-compiler"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "GacUI",
+              "selected": false,
+              "path": [
+                "home",
+                "registered",
+                "gacui"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "GacUI-Compiler",
+              "selected": false,
+              "path": [
+                "home",
+                "registered",
+                "gacui-compiler"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const projectName = "Workflow-Compiler";
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.projectName"] = projectName;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

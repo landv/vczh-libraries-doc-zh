@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>编写 Project.md -- GPU 加速的 C++ 用户界面 (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "coding-agent",
+    "project-md"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "使用 Coding Agent",
+      "selected": false,
+      "path": [
+        "coding-agent",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": "-",
+          "name": "准备上下文文件",
+          "selected": false,
+          "path": [
+            "coding-agent",
+            "context"
+          ],
+          "subNodes": [
+            {
+              "icon": " ",
+              "name": "编写 Project.md",
+              "selected": true,
+              "path": [
+                "coding-agent",
+                "project-md"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": true,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "编写 Project.md",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Name",
+            "text": "Project.md"
+          },
+          {
+            "kind": "Text",
+            "text": " 是告知代理在哪里构建、运行什么、哪些生成文件受保护、哪些平台文件夹重要的仓库地图。\n            Release 中的副本仅指向 GacUI 示例；应用仓库应用具体的项目事实替换它。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "建议的结构",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                一份实用的 "
+              },
+              {
+                "kind": "Name",
+                "text": "Project.md"
+              },
+              {
+                "kind": "Text",
+                "text": " 通常包含：\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "要处理的解决方案：解决方案文件以及 "
+                      },
+                      {
+                        "kind": "Name",
+                        "text": "SOLUTION-ROOT"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 的含义。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "用于验证的项目：在相关改动之后必须运行的单元测试、CLI、代码生成、元数据或 UI 项目。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "执行顺序：当一个项目生成的文件被另一个项目使用时所需遵循的顺序。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "不允许直接修改的文件：生成文件夹、导入的依赖、已发布的二进制文件与生成的基线。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "代码生成触发器：哪些文件需要运行生成器，以及它们会刷新哪些输出。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "平台说明：Linux "
+                      },
+                      {
+                        "kind": "Name",
+                        "text": "Test/Linux"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 文件夹、不支持的平台、特殊工具与可用配置。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "应用特定的调试说明：对应用重要的服务、端口、示例数据、对话框或本地服务器。"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "小型应用示例",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                小型 GacUI 应用可以采用如下结构：\n                "
+              },
+              {
+                "kind": "Program",
+                "code": "# Project Specific Instruction\n\n## Solution to Work On\n\nYou are working on the solution `REPO-ROOT/App/App.sln`,\ntherefore `SOLUTION-ROOT` is `REPO-ROOT/App`.\n\n## Projects for Verification\n\nThe `REPO-ROOT/App/AppTests/AppTests.vcxproj` project is the unit test project.\nWhen any `*.h`, `*.cpp`, `*.xml`, or Workflow script file is changed, build the solution\nand run `AppTests`.\n\nThe `REPO-ROOT/App/App/App.vcxproj` project is the interactive GacUI application.\nRun it when the change affects windows, dialogs, command routing, or application startup.\n\n## Files not Allowed to Modify\n\nFiles in these folders are generated and must not be edited directly:\n- `REPO-ROOT/App/Generated`\n- `REPO-ROOT/App/Resources/Compiled`\n\nFix the source resource or generator input instead.\n\n## Code Generation\n\nIf `REPO-ROOT/App/Resources/*.xml` changes, run `GacGen` through the project build.\nIf generated files change, rebuild and run `AppTests`.\n\n## Linux Specific\n\nThis repository has no Linux build for the application.\nDo not try to create one unless the task explicitly asks for it.",
+                "language": "markdown"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "大型仓库模式",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                各库的仓库也采用相同的思路，但包含更多细节：\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Vlpp、VlppOS 与 VlppRegex 定义了一个单元测试解决方案和一个 Linux 文件夹。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "当反射类型发生变化时，VlppReflection 会增加元数据生成与元数据往返测试。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "VlppParser2 与 Workflow 列出了有序的生成器与测试项目，因为后续项目会使用先前项目产生的文件。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GacUI 列出了生成文件夹、反射元数据项目、GacUI 编译器触发器、远程协议生成、启用了 AutomationService 的应用以及 Linux 项目文件夹。"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                请将这些示例视为模式而非盲目照抄的模板。\n                关键在于每条说明都要明确指出适用于该应用仓库的具体项目、文件夹、生成输出或触发器。\n            "
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

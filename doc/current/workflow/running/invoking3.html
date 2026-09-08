@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Inheriting C++ Classes -- GPU Accelerated C++ User Interface (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "workflow",
+    "running",
+    "invoking3"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "Workflow 脚本",
+      "selected": false,
+      "path": [
+        "workflow",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": "-",
+          "name": "运行脚本",
+          "selected": false,
+          "path": [
+            "workflow",
+            "running"
+          ],
+          "subNodes": [
+            {
+              "icon": " ",
+              "name": "运行 Workflow 脚本",
+              "selected": false,
+              "path": [
+                "workflow",
+                "running",
+                "running"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "调用 C++ 类",
+              "selected": false,
+              "path": [
+                "workflow",
+                "running",
+                "invoking1"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "继承 C++ 接口",
+              "selected": false,
+              "path": [
+                "workflow",
+                "running",
+                "invoking2"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "继承 C++ 类",
+              "selected": true,
+              "path": [
+                "workflow",
+                "running",
+                "invoking3"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "序列化与加载程序集",
+              "selected": false,
+              "path": [
+                "workflow",
+                "running",
+                "serializing"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "生成 C++ 代码",
+              "selected": false,
+              "path": [
+                "workflow",
+                "running",
+                "generating"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "调试",
+              "selected": false,
+              "path": [
+                "workflow",
+                "running",
+                "debugging"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": false,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "继承 C++ 类",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            涉及的文件：\n            "
+          },
+          {
+            "kind": "List",
+            "ordered": false,
+            "items": [
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "PageLink",
+                    "href": "https://github.com/vczh-libraries/Release/blob/master/Tutorial/Console_Workflow/W04_InheritingCppClasses/Main.cpp",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Main.cpp"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            Workflow classes are allowed to inherit from reflectable C++ classes.\n            Here we have a C++ class, with two properties:\n            "
+          },
+          {
+            "kind": "Program",
+            "code": "namespace myapi\n{\n    class App : public Object, public AggregatableDescription<App>\n    {\n    private:\n        WString name;\n        List<Ptr<IValueSubscription>> subscriptions;\n\n    public:\n        static WString Get();\n        static WString Get(const WString& message);\n        static void Print(const WString& text);\n\n        App() = default;\n        ~App()\n        {\n            FOREACH(Ptr<IValueSubscription>, sub, subscriptions)\n            {\n                sub->Close();\n            }\n            FinalizeAggregation();\n        }\n\n        Event<void()> NameChanged;\n        WString GetName();\n        void SetName(const WString& value);\n        List<Ptr<IValueSubscription>>& GetSubscriptions();\n    };\n}"
+          },
+          {
+            "kind": "Text",
+            "text": "\n            The destructor code is important, so it is not hidden.\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            An inheritable class need to use "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "AggregatableDescription"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 而不是 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "Description"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": ".\n            "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "FinalizeAggregation"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " is also very important.\n            If this function is not called when destructing a Workflow class that inherits from App,\n            it will crash by design.\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            Inheriting a reflectable C++ class is very straight forward,\n            but there is no virtual methods in classes in this version of Workflow script,\n            so you cannot override virtual methods in reflectable C++ classes.\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Program",
+            "code": "module sampleModule;\nusing myapi::*;\n\nnamespace myscript\n{\n    class MyApp : App\n    {\n        new(name: string)\n        {\n            Name = name;\n            /* \"this\" is not allowed in binding, copy it to a variable */\n            var self = this;\n            var subscription = bind($\"Hello, $(self.Name)\");\n            attach(subscription.ValueChanged,\n                func (value: object): void\n                {\n                    Print(cast string value);\n                });\n            subscription.Open();\n            Subscriptions.Add(subscription);\n        }\n\n        delete\n        {\n            Print(\"Destructing myscript::MyApp\");\n        }\n    }\n}"
+          },
+          {
+            "kind": "Text",
+            "text": "\n            Constructors and destructors are allowed in Workflow classes.\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            Data binding will not be explained in detail here,\n            basically the code is tracking the changing of "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "$\"Hello, $(self.Name)\""
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": ".\n            When "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "Name"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " property is changed,\n            it is obviously that the result of this expression is also changed.\n            Whenever the data binding is changed, "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "ValueChanged"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " will be called.\n            Here it prints the formatted string to the console window.\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            All classes and interfaces defined in Workflow scripts will be registered when loadong an assembly.\n            This is why you cannot load it twice,\n            because types are conflict with each other.\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            When a reflectable class is loaded,\n            regardless whether it is implemented in Workflow or C++,\n            the way to call does not change.\n            But since it inherits from "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "App"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": ",\n            it is much easier to get an instance of "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "App"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": ".\n            "
+          },
+          {
+            "kind": "Program",
+            "code": "auto myapp = UnboxValue<Ptr<App>>(Value::Create(\n    L\"myscript::MyApp\",\n    (\n        Value_xs(), WString(L\"vczh\")\n    )));\n\nmyapp->SetName(L\"Vczh Libraries++\");\nmyapp->SetName(L\"Workflow\");\nmyapp->SetName(L\"Gaclib\");"
+          },
+          {
+            "kind": "Text",
+            "text": "\n            This code creates "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "myscript::MyApp"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " with a string passed to the constructor.\n            It changes "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "Name"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " three times, so four lines will be printed to the console window.\n            The last one is from the destructor.\n        "
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

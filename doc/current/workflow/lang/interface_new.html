@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Implementing -- GPU Accelerated C++ User Interface (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "workflow",
+    "lang",
+    "interface_new"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "Workflow 脚本",
+      "selected": false,
+      "path": [
+        "workflow",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": "-",
+          "name": "语法",
+          "selected": false,
+          "path": [
+            "workflow",
+            "lang"
+          ],
+          "subNodes": [
+            {
+              "icon": "-",
+              "name": "类型",
+              "selected": false,
+              "path": [
+                "workflow",
+                "lang",
+                "type"
+              ],
+              "subNodes": [
+                {
+                  "icon": "-",
+                  "name": "接口",
+                  "selected": false,
+                  "path": [
+                    "workflow",
+                    "lang",
+                    "interface"
+                  ],
+                  "subNodes": [
+                    {
+                      "icon": " ",
+                      "name": "属性与事件",
+                      "selected": false,
+                      "path": [
+                        "workflow",
+                        "lang",
+                        "interface_prop"
+                      ]
+                    },
+                    {
+                      "icon": " ",
+                      "name": "继承",
+                      "selected": false,
+                      "path": [
+                        "workflow",
+                        "lang",
+                        "interface_inherit"
+                      ]
+                    },
+                    {
+                      "icon": " ",
+                      "name": "实现",
+                      "selected": true,
+                      "path": [
+                        "workflow",
+                        "lang",
+                        "interface_new"
+                      ]
+                    },
+                    {
+                      "icon": " ",
+                      "name": "泛型",
+                      "selected": false,
+                      "path": [
+                        "workflow",
+                        "lang",
+                        "interface_using"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": true,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "实现（接口）",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            New interface expressions are the only way to implement interfaces.\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            An new interface expression implements one interface,\n            but this interface can inherit from multiple other interfaces.\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            如果该接口是  "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "interface IThatInterface { ... }"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "，\n            新的接口表达式应使用 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "new IThatInterface^ { ... }"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": ",\n            to create an object that hold by a shared pointer.\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            如果该接口是  "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "interface IThatInterface* { ... }"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "，\n            新的接口表达式应使用 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "new IThatInterface* { ... }"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": ",\n            to create an object that hold by a raw pointer.\n            If such object is not deleted, it cause memory leaks.\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            Besides of members in the interface,\n            the new interface expressions could also contain:\n            "
+          },
+          {
+            "kind": "List",
+            "ordered": false,
+            "items": [
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "variables"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "functions not starting with "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "override"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "one delete{} block"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            All of them are only accessible by name inside the new interface expressions.\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Delete block in a new interface expression",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                A new interface expression can contain one delete{} block.\n                It declares cleanup code for the anonymous implementation object.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                The block has no name, arguments, return type, or override keyword:\n                "
+              },
+              {
+                "kind": "Program",
+                "code": "interface ISubscription*\n{\n    func Stop():void;\n}\n\nvar subscription = new ISubscription*\n{\n    var stopped: bool = false;\n\n    override func Stop():void\n    {\n        stopped = true;\n    }\n\n    delete\n    {\n        if (!stopped)\n        {\n            Stop();\n        }\n    }\n};\n\ndelete subscription;"
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                For a shared interface object, the delete{} block runs when the last shared pointer releases the object.\n                For a raw interface object, it runs when the object is deleted directly,\n                or when the object has been converted to a shared pointer and the last shared pointer releases it.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                The block is used for resources owned by the anonymous implementation object,\n                such as unregistering callbacks, closing subscriptions, or releasing native handles.\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "New and delete objects implementing shared interfaces",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Program",
+                "code": "interface IMyInterface\n{\n    func Do():void;\n}\n\nvar my = new IMyInterface^\n{\n    override func Do():void {}\n};"
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                你不允许编写 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "new IMyInterface*"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                because the interface is not "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "interface IMyInterface*"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                的类型为 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "my"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 是 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "IMyInterface^"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "，\n                但你仍然可以获得一个 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "IMyInterface*"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 通过显式转换：\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "var my2 = cast IMyInterface* my;"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                当……所指向的对象 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "my2"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 仍然存活时，\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "cast IMyInterface^ my2"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 是安全的。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                当所有 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "IMyInterface^"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 值的生命周期结束时，\n                该对象将被删除，\n                即使仍然存在 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "IMyInterface*"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " values.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                如果对已删除的对象调用成员，会导致崩溃。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                如果 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "delete"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 对由共享指针持有的对象执行……\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "New and delete objects implementing raw interfaces",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Program",
+                "code": "interface IMyInterface*\n{\n    func Do():void;\n}\n\nvar my = new IMyInterface*\n{\n    override func Do():void {}\n};"
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                你不允许编写 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "new IMyInterface^"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                because the interface is "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "interface IMyInterface*"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                的类型为 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "my"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 是 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "IMyInterface*"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "，\n                但你仍然可以获得一个 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "IMyInterface^"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 通过显式转换：\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "var my2 = cast IMyInterface^ my;"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                当……所指向的对象 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "my"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 仍然存活时，\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "cast IMyInterface^ my"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 是安全的。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                当所有 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "IMyInterface^"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 值的生命周期结束时，\n                该对象将被删除，\n                即使仍然存在 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "IMyInterface*"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " values.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                如果对已删除的对象调用成员，会导致崩溃。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                如果 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "delete"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 对由共享指针持有的对象执行……\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                In order to delete "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "my"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ",\n                you either call "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "delete my;"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "，\n或 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "cast IMyInterface^ my"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Memory leaks",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                If two objects hold each other by shared points,\n                it causes memory leaks:\n                "
+              },
+              {
+                "kind": "Program",
+                "code": "interface IMyInterface\n{\n    prop Next: IMyInterface^ {not observe}\n}\n\nfunc main(): void\n{\n    var a = new IMyInterface^\n    {\n        override prop Next: IMyInterface^ = null {not observe}\n    };\n\n    var b = new IMyInterface^\n    {\n        override prop Next: IMyInterface^ = null {not observe}\n    };\n    \n    a.Next = b;\n    b.Next = a;\n}"
+              },
+              {
+                "kind": "Text",
+                "text": "\n                Until you break the connection manually.\n            "
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

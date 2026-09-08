@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Example: Calculator -- GPU Accelerated C++ User Interface (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "workflow",
+    "lang",
+    "state_calculator"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "Workflow 脚本",
+      "selected": false,
+      "path": [
+        "workflow",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": "-",
+          "name": "语法",
+          "selected": false,
+          "path": [
+            "workflow",
+            "lang"
+          ],
+          "subNodes": [
+            {
+              "icon": "-",
+              "name": "状态机",
+              "selected": false,
+              "path": [
+                "workflow",
+                "lang",
+                "state"
+              ],
+              "subNodes": [
+                {
+                  "icon": " ",
+                  "name": "使用输入法",
+                  "selected": false,
+                  "path": [
+                    "workflow",
+                    "lang",
+                    "state_input"
+                  ]
+                },
+                {
+                  "icon": " ",
+                  "name": "处理意外输入",
+                  "selected": false,
+                  "path": [
+                    "workflow",
+                    "lang",
+                    "state_switch"
+                  ]
+                },
+                {
+                  "icon": " ",
+                  "name": "状态之间跳转",
+                  "selected": false,
+                  "path": [
+                    "workflow",
+                    "lang",
+                    "state_jump"
+                  ]
+                },
+                {
+                  "icon": " ",
+                  "name": "示例：计算器",
+                  "selected": true,
+                  "path": [
+                    "workflow",
+                    "lang",
+                    "state_calculator"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": true,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "示例：计算器",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            The following example shows how to make a calculator using state machine.\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Program",
+            "code": "module sampleModule;\n        \nusing system::*;\n\nclass Calculator : StateMachine\n{\n    var valueFirst : string = \"\";\n    var op : string = \"\";\n    prop Value : string = \"0\" {}\n\n    func Update(value : string) : void\n    {\n        SetValue(value);\n        valueFirst = value;\n    }\n\n    func Calculate() : void\n    {\n        if (valueFirst == \"\")\n        {\n            valueFirst = Value;\n        }\n        else if (op == \"+\")\n        {\n            Update((cast double valueFirst) + (cast double Value));\n        }\n        else if (op == \"*\")\n        {\n            Update((cast double valueFirst) * (cast double Value));\n        }\n        else\n        {\n            raise $\"Unrecognized operator: $(op)\";\n        }\n    }\n\n    $state_machine\n    {\n        $state_input Digit(i : int);\n        $state_input Dot();\n        $state_input Add();\n        $state_input Mul();\n        $state_input Equal();\n        $state_input Clear();\n\n        $state Digits()\n        {\n            $switch (continue)\n            {\n            case Digit(i):\n                {\n                    Value = Value & i;\n                    $goto_state Digits();\n                }\n            }\n        }\n\n        $state Integer(newNumber: bool)\n        {\n            $switch (continue)\n            {\n            case Digit(i):\n                {\n                    if (newNumber)\n                    {\n                        Value = i;\n                    }\n                    else\n                    {\n                        Value = Value & i;\n                    }\n                    $goto_state Digits();\n                }\n            }\n        }\n\n        $state Number()\n        {\n            $push_state Integer(true);\n            $switch (continue, return)\n            {\n            case Dot():\n                {\n                    Value = Value & \".\";\n                }\n            }\n            $push_state Integer(false);\n        }\n\n        $state Operator()\n        {\n            $push_state Number();\n            $switch (raise)\n            {\n            case Add():    {Calculate(); op = \"+\";}\n            case Mul():    {Calculate(); op = \"*\";}\n            case Equal():  {Calculate();}\n            case Clear():\n                {\n                    valueFirst = \"\";\n                    op = \"\";\n                    Value = \"0\";\n                }\n            }\n            $goto_state Operator();\n        }\n    \n        $state default()\n        {\n            $goto_state Operator();\n        }\n    }\n}\n\nfunc main(): string\n{\n    var r = {\"\"};\n    var c = new Calculator^();\n    attach(c.ValueChanged, func():void\n    {\n        r[0] = $\"$(r[0])$(c.Value)\\r\\n\";\n    });\n\n    c.Digit(1); c.Digit(2); c.Add(); c.Digit(3); c.Digit(4); c.Mul(); c.Digit(5); c.Digit(6); c.Equal(); c.Clear();\n    c.Digit(2); c.Mul(); c.Equal(); c.Equal(); c.Equal(); c.Equal(); c.Clear();\n    return r[0];\n}"
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            The state machine simulates how numbers on a calculator is changed while pressing buttons.\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            该 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "main"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " function returns:\n            "
+          },
+          {
+            "kind": "Program",
+            "code": "1\n12\n3\n34\n46\n5\n56\n2576\n0\n2\n4\n16\n256\n65536\n0"
+          },
+          {
+            "kind": "Text",
+            "text": "\n            It calculates:\n            "
+          },
+          {
+            "kind": "List",
+            "ordered": false,
+            "items": [
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "12 + 34 = 46"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "46 * 56 = 2576"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "2 * 2 = 4"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "4 * 4 = 16"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "16 * 16 = 256"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "256 * 256 = 65536"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

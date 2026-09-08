@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>GacUI Components -- GPU Accelerated C++ User Interface (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "gacui",
+    "components",
+    "home"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "GacUI",
+      "selected": false,
+      "path": [
+        "gacui",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": " ",
+          "name": "构建你的第一个 GacUI 应用！",
+          "selected": false,
+          "path": [
+            "gacui",
+            "running"
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "知识库",
+          "selected": false,
+          "path": [
+            "gacui",
+            "kb",
+            "home"
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "GacUI XML 资源",
+          "selected": false,
+          "path": [
+            "gacui",
+            "xmlres",
+            "home"
+          ]
+        },
+        {
+          "icon": "-",
+          "name": "GacUI 组件",
+          "selected": true,
+          "path": [
+            "gacui",
+            "components",
+            "home"
+          ],
+          "subNodes": [
+            {
+              "icon": " ",
+              "name": "元素",
+              "selected": false,
+              "path": [
+                "gacui",
+                "components",
+                "elements",
+                "home"
+              ]
+            },
+            {
+              "icon": "+",
+              "name": "组合",
+              "selected": false,
+              "path": [
+                "gacui",
+                "components",
+                "compositions",
+                "home"
+              ]
+            },
+            {
+              "icon": "+",
+              "name": "控件",
+              "selected": false,
+              "path": [
+                "gacui",
+                "components",
+                "controls",
+                "home"
+              ]
+            },
+            {
+              "icon": "+",
+              "name": "控件模板",
+              "selected": false,
+              "path": [
+                "gacui",
+                "components",
+                "ctemplates",
+                "home"
+              ]
+            },
+            {
+              "icon": "+",
+              "name": "项模板",
+              "selected": false,
+              "path": [
+                "gacui",
+                "components",
+                "itemplates",
+                "home"
+              ]
+            },
+            {
+              "icon": "+",
+              "name": "组件",
+              "selected": false,
+              "path": [
+                "gacui",
+                "components",
+                "components",
+                "home"
+              ]
+            }
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "高级主题",
+          "selected": false,
+          "path": [
+            "gacui",
+            "advanced",
+            "home"
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "托管模式与远程协议",
+          "selected": false,
+          "path": [
+            "gacui",
+            "modes",
+            "home"
+          ]
+        },
+        {
+          "icon": " ",
+          "name": "Coding Agent 支持",
+          "selected": false,
+          "subNodes": [
+            {
+              "icon": " ",
+              "name": "AutomationService",
+              "selected": false,
+              "path": [
+                "gacui",
+                "coding-agent",
+                "automation-service"
+              ]
+            }
+          ]
+        },
+        {
+          "icon": " ",
+          "name": "自 1.0 以来的破坏性变更",
+          "selected": false,
+          "path": [
+            "gacui",
+            "upgrade"
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "参考",
+          "selected": false,
+          "path": [
+            "gacui",
+            "ref"
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": true,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "GacUI 组件",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "GacUI"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 在……中拥有丰富的预定义对象 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "GacUI XML Resource"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": ".\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "元素",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "PageLink",
+                "href": "/gacui/kb/elements.html",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Elements"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 提供几何图形与文本的渲染。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "PageLink",
+                "href": "/gacui/components/elements/home.html",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Here"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 包含以下内容的详细介绍：\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "<FocusRectangle>"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "<SolidBorder>"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "<SolidBackground>"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "<Gui3DBorderElement>"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "<Gui3DSplitterElement>"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "<GradientBackground>"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "<InnerShadow>"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "<SolidLabel>"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "<ImageFrame>"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "<Polygon>"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "presentation::elements::GuiColorizedTextElement"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 以及 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "presentation::elements::GuiDocumentElement"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 不应被直接使用。\n                编辑器控件会在控件模板提供的指定区域中创建并更新这些元素。\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "组合",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "PageLink",
+                "href": "/gacui/kb/compositions.html",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Composition"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 提供基于约束的布局算法。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "PageLink",
+                "href": "/gacui/components/compositions/home.html",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Here"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 包含以下内容的详细介绍：\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "<Bounds>"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "<Stack>, <RepeatStack>, <StackItem>"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "<Flow>, <RepeatFlow>, <FlowItem>"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "<Table>, <Cell>, <RowSplitter>, <ColumnSplitter>"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "<SharedSizeRoot>, <SharedSizeItem>"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "<SideAligned>"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "<PartialView>"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "\n                        Responsive Design series:\n                        "
+                      },
+                      {
+                        "kind": "List",
+                        "ordered": false,
+                        "items": [
+                          {
+                            "kind": "ContentListItem",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "<ResponsiveShared>"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "ContentListItem",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "<ResponsiveView>"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "ContentListItem",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "<ResponsiveFixed>"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "ContentListItem",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "<ResponsiveStack>"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "ContentListItem",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "<ResponsiveGroup>"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "ContentListItem",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "<ResponsiveContainer>"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "控件",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "PageLink",
+                "href": "/gacui/kb/controls.html",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Controls"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 提供丰富的预定义 UI 功能。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "PageLink",
+                "href": "/gacui/components/controls/home.html",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Here"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 包含以下内容的详细介绍：\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Basic Controls"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Container Controls"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Editor Controls"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "List Controls"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Toolstrip Controls"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Ribbon Controls"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                通常控件按其外观形成单根继承树。\n                例如所有带滚动条的控件都继承自 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GuiScrollView"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                但也存在 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GuiDocumentCommonInterface"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " （用于编辑器控件，\n                提供渲染与编辑特性）。\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "控件模板",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "PageLink",
+                "href": "/gacui/kb/ctemplates.html",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Control Templates"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 提供控件外观的自定义。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "PageLink",
+                "href": "/gacui/components/ctemplates/home.html",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Here"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 包含以下内容的详细介绍：\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "<ControlTemplate/>"
+                      },
+                      {
+                        "kind": "List",
+                        "ordered": false,
+                        "items": [
+                          {
+                            "kind": "ContentListItem",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "<LabelTemplate/>"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "ContentListItem",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "<DocumentLabelTemplate/>"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "ContentListItem",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "<WindowTemplate/>"
+                              },
+                              {
+                                "kind": "List",
+                                "ordered": false,
+                                "items": [
+                                  {
+                                    "kind": "ContentListItem",
+                                    "content": [
+                                      {
+                                        "kind": "Text",
+                                        "text": "<MenuTemplate/>"
+                                      },
+                                      {
+                                        "kind": "List",
+                                        "ordered": false,
+                                        "items": [
+                                          {
+                                            "kind": "ContentListItem",
+                                            "content": [
+                                              {
+                                                "kind": "Text",
+                                                "text": "<RibbonToolstripMenuTemplate/>"
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "ContentListItem",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "<ButtonTemplate/>"
+                              },
+                              {
+                                "kind": "List",
+                                "ordered": false,
+                                "items": [
+                                  {
+                                    "kind": "ContentListItem",
+                                    "content": [
+                                      {
+                                        "kind": "Text",
+                                        "text": "<SelectableButtonTemplate/>"
+                                      },
+                                      {
+                                        "kind": "List",
+                                        "ordered": false,
+                                        "items": [
+                                          {
+                                            "kind": "ContentListItem",
+                                            "content": [
+                                              {
+                                                "kind": "Text",
+                                                "text": "<ToolstripButtonTemplate/>"
+                                              },
+                                              {
+                                                "kind": "List",
+                                                "ordered": false,
+                                                "items": [
+                                                  {
+                                                    "kind": "ContentListItem",
+                                                    "content": [
+                                                      {
+                                                        "kind": "Text",
+                                                        "text": "<ListViewColumnHeaderTemplate/>"
+                                                      }
+                                                    ]
+                                                  },
+                                                  {
+                                                    "kind": "ContentListItem",
+                                                    "content": [
+                                                      {
+                                                        "kind": "Text",
+                                                        "text": "<ComboBoxTemplate/>"
+                                                      },
+                                                      {
+                                                        "kind": "List",
+                                                        "ordered": false,
+                                                        "items": [
+                                                          {
+                                                            "kind": "ContentListItem",
+                                                            "content": [
+                                                              {
+                                                                "kind": "Text",
+                                                                "text": "<DateComboBoxTemplate/>"
+                                                              }
+                                                            ]
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "ContentListItem",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "<ScrollTemplate/>"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "ContentListItem",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "<ScrollViewTemplate/>"
+                              },
+                              {
+                                "kind": "List",
+                                "ordered": false,
+                                "items": [
+                                  {
+                                    "kind": "ContentListItem",
+                                    "content": [
+                                      {
+                                        "kind": "Text",
+                                        "text": "<DocumentViewerTemplate/>"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "kind": "ContentListItem",
+                                    "content": [
+                                      {
+                                        "kind": "Text",
+                                        "text": "<ListControlTemplate/>"
+                                      },
+                                      {
+                                        "kind": "List",
+                                        "ordered": false,
+                                        "items": [
+                                          {
+                                            "kind": "ContentListItem",
+                                            "content": [
+                                              {
+                                                "kind": "Text",
+                                                "text": "<TextListTemplate/>"
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "kind": "ContentListItem",
+                                            "content": [
+                                              {
+                                                "kind": "Text",
+                                                "text": "<ListViewTemplate/>"
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "kind": "ContentListItem",
+                                            "content": [
+                                              {
+                                                "kind": "Text",
+                                                "text": "<TreeViewTemplate/>"
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "ContentListItem",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "<TabTemplate/>"
+                              },
+                              {
+                                "kind": "List",
+                                "ordered": false,
+                                "items": [
+                                  {
+                                    "kind": "ContentListItem",
+                                    "content": [
+                                      {
+                                        "kind": "Text",
+                                        "text": "<RibbonTabTemplate/>"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "ContentListItem",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "<DatePickerTemplate/>"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "ContentListItem",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "<RibbonGroupTemplate/>"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "ContentListItem",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "<RibbonIconLabelTemplate/>"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "ContentListItem",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "<RibbonButtonsTemplate/>"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "ContentListItem",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "<RibbonToolstripsTemplate/>"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "ContentListItem",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "<RibbonGalleryTemplate/>"
+                              },
+                              {
+                                "kind": "List",
+                                "ordered": false,
+                                "items": [
+                                  {
+                                    "kind": "ContentListItem",
+                                    "content": [
+                                      {
+                                        "kind": "Text",
+                                        "text": "<RibbonGalleryListTemplate/>"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "项模板",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "PageLink",
+                "href": "/gacui/kb/itemplates.html",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Item Templates"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 提供列表项外观的自定义。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "PageLink",
+                "href": "/gacui/components/itemplates/home.html",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Here"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 包含以下内容的详细介绍：\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "\n                        <ListItemTemplate>\n                        "
+                      },
+                      {
+                        "kind": "List",
+                        "ordered": false,
+                        "items": [
+                          {
+                            "kind": "ContentListItem",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "\n                                <TextListItemTemplate>\n                                "
+                              },
+                              {
+                                "kind": "List",
+                                "ordered": false,
+                                "items": [
+                                  {
+                                    "kind": "ContentListItem",
+                                    "content": [
+                                      {
+                                        "kind": "Text",
+                                        "text": "<TreeItemTemplate>"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "\n                        <GridCellTemplate>\n                        "
+                      },
+                      {
+                        "kind": "List",
+                        "ordered": false,
+                        "items": [
+                          {
+                            "kind": "ContentListItem",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "<GuiGridVisualizerTemplate>"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "ContentListItem",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "<GuiGridEditorTemplate>"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "组件",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                组件提供与渲染无关的其它特性。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "PageLink",
+                "href": "/gacui/components/components/home.html",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Here"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 包含以下内容的详细介绍：\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "<MessageDialog>"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "<ColorDialog>"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "<FontDialog>"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "<OpenFileDialog>"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "<SaveFileDialog>"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GuiSelectableButton::<MutexGroupController>"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "<ToolstripCommand>"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

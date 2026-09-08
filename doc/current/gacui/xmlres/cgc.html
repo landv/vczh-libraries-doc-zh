@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Code Generation Configuration -- GPU Accelerated C++ User Interface (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "gacui",
+    "xmlres",
+    "cgc"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "GacUI",
+      "selected": false,
+      "path": [
+        "gacui",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": "-",
+          "name": "GacUI XML 资源",
+          "selected": false,
+          "path": [
+            "gacui",
+            "xmlres",
+            "home"
+          ],
+          "subNodes": [
+            {
+              "icon": " ",
+              "name": "代码生成配置",
+              "selected": true,
+              "path": [
+                "gacui",
+                "xmlres",
+                "cgc"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "跨 XML 资源引用",
+              "selected": false,
+              "path": [
+                "gacui",
+                "xmlres",
+                "cxrr"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "文件夹与资源",
+              "selected": false,
+              "path": [
+                "gacui",
+                "xmlres",
+                "dom"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "<Text>",
+              "selected": false,
+              "path": [
+                "gacui",
+                "xmlres",
+                "tag_text"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "<Image>",
+              "selected": false,
+              "path": [
+                "gacui",
+                "xmlres",
+                "tag_image"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "<Xml>",
+              "selected": false,
+              "path": [
+                "gacui",
+                "xmlres",
+                "tag_xml"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "<Doc>",
+              "selected": false,
+              "path": [
+                "gacui",
+                "xmlres",
+                "tag_doc"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "<Script>",
+              "selected": false,
+              "path": [
+                "gacui",
+                "xmlres",
+                "tag_script"
+              ]
+            },
+            {
+              "icon": "+",
+              "name": "<Instance>",
+              "selected": false,
+              "path": [
+                "gacui",
+                "xmlres",
+                "tag_instance"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "<InstanceStyle>",
+              "selected": false,
+              "path": [
+                "gacui",
+                "xmlres",
+                "tag_instancestyle"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "<Animation>",
+              "selected": false,
+              "path": [
+                "gacui",
+                "xmlres",
+                "tag_animation"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "<LocalizedStrings>",
+              "selected": false,
+              "path": [
+                "gacui",
+                "xmlres",
+                "tag_localizedstrings"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "<LocalizedStringsInjection>",
+              "selected": false,
+              "path": [
+                "gacui",
+                "xmlres",
+                "tag_localizedstringsinjection"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": false,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "代码生成配置",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            The configuration is written in the XML as follow:\n            "
+          },
+          {
+            "kind": "Program",
+            "code": "<Resource>\n  <Folder name=\"GacGenConfig\">\n    <Folder name=\"Cpp\">\n      <Text name=\"SourceFolder\">Source</Text>\n      <Text name=\"NormalInclude\">GacUI.h</Text>\n      <Text name=\"Name\">MyApp</Text>\n      <Text name=\"Resource\">..\\MyApp.bin</Text>\n      ...\n    </Folder>\n    <Folder name=\"ResX86\">...</Folder>\n    <Folder name=\"ResX64\">...</Folder>\n    <Xml name=\"Metadata\">...</Xml>\n  </Folder>\n</Resource>"
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            Here are all available options:\n            "
+          },
+          {
+            "kind": "List",
+            "ordered": false,
+            "items": [
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Cpp"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "List",
+                    "ordered": false,
+                    "items": [
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Name"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": ": Base name of C++ files and contents, could be any valid C++ identifier."
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "SourceFolder"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": ": Relative folder to this resource file to store generated C++ files."
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "NormalInclude"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": ": Files to include in headers, typically "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "GacUI.h"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "。多个文件之间用“;”分隔。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "ReflectionInclude"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " (optional): Files to include in headers when reflection is turned on, typically "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "GacUIReflection.h"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "。多个文件之间用“;”分隔。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Resource"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " (optional): Output path for a neutral resource binary."
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Compressed"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " (optional, "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "not recommended"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "): Like "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Resource"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " 但它经过压缩。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "CppResource"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " (optional): A C++ file to get rid of loading the resource binary at runtime."
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "CppCompressed"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " （可选）：与……类似 "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "CppResource"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " but the binary is compressed to reduce file size."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "ResX86"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 或 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "ResX64"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " (optional): Control output paths for x86 or x64 resource binary.\n                    These options are necessary only when you don't want generated C++ code and decide to load resource binaries at runtime with reflection enabled.\n                    "
+                  },
+                  {
+                    "kind": "List",
+                    "ordered": false,
+                    "items": [
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Assembly"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": ": Resource binary without any Workflow scripts. "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Reflection"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " is not required but you need to generate C++ code."
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Resource"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " (optional): Resource binary with UI as Workflow scripts. "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Reflection"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " is required to load this binary file."
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Compressed"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " （可选）：与……类似 "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Resource"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " 但它经过压缩。"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Metadata"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " (optional):\n                    An xml describing the name of the resource file and its dependencies.\n                    Only resources with a metadata can be depended by others.\n                    See "
+                  },
+                  {
+                    "kind": "PageLink",
+                    "href": "/gacui/xmlres/cxrr.html",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Cross XML Resource References"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 了解更多详情。\n                    "
+                  },
+                  {
+                    "kind": "Program",
+                    "code": "<Resource>\n  <Folder name=\"GacGenConfig\">\n    ...\n    <Xml name=\"Metadata\">\n      <ResourceMetadata Name=\"MyApp\" Version=\"1.0\">\n        <Dependencies>\n          <Resource Name=\"OtherLibrary1\"/>\n          <Resource Name=\"OtherLibrary2\"/>\n          ...\n        </Dependencies>\n      </ResourceMetadata>\n    </Xml>\n  </Folder>\n</Resource>"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            To compile "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "GacUI XML Resource"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " files:\n            "
+          },
+          {
+            "kind": "List",
+            "ordered": false,
+            "items": [
+              {
+                "kind": "ParagraphListItem",
+                "paragraphs": [
+                  {
+                    "kind": "Paragraph",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "\n                        put "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "GacUI.xml"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " with the following content in the root folder:\n                        "
+                      },
+                      {
+                        "kind": "Program",
+                        "code": "<GacUI/>"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "ParagraphListItem",
+                "paragraphs": [
+                  {
+                    "kind": "Paragraph",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "\n                        put all resource files in their own sub folders.\n                    "
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "ParagraphListItem",
+                "paragraphs": [
+                  {
+                    "kind": "Paragraph",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "\n                        Open "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "PowerShell"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ",\n                        navigate to the root folder and run\n                        "
+                      },
+                      {
+                        "kind": "Program",
+                        "code": "GacBuild.ps1 -FileName GacUI.xml"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "\n                        You must use the correct path for "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "GacBuild.ps1"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " which is in "
+                      },
+                      {
+                        "kind": "PageLink",
+                        "href": "https://github.com/vczh-libraries/Release/tree/master/Tools",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "here"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ".\n                    "
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "ParagraphListItem",
+                "paragraphs": [
+                  {
+                    "kind": "Paragraph",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "\n                        Some "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": ".xml.log"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " folders will be create to containe intermediate files and log files,\n                        do not submit them to your source control.\n                        If there are errors,\n                        you can find details there.\n                        Otherwise you will get generated files ready in your specified folders.\n                    "
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            If you specify "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "Cpp/CppResource"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 或 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "Cpp/CppCompressed"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": ",\n            you don't need to load resource binary before creating the main window.\n            Instead,\n            you add that generated C++ code (cannot add both) to your project,\n            and it will handle the rest for you.\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            Otherwise, use the following code to load a resource binary before creating any windows:\n            "
+          },
+          {
+            "kind": "Program",
+            "code": "void GuiMain()\n{\n    {\n        FileStream fileStream(L\"MyApp.bin\", FileStream::ReadOnly);\n        GetResourceManager()->LoadResourceOrPending(fileStream);\n    }\n    // create the main window and launch ...\n}"
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "GetApplication()->GetExecutableFolder()"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "\n            is highly recommended to calculate an absolute path to the resource binary,\n            instead of specifying a relative path in C++.\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            When the resource binary is compressed:\n            "
+          },
+          {
+            "kind": "Program",
+            "code": "void GuiMain()\n{\n    {\n        FileStream fileStream(L\"MyApp.bin\", FileStream::ReadOnly);\n        LzwDecoder decoder;\n        DecoderStream decoderStream(fileStream, decoder);\n        GetResourceManager()->LoadResourceOrPending(decoderStream);\n    }\n    // create the main window and launch ...\n}"
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

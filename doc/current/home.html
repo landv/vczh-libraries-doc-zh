@@ -1,0 +1,1828 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Gaclib Document -- GPU Accelerated C++ User Interface (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "home"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "Gaclib 文档",
+      "selected": true,
+      "path": [
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": " ",
+          "name": "下载 Gaclib",
+          "selected": false,
+          "path": [
+            "home",
+            "download"
+          ]
+        },
+        {
+          "icon": " ",
+          "name": "线程安全",
+          "selected": false,
+          "path": [
+            "home",
+            "mt"
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "领域专用语言",
+          "selected": false,
+          "path": [
+            "home",
+            "dsl"
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "已注册类型",
+          "selected": false,
+          "path": [
+            "home",
+            "registered"
+          ]
+        }
+      ]
+    },
+    {
+      "icon": "+",
+      "name": "Vlpp",
+      "selected": false,
+      "path": [
+        "vlpp",
+        "home"
+      ]
+    },
+    {
+      "icon": "+",
+      "name": "Vlpp OS",
+      "selected": false,
+      "path": [
+        "vlppos",
+        "home"
+      ]
+    },
+    {
+      "icon": "+",
+      "name": "Vlpp Regex",
+      "selected": false,
+      "path": [
+        "vlppregex",
+        "home"
+      ]
+    },
+    {
+      "icon": "+",
+      "name": "Vlpp Reflection",
+      "selected": false,
+      "path": [
+        "vlppreflection",
+        "home"
+      ]
+    },
+    {
+      "icon": "+",
+      "name": "Vlpp Parser",
+      "selected": false,
+      "path": [
+        "vlppparser",
+        "home"
+      ]
+    },
+    {
+      "icon": "+",
+      "name": "Vlpp Parser2",
+      "selected": false,
+      "path": [
+        "vlppparser2",
+        "home"
+      ]
+    },
+    {
+      "icon": "+",
+      "name": "Workflow 脚本",
+      "selected": false,
+      "path": [
+        "workflow",
+        "home"
+      ]
+    },
+    {
+      "icon": "+",
+      "name": "GacUI",
+      "selected": false,
+      "path": [
+        "gacui",
+        "home"
+      ]
+    },
+    {
+      "icon": "+",
+      "name": "使用 Coding Agent",
+      "selected": false,
+      "path": [
+        "coding-agent",
+        "home"
+      ]
+    },
+    {
+      "icon": "+",
+      "name": "单元测试",
+      "selected": false,
+      "path": [
+        "unittest",
+        "home"
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": false,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "Welcome to Gaclib Document!",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            Gaclib 由以下库组成：\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Github Copilot Supports",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "PageLink",
+                "href": "https://github.com/vczh-libraries/Tools/tree/master/Copilot",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Copilot Prompts and Knowledge Base"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                这是一份当前正在开发中的 GitHub Copilot 提示词。\n                除了用于 GacUI 开发的一些说明外，\n                它还包含每个库的简要文档。\n                它不仅对你有帮助，对你的 AI 也有帮助。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                该 "
+              },
+              {
+                "kind": "PageLink",
+                "href": "https://github.com/vczh-libraries/Tools/tree/master/Copilot/KnowledgeBase",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Knowledge Base"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 是一组文档，为这些库提供额外的背景与信息。\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Vlpp：让数据处理更容易",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                Click "
+              },
+              {
+                "kind": "PageLink",
+                "href": "/vlpp/ref.html",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "here"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " for API references.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "string"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "共享指针"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "函数式构造"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "容器与 Linq"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "简单的控制台读写操作"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "简单的单元测试框架"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "VlppOS: Access basic OS features easily",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                Click "
+              },
+              {
+                "kind": "PageLink",
+                "href": "/vlppos/ref.html",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "here"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " for API references.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "系统区域设置访问"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "多线程与同步"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "HTTP client (Windows only)"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "文件访问"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "文本编码检测、序列化与反序列化"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "流式处理与重定向"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "VlppRegex: A fast C++ regular expression implementation",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                Click "
+              },
+              {
+                "kind": "PageLink",
+                "href": "/vlppregex/ref.html",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "here"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " for API references.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "只要不需要捕获，无论你如何编写正则表达式，都完全没有回溯。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "如果不需要捕获，可以同时匹配多个正则表达式。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "易于构建你的词法分析器。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "匿名捕获与命名捕获"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "子表达式重命名"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "IMPORTANT:"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                与其他正则表达式实现相比，\n                该正则表达式库在字符转义方面有一些微小但关键的差异：\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "\".\""
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 匹配“.”字符"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "\"\\.\""
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 匹配任意字符"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "反斜杠“\\”与斜杠“/”都能匹配"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 开启字符转义，\n                       这意味着 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "\"\\d+\""
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 以及 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "\"/d+\""
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 是完全相同的。\n                       当正则表达式写在 C++ 字符串字面量中时，这一点会带来很大帮助。\n                    "
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "VlppReflection: Reflection utilities for C++ Classes",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                Click "
+              },
+              {
+                "kind": "PageLink",
+                "href": "/vlppreflection/ref.html",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "here"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " for API references.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "基础类型"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "strings"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "functions"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "裸指针或共享指针"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "containers"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "structs"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "classes"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "interfaces"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "enums"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                对于类，你需要继承 "
+              },
+              {
+                "kind": "Name",
+                "text": "vl::reflection::Description<YourClass>"
+              },
+              {
+                "kind": "Text",
+                "text": " 或 "
+              },
+              {
+                "kind": "Name",
+                "text": "vl::reflection::AggregatableDescription<YourClass>"
+              },
+              {
+                "kind": "Text",
+                "text": " 来启用反射。\n               对于接口，你需要继承 "
+              },
+              {
+                "kind": "Name",
+                "text": "vl::reflection::IDescriptable"
+              },
+              {
+                "kind": "Text",
+                "text": " 来启用反射。\n               最后，需要调用一组宏来注册所有可反射的类型与成员。\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "VlppParser: GLR Parser Generator",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                Click "
+              },
+              {
+                "kind": "PageLink",
+                "href": "/vlppparser/ref.html",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "here"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " for API references.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                此库已废弃，但仍包含在 GacUI 2.0 中，请使用 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "VlppParser2"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " instead.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                你可以把语法写入一个文本文件，\n                然后运行 "
+              },
+              {
+                "kind": "Name",
+                "text": "ParserGen.exe"
+              },
+              {
+                "kind": "Text",
+                "text": " 来生成解析器、以及带有遍历算法的 C++ AST。\n                你还会自动获得用于 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "XML and JSON"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "VlppParser2: GLR Parser Generator",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                Click "
+              },
+              {
+                "kind": "PageLink",
+                "href": "/vlppparser2/ref.html",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "here"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " for API references.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                你可以把语法写入一个文本文件，\n                然后运行 "
+              },
+              {
+                "kind": "Name",
+                "text": "GlrParserGen.exe"
+              },
+              {
+                "kind": "Text",
+                "text": " 来生成解析器、以及带有遍历算法的 C++ AST。\n                你还会自动获得用于 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "XML and JSON"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Workflow：一种用于与 C++ 类互操作的脚本语言与运行时",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                Click "
+              },
+              {
+                "kind": "PageLink",
+                "href": "/workflow/ref.html",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "here"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " for API references.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                编译脚本之后，你可以：\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "从脚本中原生调用可反射的 C++ 类。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "直接执行脚本。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "保存或加载编译后的二进制文件。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "\n                        将脚本生成为 C++ 代码以获得显著的性能提升，\n                       而无需携带运行时。\n                    "
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "GacUI: Cross platform GPU Accelerated UI Library",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                Click "
+              },
+              {
+                "kind": "PageLink",
+                "href": "/gacui/ref.html",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "here"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " for API references.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                GacUI 拥有一个高性能且可扩展的框架，\n               以便借助不同的渲染引擎移植到不同平台。\n               目前，\n               GacUI 可运行于 Windows、macOS 与 Linux。\n               GacUI 2.0 还将在支持列表中加入更多平台。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                GacUI 还拥有一套丰富的布局、控件、皮肤与数据绑定。\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "\n                        Layouts\n                        "
+                      },
+                      {
+                        "kind": "List",
+                        "ordered": false,
+                        "items": [
+                          {
+                            "kind": "ContentListItem",
+                            "content": [
+                              {
+                                "kind": "Strong",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "Bounds"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "Text",
+                                "text": "：吸附于父布局的一侧或全部侧边，\n                               并具备进行绝对布局的能力。\n                            "
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "ContentListItem",
+                            "content": [
+                              {
+                                "kind": "Strong",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "Stack"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "Text",
+                                "text": "：将子布局按不同方向堆叠起来。\n                            "
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "ContentListItem",
+                            "content": [
+                              {
+                                "kind": "Strong",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "Flow"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "Text",
+                                "text": "：将子布局排成一行，当父布局空间不足时，\n                               会自动另起新行。\n                               这可以在不同方向上进行。\n                            "
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "ContentListItem",
+                            "content": [
+                              {
+                                "kind": "Strong",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "Table"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "Text",
+                                "text": "：将子布局放入一个表格中，\n                               借助不同的行/列配置实现非常灵活的布局。\n                               Table 布局在 GacUI 中被广泛使用，\n                               而且性能极高，\n                               你甚至无需担心在嵌套表格中放置太多布局会拖慢应用程序。\n                            "
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "ContentListItem",
+                            "content": [
+                              {
+                                "kind": "Strong",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "Side"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "Text",
+                                "text": " 以及 "
+                              },
+                              {
+                                "kind": "Strong",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "PartialView"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "Text",
+                                "text": "：放置子布局，并把它们扩展到父布局空间的指定百分比。\n                            "
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "ContentListItem",
+                            "content": [
+                              {
+                                "kind": "Strong",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "SharedSizeItem"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "Text",
+                                "text": " 以及 "
+                              },
+                              {
+                                "kind": "Strong",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "SharedSizeRoot"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "Text",
+                                "text": "：让不同布局中的子布局拥有相同的宽度或高度。\n                               当需要在菜单中对齐图标、文本与快捷键时它非常有用，\n                               但三者不能直接放进表格，\n                               因为图标、文本与快捷键是由菜单项控件组合在一起的。\n                            "
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "ContentListItem",
+                            "content": [
+                              {
+                                "kind": "Strong",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "RepeatStack"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "Text",
+                                "text": " 以及 "
+                              },
+                              {
+                                "kind": "Strong",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "RepeatFlow"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "Text",
+                                "text": ": Bindable Stack and Flow layout.\n                            "
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "ContentListItem",
+                            "content": [
+                              {
+                                "kind": "Strong",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "RepeatFreeHeightItem"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "Text",
+                                "text": ", "
+                              },
+                              {
+                                "kind": "Strong",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "RepeatFixedHeightItem"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "Text",
+                                "text": ", "
+                              },
+                              {
+                                "kind": "Strong",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "RepeatFixedHeightMultiColumnItem"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "Text",
+                                "text": " 以及 "
+                              },
+                              {
+                                "kind": "Strong",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "RepeatFixedSizeMultiColumnItem"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "Text",
+                                "text": "：布局实现，用于 "
+                              },
+                              {
+                                "kind": "Strong",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "GuiListControl::IItemArranger"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "Text",
+                                "text": ".\n                            "
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "ContentListItem",
+                            "content": [
+                              {
+                                "kind": "Strong",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "Responsive"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "Text",
+                                "text": "：将子布局放入 Responsive 布局中，\n                               当 Responsive 布局的尺寸发生变化时，\n                               子布局会根据所给空间的大小\n                               以不同的外观重新组织。\n                               Ribbon 控件是使用 Responsive 布局的绝佳例子。\n                            "
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ParagraphListItem",
+                    "paragraphs": [
+                      {
+                        "kind": "Paragraph",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "\n                            Controls:\n                            "
+                          },
+                          {
+                            "kind": "List",
+                            "ordered": false,
+                            "items": [
+                              {
+                                "kind": "ContentListItem",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "Window, Tooltip, CustomControl"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "ContentListItem",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "Button, CheckBox, RadioButton, GroupBox, Label"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "ContentListItem",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "Scroll, Tracker, ScrollView, ProgressBar, Tab"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "ContentListItem",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "DatePicker, DateComboBox"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "ContentListItem",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "TextList, CheckList, RadioList, ListView, TreeView, DataGrid, ComboBox"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "ContentListItem",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "SinglelineTextBox, MultilineTextBox"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "ContentListItem",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "DocumentLabel, DocumentTextBox, DocumentViewer"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "ContentListItem",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "ToolstripMenuBar, ToolstripToolBar, ToolstripToolBarInMenu, ToolstripButton, ToolstripDropDownButton, ToolstripSplitButton, ToolstripSplitter, ToolstripSplitterInMenu"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "ContentListItem",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "RibbonTab, RibbonGroup, RibbonButtons, RibbonToolstrips, RibbonToolstripMenu"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "ContentListItem",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "RibbonIconLabel, RibbonSmallIconLabel"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "ContentListItem",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "RibbonGallery, RibbonGalleryList, RibbonGalleryItemList"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "ContentListItem",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "RibbonSmallButton, RibbonSmallDropdownButton, RibbonSmallSplitButton, RibbonLargeButton, RibbonLargeDropdownButton, RibbonLargeSplitButton"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "ContentListItem",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "RibbonSplitter, RibbonToolstripHeader"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Paragraph",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "\n                            控件与应用程序可以被拆分到多个资源文件中。\n                           下面的演示展示了如何在使用传统工具栏与 Ribbon 控件的两个 RichEdit 应用程序之间共享代码：\n                            "
+                          },
+                          {
+                            "kind": "List",
+                            "ordered": false,
+                            "items": [
+                              {
+                                "kind": "ContentListItem",
+                                "content": [
+                                  {
+                                    "kind": "PageLink",
+                                    "href": "https://github.com/vczh-libraries/Release/tree/master/Tutorial/GacUI_Controls/DocumentEditor",
+                                    "content": [
+                                      {
+                                        "kind": "Text",
+                                        "text": "共享代码"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "kind": "Text",
+                                    "text": "：一个提供 RichEdit 功能的自定义控件。"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "ContentListItem",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "Using "
+                                  },
+                                  {
+                                    "kind": "PageLink",
+                                    "href": "https://github.com/vczh-libraries/Release/tree/master/Tutorial/GacUI_Controls/DocumentEditorToolstrip",
+                                    "content": [
+                                      {
+                                        "kind": "Text",
+                                        "text": "传统工具栏"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "kind": "Text",
+                                    "text": " 使用第一个工程来创建一个 RichEdit 应用程序。"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "ContentListItem",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "Using "
+                                  },
+                                  {
+                                    "kind": "PageLink",
+                                    "href": "https://github.com/vczh-libraries/Release/tree/master/Tutorial/GacUI_Controls/DocumentEditorRibbon",
+                                    "content": [
+                                      {
+                                        "kind": "Text",
+                                        "text": "Ribbon 控件"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "kind": "Text",
+                                    "text": " 使用第一个工程来创建一个 RichEdit 应用程序。"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Paragraph",
+                        "content": [
+                          {
+                            "kind": "Image",
+                            "src": "/demo_DET.png"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Paragraph",
+                        "content": [
+                          {
+                            "kind": "Image",
+                            "src": "/demo_DER.png"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ParagraphListItem",
+                    "paragraphs": [
+                      {
+                        "kind": "Paragraph",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "\n                            皮肤：GacUI 随附以 DarkSkin 作为默认皮肤。\n                           你可以创建自己的皮肤，也可以直接使用 DarkSkin 来创建应用程序。\n                           请注意，GacUI 应用程序必须从某个皮肤开始。\n                        "
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Paragraph",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "\n                            控件与列表项都接受皮肤，分别称为 ControlTemplate 与 ItemTemplate。\n                           例如，你可以使用 ItemTemplate 自定义数据在列表控件中的显示方式。\n                           你也可以使用 ControlTemplate 自定义控件自身的渲染方式。\n                           与普通 UI 组件一样，ItemTemplate 与 ControlTemplate 都可以用 XML 创建。\n                        "
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Paragraph",
+                        "content": [
+                          {
+                            "kind": "PageLink",
+                            "href": "https://github.com/vczh-libraries/GacUI/tree/master/Source/Skins/DarkSkin",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Here"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " 是内置皮肤 DarkSkin 的源代码。\n                        "
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Paragraph",
+                        "content": [
+                          {
+                            "kind": "PageLink",
+                            "href": "https://github.com/vczh-libraries/Release/tree/master/Tutorial/GacUI_Controls/TriplePhaseImageButton",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Here"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " 是一个演示，\n                           展示如何把图像资源、控件模板与自定义控件结合使用，\n                           来创建一个新控件：三态图像按钮。\n                        "
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Paragraph",
+                        "content": [
+                          {
+                            "kind": "Image",
+                            "src": "/demo_TPIB.png"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ParagraphListItem",
+                    "paragraphs": [
+                      {
+                        "kind": "Paragraph",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "\n                            数据绑定：GacUI 拥有非常强大的数据绑定功能。\n                           你可以\n                            "
+                          },
+                          {
+                            "kind": "List",
+                            "ordered": false,
+                            "items": [
+                              {
+                                "kind": "ContentListItem",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "用 XML 创建窗口、布局、控件与皮肤"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "ContentListItem",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "用 Workflow 定义视图模型"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "ContentListItem",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "使用你甚至难以想象的复杂表达式，把视图模型属性与 GacUI 控件进行双向绑定"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "ContentListItem",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "用 C++ 实现视图模型"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "\n                            最后再把它们组合在一起协同工作。\n                        "
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Paragraph",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "\n                            在 GacUI 控件中，有两类属性接受数据绑定：\n                            "
+                          },
+                          {
+                            "kind": "List",
+                            "ordered": false,
+                            "items": [
+                              {
+                                "kind": "ContentListItem",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "接受可反射类型的普通属性"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "ContentListItem",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "\n                                    其中有些类型为 "
+                                  },
+                                  {
+                                    "kind": "Name",
+                                    "text": "vl::reflection::descriptions::Value"
+                                  },
+                                  {
+                                    "kind": "Text",
+                                    "text": "。\n                                   这些属性接受容器类型，通常被称为 "
+                                  },
+                                  {
+                                    "kind": "Name",
+                                    "text": "ItemSource"
+                                  },
+                                  {
+                                    "kind": "Text",
+                                    "text": " ，也就是可绑定列表控件中的叫法。\n                                   如果你把一个 "
+                                  },
+                                  {
+                                    "kind": "Name",
+                                    "text": "vl::reflection::descriptions::IValueObservableList"
+                                  },
+                                  {
+                                    "kind": "Text",
+                                    "text": " 对象赋给该属性，\n                                   该对象可以通过调用 "
+                                  },
+                                  {
+                                    "kind": "Name",
+                                    "text": "BoxParameter"
+                                  },
+                                  {
+                                    "kind": "Text",
+                                    "text": " 作用于一个 "
+                                  },
+                                  {
+                                    "kind": "Name",
+                                    "text": "vl::collections::ObservableList"
+                                  },
+                                  {
+                                    "kind": "Text",
+                                    "text": " 对象，\n                                   那么当列表对象发生改变时，列表项也会随之改变。\n                                "
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Paragraph",
+                        "content": [
+                          {
+                            "kind": "PageLink",
+                            "href": "https://github.com/vczh-libraries/Release/tree/master/Tutorial/GacUI_Controls/AddressBook",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Here"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " 是一个演示，\n                           展示如何把对象模型绑定到树视图控件、以及带自定义项的列表视图控件。\n                        "
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Paragraph",
+                        "content": [
+                          {
+                            "kind": "Image",
+                            "src": "/demo_AB.png"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                GacUI 完整功能的演示可在以下位置找到 "
+              },
+              {
+                "kind": "PageLink",
+                "href": "//demo.html",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "here"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

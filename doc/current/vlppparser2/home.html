@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Vlpp Parser2 -- GPU Accelerated C++ User Interface (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "vlppparser2",
+    "home"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "+",
+      "name": "Gaclib 文档",
+      "selected": false,
+      "path": [
+        "home"
+      ]
+    },
+    {
+      "icon": "+",
+      "name": "Vlpp",
+      "selected": false,
+      "path": [
+        "vlpp",
+        "home"
+      ]
+    },
+    {
+      "icon": "+",
+      "name": "Vlpp OS",
+      "selected": false,
+      "path": [
+        "vlppos",
+        "home"
+      ]
+    },
+    {
+      "icon": "+",
+      "name": "Vlpp Regex",
+      "selected": false,
+      "path": [
+        "vlppregex",
+        "home"
+      ]
+    },
+    {
+      "icon": "+",
+      "name": "Vlpp Reflection",
+      "selected": false,
+      "path": [
+        "vlppreflection",
+        "home"
+      ]
+    },
+    {
+      "icon": "+",
+      "name": "Vlpp Parser",
+      "selected": false,
+      "path": [
+        "vlppparser",
+        "home"
+      ]
+    },
+    {
+      "icon": "-",
+      "name": "Vlpp Parser2",
+      "selected": true,
+      "path": [
+        "vlppparser2",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": " ",
+          "name": "AST Definition",
+          "selected": false,
+          "path": [
+            "vlppparser2",
+            "ast"
+          ]
+        },
+        {
+          "icon": " ",
+          "name": "Lexer Definition",
+          "selected": false,
+          "path": [
+            "vlppparser2",
+            "lexer"
+          ]
+        },
+        {
+          "icon": " ",
+          "name": "Syntax Definition",
+          "selected": false,
+          "path": [
+            "vlppparser2",
+            "syntax"
+          ]
+        },
+        {
+          "icon": " ",
+          "name": "Generated APIs",
+          "selected": false,
+          "path": [
+            "vlppparser2",
+            "apis"
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "参考",
+          "selected": false,
+          "path": [
+            "vlppparser2",
+            "ref"
+          ]
+        }
+      ]
+    },
+    {
+      "icon": "+",
+      "name": "Workflow 脚本",
+      "selected": false,
+      "path": [
+        "workflow",
+        "home"
+      ]
+    },
+    {
+      "icon": "+",
+      "name": "GacUI",
+      "selected": false,
+      "path": [
+        "gacui",
+        "home"
+      ]
+    },
+    {
+      "icon": "+",
+      "name": "使用 Coding Agent",
+      "selected": false,
+      "path": [
+        "coding-agent",
+        "home"
+      ]
+    },
+    {
+      "icon": "+",
+      "name": "单元测试",
+      "selected": false,
+      "path": [
+        "unittest",
+        "home"
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": false,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "Introduction to VlppParser2",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            VlppParser2 provides GLR parser generator for C++,\n            with generated XML and JSON parsers.\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Using Generated XML Parser",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                所有函数与类型都定义在 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "vl::glr::xml"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n                Before using the XML parser, you need to constructor a "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Parser"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " object.\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Parser"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " can be used parallelly with multiple "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "XmlParseDocument"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 或 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "XmlParseElement"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " calls.\n                These two functions return "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Ptr<XmlDocument>"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 以及 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Ptr<XmlElement>"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " respectively,\n                and you can access the content in XML directly or by calling the following shortcut functions:\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "XmlPrint"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ": Print an XML node to a writer. You can call it with "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "stream::GenerateToStream"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 来从中获取字符串，或者调用 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "XmlToString"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 来直接获取字符串。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "XmlPrintContent"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ": Print an all contents in an element to a writer. You can call it with "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "stream::GenerateToStream"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 来从中获取字符串，或者调用 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "XmlGetValue"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 来直接获取字符串。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "XmlGetAttribute"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ": Find an attribute in an element."
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "XmlGetElement"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ": Find the first sub element in an element given the element name."
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "XmlGetElements"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ": Find all sub elements in an element given the element name."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                The predefined printing functions print XML in a compact format without indentation or new lines.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "XmlNode::IVisitor"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " is recommended to use for any recursive operations on an XML node.\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Parser"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 以及 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "XmlNode::IVisitor"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 遵循……中所述的相同设计 "
+              },
+              {
+                "kind": "PageLink",
+                "href": "/vlppparser2/apis.html",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Generated APIs"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Using Generated JSON Parser",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                所有函数与类型都定义在 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "vl::glr::json"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Parser"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " can be used parallelly with multiple parsing calls to "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Parsing::ParseJRoot"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ",\n                which returns a "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Ptr<JsonNode>"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ",\n                and you can access the content in JSON directly or by calling the following shortcut functions:\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "JsonPrint"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ": Print a JSON node to a writer. You can call it with "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "stream::GenerateToStream"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 来从中获取字符串，或者调用 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "JsonToString"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 来直接获取字符串。"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                You can pass an optional "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "JsonFormatting"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 到 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "JsonPrint"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 或 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "JsonToString"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " to control the formatting.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "JsonNode::IVisitor"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " is recommended to use for any recursive operations on a JSON node.\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Parser"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 以及 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "JsonNode::IVisitor"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 遵循……中所述的相同设计 "
+              },
+              {
+                "kind": "PageLink",
+                "href": "/vlppparser2/apis.html",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Generated APIs"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Building New Parsers",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                A parser class and some "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "IVisitor"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " interfaces will be generated from "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GlrParserGen"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n                The generated parser and all "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "IVisitor"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " interfaces follow the same design described in "
+              },
+              {
+                "kind": "PageLink",
+                "href": "/vlppparser2/apis.html",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Generated APIs"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                Predefined parsers can be found here as examples:\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "PageLink",
+                        "href": "https://github.com/vczh-libraries/VlppParser2/tree/master/Source/Json/Syntax",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "JSON"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "PageLink",
+                        "href": "https://github.com/vczh-libraries/VlppParser2/tree/master/Source/Xml/Syntax",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "XML"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "PageLink",
+                        "href": "https://github.com/vczh-libraries/Workflow/tree/master/Source/Parser/Syntax",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "Workflow"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "PageLink",
+                        "href": "https://github.com/vczh-libraries/GacUI/tree/master/Source/Compiler/InstanceQuery/Syntax",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "InstanceQuery in GacUI XML Resource"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "PageLink",
+                        "href": "https://github.com/vczh-libraries/GacUI/tree/master/Source/Compiler/RemoteProtocol/Syntax",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "GacUI Remote Protocol Definition"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GlrParserGen"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 在……中 "
+              },
+              {
+                "kind": "PageLink",
+                "href": "https://github.com/vczh-libraries/Release/tree/master/Tools",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "released tools"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " can be used to generate C++ code starting from a "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Parser.xml"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n                Take the "
+              },
+              {
+                "kind": "PageLink",
+                "href": "https://github.com/vczh-libraries/GacUI/blob/master/Source/Compiler/RemoteProtocol/Syntax/Parser.xml",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "remote protocol parser"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " as an example:\n                "
+              },
+              {
+                "kind": "Program",
+                "code": "<Parser name=\"GuiRemoteProtocol\">\n  <Includes>&lt;VlppGlrParser.h&gt;</Includes>\n  <CppNamespace>vl::presentation::remoteprotocol</CppNamespace>\n  <HeaderGuard>VCZH_PRESENTATION_REMOTEPROTOCOL</HeaderGuard>\n  <OutputDir>../Generated</OutputDir>\n\n  <Asts>\n    <Ast name=\"Ast\">\n      <CppNamespace>vl::presentation::remoteprotocol</CppNamespace>\n      <ReflectionNamespace>presentation::remoteprotocol</ReflectionNamespace>\n      <ClassPrefix>GuiRp</ClassPrefix>\n      <BlockedUtilities>\n        <Empty/>\n        <Copy/>\n        <Traverse/>\n        <Builder/>\n      </BlockedUtilities>\n      <File file=\"Ast.txt\"/>\n    </Ast>\n  </Asts>\n\n  <Lexer file=\"Lexer.txt\"/>\n  <Syntax name=\"Parser\">\n    <File file=\"Syntax.txt\"/>\n  </Syntax>\n</Parser>",
+                "language": "xml"
+              },
+              {
+                "kind": "Text",
+                "text": "\n                Those "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "名称"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " attributes affect naming of generated files.\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "/Parser/Syntax/@name"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " will also become the name of the generated parser class.\n                Here are some important elements:\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "/Parser/Includes"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ": additional headers to include in generated files."
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "/Parser/CppNamespace"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ": C++ namespace for generated classes."
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "/Parser/HeaderGuard"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ": header guard for generated header files."
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "/Parser/OutputDir"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ": output directory for generated files."
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "/Parser/Asts/Ast/CppNamespace"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ": C++ namespace for all classes in this AST group."
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "/Parser/Asts/Ast/ReflectionNamespace"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ": namespaces when appearing in reflection metadata."
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "/Parser/Asts/Ast/ClassPrefix"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ": prefix for all class names in this AST group."
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "/Parser/Asts/Ast/BlockedUtilities"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ": disable generation of certain utility classes for this AST group."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                There can be multiple groups of ASTs, in each group there can be multiple AST definition files.\n                AST classes are selectively visible to other AST files.\n                Usually we only define one group.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                There can be only one lexer file.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                There can be multiple syntax files.\n                Parser rules are selectively visible to other syntax files.\n            "
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

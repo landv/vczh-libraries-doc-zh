@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title><TreeViewTemplate> -- GPU Accelerated C++ User Interface (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "gacui",
+    "components",
+    "ctemplates",
+    "TreeViewTemplate"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "GacUI",
+      "selected": false,
+      "path": [
+        "gacui",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": "-",
+          "name": "GacUI 组件",
+          "selected": false,
+          "path": [
+            "gacui",
+            "components",
+            "home"
+          ],
+          "subNodes": [
+            {
+              "icon": "-",
+              "name": "控件模板",
+              "selected": false,
+              "path": [
+                "gacui",
+                "components",
+                "ctemplates",
+                "home"
+              ],
+              "subNodes": [
+                {
+                  "icon": "-",
+                  "name": "<ControlTemplate>",
+                  "selected": false,
+                  "path": [
+                    "gacui",
+                    "components",
+                    "ctemplates",
+                    "ControlTemplate"
+                  ],
+                  "subNodes": [
+                    {
+                      "icon": "-",
+                      "name": "<ScrollViewTemplate>",
+                      "selected": false,
+                      "path": [
+                        "gacui",
+                        "components",
+                        "ctemplates",
+                        "ScrollViewTemplate"
+                      ],
+                      "subNodes": [
+                        {
+                          "icon": "-",
+                          "name": "<ListControlTemplate>",
+                          "selected": false,
+                          "path": [
+                            "gacui",
+                            "components",
+                            "ctemplates",
+                            "ListControlTemplate"
+                          ],
+                          "subNodes": [
+                            {
+                              "icon": " ",
+                              "name": "<TextListTemplate>",
+                              "selected": false,
+                              "path": [
+                                "gacui",
+                                "components",
+                                "ctemplates",
+                                "TextListTemplate"
+                              ]
+                            },
+                            {
+                              "icon": " ",
+                              "name": "<ListViewTemplate>",
+                              "selected": false,
+                              "path": [
+                                "gacui",
+                                "components",
+                                "ctemplates",
+                                "ListViewTemplate"
+                              ]
+                            },
+                            {
+                              "icon": " ",
+                              "name": "<TreeViewTemplate>",
+                              "selected": true,
+                              "path": [
+                                "gacui",
+                                "components",
+                                "ctemplates",
+                                "TreeViewTemplate"
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": true,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "<TreeViewTemplate>",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "<TreeViewTemplate>"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 继承自 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "<ListControlTemplate>"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Introduction",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n      该控件模板用于 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "<TreeView/>"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 以及 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "<BindableTreeView/>"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n    "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Output Property",
+        "content": [
+          {
+            "kind": "Topic",
+            "title": "ExpandingDecoratorTemplate",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n        被分配的控件模板实例必须是或派生自 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "<SelectableButtonTemplate/>"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ".\n      "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n        此属性定义可选中按钮的控件模板，\n        它控制 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Expanding"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " property of an item.\n      "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n        如果该属性为 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "empty"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "，\n默认控件模板为 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "TreeItemExpander"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 主题将被使用。\n      "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "TextColor",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n        此属性定义项文本的默认颜色。\n        该值会被复制到 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "TextColor"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 所有……的 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "<TreeItemTemplate/>"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 位于列表控件中。\n      "
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

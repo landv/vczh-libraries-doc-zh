@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title><BindableTreeView> -- GPU Accelerated C++ User Interface (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "gacui",
+    "components",
+    "controls",
+    "list",
+    "bindabletreeview"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "GacUI",
+      "selected": false,
+      "path": [
+        "gacui",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": "-",
+          "name": "GacUI 组件",
+          "selected": false,
+          "path": [
+            "gacui",
+            "components",
+            "home"
+          ],
+          "subNodes": [
+            {
+              "icon": "-",
+              "name": "控件",
+              "selected": false,
+              "path": [
+                "gacui",
+                "components",
+                "controls",
+                "home"
+              ],
+              "subNodes": [
+                {
+                  "icon": "-",
+                  "name": "列表控件",
+                  "selected": false,
+                  "path": [
+                    "gacui",
+                    "components",
+                    "controls",
+                    "list",
+                    "home"
+                  ],
+                  "subNodes": [
+                    {
+                      "icon": "-",
+                      "name": "可绑定列表控件",
+                      "selected": false,
+                      "path": [
+                        "gacui",
+                        "components",
+                        "controls",
+                        "list",
+                        "bindable"
+                      ],
+                      "subNodes": [
+                        {
+                          "icon": " ",
+                          "name": "<BindableTextList>",
+                          "selected": false,
+                          "path": [
+                            "gacui",
+                            "components",
+                            "controls",
+                            "list",
+                            "bindabletextlist"
+                          ]
+                        },
+                        {
+                          "icon": " ",
+                          "name": "<BindableTreeView>",
+                          "selected": true,
+                          "path": [
+                            "gacui",
+                            "components",
+                            "controls",
+                            "list",
+                            "bindabletreeview"
+                          ]
+                        },
+                        {
+                          "icon": " ",
+                          "name": "<BindableListView>",
+                          "selected": false,
+                          "path": [
+                            "gacui",
+                            "components",
+                            "controls",
+                            "list",
+                            "bindablelistview"
+                          ]
+                        },
+                        {
+                          "icon": "+",
+                          "name": "<BindableDataGrid>",
+                          "selected": false,
+                          "path": [
+                            "gacui",
+                            "components",
+                            "controls",
+                            "list",
+                            "bindabledatagrid"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": true,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "<BindableTreeView>",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "List",
+            "ordered": false,
+            "items": [
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "<BindableTreeView/>"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "List",
+                    "ordered": false,
+                    "items": [
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "C++/Workflow"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": ": (vl::)presentation::controls::GuiBindableTreeView*"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Template Tag"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": ": <TreeViewTemplate/>"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Template Name"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": ": TreeView"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "<BindableTreeView/>"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 与 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "<TreeView/>"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "，\n            但它接受任何类或接口，而不仅是 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "tree::TreeViewItem"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 在……中 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "tree::MemoryNodeProvider"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": ".\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "IMPORTANT"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": ":\n            Unlike other list controls,\n            the "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "ItemSource"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 在……中 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "<BindableTreeView/>"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " accepts an root node object,\n            instead of a collection of nodes.\n            The type of the root node object is expected to be what is specified in "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "env.ItemType"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " or any of its sub classes or interfaces.\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            该 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "SelectedItem (SelectionChanged)"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 属性返回 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "ItemSource"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "。\n            但如果没有选中任何项，\n            或者选中了多项，\n            它将返回 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "null"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": ".\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "TextProperty (TextPropertyChanged)"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 在项中定义一个可读属性，\n用来替代 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "tree::TreeViewItem::text"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": ".\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "ImageProperty (ImagePropertyChanged)"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 在项中定义一个可读属性，\n用来替代 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "tree::TreeViewItem::image"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": ".\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "ChildrenProperty (ChildrenPropertyChanged)"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 在项中定义一个可读属性，\n用来替代 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "tree::MemoryNodeProvider::Children"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": ".\n            If it reads a observable collection out of an item,\n            data binding applies.\n            In this case,\n            when this observable collection is changed,\n            "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "<BindableTreeView/>"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " knows that child nodes for this node is changed.\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "ReverseMappingProperty property and NotifyNodeDataModified function",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                当项中的属性发生改变时，\n                如果项模板直接绑定了其中任何内容，\n                项模板将自动更新。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                但如果项模板绑定了 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Text"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 或 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Image"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 的属性 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "<TextListItemTemplate/>"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "，\n                当 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "TextProperty"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 或 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "ImageProperty"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 在关联的项中发生改变时，\n                项模板不会更新，因为没有发出任何通知。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                In this case, The "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "NotifyNodeDataModified"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " function needs to be called.\n                It notices an item template to update by its associated item.\n                This function will throw an exception if:\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "该 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "ReverseMappingProperty"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " property is not specified."
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "The given item is "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "null"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "."
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "The given item is not binded to this control."
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "The given item is the "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "ItemSource"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " object."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                该 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "ReverseMappingProperty"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " is specified in the constructor when using C++.\n                It lets the control stores something to the item to create a 1:1 mapping from tree nodes to items,\n                using a property of "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "vl::reflection::description::Value"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " in C++ or "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "object"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " in Workflow script.\n                When this property is used,\n                items in the item source should be exclusively binded to this control.\n                When an item get unbinded from the control,\n                the specified property of an item will be set to "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "null"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " again.\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Sample",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "源代码： "
+                      },
+                      {
+                        "kind": "PageLink",
+                        "href": "https://github.com/vczh-libraries/Release/blob/master/SampleForDoc/GacUI/XmlRes/control_list_treeview_bindable/Resource.xml",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "control_list_treeview_bindable"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Image",
+                        "src": "/gacui/control_list_treeview_bindable.gif"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

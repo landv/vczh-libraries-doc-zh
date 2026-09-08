@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>使用 Coding Agent -- GPU 加速的 C++ 用户界面 (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "coding-agent",
+    "home"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "+",
+      "name": "Gaclib 文档",
+      "selected": false,
+      "path": [
+        "home"
+      ]
+    },
+    {
+      "icon": "+",
+      "name": "Vlpp",
+      "selected": false,
+      "path": [
+        "vlpp",
+        "home"
+      ]
+    },
+    {
+      "icon": "+",
+      "name": "Vlpp OS",
+      "selected": false,
+      "path": [
+        "vlppos",
+        "home"
+      ]
+    },
+    {
+      "icon": "+",
+      "name": "Vlpp Regex",
+      "selected": false,
+      "path": [
+        "vlppregex",
+        "home"
+      ]
+    },
+    {
+      "icon": "+",
+      "name": "Vlpp Reflection",
+      "selected": false,
+      "path": [
+        "vlppreflection",
+        "home"
+      ]
+    },
+    {
+      "icon": "+",
+      "name": "Vlpp Parser",
+      "selected": false,
+      "path": [
+        "vlppparser",
+        "home"
+      ]
+    },
+    {
+      "icon": "+",
+      "name": "Vlpp Parser2",
+      "selected": false,
+      "path": [
+        "vlppparser2",
+        "home"
+      ]
+    },
+    {
+      "icon": "+",
+      "name": "Workflow 脚本",
+      "selected": false,
+      "path": [
+        "workflow",
+        "home"
+      ]
+    },
+    {
+      "icon": "+",
+      "name": "GacUI",
+      "selected": false,
+      "path": [
+        "gacui",
+        "home"
+      ]
+    },
+    {
+      "icon": "-",
+      "name": "使用 Coding Agent",
+      "selected": true,
+      "path": [
+        "coding-agent",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": " ",
+          "name": "安装所需工具",
+          "selected": false,
+          "subNodes": [
+            {
+              "icon": " ",
+              "name": "Windows",
+              "selected": false,
+              "path": [
+                "coding-agent",
+                "installing",
+                "windows"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "Linux",
+              "selected": false,
+              "path": [
+                "coding-agent",
+                "installing",
+                "linux"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "macOS",
+              "selected": false,
+              "path": [
+                "coding-agent",
+                "installing",
+                "macos"
+              ]
+            }
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "准备上下文文件",
+          "selected": false,
+          "path": [
+            "coding-agent",
+            "context"
+          ]
+        },
+        {
+          "icon": " ",
+          "name": "调查与优化任务",
+          "selected": false,
+          "path": [
+            "coding-agent",
+            "jobs"
+          ]
+        },
+        {
+          "icon": " ",
+          "name": "AutomationService 与基础计算机操作",
+          "selected": false,
+          "path": [
+            "coding-agent",
+            "gacui-debugging"
+          ]
+        },
+        {
+          "icon": " ",
+          "name": "创建远程协议与外部视图模型",
+          "selected": false,
+          "path": [
+            "coding-agent",
+            "remoting"
+          ]
+        }
+      ]
+    },
+    {
+      "icon": "+",
+      "name": "单元测试",
+      "selected": false,
+      "path": [
+        "unittest",
+        "home"
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": true,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "使用 Coding Agent",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            本文介绍如何准备应用仓库，使 Coding Agent（编码代理）能够参与使用 Vczh Libraries 的日常开发。\n            推荐的设置从 Release 仓库复制而来："
+          },
+          {
+            "kind": "Name",
+            "text": ".github"
+          },
+          {
+            "kind": "Text",
+            "text": " 文件夹、"
+          },
+          {
+            "kind": "Name",
+            "text": "AGENTS.md"
+          },
+          {
+            "kind": "Text",
+            "text": "、"
+          },
+          {
+            "kind": "Name",
+            "text": "CLAUDE.md"
+          },
+          {
+            "kind": "Text",
+            "text": " 以及项目专用的 "
+          },
+          {
+            "kind": "Name",
+            "text": "Project.md"
+          },
+          {
+            "kind": "Text",
+            "text": "。\n            这些文件就位后，编码代理便拥有本地说明、复制的文档、构建脚本、调试脚本与任务日志约定。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            工作流程如下：\n            "
+          },
+          {
+            "kind": "List",
+            "ordered": false,
+            "items": [
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "安装平台工具，使构建、运行与调试脚本能够正常工作。"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "将代理上下文文件从 Release 仓库复制到应用仓库。"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "编写 "
+                  },
+                  {
+                    "kind": "Name",
+                    "text": "Project.md"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "，使代理了解哪些解决方案、项目、生成文件与平台文件夹属于该应用。"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "使用诸如 "
+                  },
+                  {
+                    "kind": "Name",
+                    "text": "investigate"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 与 "
+                  },
+                  {
+                    "kind": "Name",
+                    "text": "refine"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 之类的提示词任务，完成可重复的开发工作。"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "对于 GacUI 应用，应暴露 AutomationService 并准备基本的原生窗口处理，使代理无需依赖操作系统的 UI Automation 即可调试 UI 行为。"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "当要求代理搭建远程渲染器或在另一种语言中实现视图模型时，请使用 remoting 与 Workflow RPC 指南。"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            从 Release 复制的文件是起点。\n            它们应贴近应用仓库保存，并在应用具有不同的构建步骤、验证项目、生成文件或调试预期时加以调整。\n        "
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

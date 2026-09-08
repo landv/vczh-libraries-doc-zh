@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Filter -- GPU Accelerated C++ User Interface (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "gacui",
+    "components",
+    "controls",
+    "list",
+    "datagrid_filter"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "GacUI",
+      "selected": false,
+      "path": [
+        "gacui",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": "-",
+          "name": "GacUI 组件",
+          "selected": false,
+          "path": [
+            "gacui",
+            "components",
+            "home"
+          ],
+          "subNodes": [
+            {
+              "icon": "-",
+              "name": "控件",
+              "selected": false,
+              "path": [
+                "gacui",
+                "components",
+                "controls",
+                "home"
+              ],
+              "subNodes": [
+                {
+                  "icon": "-",
+                  "name": "列表控件",
+                  "selected": false,
+                  "path": [
+                    "gacui",
+                    "components",
+                    "controls",
+                    "list",
+                    "home"
+                  ],
+                  "subNodes": [
+                    {
+                      "icon": "-",
+                      "name": "可绑定列表控件",
+                      "selected": false,
+                      "path": [
+                        "gacui",
+                        "components",
+                        "controls",
+                        "list",
+                        "bindable"
+                      ],
+                      "subNodes": [
+                        {
+                          "icon": "-",
+                          "name": "<BindableDataGrid>",
+                          "selected": false,
+                          "path": [
+                            "gacui",
+                            "components",
+                            "controls",
+                            "list",
+                            "bindabledatagrid"
+                          ],
+                          "subNodes": [
+                            {
+                              "icon": " ",
+                              "name": "列配置",
+                              "selected": false,
+                              "path": [
+                                "gacui",
+                                "components",
+                                "controls",
+                                "list",
+                                "datagrid_column"
+                              ]
+                            },
+                            {
+                              "icon": " ",
+                              "name": "筛选",
+                              "selected": true,
+                              "path": [
+                                "gacui",
+                                "components",
+                                "controls",
+                                "list",
+                                "datagrid_filter"
+                              ]
+                            },
+                            {
+                              "icon": " ",
+                              "name": "排序器",
+                              "selected": false,
+                              "path": [
+                                "gacui",
+                                "components",
+                                "controls",
+                                "list",
+                                "datagrid_sorter"
+                              ]
+                            },
+                            {
+                              "icon": " ",
+                              "name": "可视化器",
+                              "selected": false,
+                              "path": [
+                                "gacui",
+                                "components",
+                                "controls",
+                                "list",
+                                "datagrid_visualizer"
+                              ]
+                            },
+                            {
+                              "icon": " ",
+                              "name": "编辑器",
+                              "selected": false,
+                              "path": [
+                                "gacui",
+                                "components",
+                                "controls",
+                                "list",
+                                "datagrid_editor"
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": true,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "筛选",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            A filter is an instance of interface "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "list::IDataFilter"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": ".\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            When a filter is installed to the data grid,\n            "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "SetCallback"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 将被调用。\n            "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "GetItemProvider"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 回调对象中的……提供了对……的访问 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "ItemProvider"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 数据网格的相应内容。\n            "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "OnProcessorChanged"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " in the callback object is called by the filter,\n            when the filter definition is changed\n            (e.g. a the date range is changed in a filter that only allow items in that range).\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            该 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "Filter"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " function accepts an item from "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "ItemSource"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": ",\n            it returns "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "true"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " when the item satisfies the filter.\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Implementing a Filter",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                通常你需要直接实现该接口。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                When a filter is semantically designed for a column,\n                a filter could be implemented by a column dropdown.\n                Usually this is done by creating a "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "<CustomControl/>"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 或一个 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "<Popup/>"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                for the UI in the column dropdown.\n                The control has a "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "list::IDataFilter"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " property,\n                whose the implementation talks to the control for filter arguments.\n                In the end,\n                install the filter to both "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Filter"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 以及 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Popup"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 在……中 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "list::DataColumn"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                请查看\n                "
+              },
+              {
+                "kind": "PageLink",
+                "href": "https://github.com/vczh-libraries/Release/blob/master/Tutorial/GacUI_Controls/DataGrid/UI/Resource.xml",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    本教程工程\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                了解更多详情。\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Predefined Filter Combinators",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "list::DataAndFilter"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ":\n                Combine multiple filters to one filter.\n                An item satisfies this filter when it satisfies all sub filters.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "list::DataOrFilter"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ":\n                Combine multiple filters to one filter.\n                An item satisfies this filter when it satisfies at least one sub filters.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "list::DataNotFilter"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ":\n                Convert one filter to another.\n                An item satisfies this filter when it unsatisfies the sub filter.\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Installing Filters",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                Multiple filters could be assigned to each column.\n                A filter could be assigned to the control using the "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "AdditionalFilter"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " property.\n                An item must satisfies "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "AdditionalFilter"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " add every filter assigned to columns\n                in order to appear in the control.\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "分步示例",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                In this demo,\n                a control is created for editing a date range using two "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "<DateComboBox/>"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ",\n                each with a "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "<CheckBox/>"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " for controlling the condition availability.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                In the constructor of this control,\n                a filter is created.\n                It reads the date range from the control to filter a row object\n                (which is "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "BookItem"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ").\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                In the derived main window,\n                the following configuration is added to the "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "DatePublishedColumn"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n                Please check out the base class "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "sample::MainWindow"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " for details about\n                how a "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "<DateColumn/>"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " is exposed as a property.\n                "
+              },
+              {
+                "kind": "Program",
+                "code": "<att.DatePublishedColumn-set>\n  <att.Filter-eval>dateFilter.Filter</att.Filter-eval>\n  <att.Popup>\n    <ToolstripMenu>\n      <sample:DateFilter ref.Name=\"dateFilter\">\n        <att.BoundsComposition-set AlignmentToParent=\"left:0 top:0 right:0 bottom:0\"/>\n      </sample:DateFilter>\n    </ToolstripMenu>\n  </att.Popup>\n</att.DatePublishedColumn-set>"
+              },
+              {
+                "kind": "Text",
+                "text": "\n                Setting the "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Popup"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " property doesn't automatically apply the filter,\n                the "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Filter"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " property is still needed.\n                Using "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "-eval"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 在 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Filter"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 属性表示一个 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "IDataFilter^"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 被赋给该属性。\n                设置 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Filter"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " without any binder means a\n                "
+              },
+              {
+                "kind": "PageLink",
+                "href": "/gacui/xmlres/instance/properties.html#presentation-controls-list-IDataFilter-",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    filter function\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                is assigned to the property,\n                in this case an "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "IDataFilter^"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 会根据该被赋值的函数自动创建。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "源代码： "
+                      },
+                      {
+                        "kind": "PageLink",
+                        "href": "https://github.com/vczh-libraries/Release/blob/master/SampleForDoc/GacUI/XmlRes/control_datagrid_filter/Resource.xml",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "control_datagrid_filter"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Image",
+                        "src": "/gacui/control_datagrid_filter.gif"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

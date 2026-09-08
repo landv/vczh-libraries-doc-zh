@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Repeat Compositions -- GPU Accelerated C++ User Interface (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "gacui",
+    "components",
+    "compositions",
+    "repeat"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "GacUI",
+      "selected": false,
+      "path": [
+        "gacui",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": "-",
+          "name": "GacUI 组件",
+          "selected": false,
+          "path": [
+            "gacui",
+            "components",
+            "home"
+          ],
+          "subNodes": [
+            {
+              "icon": "-",
+              "name": "组合",
+              "selected": false,
+              "path": [
+                "gacui",
+                "components",
+                "compositions",
+                "home"
+              ],
+              "subNodes": [
+                {
+                  "icon": " ",
+                  "name": "<Bounds>",
+                  "selected": false,
+                  "path": [
+                    "gacui",
+                    "components",
+                    "compositions",
+                    "bounds"
+                  ]
+                },
+                {
+                  "icon": " ",
+                  "name": "<Stack> and <StackItem>",
+                  "selected": false,
+                  "path": [
+                    "gacui",
+                    "components",
+                    "compositions",
+                    "stack"
+                  ]
+                },
+                {
+                  "icon": " ",
+                  "name": "<Flow> and <Flow>",
+                  "selected": false,
+                  "path": [
+                    "gacui",
+                    "components",
+                    "compositions",
+                    "flow"
+                  ]
+                },
+                {
+                  "icon": " ",
+                  "name": "<Table>, <Cell>, <RowSplitter> and <ColumnSplitter>",
+                  "selected": false,
+                  "path": [
+                    "gacui",
+                    "components",
+                    "compositions",
+                    "table"
+                  ]
+                },
+                {
+                  "icon": "-",
+                  "name": "重复组合",
+                  "selected": true,
+                  "path": [
+                    "gacui",
+                    "components",
+                    "compositions",
+                    "repeat"
+                  ],
+                  "subNodes": [
+                    {
+                      "icon": " ",
+                      "name": "<RepeatStack> and <RepeatFlow>",
+                      "selected": false,
+                      "path": [
+                        "gacui",
+                        "components",
+                        "compositions",
+                        "repeat_nonvirtual"
+                      ]
+                    },
+                    {
+                      "icon": "+",
+                      "name": "虚拟重复组合",
+                      "selected": false,
+                      "path": [
+                        "gacui",
+                        "components",
+                        "compositions",
+                        "repeat_virtual"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "icon": " ",
+                  "name": "<SharedSizeRoot> and <SharedSizeItem>",
+                  "selected": false,
+                  "path": [
+                    "gacui",
+                    "components",
+                    "compositions",
+                    "sharedsize"
+                  ]
+                },
+                {
+                  "icon": " ",
+                  "name": "<SideAligned>",
+                  "selected": false,
+                  "path": [
+                    "gacui",
+                    "components",
+                    "compositions",
+                    "sidealigned"
+                  ]
+                },
+                {
+                  "icon": " ",
+                  "name": "<PartialView>",
+                  "selected": false,
+                  "path": [
+                    "gacui",
+                    "components",
+                    "compositions",
+                    "partialview"
+                  ]
+                },
+                {
+                  "icon": "+",
+                  "name": "响应式设计系列",
+                  "selected": false,
+                  "path": [
+                    "gacui",
+                    "components",
+                    "compositions",
+                    "responsive"
+                  ]
+                },
+                {
+                  "icon": " ",
+                  "name": "处理输入事件",
+                  "selected": false,
+                  "path": [
+                    "gacui",
+                    "components",
+                    "compositions",
+                    "events"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": true,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "重复组合",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "GuiRepeatCompositionBase"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " is the base class of all repeat compositions,\n            which takes an item template and an item source,\n            displays items in the item source using the item template,\n            and maintain the order automatically when items in the item source are add/remove/change.\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            There are two kinds of repeat compositions:\n            "
+          },
+          {
+            "kind": "List",
+            "ordered": false,
+            "items": [
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GuiNonVirtialRepeatCompositionBase"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ":\n                    Create and maintain instances of item template for all items.\n                    "
+                  },
+                  {
+                    "kind": "List",
+                    "ordered": false,
+                    "items": [
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "PageLink",
+                            "href": "/gacui/components/compositions/repeat_nonvirtual.html",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "<RepeatStack/>"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "PageLink",
+                            "href": "/gacui/components/compositions/repeat_nonvirtual.html",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "<RepeatFlow/>"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GuiVirtialRepeatCompositionBase"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ":\n                    Create and maintain instances of item template for only visible items.\n                    Visible items mean items that are in the area of this composition,\n                    all items that are scrolled out will get their instance of item template released from the memory,\n                    and recreate when they are scrolled in again.\n                    "
+                  },
+                  {
+                    "kind": "List",
+                    "ordered": false,
+                    "items": [
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "PageLink",
+                            "href": "/gacui/components/compositions/repeat_virtual_freeheight.html",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "<RepeatFreeHeightItem/>"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "PageLink",
+                            "href": "/gacui/components/compositions/repeat_virtual_fixedheight.html",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "<RepeatFixedHeightItem/>"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "PageLink",
+                            "href": "/gacui/components/compositions/repeat_virtual_fixedheightmc.html",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "<RepeatFixedHeightMultiColumnItem/>"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "PageLink",
+                            "href": "/gacui/components/compositions/repeat_virtual_fixedsizemc.html",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "<RepeatFixedSizeMultiColumnItem/>"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "ItemSource 属性",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                A valid object to assign to the "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "ItemSource"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " should be a "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "system::Enumerable^"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n                Here are built-in interfaces that inherits from "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "system::Enumerable"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ":\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "system::ReadonlyList"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "system::List"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "system::ObservableList"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                在 "
+              },
+              {
+                "kind": "PageLink",
+                "href": "/home/registered/vlppreflection.html",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "本页"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                you could find C++ class names for these interfaces.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                在 "
+              },
+              {
+                "kind": "PageLink",
+                "href": "/workflow/lang/type.html#Collection-types",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "本页"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                you could find "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Workflow"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " syntax for these types.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                Values in the collection must match "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "<ref.Parameter/>"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                of the "
+              },
+              {
+                "kind": "PageLink",
+                "href": "/gacui/xmlres/tag_instance.html",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "instance"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                that is specified in the "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "ItemTemplate"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " property.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                If there are\n                "
+              },
+              {
+                "kind": "PageLink",
+                "href": "/gacui/xmlres/instance/properties.html#Control-Item-Template-func-data-Object-TEMPLATE-CLASS-",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "multiple instances"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                在该 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "ItemTemplate"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " property,\n                the first one whose "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "<ref.Parameter/>"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " is able to accept the value will be selected for the item in the collection.\n                If none of them can,\n                an exception will raise.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                要创建一个 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "system::Enumerable^"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 在 C++ 中，\n                可以调用 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "vl::reflection::description::IValueEnumerable::Create"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "，\n                或者调用 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "vl::reflection::description::BoxParameter"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 对某个 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "vl::collections::IEnumerable<T>&"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                要创建一个 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "system::List^"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 在 C++ 中，\n                可以调用 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "vl::reflection::description::IValueList::Create"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "，\n                或者调用 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "vl::reflection::description::BoxParameter"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 对某个 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "vl::collections::IList<T>&"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                该 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "BoxParameter"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 函数会创建对 C++ 集合的引用，\n                该 C++ 集合与所创建对象共享集合中的项，\n                因此可以通过其中一个观察到另一个的变化。\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Binding system::ObservableList to ItemSource property",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                如果某个 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "ObservableList"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " is assigned to the "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "ItemSource"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " property,\n                when items in the list changed,\n                associated instance of item templates will be automatically created or destroyed.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                要创建一个 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "system::ObservableList^"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 在 C++ 中，\n                可以调用 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "vl::reflection::description::IValueObservableList::Create"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ",\n                or use "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "vl::collections::ObservableList<T>"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " as your collection class and call the "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "BoxParameter"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " function on it.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                该 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "BoxParameter"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 函数会创建对 C++ 集合的引用，\n                该 C++ 集合与所创建对象共享集合中的项，\n                因此可以通过其中一个观察到另一个的变化。\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "ItemTemplate property",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                该 "
+              },
+              {
+                "kind": "PageLink",
+                "href": "/gacui/xmlres/instance/properties.html#Control-Item-Template-func-data-Object-TEMPLATE-CLASS-",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "ItemTemplate"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                property accepts one or a list of "
+              },
+              {
+                "kind": "PageLink",
+                "href": "/gacui/xmlres/tag_instance.html",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "instances"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                in their full names or XML names.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                Instances here are required to have exactly one "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "<ref.Parameter/>"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                as the only argument in their constructor.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                When "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "ItemSource"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " is being assigned,\n                or when "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "ItemSource"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 是一个 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "system::ObservableList^"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " and new items are inserted to the list,\n                instances in "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "ItemTemplate"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " will be tested one by one to see if its constructor argument could accept the item in the list.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                The first instance of a successful test will be created with the item in the list,\n                with "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "MinSizeLimitation"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 设置为 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "LimitToElementAndChildren"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                以及 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Margin"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 设置为 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "left:0 top:0 right:0 bottom:0"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Context property",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Context"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " property of any living "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "ItemTemplate"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " instance will always sync to "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Context"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " property of the repeat composition.\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "<RepeatStack/>"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 以及 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "<RepeatFlow/>"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "\n            are "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "<Stack/>"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 以及 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "<Flow/>"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 使用数据绑定。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Sample",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                请查看\n                "
+              },
+              {
+                "kind": "PageLink",
+                "href": "https://github.com/vczh-libraries/Release/blob/master/Tutorial/GacUI_ControlTemplate/BlackSkin/UI/FullControlTest/RepeatTabPage.xml",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    the demo for "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "<RepeatStack/>"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 以及 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "<RepeatFlow/>"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                and its\n                "
+              },
+              {
+                "kind": "PageLink",
+                "href": "https://github.com/vczh-libraries/Release/blob/master/Tutorial/GacUI_ControlTemplate/BlackSkin/UI/FullControlTest/RepeatComponents.xml",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    sample item templates\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                .\n            "
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Gaclib -- 主页 -- MVVM 与数据绑定</title>
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/global.css" />
+<link rel="stylesheet" type="text/css" href="/article.css" />
+<link rel="stylesheet" type="text/css" href="/navigation.css" />
+<link rel="stylesheet" type="text/css" href="/category.css" />
+<script src="/scripts/rootView.js"></script>
+<script src="/scripts/homeView.js"></script>
+<script src="/scripts/homeCategoryArticleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "gacui",
+    "mvvm"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-HomeView"
+  },
+  {
+    "targetObject": "homeViewContainer",
+    "viewName": "Gaclib-HomeCategoryArticleView"
+  }
+];
+  const activeButton = "Home";
+  const activeCategory = "GacUI";
+  const homeArticle = {
+  "index": false,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "欢迎使用 Gaclib！",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            Gaclib 是一个 GPU 加速的 C++ 用户界面库。\n            它灵活且高度可定制，内置了大量布局与控件，\n            并支持控件模板、列表项模板、MVVM、本地化、动画等特性。\n            更重要的是，即使界面非常复杂，在交互时依然拥有良好的性能。\n            你可以在这里找到它："
+          },
+          {
+            "kind": "PageLink",
+            "href": "https://github.com/vczh-libraries/Release",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "github"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "。\n            本库提供了许多实用的功能。\n            如果你不需要全部特性，\n            可以只使用发布版 C++ 文件中的一部分，以减小可执行文件的体积。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Image",
+            "src": "/resources/home/xml_HelloWorld.png"
+          }
+        ]
+      }
+    ]
+  }
+};
+  const categoryArticle = {
+  "index": false,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "MVVM 与数据绑定",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "脚本：定义视图模型接口"
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Program",
+            "code": "module script;\n\nnamespace helloworld\n{\n    interface IViewModel\n    {\n        prop Title : string {GetTitle, SetTitle : TitleChanged}\n        func Submit() : void;\n    }\n}",
+            "language": "Xml"
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "UI：把视图模型绑定到文本框与按钮"
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Program",
+            "code": "<Instance ref.Class=\"helloworld::MainWindow\">\n    <ref.Parameter Name=\"ViewModel\" Class=\"helloworld::IViewModel\"/>\n    <Window ref.Name=\"self\" Text=\"Hello, world!\">\n        <Table CellPadding=\"5\" AlignmentToParent=\"left:0 top:0 right:0 bottom:0\">\n            <att.Rows>\n                <CellOption>composeType:MinSize</CellOption>\n                <CellOption>composeType:Percentage percentage:1.0</CellOption>\n                <CellOption>composeType:MinSize</CellOption>\n            </att.Rows>\n            <att.Columns>\n                <CellOption>composeType:MinSize</CellOption>\n                <CellOption>composeType:Percentage percentage:1.0</CellOption>\n            </att.Columns>\n\n            <Cell Site=\"row:0 column:0\">\n                <SolidLabel Text=\"Title: \" Font-bind=\"self.Font\"/>\n            </Cell>\n            <Cell Site=\"row:0 column:1\">\n                <SinglelineTextBox Text-bind=\"ViewModel.Title\">\n                    <att.BoundsComposition-set\n                        AlignmentToParent=\"left:0 top:0 right:0 bottom:0\"\n                        PreferredMinSize=\"x:0 y:24\"/>\n                </SinglelineTextBox>\n            </Cell>\n            <Cell Site=\"row:2 column:0 columnSpan:2\">\n                <Button Text=\"Submit\" ev.Clicked-eval=\"ViewModel.Submit()\">\n                    <att.BoundsComposition-set AlignmentToParent=\"left:-1 top:0 right:0 bottom:0\"/>\n                </Button>\n            </Cell>\n        </Table>\n    </Window>\n</Instance>",
+            "language": "Xml"
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "应用：实现视图模型"
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Program",
+            "code": "class ViewModel : public Object, public virtual helloworld::IViewModel\n{\nprivate:\n    WString title;\n\npublic:\n\n    WString GetTitle()override\n    {\n        return title;\n    }\n\n    void SetTitle(const WString& value)override\n    {\n        title = value;\n        TitleChanged();\n    }\n\n    void Submit()override\n    {\n        // do something\n    }\n};\n\nvoid GuiMain()\n{\n    {\n        FileStream fileStream(L\"MVVM.bin\", FileStream::ReadOnly);\n        GetResourceManager()->LoadResourceOrPending(fileStream);\n    }\n    auto viewModel = Ptr(new ViewModel);\n    auto window = new helloworld::MainWindow(viewModel);\n    window->MoveToScreenCenter();\n    GetApplication()->Run(window);\n    delete window;\n}",
+            "language": "Xml"
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.activeButton"] = activeButton;
+  window["MVC-Resources.activeCategory"] = activeCategory;
+  window["MVC-Resources.homeArticle"] = homeArticle;
+  window["MVC-Resources.categoryArticle"] = categoryArticle;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

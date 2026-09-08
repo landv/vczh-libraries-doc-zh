@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title><TextListItemTemplate> -- GPU Accelerated C++ User Interface (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "gacui",
+    "components",
+    "itemplates",
+    "textlistitemtemplate"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "GacUI",
+      "selected": false,
+      "path": [
+        "gacui",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": "-",
+          "name": "GacUI 组件",
+          "selected": false,
+          "path": [
+            "gacui",
+            "components",
+            "home"
+          ],
+          "subNodes": [
+            {
+              "icon": "-",
+              "name": "项模板",
+              "selected": false,
+              "path": [
+                "gacui",
+                "components",
+                "itemplates",
+                "home"
+              ],
+              "subNodes": [
+                {
+                  "icon": " ",
+                  "name": "<ListItemTemplate>",
+                  "selected": false,
+                  "path": [
+                    "gacui",
+                    "components",
+                    "itemplates",
+                    "listitemtemplate"
+                  ]
+                },
+                {
+                  "icon": " ",
+                  "name": "<TextListItemTemplate>",
+                  "selected": true,
+                  "path": [
+                    "gacui",
+                    "components",
+                    "itemplates",
+                    "textlistitemtemplate"
+                  ]
+                },
+                {
+                  "icon": " ",
+                  "name": "<TreeItemTemplate>",
+                  "selected": false,
+                  "path": [
+                    "gacui",
+                    "components",
+                    "itemplates",
+                    "treeitemtemplate"
+                  ]
+                },
+                {
+                  "icon": " ",
+                  "name": "<GridVisualizerTemplate>",
+                  "selected": false,
+                  "path": [
+                    "gacui",
+                    "components",
+                    "itemplates",
+                    "gridvisualizertemplate"
+                  ]
+                },
+                {
+                  "icon": " ",
+                  "name": "<GridEditorTemplate>",
+                  "selected": false,
+                  "path": [
+                    "gacui",
+                    "components",
+                    "itemplates",
+                    "grideditortemplate"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": true,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "<TextListItemTemplate>",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "List",
+            "ordered": false,
+            "items": [
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "<TextListItemTemplate/>"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "List",
+                    "ordered": false,
+                    "items": [
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "C++/Workflow"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": ": (vl::)presentation::templates::GuiTextListItemTemplate*"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "<TextListItemTemplate/>"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 派生自 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "<ListItemTemplate/>"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "。\n除其基类中的属性外，它还具有以下属性：\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Input Property",
+        "content": [
+          {
+            "kind": "Topic",
+            "title": "TextColor",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    该属性由列表控件赋值。\n它来自 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "TextColor"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 的属性 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "<TextListTemplate/>"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " ，它应用于该列表控件。\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    列表控件不会跟踪 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "TextColor"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 的属性 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "<TextListTemplate/>"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "的变化。\n如果它被更改，\n                    "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "TextColor"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 属性不会随项模板自动更新。\n但是当一个列表控件被分配了新的控件模板时，\n                    "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "TextColor"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 属性也会随项模板一起更新。\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "Checked",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    This property is assigned by the list control.\n                    When the item is checked,\n                    this property becomes "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "true"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ".\n                    When the item is unchecked,\n                    this property becomes "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "false"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ".\n                "
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Sample",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "源代码： "
+                      },
+                      {
+                        "kind": "PageLink",
+                        "href": "https://github.com/vczh-libraries/Release/blob/master/Tutorial/GacUI_Controls/ColorPicker/UI/Resource.xml",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "Tutorial/GacUI_Controls/ColorPicker/UI/Resource.xml"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Image",
+                        "src": "/gacui/kb_itemplates_colorpicker.gif"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

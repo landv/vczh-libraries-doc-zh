@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Cross XML Resource References -- GPU Accelerated C++ User Interface (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "gacui",
+    "advanced",
+    "cxrr"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "GacUI",
+      "selected": false,
+      "path": [
+        "gacui",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": "-",
+          "name": "高级主题",
+          "selected": false,
+          "path": [
+            "gacui",
+            "advanced",
+            "home"
+          ],
+          "subNodes": [
+            {
+              "icon": " ",
+              "name": "与 C++ 视图模型的互操作",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "vm"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "数据绑定",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "bindings"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "动画",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "animations"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "本地化",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "localization"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "跨 XML 资源引用",
+              "selected": true,
+              "path": [
+                "gacui",
+                "advanced",
+                "cxrr"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "ALT 序列与控件焦点",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "alt"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "TAB 与控件焦点",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "tab"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "创建新的列表控件",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "impllistcontrol"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "将 GacUI 移植到其它平台",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "implosprovider"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": true,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "跨 XML 资源引用",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            A GacUI XML Resource could\n            "
+          },
+          {
+            "kind": "PageLink",
+            "href": "/gacui/xmlres/cxrr.html",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                在另一个 XML 中使用某些资源\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "。\n            资源有 3 种类型：\n            "
+          },
+          {
+            "kind": "List",
+            "ordered": false,
+            "items": [
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "资源文件：可以通过……访问 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "import-res://RESOURCE-NAME/..."
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 在该 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "-uri 绑定"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "."
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "编译为 Workflow 的对象：可以通过它们生成的类名或接口名访问。"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "其它内容：无法从另一个 XML 访问。"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "XML Resource Header",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                为了让一个 GacUI XML 资源能够依赖另一个资源、或被另一个资源依赖，\n                需要在……中加入一个头部 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GacGenConfig/Metadata"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 像这样：\n                "
+              },
+              {
+                "kind": "Program",
+                "code": "<Resource>\n  <Folder name=\"GacGenConfig\">\n    <Xml name=\"Metadata\">\n      <ResourceMetadata Name=\"EditorRibbon\" Version=\"1.0\">\n        <Dependencies>\n          <Resource Name=\"EditorBase\"/>\n        </Dependencies>\n      </ResourceMetadata>\n    </Xml>\n    ...\n  </Folder>\n  ...\n</Resource>"
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "/ResourceMetadata/@Name"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：\n                        资源的名称。\n                        加载到应用程序中的所有资源要么具有唯一名称，要么没有名称。\n                        如果某个资源要依赖其它资源或被其它资源依赖，\n                        它就必须有名称。\n                    "
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "/ResourceMetadata/@Version"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：\n                        唯一合法的值是 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "1.0"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "。\n                        它与 GacUI XML 资源编译器（GacGen.exe）绑定。\n                        为确保所有被依赖的资源都使用兼容的编译器版本编译，\n                        一个资源只能依赖版本完全相同的另一个资源。\n                    "
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "/ResourceMetadata/Dependencies/Resource/@Name"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：\n                        这里列出了当前资源所依赖的所有资源。\n                        名称必须与它们元数据中的……匹配 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "/ResourceMetadata/@Name"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " （元数据中的名称）。\n                    "
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Compile Resource with Dependencies",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "PageLink",
+                "href": "https://github.com/vczh-libraries/Release/tree/master/Tools",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GacBuild.ps1"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                是正确编译带依赖关系的资源的唯一工具。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                你需要一个名为……的文件 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GacUI.xml"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ":\n                "
+              },
+              {
+                "kind": "Program",
+                "code": "<GacUI/>"
+              },
+              {
+                "kind": "Text",
+                "text": "\n                GacUI XML 资源及其所有依赖都必须放在包含……的文件夹中 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GacUI.xml"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "。\n                资源文件可以放在任意层级的子文件夹中。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                然后你可以调用 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GacBuild.ps1 -FileName path/to/GacUI.xml"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 在……中 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "PowerShell"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "。\n                包含……的文件夹中的所有资源文件 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GacUI.xml"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 都会按依赖顺序被找到并编译。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GacBuild.ps1"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 强制进行增量构建。\n                如果某个资源没有改变，\n                且它的所有依赖也没有改变，\n                那么该资源将不会被重新编译。\n                你可以使用 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GacClear.ps1 -FileName path/to/GacUI.xml"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 来清除所有缓存，\n                下次 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GacBuild.ps1"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 会重新编译所有资源文件。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                生成的资源二进制、Workflow 二进制与 C++ 代码会被放到……位置\n                "
+              },
+              {
+                "kind": "PageLink",
+                "href": "/gacui/xmlres/cgc.html",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    specified in each GacUI XML Resource\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Loading Resource Dependencies in your C++ Application",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "vl::presentation::GetResourceManager()->LoadResourceOrPending(fileStream[, errors][, usage]);"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                是加载已编译资源二进制的唯一函数：\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "fileStream"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：\n                        它可以是任意 "
+                      },
+                      {
+                        "kind": "PageLink",
+                        "href": "/vlppos/using-streams.html",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "vl::stream::IStream"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "，\n                        你可以使用 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "FileStream"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 在此处从文件加载资源。\n                    "
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "errors"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：\n                        如果资源无法加载，\n                        错误会存储在该列表中。\n                        调用此函数后错误列表为空，表示资源加载成功。\n                        如果 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "errors"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 参数没有被使用，\n                        那么只要出现任何错误，该函数就会崩溃。\n                    "
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "usage"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：\n                        它可以是 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "InstanceClass"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 如果你把所有 Workflow 二进制都包含在此资源文件中，\n                        而 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "DataOnly"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 则相反。\n                        包含 Workflow 二进制的资源二进制可以通过……生成\n                        "
+                      },
+                      {
+                        "kind": "PageLink",
+                        "href": "/gacui/xmlres/cgc.html",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "res://GacGenCppConfig/ResX86/Resource"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " 以及 "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "res://GacGenCppConfig/ResX/Resource"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "Workflow 二进制的内容在 x86 与 x64 下是不同的"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "，\n                        你需要加载正确的那一个。\n                    "
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                通常，\n                如果你使用带生成 C++ 文件的编译资源而非 Workflow 二进制，\n                你只需要第一个参数。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                你无需担心加载资源文件的顺序，\n                该函数会处理这一切，\n                只需为所有资源调用 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "LoadResourceOrPending"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 即可。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                Calling "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "LoadResourceOrPending"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 在没有准备好全部依赖资源的情况下\n                会得到延迟加载。\n                这样的资源会在所有依赖资源加载完成之后被自动加载。\n                你可以调用 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GetResource"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 来查看某个资源是否已经加载。\n                如果它返回 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "null"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " but "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "LoadResourceOrPending"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " （成功），\n                则意味着某些依赖资源尚未准备好，\n                加载被延迟了。\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Get Rid of Resource Files",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                通过使用\n                "
+              },
+              {
+                "kind": "PageLink",
+                "href": "/gacui/xmlres/cgc.html",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "CppResource"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 或 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "CppCompressed"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                在……中 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "res://GacGenConfig/Cpp"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "，\n                每个 GacUI XML 资源都会生成多个 cpp 文件。\n                把这些 cpp 文件链接到你的工程中，\n                资源二进制就会被编译进你的可执行文件。\n                当应用程序启动时，\n                所有资源都会在……之前被正确加载 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GuiMain"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Using Resource in Dependedcies",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                如果存在一个资源对象 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "res://path/to/the/resource"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                in a GacUI XML Resource called "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "BaseResource"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "，\n                依赖它的另一个 GacUI XML 资源可以使用\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "import-res://BaseResource/path/to/the/resource"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "。\n                这类资源路径可以用于 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "-uri 绑定"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "，\n                或用于 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "ResolveResource"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 方法（位于所有……中）\n                "
+              },
+              {
+                "kind": "PageLink",
+                "href": "/gacui/xmlres/instance/root_instance.html",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "root UI instance"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                如果某个资源被编译为 Workflow 类或实例，\n                直接使用类名或接口名即可。\n                但如果该资源不在依赖列表中\n                （"
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "/ResourceMetadata/Dependencies/Resource/@Name"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "），\n                那么在运行……时，将找不到该类名或接口名 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GacBuild.ps1"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "，\n                会产生错误，资源无法编译。\n            "
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

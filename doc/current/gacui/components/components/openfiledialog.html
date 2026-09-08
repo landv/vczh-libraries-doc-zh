@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title><OpenFileDialog> -- GPU Accelerated C++ User Interface (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "gacui",
+    "components",
+    "components",
+    "openfiledialog"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "GacUI",
+      "selected": false,
+      "path": [
+        "gacui",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": "-",
+          "name": "GacUI 组件",
+          "selected": false,
+          "path": [
+            "gacui",
+            "components",
+            "home"
+          ],
+          "subNodes": [
+            {
+              "icon": "-",
+              "name": "组件",
+              "selected": false,
+              "path": [
+                "gacui",
+                "components",
+                "components",
+                "home"
+              ],
+              "subNodes": [
+                {
+                  "icon": " ",
+                  "name": "<MessageDialog>",
+                  "selected": false,
+                  "path": [
+                    "gacui",
+                    "components",
+                    "components",
+                    "messagedialog"
+                  ]
+                },
+                {
+                  "icon": " ",
+                  "name": "<ColorDialog>",
+                  "selected": false,
+                  "path": [
+                    "gacui",
+                    "components",
+                    "components",
+                    "colordialog"
+                  ]
+                },
+                {
+                  "icon": " ",
+                  "name": "<FontDialog>",
+                  "selected": false,
+                  "path": [
+                    "gacui",
+                    "components",
+                    "components",
+                    "fontdialog"
+                  ]
+                },
+                {
+                  "icon": " ",
+                  "name": "<OpenFileDialog>",
+                  "selected": true,
+                  "path": [
+                    "gacui",
+                    "components",
+                    "components",
+                    "openfiledialog"
+                  ]
+                },
+                {
+                  "icon": " ",
+                  "name": "<SaveFileDialog>",
+                  "selected": false,
+                  "path": [
+                    "gacui",
+                    "components",
+                    "components",
+                    "savefiledialog"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": true,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "<OpenFileDialog>",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "<OpenFileDialog/>"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 显示操作系统原生的打开文件对话框。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Input / Output Properties",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                设置这些属性后再调用 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "ShowDialog"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 来创建一个默认的用户输入。\n                这些属性将在调用 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "ShowDialog"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 如果用户更改了默认输入。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "FileName",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    此属性定义所选文件的完整路径。\n                    如果 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "ShowDialog"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " returns "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "false"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "，\n则该属性的值未定义。\n                "
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Input Properties",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                设置这些属性后再调用 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "ShowDialog"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " ，用来定义对话框的内容。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "筛选",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    此属性通过通配符定义文件过滤器。\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    过滤器中的模式名与通配符用“|”分隔。\n                    例如，\n                    用于显示文本文件或所有文件的过滤器通常写成：\n                    "
+                  },
+                  {
+                    "kind": "Program",
+                    "code": "Text Files (*.txt)|*.txt|All Files (*.*)|*.*"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "\n                    该过滤器定义了两个过滤条件：\n                    "
+                  },
+                  {
+                    "kind": "List",
+                    "ordered": false,
+                    "items": [
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Text Files (*.txt)"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：其通配符是 *.txt"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "All Files (*.*)"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：其通配符是 *.*"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "FilterIndex",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    此属性定义默认选中的过滤器，\n                    从 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "0"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ".\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "EnabledPreview",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    将该属性设置为 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "true"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 以启用预览区域。\n                    当选中文件时，\n                    其内容会显示在预览区域中。\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "标题",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    此属性定义对话框的标题。\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "Directory",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    此属性定义对话框的默认文件夹。\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "DefaultExtension",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    此属性定义对话框的默认扩展名。\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    如果通过手动输入文件名来选择文件，\n                    那么当没有输入文件扩展名时， "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "DefaultExtension"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 会被追加到文件名之后。\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "IMPORTANT"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "：\n                    （……的）值 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "DefaultExtension"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 属性不包含“.”字符。\n                    例如，\n                    文本文件的扩展名是 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "txt"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "，而不是 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": ".txt"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ".\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "Options",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    此属性的值必须是下列值之一，或多个值组合而成：\n                    "
+                  },
+                  {
+                    "kind": "List",
+                    "ordered": false,
+                    "items": [
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "FileDialogAllowMultipleSelection"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：允许多选。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "FileDialogFileMustExist"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：防止用户选择不存在的文件。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "FileDialogShowReadOnlyCheckBox"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": ": Show the \"Read Only\" check box."
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "FileDialogDereferenceLinks"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：解析链接文件。 "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "FileName"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " 以及 "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "FileNames"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " 将包含实际文件的完整路径。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "FileDialogShowNetworkButton"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：显示“网络”按钮，允许选择网络上的对象。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "FileDialogPromptCreateFile"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：如果要创建新文件则进行提示。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "FileDialogPromptOverwriteFile"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：如果要覆盖已有文件则进行提示。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "FileDialogDirectoryMustExist"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：防止用户选择不存在的目录。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "FileDialogAddToRecent"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：把用户选中的文件添加到“最近”目录。"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "ShowDialog Method",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                调用此函数以显示一个对话框，\n                并返回 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "true"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 如果选中了文件。\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Output Properties",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                在调用……之后读取这些属性 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "ShowDialog"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 用于用户输入。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "FileNames",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    此属性返回所有选中文件的完整路径。\n                    如果 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "ShowDialog"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " returns "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "false"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "，\n则该属性的值未定义。\n                "
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

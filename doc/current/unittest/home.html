@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Unit Testing -- GPU Accelerated C++ User Interface (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "unittest",
+    "home"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "+",
+      "name": "Gaclib 文档",
+      "selected": false,
+      "path": [
+        "home"
+      ]
+    },
+    {
+      "icon": "+",
+      "name": "Vlpp",
+      "selected": false,
+      "path": [
+        "vlpp",
+        "home"
+      ]
+    },
+    {
+      "icon": "+",
+      "name": "Vlpp OS",
+      "selected": false,
+      "path": [
+        "vlppos",
+        "home"
+      ]
+    },
+    {
+      "icon": "+",
+      "name": "Vlpp Regex",
+      "selected": false,
+      "path": [
+        "vlppregex",
+        "home"
+      ]
+    },
+    {
+      "icon": "+",
+      "name": "Vlpp Reflection",
+      "selected": false,
+      "path": [
+        "vlppreflection",
+        "home"
+      ]
+    },
+    {
+      "icon": "+",
+      "name": "Vlpp Parser",
+      "selected": false,
+      "path": [
+        "vlppparser",
+        "home"
+      ]
+    },
+    {
+      "icon": "+",
+      "name": "Vlpp Parser2",
+      "selected": false,
+      "path": [
+        "vlppparser2",
+        "home"
+      ]
+    },
+    {
+      "icon": "+",
+      "name": "Workflow 脚本",
+      "selected": false,
+      "path": [
+        "workflow",
+        "home"
+      ]
+    },
+    {
+      "icon": "+",
+      "name": "GacUI",
+      "selected": false,
+      "path": [
+        "gacui",
+        "home"
+      ]
+    },
+    {
+      "icon": "+",
+      "name": "使用 Coding Agent",
+      "selected": false,
+      "path": [
+        "coding-agent",
+        "home"
+      ]
+    },
+    {
+      "icon": "-",
+      "name": "单元测试",
+      "selected": true,
+      "path": [
+        "unittest",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": " ",
+          "name": "使用单元测试框架",
+          "selected": false,
+          "path": [
+            "unittest",
+            "vlpp"
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "在单元测试框架中运行 GacUI",
+          "selected": false,
+          "path": [
+            "unittest",
+            "gacui"
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": true,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "单元测试",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "在命名空间 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "::vl::unittest"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": ","
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            An easy-to-use unit test framework.\n            You are able to organize test cases in nested categories,\n            and either run all the way to the end,\n            or tell the IDE to stop at the first failed test assertion.\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            Calling "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "UnitTest::RunAndDisposeTests"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " to start a unit test CLI application and the following CLI arguments are supported by default:\n            "
+          },
+          {
+            "kind": "List",
+            "ordered": false,
+            "items": [
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "/D"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "：调试模式，遇到第一个错误即崩溃。"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "/R"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "：发布模式，会打印所有崩溃的测试及其失败信息。"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "/C"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "：LLM 模式，会一直执行到第一个崩溃的测试，打印其失败信息后退出。"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "/F:FileName.cpp"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ": Only run test cases defined in this file.\n                    Multiple instances are allowed at the same time to execute a specified group of files.\n                    Wildcards are supported, e.g., "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "/F:Test_My*.cpp"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ".\n                    "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "/F"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " only filters test files by file names, file path is not considered.\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "/D"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": ", "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "/R"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 以及 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "/C"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 是互斥的。如果都没有提供，在 Windows 上 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "/D"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " is activated if a debugger is attached to the process from the beginning.\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Mocking DateTime",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "vl::InjectDateTimeImpl"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 可用于控制 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "vl::DateTime"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "。\n                该函数会堆叠所有注入，每个注入都可以通过实现 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "vl::feature_injection::IFeatureImpl"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "vl::EjectDateTimeImpl"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 可用于撤销 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "vl::InjectDateTimeImpl"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n                Passing "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "nullptr"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 来取消所有 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "vl::InjectDateTimeImpl"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " calls.\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Mocking Locale",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "vl::InjectLocaleImpl"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 可用于控制 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "vl::Locale"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "。\n                该函数会堆叠所有注入，每个注入都可以通过实现 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "vl::feature_injection::IFeatureImpl"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "vl::EjectLocaleImpl"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 可用于撤销 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "vl::InjectLocaleImpl"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n                Passing "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "nullptr"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 来取消所有 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "vl::InjectLocaleImpl"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " calls.\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Mocking File, Folder and FileStream",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "vl::filesystem::InjectFileSystemImpl"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 可用于控制 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "vl::filesystem::File"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ", "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "vl::filesystem::Folder"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "，并且 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "vl::stream::FileStream"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "。\n                该函数会堆叠所有注入，每个注入都可以通过实现 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "vl::feature_injection::IFeatureImpl"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "IFileSystemImpl::GetFileStreamImpl"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 控制……的方式 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "FileStream"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " access a file from a given file path.\n                If virtual files are added to the file system, this function should take care of them.\n                This function can redirect the call to the previous implementation for files that are not added by the current implementation.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "vl::filesystem::EjectFileSystemImpl"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 可用于撤销 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "vl::filesystem::InjectFileSystemImpl"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n                Passing "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "nullptr"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 来取消所有 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "vl::filesystem::InjectFileSystemImpl"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " calls.\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Ordinary Testing",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                The unit test framework is a CLI application.\n                You can do any assertion you want in the "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "TEST_FILE -> {TEST_CATEGORY}* -> TEST_CASE"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " structure.\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Testing GacUI Application",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                There are some additional features for testing a GacUI application.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                You can simulate user interaction, including keyboard, mouse, typing, etc.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                You can access controls for assertion even if they are not exposed in "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "public"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " members.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                You can log the whole UI into multiple JSON files.\n                The file organization is handled by the unit test framework,\n                and you are able to run a snapshot viewer to render these snapshots for inspection.\n                The snapshot viewer is offered along with the source code as a window class,\n                you need to write a simple "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GuiMain"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " to run the window offering the snapshot folder path.\n            "
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

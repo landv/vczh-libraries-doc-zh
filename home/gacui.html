@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Gaclib -- 主页 -- GacUI！</title>
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/global.css" />
+<link rel="stylesheet" type="text/css" href="/article.css" />
+<link rel="stylesheet" type="text/css" href="/navigation.css" />
+<link rel="stylesheet" type="text/css" href="/category.css" />
+<script src="/scripts/rootView.js"></script>
+<script src="/scripts/homeView.js"></script>
+<script src="/scripts/homeCategoryFeatureView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": "gacui"
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-HomeView"
+  },
+  {
+    "targetObject": "homeViewContainer",
+    "viewName": "Gaclib-HomeCategoryFeatureView"
+  }
+];
+  const activeButton = "Home";
+  const activeCategory = "GacUI";
+  const homeArticle = {
+  "index": false,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "欢迎使用 Gaclib！",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            Gaclib 是一个 GPU 加速的 C++ 用户界面库。\n            它灵活且高度可定制，内置了大量布局与控件，\n            并支持控件模板、列表项模板、MVVM、本地化、动画等特性。\n            更重要的是，即使界面非常复杂，在交互时依然拥有良好的性能。\n            你可以在这里找到它："
+          },
+          {
+            "kind": "PageLink",
+            "href": "https://github.com/vczh-libraries/Release",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "github"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "。\n            本库提供了许多实用的功能。\n            如果你不需要全部特性，\n            可以只使用发布版 C++ 文件中的一部分，以减小可执行文件的体积。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Image",
+            "src": "/resources/home/xml_HelloWorld.png"
+          }
+        ]
+      }
+    ]
+  }
+};
+  const featureList = {
+  "title": "GacUI！",
+  "features": [
+    {
+      "image": "/resources/home/cat_gacui_rich.png",
+      "href": "gacui/rich.html",
+      "article": {
+        "index": false,
+        "numberBeforeTitle": false,
+        "topic": {
+          "kind": "Topic",
+          "title": "丰富的控件与灵活的布局",
+          "content": [
+            {
+              "kind": "Paragraph",
+              "content": [
+                {
+                  "kind": "Text",
+                  "text": "内置布局、控件与模板。"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "image": "/resources/home/cat_gacui_localization.png",
+      "href": "gacui/localization.html",
+      "article": {
+        "index": false,
+        "numberBeforeTitle": false,
+        "topic": {
+          "kind": "Topic",
+          "title": "本地化",
+          "content": [
+            {
+              "kind": "Paragraph",
+              "content": [
+                {
+                  "kind": "Text",
+                  "text": "以不同语言显示文本，并支持在运行时切换语言。"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "image": "/resources/home/cat_gacui_styling.png",
+      "href": "gacui/styling.html",
+      "article": {
+        "index": false,
+        "numberBeforeTitle": false,
+        "topic": {
+          "kind": "Topic",
+          "title": "样式",
+          "content": [
+            {
+              "kind": "Paragraph",
+              "content": [
+                {
+                  "kind": "Text",
+                  "text": "使用 XPath 选择器集中控制多个控件的任意属性。"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "image": "/resources/home/cat_gacui_mvvm.png",
+      "href": "gacui/mvvm.html",
+      "article": {
+        "index": false,
+        "numberBeforeTitle": false,
+        "topic": {
+          "kind": "Topic",
+          "title": "MVVM 与数据绑定",
+          "content": [
+            {
+              "kind": "Paragraph",
+              "content": [
+                {
+                  "kind": "Text",
+                  "text": "控件中的虚拟模式配合 Model-View-ViewModel，使界面易于更新、可测试且可扩展。"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ]
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.activeButton"] = activeButton;
+  window["MVC-Resources.activeCategory"] = activeCategory;
+  window["MVC-Resources.homeArticle"] = homeArticle;
+  window["MVC-Resources.featureList"] = featureList;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

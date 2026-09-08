@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title><CommonDatePicker> -- GPU Accelerated C++ User Interface (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "gacui",
+    "components",
+    "ctemplates",
+    "commondatepickerlook"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "GacUI",
+      "selected": false,
+      "path": [
+        "gacui",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": "-",
+          "name": "GacUI 组件",
+          "selected": false,
+          "path": [
+            "gacui",
+            "components",
+            "home"
+          ],
+          "subNodes": [
+            {
+              "icon": "-",
+              "name": "控件模板",
+              "selected": false,
+              "path": [
+                "gacui",
+                "components",
+                "ctemplates",
+                "home"
+              ],
+              "subNodes": [
+                {
+                  "icon": "+",
+                  "name": "<ControlTemplate>",
+                  "selected": false,
+                  "path": [
+                    "gacui",
+                    "components",
+                    "ctemplates",
+                    "ControlTemplate"
+                  ]
+                },
+                {
+                  "icon": " ",
+                  "name": "<CommonScrollBehavior>",
+                  "selected": false,
+                  "path": [
+                    "gacui",
+                    "components",
+                    "ctemplates",
+                    "commonscrollbehavior"
+                  ]
+                },
+                {
+                  "icon": " ",
+                  "name": "<CommonScrollViewLook>",
+                  "selected": false,
+                  "path": [
+                    "gacui",
+                    "components",
+                    "ctemplates",
+                    "commonscrollviewlook"
+                  ]
+                },
+                {
+                  "icon": " ",
+                  "name": "<CommonDatePicker>",
+                  "selected": true,
+                  "path": [
+                    "gacui",
+                    "components",
+                    "ctemplates",
+                    "commondatepickerlook"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": true,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "<CommonDatePickerLook>",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            这是用于实现……的辅助类 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "<DatePickerTemplate/>"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "。\n            它继承自 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "GuiTemplate"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": ".\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            此类预期按以下方式使用：\n            "
+          },
+          {
+            "kind": "Program",
+            "code": "<Instance ref.CodeBehind=\"false\" ref.Class=\"darkskin::DatePickerTemplate\" ref.Styles=\"res://DarkSkin/Style\">\n  <DatePickerTemplate ref.Name=\"self\" MinSizeLimitation=\"LimitToElementAndChildren\" Date-bind=\"look.Date\">\n    <CommonDatePickerLook ref.Name=\"look\" AlignmentToParent=\"left:0 top:0 right:0 bottom:0\" Font-bind=\"self.Font\" Date-bind=\"self.Date\" DateLocale-bind=\"self.DateLocale\" Commands-bind=\"self.Commands\">\n      <att.DateButtonTemplate>darkskin::DateButtonTemplate</att.DateButtonTemplate>\n      <att.DateTextListTemplate>darkskin::TextListTemplate</att.DateTextListTemplate>\n      <att.DateComboBoxTemplate>darkskin::ComboBoxTemplate</att.DateComboBoxTemplate>\n      <att.BackgroundColor>#2D2D30</att.BackgroundColor>\n      <att.PrimaryTextColor>#FFFFFF</att.PrimaryTextColor>\n      <att.SecondaryTextColor>#999999</att.SecondaryTextColor>\n    </CommonDatePickerLook>\n  </DatePickerTemplate>\n</Instance>"
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            这些属性预期从……传递 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "<DatePickerTemplate/>"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 到 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "<CommonDatePickerLook/>"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": ":\n            "
+          },
+          {
+            "kind": "List",
+            "ordered": false,
+            "items": [
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Commands"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "DateLocale"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Font"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "\n            These properties are expected to be bidirectional binded between "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "<DatePickerTemplate/>"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 以及 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "<CommonDatePickerLook/>"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": ":\n            "
+          },
+          {
+            "kind": "List",
+            "ordered": false,
+            "items": [
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Date"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "\n            这些属性为以下内容定义控件模板：\n            "
+          },
+          {
+            "kind": "List",
+            "ordered": false,
+            "items": [
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "DateButtonTemplate"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ": Date buttons."
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "DateTextListTemplate"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ": Month and year dropdown list."
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "DateComboBoxTemplate"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ": Month and year combo boxes."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "\n            These properties defines main colors of the control template:\n            "
+          },
+          {
+            "kind": "List",
+            "ordered": false,
+            "items": [
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "BackgroundColor"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ": Background color."
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "PrimaryTextColor"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ": Text color for date buttons in the selected month in the calendar."
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "SecondaryTextColor"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ": Text color for date buttons in the previous or next month of the selected month in the calendar."
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

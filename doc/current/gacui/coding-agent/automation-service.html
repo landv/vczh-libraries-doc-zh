@@ -1,0 +1,1424 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>AutomationService -- GPU Accelerated C++ User Interface (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "gacui",
+    "coding-agent",
+    "automation-service"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "GacUI",
+      "selected": false,
+      "path": [
+        "gacui",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": " ",
+          "name": "Coding Agent 支持",
+          "selected": false,
+          "subNodes": [
+            {
+              "icon": " ",
+              "name": "AutomationService",
+              "selected": true,
+              "path": [
+                "gacui",
+                "coding-agent",
+                "automation-service"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": true,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "AutomationService",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            AutomationService 是 GacUI 面向编程式检查与输入的表面。\n            它由……暴露 "
+          },
+          {
+            "kind": "Name",
+            "text": "INativeAutomationService"
+          },
+          {
+            "kind": "Text",
+            "text": " through "
+          },
+          {
+            "kind": "Name",
+            "text": "GetCurrentController()->AutomationService()"
+          },
+          {
+            "kind": "Text",
+            "text": "。\n            编码代理使用它读取当前 UI 结构并发送输入命令，而无需依赖操作系统的 UI Automation。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "IMPORTANT:"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 强烈建议仅将自动化服务用于调试与测试。它无法完全保证安全。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            该服务与远程协议相互独立。\n            普通 Windows 应用程序、远程协议核心应用与远程协议渲染器都可以暴露自动化服务，\n            但每种配置只暴露各自一侧存在的 UI 视图。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Service Interface",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Name",
+                "text": "INativeAutomationService"
+              },
+              {
+                "kind": "Text",
+                "text": " 有一个服务级可用性标志与三个功能组：\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Name",
+                        "text": "Available"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：当当前控制器不存在自动化服务时返回 false。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Name",
+                        "text": "Stop"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：关闭所有功能。Windows 实现还会停止 HTTP 监听器。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Name",
+                        "text": "CanDumpControlTree"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 以及 "
+                      },
+                      {
+                        "kind": "Name",
+                        "text": "DumpControlTree"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：暴露可见的 GacUI 窗口、弹出层、控件与组合。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Name",
+                        "text": "CanDumpDomTree"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 以及 "
+                      },
+                      {
+                        "kind": "Name",
+                        "text": "DumpDomTree"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：暴露远程协议渲染器的 DOM。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Name",
+                        "text": "CanRunIOCommands"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 以及 "
+                      },
+                      {
+                        "kind": "Name",
+                        "text": "RunIOCommand"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：向主窗口或选定的原生窗口发送文本 IO 命令。"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                功能可用性会被分别检查。\n                真实的……服务会返回 true "
+              },
+              {
+                "kind": "Name",
+                "text": "Available"
+              },
+              {
+                "kind": "Text",
+                "text": " 即使某个特定功能不受支持。\n                不受支持的 dump 功能应从对应的……返回 false "
+              },
+              {
+                "kind": "Name",
+                "text": "Can..."
+              },
+              {
+                "kind": "Text",
+                "text": " 函数，并从该操作返回空字符串。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Name",
+                "text": "CanRunIOCommands"
+              },
+              {
+                "kind": "Text",
+                "text": " returns "
+              },
+              {
+                "kind": "Name",
+                "text": "INativeAutomationService::IOCommandAvailability"
+              },
+              {
+                "kind": "Text",
+                "text": ":\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Name",
+                        "text": "Disabled"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ": "
+                      },
+                      {
+                        "kind": "Name",
+                        "text": "RunIOCommand"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 返回空字符串，端点层应将 IO 视为不受支持。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Name",
+                        "text": "Enabled"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ": "
+                      },
+                      {
+                        "kind": "Name",
+                        "text": "RunIOCommand"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 接受所有语法有效的命令，并把已接受的工作加入队列。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Name",
+                        "text": "ExitOnly"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：只有完全一致的命令 "
+                      },
+                      {
+                        "kind": "Name",
+                        "text": "!Exit"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 会被转发，并保留正常的 "
+                      },
+                      {
+                        "kind": "Name",
+                        "text": "Queued"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 结果。其它每个命令都恰好返回 "
+                      },
+                      {
+                        "kind": "Name",
+                        "text": "！应用程序已停止响应。"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " （同步返回，不排队）。"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Windows HTTP Layer",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Name",
+                "text": "StartWindowsHttpAutomationService"
+              },
+              {
+                "kind": "Text",
+                "text": " 会为当前的……创建一个 localhost HTTP 包装器 "
+              },
+              {
+                "kind": "Name",
+                "text": "INativeAutomationService"
+              },
+              {
+                "kind": "Text",
+                "text": "。\n                它声明于 "
+              },
+              {
+                "kind": "Name",
+                "text": "PlatformProviders/Windows/WinNativeWindow.h"
+              },
+              {
+                "kind": "Text",
+                "text": " 并由 Windows 平台提供程序实现。\n                如果 "
+              },
+              {
+                "kind": "Name",
+                "text": "GetCurrentController()->AutomationService()->Available()"
+              },
+              {
+                "kind": "Text",
+                "text": " 为 false，该函数会直接返回，不启动监听器。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                该函数把 "
+              },
+              {
+                "kind": "Name",
+                "text": "applicationName"
+              },
+              {
+                "kind": "Text",
+                "text": " 作为 URL 路径片段，并把 "
+              },
+              {
+                "kind": "Name",
+                "text": "port"
+              },
+              {
+                "kind": "Text",
+                "text": " 作为 localhost 端口。\n                给定 "
+              },
+              {
+                "kind": "Name",
+                "text": "applicationName == L\"Automation/MyApp\""
+              },
+              {
+                "kind": "Text",
+                "text": " 以及 "
+              },
+              {
+                "kind": "Name",
+                "text": "port == 8888"
+              },
+              {
+                "kind": "Text",
+                "text": "，监听器前缀为 "
+              },
+              {
+                "kind": "Name",
+                "text": "http://localhost:8888/Automation/MyApp/"
+              },
+              {
+                "kind": "Text",
+                "text": ".\n                The service offers exactly these HTTP URLs:\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Name",
+                        "text": "GET http://localhost:8888/Automation/MyApp/Controls"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ": calls "
+                      },
+                      {
+                        "kind": "Name",
+                        "text": "DumpControlTree"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 在 UI 线程上，当 "
+                      },
+                      {
+                        "kind": "Name",
+                        "text": "CanDumpControlTree"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 为 true。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Name",
+                        "text": "GET http://localhost:8888/Automation/MyApp/Dom"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ": calls "
+                      },
+                      {
+                        "kind": "Name",
+                        "text": "DumpDomTree"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 在 UI 线程上，当 "
+                      },
+                      {
+                        "kind": "Name",
+                        "text": "CanDumpDomTree"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 为 true。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Name",
+                        "text": "POST http://localhost:8888/Automation/MyApp/IO"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：将 UTF-8 请求体传递给 "
+                      },
+                      {
+                        "kind": "Name",
+                        "text": "RunIOCommand"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 不带窗口 id。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Name",
+                        "text": "POST http://localhost:8888/Automation/MyApp/IO/<windowId>"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：将 UTF-8 请求体传递给 "
+                      },
+                      {
+                        "kind": "Name",
+                        "text": "RunIOCommand"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 带窗口 id 路径段。"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                窗口 id 是……之后的路径段 "
+              },
+              {
+                "kind": "Name",
+                "text": "IO"
+              },
+              {
+                "kind": "Text",
+                "text": "，而不是查询参数。\n                所有其它方法、路径以及格式错误的 "
+              },
+              {
+                "kind": "Name",
+                "text": "IO"
+              },
+              {
+                "kind": "Text",
+                "text": " 后缀都会返回带文本响应的 HTTP 404。\n                HTTP 包装器仅在……时才返回 404 "
+              },
+              {
+                "kind": "Name",
+                "text": "CanRunIOCommands"
+              },
+              {
+                "kind": "Text",
+                "text": " returns "
+              },
+              {
+                "kind": "Name",
+                "text": "Disabled"
+              },
+              {
+                "kind": "Text",
+                "text": "; both "
+              },
+              {
+                "kind": "Name",
+                "text": "Enabled"
+              },
+              {
+                "kind": "Text",
+                "text": " 以及 "
+              },
+              {
+                "kind": "Name",
+                "text": "ExitOnly"
+              },
+              {
+                "kind": "Text",
+                "text": " call "
+              },
+              {
+                "kind": "Name",
+                "text": "RunIOCommand"
+              },
+              {
+                "kind": "Text",
+                "text": ".\n                Successful IO command parsing returns "
+              },
+              {
+                "kind": "Name",
+                "text": "Queued"
+              },
+              {
+                "kind": "Text",
+                "text": "；这表示命令已被接受并投递到 UI 线程，并不意味着所有可见效果都已完成。\n                语法错误、命令错误以及 "
+              },
+              {
+                "kind": "Name",
+                "text": "ExitOnly"
+              },
+              {
+                "kind": "Text",
+                "text": " 拒绝都会以……开头的文本形式同步返回 "
+              },
+              {
+                "kind": "Name",
+                "text": "!"
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Starting The Service",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                Call "
+              },
+              {
+                "kind": "Name",
+                "text": "StartWindowsHttpAutomationService"
+              },
+              {
+                "kind": "Text",
+                "text": " 来自 "
+              },
+              {
+                "kind": "Name",
+                "text": "GuiMain"
+              },
+              {
+                "kind": "Text",
+                "text": "，在设置函数安装好当前原生控制器之后、进入应用程序事件循环之前。\n                每个调用……的代码路径 "
+              },
+              {
+                "kind": "Name",
+                "text": "StartWindowsHttpAutomationService"
+              },
+              {
+                "kind": "Text",
+                "text": " 稍后都必须调用 "
+              },
+              {
+                "kind": "Name",
+                "text": "StopWindowsHttpAutomationService"
+              },
+              {
+                "kind": "Text",
+                "text": " （在原生控制器或替换的自动化服务被拆除之前）。\n                跳过 stop 会泄漏进程级的 HTTP 服务。\n                请使用局部守卫或等效的 try/catch，使 stop 在正常返回与异常时都能在 start 之后运行。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                普通 Windows 应用程序可以在……之前启动该服务 "
+              },
+              {
+                "kind": "Name",
+                "text": "GetApplication()->Run"
+              },
+              {
+                "kind": "Text",
+                "text": ":\n                "
+              },
+              {
+                "kind": "Program",
+                "code": "#include \"../../../Source/PlatformProviders/Windows/WinNativeWindow.h\"\n\nusing namespace vl;\nusing namespace vl::presentation;\nusing namespace vl::presentation::controls;\n\nclass WindowsHttpAutomationServiceScope\n{\npublic:\n    WindowsHttpAutomationServiceScope(const WString& applicationName, vint port)\n    {\n        windows::StartWindowsHttpAutomationService(applicationName, port);\n    }\n\n    ~WindowsHttpAutomationServiceScope()\n    {\n        windows::StopWindowsHttpAutomationService();\n    }\n};\n\nvoid GuiMain()\n{\n    demo::MainWindow window;\n    window.ForceCalculateSizeImmediately();\n    window.MoveToScreenCenter();\n\n    WindowsHttpAutomationServiceScope httpAutomationService(\n        WString::Unmanaged(L\"Automation/MyApp\"),\n        8888);\n    GetApplication()->Run(&window);\n}\n\nint CALLBACK WinMain(HINSTANCE, HINSTANCE, LPSTR, int)\n{\n    return SetupHostedWindowsDirect2DRenderer();\n}",
+                "language": "c++"
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                重复调用不会创建多个监听器。\n                Windows 实现会保留一个进程级 HTTP 服务，直到…… "
+              },
+              {
+                "kind": "Name",
+                "text": "StopWindowsHttpAutomationService"
+              },
+              {
+                "kind": "Text",
+                "text": " 将其停止。\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Setup Function Cases",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                设置函数决定……期间哪个控制器与服务处于活动状态 "
+              },
+              {
+                "kind": "Name",
+                "text": "GuiMain"
+              },
+              {
+                "kind": "Text",
+                "text": " 运行。\n                在决定用户代码是否必须替换另一个自动化服务时，请参考以下情形：\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Name",
+                        "text": "SetupWindowsGDIRenderer"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ": installs "
+                      },
+                      {
+                        "kind": "Name",
+                        "text": "WindowsAutomationService"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ". Use "
+                      },
+                      {
+                        "kind": "Name",
+                        "text": "StartWindowsHttpAutomationService"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 直接用于多窗口控件树与 IO。DOM 路由通常不可用。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Name",
+                        "text": "SetupWindowsDirect2DRenderer"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：自动化行为与 "
+                      },
+                      {
+                        "kind": "Name",
+                        "text": "SetupWindowsGDIRenderer"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ", with the Direct2D renderer."
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Name",
+                        "text": "SetupHostedWindowsGDIRenderer"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ": installs "
+                      },
+                      {
+                        "kind": "Name",
+                        "text": "WindowsAutomationServiceHosted"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "。直接使用 HTTP 服务。IO 应使用 "
+                      },
+                      {
+                        "kind": "Name",
+                        "text": "/IO"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " （不带窗口 id），因为被托管的子窗口与弹出层都在主窗口之下表示。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Name",
+                        "text": "SetupHostedWindowsDirect2DRenderer"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：自动化行为与 "
+                      },
+                      {
+                        "kind": "Name",
+                        "text": "SetupHostedWindowsGDIRenderer"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ", with the Direct2D renderer."
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Name",
+                        "text": "SetupRawWindowsGDIRenderer"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ": installs "
+                      },
+                      {
+                        "kind": "Name",
+                        "text": "WindowsAutomationService"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 用于原生窗口控制器。如果原始进程是远程协议渲染器且拥有一个 "
+                      },
+                      {
+                        "kind": "Name",
+                        "text": "GuiRemoteRendererSingle"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ", substitute "
+                      },
+                      {
+                        "kind": "Name",
+                        "text": "WindowsAutomationServiceRenderer"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 来暴露渲染器 DOM 与渲染器侧 IO。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Name",
+                        "text": "SetupRawWindowsDirect2DRenderer"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：自动化行为与 "
+                      },
+                      {
+                        "kind": "Name",
+                        "text": "SetupRawWindowsGDIRenderer"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ", with the Direct2D renderer."
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Name",
+                        "text": "SetupRemoteNativeController"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：远程控制器自身不返回自动化服务。替换为 "
+                      },
+                      {
+                        "kind": "Name",
+                        "text": "RemoteProtocolAutomationService"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " around "
+                      },
+                      {
+                        "kind": "Name",
+                        "text": "GetApplication()->Run"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " （当远程核心应暴露托管的控件树与核心侧 IO 时）。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Name",
+                        "text": "SetupGacGenNativeController"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：该设置用于生成期的资源处理，而不是交互式 UI 会话。它不为 HTTP 控制提供自动化服务。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Name",
+                        "text": "SetupWGacRenderer"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ": "
+                      },
+                      {
+                        "kind": "PageLink",
+                        "href": "https://github.com/vczh-libraries/wGac/blob/master/WGacShared/MiniHttpAutomationService.cpp",
+                        "content": []
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 在……中 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "wGac"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " repo 是用于启动此类服务的示例代码。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Name",
+                        "text": "SetupWGacHostedRenderer"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：要求与 "
+                      },
+                      {
+                        "kind": "Name",
+                        "text": "SetupWGacRenderer"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "."
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Name",
+                        "text": "SetupOSXCoreGraphicsRenderer"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ": "
+                      },
+                      {
+                        "kind": "PageLink",
+                        "href": "https://github.com/vczh-libraries/iGac/blob/master/MacShared/MiniHttpAutomationService.cpp",
+                        "content": []
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 在……中 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "iGac"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " repo 是用于启动此类服务的示例代码。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Name",
+                        "text": "SetupOSXHostedCoreGraphicsRenderer"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：要求与 "
+                      },
+                      {
+                        "kind": "Name",
+                        "text": "SetupOSXCoreGraphicsRenderer"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Substituting a Service",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                Use "
+              },
+              {
+                "kind": "Name",
+                "text": "GetNativeServiceSubstitution()->Substitute(service, false)"
+              },
+              {
+                "kind": "Text",
+                "text": " （在首次请求自动化服务之前）。\n                一旦服务已被使用，替换层会拒绝之后的替换。\n                请让被替换的对象保持存活，直到取消替换。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                远程协议核心可以像这样暴露核心侧的自动化表面。\n                该示例使用了与普通 Windows 应用程序示例相同的 "
+              },
+              {
+                "kind": "Name",
+                "text": "WindowsHttpAutomationServiceScope"
+              },
+              {
+                "kind": "Text",
+                "text": " 守卫。\n                "
+              },
+              {
+                "kind": "Program",
+                "code": "void GuiMain()\n{\n    RemoteProtocolAutomationService automationService;\n    GetNativeServiceSubstitution()->Substitute(&automationService, false);\n\n    {\n        WindowsHttpAutomationServiceScope httpAutomationService(\n            WString::Unmanaged(L\"Automation/RemoteCore\"),\n            8888);\n        GetApplication()->Run(mainWindow);\n    }\n\n    GetNativeServiceSubstitution()->Unsubstitute(&automationService);\n}",
+                "language": "c++"
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                拥有……的远程协议渲染器 "
+              },
+              {
+                "kind": "Name",
+                "text": "GuiRemoteRendererSingle"
+              },
+              {
+                "kind": "Text",
+                "text": " 可以在……之前 "
+              },
+              {
+                "kind": "Name",
+                "text": "WindowsAutomationServiceRenderer"
+              },
+              {
+                "kind": "Text",
+                "text": " （在相同作用域内替换）。\n                这正是……有意义的情形 "
+              },
+              {
+                "kind": "Name",
+                "text": "GET /Dom"
+              },
+              {
+                "kind": "Text",
+                "text": " 变得有意义。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                当远程渲染器在发生致命的远程协议错误后仍被保留时，渲染器自动化会继续让……保持 "
+              },
+              {
+                "kind": "Name",
+                "text": "GET /Dom"
+              },
+              {
+                "kind": "Text",
+                "text": " 可用。\n                DOM 响应仍是 HTTP 成功，包含冻结的渲染器 DOM，并会添加一个小写顶层的 "
+              },
+              {
+                "kind": "Name",
+                "text": "fatalError"
+              },
+              {
+                "kind": "Text",
+                "text": " 字符串（带有原始错误）。\n                渲染器 IO 会切换到 "
+              },
+              {
+                "kind": "Name",
+                "text": "ExitOnly"
+              },
+              {
+                "kind": "Text",
+                "text": "：普通 IO 恰好返回 "
+              },
+              {
+                "kind": "Name",
+                "text": "！应用程序已停止响应。"
+              },
+              {
+                "kind": "Text",
+                "text": "，而完全匹配的 "
+              },
+              {
+                "kind": "Name",
+                "text": "!Exit"
+              },
+              {
+                "kind": "Text",
+                "text": " 仍会被接受，以便自动化能关闭被保留的渲染器。\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Implementing Another Platform",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                平台实现应实现 "
+              },
+              {
+                "kind": "Name",
+                "text": "INativeAutomationService"
+              },
+              {
+                "kind": "Text",
+                "text": " 或复用 "
+              },
+              {
+                "kind": "Name",
+                "text": "AutomationServiceBase"
+              },
+              {
+                "kind": "Text",
+                "text": " 来自 "
+              },
+              {
+                "kind": "Name",
+                "text": "Utilities/SharedServices"
+              },
+              {
+                "kind": "Text",
+                "text": "。\n                从……返回 true "
+              },
+              {
+                "kind": "Name",
+                "text": "Available"
+              },
+              {
+                "kind": "Text",
+                "text": "，实现受支持的 "
+              },
+              {
+                "kind": "Name",
+                "text": "Can..."
+              },
+              {
+                "kind": "Text",
+                "text": " 与操作对，并让 "
+              },
+              {
+                "kind": "Name",
+                "text": "Stop"
+              },
+              {
+                "kind": "Text",
+                "text": " 禁用所有后续操作。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                When implementing IO:\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "在请求路径上同步解析命令，使格式错误的命令立即返回错误。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "把解析后的命令排队到 UI 线程，而不是在 HTTP 或传输线程上运行任意的 UI 工作。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Return "
+                      },
+                      {
+                        "kind": "Name",
+                        "text": "Queued"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 在解析后的命令被接受之后。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Use "
+                      },
+                      {
+                        "kind": "Name",
+                        "text": "RunIOCommandOnNativeWindow"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 当平台能把窗口 id 映射到一个 "
+                      },
+                      {
+                        "kind": "Name",
+                        "text": "INativeWindow"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 及其监听器列表时。"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                Windows HTTP 包装器只是其中一种端点层。\n                其它平台可以暴露相同的 URL 契约、stdio 协议、进程内函数调用桥或其它传输方式，\n                只要该传输在正确的线程上调用相同的 "
+              },
+              {
+                "kind": "Name",
+                "text": "INativeAutomationService"
+              },
+              {
+                "kind": "Text",
+                "text": " 操作即可。\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Operational Notes",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                应用程序级自动化依赖于 GacUI UI 线程。\n                原生的崩溃对话框、文件对话框或其它模态原生窗口可能会阻塞 UI 线程，使 HTTP 端点无法响应。\n                在这种情况下，请使用 Win32 API 从另一个进程检查与操作原生窗口，然后在模态窗口关闭后回到自动化端点。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                在 Windows 上，不要使用操作系统级 UI Automation 作为 GacUI 自动化的后备方案。\n                当屏幕锁定时它可能失败，而且它不是……所实现的契约 "
+              },
+              {
+                "kind": "Name",
+                "text": "AutomationService"
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

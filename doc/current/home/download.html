@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>下载 Gaclib -- GPU 加速的 C++ 用户界面 (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "home",
+    "download"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "Gaclib 文档",
+      "selected": false,
+      "path": [
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": " ",
+          "name": "下载 Gaclib",
+          "selected": true,
+          "path": [
+            "home",
+            "download"
+          ]
+        },
+        {
+          "icon": " ",
+          "name": "线程安全",
+          "selected": false,
+          "path": [
+            "home",
+            "mt"
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "领域专用语言",
+          "selected": false,
+          "path": [
+            "home",
+            "dsl"
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "已注册类型",
+          "selected": false,
+          "path": [
+            "home",
+            "registered"
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": true,
+  "numberBeforeTitle": true,
+  "topic": {
+    "kind": "Topic",
+    "title": "下载 Gaclib",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            Gaclib 可以从以下位置下载：\n            "
+          },
+          {
+            "kind": "List",
+            "ordered": false,
+            "items": [
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Windows"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ": "
+                  },
+                  {
+                    "kind": "PageLink",
+                    "href": "https://github.com/vczh-libraries/Release",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "vczh-libraries/Release"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Linux Wayland"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ": "
+                  },
+                  {
+                    "kind": "PageLink",
+                    "href": "https://github.com/vczh-libraries/wGac",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "vczh-libraries/wGac"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Linux XWindow"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ": "
+                  },
+                  {
+                    "kind": "PageLink",
+                    "href": "https://github.com/vczh-libraries/gGac",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "vczh-libraries/gGac"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "macOS"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ": "
+                  },
+                  {
+                    "kind": "PageLink",
+                    "href": "https://github.com/vczh-libraries/iGac",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "vczh-libraries/iGac"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "\n            如果需要跨平台，\n            请查看 "
+          },
+          {
+            "kind": "PageLink",
+            "href": "https://github.com/vczh-libraries/Release",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "Release 仓库"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "\n            以了解上述仓库中各个发布版的对齐版本。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "使用 C++ 源代码",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                这里是源代码的依赖关系。\n                每个方框代表一对 .h 与 .cpp 文件，如果存在平台相关文件也会包含在内。\n                例如，"
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Vlpp"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 表示：\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "Vlpp.h"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "Vlpp.cpp"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "Vlpp.Windows.cpp"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 或 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "Vlpp.Linux.cpp"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Image",
+                "src": "/Dependencies.png"
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                源代码可以在 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Import"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 文件夹中找到。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "Vlpp, VlppOS, VlppRegex, VlppReflection, VlppParser, VlppParser2",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    这些文件是基础的 C++ 构造。\n                    GacUI 构建在这些库之上。\n                    在大多数情况下，\n                    你只需要来自 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Vlpp"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 与 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "VlppOs"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 的函数与类。\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "VlppParser"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 正在弃用，它将在所有 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GacUI"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 的功能升级到 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "VlppParser2"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 之后移除。\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "VlppWorkflowLibrary",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    这个文件包含一个非常轻量的库，用于由 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Workflow 脚本语言"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 生成的 C++ 代码。\n                    GacUI 的 UI 元素建议从 XML 创建。\n                    所有资源文件会先被编译为 Workflow 脚本语言，\n                    然后再由这些脚本生成 C++ 代码。\n                    运行你的 UI 时需要此文件。\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "VlppWorkflowRuntime 与 VlppWorkflowCompiler",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "通常你不需要这些文件。"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "VlppWorkflowRuntime"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 包含一个直接运行 Workflow 脚本语言的虚拟机。\n                    运行时可以把编译后的脚本序列化为二进制文件再重新加载。\n                    如果脚本中使用了某些可反射的 C++ 类，\n                    请确保加载时所有这些类都已注册。\n                    "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "VlppWorkflowCompiler"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 包含一个用于 Workflow 脚本语言的编译器。\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "GacUI、GacUIWindows 与 DarkSkin",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    这就是 GacUI 本身。\n                    "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GacUIWindows"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 是面向 Windows 操作系统的移植版本。\n                    所有早于 Windows 7 的版本都不受支持。\n                    "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "DarkSkin"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 是默认皮肤。\n                    如果你已经为所有控件创建了自己的皮肤，\n                    就不需要这个文件。\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "GacUIReflection 与 DarkSkinReflection",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "通常你不需要这些文件。"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    这些文件会为 GacUI 注册所有可反射类。\n                    仅当需要动态编译并执行访问 GacUI 类的 Workflow 脚本时，你才需要它。\n                    "
+                  },
+                  {
+                    "kind": "List",
+                    "ordered": false,
+                    "items": [
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "当你不需要反射时"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "List",
+                            "ordered": false,
+                            "items": [
+                              {
+                                "kind": "ContentListItem",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "不要链接这些文件。"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "ContentListItem",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "\n                                    你必须添加 "
+                                  },
+                                  {
+                                    "kind": "Strong",
+                                    "content": [
+                                      {
+                                        "kind": "Text",
+                                        "text": "VCZH_DEBUG_NO_REFLECTION"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "kind": "Text",
+                                    "text": "\n                                    使用 "
+                                  },
+                                  {
+                                    "kind": "PageLink",
+                                    "href": "https://docs.microsoft.com/en-us/cpp/build/reference/d-preprocessor-definitions",
+                                    "content": [
+                                      {
+                                        "kind": "Text",
+                                        "text": "预处理器定义"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "kind": "Text",
+                                    "text": ".\n                                    你可以通过更新项目属性来完成，\n                                    或者，如果你使用 Visual Studio Code，可以使用 /D 编译器选项。\n                                "
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "ContentListItem",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "你将在可执行文件中节省约 20 MB 的空间"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "当你需要反射时"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "List",
+                            "ordered": false,
+                            "items": [
+                              {
+                                "kind": "ContentListItem",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "链接这些文件。"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "ContentListItem",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "不能添加 "
+                                  },
+                                  {
+                                    "kind": "Strong",
+                                    "content": [
+                                      {
+                                        "kind": "Text",
+                                        "text": "VCZH_DEBUG_NO_REFLECTION"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "GacUICompiler",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "通常你不需要这些文件。"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    这是 GacUI 的 XML 资源编译器。\n                    "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GacGen.exe"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 是这个文件的可执行版本。\n                "
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "使用构建工具",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                工具可以在 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Tools"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 文件夹中找到。\n                构建 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Tools\\Executables\\Executables.sln"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 并运行 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "CopyExecutables.ps1"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 以确保所有 exe 文件都出现在 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Tools"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 文件夹下。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                你只需要 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GacBuild.ps1"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 与 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GacClear.ps1"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "。\n                它们需要 Powershell。\n                如果脚本（而非可执行文件）中出现崩溃，\n                你可能需要升级你的 Powershell 版本后重试。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                请注意，\n                虽然你只需要运行上面这 2 个脚本文件，\n                但本文件夹中的所有文件都是必需的。\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "使用示例",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                请阅读 "
+              },
+              {
+                "kind": "PageLink",
+                "href": "//demo.html",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "演示页面"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 以获取更多信息。\n            "
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

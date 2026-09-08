@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Virtual Repeat Compositions -- GPU Accelerated C++ User Interface (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "gacui",
+    "components",
+    "compositions",
+    "repeat_virtual"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "GacUI",
+      "selected": false,
+      "path": [
+        "gacui",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": "-",
+          "name": "GacUI 组件",
+          "selected": false,
+          "path": [
+            "gacui",
+            "components",
+            "home"
+          ],
+          "subNodes": [
+            {
+              "icon": "-",
+              "name": "组合",
+              "selected": false,
+              "path": [
+                "gacui",
+                "components",
+                "compositions",
+                "home"
+              ],
+              "subNodes": [
+                {
+                  "icon": "-",
+                  "name": "重复组合",
+                  "selected": false,
+                  "path": [
+                    "gacui",
+                    "components",
+                    "compositions",
+                    "repeat"
+                  ],
+                  "subNodes": [
+                    {
+                      "icon": " ",
+                      "name": "<RepeatStack> and <RepeatFlow>",
+                      "selected": false,
+                      "path": [
+                        "gacui",
+                        "components",
+                        "compositions",
+                        "repeat_nonvirtual"
+                      ]
+                    },
+                    {
+                      "icon": "-",
+                      "name": "虚拟重复组合",
+                      "selected": true,
+                      "path": [
+                        "gacui",
+                        "components",
+                        "compositions",
+                        "repeat_virtual"
+                      ],
+                      "subNodes": [
+                        {
+                          "icon": " ",
+                          "name": "<RepeatFreeHeightItem>",
+                          "selected": false,
+                          "path": [
+                            "gacui",
+                            "components",
+                            "compositions",
+                            "repeat_virtual_freeheight"
+                          ]
+                        },
+                        {
+                          "icon": " ",
+                          "name": "<RepeatFixedHeightItem>",
+                          "selected": false,
+                          "path": [
+                            "gacui",
+                            "components",
+                            "compositions",
+                            "repeat_virtual_fixedheight"
+                          ]
+                        },
+                        {
+                          "icon": " ",
+                          "name": "<RepeatFixedHeightMultiColumnItem>",
+                          "selected": false,
+                          "path": [
+                            "gacui",
+                            "components",
+                            "compositions",
+                            "repeat_virtual_fixedheightmc"
+                          ]
+                        },
+                        {
+                          "icon": " ",
+                          "name": "<RepeatFixedSizeMultiColumnItem>",
+                          "selected": false,
+                          "path": [
+                            "gacui",
+                            "components",
+                            "compositions",
+                            "repeat_virtual_fixedsizemc"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": true,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "虚拟重复组合",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "GuiVirtualRepeatCompositionBase"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " maintain instances of item template automatically to render items in the item source.\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Axis property",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                All repeat compositions maintain items in a default order.\n                To change the order, set a new axis to the "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Axis"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " property.\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Axis"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 在……中 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GuiVirtualRepeatCompositionBase"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " is very similar to\n                "
+              },
+              {
+                "kind": "PageLink",
+                "href": "/gacui/components/compositions/flow.html#-Flow-Axis",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Axis"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 在……中 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "<Flow/>"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "UseMinimumTotalSize property",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                默认值为 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "false"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                When "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "UseMinimumTotalSize"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 是 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "true"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ", "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "TotalSize"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " returns a smallest size but large enough to make scrolling right.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                For example, in "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "<RepeatFixedHeightItem/>"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ", The width of "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "TotalSize"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " becomes "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "0"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " when "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "UseMinimumTotalSize"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 是 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "true"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 以及 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "ItemWidth"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 是 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "-1"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n                Because under such configuration, widths of items always equal to the width of "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "<RepeatFixedHeightItem/>"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " itself,\n                it provides no information to control the scrolling, and it is very useful to make the horizontal scroll disappear forever.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                But the height of "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "TotalSize"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " is not affected, the value is necessary to control the scrolling.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "注意"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ": Scroll bars are not part of this composition, instead the following properties could be combined to configure scroll bars:\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "TotalSize"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "ViewLocation"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Size of CachedBounds"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "TotalSize property",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "TotalSize"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " property measures the area occupied by all items, regardless visible and non visible.\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "ViewLocation property",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "ViewLocation"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " defines the left-top corner of the visible area in "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "TotalSize"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n                The size of the visible area is the size of this composition.\n                Items that could render in this visible area becomes visible, otherwise invisible.\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Accessing auto-managed instances of item template",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GuiVirtualRepeatCompositionBase"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " only creates instances of item template for only visible items.\n                Visible items mean items that are in the area of this composition,\n                all items that are scrolled out will get their instance of item template released from the memory,\n                and recreate when they are scrolled in again.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                When an item is not visible,\n                it is not able to find the instance of item template for this item.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                如果某个 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "system::ObservableList^"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 被分配给 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "ItemSource"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "，\n                项及其顺序在整个运行期间都会被保留。\n                否则，这些组合只会在赋值给……的那一刻反映集合中的项 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "ItemSource"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                该 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GetVisibleStyle"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " function gives you the instance of item template for an item.\n                If the item is not visible, it returns "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "nullptr"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                该 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GetVisibleIndex"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " function gives you the index of an item from an instance of item template.\n                If it doesn't belong to this composition, it returns "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "-1"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                该 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "FindItemByRealKeyDirection"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 以及 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "FindItemByVirtualKeyDirection"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " function find an item that is related to the specified item using a key.\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "VirtualKey"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " uses the logical order of the composition.\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "RealKey"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " uses the render order of the composition.\n                When "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Axis"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " is unchanged or set using an instance of "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GuiDefaultAxis"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ", they are identical.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                该 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "EnsureItemVisible"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " function tries its best to update "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "ViewLocation"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " to make the specified item visible.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                When "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "null"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 被分配给 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "ItemSource"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "，\n                所有项都会被删除。\n            "
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

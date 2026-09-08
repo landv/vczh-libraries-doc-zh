@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Gaclib -- 主页 -- 本地化</title>
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/global.css" />
+<link rel="stylesheet" type="text/css" href="/article.css" />
+<link rel="stylesheet" type="text/css" href="/navigation.css" />
+<link rel="stylesheet" type="text/css" href="/category.css" />
+<script src="/scripts/rootView.js"></script>
+<script src="/scripts/homeView.js"></script>
+<script src="/scripts/homeCategoryArticleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "gacui",
+    "localization"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-HomeView"
+  },
+  {
+    "targetObject": "homeViewContainer",
+    "viewName": "Gaclib-HomeCategoryArticleView"
+  }
+];
+  const activeButton = "Home";
+  const activeCategory = "GacUI";
+  const homeArticle = {
+  "index": false,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "欢迎使用 Gaclib！",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            Gaclib 是一个 GPU 加速的 C++ 用户界面库。\n            它灵活且高度可定制，内置了大量布局与控件，\n            并支持控件模板、列表项模板、MVVM、本地化、动画等特性。\n            更重要的是，即使界面非常复杂，在交互时依然拥有良好的性能。\n            你可以在这里找到它："
+          },
+          {
+            "kind": "PageLink",
+            "href": "https://github.com/vczh-libraries/Release",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "github"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "。\n            本库提供了许多实用的功能。\n            如果你不需要全部特性，\n            可以只使用发布版 C++ 文件中的一部分，以减小可执行文件的体积。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Image",
+            "src": "/resources/home/xml_HelloWorld.png"
+          }
+        ]
+      }
+    ]
+  }
+};
+  const categoryArticle = {
+  "index": false,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "本地化",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "资源：存储字符串及其翻译",
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Program",
+            "code": "<LocalizedStrings ref.Class=\"helloworld::StringResource\" DefaultLocale=\"en-US\">\n    <Strings Locales=\"en-US\">\n        <String Name=\"Title\" Text=\"Hello, world!\"/>\n        <String Name=\"Button\" Text=\"Good morning!\"/>\n    </Strings>\n    <Strings Locales=\"zh-CN\">\n        <String Name=\"Title\" Text=\"你好，世界！\"/>\n        <String Name=\"Button\" Text=\"早上好！\"/>\n    </Strings>\n</LocalizedStrings>",
+            "language": "Xml"
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "UI：从资源中使用字符串",
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Program",
+            "code": "<Instance ref.Class=\"helloworld::MainWindow\">\n    <ref.LocalizedStrings Name=\"Strings\" helloworld=\"demo::StringResource\" Default=\"true\"/>\n    <Window Text-str=\"Title()\">\n        <Button Text-str=\"Button()\">\n    </Window>\n</Instance>",
+            "language": "Xml"
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.activeButton"] = activeButton;
+  window["MVC-Resources.activeCategory"] = activeCategory;
+  window["MVC-Resources.homeArticle"] = homeArticle;
+  window["MVC-Resources.categoryArticle"] = categoryArticle;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

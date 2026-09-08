@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>单元测试框架 (Vlpp) -- GPU 加速的 C++ 用户界面 (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "home",
+    "dsl_unittest"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "Gaclib 文档",
+      "selected": false,
+      "path": [
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": "-",
+          "name": "领域专用语言",
+          "selected": false,
+          "path": [
+            "home",
+            "dsl"
+          ],
+          "subNodes": [
+            {
+              "icon": " ",
+              "name": "正则表达式",
+              "selected": false,
+              "path": [
+                "home",
+                "dsl_regex"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "可反射类型注册",
+              "selected": false,
+              "path": [
+                "home",
+                "dsl_reflection"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "单元测试框架 (Vlpp)",
+              "selected": true,
+              "path": [
+                "home",
+                "dsl_unittest"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": false,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "单元测试框架 (Vlpp)",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            测试用例可以定义在多个 cpp 文件中。在每个 cpp 文件中，可以有且仅有一个 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "TEST_FILE"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 调用。\n            "
+          },
+          {
+            "kind": "Program",
+            "code": "TEST_FILE\n{\n    // here could be multiple TEST_CATEGORY and TEST_CASE\n}"
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            可以将 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "TEST_CATEGORY"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 用在 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "TEST_FILE"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 内部，或嵌套在另一个 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "TEST_CATEGORY"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 内部。\n            "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "TEST_CASE"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 可以用在 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "TEST_FILE"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 或 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "TEST_CATEGORY"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 内部。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "TEST_ASSERT"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 用于校验一个布尔表达式。\n            它只能用在 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "TEST_CASE"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 中。\n            "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "TEST_ASSERT"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 不能用在 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "TEST_FILE"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 或 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "TEST_CATEGORY"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 中。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            当测试程序以调试模式启动时（仅限 Windows），或通过命令行选项 \"/D\" 启动时，\n            一个 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "TEST_ASSERT"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 失败会触发一个断点，它可被任何调试器捕获。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            当测试程序以发布模式启动时，或通过命令行选项 \"/R\" 启动，或不带命令行选项启动时，\n            一个 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "TEST_ASSERT"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 失败会报告一个错误并跳过当前 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "TEST_CASE"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 的其余部分，执行将继续。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "TEST_ERROR"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 执行一条语句，当没有抛出 [T:vl.Error] 时它会失败。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "TEST_EXCEPTION"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 执行一条语句，当指定的异常类型未被抛出时它会失败。\n            当异常被抛出时，会调用另一个回调，从而有机会检查异常中的数据。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "TEST_CASE_ASSERT"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 是 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "TEST_CASE"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 与 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "TEST_ASSERT"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 的组合。\n            当有多个相互独立的断言时，它非常常用。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "TEST_CASE_ASSERT"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 是一个测试用例，它可以用于 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "TEST_CATEGORY"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 或 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "TEST_FILE"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 中。\n            在发布模式下，此断言失败后执行不会停止。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "TEST_CATEGORY"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 在多个断言之间没有相互依赖时非常有用。\n            在测试程序执行期间，"
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "TEST_FILE"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "、"
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "TEST_CATEGORY"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "、"
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "TEST_CASE"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 以及失败的 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "TEST_ASSERT"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 会以缩进和不同的颜色渲染。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "UnitTest::RunAndDisposeTests"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 需要在 main 函数中调用以执行测试用例。\n            "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "TEST_PRINT"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 可以在测试用例期间使用，向命令行应用程序打印调试信息。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            示例：\n            "
+          },
+          {
+            "kind": "Program",
+            "code": "TEST_FILE\n{\n    TEST_CATEGORY(L\"This is a test category\")\n    {\n        TEST_CASE(L\"This is a test case\")\n        {\n            TEST_ASSERT(true);\n            TEST_ERROR({WString::Empty[0];});\n            TEST_EXCEPTION({throw Exception();}, Exception, [](const Exception&){});\n        });\n        TEST_CASE_ASSERT(true);\n    });\n\n    TEST_CATEGORY(L\"This is another test category\")\n    {\n        TEST_PRINT(L\"some information\");\n        TEST_CASE_ASSERT(true);\n    });\n}\n\nint main(int argc, wchar_t* argv[])\n{\n    // in Linux or macOS, argv must be char*[]\n    return unittest::UnitTest::RunAndDisposeTests(argc, argv);\n}"
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

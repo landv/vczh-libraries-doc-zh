@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>GacUI 对象模型 -- GPU 加速的 C++ 用户界面 (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "gacui",
+    "kb",
+    "gom"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "GacUI",
+      "selected": false,
+      "path": [
+        "gacui",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": "-",
+          "name": "知识库",
+          "selected": false,
+          "path": [
+            "gacui",
+            "kb",
+            "home"
+          ],
+          "subNodes": [
+            {
+              "icon": " ",
+              "name": "GacUI 对象模型",
+              "selected": true,
+              "path": [
+                "gacui",
+                "kb",
+                "gom"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "元素",
+              "selected": false,
+              "path": [
+                "gacui",
+                "kb",
+                "elements"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "组合",
+              "selected": false,
+              "path": [
+                "gacui",
+                "kb",
+                "compositions"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "控件",
+              "selected": false,
+              "path": [
+                "gacui",
+                "kb",
+                "controls"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "控件模板",
+              "selected": false,
+              "path": [
+                "gacui",
+                "kb",
+                "ctemplates"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "项模板",
+              "selected": false,
+              "path": [
+                "gacui",
+                "kb",
+                "itemplates"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "默认模板注册",
+              "selected": false,
+              "path": [
+                "gacui",
+                "kb",
+                "dtemplates"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "应用",
+              "selected": false,
+              "path": [
+                "gacui",
+                "kb",
+                "application"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "操作系统提供程序",
+              "selected": false,
+              "path": [
+                "gacui",
+                "kb",
+                "osprovider"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": true,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "GacUI 对象模型",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            GacUI 中大多数重要的对象可以归为以下几类：\n            "
+          },
+          {
+            "kind": "List",
+            "ordered": false,
+            "items": [
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "元素"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                        "text": "：元素是一种可渲染的图形对象，包括图形与文本。"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "组合"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                        "text": "：组合负责布局并处理用户输入事件，决定元素的边界。"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "控件"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                        "text": "：控件提供一组应用最可能需要的基础功能。"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "控件模板"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                        "text": "：控件模板专为某种控件而设计，控制控件的外观。"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "项模板"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                        "text": "：项模板的工作原理与控件模板类似，但它控制控件中重复出现的部分，例如列表项。"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "对象的组织",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                在一个窗口中，GacUI 通过两棵树来维护对象。\n                窗口的边界与用户输入由 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GuiWindowComposition"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 与 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GuiWindow"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 控制。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "组合树",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GuiWindowComposition"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 是组合树的根对象。\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    所有可见效果与用户输入都由组合树处理。\n                    一个组合可以有其他组合作为其子组合，\n                    并且它最多可以有一个元素作为其子元素。\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    当一个组合拥有元素时，\n                    该元素会填满这个组合的整个区域，\n                    并告知这个组合有关尺寸约束的信息。\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    一个组合可以选择监听所有子组合与子元素的尺寸约束。\n                    不同类型的组合拥有各自的算法来决定子组合放置的位置，\n                    从而使子组合可以按列表、表格甚至更复杂的方式组织。\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    当一个组合被隐藏时，\n                    其所有子组合也会被隐藏，\n                    但尺寸约束依然存在，\n                    在做布局时它们不会被忽略。\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "控件树",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GuiWindow"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 是控件树的根对象。\n                    控件控制其子控件的行为。\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    例如，\n                    当一个控件被禁用时，\n                    其所有子控件也会被禁用。\n                    当一个控件更改其字体时，\n                    其所有子控件的字体也会随之更改，\n                    除非某些子控件被显式指定了其他字体。\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    当一个控件获得焦点时，\n                    它会从同一窗口中的上一个控件移除焦点。\n                    在这种情况下，它的 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "可聚焦组合"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 接收所有键盘输入。\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "控件模板",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    可见效果由控件模板或项模板控制。\n                    控件在创建时会被分配一个控件模板，\n                    但也可以给同一个控件重新分配另一个控件模板，以替换旧模板。\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    控件模板本身是一个组合，\n                    但为了在控件执行某些工作或处理用户输入时为其创建可见效果，\n                    控件模板中还有一些专门为控件设计的内容。\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    如果你把控件模板分配给错误类型的控件，\n                    程序会崩溃。\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "项模板",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    某些列表控件也可以分配项模板。\n                    当需要在该控件中显示多个列表项时，会创建所分配项模板的多个实例。\n                    当某个列表项被滚动出控件范围时，\n                    它的项模板会被删除。\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    列表控件并不依赖组合，\n                    而是有自己可配置的方式来组织项，\n                    确保某个项在不可见时只占用最少的资源。\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "将控件与组合放在一起",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    一个控件拥有一个 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "边界组合"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 与一个 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "容器组合"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "，\n                    它们由该控件的控件模板显式指定。\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    该 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "边界组合"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 是这个控件的边界组合。\n                    当一个控件被放置在另一个控件或组合内部时，\n                    其 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "边界组合"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 会被放置在父控件或父组合内部。\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    该 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "容器组合"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 是一个用于存放希望放置到该控件内部的控件与组合的地方。\n                    当一个控件或组合被放置到该控件内部时，\n                    它们会被放进该控件的 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "容器组合"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 中。\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    每当你改变控件或组合的父子关系时，\n                    控件树与组合树都会自动维护。\n                "
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "生命周期",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                当一个组合被删除时，\n                其所有子组合也会被删除。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                当一个控件被删除时，\n                其所有子控件也会被删除。\n                被删除控件内部的所有组合同样会被删除。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                大多数情况下你只需删除一个窗口，\n                它会销毁一切。\n                但有时你会删除一个组合，而它并不是某个控件的 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "边界组合"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "，同时该控件的一些子对象仍留在其中。\n                此外，当你删除组合或控件时，它们可能仍停留在其父对象中。\n                如果你只调用 C++ 的 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "delete"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 运算符，就可能导致内存泄漏。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                为了避免所有这些问题，\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "SafeDeleteControl"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 与 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "SafeDeleteComposition"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 被强烈推荐使用。\n                它们能处理所有可能出现的情况。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                删除 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GuiWindow"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 是安全的，只需使用 C++ 的 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "delete"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 运算符。\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "全局对象",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                GacUI 应用中还有一些全局对象。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GuiApplication"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 控制所有窗口的生命周期，\n                并提供相应功能，使 UI 线程与其他线程能够通信。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "INativeController"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 暴露了操作系统的功能。\n                当 GacUI 应用运行在不同的平台上时，\n                不同的 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "INativeController"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 会生效。\n                要把 GacUI 移植到新平台，\n                或是在虚拟环境中运行 GacUI\n                （例如在一个完全由你控制的窗口中运行所有 GacUI 对象，通常在开发游戏时这样做），\n                你需要提供自己的 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "INativeController"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 实现。\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "线程安全",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                所有 GacUI 对象及其方法都不是线程安全的，\n                而且几乎所有对象与方法 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "只能由 UI 线程访问"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "，\n                即便是只读操作也是如此。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                一个例外是，\n                当一个组合或控件尚未被添加到窗口中时，\n                它可以由非 UI 线程操作。\n                但当多个线程同时访问同一个对象时，仍然是不安全的。\n            "
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

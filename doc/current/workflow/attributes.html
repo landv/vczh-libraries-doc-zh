@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Attributes -- GPU 加速的 C++ 用户界面 (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "workflow",
+    "attributes"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "Workflow 脚本",
+      "selected": false,
+      "path": [
+        "workflow",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": "+",
+          "name": "运行脚本",
+          "selected": false,
+          "path": [
+            "workflow",
+            "running"
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "语法",
+          "selected": false,
+          "path": [
+            "workflow",
+            "lang"
+          ]
+        },
+        {
+          "icon": " ",
+          "name": "特性",
+          "selected": true,
+          "path": [
+            "workflow",
+            "attributes"
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "RPC",
+          "selected": false,
+          "path": [
+            "workflow",
+            "rpc"
+          ]
+        },
+        {
+          "icon": " ",
+          "name": "运行时指令",
+          "selected": false,
+          "path": [
+            "workflow",
+            "ins"
+          ]
+        },
+        {
+          "icon": " ",
+          "name": "C++ 代码生成",
+          "selected": false,
+          "path": [
+            "workflow",
+            "codegen"
+          ]
+        },
+        {
+          "icon": " ",
+          "name": "自 1.0 以来的破坏性变更",
+          "selected": false,
+          "path": [
+            "workflow",
+            "upgrade"
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "参考",
+          "selected": false,
+          "path": [
+            "workflow",
+            "ref"
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": false,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "Workflow 特性",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n\t\t\tWorkflow 特性可将元数据附加到声明上。它们会被分析器与运行时框架（包括 RPC）使用，而无需改变常规的类型、成员或表达式语法。\n\t\t"
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n\t\t\t一个特性由类别与名称构成，既可以不带值书写，也可以带一个常量值：\n\t\t\t"
+          },
+          {
+            "kind": "Program",
+            "code": "@category:Name\n@category:Name(value)"
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "特性可以出现的位置",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n\t\t\t\t特性可以放在参与 Workflow 反射元数据的声明之前，包括类型声明、枚举项、结构成员、类与接口成员以及函数参数。\n\t\t\t"
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n\t\t\t\t例如，RPC 会在接口、方法、属性与参数上使用特性：\n\t\t\t\t"
+              },
+              {
+                "kind": "Program",
+                "code": "@rpc:Interface\n@rpc:Ctor\ninterface IExampleService\n{\n\tfunc GetNames(@rpc:Byref names : List<string>) : void;\n\n\t@rpc:Dynamic\n\tprop CurrentName : string {not observe}\n}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "名称解析",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n\t\t\t\tWorkflow 通过将特性的类别与名称同 att_ 前缀组合来解析特性名。类别与名称必须是非空的标识符，只能包含 ASCII 字母、数字或下划线。\n\t\t\t"
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n\t\t\t\t例如，@ns:Type 会展开为 C++ 特性类型名 vl::__vwsn::att_ns_Type，以及反射出的 Workflow 类型名 system::workflow_attributes::att_ns_Type。\n\t\t\t"
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n\t\t\t\t编译器会查找反射出的类型。如果 system::workflow_attributes::att_ns_Type 在反射元数据中不可见，@ns:Type 就会被当作未知特性而被拒绝。\n\t\t\t"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "特性值规则",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n\t\t\t\t反射出的特性类型必须是结构，它可以暴露零个或一个反射属性：\n\t\t\t\t"
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "零个属性定义标记型特性，写作 @category:Name。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "一个属性定义带值特性，写作 @category:Name(value)。"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n\t\t\t\t带值特性需要一个与单个反射属性类型兼容的常量表达式。常见的常量形式包括布尔值、字符串、数字、枚举值，以及诸如 typeof(T) 的类型字面量。\n\t\t\t"
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n\t\t\t\t校验之后，特性实例会被存入相应类型、成员、参数或结构字段的反射特性容器中，运行时代码可以通过常规的反射 API 检查这些元数据。\n\t\t\t"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "内置类别",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n\t\t\t\tWorkflow 源码库当前实际使用了以下特性类别：\n\t\t\t\t"
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "@rpc:* 描述 RPC 接口、传输规则、属性缓存与服务构造。参见 "
+                      },
+                      {
+                        "kind": "PageLink",
+                        "href": "/workflow/rpc.html",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "RPC"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "."
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "@cpp:* 由 Workflow 工具链保留，用于原生互操作元数据。本页只说明通用的特性机制。"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

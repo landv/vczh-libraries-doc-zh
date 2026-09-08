@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>创建远程协议与外部视图模型 -- GPU 加速的 C++ 用户界面 (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "coding-agent",
+    "remoting"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "使用 Coding Agent",
+      "selected": false,
+      "path": [
+        "coding-agent",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": " ",
+          "name": "安装所需工具",
+          "selected": false,
+          "subNodes": [
+            {
+              "icon": " ",
+              "name": "Windows",
+              "selected": false,
+              "path": [
+                "coding-agent",
+                "installing",
+                "windows"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "Linux",
+              "selected": false,
+              "path": [
+                "coding-agent",
+                "installing",
+                "linux"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "macOS",
+              "selected": false,
+              "path": [
+                "coding-agent",
+                "installing",
+                "macos"
+              ]
+            }
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "准备上下文文件",
+          "selected": false,
+          "path": [
+            "coding-agent",
+            "context"
+          ]
+        },
+        {
+          "icon": " ",
+          "name": "调查与优化任务",
+          "selected": false,
+          "path": [
+            "coding-agent",
+            "jobs"
+          ]
+        },
+        {
+          "icon": " ",
+          "name": "AutomationService 与基础计算机操作",
+          "selected": false,
+          "path": [
+            "coding-agent",
+            "gacui-debugging"
+          ]
+        },
+        {
+          "icon": " ",
+          "name": "创建远程协议与外部视图模型",
+          "selected": true,
+          "path": [
+            "coding-agent",
+            "remoting"
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": true,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "创建远程协议与外部视图模型",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            编码代理可以为使用远程协议的 GacUI 应用装配重复性的传输层、生成代码与测试设置，也可以构建代码生成器与运行时支持，以便在 C++ 之外的语言中实现 Workflow RPC 视图模型。\n            请把下面维护良好的仓库指南交给代理，而不要凭记忆描述这些协议。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "选择相关指南",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "PageLink",
+                        "href": "https://github.com/vczh-libraries/Release/blob/master/Import-Test/README.md",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "GacUI 远程测试辅助"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：解释远程 Core 与渲染器、以及带本地或外部视图模型应用的可复用设置。在应用启动调试、传输选择、进程角色、连接顺序与关闭顺序时使用它。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "PageLink",
+                        "href": "https://github.com/vczh-libraries/GacJS/blob/master/doc/rpc/README.md",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "使用 Workflow RPC"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：在另一种编程语言中实现视图模型的入口。当代理需要创建目标语言的 RPC 库、元数据驱动的代码生成器、封装层或跨语言验证时，请使用它。"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                带 C++ 视图模型的远程渲染器通常只需 GacUI 指南。\n                而带外部视图模型的 GacUI 应用则需要两份指南，无论 UI 是本地渲染还是通过远程协议渲染。\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "为代理提供足够的仓库上下文",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                当需要引用仓库中的示例或测试资产时，请将相关的 GacUI、GacJS 与 Workflow 仓库克隆到应用旁边或以其他方式使其可用。\n                先要求代理阅读所选指南，然后遵循其中链接的参考项目与文档。\n                同时提供应用的 "
+              },
+              {
+                "kind": "Name",
+                "text": "Project.md"
+              },
+              {
+                "kind": "Text",
+                "text": "、资源 XML、目标平台、进程拓扑、传输方式选择，以及将拥有视图模型的编程语言。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                请将随附的远程辅助文件视为启动与测试支持。\n                如果结果需要随产品发布，请明确要求代理用满足产品安全性、验证、可靠性与部署要求的实现来替换测试传输层。\n            "
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Gaclib -- 示例</title>
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/global.css" />
+<link rel="stylesheet" type="text/css" href="/article.css" />
+<link rel="stylesheet" type="text/css" href="/navigation.css" />
+<script src="/scripts/rootView.js"></script>
+<script src="/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "page": "demo"
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const activeButton = "Demo";
+  const article = {
+  "index": false,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "GacUI 示例",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "List",
+            "ordered": false,
+            "items": [
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "PageLink",
+                        "href": "https://github.com/vczh-libraries/Release/tree/master/Tutorial/GacUI_HelloWorlds",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "Hello, world!"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "：创建 GacUI Hello World 工程的所有可行方式。\n                    "
+                  },
+                  {
+                    "kind": "List",
+                    "ordered": false,
+                    "items": [
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Cpp"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：从零开始使用 C++。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "WorkflowScript"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：从零开始使用 Workflow 脚本。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "CppXml"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：使用 C++ 与 GacUI Xml 资源，并通过生成的 C++ 代码从预编译的二进制 GacUI Xml 资源中加载 UI。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Xml"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：在运行时动态加载预编译的二进制 GacUI Xml 资源。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "MVVM"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：一个使用 Xml 资源的 MVVM 模式示例。"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "PageLink",
+                        "href": "https://github.com/vczh-libraries/Release/tree/master/Tutorial/GacUI_Layout",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "Layout"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "：演示了全部布局特性。\n                    "
+                  },
+                  {
+                    "kind": "List",
+                    "ordered": false,
+                    "items": [
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Alignment"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：简单的布局。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Stack"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：可配置轴方向的堆叠布局。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Flow"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：可配置轴方向的流式布局。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Table"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：表格布局。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "TableSplitter"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：带分隔条的表格布局，可拖动分隔条以改变单元格大小。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "RichTextEmbedding"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：在富文本文档中嵌入控件。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Responsive1"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：通过手动控制实现响应式布局，用于理解不同类型的响应式布局组合。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Responsive2"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：响应式布局。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "SharedSize"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：在不同组合之间同步尺寸。"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "PageLink",
+                        "href": "https://github.com/vczh-libraries/Release/tree/master/Tutorial/GacUI_Controls",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "Controls"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "：演示了全部控件和控件模板。此示例仍在开发中。\n                    "
+                  },
+                  {
+                    "kind": "List",
+                    "ordered": false,
+                    "items": [
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "ContainersAndButtons"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：使用容器控件和按钮控件。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "TextEditor"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：实现一个可处理纯文本和 XML 的文本编辑器。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "ColorPicker"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：在 ComboBox 和 BindableTextList 上使用 ItemTemplate 构建颜色选择器。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "ColorPicker2"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：使用 ComboButton 构建颜色选择器。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "AddressBook"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：使用带数据绑定的树形视图和列表视图控件构建通讯录编辑器。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "ProgressAndAsync"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：在 Xml 资源中使用 $await 调用 C++ 提供的异步函数，以良好的 UI 交互实现异步操作。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "ListControls"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：带可绑定或不可绑定数据源的各种列表控件。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "DataGrid"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：带下拉筛选、单元格内多种嵌入式编辑器控件以及排序功能的 DataGrid。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Dialogs"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：使用带详细选项的预定义对话框。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "CalculatorAndStateMachine"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：使用 Workflow 脚本的状态机语法创建计算器。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "DocumentEditor"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：一个富文本编辑器控件。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "DocumentEditorToolstrip"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：从 DocumentEditor 导入资源和工程，并用工具条控件完善编辑器。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "DocumentEditorRibbon"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：从 DocumentEditor 导入资源和工程，并用功能区控件完善编辑器。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Animation"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：使用 XML 与新的 Workflow 协程运算符定义不同类型的动画。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "MenuVisibility"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：控制菜单项的可见性。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Localization"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：在语言之间切换并显示本地化文本，包括将新的语言环境注入到现有语言环境配置中。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "TriplePhaseImageButton"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：使用 Context 属性连接控件与控件模板，创建三态图片按钮。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "QueryService"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：子控件从祖先控件查询服务。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Win11ToolstripMenu"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：创建首行带工具栏按钮的菜单。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "GlobalHotKey"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：在应用程序运行期间注册全局热键。"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "PageLink",
+                        "href": "https://github.com/vczh-libraries/Release/tree/master/Tutorial/GacUI_ControlTemplate",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "ControlTemplate"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "：演示了全部控件和控件模板。此示例仍在开发中。\n                    "
+                  },
+                  {
+                    "kind": "List",
+                    "ordered": false,
+                    "items": [
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "BlackSkin"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：创建一套外观类似 Visual Studio 深色主题的控件模板。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "WindowSkin"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：在运行时更改窗口边框特性。"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "PageLink",
+                        "href": "https://github.com/vczh-libraries/Release/tree/master/Tutorial/GacUI_Xml",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "Xml"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "：演示了 XML 资源文件中的全部特性。此示例仍在开发中。\n                    "
+                  },
+                  {
+                    "kind": "List",
+                    "ordered": false,
+                    "items": [
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Instance_Window"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：创建一个窗口。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Instance_MultipleWindows"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：创建多个窗口。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Instance_Control"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：创建一个控件。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Binding_Uri"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：使用 -uri 绑定。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Binding_Eval"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：使用 -eval 绑定。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Binding_Bind"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：使用 -bind 绑定。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Binding_Format"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：使用 -format 绑定。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Binding_ViewModel"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：绑定到视图模型。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Event_Cpp"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：在 C++ 中处理事件。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Event_Script"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：在 Workflow 脚本中处理事件。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Event_ViewModel"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：在视图模型中处理事件。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Member_Parameter"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：向窗口添加视图模型。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Member_Property"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：向窗口添加属性。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Member_State"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：向窗口添加状态。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Misc_ImportFolder"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：从被依赖的资源中加载图片。"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "PageLink",
+                        "href": "https://github.com/vczh-libraries/Release/tree/master/Tutorial/GacUI_Windows",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "Windows"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "：演示 GacUI 与 Windows 操作系统之间的原生交互。\n                    "
+                  },
+                  {
+                    "kind": "List",
+                    "ordered": false,
+                    "items": [
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Direct2DClock"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：使用 Direct2D 绘制走动的时钟。"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "WindowIcon"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：控制窗口和应用程序的图标。"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "等等……"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "运行示例",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                点击超链接你将看到一个解决方案文件。\n                只需使用 "
+              },
+              {
+                "kind": "PageLink",
+                "href": "https://visualstudio.microsoft.com",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Visual Studio 2017 Community"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 或更高版本打开它，\n                右键点击某个示例工程并选择 \"Set as Startup Project\"，\n                然后按 F5。\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "修改示例",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                修改任何资源文件后，\n                包括 XML 或图片等其他资源，\n                你需要运行 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GacBuild.ps1"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 来处理 "
+              },
+              {
+                "kind": "PageLink",
+                "href": "https://github.com/vczh-libraries/Release/blob/master/Tutorial/GacUI.xml",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GacUI.xml"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "。\n                然后重新编译工程并按 F5。\n            "
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.activeButton"] = activeButton;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

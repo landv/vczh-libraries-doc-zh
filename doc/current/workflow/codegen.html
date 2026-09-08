@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>C++ Code Generation -- GPU 加速的 C++ 用户界面 (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "workflow",
+    "codegen"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "Workflow 脚本",
+      "selected": false,
+      "path": [
+        "workflow",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": "+",
+          "name": "运行脚本",
+          "selected": false,
+          "path": [
+            "workflow",
+            "running"
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "语法",
+          "selected": false,
+          "path": [
+            "workflow",
+            "lang"
+          ]
+        },
+        {
+          "icon": " ",
+          "name": "特性",
+          "selected": false,
+          "path": [
+            "workflow",
+            "attributes"
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "RPC",
+          "selected": false,
+          "path": [
+            "workflow",
+            "rpc"
+          ]
+        },
+        {
+          "icon": " ",
+          "name": "运行时指令",
+          "selected": false,
+          "path": [
+            "workflow",
+            "ins"
+          ]
+        },
+        {
+          "icon": " ",
+          "name": "C++ 代码生成",
+          "selected": true,
+          "path": [
+            "workflow",
+            "codegen"
+          ]
+        },
+        {
+          "icon": " ",
+          "name": "自 1.0 以来的破坏性变更",
+          "selected": false,
+          "path": [
+            "workflow",
+            "upgrade"
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "参考",
+          "selected": false,
+          "path": [
+            "workflow",
+            "ref"
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": false,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "C++ 代码生成",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            特性(Attribute)可以被应用到 Workflow 的类、函数与成员上，以控制 C++ 代码生成的结果。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "@cpp:File(\"YourFile\")",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                此特性适用于 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "类"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "。\n                它会创建一对新文件 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "YourFile.h"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 和 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "YourFile.cpp"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                由于 Workflow 的内部类会被翻译成 C++ 的内部类，\n                当 B 定义在 A 内部时，如果你给 A 和 B 指定不同的文件名，\n                就会导致错误。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "此特性适用于 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "@cpp:UserImpl"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "。\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "@cpp:UserImpl",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "此特性适用于类中的 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "构造函数、析构函数与函数"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                带有 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "@cpp:UserImpl"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 的函数体将被忽略，\n                它们在生成的文件中会留空，\n                从而允许用户添加自定义代码行\n                位置在两个标记之间：\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "/* USER_CONTENT_BEGIN(CLASS-NAME) */"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "/* USER_CONTENT_END() */"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                当一个类含有带 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "@cpp:UserImpl"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 的方法时，\n                你还可以在为此类生成的头文件中添加自定义成员，\n                位置在两个标记之间：\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "/* USER_CONTENT_BEGIN(custom members of CLASS-NAME) */"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "/* USER_CONTENT_END() */"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                当一个文件含有带 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "@cpp:UserImpl"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 的方法时，\n                你还可以在该文件生成的头文件中添加自定义全局声明，\n                位置在两个标记之间：\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "/* USER_CONTENT_BEGIN(custom global declarations) */"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "/* USER_CONTENT_END() */"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                当 Workflow 脚本被修改并重新生成时，\n                新生成的代码与特定位置的自定义代码行会被合并在一起，\n                因此你的工作不会丢失。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "重要"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "：\n                如果自定义代码行中存在花括号 ("
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "{"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 和 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "}"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ")，\n                那么它们必须单独占一整行，\n                否则代码合并过程会报错。\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "@cpp:Protected and @cpp:Private",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "这些特性适用于 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "任何成员"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "（类中除自动属性以外的成员）。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                当类成员被 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "@cpp:Protected"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 标注时，\n                该部分 C++ 代码会以 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "protected:"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 的形式生成。\n                同样，使用 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "@cpp:Private"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 也是如此。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "注意"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ": 这些特性不会影响 Workflow 编译器，\n                Workflow 脚本会把所有成员都当作公共成员。\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "@cpp:Friend(typeof(YourType))",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                此特性适用于 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "类"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n                它会在 C++ 代码中生成 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "friend"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 声明，\n                从而允许 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "YourType"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 访问当前类的受保护或私有成员。 \n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "示例",
+        "content": [
+          {
+            "kind": "Topic",
+            "title": "Workflow 脚本",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Program",
+                    "code": "module SampleModule;\n\nclass DummyClass\n{\n    func CallPrivateMethod(my: MyClass^): void\n    {\n        my.Method();\n    }\n}\n\n@cpp:File(\"MyClass\")\n@cpp:Friend(typeof(DummyClass))\nclass MyClass\n{\n    @cpp:UserImpl\n    @cpp:Private\n    func Method(): void\n    {\n        raise \"Not Implemented!\";\n    }\n}"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "生成的 C++ 文件",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "重要"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "：\n                    "
+                  },
+                  {
+                    "kind": "List",
+                    "ordered": false,
+                    "items": [
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "\n                            默认的文件名是可以配置的，\n                            这里我们假设它是 "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "SampleModule"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": ".\n                        "
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "\n                            这里展示的并不是生成文件的全部内容。\n                            通过阅读 "
+                          },
+                          {
+                            "kind": "PageLink",
+                            "href": "/workflow/running/generating.html",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "生成 C++ 代码"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "，你将看到完整内容。\n                        "
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "SampleModule.h"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Program",
+                    "code": "class DummyClass;\nclass MyClass;\n\nclass DummyClass : public ::vl::Object, public ::vl::reflection::Description<DummyClass>\n{\n#ifndef VCZH_DEBUG_NO_REFLECTION\n    friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<DummyClass>;\n#endif\npublic:\n    void CallPrivateMethod(::vl::Ptr<::MyClass> my);\n    DummyClass();\n};\n\n/***********************************************************************\nGlobal Variables and Functions\n***********************************************************************/\n\nnamespace vl_workflow_global\n{\n    class W05Script\n    {\n    public:\n\n        static W05Script& Instance();\n    };\n}"
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "SampleModule.cpp"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Program",
+                    "code": "#define GLOBAL_SYMBOL ::vl_workflow_global::W05Script::\n#define GLOBAL_NAME ::vl_workflow_global::W05Script::Instance().\n#define GLOBAL_OBJ &::vl_workflow_global::W05Script::Instance()\n\n/***********************************************************************\nGlobal Variables\n***********************************************************************/\n\nBEGIN_GLOBAL_STORAGE_CLASS(vl_workflow_global_W05Script)\n    vl_workflow_global::W05Script instance;\n    INITIALIZE_GLOBAL_STORAGE_CLASS\n    FINALIZE_GLOBAL_STORAGE_CLASS\nEND_GLOBAL_STORAGE_CLASS(vl_workflow_global_W05Script)\n\nnamespace vl_workflow_global\n{\n/***********************************************************************\nGlobal Functions\n***********************************************************************/\n\n    W05Script& W05Script::Instance()\n    {\n        return Getvl_workflow_global_W05Script().instance;\n    }\n}\n\n/***********************************************************************\nClass (::DummyClass)\n***********************************************************************/\n\nvoid DummyClass::CallPrivateMethod(::vl::Ptr<::MyClass> my)\n{\n    ::vl::__vwsn::This(my.Obj())->Method();\n}\n\nDummyClass::DummyClass()\n{\n}\n\n#undef GLOBAL_SYMBOL\n#undef GLOBAL_NAME\n#undef GLOBAL_OBJ"
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "MyClass.h"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Program",
+                    "code": "class MyClass : public ::vl::Object, public ::vl::reflection::Description<MyClass>\n{\n    friend class ::DummyClass;\n#ifndef VCZH_DEBUG_NO_REFLECTION\n    friend struct ::vl::reflection::description::CustomTypeDescriptorSelector<MyClass>;\n#endif\nprivate:\n    void Method();\npublic:\n    MyClass();\n\n/* USER_CONTENT_BEGIN(custom members of ::MyClass) */\n/* USER_CONTENT_END() */\n};"
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "MyClass.cpp"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Program",
+                    "code": "#define GLOBAL_SYMBOL ::vl_workflow_global::W05Script::\n#define GLOBAL_NAME ::vl_workflow_global::W05Script::Instance().\n#define GLOBAL_OBJ &::vl_workflow_global::W05Script::Instance()\n\n/* USER_CONTENT_BEGIN(custom global declarations) */\n/* USER_CONTENT_END() */\n\n/***********************************************************************\nClass (::MyClass)\n***********************************************************************/\n\nvoid MyClass::Method()\n{/* USER_CONTENT_BEGIN(::MyClass) */\n    throw ::vl::Exception(L\"You should implement this function.\");\n}/* USER_CONTENT_END() */\n\nMyClass::MyClass()\n{\n}\n\n#undef GLOBAL_SYMBOL\n#undef GLOBAL_NAME\n#undef GLOBAL_OBJ"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title><ScrollViewTemplate> -- GPU Accelerated C++ User Interface (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "gacui",
+    "components",
+    "ctemplates",
+    "ScrollViewTemplate"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "GacUI",
+      "selected": false,
+      "path": [
+        "gacui",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": "-",
+          "name": "GacUI 组件",
+          "selected": false,
+          "path": [
+            "gacui",
+            "components",
+            "home"
+          ],
+          "subNodes": [
+            {
+              "icon": "-",
+              "name": "控件模板",
+              "selected": false,
+              "path": [
+                "gacui",
+                "components",
+                "ctemplates",
+                "home"
+              ],
+              "subNodes": [
+                {
+                  "icon": "-",
+                  "name": "<ControlTemplate>",
+                  "selected": false,
+                  "path": [
+                    "gacui",
+                    "components",
+                    "ctemplates",
+                    "ControlTemplate"
+                  ],
+                  "subNodes": [
+                    {
+                      "icon": " ",
+                      "name": "<LabelTemplate>",
+                      "selected": false,
+                      "path": [
+                        "gacui",
+                        "components",
+                        "ctemplates",
+                        "LabelTemplate"
+                      ]
+                    },
+                    {
+                      "icon": " ",
+                      "name": "<DocumentLabelTemplate>",
+                      "selected": false,
+                      "path": [
+                        "gacui",
+                        "components",
+                        "ctemplates",
+                        "DocumentLabelTemplate"
+                      ]
+                    },
+                    {
+                      "icon": "+",
+                      "name": "<WindowTemplate>",
+                      "selected": false,
+                      "path": [
+                        "gacui",
+                        "components",
+                        "ctemplates",
+                        "WindowTemplate"
+                      ]
+                    },
+                    {
+                      "icon": "+",
+                      "name": "<ButtonTemplate>",
+                      "selected": false,
+                      "path": [
+                        "gacui",
+                        "components",
+                        "ctemplates",
+                        "ButtonTemplate"
+                      ]
+                    },
+                    {
+                      "icon": " ",
+                      "name": "<ScrollTemplate>",
+                      "selected": false,
+                      "path": [
+                        "gacui",
+                        "components",
+                        "ctemplates",
+                        "ScrollTemplate"
+                      ]
+                    },
+                    {
+                      "icon": "-",
+                      "name": "<ScrollViewTemplate>",
+                      "selected": true,
+                      "path": [
+                        "gacui",
+                        "components",
+                        "ctemplates",
+                        "ScrollViewTemplate"
+                      ],
+                      "subNodes": [
+                        {
+                          "icon": " ",
+                          "name": "<DocumentViewerTemplate>",
+                          "selected": false,
+                          "path": [
+                            "gacui",
+                            "components",
+                            "ctemplates",
+                            "DocumentViewerTemplate"
+                          ]
+                        },
+                        {
+                          "icon": "+",
+                          "name": "<ListControlTemplate>",
+                          "selected": false,
+                          "path": [
+                            "gacui",
+                            "components",
+                            "ctemplates",
+                            "ListControlTemplate"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "icon": "+",
+                      "name": "<TabTemplate>",
+                      "selected": false,
+                      "path": [
+                        "gacui",
+                        "components",
+                        "ctemplates",
+                        "TabTemplate"
+                      ]
+                    },
+                    {
+                      "icon": " ",
+                      "name": "<DatePickerTemplate>",
+                      "selected": false,
+                      "path": [
+                        "gacui",
+                        "components",
+                        "ctemplates",
+                        "DatePickerTemplate"
+                      ]
+                    },
+                    {
+                      "icon": " ",
+                      "name": "<RibbonGroupTemplate>",
+                      "selected": false,
+                      "path": [
+                        "gacui",
+                        "components",
+                        "ctemplates",
+                        "RibbonGroupTemplate"
+                      ]
+                    },
+                    {
+                      "icon": " ",
+                      "name": "<RibbonIconLabelTemplate>",
+                      "selected": false,
+                      "path": [
+                        "gacui",
+                        "components",
+                        "ctemplates",
+                        "RibbonIconLabelTemplate"
+                      ]
+                    },
+                    {
+                      "icon": " ",
+                      "name": "<RibbonButtonsTemplate>",
+                      "selected": false,
+                      "path": [
+                        "gacui",
+                        "components",
+                        "ctemplates",
+                        "RibbonButtonsTemplate"
+                      ]
+                    },
+                    {
+                      "icon": " ",
+                      "name": "<RibbonToolstripsTemplate>",
+                      "selected": false,
+                      "path": [
+                        "gacui",
+                        "components",
+                        "ctemplates",
+                        "RibbonToolstripsTemplate"
+                      ]
+                    },
+                    {
+                      "icon": "+",
+                      "name": "<RibbonGalleryTemplate>",
+                      "selected": false,
+                      "path": [
+                        "gacui",
+                        "components",
+                        "ctemplates",
+                        "RibbonGalleryTemplate"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": true,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "<ScrollViewTemplate>",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "<ScrollViewTemplate>"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 继承自 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "<ControlTemplate>"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Introduction",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n      该控件模板用于 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "<ScrollView/>"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n    "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "PageLink",
+                "href": "/gacui/components/ctemplates/commonscrollviewlook.html",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "<CommonScrollViewLook/>"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n      在实现此控件模板时，建议使用\n    "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n      该 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "ContainerComposition"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " property must be set to contain objects.\n      Scroll bars will be controlled by the control itself.\n      The control template doesn't need to worry about moving contained objects.\n    "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Output Property",
+        "content": [
+          {
+            "kind": "Topic",
+            "title": "HorizontalScroll",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n        此属性必须在控件模板的构造函数中赋值，\n        并且在整个生命周期内不应改变。\n        它是 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "<HScroll/>"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 控件模板中的……控件\n      "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "VerticalScroll",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n        此属性必须在控件模板的构造函数中赋值，\n        并且在整个生命周期内不应改变。\n        它是 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "<VScroll/>"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 控件模板中的……控件\n      "
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

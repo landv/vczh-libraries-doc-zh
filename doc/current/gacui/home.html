@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>GacUI -- GPU 加速的 C++ 用户界面 (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "gacui",
+    "home"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "+",
+      "name": "Gaclib 文档",
+      "selected": false,
+      "path": [
+        "home"
+      ]
+    },
+    {
+      "icon": "+",
+      "name": "Vlpp",
+      "selected": false,
+      "path": [
+        "vlpp",
+        "home"
+      ]
+    },
+    {
+      "icon": "+",
+      "name": "Vlpp OS",
+      "selected": false,
+      "path": [
+        "vlppos",
+        "home"
+      ]
+    },
+    {
+      "icon": "+",
+      "name": "Vlpp Regex",
+      "selected": false,
+      "path": [
+        "vlppregex",
+        "home"
+      ]
+    },
+    {
+      "icon": "+",
+      "name": "Vlpp Reflection",
+      "selected": false,
+      "path": [
+        "vlppreflection",
+        "home"
+      ]
+    },
+    {
+      "icon": "+",
+      "name": "Vlpp Parser",
+      "selected": false,
+      "path": [
+        "vlppparser",
+        "home"
+      ]
+    },
+    {
+      "icon": "+",
+      "name": "Vlpp Parser2",
+      "selected": false,
+      "path": [
+        "vlppparser2",
+        "home"
+      ]
+    },
+    {
+      "icon": "+",
+      "name": "Workflow 脚本",
+      "selected": false,
+      "path": [
+        "workflow",
+        "home"
+      ]
+    },
+    {
+      "icon": "-",
+      "name": "GacUI",
+      "selected": true,
+      "path": [
+        "gacui",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": " ",
+          "name": "构建你的第一个 GacUI 应用！",
+          "selected": false,
+          "path": [
+            "gacui",
+            "running"
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "知识库",
+          "selected": false,
+          "path": [
+            "gacui",
+            "kb",
+            "home"
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "GacUI XML 资源",
+          "selected": false,
+          "path": [
+            "gacui",
+            "xmlres",
+            "home"
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "GacUI 组件",
+          "selected": false,
+          "path": [
+            "gacui",
+            "components",
+            "home"
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "高级主题",
+          "selected": false,
+          "path": [
+            "gacui",
+            "advanced",
+            "home"
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "托管模式与远程协议",
+          "selected": false,
+          "path": [
+            "gacui",
+            "modes",
+            "home"
+          ]
+        },
+        {
+          "icon": " ",
+          "name": "Coding Agent 支持",
+          "selected": false,
+          "subNodes": [
+            {
+              "icon": " ",
+              "name": "AutomationService",
+              "selected": false,
+              "path": [
+                "gacui",
+                "coding-agent",
+                "automation-service"
+              ]
+            }
+          ]
+        },
+        {
+          "icon": " ",
+          "name": "自 1.0 以来的破坏性变更",
+          "selected": false,
+          "path": [
+            "gacui",
+            "upgrade"
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "参考",
+          "selected": false,
+          "path": [
+            "gacui",
+            "ref"
+          ]
+        }
+      ]
+    },
+    {
+      "icon": "+",
+      "name": "使用 Coding Agent",
+      "selected": false,
+      "path": [
+        "coding-agent",
+        "home"
+      ]
+    },
+    {
+      "icon": "+",
+      "name": "单元测试",
+      "selected": false,
+      "path": [
+        "unittest",
+        "home"
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": false,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "GacUI 简介",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            GacUI 是一个高性能的跨平台 C++ UI 库，内置了\n            "
+          },
+          {
+            "kind": "List",
+            "ordered": false,
+            "items": [
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "丰富的控件库"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "强大的布局机制"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "控件/项模板机制"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "响应式设计"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "对象/列表/树数据绑定"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "MVVM 支持"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            推荐使用 GacUI XML 资源来构建 GacUI 应用程序。\n            所提供的工具链会消费 GacUI XML 资源并输出：\n            "
+          },
+          {
+            "kind": "List",
+            "ordered": false,
+            "items": [
+              {
+                "kind": "ParagraphListItem",
+                "paragraphs": [
+                  {
+                    "kind": "Paragraph",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "\n                        编译后的二进制资源格式。\n                    "
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Paragraph",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "\n                        此类二进制文件只包含文本、图片、富文本文档等资源。\n                    "
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "ParagraphListItem",
+                "paragraphs": [
+                  {
+                    "kind": "Paragraph",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "\n                        按平台编译的 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "Workflow"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 程序集。"
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "(不推荐)"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Paragraph",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "\n                        这些程序集由 XML 描述的 UI、动画、本地化文本等编译而来。\n                    "
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Paragraph",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "\n                        你需要知道应用程序运行在哪种 CPU 平台上，以便\n                        在运行时加载正确的程序集文件。\n                        执行程序集必须启用反射。\n                    "
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "ParagraphListItem",
+                "paragraphs": [
+                  {
+                    "kind": "Paragraph",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "\n                        由上述程序集翻译而来的 C++20 文件。 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "(推荐)"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Paragraph",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "\n                        这些 C++ 文件由 XML 描述的 UI、动画、本地化文本等编译而来。\n                    "
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Paragraph",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "\n                        如果所有 UI 对象都已知，且无需动态下载代码，\n                        与其在运行时开启反射加载程序集，\n                        不如将所有生成的 C++ 代码与应用程序链接起来，\n                        "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "从而避免启用反射"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ".\n                    "
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Paragraph",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "\n                        这样你的应用程序就能快速启动，\n                        并将二进制体积缩小 90%。\n                    "
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "支持的平台",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                目前支持以下平台：\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "原生平台",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "List",
+                    "ordered": false,
+                    "items": [
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Win32 子系统"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：你可以使用 GDI 或 Direct2D 1.0/1.1 来渲染 UI。\n                            "
+                          },
+                          {
+                            "kind": "List",
+                            "ordered": false,
+                            "items": [
+                              {
+                                "kind": "ContentListItem",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "SetupWindowsDirect2DRenderer();"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "ContentListItem",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "SetupWindowsGDIRenderer();"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Linux（Wayland）"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：已完成，但你需要自行构建工具链。("
+                          },
+                          {
+                            "kind": "PageLink",
+                            "href": "https://github.com/vczh-libraries/wGac",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "https://github.com/vczh-libraries/wGac"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": ")\n                            "
+                          },
+                          {
+                            "kind": "List",
+                            "ordered": false,
+                            "items": [
+                              {
+                                "kind": "ContentListItem",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "vl::presentation::elements::wgac::SetupWGacRenderer();"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "macOS"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：几乎所有功能都已可用，托管模式仍在开发中。("
+                          },
+                          {
+                            "kind": "PageLink",
+                            "href": "https://github.com/vczh-libraries/iGac",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "https://github.com/vczh-libraries/iGac"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": ")\n                            "
+                          },
+                          {
+                            "kind": "List",
+                            "ordered": false,
+                            "items": [
+                              {
+                                "kind": "ContentListItem",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "SetupOSXCoreGraphicsRenderer();"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Image",
+                    "src": "/Platform_1.png"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "托管模式",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    适用于任意原生实现，让 GacUI 的所有窗口都在一个原生窗口中渲染。\n                    "
+                  },
+                  {
+                    "kind": "List",
+                    "ordered": false,
+                    "items": [
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "SetupHostedWindowsDirect2DRenderer();"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "SetupHostedWindowsGDIRenderer();"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "SetupWGacHostedRenderer();"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "SetupOSXHostedCoreGraphicsRenderer();"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Image",
+                    "src": "/Platform_2.png"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "远程协议（核心与渲染端）",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    它允许 GacUI 应用程序以两个不同的二进制运行：核心与渲染端。你可以用 exe-dll 的方式运行它们，也可以让它们运行在两个不同的进程中。\n                    在不久的将来，GacUI 将发布一个 TypeScript 实现的渲染端，使 GacUI 应用程序能在浏览器中渲染。\n                    到那时，核心既可以是后台进程，也可以是同样运行在浏览器中的 WASM 二进制。\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    GacUI 在 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "vl::inter_process"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 之上提供了一条 JSON 远程协议通道。\n                    应用程序可以选择底层的数据传输实现，例如来自 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "VlppOS"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 的跨平台异步 TCP Mini HTTP 传输、Windows 命名管道传输，或 Windows HTTP.sys/WinHTTP 传输，\n                    而通道层负责在该传输与强类型的远程协议之间进行转换。\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "INetworkProtocol"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 与 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "IChannel"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 接口族仅用于测试目的的本地跨进程通信。\n                    它们的公共约定可以被直接复用，但强烈建议产品代码提供自己的实现，同时保持 GacUI JSON 通道层不变。\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "List",
+                    "ordered": false,
+                    "items": [
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "远程协议（核心）"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：对它应用 "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "托管模式"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "，让 GacUI 运行在虚拟环境中，并通过所选 "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "vl::inter_process"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " 通道传输与渲染端通信。\n                            "
+                          },
+                          {
+                            "kind": "List",
+                            "ordered": false,
+                            "items": [
+                              {
+                                "kind": "ContentListItem",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "SetupRemoteNativeController(IGuiRemoteProtocol*);"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "ContentListItem",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "GuiRemoteProtocolCoreChannel;"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "远程协议（渲染端）"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：应用于任意原生实现，与 "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "远程协议（核心）"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " 通信，通过所选 "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "vl::inter_process"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " 通道传输进行通信。\n                            "
+                          },
+                          {
+                            "kind": "List",
+                            "ordered": false,
+                            "items": [
+                              {
+                                "kind": "ContentListItem",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "SetupRawWindowsDirect2DRenderer();"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "ContentListItem",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "SetupRawWindowsGDIRenderer();"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "ContentListItem",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "GuiRemoteRendererSingle;"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "ContentListItem",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "GuiRemoteProtocolRendererChannel;"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Image",
+                    "src": "/Platform_3.png"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "远程协议（自定义传输）",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    以下是使用 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "vl::inter_process"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ".\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    测试应用分别使用 Windows 命名管道（"
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "/Pipe"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "）、Windows HTTP.sys/WinHTTP（"
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "/Http"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "）以及基于环回 TCP 的可移植 Mini HTTP（"
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "/MiniHttp"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "）：\n                    "
+                  },
+                  {
+                    "kind": "PageLink",
+                    "href": "https://github.com/vczh-libraries/GacUI/blob/master/Test/GacUISrc/RemotingTest_Core/GuiMain.cpp",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "核心"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 和\n                    "
+                  },
+                  {
+                    "kind": "PageLink",
+                    "href": "https://github.com/vczh-libraries/GacUI/blob/master/Test/GacUISrc/RemotingTest_Rendering_Win32/GuiMain.cpp",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "渲染端"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ".\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Image",
+                    "src": "/Platform_4.png"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "未来展望……",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    未来，GacUI 还将支持更多平台，例如：\n                    "
+                  },
+                  {
+                    "kind": "List",
+                    "ordered": false,
+                    "items": [
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "UWP"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "运行在浏览器中的 WASM"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "命令行界面应用程序"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "等等……"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "本主题内容……",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "PageLink",
+                        "href": "/gacui/running.html",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "构建你的第一个 GacUI 应用！"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：创建 GacUI 应用程序的分步教程。\n                    "
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "PageLink",
+                        "href": "/gacui/kb/home.html",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "知识库"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：学习 GacUI 之前需要了解的基础概念。\n                    "
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "PageLink",
+                        "href": "/gacui/xmlres/home.html",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "GacUI XML 资源"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：GacUI XML 资源的完整指南。\n                    "
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "PageLink",
+                        "href": "/gacui/components/home.html",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "GacUI 组件"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：涵盖元素、组合、控件、模板与组件等所有 GacUI 对象的完整指南。\n                    "
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "PageLink",
+                        "href": "/gacui/advanced/home.html",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "高级主题"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：关于 GacUI 高级特性与模式的详细信息。\n                    "
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "PageLink",
+                        "href": "/gacui/modes/home.html",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "托管模式与远程协议"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：关于以托管模式运行 GacUI 应用程序的详细信息（只有一个操作系统原生窗口，其他所有窗口都虚拟渲染在其中），\n                        或关于使用远程协议运行 GacUI 应用程序的信息（应用程序本身无界面，渲染发生在别处，包括原生远程进程甚至浏览器）。\n                    "
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

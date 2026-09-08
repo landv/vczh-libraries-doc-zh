@@ -1,0 +1,2484 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Compositions -- GPU Accelerated C++ User Interface (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "gacui",
+    "components",
+    "compositions",
+    "home"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "GacUI",
+      "selected": false,
+      "path": [
+        "gacui",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": "-",
+          "name": "GacUI 组件",
+          "selected": false,
+          "path": [
+            "gacui",
+            "components",
+            "home"
+          ],
+          "subNodes": [
+            {
+              "icon": " ",
+              "name": "元素",
+              "selected": false,
+              "path": [
+                "gacui",
+                "components",
+                "elements",
+                "home"
+              ]
+            },
+            {
+              "icon": "-",
+              "name": "组合",
+              "selected": true,
+              "path": [
+                "gacui",
+                "components",
+                "compositions",
+                "home"
+              ],
+              "subNodes": [
+                {
+                  "icon": " ",
+                  "name": "<Bounds>",
+                  "selected": false,
+                  "path": [
+                    "gacui",
+                    "components",
+                    "compositions",
+                    "bounds"
+                  ]
+                },
+                {
+                  "icon": " ",
+                  "name": "<Stack> and <StackItem>",
+                  "selected": false,
+                  "path": [
+                    "gacui",
+                    "components",
+                    "compositions",
+                    "stack"
+                  ]
+                },
+                {
+                  "icon": " ",
+                  "name": "<Flow> and <Flow>",
+                  "selected": false,
+                  "path": [
+                    "gacui",
+                    "components",
+                    "compositions",
+                    "flow"
+                  ]
+                },
+                {
+                  "icon": " ",
+                  "name": "<Table>, <Cell>, <RowSplitter> and <ColumnSplitter>",
+                  "selected": false,
+                  "path": [
+                    "gacui",
+                    "components",
+                    "compositions",
+                    "table"
+                  ]
+                },
+                {
+                  "icon": "+",
+                  "name": "重复组合",
+                  "selected": false,
+                  "path": [
+                    "gacui",
+                    "components",
+                    "compositions",
+                    "repeat"
+                  ]
+                },
+                {
+                  "icon": " ",
+                  "name": "<SharedSizeRoot> and <SharedSizeItem>",
+                  "selected": false,
+                  "path": [
+                    "gacui",
+                    "components",
+                    "compositions",
+                    "sharedsize"
+                  ]
+                },
+                {
+                  "icon": " ",
+                  "name": "<SideAligned>",
+                  "selected": false,
+                  "path": [
+                    "gacui",
+                    "components",
+                    "compositions",
+                    "sidealigned"
+                  ]
+                },
+                {
+                  "icon": " ",
+                  "name": "<PartialView>",
+                  "selected": false,
+                  "path": [
+                    "gacui",
+                    "components",
+                    "compositions",
+                    "partialview"
+                  ]
+                },
+                {
+                  "icon": "+",
+                  "name": "响应式设计系列",
+                  "selected": false,
+                  "path": [
+                    "gacui",
+                    "components",
+                    "compositions",
+                    "responsive"
+                  ]
+                },
+                {
+                  "icon": " ",
+                  "name": "处理输入事件",
+                  "selected": false,
+                  "path": [
+                    "gacui",
+                    "components",
+                    "compositions",
+                    "events"
+                  ]
+                }
+              ]
+            },
+            {
+              "icon": "+",
+              "name": "控件",
+              "selected": false,
+              "path": [
+                "gacui",
+                "components",
+                "controls",
+                "home"
+              ]
+            },
+            {
+              "icon": "+",
+              "name": "控件模板",
+              "selected": false,
+              "path": [
+                "gacui",
+                "components",
+                "ctemplates",
+                "home"
+              ]
+            },
+            {
+              "icon": "+",
+              "name": "项模板",
+              "selected": false,
+              "path": [
+                "gacui",
+                "components",
+                "itemplates",
+                "home"
+              ]
+            },
+            {
+              "icon": "+",
+              "name": "组件",
+              "selected": false,
+              "path": [
+                "gacui",
+                "components",
+                "components",
+                "home"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": true,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "组合",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "PageLink",
+            "href": "/gacui/kb/compositions.html",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "Composition"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " offer layout algorithms based on constraints.\n            Usually, developers using GacUI places nested controls and compositions in a window,\n            by defining constraints between compositions,\n            the window knows its minimum size,\n            and how to change sizes of child controls when the window is resizing.\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            There are a lot of predefined compositions as follows,\n            each defines a kind of constraint:\n            "
+          },
+          {
+            "kind": "List",
+            "ordered": false,
+            "items": [
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    GuiGraphicsComposition\n                    "
+                  },
+                  {
+                    "kind": "List",
+                    "ordered": false,
+                    "items": [
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "GuiWindowComposition"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "\n                            <Bounds>\n                            "
+                          },
+                          {
+                            "kind": "List",
+                            "ordered": false,
+                            "items": [
+                              {
+                                "kind": "ContentListItem",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "\n                                    <Stack>\n                                    "
+                                  },
+                                  {
+                                    "kind": "List",
+                                    "ordered": false,
+                                    "items": [
+                                      {
+                                        "kind": "ContentListItem",
+                                        "content": [
+                                          {
+                                            "kind": "Text",
+                                            "text": "<RepeatStack>"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "ContentListItem",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "\n                                    <Flow>\n                                    "
+                                  },
+                                  {
+                                    "kind": "List",
+                                    "ordered": false,
+                                    "items": [
+                                      {
+                                        "kind": "ContentListItem",
+                                        "content": [
+                                          {
+                                            "kind": "Text",
+                                            "text": "<RepeatFlow>"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "ContentListItem",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "<Table>"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "ContentListItem",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "<SharedSizeRoot>"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "ContentListItem",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "<SharedSizeItem>"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "ContentListItem",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "\n                                    GuiResponsiveCompositionBase\n                                    "
+                                  },
+                                  {
+                                    "kind": "List",
+                                    "ordered": false,
+                                    "items": [
+                                      {
+                                        "kind": "ContentListItem",
+                                        "content": [
+                                          {
+                                            "kind": "Text",
+                                            "text": "<ResponsiveView>"
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "kind": "ContentListItem",
+                                        "content": [
+                                          {
+                                            "kind": "Text",
+                                            "text": "<ResponsiveFixed>"
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "kind": "ContentListItem",
+                                        "content": [
+                                          {
+                                            "kind": "Text",
+                                            "text": "<ResponsiveStack>"
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "kind": "ContentListItem",
+                                        "content": [
+                                          {
+                                            "kind": "Text",
+                                            "text": "<ResponsiveGroup>"
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "ContentListItem",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "<ResponsiveShared>"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "ContentListItem",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "<ResponsiveContainer>"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "<StackItem>"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "<FlowItem>"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "<Cell>"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "\n                           GuiTableSplitterComposition\n                            "
+                          },
+                          {
+                            "kind": "List",
+                            "ordered": false,
+                            "items": [
+                              {
+                                "kind": "ContentListItem",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "<RowSplitter>"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "ContentListItem",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "<ColumnSplitter>"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "<SideAligned>"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "<PartialView>"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "\n                            GuiVirtualRepeatCompositionBase\n                            "
+                          },
+                          {
+                            "kind": "List",
+                            "ordered": false,
+                            "items": [
+                              {
+                                "kind": "ContentListItem",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "<RepeatFreeHeightItem>"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "ContentListItem",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "<RepeatFixedHeightItem>"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "ContentListItem",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "<RepeatFixedSizeMultiColumnItem>"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "ContentListItem",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "<RepeatFixedHeightMultiColumnItem>"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            Here we introduce common constraints and configuration of all compositions first.\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "TransparentToMouse property",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                默认值为 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "false"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                如果它被设置为 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "true"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ",\n                this composition becomes transparent to the mouse.\n                When a mouse clicks on this composition,\n                the click just go through this composition and hit a non-transparent one under this composition.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Note"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ":\n                by setting it to "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "true"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ",\n                it doesn't makes child compositions become transparent to the mouse.\n                If you want a whole composition tree to be transparent to the mouse,\n                every single composition in this tree must have this property set to "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "true"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "AssociatedCursor property",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                This property defines how the cursor should look like\n                when the cursor is over this composition.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                If this property is not set,\n                it will ask its parent composition for a value.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                在 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GacUI XML Resource"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ",\n                the type of this property is "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "presentation::INativeCursor::SystemCursorType"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "。\n                该值可以是此枚举中的任意项。\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "AssociatedHitTestResult property",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                The property defines how the window should behave\n                when the mouse is interacting with this composition.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                该属性的类型为 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "presentation::INativeWindowListener::HitTestResult"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "。\n                该值可以是此枚举中的任意项。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                Usually this property is used when implementing a control template for "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "<Window/>"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n                For example,\n                the window template will have a close button\n                and "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "ButtonClose"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " is set to the "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "AssociatedHitTestResult"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " property of this button's "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "BoundsComposition"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n                When the mouse clicks this button,\n                the OS will know that this button is for closing the window,\n                and then raise a sequence of events and close the window if it is not interrupted.\n                No code is needed for the "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Clicked"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " event of this button.\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Visible property",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                默认值为 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "true"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                如果它被设置为 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "false"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ",\n                anything inside this composition will not be rendered,\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "but they still affect the sizing"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " as they are visible.\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Box Model",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Image",
+                "src": "/gacui/com_BoxModel.png"
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "DO NOT"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " control layout by code, "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "DO"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " control layout by assigning proper values to properties mentioned below.\n                the layout will be fixed as soon as possible after properties of elements are changed,\n                and it is fast enough,\n                but the timing is not guaranteed.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                Any attempts to read the position of size of composition by programming could lead to unexpected result.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "Minimum size of the composition",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    The minimum size is controlled by the following properties:\n                    "
+                  },
+                  {
+                    "kind": "List",
+                    "ordered": false,
+                    "items": [
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "PreferredMinSize"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "OwnedElement"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " when "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "MinSizeLimitation"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " 是 "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "LimitToElement"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " 或 "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "LimitToElementAndChildren"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Children"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " when "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "MinSizeLimitation"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " 是 "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "LimitToElementAndChildren"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "\n                    And also by the following properties that only exist in "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GuiBoundsComposition"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " and its derived classes:\n                    "
+                  },
+                  {
+                    "kind": "List",
+                    "ordered": false,
+                    "items": [
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "ExpectedBounds"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "'s size"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "Children's "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "AlignmentToParent"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " when "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "MinSizeLimitation"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " 是 "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "LimitToElementAndChildren"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    A composition has a default minimum size to 0.\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    By assigning an element to the "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "OwnedElement"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " property,\n                    the element is binded to this composition.\n                    The element is rendered using the composition's position and size.\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    Sometimes the element requires a minimum size to render its full content\n                    (typically for "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "SolidLabel"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " without enabling trailing ellipses).\n                    To assign the minimum size to this composition,\n                    simply just set "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "MinSizeLimitation"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 到 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "LimitToElement"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 或 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "LimitToElementAndChildren"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ".\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    If this composition has children,\n                    there will also be a minimum size to render all children.\n                    To assign the minimum size to this composition,\n                    simply just set "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "MinSizeLimitation"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 到 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "LimitToElementAndChildren"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ".\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    You can also assign a minimum size to this composition using the "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "PreferredMinSize"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " property.\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "Position of the composition",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    The position is controlled by the following properties:\n                    "
+                  },
+                  {
+                    "kind": "List",
+                    "ordered": false,
+                    "items": [
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "AlignmentToParent"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": ", defaults to (-1,-1,-1,-1).\n                            Any component of "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "AlignmentToParent"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " must be -1 or non-negative.\n                            "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "AlignmentToParent"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " is the gap between this composition and its parent compositon.\n                        "
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "ExpectedBounds"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": ", defaults to (0,0,0,0).\n                        "
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "InternalMargin"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " of the parent composition, defaults to (0,0,0,0).\n                            Any component of "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "InternalMargin"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " must be non-negative.\n                            "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "InternalMargin"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " adds a gap between this component and its children compositions.\n                            A component of "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "InternalMargin"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " is considered when the corresponding component of "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "AlignmentToParent"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " of a child composition is "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "-1"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": ".\n                        "
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    Considering "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "左侧"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 以及 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "右侧"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 所属的 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "AlignmentToParent"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ".\n                    "
+                  },
+                  {
+                    "kind": "List",
+                    "ordered": false,
+                    "items": [
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "\n                            If both are not -1,\n                            the gap between this composition and its parent is defined by "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "AlignmentToParent"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": ".\n                        "
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "\n                            If "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "左侧"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " is -1 and "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "右侧"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " is not,\n                            the right gap is defined by "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "AlignmentToParent"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": ",\n                            the left gap is decided by the component's width.\n                        "
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "\n                            If "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "左侧"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " is not -1 and "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "右侧"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " is not,\n                            the left gap is defined by "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "AlignmentToParent"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "，\n                            右侧的间隙由组件的宽度决定。\n                        "
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "\n                            If both are -1,\n                            the left gap is defined by "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "ExpectedBounds"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " combining with its parent's "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "InternalMargin"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "，\n                            右侧的间隙由组件的宽度决定。\n                        "
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "top"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ", "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "bottom"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " and height are similar to what is described above.\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "AlignmentToParent"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " also affects the minimum size of the parent composition\n                    if "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "MinSizeLimitation"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " of the parent composition is set to "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "LimitToElementAndChildren"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ".\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "注意"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ":\n                    some compositions like "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "<SideAligned/>"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 或 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "<PartialView/>"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "\n                    ignores "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "AlignmentToParent"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ".\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "Keeping a button at the right-bottom corner of the window",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    This is very straightforward:\n                    "
+                  },
+                  {
+                    "kind": "Program",
+                    "code": "<Button>\n  <att.BoundsComposition AlignmentToParent=\"left:-1 top:-1 right:5 bottom:5\"/>\n</Button>"
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    By doing this,\n                    the button will keep its right 5 pixel (96 dpi) away from its parent's right,\n                    also its bottom 5 pixel (96 dpi) away from its parent's bottom.\n                    When the size of its parent changes,\n                    the button will stick to the right-bottom corner.\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "注意"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ":\n                    you are recommended to use "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "<Table/>"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " when you can,\n                    since the size of the button could change because it has different text under different OS language configuration.\n                    "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "<Table/>"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " helps to organize the button and the content above the button,\n                    or when there are multiple button on the right-bottom size.\n                "
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Data Binding on Positioning Properties",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                Just "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "DON'T DO THIS"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "IT IS DANGEROUS"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " to bind one positining properties to another.\n                For example,\n                you may want to keep a composition takes exactly the left half of its parent composition.\n                But if you bind "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "AlignmentToParent"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " of this composition to its size,\n                it could results in keeping growing its parent composition.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                When the parent composition grows (e.g. dragging the window),\n                the child composition also grows because it wants to keep the gap exactly to "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "AlignmentToParent"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n                After that "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "AlignmentToParent"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " also grows because the child composition grows,\n                and it makes the parent composition to grow again because the gap increases.\n                This process never stops,\n                the window will keep growing when it is resizing,\n                until forever.\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Other Properties",
+        "content": [
+          {
+            "kind": "Topic",
+            "title": "AssociatedControl",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    This property returns the control,\n                    whose "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "BoundsComposition"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " is this composition.\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    此属性可能返回 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "null"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " when this composition is not a "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "BoundsComposition"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " of a control.\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "RelatedControl",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    This property returns the most inner control that contains this composition.\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    此属性可能返回 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "null"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " when this composition has not been put in a control yet.\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "RelatedControlHost",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    This property returns the window that contains this composition.\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    此属性可能返回 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "null"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " when this composition has not been put in a control yet.\n                    Or the control has not been put in a window yet.\n                "
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "The timing of layout calculation",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                GacUI will trigger layout calculation automatically,\n                once on each frame until calculation becomes table,\n                and it stops.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                It can also be triggered by calling the "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "ForceCalculateSizeImmediately"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " method on a composition you want to process.\n                It calculates the layout of the composition and all its direct and indirect child compositions.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                Only when the calculation is completed,\n                the following properties of a composition are updated:\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "CachedMinSize"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "，从而触发 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "CachedMinSizeChanged"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " property."
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "CachedMinClientSize"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "，从而触发 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "CachedMinSizeChanged"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " property."
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "CachedBounds"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "，从而触发 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "CachedBoundsChanged"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " property."
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "CachedClientArea"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "，从而触发 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "CachedBoundsChanged"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " property."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "ForceCalculateSizeImmediately Method",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    This function makes this property refresh its size based on constraints immediately.\n                    But if elements in this composition have not been rendered yet,\n                    or have not been rendered since some properties of elements are changed,\n                    this function could return an inaccurate result.\n                    This depends on the implementation of element renderers.\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "CachedMinSize property",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    The minimum size of a composition.\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "CachedMinClientSize property",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    The minimum client size of a composition,\n                    which is "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "CachedMinSize"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 但 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "InternalMargin"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 的区域会被排除。\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "CachedBounds property",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    The position and actual size of a composition in its parent's coordinate space.\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "CachedClientArea property",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    The position and actual size of a composition's client area in its parent's coordinate space,\n                    which is "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "CachedBounds"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 但 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "InternalMargin"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 的区域会被排除。\n                "
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

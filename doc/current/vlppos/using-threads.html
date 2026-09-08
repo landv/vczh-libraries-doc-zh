@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Using Threads and Locks -- GPU Accelerated C++ User Interface (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "vlppos",
+    "using-threads"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "Vlpp OS",
+      "selected": false,
+      "path": [
+        "vlppos",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": " ",
+          "name": "Using Streams",
+          "selected": false,
+          "path": [
+            "vlppos",
+            "using-streams"
+          ]
+        },
+        {
+          "icon": " ",
+          "name": "Using Threads and Locks",
+          "selected": true,
+          "path": [
+            "vlppos",
+            "using-threads"
+          ]
+        },
+        {
+          "icon": " ",
+          "name": "Using Inter-Process Channels",
+          "selected": false,
+          "path": [
+            "vlppos",
+            "using-inter-process"
+          ]
+        },
+        {
+          "icon": " ",
+          "name": "自 1.0 以来的破坏性变更",
+          "selected": false,
+          "path": [
+            "vlppos",
+            "upgrade"
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "参考",
+          "selected": false,
+          "path": [
+            "vlppos",
+            "ref"
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": true,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "Using Threads and Locks",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "Lock protects resources, lock does not protect code."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "PageLink",
+            "href": "https://docs.microsoft.com/en-us/windows/win32/sync/synchronization",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "The synchronization topic in MSDN"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " is recommended for learning how to write concurrent programs correctly in details.\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Thread and thread pool",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "ThreadPoolLite"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " is always recommended to use whenever possible, instead of using "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Thread"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n                Waiting for a thread to exit is a little bit tricky,\n                it is much safer to use "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "EventObject"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " for this purpose.\n                This is why you are not recommended to use "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Thread"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " directly.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                To start a background task, this is the easiest way:\n                "
+              },
+              {
+                "kind": "Program",
+                "code": "ThreadPoolLite::Queue([]()\n{\n    // do something\n});"
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                An auto-delete thread is also able to do the same job:\n                "
+              },
+              {
+                "kind": "Program",
+                "code": "Thread::CreateAndStart([]()\n{\n    // do something\n}, true);"
+              },
+              {
+                "kind": "Text",
+                "text": "\n                By passing "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "true"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " as the second argument,\n                the "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Thread"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " object will be deleted after the function finishes.\n                It is very important to notice that,\n                when you get the returned "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Thread"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " object from the "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "CreateAndStart"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " function,\n                the thread could have finished and then the object was deleted.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                To wait for a task to complete,\n                A manual-unsignal "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "EventObject"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " is always recommended.\n                Manual-unsignal means that, when the event object is signaled and something pick up the event,\n                the event object will not be automatically unsignaled.\n                "
+              },
+              {
+                "kind": "Program",
+                "code": "EventObject stopEvent;\nstopEvent.CreateManualUnsignal(false);\n\nThreadPoolLite::Queue([&]()\n{\n    // do something\n    stopEvent.Signal();\n});\n\nstopEvent.Wait();"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Thread local variables",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                通过使用 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "ThreadVariable<T>"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " as a global variable,\n                a thread local variable is created.\n                "
+              },
+              {
+                "kind": "Program",
+                "code": "ThreadVariable<int> v;\n\nThreadPoolLite::Queue([&]()\n{\n    // this thread has a copy of v\n    v.Set(1);\n});\n\nThreadPoolLite::Queue([&]()\n{\n    // this thread has another copy of v too\n    v.Set(2);\n});\n\n// the main thread also has a different copy of v\nv.Set(3);"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Mutex, CriticalSection and SpinLock",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Mutex"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ", "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "CriticalSection"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 以及 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "SpinLock"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " is very similar.\n                When multiple threads are waiting for a "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Mutex"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "，一个 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "CriticalSection"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 或一个 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "SpinLock"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ",\n                only one thread could pick it up at the same time.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Mutex"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " uses system resource. It is recommended when:\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Owning a mutex for a long time could happen."
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Synchronize multiple operations across processes. A global mutex requires a name to create."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "CriticalSection"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " is a bit faster than "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Mutex"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ". It is recommended when:\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Owning a critical section for a long time could happen."
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "（仅限 Windows）"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " You need a composable lock. When a critical section is owned by a thread, this particular thread can pick up the critical section again without result in a deadlock."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "CS_LOCK"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " macro is a convenient way to wait for a critical section:\n                "
+              },
+              {
+                "kind": "Program",
+                "code": "CriticalSection cs;\n\nCS_LOCK(cs)\n{\n    // do something when owning the lock\n}"
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "SpinLock"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " is recommended when.\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Always owning a spin lock for a very short time."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "SPIN_LOCK"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " macro is a convenient way to wait for a spin lock:\n                "
+              },
+              {
+                "kind": "Program",
+                "code": "SpinLock lock;\n\nSPIN_LOCK(lock)\n{\n    // do something when owning the lock\n}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Semaphore",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Semaphore"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " is simlar to "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Mutex"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ",\n                the main difference is that,\n                multiple threads can pick up the same semaphore at the same time.\n                You can set a maximum number of owning threads.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                A semaphore could be created as a global object to use across processes, it requires a name to create.\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "EventObject",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "EventObject"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " cannot be owned by a thread. Instead, it is used to notify that something happens.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "（仅限 Windows）"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " An event object could be created as a global object to use across processes, it requires a name to create.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                A auto-unsignal event is initialized using "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "CreateAutoUnsignal"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n                When multiple threads is waiting on an auto-unsignal event,\n                if this event is signaled, only one thread get noticed, and the event is automatically unsignaled.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                A manual-unsignal event is initialized using "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "CreateManualUnsignal"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n                When multiple threads is waiting on an auto-unsignal event,\n                if this event is signaled, all threads get noticed.\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "ReaderWriterLock",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "ReaderWriterLock"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " can be owned by multiple thread in "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "读取模式"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "。\n                如果某个线程拥有 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "ReaderWriterLock"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 在……中 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "读取模式"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "，那么在……中，任何线程都无法拥有它 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "写入模式"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "ReaderWriterLock"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " can be owned by only one thread in "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "写入模式"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "。\n                如果某个线程拥有 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "ReaderWriterLock"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 在……中 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "写入模式"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "，那么在……中，任何线程都无法拥有它 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "读取模式"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                It is recommended to use "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "ReaderWriterLock"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " in this way:\n                "
+              },
+              {
+                "kind": "Program",
+                "code": "ReaderWriterLock lock;\n\nREADER_LOCK(lock)\n{\n    // do something when owning the lock in reader mode\n}\n\nWRITER_LOCK(lock)\n{\n    // do something when owning the lock in writer mode\n}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "ConditionVariable",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "ReaderWriterLock"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " is used when you need to temporarily give up a "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "CriticalSection"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 或一个 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "ReaderWriterLock"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " to wait for a signal.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                You are not recommended to use "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "EventObject"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " in such scenario,\n                because it is very easy to run into a deadlock.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                该 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "SleepWith"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " method is used to termporarily give up a "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "CriticalSeciont"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "（仅限 Windows）"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " There are also "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "SleepWithReader"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 以及 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "SleepWithWriter"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 用于 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "ReaderWriterLock"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n                Functions above are only allowed to call when a thread actually owns the lock to give up.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                例如：\n                "
+              },
+              {
+                "kind": "Program",
+                "code": "CriticalSection lock;\nConditionVariable cv;\n\nCS_LOCK(lock)\n{\n    // do something before sleeping.\n    DoSomething();\n\n    // give up the lock and become pending on the condition variable,\n    // so that another thread could own this lock.\n    // cv.WaitOnePending(); or cv.WaitAllPendings(); could wake up this thread.\n    // but the lock need to be owned by this thread again in order to actually wake up.\n    cv.SleepWith(lock);\n\n    // do something after sleeping, lock is owned by this thread again.\n    DoSomething();\n}\n\nWRITER_LOCK(lock)\n{\n    // do something when owning the lock in writer mode\n}"
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                You can wake one pending thread by calling the "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "WaitOnePending"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " method,\n                or "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "WakeAllPendings"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " for all threads.\n            "
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

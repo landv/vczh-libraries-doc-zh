@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>ALT Sequence and Control Focus -- GPU Accelerated C++ User Interface (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "gacui",
+    "advanced",
+    "alt"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "GacUI",
+      "selected": false,
+      "path": [
+        "gacui",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": "-",
+          "name": "高级主题",
+          "selected": false,
+          "path": [
+            "gacui",
+            "advanced",
+            "home"
+          ],
+          "subNodes": [
+            {
+              "icon": " ",
+              "name": "与 C++ 视图模型的互操作",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "vm"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "数据绑定",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "bindings"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "动画",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "animations"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "本地化",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "localization"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "跨 XML 资源引用",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "cxrr"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "ALT 序列与控件焦点",
+              "selected": true,
+              "path": [
+                "gacui",
+                "advanced",
+                "alt"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "TAB 与控件焦点",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "tab"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "创建新的列表控件",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "impllistcontrol"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "将 GacUI 移植到其它平台",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "implosprovider"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": true,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "ALT 序列与控件焦点",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            如果将一个可聚焦控件放到窗口上，\n            通过设置\n            "
+          },
+          {
+            "kind": "PageLink",
+            "href": "/gacui/components/controls/basic/home.html#Alt-AltChanged-",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Alt"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "\n            属性设置为某个值，\n            例如 \"X\"，\n            那么依次按下 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "ALT"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " ，后跟 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "X"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "\n            (not "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "ALT+X"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": ").\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            该 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "Alt"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 属性可以接受一串字符，\n            而不只是单个字符。\n            需要输入该序列中的各个字符才能激活此控件。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            If "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "ESC"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 被按下时，\n            会返回上一个容器。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            If "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "BACKSPACE"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 被按下时，\n            会取消序列中的最后一个字符。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            When "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "ALT"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 被按下时，\n            所有有效的 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "ALT"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 序列都会显示在窗口上。\n            渲染这些序列的所有标签都会随之改变\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Example",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Image",
+                "src": "/gacui/adv_alt.gif"
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                该操作通过按下以下按键来完成：\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "ALT"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ": Enter the ALT sequence mode."
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "P"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：有两个控件的 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "Alt"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 属性被设置为 \"P\"。它会筛出这些控件并等待按下数字键。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "0"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：下拉按钮被激活，会打开一个子菜单。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "ESC"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：关闭子菜单并返回上一个容器，即窗口。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "P"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：再次筛选。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "BACKSPACE"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：取消序列中的最后一个字符 \"P\"，从而显示所有可用项。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "P"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：再次筛选。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "1"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：粘贴按钮被激活，一段文本被粘贴到编辑器中。由于最终选定了某一项，因此退出 ALT 序列模式。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "ALT"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ": Enter the ALT sequence mode."
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "D"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：将焦点交给编辑器控件。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "CTRL+A"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：全选文本。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "DELETE"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：删除选中内容。"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Behavior after being Focused",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                当一个控件被……聚焦时，会有三种行为 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "ALT"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 快捷序列。\n                如果控件被……聚焦 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "TAB"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "，\n                它的行为可能会有所不同。\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ParagraphListItem",
+                    "paragraphs": [
+                      {
+                        "kind": "Paragraph",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "仅在获得焦点时"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Paragraph",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "\n                            像编辑器或列表控件这样具有复杂键盘行为的控件，\n                            只会获得焦点而不做其它事情。\n                        "
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ParagraphListItem",
+                    "paragraphs": [
+                      {
+                        "kind": "Paragraph",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Execute a Command"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Paragraph",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "\n                            像按钮这样具有简单可执行行为的控件，\n                            在被……聚焦之后，\n                            会执行与点击时相同的操作 "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "ALT"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " sequence.\n                        "
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ParagraphListItem",
+                    "paragraphs": [
+                      {
+                        "kind": "Paragraph",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "仅在获得焦点时"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Paragraph",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "\n                            本身不可执行、但包含可执行项的控件（如带子菜单的菜单项），\n                            在被……聚焦之后，\n                            会渲染所有可执行项 "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "ALT"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " sequence.\n                        "
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Paragraph",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "\n                            带子菜单的菜单项在被点击时不做任何事。\n                            但如果它被……激活 "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "ALT"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " 快捷序列，\n                            子菜单将会打开并等待更多按键。\n                        "
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Create your own Behavior",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                如果创建了新的控件类，\n                可以通过多种方式自定义控件对……作出反应的行为 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "ALT"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " sequence: \n            "
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "Using IGuiAltAction",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "IGuiAltAction"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 是所有控件的受保护基类。\n                    如果要创建新控件，\n                    可以重写相应的方法。\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    正确地为……赋值 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "ALT"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 把快捷序列赋给 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Alt"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " （某个控件的）属性\n                    也能轻松地让这些方法按预期工作。\n                    "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "IsAltEnabled"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " returns "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "true"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 如果控件可见且已启用。\n                    "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "IsAltAvailable"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " returns "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "true"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 如果控件可聚焦且 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Alt"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 属性不为空。\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    当窗口处于 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "ALT"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 快捷序列模式时，\n                    一个渲染该控件快捷序列的标签\n                    会被放入来自……的组合中 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GetAltComposition"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ".\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    如果两者都 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "IsAltEnabled"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 以及 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "IsAltAvailable"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " returns "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "true"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "，\n                    那么……的结果 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GetAlt()"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "，\n                    它同时也是来自……的值 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Alt"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " （默认情况下该属性的值），\n                    会成为候选之一。\n                    "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "OnActiveAlt"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 当此控件被……选中时，将被调用 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "ALT"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " sequence.\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "Using IGuiAltActionContainer",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "IGuiAltActionContainer"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 是一个\n                    "
+                  },
+                  {
+                    "kind": "PageLink",
+                    "href": "/gacui/components/controls/basic/home.html#Service-Objects",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "\n                        服务对象\n                    "
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "。\n                    可以通过调用……把服务对象附加到控件上 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "AddService"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 或重写 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "QueryService"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ".\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    如果某个 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "IGuiAltActionContainer"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 实例被附加到控件上，\n                    那么……中的所有方法 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "IGuiAltAction"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 都会被忽略。\n                    取而代之的是，\n                    多个 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "IGuiAltAction"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 该接口返回的……对象将被使用。\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    现在你可以为控件分配多个 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "ALT"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 快捷序列，\n                    每个序列分别绑定到不同的行为。\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    All "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "IGuiAltAction"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 从……返回的 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "IGuiAltActionContainer"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 必须已启用且可用。\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "Using IGuiAltActionHost",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    某个 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "IGuiAltActionHost"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 实例可以通过调用……附加到控件上 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "SetActivatingAltHost"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 或重写 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GetActivatingAltHost"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ".\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    当控件被……选中 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "ALT"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 快捷序列时，\n                    如果 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "IGuiAltActionHost"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 被附加到此控件，\n                    那么 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "ALT"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 快捷序列模式将不会退出。\n                    相反，\n                    该 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "IGuiAltActionHost"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 会被当作嵌套容器处理，\n                    并且 GacUI 会调用 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "CollectAltActions"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 来收集所有有效的 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "IGuiAltAction"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "，\n                    渲染所有 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "ALT"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 并等待键盘输入。\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    像窗口或菜单这样的所有顶级控件默认都会附加一个 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "IGuiAltActionHost"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 。\n                    如果在菜单项上创建了子菜单，\n                    "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "IGuiAltActionHost"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 会被附加到此控件。\n                    因此当它被激活时，\n                    会打开子菜单并继续等待更多按键，\n                    而不是执行该菜单项。\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GuiAltActionHostBase"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 是……的默认实现 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "IGuiAltActionHost"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "。\n                    如果它被附加到控件上，\n                    所有带有效……的子控件 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "IGuiAltAction"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 不会在容器中可见，\n                    相反，当父控件被……选中时，它们才可用 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "ALT"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " sequence.\n                    "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GuiAltActionHostBase::SetAltControl"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 必须被调用来初始化此类，\n                    它告诉该实现从哪里搜索要收集……的子控件 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "IGuiAltAction"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ".\n                "
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

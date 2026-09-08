@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title><TabTemplate> -- GPU Accelerated C++ User Interface (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "gacui",
+    "components",
+    "ctemplates",
+    "TabTemplate"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "GacUI",
+      "selected": false,
+      "path": [
+        "gacui",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": "-",
+          "name": "GacUI 组件",
+          "selected": false,
+          "path": [
+            "gacui",
+            "components",
+            "home"
+          ],
+          "subNodes": [
+            {
+              "icon": "-",
+              "name": "控件模板",
+              "selected": false,
+              "path": [
+                "gacui",
+                "components",
+                "ctemplates",
+                "home"
+              ],
+              "subNodes": [
+                {
+                  "icon": "-",
+                  "name": "<ControlTemplate>",
+                  "selected": false,
+                  "path": [
+                    "gacui",
+                    "components",
+                    "ctemplates",
+                    "ControlTemplate"
+                  ],
+                  "subNodes": [
+                    {
+                      "icon": " ",
+                      "name": "<LabelTemplate>",
+                      "selected": false,
+                      "path": [
+                        "gacui",
+                        "components",
+                        "ctemplates",
+                        "LabelTemplate"
+                      ]
+                    },
+                    {
+                      "icon": " ",
+                      "name": "<DocumentLabelTemplate>",
+                      "selected": false,
+                      "path": [
+                        "gacui",
+                        "components",
+                        "ctemplates",
+                        "DocumentLabelTemplate"
+                      ]
+                    },
+                    {
+                      "icon": "+",
+                      "name": "<WindowTemplate>",
+                      "selected": false,
+                      "path": [
+                        "gacui",
+                        "components",
+                        "ctemplates",
+                        "WindowTemplate"
+                      ]
+                    },
+                    {
+                      "icon": "+",
+                      "name": "<ButtonTemplate>",
+                      "selected": false,
+                      "path": [
+                        "gacui",
+                        "components",
+                        "ctemplates",
+                        "ButtonTemplate"
+                      ]
+                    },
+                    {
+                      "icon": " ",
+                      "name": "<ScrollTemplate>",
+                      "selected": false,
+                      "path": [
+                        "gacui",
+                        "components",
+                        "ctemplates",
+                        "ScrollTemplate"
+                      ]
+                    },
+                    {
+                      "icon": "+",
+                      "name": "<ScrollViewTemplate>",
+                      "selected": false,
+                      "path": [
+                        "gacui",
+                        "components",
+                        "ctemplates",
+                        "ScrollViewTemplate"
+                      ]
+                    },
+                    {
+                      "icon": "-",
+                      "name": "<TabTemplate>",
+                      "selected": true,
+                      "path": [
+                        "gacui",
+                        "components",
+                        "ctemplates",
+                        "TabTemplate"
+                      ],
+                      "subNodes": [
+                        {
+                          "icon": " ",
+                          "name": "<RibbonTabTemplate>",
+                          "selected": false,
+                          "path": [
+                            "gacui",
+                            "components",
+                            "ctemplates",
+                            "RibbonTabTemplate"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "icon": " ",
+                      "name": "<DatePickerTemplate>",
+                      "selected": false,
+                      "path": [
+                        "gacui",
+                        "components",
+                        "ctemplates",
+                        "DatePickerTemplate"
+                      ]
+                    },
+                    {
+                      "icon": " ",
+                      "name": "<RibbonGroupTemplate>",
+                      "selected": false,
+                      "path": [
+                        "gacui",
+                        "components",
+                        "ctemplates",
+                        "RibbonGroupTemplate"
+                      ]
+                    },
+                    {
+                      "icon": " ",
+                      "name": "<RibbonIconLabelTemplate>",
+                      "selected": false,
+                      "path": [
+                        "gacui",
+                        "components",
+                        "ctemplates",
+                        "RibbonIconLabelTemplate"
+                      ]
+                    },
+                    {
+                      "icon": " ",
+                      "name": "<RibbonButtonsTemplate>",
+                      "selected": false,
+                      "path": [
+                        "gacui",
+                        "components",
+                        "ctemplates",
+                        "RibbonButtonsTemplate"
+                      ]
+                    },
+                    {
+                      "icon": " ",
+                      "name": "<RibbonToolstripsTemplate>",
+                      "selected": false,
+                      "path": [
+                        "gacui",
+                        "components",
+                        "ctemplates",
+                        "RibbonToolstripsTemplate"
+                      ]
+                    },
+                    {
+                      "icon": "+",
+                      "name": "<RibbonGalleryTemplate>",
+                      "selected": false,
+                      "path": [
+                        "gacui",
+                        "components",
+                        "ctemplates",
+                        "RibbonGalleryTemplate"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": true,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "<TabTemplate>",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "<TabTemplate>"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 继承自 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "<ControlTemplate>"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Introduction",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n      该控件模板用于 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "<Tab/>"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n    "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n      该 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "ContainerComposition"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " property must be set to contain objects,\n      which are typically below all tab headers.\n      If tab headers and the container is organized in other direction,\n      the "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "TabOrder"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " property must be properly set.\n    "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Input Property",
+        "content": [
+          {
+            "kind": "Topic",
+            "title": "Commands",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n        该属性的类型为 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "(vl::)presentation::controls::ITabCommandExecutor*"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ".\n      "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n        该属性在此控件模板被应用到某个控件之后被设置。\n它为控件模板提供了一种与该控件通信的方式。\n      "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "TabPages",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n        This property is a bindable list ("
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "(vl::)reflection::description::IValueObservableList^"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "),\n        its elements are all "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "(vl::)presentation::controls::GuiTabPage*"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ".\n      "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n        This property keeps sync to tab pages in the tab control.\n        In the implementation of this control template,\n        collection bindable controls or compositions\n        (e.g. "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "<RepeatFlow/>"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ")\n        are recommended to contain tab page headers.\n      "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n        When a tab page header is selected,\n        a call to "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "ShowTab"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 所属的 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Commands"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " is required to notify the tab control.\n      "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "SelectedTabPage",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n        This property defines the current selected tab page.\n        It could be "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "null"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " when there is no selected tab page,\n        especially when "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "TabPages"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " contains no item.\n      "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "注意"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ":\n        when the selectable tab page is removed from the tab control,\n        the order between updating "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "TabPages"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 以及 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "SelectedTabPage"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 未定义。\n        "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "DO NOT"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " assume that "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "SelectableTabPage"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " will always be in "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "TabPages"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ".\n      "
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Output Property",
+        "content": [
+          {
+            "kind": "Topic",
+            "title": "TabOrder",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n        This property defines the visual order of tab pages.\n        It must be set to one of the following values:\n        "
+                  },
+                  {
+                    "kind": "List",
+                    "ordered": false,
+                    "items": [
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "LeftToRight"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "RightToLeft"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "TopToBottom"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "BottomToTop"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "\n        It tells the tab control how to select an expected tab page when\n        "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "左"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ", "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "右"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ", "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "上"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 或 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "下"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " is pressed.\n      "
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

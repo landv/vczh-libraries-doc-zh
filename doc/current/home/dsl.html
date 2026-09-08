@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>领域专用语言 -- GPU 加速的 C++ 用户界面 (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "home",
+    "dsl"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "Gaclib 文档",
+      "selected": false,
+      "path": [
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": " ",
+          "name": "下载 Gaclib",
+          "selected": false,
+          "path": [
+            "home",
+            "download"
+          ]
+        },
+        {
+          "icon": " ",
+          "name": "线程安全",
+          "selected": false,
+          "path": [
+            "home",
+            "mt"
+          ]
+        },
+        {
+          "icon": "-",
+          "name": "领域专用语言",
+          "selected": true,
+          "path": [
+            "home",
+            "dsl"
+          ],
+          "subNodes": [
+            {
+              "icon": " ",
+              "name": "正则表达式",
+              "selected": false,
+              "path": [
+                "home",
+                "dsl_regex"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "可反射类型注册",
+              "selected": false,
+              "path": [
+                "home",
+                "dsl_reflection"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "单元测试框架 (Vlpp)",
+              "selected": false,
+              "path": [
+                "home",
+                "dsl_unittest"
+              ]
+            }
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "已注册类型",
+          "selected": false,
+          "path": [
+            "home",
+            "registered"
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": false,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "领域专用语言",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            领域专用语言在本库中被广泛使用。\n            以下是它们的完整列表。\n            对于任何没有文档的主题，\n            其语法会在下面列出的类中以注释说明：\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "List",
+            "ordered": false,
+            "items": [
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "PageLink",
+                        "href": "/vlpp/home.html#Containers-and-collections-operations",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "集合操作"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ": vl::collections::LazyList<T> "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "(Vlpp)"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "PageLink",
+                        "href": "./dsl_regex.html",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "正则表达式"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ": vl::regex::Regex_<T> "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "(VlppRegex)"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "PageLink",
+                        "href": "./dsl_reflection.html",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "可反射类型注册"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ": vl::reflection::Description<T> "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "(VlppReflection)"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "解析器文法文件格式（已弃用）"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ": vl::parsing::tabling::ParsingTable "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "(VlppParser)"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "解析器文法文件格式"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "：（建设中）"
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "(VlppParser2)"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "PageLink",
+                        "href": "./dsl_unittest.html",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "单元测试框架 (Vlpp)"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ": vl::unittest::UnitTest "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "(Vlpp)"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "单元测试框架 (GacUI)"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "：（开发中）"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

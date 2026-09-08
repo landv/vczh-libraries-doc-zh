@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>准备上下文文件 -- GPU 加速的 C++ 用户界面 (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "coding-agent",
+    "context"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "使用 Coding Agent",
+      "selected": false,
+      "path": [
+        "coding-agent",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": " ",
+          "name": "安装所需工具",
+          "selected": false,
+          "subNodes": [
+            {
+              "icon": " ",
+              "name": "Windows",
+              "selected": false,
+              "path": [
+                "coding-agent",
+                "installing",
+                "windows"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "Linux",
+              "selected": false,
+              "path": [
+                "coding-agent",
+                "installing",
+                "linux"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "macOS",
+              "selected": false,
+              "path": [
+                "coding-agent",
+                "installing",
+                "macos"
+              ]
+            }
+          ]
+        },
+        {
+          "icon": "-",
+          "name": "准备上下文文件",
+          "selected": true,
+          "path": [
+            "coding-agent",
+            "context"
+          ],
+          "subNodes": [
+            {
+              "icon": " ",
+              "name": "编写 Project.md",
+              "selected": false,
+              "path": [
+                "coding-agent",
+                "project-md"
+              ]
+            }
+          ]
+        },
+        {
+          "icon": " ",
+          "name": "调查与优化任务",
+          "selected": false,
+          "path": [
+            "coding-agent",
+            "jobs"
+          ]
+        },
+        {
+          "icon": " ",
+          "name": "AutomationService 与基础计算机操作",
+          "selected": false,
+          "path": [
+            "coding-agent",
+            "gacui-debugging"
+          ]
+        },
+        {
+          "icon": " ",
+          "name": "创建远程协议与外部视图模型",
+          "selected": false,
+          "path": [
+            "coding-agent",
+            "remoting"
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": true,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "准备上下文文件",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            将 Release 仓库中的编码代理上下文复制到应用仓库的根目录。\n            最小复制集为：\n            "
+          },
+          {
+            "kind": "List",
+            "ordered": false,
+            "items": [
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Name",
+                    "text": ".github"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ": 提示词、指南、脚本、Linux 构建辅助文件、本地学习文件、任务日志文件，以及复制而来的知识库。"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Name",
+                    "text": "AGENTS.md"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ": 供 Codex 及其他读取该文件的代理使用的通用入口说明。"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Name",
+                    "text": "CLAUDE.md"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ": 面向 Claude 风格代理的相同入口说明。"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Name",
+                    "text": "Project.md"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ": 由应用所有者编写的、针对具体应用的仓库地图与验证策略。"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            复制过来的 "
+          },
+          {
+            "kind": "Name",
+            "text": ".github"
+          },
+          {
+            "kind": "Text",
+            "text": " 文件夹包含几类文件：\n            "
+          },
+          {
+            "kind": "List",
+            "ordered": false,
+            "items": [
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Name",
+                    "text": "copilot-instructions.md"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ": 主说明文件。它指示代理阅读 "
+                  },
+                  {
+                    "kind": "Name",
+                    "text": "Project.md"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "，并使用知识库、优先采用所提供的脚本。"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Name",
+                    "text": "Guidelines"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ": 包含构建、运行、调试、源文件、编码以及 GacUI 资源的说明。"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Name",
+                    "text": "prompts"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ": 任务提示词，例如 "
+                  },
+                  {
+                    "kind": "Name",
+                    "text": "ask.prompt.md"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "、"
+                  },
+                  {
+                    "kind": "Name",
+                    "text": "investigate.prompt.md"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "、"
+                  },
+                  {
+                    "kind": "Name",
+                    "text": "refine.prompt.md"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 与 "
+                  },
+                  {
+                    "kind": "Name",
+                    "text": "kb.prompt.md"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "。"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Name",
+                    "text": "Scripts"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ": 用于构建、运行、调试与归档任务日志的 Windows PowerShell 封装脚本。"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Name",
+                    "text": "Ubuntu"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ": Linux 构建封装脚本与辅助命令。"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Name",
+                    "text": "KnowledgeBase"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ": 复制而来的 API、设计、手册与学习文档，编码代理可在无网络的情况下阅读。"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Name",
+                    "text": "Learning"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ": 用于优化后续代理行为的项目本地经验。"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Name",
+                    "text": "TaskLogs"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ": 供调查任务与知识库任务使用的工作文档。"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            当所复制的上下文文件描述了稳定的项目行为时，应将它们纳入源代码管理。\n            任务日志文件可按仓库策略选择跟踪或忽略，但在要求编码代理使用那些提示词之前，提示词所引用的文件必须已存在。\n            如果应用具有不同的构建脚本、测试命令、项目名称、生成文件或平台支持，请先更新 "
+          },
+          {
+            "kind": "Name",
+            "text": "Project.md"
+          },
+          {
+            "kind": "Text",
+            "text": "。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            请参阅 "
+          },
+          {
+            "kind": "PageLink",
+            "href": "/coding-agent/project-md.html",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "编写 Project.md"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 以了解应用专属文件的预期内容。\n        "
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

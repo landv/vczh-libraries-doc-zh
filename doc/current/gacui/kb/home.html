@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>知识库 -- GPU 加速的 C++ 用户界面 (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "gacui",
+    "kb",
+    "home"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "GacUI",
+      "selected": false,
+      "path": [
+        "gacui",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": " ",
+          "name": "构建你的第一个 GacUI 应用！",
+          "selected": false,
+          "path": [
+            "gacui",
+            "running"
+          ]
+        },
+        {
+          "icon": "-",
+          "name": "知识库",
+          "selected": true,
+          "path": [
+            "gacui",
+            "kb",
+            "home"
+          ],
+          "subNodes": [
+            {
+              "icon": " ",
+              "name": "GacUI 对象模型",
+              "selected": false,
+              "path": [
+                "gacui",
+                "kb",
+                "gom"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "元素",
+              "selected": false,
+              "path": [
+                "gacui",
+                "kb",
+                "elements"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "组合",
+              "selected": false,
+              "path": [
+                "gacui",
+                "kb",
+                "compositions"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "控件",
+              "selected": false,
+              "path": [
+                "gacui",
+                "kb",
+                "controls"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "控件模板",
+              "selected": false,
+              "path": [
+                "gacui",
+                "kb",
+                "ctemplates"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "项模板",
+              "selected": false,
+              "path": [
+                "gacui",
+                "kb",
+                "itemplates"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "默认模板注册",
+              "selected": false,
+              "path": [
+                "gacui",
+                "kb",
+                "dtemplates"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "应用",
+              "selected": false,
+              "path": [
+                "gacui",
+                "kb",
+                "application"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "操作系统提供程序",
+              "selected": false,
+              "path": [
+                "gacui",
+                "kb",
+                "osprovider"
+              ]
+            }
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "GacUI XML 资源",
+          "selected": false,
+          "path": [
+            "gacui",
+            "xmlres",
+            "home"
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "GacUI 组件",
+          "selected": false,
+          "path": [
+            "gacui",
+            "components",
+            "home"
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "高级主题",
+          "selected": false,
+          "path": [
+            "gacui",
+            "advanced",
+            "home"
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "托管模式与远程协议",
+          "selected": false,
+          "path": [
+            "gacui",
+            "modes",
+            "home"
+          ]
+        },
+        {
+          "icon": " ",
+          "name": "Coding Agent 支持",
+          "selected": false,
+          "subNodes": [
+            {
+              "icon": " ",
+              "name": "AutomationService",
+              "selected": false,
+              "path": [
+                "gacui",
+                "coding-agent",
+                "automation-service"
+              ]
+            }
+          ]
+        },
+        {
+          "icon": " ",
+          "name": "自 1.0 以来的破坏性变更",
+          "selected": false,
+          "path": [
+            "gacui",
+            "upgrade"
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "参考",
+          "selected": false,
+          "path": [
+            "gacui",
+            "ref"
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": false,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "知识库",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            在学习如何编写 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "GacUI XMl Resource"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 之前，有几个事项需要了解。\n            在本主题中，我们将向你介绍：\n            "
+          },
+          {
+            "kind": "List",
+            "ordered": false,
+            "items": [
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GacUI 的对象模型，包括元素、组合、控件、模板以及模板注册。"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "应用模型。"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "操作系统提供程序。"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "\n            强烈建议先阅读知识库，再着手学习如何编写 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "GacUI XML Resource"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "。\n        "
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

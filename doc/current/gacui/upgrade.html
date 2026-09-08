@@ -1,0 +1,4276 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Breaking changes from 1.0 -- GPU Accelerated C++ User Interface (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "gacui",
+    "upgrade"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "GacUI",
+      "selected": false,
+      "path": [
+        "gacui",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": " ",
+          "name": "构建你的第一个 GacUI 应用！",
+          "selected": false,
+          "path": [
+            "gacui",
+            "running"
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "知识库",
+          "selected": false,
+          "path": [
+            "gacui",
+            "kb",
+            "home"
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "GacUI XML 资源",
+          "selected": false,
+          "path": [
+            "gacui",
+            "xmlres",
+            "home"
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "GacUI 组件",
+          "selected": false,
+          "path": [
+            "gacui",
+            "components",
+            "home"
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "高级主题",
+          "selected": false,
+          "path": [
+            "gacui",
+            "advanced",
+            "home"
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "托管模式与远程协议",
+          "selected": false,
+          "path": [
+            "gacui",
+            "modes",
+            "home"
+          ]
+        },
+        {
+          "icon": " ",
+          "name": "Coding Agent 支持",
+          "selected": false,
+          "subNodes": [
+            {
+              "icon": " ",
+              "name": "AutomationService",
+              "selected": false,
+              "path": [
+                "gacui",
+                "coding-agent",
+                "automation-service"
+              ]
+            }
+          ]
+        },
+        {
+          "icon": " ",
+          "name": "自 1.0 以来的破坏性变更",
+          "selected": true,
+          "path": [
+            "gacui",
+            "upgrade"
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "参考",
+          "selected": false,
+          "path": [
+            "gacui",
+            "ref"
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": true,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "自 1.0 以来的破坏性变更",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            本页列出自 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "1.0-rc3"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 以来的 API 变更，并说明如何更新现有代码。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "GacUI API",
+        "content": [
+          {
+            "kind": "Topic",
+            "title": "GuiControl",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "SetFocus"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 以及 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GetFocus"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 被重命名为 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "SetFocused"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 以及 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GetFocused"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ".\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "GuiListControl",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    添加项可能导致渲染期间出现约 1 帧的闪烁。\n                    要解决此问题，请调用 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GuiControlHost::ForceCalculateSizeImmediately"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " ，并在一个渲染周期内完成对所有项的编辑之后再调用该函数，C++ 或 Workflow 中均可。\n                    控件宿主是一种顶级窗口，例如窗口或菜单。\n                    你也可以在任何列表控件的 `ContainerComposition` 中调用同一函数，\n                    但该函数仅对 C++ 可用。\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "GuiControlHost",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "WindowReadyToClose"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 事件被新增。\n                    "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "WindowClosing"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 会首先被调用，\n                    如果它没有取消该操作，\n                    "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "WindowReadyToClose"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 被触发，随后窗口被关闭，接着 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "WindowClosed"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 被调用。\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "GuiSinglelineTextBox and GuiMultilineTextBox",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GuiSinglelineTextBox"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 继承自 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GuiDocumentLabel"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ".\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GuiMultilineTextBox"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 继承自 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GuiDocumentViewer"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ".\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    Use "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "SetCaret"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 而不是 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Select"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ".\n                    Use "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "EditMode"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 而不是 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Readonly"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ".\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "GuiImageFrameElement",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GuiImageFrameElement"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 将不再检查帧索引是否可用。渲染器应妥善处理这一点。\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "GuiColorizedTextElement",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GuiColorizedTextElement"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 被移除。\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "GuiGraphicsComposition",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    Removed:\n                    "
+                  },
+                  {
+                    "kind": "List",
+                    "ordered": false,
+                    "items": [
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Margin"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " property"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "IsTrivialComposition"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " function"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "PreferredBounds"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " property"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "\n                    Renamed:\n                    "
+                  },
+                  {
+                    "kind": "List",
+                    "ordered": false,
+                    "items": [
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "ClientArea"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " 属性设置为 "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "CachedClientArea"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " property"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "MinPreferredMinSize"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " 属性设置为 "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "CachedMinSize"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " 以及 "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "CachedMinClientSize"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " property"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "Bounds"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " 以及 "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "PreviousCalculatedBounds"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " 属性设置为 "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "CachedBounds"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " property"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "FindComposition"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " 函数，用于 "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "FindVisibleComposition"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " function."
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "GuiGraphicsEventReceiver",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    原先九个针对具体按钮的事件被移除，改为三个 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GuiMouseEvent"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " members:\n                    "
+                  },
+                  {
+                    "kind": "List",
+                    "ordered": false,
+                    "items": [
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "leftButtonDown"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": ", "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "middleButtonDown"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "，并且 "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "rightButtonDown"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " 被替换为 "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "mouseDown"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "."
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "leftButtonUp"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": ", "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "middleButtonUp"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "，并且 "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "rightButtonUp"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " 被替换为 "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "mouseUp"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "."
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "leftButtonDoubleClick"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": ", "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "middleButtonDoubleClick"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "，并且 "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "rightButtonDoubleClick"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " 被替换为 "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "mouseDoubleClick"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "\n                    这些名称在反射得到的 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GuiGraphicsComposition"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 对象上也会随之改变，包括 GacUI Resource XML 中的事件绑定。\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GuiMouseEventArgs::button"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 被新增，类型为 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "NativeMouseButton"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " ，默认值为 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "NativeMouseButton::Left"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "。\n                    对于这三个新事件，它标识了触发该事件的按钮： "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Left"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ", "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Middle"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ", "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Right"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ", "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Mouse4"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "，或 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Mouse5"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "。\n                    继承而来的 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "左侧"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ", "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "middle"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "，并且 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "右侧"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 字段仍描述按住按钮的状态。\n                    请使用 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "button"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 来区分触发事件的按钮，包括在松开按钮时。\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    当为某个按钮迁移处理程序时，请订阅对应的新事件并过滤 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "arguments.button"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "。\n                    例如，把原对 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "leftButtonDown"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 的订阅替换为：\n                    \n                    "
+                  },
+                  {
+                    "kind": "Program",
+                    "code": "composition->GetEventReceiver()->mouseDown.AttachLambda(\n    [](GuiGraphicsComposition* sender, GuiMouseEventArgs& arguments)\n    {\n        if (arguments.button != NativeMouseButton::Left) return;\n        // Handle the left button press.\n    });",
+                    "language": "c++"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "\n                    In GacUI Resource XML, replace "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "ev.leftButtonDown"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 与 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "ev.mouseDown"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " ，并在 Workflow 中应用相同的过滤：\n                    \n                    "
+                  },
+                  {
+                    "kind": "Program",
+                    "code": "<Bounds>\n    <ev.mouseDown-eval><![CDATA[\n        if (arguments.button == NativeMouseButton::Left)\n        {\n            arguments.handled = true;\n        }\n    ]]></ev.mouseDown-eval>\n</Bounds>",
+                    "language": "xml"
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    一次双击会触发 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "mouseDown"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ", "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "mouseUp"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ", "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "mouseDown"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ", "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "mouseDoubleClick"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ", then "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "mouseUp"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ".\n                    "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GuiItemMouseEventArgs"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 以及 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GuiNodeMouseEventArgs"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " inherit "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "button"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "。\n                    位于 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GuiListControl"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 上的原有按钮专属 Item 事件，以及位于 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GuiVirtualTreeListControl"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 上的 Node 事件都会被保留。\n                    请通过组合事件处理 Mouse4 与 Mouse5。\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "IGuiShortcutKeyManager and GuiShortcutKeyItem",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "IGuiShortcutKeyManager::TryGetShortcut"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ", "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "CreateNewShortcut"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "，并且 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "CreateShortcutIfNotExist"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "\n                    新增一个必需的 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "bool osSuper"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 位于……之间的参数 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "alt"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 以及 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "键"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ":\n                    "
+                  },
+                  {
+                    "kind": "Program",
+                    "code": "IGuiShortcutKeyItem* TryGetShortcut(bool ctrl, bool shift, bool alt, bool osSuper, VKEY key);\nIGuiShortcutKeyItem* CreateNewShortcut(bool ctrl, bool shift, bool alt, bool osSuper, VKEY key);\nIGuiShortcutKeyItem* CreateShortcutIfNotExist(bool ctrl, bool shift, bool alt, bool osSuper, VKEY key);",
+                    "language": "c++"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "\n                    请更新相关重写与调用方，包括 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GuiShortcutKeyManager"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ".\n                    Pass "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "false"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " for existing shortcuts without Win/Command/Super.\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GuiShortcutKeyManager::CreateShortcutInternal"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "，该 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GuiShortcutKeyItem"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 构造函数，以及 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GuiShortcutKeyItem::CanActivate"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 等接收单独修饰符的方法，也都要在按键参数之前加上该参数。\n                    "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GuiShortcutKeyItem::ReadKeyConfig"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 新增一个输出参数 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "bool& _osSuper"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " between "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "_alt"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 以及 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "_key"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "。\n                    快捷键匹配包含 Super 修饰键，因此不含 Super 的快捷键不会匹配任何含 Super 的组合键。\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "GuiToolstripCommand::ShortcutBuilder",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    Add "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "bool osSuper = false"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "。\n                    该 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "SHORTCUT"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 解析器接受 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Win"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ", "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Command"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "，并且 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Super"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 作为同一修饰键在所有平台上的名称。\n                    例如， "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Ctrl+Command+Q"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 以及 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Ctrl+Win+Q"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 表示同一个快捷键。\n                    "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GuiShortcutKeyItem::GetName()"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " ，其显示的平台标签来自 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "INativeResourceService::GetOSSuperKeyName()"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ".\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "GuiGraphicsSite",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    此类已被移除，其成员被合并到其基类 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GuiGraphicsComposition"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ".\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "GuiBoundsComposition",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Bounds"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 属性被重命名为 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "ExpectedBounds"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ".\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "AlignmentToParent"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 属性在布局时将不再考虑父级的 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "InternalMargin"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 属性。\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "GuiTableComposition",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    Removed "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GetCellArea"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 以及 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "UpdateCellBounds"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " functions.\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    When "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "MinSizeLimitation"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 不是 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "LimitToElementAndChildren"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "单元格的布局将不计入表格的最小尺寸。\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "ThemeName",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    新主题 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "SystemFrameWindow"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 用于……的控件模板 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GuiWindow"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 当启用系统边框时。\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    新主题 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "CustomFrameWindow"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 用于……的控件模板 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GuiWindow"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 当禁用系统边框时。\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    新主题 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "RibbonGroupMenu"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 用于当 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GuiRibbonGroup"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 被折叠为按钮时的下拉菜单控件模板。\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "ThemeTemplates",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    新主题，请参见 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "ThemeName"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ".\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    新属性 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "PreferCustomFrameWindow"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "。\n                    默认值为 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "nullptr"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "。\n                    至少应有一个 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "ThemeTemplates"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 将此属性设为非空。\n                    最新的 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "ThemeTemplates"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 且非空的 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "PreferCustomFrameWindow"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 将决定\n                    是否使用 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "SystemFrameWindow"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 或 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "CustomFrameWindow"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "\n                    ，当窗口的主题名称为 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "ThemeName::Window"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ".\n                "
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "GacUI Rendering API",
+        "content": [
+          {
+            "kind": "Topic",
+            "title": "DEFINE_GUI_GRAPHICS_ELEMENT",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    该宏已被移除。\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Program",
+                    "code": "class YourElement : public GuiElementBase<TYPE>, YourBaseClasses...\n{\n    DEFINE_GUI_GRAPHICS_ELEMENT(TYPE, NAME)\n...\n};",
+                    "language": "c++"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "\n                    应被替换为\n                    "
+                  },
+                  {
+                    "kind": "Program",
+                    "code": "class YourElement : public GuiElementBase<TYPE>, YourBaseClasses...\n{\nprivate:\n    friend class GuiElementBase<TYPE>;\n    static constexpr const wchar_t* ElementTypeName = NAME;\n...\n};",
+                    "language": "c++"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "DEFINE_CACHED_RESOURCE_ALLOCATOR",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    该宏已被移除。\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Program",
+                    "code": "class YourAllocator : YourBaseClasses...\n{\n    DEFINE_CACHED_RESOURCE_ALLOCATOR(TKEY, TVALUE)\n...\n};",
+                    "language": "c++"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "\n                    应被替换为\n                    "
+                  },
+                  {
+                    "kind": "Program",
+                    "code": "class YourAllocator : public GuiCachedResourceAllocatorBase<YourAllocator, TKEY, TVALUE>, YourBaseClasses...\n{\n...\n};",
+                    "language": "c++"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "DEFINE_GUI_GRAPHICS_RENDERER",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    该宏已被移除。\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Program",
+                    "code": "class YourRenderer : public Object, public IGuiGraphicsRenderer, YourBaseClasses...\n{\n    DEFINE_GUI_GRAPHICS_RENDERER(TELEMENT, TRENDERER, TTARGET)\n...\n};",
+                    "language": "c++"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "\n                    应被替换为\n                    "
+                  },
+                  {
+                    "kind": "Program",
+                    "code": "class YourRenderer : GuiElementRendererBase<TELEMENT, TRENDERER, TTARGET>, YourBaseClasses...\n{\nprivate:\n    friend class GuiElementRendererBase<TELEMENT, TRENDERER, TTARGET>;\n...\n};",
+                    "language": "c++"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "GacUI Platform Provider API",
+        "content": [
+          {
+            "kind": "Topic",
+            "title": "IGuiGraphicsRenderTarget",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    向……添加了一个参数 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "PushClipper"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 以及 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "PopClipper"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "。\n                    该 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "generator"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 描述创建当前裁剪器的对象，它可能是 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "nullptr"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "。\n                    在几乎所有情况下，此参数的值都无关紧要，\n                    通常它是一个元素或一个组合。\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    新方法 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "IsInHostedRendering"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ", "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "StartHostedRendering"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 以及 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "StopHostedRendering"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ".\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    Use "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GuiGraphicsRenderTarget"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 来实现 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "IGuiGraphicsRenderTarget"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " ，从而降低复杂度，\n                    无需费心处理托管或非托管模式，\n                    以及部分裁剪的计算。\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "IGuiGraphicsParagraph",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "OpenCaret"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 以及 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "CloseCaret"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 已改为 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "EnableCaret"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ", "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "DisableCaret"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 以及 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "BlinkCaret"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ".\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "EnableCaret"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 以及 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "DisableCaret"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 说明插入符号是否在此特定段落中被激活。\n                    "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "BlinkCaret"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 在可见与不可见之间切换插入符号；若插入符号被禁用，则应忽略该调用。\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "InlineObjectProperties::backgroundColor"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 被添加到该结构体中。\n                    此字段表示对象上的附加颜色，当其 alpha 通道为零时应被忽略。\n                    在过去，背景色由 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "SetBackgroundColor"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ".\n                    Now "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "SetBackgroundColor"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 以及任何其他文本属性，在渲染内联对象时都应当被忽略。\n                    目前它表示对象是否被选中。你可以选择任意方式来渲染它。\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "INativeWindow",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "SetFocus"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 以及 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "IsFocused"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 被移除，因为现在“已激活”就意味着“已聚焦”。\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    新方法 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "IsActivelyRefreshing"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "，它总是返回 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "true"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 用于原生平台提供程序。\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    新方法 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GetRenderingOffset"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "，它总是返回 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "{0,0}"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 用于原生平台提供程序。\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    新方法 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "IsRenderingAsActivated"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "，它应返回 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "true"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 当窗口或任何子窗口被激活时。\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    新方法 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "SuggestMinClientSize"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "，在原生操作系统平台实现中忽略它。\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "INativeWindowListener",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    原先九个针对具体按钮的回调被移除：\n                    "
+                  },
+                  {
+                    "kind": "List",
+                    "ordered": false,
+                    "items": [
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "LeftButtonDown"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": ", "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "MiddleButtonDown"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "，并且 "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "RightButtonDown"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " 被替换为 "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "MouseDown"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "."
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "LeftButtonUp"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": ", "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "MiddleButtonUp"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "，并且 "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "RightButtonUp"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " 被替换为 "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "MouseUp"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "."
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "LeftButtonDoubleClick"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": ", "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "MiddleButtonDoubleClick"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "，并且 "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "RightButtonDoubleClick"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " 被替换为 "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "MouseDoubleClick"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "."
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "\n                    新的虚回调以按钮作为第一个参数：\n                    "
+                  },
+                  {
+                    "kind": "Program",
+                    "code": "virtual void MouseDown(NativeMouseButton button, const NativeWindowMouseInfo& info);\nvirtual void MouseUp(NativeMouseButton button, const NativeWindowMouseInfo& info);\nvirtual void MouseDoubleClick(NativeMouseButton button, const NativeWindowMouseInfo& info);",
+                    "language": "c++"
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    请更新监听器的重写与原生平台分发，让全部五个按钮都使用这些回调。\n                    将按钮专属行为移入测试，或针对 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "button"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "进行分支处理。\n                    例如，把对 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "LeftButtonDown(info)"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " becomes "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "MouseDown(NativeMouseButton::Left, info)"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "。\n                    在双击的第二次按下时，调用 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "MouseDown"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 紧接在 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "MouseDoubleClick"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ".\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "MouseMoving"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ", "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "HorizontalWheel"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "，并且 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "VerticalWheel"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 仍然只接受 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "const NativeWindowMouseInfo& info"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "。\n                    所有鼠标回调都会在 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "info.osSuper"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "。\n                    请随原生事件捕获该状态，并将其传给监听器。\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    新回调 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "RenderingAsActivated"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 以及 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "RenderingAsDeactivated"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "，\n                    在 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "INativeWindow::IsRenderingAsActivated"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 被更改。\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Closing"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 被重命名为 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "BeforeClosing"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 以及 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "AfterClosing"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ".\n                    "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "BeforeClosing"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 必须先调用所有监听器，\n                    接着 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "AfterClosing"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " ，即对所有监听器调用；\n                    若没有任何监听器在 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "BeforeClosing"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ".\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    新回调 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "NeedRefresh"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ", "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "ForceRefresh"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 以及 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "BecomeNonMainHostedWindow"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "中取消关闭，则不应从原生平台提供程序调用它们。\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    向……添加了一个参数 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "DpiChanged"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ".\n                    "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "DpiChanged(true)"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 必须先调用所有监听器，\n                    接着 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "DpiChanged(false)"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " ，即所有监听器。\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "NativeMouseButton 与输入信息",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    Add "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "enum class NativeMouseButton"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 在……中 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "vl::presentation"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "，其取值包括\n                    "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Left"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ", "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Middle"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ", "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Right"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ", "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Mouse4"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "，并且 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Mouse5"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "。\n                    它标识传入 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "INativeWindowListener"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 鼠标按钮回调、并存储在 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GuiMouseEventArgs::button"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ".\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    Add "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "bool osSuper = false"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 到 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "WindowMouseInfo_<T>"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ", "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "NativeWindowKeyInfo"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "，并且 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "NativeWindowCharInfo"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ".\n                    It records Win on Windows, Command on macOS, or Super on Linux.\n                    In "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "WindowMouseInfo_<T>"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 中的按钮；它紧随 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "shift"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "，而在按键与字符信息中则紧随 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "alt"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "。\n                    请为新插入的字段更新位置式聚合初始化。\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "WindowMouseInfo"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 以及 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "NativeWindowMouseInfo"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 是 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "WindowMouseInfo_<T>"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "的别名，因此两者都获得此字段。\n                    "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GuiMouseEventArgs"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ", "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GuiKeyEventArgs"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "，并且 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GuiCharEventArgs"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " inherit "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "osSuper"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " ，它们都从各自的输入信息基类继承而来\n                    "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GuiItemMouseEventArgs"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 以及 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GuiNodeMouseEventArgs"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 继承它，经由 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GuiMouseEventArgs"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ".\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "INativeInputService",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "RegisterGlobalShortcutKey"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 新增一个必需的 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "bool osSuper"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 位于……之间的参数 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "alt"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 以及 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "键"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ":\n                    "
+                  },
+                  {
+                    "kind": "Program",
+                    "code": "virtual vint RegisterGlobalShortcutKey(bool ctrl, bool shift, bool alt, bool osSuper, VKEY key) = 0;",
+                    "language": "c++"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "\n                    Update implementations and callers. Pass "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "false"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " for global shortcuts without Win/Command/Super.\n                    A Windows provider maps "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "osSuper"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 到 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "MOD_WIN"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 在注册热键时。\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "INativeResourceService",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    添加纯虚方法 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "WString GetOSSuperKeyName()"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "。\n                    各实现应返回 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Win"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " （在 Windows 上） "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Command"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " on macOS, and "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Super"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " （在 Linux 上）。\n                    它控制着 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GuiShortcutKeyItem::GetName()"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ".\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "IGuiPlugin",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    新参数 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "controllerUnrelatedPlugins"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 以及 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "controllerRelatedPlugins"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "\n                    被添加到 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "IGuiPlugin::Load"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 以及 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "IGuiPlugin::Unload"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "。\n                    在单元测试中 GacUI 会多次重启，\n                    这些参数告知插件它被加载或卸载的原因，\n                    使插件在可能的情况下跳过某些工作。\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "GetCurrentController and SetCurrentController",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    它被重命名为 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "SetNativeController"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ".\n                    "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GetCurrentController"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 不再返回传入 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "SetNativeController"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "中的对象，\n                    而是返回一个全新的 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "INativeController"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "\n                    实现，其各项服务可由 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GetNativeServiceSubstitution"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": ".\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "新辅助函数",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "PerformHitTest"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 用于调用 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "INativeWindowListener::HitTest"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " ，即对所有监听器调用。\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GetCursorFromHitTest"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 用于从命中测试结果中获取建议的光标。\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "(Try)?FindObjectByName"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 以及 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "(Try)?FindControlByText"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 用于获取一个在 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "ref.Name"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 中指定了 GacUI Resource XML 中的 `ref.Name`、且由 `<Instance/>` 创建的对象。\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "新宏",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GUI_DEFINE_KEYBOARD_WINDOWS_NAME"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 为按键提供建议名称。\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "新辅助类",
+            "content": [
+              {
+                "kind": "Topic",
+                "title": "SharedAsyncService",
+                "content": [
+                  {
+                    "kind": "Paragraph",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "\n                        该类作为默认实现，用于 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "INativeAsyncService"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ".\n                    "
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "Topic",
+                "title": "SharedCallbackService",
+                "content": [
+                  {
+                    "kind": "Paragraph",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "\n                        该类作为默认实现，用于 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "INativeCallbackService"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 以及 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "INativeCallbackInvoker"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ".\n                    "
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "Topic",
+                "title": "FakeDialogService",
+                "content": [
+                  {
+                    "kind": "Paragraph",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "\n                        该类作为默认实现，用于 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "INativeDialogService"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 用于 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "仅托管模式"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "。\n                        要在托管模式下使用此服务，\n                        "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "INativeController::DialogService"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 可让其直接返回 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "nullptr"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ".\n                    "
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

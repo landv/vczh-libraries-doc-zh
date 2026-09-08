@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Properties and Events -- GPU Accelerated C++ User Interface (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "workflow",
+    "lang",
+    "class_prop"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "Workflow 脚本",
+      "selected": false,
+      "path": [
+        "workflow",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": "-",
+          "name": "语法",
+          "selected": false,
+          "path": [
+            "workflow",
+            "lang"
+          ],
+          "subNodes": [
+            {
+              "icon": "-",
+              "name": "类型",
+              "selected": false,
+              "path": [
+                "workflow",
+                "lang",
+                "type"
+              ],
+              "subNodes": [
+                {
+                  "icon": "-",
+                  "name": "类",
+                  "selected": false,
+                  "path": [
+                    "workflow",
+                    "lang",
+                    "class"
+                  ],
+                  "subNodes": [
+                    {
+                      "icon": " ",
+                      "name": "属性与事件",
+                      "selected": true,
+                      "path": [
+                        "workflow",
+                        "lang",
+                        "class_prop"
+                      ]
+                    },
+                    {
+                      "icon": " ",
+                      "name": "继承",
+                      "selected": false,
+                      "path": [
+                        "workflow",
+                        "lang",
+                        "class_inherit"
+                      ]
+                    },
+                    {
+                      "icon": " ",
+                      "name": "分配",
+                      "selected": false,
+                      "path": [
+                        "workflow",
+                        "lang",
+                        "class_new"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": true,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "Properties and Events (class)",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            Properties and events are allowed in classes.\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "定义属性与事件",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                当属性 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Name"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 与事件关联 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "NameChanged"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "，\n                这里不会自动发生神奇的事情，\n                ……的实现 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "SetName"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 应触发 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "NameChanged"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " approppriately.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                该属性也可以是只读的，或不与任何事件关联。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                Auto-property is very useful to avoid boiler-plate code.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                Auto-property must be initialized.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "Full-featured property",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Program",
+                    "code": "class WithProp\n{\n    prop Name: string = \"\" {}\n}"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "\n                    这意味着：\n                    "
+                  },
+                  {
+                    "kind": "Program",
+                    "code": "class WithProp\n{\n    var name: string = \"\";\n\n    event NameChanged();\n\n    func GetName(): string\n    {\n        return name;\n    }\n\n    func SetName(value: string): void\n    {\n        if (name != value)\n        {\n            name = value;\n            NameChanged();\n        }\n    }\n\n    prop Name: string {GetName, SetName : NameChanged}\n}"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "\n                    请注意 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "名称"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 如果该变量由自动属性生成，则它不可访问。\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "Readonly property",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Program",
+                    "code": "class WithProp\n{\n    prop Name: string = \"\" {const}\n}"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "\n                    这意味着：\n                    "
+                  },
+                  {
+                    "kind": "Program",
+                    "code": "class WithProp\n{\n    var name: string = \"\";\n\n    event NameChanged();\n\n    func GetName(): string\n    {\n        return name;\n    }\n\n    func SetName(value: string): void\n    {\n        if (name != value)\n        {\n            name = value;\n            NameChanged();\n        }\n    }\n\n    prop Name: string {GetName : NameChanged}\n}"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "\n                    请注意 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "名称"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 如果该变量由自动属性生成，则它不可访问。\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    即使该属性是只读的，\n                    但 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "SetName"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 仍然会被生成，\n                    因为这是修改该属性的唯一方式。\n                    "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "SetName"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " becomse "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "protected"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 在生成的 C++ 代码中，\n                    因此在该类之外调用此函数将导致错误的 C++ 代码。\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "Without event",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Program",
+                    "code": "class WithProp\n{\n    prop Name: string = \"\" {not observe}\n}"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "\n                    这意味着：\n                    "
+                  },
+                  {
+                    "kind": "Program",
+                    "code": "class WithProp\n{\n    var name: string = \"\";\n\n    func GetName(): string\n    {\n        return name;\n    }\n\n    func SetName(value: string): void\n    {\n        name = value;\n    }\n\n    prop Name: string {GetName, SetName}\n}"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "\n                    请注意 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "名称"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 如果该变量由自动属性生成，则它不可访问。\n                "
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Topic",
+            "title": "Readonly property without event",
+            "content": [
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Program",
+                    "code": "class WithProp\n{\n    prop Name: string = \"\" {const, not observe}\n}"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "\n                    这意味着：\n                    "
+                  },
+                  {
+                    "kind": "Program",
+                    "code": "class WithProp\n{\n    var name: string = \"\";\n\n    func GetName(): string\n    {\n        return name;\n    }\n\n    func SetName(value: string): void\n    {\n        name = value;\n    }\n\n    prop Name: string {GetName}\n}"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "\n                    请注意 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "名称"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 如果该变量由自动属性生成，则它不可访问。\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Paragraph",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    即使该属性是只读的，\n                    但 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "SetName"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 仍然会被生成，\n                    因为这是修改该属性的唯一方式。\n                    "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "SetName"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " becomes "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "protected"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 在生成的 C++ 代码中，\n                    因此在该类之外调用此函数将导致错误的 C++ 代码。\n                "
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "使用事件",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                Events in classes behaves exactly the same as "
+              },
+              {
+                "kind": "PageLink",
+                "href": "/workflow/lang/interface_prop.html",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "events in interfaces."
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

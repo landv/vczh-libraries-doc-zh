@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>远程协议客户端应用 -- GPU 加速的 C++ 用户界面 (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "gacui",
+    "modes",
+    "remote_client"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "GacUI",
+      "selected": false,
+      "path": [
+        "gacui",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": "-",
+          "name": "托管模式与远程协议",
+          "selected": false,
+          "path": [
+            "gacui",
+            "modes",
+            "home"
+          ],
+          "subNodes": [
+            {
+              "icon": " ",
+              "name": "远程协议核心应用",
+              "selected": false,
+              "path": [
+                "gacui",
+                "modes",
+                "remote_core"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "远程协议客户端应用",
+              "selected": true,
+              "path": [
+                "gacui",
+                "modes",
+                "remote_client"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "远程协议通道层",
+              "selected": false,
+              "path": [
+                "gacui",
+                "modes",
+                "remote_communication"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": true,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "远程协议客户端应用",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            GuiRemoteRendererSingle 是单个远程 GacUI 核心的标准 C++ 渲染器。\n            它实现 IGuiRemoteProtocol，\n            渲染到一个 INativeWindow，\n            并把用户输入、窗口、屏幕、测量和自动化事件发送回核心。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            渲染器侧不再实现字符串通道。\n            它只选择一个 vl::inter_process 传输客户端，\n            创建一个 GuiRemoteProtocolChannelClient，\n            并把该 JSON 通道桥接到 GuiRemoteRendererSingle。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            一个精简的命名管道渲染器如下所示：\n            "
+          },
+          {
+            "kind": "Program",
+            "code": "using namespace vl;\nusing namespace vl::presentation;\nusing namespace vl::presentation::remoteprotocol;\nusing namespace vl::presentation::remoteprotocol::channeling;\nusing namespace vl::presentation::remote_renderer;\n\nGuiRemoteRendererSingle* remoteRenderer = nullptr;\nGuiRemoteProtocolAsyncJsonChannelRenderer* asyncChannel = nullptr;\n\nclass GuiMainInvoker : public IGuiRemoteProtocolAsyncRendererInvoker\n{\npublic:\n    void InvokeInMainThread(const Func<void()>& proc) override\n    {\n        GetApplication()->InvokeInMainThread(nullptr, proc);\n    }\n};\n\nvoid GuiMain()\n{\n    auto mainWindow = GetCurrentController()->WindowService()->CreateNativeWindow(INativeWindow::Normal);\n    mainWindow->SetTitle(L\"Connecting ...\");\n\n    GuiMainInvoker invoker;\n    remoteRenderer->RegisterMainWindow(mainWindow);\n    asyncChannel->SetInvokeInMainThread(&invoker);\n\n    GetCurrentController()->WindowService()->Run(mainWindow);\n\n    asyncChannel->SetInvokeInMainThread(nullptr);\n    remoteRenderer->UnregisterMainWindow();\n}\n\nint StartNamedPipeRemoteRenderer()\n{\n    auto jsonParser = Ptr(new glr::json::Parser);\n    auto networkClient = Ptr(new inter_process::named_pipe::NamedPipeClient(L\"GacUIRemoteProtocolNamedPipe\"));\n\n    GuiRemoteProtocolChannelClient channelClient(networkClient, jsonParser);\n    GuiRemoteProtocolAsyncJsonChannelRenderer asyncRendererChannel(channelClient.GetProtocolChannel());\n    GuiRemoteRendererSingle renderer(true);\n    GuiRemoteProtocolRendererChannel rendererChannel(\n        &asyncRendererChannel,\n        &renderer);\n\n    channelClient.WaitForServer();\n\n    remoteRenderer = &renderer;\n    asyncChannel = &asyncRendererChannel;\n    auto result = SetupRawWindowsDirect2DRenderer();\n    asyncChannel = nullptr;\n    remoteRenderer = nullptr;\n    return result;\n}",
+            "language": "c++"
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            GuiRemoteProtocolAsyncJsonChannelRenderer 把来自通道的消息排队，\n            并通过 IGuiRemoteProtocolAsyncRendererInvoker 在 UI 线程上运行它们。\n            GuiRemoteProtocolRendererChannel 把 JSON 通道包转换为对 GuiRemoteRendererSingle 的调用，\n            并把渲染器事件转换回发给核心客户端 id 的 JSON 包。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            可移植的 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "/MiniHttp"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 路径会用 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "vl::inter_process::async_tcp_socket::CreateDefaultAsyncSocketClient(port)"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 创建一个默认的回环 TCP 客户端，\n            把它包装进 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "vl::inter_process::async_tcp_socket::SocketHttpClient(socketClient, L\"localhost\", urlPrefix)"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "，\n            并把该对象传递给 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "GuiRemoteProtocolChannelClient"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "。\n            所链接的测试展示的渲染器应用仍是 Win32，\n            尽管 VlppOS 传输本身在 Windows、Linux 和 macOS 上都可用。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            当渲染器需要显示致命错误对话框或调用 GuiRemoteRendererSingle::ForceExitByFatelError 时，\n            重写 GuiRemoteProtocolChannelClient::OnReadError、OnLocalError 或 OnDisconnected。\n            参见 "
+          },
+          {
+            "kind": "PageLink",
+            "href": "https://github.com/vczh-libraries/GacUI/tree/master/Test/GacUISrc/RemotingTest_Rendering_Win32",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "RemotingTest_Rendering_Win32"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "，\n            其中包含完整的命名管道（"
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "/Pipe"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "）、Windows HTTP.sys/WinHTTP（"
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "/Http"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "）以及可移植 Mini HTTP（"
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "/MiniHttp"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "）实现。\n        "
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

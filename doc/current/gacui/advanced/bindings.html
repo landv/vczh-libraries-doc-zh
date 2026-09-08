@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Data Bindings -- GPU Accelerated C++ User Interface (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "gacui",
+    "advanced",
+    "bindings"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "GacUI",
+      "selected": false,
+      "path": [
+        "gacui",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": "-",
+          "name": "高级主题",
+          "selected": false,
+          "path": [
+            "gacui",
+            "advanced",
+            "home"
+          ],
+          "subNodes": [
+            {
+              "icon": " ",
+              "name": "与 C++ 视图模型的互操作",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "vm"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "数据绑定",
+              "selected": true,
+              "path": [
+                "gacui",
+                "advanced",
+                "bindings"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "动画",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "animations"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "本地化",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "localization"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "跨 XML 资源引用",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "cxrr"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "ALT 序列与控件焦点",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "alt"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "TAB 与控件焦点",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "tab"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "创建新的列表控件",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "impllistcontrol"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "将 GacUI 移植到其它平台",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "implosprovider"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": true,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "数据绑定",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            GacUI 中的数据绑定依赖于 "
+          },
+          {
+            "kind": "PageLink",
+            "href": "/workflow/lang/bind.html",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "Workflow 表达式"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "。\n            基本上，\n            如果表达式使用了属性，那么它就是可观察的，\n            而这些属性必须通过对象上的属性改变事件来实现可观察。\n            你也可以仅为该表达式临时组合属性上的某些事件，使其可观察。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            In GacUI XML Resource,\n            "
+          },
+          {
+            "kind": "PageLink",
+            "href": "/gacui/xmlres/instance/properties.html#-bind",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "-bind"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": ", \n            "
+          },
+          {
+            "kind": "PageLink",
+            "href": "/gacui/xmlres/instance/properties.html#-format",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "-format"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 以及\n            "
+          },
+          {
+            "kind": "PageLink",
+            "href": "/gacui/xmlres/instance/properties.html#-str",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "-str"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "\n            都基于数据绑定。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Binding to Control Properties",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                这是最基本的一种数据绑定。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                如果你要把内容绑定到将在 UI 上显示的文本属性，\n                例如 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Text"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 的 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "<Label/>"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "，\n                请确保：\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "控件的布局得到妥善处理，使它们能够自动重新排列，确保文本渲染不会发生截断。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "如果应用程序可能会分发给使用不同语言的人，请考虑从一开始就使用 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "Localization"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 。"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                把视图模型绑定到控件同样非常直接。\n                一个 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "<ref.Paramter Name=\"Something\" Class=\"...\"/>"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 会创建一个一旦窗口创建就永不改变的属性。\n                该 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "X"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 的属性 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Something"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 只需通过以下方式即可绑定到控件属性：\n                "
+              },
+              {
+                "kind": "Program",
+                "code": "<AControl AProperty-bind=\"Something.X\"/>"
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                把自己的对象用于数据绑定也非常简单，例如：\n                "
+              },
+              {
+                "kind": "Program",
+                "code": "<Instance ref.Class=\"...\">\n    <ref.Members><![CDATA[\n        var myObject = new MyObject();\n    ]]></ref.Members>\n    <Window ref.Name=\"self\">\n        <AControl AProperty-bind=\"self.myObject.X\"/>\n    </Window>\n</Instance>"
+              },
+              {
+                "kind": "Text",
+                "text": "\n                Since "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "myObject"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 是窗口的成员，\n                你必须先给窗口命名 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "self"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "，\n                以便 XML 知道……是什么 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "myObject"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Binding between Composition Properties",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "JUST DON'T DO THAT."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                内置的布局算法已经让组合彼此双向反应。\n                把一个组合中的属性绑定到（可能是）另一个组合中的属性，\n                可能导致反应永不停歇。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                这里是一个非常糟糕的例子：\n                "
+              },
+              {
+                "kind": "Program",
+                "code": "<Bounds ref.Name=\"parent\" MinSizeLimitation=\"LimitToElementAndChildren\">\n    <Bounds ref.Name=\"child\"\n        PreferredMinSize-bind=\"{x:(parent.Bounds.x2 - parent.Bounds.x1} y:0}\"\n        AlignmentToParent=\"{left:1 top:1 right:1 bottom:1}\"\n        />\n</Bounds>"
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                When "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "parent.Bounds"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 改变时，\n                被观察的表达式会收到重新求值的通知，\n                从而导致 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "child.PreferredMinSize"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 发生改变。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "child.PreferredMinSize"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " causes "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "parent.Bounds"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 重新求值，\n                因为 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "MinSizeLimitation=\"LimitToElementAndChildren\""
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                现在父级变大是因为 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "child.AlignmentToParent"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 不是 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "0"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 或 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "-1"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "，\n                这导致 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "parent.Bounds"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 再次改变。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                这个循环是无限的，\n                当它开始发生时（通常因为拖动窗口边框来调整大小），\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "parent"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 很快就会变得超大，你将无法再正常操作窗口。\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Binding to ViewModel Properties",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                你也可以通过……把某些内容绑定回视图模型 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "-set"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " property:\n                "
+              },
+              {
+                "kind": "Program",
+                "code": "<Instance ref.Class=\"...\">\n    <ref.Parameter Name=\"Something\" Class=\"...\"/>\n    <Window ref.Name=\"self\">\n        <att.Something-set X-bind=\"aControl.AProperty\"/>\n        <AControl ref.Name=\"aControl\"/>\n    </Window>\n</Instance>"
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "-set"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 在此告诉 XML，\n                标签中引用的属性 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "<att.Something/>"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                位于从……返回的对象中 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Something"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " （窗口的）属性所指向的对象中，\n                该对象就是……中的视图模型 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "<ref.Parameter/>"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "。\n                现在当 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "aControl.AProperty"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 改变时，\n                该值将更新为 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Something.X"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " immediately.\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Bidirectional Binding",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                双向绑定是一种特殊的绑定，\n                它让两个属性彼此更新。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "PageLink",
+                "href": "/gacui/components/ctemplates/commondatepickerlook.html",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "<CommonDatePickerLook/>"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 是一个很好的例子：\n                "
+              },
+              {
+                "kind": "Program",
+                "code": "<Instance ref.CodeBehind=\"false\" ref.Class=\"darkskin::DatePickerTemplate\" ref.Styles=\"res://DarkSkin/Style\">\n    <DatePickerTemplate ref.Name=\"self\" Date-bind=\"look.Date\" ...>\n        <CommonDatePickerLook ref.Name=\"look\" Date-bind=\"self.Date\" .../>\n    </DatePickerTemplate>\n</Instance>"
+              },
+              {
+                "kind": "Text",
+                "text": "\n                在此例中，\n                当 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "self.Date"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 发生改变时，该值将更新为 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "look.Date"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ",\n                when "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "look.Date"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 发生改变时，该值将更新为 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "self.Date"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "。\n                这种双向绑定借助……让这两个属性保持同步 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "-bind"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 在彼此上各使用……两次\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                这不会让更新循环无限运行，\n                因为这两个 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Date"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 属性在更新后的值与更新前相同时，\n                不会触发它们的属性改变事件。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                由……创建的属性 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "prop Name : TYPE {}"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 语法\n                在相同值再次赋给该属性时，不会触发 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "NameChanged"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 事件。\n                但对于带显式 getter 和 setter 的属性，\n                你必须妥善处理 setter：\n                "
+              },
+              {
+                "kind": "Program",
+                "code": "class YourObject\n{\n    var name: string = \"\";\n\n    event NameChanged();\n\n    func GetName(): string\n    {\n        return name;\n    }\n\n    func SetName(value: string): void\n    {\n        if (name != value)\n        {\n            name = value;\n            NameChanged();\n        }\n    }\n\n    prop Name: string {GetName, SetName : NameChanged}\n}"
+              },
+              {
+                "kind": "Text",
+                "text": "\n                否则对该属性使用双向绑定会触发无限循环。\n            "
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title><ResponsiveStack> -- GPU Accelerated C++ User Interface (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "gacui",
+    "components",
+    "compositions",
+    "responsive_stack"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "GacUI",
+      "selected": false,
+      "path": [
+        "gacui",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": "-",
+          "name": "GacUI 组件",
+          "selected": false,
+          "path": [
+            "gacui",
+            "components",
+            "home"
+          ],
+          "subNodes": [
+            {
+              "icon": "-",
+              "name": "组合",
+              "selected": false,
+              "path": [
+                "gacui",
+                "components",
+                "compositions",
+                "home"
+              ],
+              "subNodes": [
+                {
+                  "icon": "-",
+                  "name": "响应式设计系列",
+                  "selected": false,
+                  "path": [
+                    "gacui",
+                    "components",
+                    "compositions",
+                    "responsive"
+                  ],
+                  "subNodes": [
+                    {
+                      "icon": " ",
+                      "name": "<ResponsiveContainer>",
+                      "selected": false,
+                      "path": [
+                        "gacui",
+                        "components",
+                        "compositions",
+                        "responsive_container"
+                      ]
+                    },
+                    {
+                      "icon": "+",
+                      "name": "<ResponsiveView>",
+                      "selected": false,
+                      "path": [
+                        "gacui",
+                        "components",
+                        "compositions",
+                        "responsive_view"
+                      ]
+                    },
+                    {
+                      "icon": " ",
+                      "name": "<ResponsiveStack>",
+                      "selected": true,
+                      "path": [
+                        "gacui",
+                        "components",
+                        "compositions",
+                        "responsive_stack"
+                      ]
+                    },
+                    {
+                      "icon": " ",
+                      "name": "<ResponsiveGroup>",
+                      "selected": false,
+                      "path": [
+                        "gacui",
+                        "components",
+                        "compositions",
+                        "responsive_group"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": true,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "<ResponsiveStack>",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "<ResponsiveStack/>"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 会告知其管理的 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "GuiResponsiveCompositionBase"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " to switch view one after another\n            when itself is required to do so. \n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "<ResponsiveStack/>"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 是一个 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "GuiResponsiveCompositionBase"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 以及一个 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "<Bounds/>"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": ".\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Managing child GuiResponsiveCompositionBase",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                当……内部的内容 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "<ResponsiveStack/>"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 发生改变时，\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "<ResponsiveStack/>"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 将查找任何属于……的子组合 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GuiResponsiveCompositionBase"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "。\n                如果子组合不是……，\n                它会深入该子组合，检查其中是否存在 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GuiResponsiveCompositionBase"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 递归地。\n                当 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GuiResponsiveCompositionBase"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 被找到时，\n                它将停止在该……内部搜索子组合 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GuiResponsiveCompositionBase"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                Eventually "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "<ResponsiveStack/>"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 了解其中的所有子 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GuiResponsiveCompositionBase"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 位于其内部。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "IMPORTANT"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "：\n                如果某个子 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GuiResponsiveCompositionBase"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 具有不同的 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Direction"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " than "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "<ResponsiveStack/>"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "，\n                它就不是被管理的 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GuiResponsiveCompositionBase"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "<ResponsiveStack>::Direction",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                此属性的默认值是 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Both"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                此属性的有效值为 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Horizontal"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ", "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Vertical"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 以及 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Both"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                When "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Direction"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 是 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Horizontal"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "，\n                它只对宽度的变化作出反应。\n                当 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Direction"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 是 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Vertical"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "，\n                它只对高度的变化作出反应。\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "<ResponsiveStack>::LevelCount",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                This property represents how many different view it could have.\n                It is \"sum of "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "LevelCount"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 在所有被管理的 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GuiResponsiveCompositionBase"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\" - \"the number of all managed "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GuiResponsiveCompositionBase"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\" + 1.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                For example,\n                there are 3 managed "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GuiResponsiveCompositionBase"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ",\n                their "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "LevelCount"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " are 2, 3 and 4:\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "LevelCount"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " is 2 means that composition could change 1 times from smallest to largest."
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "LevelCount"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " is 3 means that composition could change 2 times from smallest to largest."
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "LevelCount"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " is 4 means that composition could change 3 times from smallest to largest."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                So in total this "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "<ResponsiveStack/>"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " could change 1 + 2 + 3 = 6 times from smallest to largest,\n                its "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "LevelCount"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " must be 7,\n                which is exactly \"2 + 3 + 4 - 3(numbers of managed) + 1\".\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                如果没有被管理的 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GuiResponsiveCompositionBase"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ",\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "LevelCount"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 是 1。\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "<ResponsiveStack>::CurrentLevel",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                此属性表示一个 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "<ResponsiveStack/>"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                最小视图是 0，\n               最大的视图是 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "LevelCount"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " - 1.\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "选择视图",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                当一个 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "<ResponsiveStack/>"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 切换到更大的视图需要\n                （增大 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "CurrentLevel"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " ，每次增减 1）\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "<ResponsiveStack/>"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " will find a smallest managed "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GuiResponsiveCompositionBase"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " in size\n                to switch to a larger view.\n                If it fails (usually because it has already switched to its largest view),\n                then "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "<ResponsiveStack/>"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " will find the next smallest one,\n                until one succeeded.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                当一个 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "<ResponsiveStack/>"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 切换到更小的视图需要\n                （减小 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "CurrentLevel"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " ，每次增减 1）\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "<ResponsiveStack/>"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " will find a largest managed "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GuiResponsiveCompositionBase"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " in size\n                to switch to a smaller view.\n                If it fails (usually because it has already switched to its smallest view),\n                then "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "<ResponsiveStack/>"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " will find the next largest one,\n                until one succeeded.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "<ResponsiveStack/>"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " measures the size of a "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GuiResponsiveCompositionBase"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " according to "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Direction"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ":\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "Horizontal"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ": size equals to its width."
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "Vertical"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ": size equals to its height."
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "Both"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ": size equals to its area."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

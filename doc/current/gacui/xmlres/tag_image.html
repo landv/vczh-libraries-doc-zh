@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title><Image> -- GPU Accelerated C++ User Interface (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "gacui",
+    "xmlres",
+    "tag_image"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "GacUI",
+      "selected": false,
+      "path": [
+        "gacui",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": "-",
+          "name": "GacUI XML 资源",
+          "selected": false,
+          "path": [
+            "gacui",
+            "xmlres",
+            "home"
+          ],
+          "subNodes": [
+            {
+              "icon": " ",
+              "name": "代码生成配置",
+              "selected": false,
+              "path": [
+                "gacui",
+                "xmlres",
+                "cgc"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "跨 XML 资源引用",
+              "selected": false,
+              "path": [
+                "gacui",
+                "xmlres",
+                "cxrr"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "文件夹与资源",
+              "selected": false,
+              "path": [
+                "gacui",
+                "xmlres",
+                "dom"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "<Text>",
+              "selected": false,
+              "path": [
+                "gacui",
+                "xmlres",
+                "tag_text"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "<Image>",
+              "selected": true,
+              "path": [
+                "gacui",
+                "xmlres",
+                "tag_image"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "<Xml>",
+              "selected": false,
+              "path": [
+                "gacui",
+                "xmlres",
+                "tag_xml"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "<Doc>",
+              "selected": false,
+              "path": [
+                "gacui",
+                "xmlres",
+                "tag_doc"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "<Script>",
+              "selected": false,
+              "path": [
+                "gacui",
+                "xmlres",
+                "tag_script"
+              ]
+            },
+            {
+              "icon": "+",
+              "name": "<Instance>",
+              "selected": false,
+              "path": [
+                "gacui",
+                "xmlres",
+                "tag_instance"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "<InstanceStyle>",
+              "selected": false,
+              "path": [
+                "gacui",
+                "xmlres",
+                "tag_instancestyle"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "<Animation>",
+              "selected": false,
+              "path": [
+                "gacui",
+                "xmlres",
+                "tag_animation"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "<LocalizedStrings>",
+              "selected": false,
+              "path": [
+                "gacui",
+                "xmlres",
+                "tag_localizedstrings"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "<LocalizedStringsInjection>",
+              "selected": false,
+              "path": [
+                "gacui",
+                "xmlres",
+                "tag_localizedstringsinjection"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": false,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "<Image>",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "PageLink",
+            "href": "https://github.com/vczh-libraries/Release/blob/master/SampleForDoc/GacUI/XmlRes/kb_xmlres_data/ImagePage.xml",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "Here"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "\n            是本主题中使用的示例。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "<Image/>"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " ，其工作方式类似于 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "<Text/>"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "，\n            但有一些不同之处：\n            "
+          },
+          {
+            "kind": "List",
+            "ordered": false,
+            "items": [
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "content=\"File\""
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " is always required."
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "它可以赋给接受 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "presentation::INativeImage^"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 或 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "presentation::GuiImageData^"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "."
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            In GacUI,\n            "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "GuiImageElement"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": ",\n            menus, toolstrip buttons, ribbon buttons and list items\n            are able to be assigned images.\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            In the sample,\n            images are stored in a folder in a separated file:\n            "
+          },
+          {
+            "kind": "Program",
+            "code": "<Folder>\n  <Image content=\"File\">New.png</Image>\n  <Image content=\"File\">NewText.png</Image>\n  <Image content=\"File\">NewXml.png</Image>\n  <Image content=\"File\">Open.png</Image>\n  <Image content=\"File\">Save.png</Image>\n  <Image content=\"File\">SaveAs.png</Image>\n  <Image content=\"File\">EditCopy.png</Image>\n  <Image content=\"File\">EditCut.png</Image>\n  <Image content=\"File\">EditDelete.png</Image>\n  <Image content=\"File\">EditFind.png</Image>\n  <Image content=\"File\">EditPaste.png</Image>\n  <Image content=\"File\">EditRedo.png</Image>\n  <Image content=\"File\">EditUndo.png</Image>\n</Folder>"
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            Then a set of "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "ToolstripCommand"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " are created,\n            images are assigned to them.\n            "
+          },
+          {
+            "kind": "Program",
+            "code": "<Instance ref.Class=\"sample::ImagePage\">\n  <TabPage Text=\"&lt;Image/&gt;\">\n    <ToolstripCommand ref.Name=\"commandFileNewText\" Text=\"Text File\" Image-uri=\"res://MainWindow/ImagePage/Images/NewText.png\"/>\n    <ToolstripCommand ref.Name=\"commandFileNewXml\" Text=\"Xml File\" Image-uri=\"res://MainWindow/ImagePage/Images/NewXml.png\"/>\n    <ToolstripCommand ref.Name=\"commandFileOpen\" Text=\"Open ...\" Image-uri=\"res://MainWindow/ImagePage/Images/Open.png\" ShortcutBuilder=\"Ctrl+O\"/>\n    <ToolstripCommand ref.Name=\"commandFileOpenText\" Text=\"Text File ...\" Image-uri=\"res://MainWindow/ImagePage/Images/NewText.png\"/>\n    <ToolstripCommand ref.Name=\"commandFileOpenXml\" Text=\"Xml File ...\" Image-uri=\"res://MainWindow/ImagePage/Images/NewXml.png\"/>\n    <ToolstripCommand ref.Name=\"commandFileSave\" Text=\"Save\" Image-uri=\"res://MainWindow/ImagePage/Images/Save.png\" ShortcutBuilder=\"Ctrl+S\"/>\n    <ToolstripCommand ref.Name=\"commandFileSaveAs\" Text=\"Save As ...\" Image-uri=\"res://MainWindow/ImagePage/Images/SaveAs.png\"/>\n    <ToolstripCommand ref.Name=\"commandFileExit\" Text=\"Exit\"/>\n\n    <ToolstripCommand ref.Name=\"commandEditUndo\" Text=\"Undo\" Image-uri=\"res://MainWindow/ImagePage/Images/EditUndo.png\" ShortcutBuilder=\"Ctrl+Z\"/>\n    <ToolstripCommand ref.Name=\"commandEditRedo\" Text=\"Redo\" Image-uri=\"res://MainWindow/ImagePage/Images/EditRedo.png\" ShortcutBuilder=\"Ctrl+Y\"/>\n    <ToolstripCommand ref.Name=\"commandEditCut\" Text=\"Cut\" Image-uri=\"res://MainWindow/ImagePage/Images/EditCut.png\" ShortcutBuilder=\"Ctrl+X\"/>\n    <ToolstripCommand ref.Name=\"commandEditCopy\" Text=\"Copy\" Image-uri=\"res://MainWindow/ImagePage/Images/EditCopy.png\" ShortcutBuilder=\"Ctrl+C\"/>\n    <ToolstripCommand ref.Name=\"commandEditPaste\" Text=\"Paste\" Image-uri=\"res://MainWindow/ImagePage/Images/EditPaste.png\" ShortcutBuilder=\"Ctrl+V\"/>\n    <ToolstripCommand ref.Name=\"commandEditDelete\" Text=\"Delete\" Image-uri=\"res://MainWindow/ImagePage/Images/EditDelete.png\"/>\n    <ToolstripCommand ref.Name=\"commandEditSelect\" Text=\"Select All\" ShortcutBuilder=\"Ctrl+A\"/>\n    <ToolstripCommand ref.Name=\"commandEditFind\" Text=\"Find ...\" Image-uri=\"res://MainWindow/ImagePage/Images/EditFind.png\" ShortcutBuilder=\"Ctrl+F\"/>\n\n    ...\n  </TabPage>\n</Instance>"
+          },
+          {
+            "kind": "Text",
+            "text": "\n            A "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "ToolstripCommand"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " can be assigned to multiple\n            menu items, toolstrip buttons and ribbon buttons.\n            In this way,\n            these controls share the same image, text, shortcut.\n            If a toolstrip command is disabled,\n            associated controls will all be disabled.\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            下面是它的样子：\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "List",
+            "ordered": false,
+            "items": [
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "源代码： "
+                  },
+                  {
+                    "kind": "PageLink",
+                    "href": "https://github.com/vczh-libraries/Release/blob/master/SampleForDoc/GacUI/XmlRes/kb_xmlres_data/ImagePage.xml",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "kb_xmlres_data"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Image",
+                    "src": "/gacui/kb_xmlres_tag_image.gif"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

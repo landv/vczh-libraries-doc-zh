@@ -1,0 +1,3062 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Creating New List Controls -- GPU Accelerated C++ User Interface (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "gacui",
+    "advanced",
+    "impllistcontrol"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "GacUI",
+      "selected": false,
+      "path": [
+        "gacui",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": "-",
+          "name": "高级主题",
+          "selected": false,
+          "path": [
+            "gacui",
+            "advanced",
+            "home"
+          ],
+          "subNodes": [
+            {
+              "icon": " ",
+              "name": "与 C++ 视图模型的互操作",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "vm"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "数据绑定",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "bindings"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "动画",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "animations"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "本地化",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "localization"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "跨 XML 资源引用",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "cxrr"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "ALT 序列与控件焦点",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "alt"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "TAB 与控件焦点",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "tab"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "创建新的列表控件",
+              "selected": true,
+              "path": [
+                "gacui",
+                "advanced",
+                "impllistcontrol"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "将 GacUI 移植到其它平台",
+              "selected": false,
+              "path": [
+                "gacui",
+                "advanced",
+                "implosprovider"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": true,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "创建新的列表控件",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            Customizing "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "GuiTextList"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 或 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "GuiBindableTextList"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 通过提供新的项模板，\n            是创建新列表控件体验的最常见方式。\n            但你仍然可以创建你自己的新列表控件。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            在 GacUI 1.0 中，\n            完全由 C++ 创建的任何新类\n            （而不是由 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "<Instance/>"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 在 GacUI XML 资源中创建）\n            都无法在 GacUI XML 资源中访问，\n            因为编译器不知道它们。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            任何新的列表控件都应继承自 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "GuiSelectableListControl"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 。\n                如果列表项不可选择，\n                那么 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "GuiListControl"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 可以用来降低运行时开销。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "list::IItemProvider，构造函数参数",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                ……的一个实例 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "IItemProvider"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 在……的构造函数中是必需的\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GuiListControl"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 以及 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GuiSelectableListControl"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "。\n                基类不控制该实例的生命周期，\n                它应在派生类中被妥善释放。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                该接口提供了一个桥梁，使 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GuiListControl"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 能够访问它的项。\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "AttachCallback"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ":\n                        Multiple "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "IItemProviderCallback"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 可以安装到……上 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "IItemProvider"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "。\n                        当回调被正确安装后，\n                        它的 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "OnAttached(this)"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 必须立即调用。\n                    "
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "DetachCallback"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：\n                        调用此方法可移除已安装的 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "IItemProviderCallback"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "。\n                        当回调被正确卸载后，\n                        它的 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "OnAttached(nullptr)"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 必须立即调用。\n                    "
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "PushEditing"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：\n                        当列表控件进入另一层编辑模式时，会调用此方法。\n                    "
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "PopEditing"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：\n                        当列表控件离开某一层编辑模式时，会调用此方法。\n                    "
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "IsEditing"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：\n                        此方法应返回 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "true"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 如果列表控件中仍存在至少一层编辑模式。\n                    "
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "Count"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：\n                        此方法应返回列表控件中项的总数。\n                        在 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "GuiTreeView"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "中，\n                        所有折叠的项都不会被计入。\n                        尽管它们在逻辑树中存在，\n                        但如果某个节点被折叠，\n                        所有子项都会被视为已移除（通过调用……） "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "IItemProviderCallback::OnItemModified"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "。\n                        而当节点展开时，\n                        所有子项会以同样的方式恢复。\n                    "
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "GetTextValue"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：\n                        此方法应返回给定项的文本表示。\n                        该值会被复制到 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "Text"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 项模板的……属性。\n                    "
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "GetBindingValue"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：\n                        此方法应为给定项返回一个 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "non-null"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 对象，\n                        如果此控件支持对项源的数据绑定。\n                        对于不可绑定的列表控件，\n                        应返回一个 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "null"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 对象（通过以无参数方式调用返回值的构造函数来创建），\n                        例如， "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "{}"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " in C++.\n                    "
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "RequestView"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：\n                        此方法提供了一种在列表控件与项细节之间解耦的方式。\n                        "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "IItemProvider"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 应管理所有返回视图的生命周期。\n                    "
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "list::ItemProviderBase"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 可以用来创建一个 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "IItemProvider"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "。\n                此类中实现了以下方法：\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "AttachCallback"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "DetachCallback"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "PushEditing"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "PopEditing"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "IsEditing"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                你需要实现其余方法以完成一个 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "IItemProvider"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "。\n该 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "InvokeOnItemModified"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 方法用于调用 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "OnItemModified"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 所有已安装回调中的……\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "list::IItemProviderCallback, the constructor argument",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                该 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "OnItemModified"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " allow "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "IItemProvider"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 用来报告\n                一组连续项的一次变化：\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "start"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：所有发生变化的连续项中第一项的索引。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "count"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：所有发生变化的连续项的数目。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "newCount"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：所有发生变化的连续项所变成的新项数目。"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                如果变化发生在多组连续项中，\n                每组都应在对……的单独调用中报告 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "OnItemModified"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "。\n                你必须尽力确保，\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "IItemProvider::Count"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ",\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "IItemProvider::GetTextValue"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ",\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "IItemProvider::GetBindingValue"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                以及来自……的视图中的所有相关方法 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "RequestView"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                不应看到任何未报告的变化。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                Call "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "OnItemModified(start, 0, count)"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                当一组项被插入到位置……时 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "start"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "。\n                如果只插入一个项，\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "count"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 应为 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "1"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                Call "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "OnItemModified(start, count, 0)"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                当一组项从位置……被移除时 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "start"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "。\n                如果只移除一个项，\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "count"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 应为 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "1"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                Call "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "OnItemModified(start, count, count)"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                当从位置……开始更新一组项时 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "start"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "。\n                如果只更新一个项，\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "count"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 应为 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "1"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "。\n                当一个项被替换、\n                或其内部任何感兴趣的内容被更新时，\n                就认为这个项被更新了。\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "GuiListControl::IItemArranger, the item layouting",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "IItemArranger"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 处理列表项的渲染。\n                一个 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "IItemArranger"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 通过其……附加到列表控件上 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Arranger"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 属性，\n                或其受保护的方法 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "SetStyleAndArranger"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                已经存在一些\n                "
+              },
+              {
+                "kind": "PageLink",
+                "href": "/gacui/components/controls/list/guilistcontrol.html#Arranger-ArrangerChanged-",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    内置的 IItemArranger 实现\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "。\n                查看它们以确认是否有内置方案可用，\n                这样你就不必自己实现该接口。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                当你必须创建新布局时，建议继承自 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "PageLink",
+                    "href": "/gacui/components/compositions/repeat_virtual.html",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "GuiVirtualRepeatCompositionBase"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 。\n                当这种新组合准备好后，使用 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "VirtualRepeatRangedItemArrangerBase<T>"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 来把它变成一个 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "IItemArranger"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "IItemProviderCallback"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 同时也是……的基类 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "IItemArranger"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "。\n                当某个 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "IItemArranger"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 被附加到列表控件时，\n                它会被安装为对……的回调 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "IItemProvider"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "。\n                这样 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "IItemArranger"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 就能在任意项改变时更新渲染。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                A "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "IItemArranger"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 应了解（列表控件的）\n                "
+              },
+              {
+                "kind": "PageLink",
+                "href": "/gacui/components/controls/list/guilistcontrol.html#DisplayItemBackground",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    DisplayItemBackground\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                属性。\n                如果该属性返回 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "true"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "，\n                从……返回的所有项模板实例 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "IItemArrangerCallback::ReleaseItem"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                都应包含在一个 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GuiSelectableButton"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 作为项的背景，使用\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "该 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "ThemeNameLLListItemBackground"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 作为此按钮的主题。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "listControl->TypedControlTemplateObject(true)->GetBackgroundTemplate()"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 作为此按钮的控件模板。"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                此接口中涉及的所有位置、尺寸与边距全部 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "virtual"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "IItemArranger"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 只需在 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "LeftDown"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 方向。\n                该 \n                "
+              },
+              {
+                "kind": "PageLink",
+                "href": "/gacui/components/controls/list/guilistcontrol.html#Axis-AxisChanged-",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Axis"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                属性将由列表控件用来\n                调整所有可见项的位置与尺寸，使其按预期方向布局。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                以下是需要实现的所有方法：\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ParagraphListItem",
+                    "paragraphs": [
+                      {
+                        "kind": "Paragraph",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "AttachListControl"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：\n                            当它被附加到列表控件时会调用此方法。\n                        "
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ParagraphListItem",
+                    "paragraphs": [
+                      {
+                        "kind": "Paragraph",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "DetachListControl"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：\n                            当它从列表控件分离时会调用此方法。\n                        "
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ParagraphListItem",
+                    "paragraphs": [
+                      {
+                        "kind": "Paragraph",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "GetCallback"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：\n                            从最近一次……获取参数 "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "SetCallback"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " call.\n                        "
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ParagraphListItem",
+                    "paragraphs": [
+                      {
+                        "kind": "Paragraph",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "SetCallback"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：\n                            当它被附加到列表控件时会调用此方法。\n                            只会向……安装一个回调 "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "IItemArranger"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "。\n                            该回调提供了……所需的全部内容 "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "IItemArranger"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " 可以对列表控件执行……\n                        "
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ParagraphListItem",
+                    "paragraphs": [
+                      {
+                        "kind": "Paragraph",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "GetTotalSize"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：\n                            返回所有项在其布局中的总尺寸。\n                        "
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ParagraphListItem",
+                    "paragraphs": [
+                      {
+                        "kind": "Paragraph",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "GetVisibleStyle"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：\n                            此方法应为给定项返回项模板实例。\n                            如果该项因滚出列表控件可视区域而不可见，\n                            应返回 "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "nullptr"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": ".\n                        "
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Paragraph",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "\n                            项的实时模板实例可以使用\n                            "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "IItemArrangerCallback::RequestItem"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " 以及 "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "IItemArrangerCallback::ReleaseItem"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": ".\n                        "
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ParagraphListItem",
+                    "paragraphs": [
+                      {
+                        "kind": "Paragraph",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "GetVisibleIndex"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：\n                            此方法应返回给定项模板实例对应的项索引。\n                            如果该……不知道这个实例 "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "IItemArranger"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "，\n                            则应返回 "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "-1"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": ".\n                        "
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ParagraphListItem",
+                    "paragraphs": [
+                      {
+                        "kind": "Paragraph",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "ReloadVisibleStyles"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：\n                            为可见项重建所有 UI 对象。\n                            项不需要立即重建，\n                            但在调用此方法时应释放所有项的 UI 对象。\n                        "
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Paragraph",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "GetVisibleStyle"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " 以及 "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "GetVisibleIndex"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " 可以假装所有项都不可见，\n                            直到下一次调用 "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "OnViewChanged"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": ".\n                        "
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ParagraphListItem",
+                    "paragraphs": [
+                      {
+                        "kind": "Paragraph",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "OnViewChanged"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：\n                            调用此方法以告知 "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "IItemArranger"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "\n                            ……中的可见部分是什么 "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "GetTotalSize"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": ".\n                        "
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Paragraph",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "IItemArranger"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " 可以只为此区域内的项创建 UI 对象，\n                            以降低内存压力并提升性能。\n                            "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "IItemArranger"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " 如果性能不重要，也可以为所有项创建 UI 对象。\n                            已经创建 UI 对象的所有项称为 "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "可见项"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": ".\n                        "
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Paragraph",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "\n                            项的实时模板实例可以使用\n                            "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "IItemArrangerCallback::RequestItem"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " 以及 "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "IItemArrangerCallback::ReleaseItem"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": ".\n                        "
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ParagraphListItem",
+                    "paragraphs": [
+                      {
+                        "kind": "Paragraph",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "FindItem"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "：\n                            从指定项开始搜索下一个项 "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "itemIndex"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " 通过键盘操作 "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "键"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": ".\n                            "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "-1"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " 如果没有合理的项被定义为……，则可以返回 "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "下一个项"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": ".\n                        "
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "EnsureItemVisible"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：\n                        当列表控件想要滚动到某个区域以使给定项可见时，会调用此方法。\n                        "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "IItemArrangerCallback::SetViewLocation"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 通常会作为响应被调用。\n                        "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "OnViewChanged"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 可以在……中调用 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "SetViewLocation"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ".\n                    "
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "GetAdoptedSize"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：\n                        如果列表控件被用作组合框的下拉列表，\n                        则为项的可视区域返回一个合理的尺寸。\n                    "
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "GuiListControl::IItemArrangerCallback, the item layouting",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                此接口中涉及的所有位置、尺寸与边距全部 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "virtual"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "IItemArranger"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 只需在 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "LeftDown"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 方向。\n                该 \n                "
+              },
+              {
+                "kind": "PageLink",
+                "href": "/gacui/components/controls/list/guilistcontrol.html#Axis-AxisChanged-",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "Axis"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                属性将由列表控件用来\n                调整所有可见项的位置与尺寸，使其按预期方向布局。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "RequestItem"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：\n                        请求列表控件为特定项创建项模板实例。\n                        通过调用……释放的项模板实例 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "ReleaseItem"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "\n                        可以被复用于另一个项。\n                    "
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "ReleaseItem"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：\n                        请求列表控件释放特定项的项模板实例。\n                        如有必要，该实例稍后会被从内存中删除，\n                        调用此方法后不应再使用该指针。\n                    "
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "SetViewLocation"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：\n                        告知列表控件可视区域左上角应位于何处。\n                        但如果列表控件认为它更合适，\n                        也可以把可视区域移动到附近不同的位置。\n                    "
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "GetStylePreferredSize"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：\n                        读取（列表控件所包含组合的） "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "CachedMinSize"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 组合（位于列表控件中）的……属性的尺寸。\n                        "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "IMPORTANT"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：结果是 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "virtual"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "。\n请勿直接使用此属性，\n请改用此方法。\n                    "
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "SetStyleAlignmentToParent"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：\n                        更新 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "AlignmentToParent"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 列表控件所包含组合的属性。\n                        "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "IMPORTANT"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：结果是 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "virtual"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "。\n请勿直接使用此属性，\n请改用此方法。\n                    "
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "GetStyleBounds"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：\n                        读取 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "Bounds"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 列表控件所包含组合的属性。\n                        "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "IMPORTANT"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：结果是 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "virtual"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "。\n请勿直接使用此属性，\n请改用此方法。\n                    "
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "SetStyleBounds"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：\n                        更新 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "Bounds"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 列表控件所包含组合的属性。\n                        "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "IMPORTANT"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：结果是 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "virtual"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "。\n请勿直接使用此属性，\n请改用此方法。\n                    "
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "GetContainerComposition"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：\n                        获取作为容器的组合，用于存放所有项的 UI 对象。\n                    "
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "OnTotalSizeChanged"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "：\n                        调用此方法以告知列表控件\n                        "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "IItemArranger::GetTotalSize"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 已经改变。\n                    "
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Using IItemProvider::RequestView Properly",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                列表控件可以重写 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "OnStyleInstalled"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 来自 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GuiListControl"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "。\n                当一个项模板实例被绑定到某个列表项时，会调用此方法。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                新的列表控件类通常为项定义新的项模板类。\n                新的项模板类添加新属性，以定义该新列表控件的项的外观。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                可以定义一个或多个视图来读写此特定列表控件类的项细节。\n                然后列表控件类可以调用 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "RequestView"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " （使用唯一标识字符串）来获取视图，\n                把视图中的数据绑定到项模板实例。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                例如：\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GuiTextList"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 定义了 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "ITextItemView"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 视图，用于把 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Checked"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 属性添加到项上。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "IItemArranger"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 也可以定义自己的视图。\n                例如，\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "ListViewColumnItemArranger"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " defines "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "IColumnItemView"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                从列表控件读取列，\n                用于渲染列头。\n                任何使用……的列表控件 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "ListViewColumnItemArranger"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 都应确保\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "IColumnItemView"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 得到实现，并且可以从……访问 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "IItemProvider::RequestView"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                你可以出于任何目的定义自己的视图，\n                只要它仅用于读写项的细节。\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Data Binding on Items",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                可数据绑定的列表控件可以从实现……的项源读写项 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Ptr<IValueEnumerable>"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "。\n                该对象也可以实现任何派生接口，例如：\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "IValueReadonlyList"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "IValueList"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "IValueObservableList"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                如果项源实现了 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "IValueObservableList"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "，\n                那么当项改变时，列表控件预期会自动更新。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "PageLink",
+                "href": "/gacui/xmlres/instance/properties.html#Property-Name-func-data-Object-PROPERTY-TYPE",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    可读属性的类型\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 以及\n                "
+              },
+              {
+                "kind": "PageLink",
+                "href": "/gacui/xmlres/instance/properties.html#Writable-Property-Name-func-data-Object-value-PROPERTY-TYPE-isWrite-bool-PROPERTY-TYPE",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    可写属性的类型\n                "
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                可以用来让用户告诉你如何从项中访问细节。\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "vl::presentation::controls::ReadProperty"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 以及 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "vl::presentation::controls::WriteProperty"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                可以在 C++ 中用于这些属性类型。\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "Sample",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                强烈建议你先阅读……的源代码\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GuiTextList"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 以及 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "GuiBindableTextList"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                再创建你自己的列表控件类。\n            "
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

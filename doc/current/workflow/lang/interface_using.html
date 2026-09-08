@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Generic -- GPU Accelerated C++ User Interface (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "workflow",
+    "lang",
+    "interface_using"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "Workflow 脚本",
+      "selected": false,
+      "path": [
+        "workflow",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": "-",
+          "name": "语法",
+          "selected": false,
+          "path": [
+            "workflow",
+            "lang"
+          ],
+          "subNodes": [
+            {
+              "icon": "-",
+              "name": "类型",
+              "selected": false,
+              "path": [
+                "workflow",
+                "lang",
+                "type"
+              ],
+              "subNodes": [
+                {
+                  "icon": "-",
+                  "name": "接口",
+                  "selected": false,
+                  "path": [
+                    "workflow",
+                    "lang",
+                    "interface"
+                  ],
+                  "subNodes": [
+                    {
+                      "icon": " ",
+                      "name": "属性与事件",
+                      "selected": false,
+                      "path": [
+                        "workflow",
+                        "lang",
+                        "interface_prop"
+                      ]
+                    },
+                    {
+                      "icon": " ",
+                      "name": "继承",
+                      "selected": false,
+                      "path": [
+                        "workflow",
+                        "lang",
+                        "interface_inherit"
+                      ]
+                    },
+                    {
+                      "icon": " ",
+                      "name": "实现",
+                      "selected": false,
+                      "path": [
+                        "workflow",
+                        "lang",
+                        "interface_new"
+                      ]
+                    },
+                    {
+                      "icon": " ",
+                      "name": "泛型",
+                      "selected": true,
+                      "path": [
+                        "workflow",
+                        "lang",
+                        "interface_using"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": true,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "泛型（接口）",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            Interfaces do not actually support generic,\n            but sometimes it works like generic in "
+          },
+          {
+            "kind": "PageLink",
+            "href": "/workflow/lang/coroutine.html",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "coroutines"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": ".\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            Here is an example of a coroutine that created by Workflow:\n            "
+          },
+          {
+            "kind": "Program",
+            "code": "module sampleModule;\n\nusing system::*;\n\ninterface Reader\n{\n}\n\n$interface IntReader: Reader<int?>;\n$interface StringReader: Reader<string?>;\n\nfunc Read(): Reader^\n{\n    return new Reader^{};\n}\n\nfunc ReadInt(): IntReader^\n{\n    return new IntReader^(using Read());\n}\n\nfunc ReadString(): StringReader^\n{\n    return new StringReader^(using Read());\n}\n\nclass ReaderCoroutine\n{\n    class Executor\n    {\n        var readObject: bool = false;\n        var source: Enumerable^ = {};\n        var enumerator: Enumerator^ = null;\n        var co: Coroutine^ = null;\n        var result: object = null;\n\n        func Continue(): bool\n        {\n            if (co.Status == CoroutineStatus::Stopped)\n            {\n                return false;\n            }\n\n            var cr = new CoroutineResult^();\n            if (co.Failure is not null)\n            {\n                cr.Failure = co.Failure;\n            }\n            else if (readObject and enumerator is not null)\n            {\n                if (enumerator.Next())\n                {\n                    cr.Result = enumerator.Current;\n                }\n            }\n            co.Resume(false, cr);\n            return true;\n        }\n    }\n\n    static func SetAndPause(impl: Executor*, numbers: Enumerable^): void\n    {\n        impl.source = numbers;\n        impl.enumerator = numbers.CreateEnumerator();\n        impl.readObject = false;\n    }\n\n    static func GetAndRead(impl: Executor*, reader: Reader^): void\n    {\n        impl.readObject = true;\n    }\n\n    static func ReturnAndExit(impl: Executor*, value: object): void\n    {\n        impl.result = value;\n    }\n\n    static func Create(creator: func(Executor*): (Coroutine^)): ReaderCoroutine::Executor^\n    {\n        var e = new Executor^();\n        e.co = creator(cast Executor* e);\n        return e;\n    }\n}\n\nfunc Sum(): ReaderCoroutine::Executor^\n$Reader{\n    $Set range [1, 10];\n    var sum = 0;\n    while (true)\n    {\n        var current = $Get ReadInt();\n        if (current is null)\n        {\n            break;\n        }\n        sum = sum + current;\n    }\n    return sum;\n}\n\nfunc main(): string\n{\n    var e = Sum();\n    while (e.Continue()) {}\n    return cast string e.result;\n}"
+          },
+          {
+            "kind": "Text",
+            "text": "\n            该 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "Sum"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " function does:\n            "
+          },
+          {
+            "kind": "List",
+            "ordered": false,
+            "items": [
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "calls "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "$Set"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " to set a number collection."
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "calls "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "$Read"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " to read numbers one by one."
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "returns the sum of all numbers."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "\n            该 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "main"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " function gets the coroutine created from "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "Sum"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": ",\n            drives the coroutine to run until a result is produced.\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "$interface IDerived: IBase<TYPE>;",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                In the example there is:\n                "
+              },
+              {
+                "kind": "Program",
+                "code": "$interface IntReader: Reader<int?>;\n$interface StringReader: Reader<string?>;"
+              },
+              {
+                "kind": "Text",
+                "text": "\n                which expands to:\n                "
+              },
+              {
+                "kind": "Program",
+                "code": "interface IntReader : Reader\n{\n    static func CastResult(value : ::system::Object) : (int?)\n    {\n        return (cast (int?) value);\n    }\n\n    static func StoreResult(value : int?) : (::system::Object)\n    {\n        return value;\n    }\n}"
+              },
+              {
+                "kind": "Text",
+                "text": "\n                So as:\n                "
+              },
+              {
+                "kind": "Program",
+                "code": "$interface StringReader: Reader<string?>;"
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "$interface"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " simply creates an interface\n                which inherits from the one that is specified,\n                and add static functions "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "CastResult"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 以及 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "StoreResult"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "\n                for casting values between "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "object"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " and the generic argument that is specified.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                This is how "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "$Get"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " knows the type of the return value.\n                obviously in:\n                "
+              },
+              {
+                "kind": "Program",
+                "code": "var current = $Get ReadInt();"
+              },
+              {
+                "kind": "Text",
+                "text": "\n                the type of "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "current"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 是 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "int?"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ",\n                because "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "ReadInt"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " returns "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "IntReader^"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ",\n                in which the "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "CastResult"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 函数返回 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "int?"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                It doesn't matter what the original interface looks like.\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "new TYPE^(using OBJECT)",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                This expression creates an object of interface "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "TYPE"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ",\n                redirecting all methods to "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "OBJECT"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                It needs to meet the following requirements:\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "TYPE"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " and the type of "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "OBJECT"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " should both be interfaces."
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "TYPE"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " must be different from the type of "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "OBJECT"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "."
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "TYPE"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " must inherit from the type of "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "OBJECT"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ". It doesn't have to be the direct base type."
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "TYPE"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " must not have more members than the type of "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "OBJECT"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "new TYPE*"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " is also available, according to how "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "TYPE"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " is declared.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                例如：\n                "
+              },
+              {
+                "kind": "Program",
+                "code": "interface Reader\n{\n    func Dummy(): void;\n}\n\n$interface IntReader: Reader<int?>;\n\nfunc ReadInt(): IntReader^\n{\n    return new IntReader^(using Read());\n}"
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "ReadInt"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " expands to:\n                "
+              },
+              {
+                "kind": "Program",
+                "code": "func ReadInt() : (IntReader^)\n{\n    return new (IntReader^)\n    {\n        var source = Read();\n\n        override func Dummy() : (::system::Void)\n        {\n            source.Dummy();\n        }\n    };\n}"
+              },
+              {
+                "kind": "Text",
+                "text": "\n                It is clear that,\n                if "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "OBJECT"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " is a raw pointer,\n                then the created object holds a raw pointer to "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "OBJECT"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n                In this case, you must be very careful to object life cycles.\n            "
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

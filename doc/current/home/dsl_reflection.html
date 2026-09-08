@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Reflectable Type Registrations -- GPU Accelerated C++ User Interface (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "home",
+    "dsl_reflection"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "Gaclib 文档",
+      "selected": false,
+      "path": [
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": "-",
+          "name": "领域专用语言",
+          "selected": false,
+          "path": [
+            "home",
+            "dsl"
+          ],
+          "subNodes": [
+            {
+              "icon": " ",
+              "name": "正则表达式",
+              "selected": false,
+              "path": [
+                "home",
+                "dsl_regex"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "可反射类型注册",
+              "selected": true,
+              "path": [
+                "home",
+                "dsl_reflection"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "单元测试框架 (Vlpp)",
+              "selected": false,
+              "path": [
+                "home",
+                "dsl_unittest"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": false,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "可反射类型注册",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            Inherit from this class when you want to create a reflectable class.\n            It should be used like this:\n            "
+          },
+          {
+            "kind": "Program",
+            "code": "class YourClass : public Description<YourClass>\n{\n    ..\n};"
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            If you want YourClass to be inheritable in scripts,\n            instead of using Description,\n            you should use "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "AggregatableDescription<T>"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": ">, like this:\n            "
+          },
+          {
+            "kind": "Program",
+            "code": "class YourClass : public AggregatableDescription<YourClass>\n{\n    ~YourClass()\n    {\n        FinalizeAggregation();\n    }\n};"
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            After you complete your type,\n            use the following macros and functions to register your class into the global type table.\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            Some of the predefined type has already been registered.\n            If your types depend on these types, you should load those types by calling some or all of them:\n            "
+          },
+          {
+            "kind": "List",
+            "ordered": false,
+            "items": [
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "[F:vl.reflection.description.LoadPredefinedTypes]"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "[F:vl.reflection.description.LoadParsingTypes]"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "[F:vl.reflection.description.JsonLoadTypes]"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "[F:vl.reflection.description.XmlLoadTypes]"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "\n            But if you link "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "GacUIReflection.cpp"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " in your project and set "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "VCZH_DEBUG_NO_REFLECTION"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " to off,\n            all types will be automatically loaded before "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "GuiMain"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 被调用。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            The order does not matter, because content of types are lazily loaded.\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            Everything below should be put in "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "vl::reflection::description"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " namespaces.\n            "
+          },
+          {
+            "kind": "List",
+            "ordered": true,
+            "items": [
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "(in header files)"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " Create a macro that contains all types that you want to register.\n                    Content in the list will become full names for registered type,\n                    so it is strongly recommended to use the full name.\n                    "
+                  },
+                  {
+                    "kind": "Program",
+                    "code": "#define MY_TYPELIST(F)\\\n    F(mynamespaces::MyClass1)\\\n    F(mynamespaces::MyClass2)\\"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "in header files)"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 将类型名称与类型连接起来：\n                    "
+                  },
+                  {
+                    "kind": "Program",
+                    "code": "MY_TYPELIST(DECL_TYPE_INFO)"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "（在 cpp 文件中）"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 将类型名称与类型连接起来：\n                    "
+                  },
+                  {
+                    "kind": "Program",
+                    "code": "MY_TYPELIST(IMPL_CPP_TYPE_INFO)"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "（在 cpp 文件中）"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " Register all members:\n                    "
+                  },
+                  {
+                    "kind": "List",
+                    "ordered": false,
+                    "items": [
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "\n                            You will need to define a macro for commas, Whatever name is fine.\n                            "
+                          },
+                          {
+                            "kind": "Program",
+                            "code": "#define _ ,"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "enum"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": ":\n                            use "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "BEGIN_ENUM_ITEM_MERGABLE"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " 而不是 "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "BEGIN_ENUM_ITEM"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " 如果枚举项是标志（flags）而不是具体项。\n                            "
+                          },
+                          {
+                            "kind": "Program",
+                            "code": "BEGIN_ENUM_ITEM(Season)\n    ENUM_ITEM(Spring)\n    ENUM_ITEM(Summer)\n    ENUM_ITEM(Autumn)\n    ENUM_ITEM(Winter)\nEND_ENUM_ITEM(Season)"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "enum class:"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": "\n                            use "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "BEGIN_ENUM_ITEM_MERGABLE"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " 而不是 "
+                          },
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "BEGIN_ENUM_ITEM"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": " 如果枚举项是标志（flags）而不是具体项。\n                            "
+                          },
+                          {
+                            "kind": "Program",
+                            "code": "BEGIN_ENUM_ITEM(Season)\n    ENUM_CLASS_ITEM(Spring)\n    ENUM_CLASS_ITEM(Summer)\n    ENUM_CLASS_ITEM(Autumn)\n    ENUM_CLASS_ITEM(Winter)\nEND_ENUM_ITEM(Season)"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Strong",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "struct"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Text",
+                            "text": ":\n                            It doesn't necessary mean a struct in C++.\n                            Structs in reflection and Workflow script mean value types that carry only data, without methods and inheritance.\n                            "
+                          },
+                          {
+                            "kind": "Program",
+                            "code": "BEGIN_STRUCT_MEMBER(Point)\n    STRUCT_MEMBER(x)\n    STRUCT_MEMBER(y)\nEND_STRUCT_MEMBER(Point)"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ParagraphListItem",
+                        "paragraphs": [
+                          {
+                            "kind": "Paragraph",
+                            "content": [
+                              {
+                                "kind": "Strong",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "class"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "Text",
+                                "text": ":\n                            It doesn't necessary mean a class in C++.\n                            Classes in reflection and Workflow script mean reference types.\n                            "
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Paragraph",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "\n                            Here are all macros that register content of classes\n                            "
+                              },
+                              {
+                                "kind": "List",
+                                "ordered": false,
+                                "items": [
+                                  {
+                                    "kind": "ContentListItem",
+                                    "content": [
+                                      {
+                                        "kind": "Text",
+                                        "text": "CLASS_MEMBER_BASE"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "kind": "ContentListItem",
+                                    "content": [
+                                      {
+                                        "kind": "Text",
+                                        "text": "CLASS_MEMBER_FIELD"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "kind": "ContentListItem",
+                                    "content": [
+                                      {
+                                        "kind": "Text",
+                                        "text": "CLASS_MEMBER_CONSTRUCTOR"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "kind": "ContentListItem",
+                                    "content": [
+                                      {
+                                        "kind": "Text",
+                                        "text": "CLASS_MEMBER_EXTERNALCTOR(_TEMPLATE)?"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "kind": "ContentListItem",
+                                    "content": [
+                                      {
+                                        "kind": "Text",
+                                        "text": "CLASS_MEMBER_METHOD(_OVERLOAD)?_RENAME"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "kind": "ContentListItem",
+                                    "content": [
+                                      {
+                                        "kind": "Text",
+                                        "text": "CLASS_MEMBER_(STATIC_)?METHOD(_OVERLOAD)?"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "kind": "ContentListItem",
+                                    "content": [
+                                      {
+                                        "kind": "Text",
+                                        "text": "CLASS_MEMBER_(STATIC_)?EXTERNALMETHOD(_TEMPLATE)?"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "kind": "ContentListItem",
+                                    "content": [
+                                      {
+                                        "kind": "Text",
+                                        "text": "CLASS_MEMBER_PROPERTY(_EVENT)?(_READONLY)?(_FAST)?"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "kind": "ContentListItem",
+                                    "content": [
+                                      {
+                                        "kind": "Text",
+                                        "text": "CLASS_MEMBER_PROPERTY_REFERENCETEMPLATE"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "kind": "ContentListItem",
+                                    "content": [
+                                      {
+                                        "kind": "Text",
+                                        "text": "CLASS_MEMBER_EVENT"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Paragraph",
+                            "content": [
+                              {
+                                "kind": "Program",
+                                "code": "BEGIN_CLASS_MEMBER(MyClass)\n\n    // 01) Declare a base class (can have multiple base classes).\n    CLASS_MEMBER_BASE(MyBaseClass)\n\n    // 02) Declare a field.\n    CLASS_MEMBER_FIELD(myField)\n\n    // 03) Default constructor that results in a raw pointer.\n    CLASS_MEMBER_CONSTRUCTIOR(MyClass*(), NO_PARAMETER)\n\n    // 04) Default constructor that results in a shared pointer.\n    CLASS_MEMBER_CONSTRUCTIOR(Ptr<MyClass>(), NO_PARAMETER)\n\n    // 05) Constructor with arguments.\n    CLASS_MEMBER_CONSTRUCTOR(Ptr<MyClass>(int, const WString&), {L\"numberParameter\" _ L\"stringParameter\"})\n\n    // 06) Inject a global function as a constructor.\n    CLASS_MEMBER_EXTERNALCTOR(Ptr<MyClass>(int, const WString&), {L\"numberParameter\" _ L\"stringParameter\"}, mynamespace::CreateMyClass)\n\n    // 07) Inject a consturctor and specify how to generate C++ code, \"*\" means not able to generate.\n    CLASS_MEMBER_EXTERNALCTOR_TEMPLATE(Ptr<MyClass>(int, const WString&), {L\"numberParameter\" _ L\"stringParameter\"}, CreateMyClass, L\"mynamespace::GetMyClass($Arguments)\", L\"::vl::Func<$Func>(&mynamespace::GetMyClass)\")\n    CLASS_MEMBER_EXTERNALCTOR_TEMPLATE(Ptr<MyClass>(), NO_PARAMETER, []()->Ptr<MyClass>{return nullptr;}, L\"*\", L\"*\")\n\n    // 08) Add unoverloaded functions.\n    CLASS_MEMBER_METHOD(MyFunction1, NO_PARAMETER)\n    CLASS_MEMBER_METHOD(MyFunction2, {L\"parameter1\" _ L\"parameter2\"})\n\n    // 09) Add unoverloaded functions but give different names. Unoverloaded only means in C++, not in renamed functions.\n    CLASS_MEMBER_METHOD_RENAME(MyNewName1, MyFunction1, NO_PARAMETER)\n    CLASS_MEMBER_METHOD_RENAME(MyNewName2, MyFunction2, {L\"parameter1\" _ L\"parameter2\"})\n\n    // 10) Add overloaded functions, with function type specified in method pointers\n    CLASS_MEMBER_METHOD_OVERLOAD(MyFunction3, NO_PARAMETER, int(MyClass::*)())\n    CLASS_MEMBER_METHOD_OVERLOAD(MyFunction3, {L\"parameter\"}, int(MyClass::*)(int))\n    CLASS_MEMBER_METHOD_OVERLOAD(MyFunction3, {L\"parameter1\" _ L\"parameter2\"}, int(MyClass::*)(int, const WString&))\n\n    // 11) Add overloaded functions but give different names.\n    CLASS_MEMBER_METHOD_OVERLOAD_RENAME(MyNewName3, MyFunction3, NO_PARAMETER, int(MyClass::*)())\n    CLASS_MEMBER_METHOD_OVERLOAD_RENAME(MyNewName4, MyFunction3, {L\"parameter\"}, int(MyClass::*)(int))\n    CLASS_MEMBER_METHOD_OVERLOAD_RENAME(MyNewName4, MyFunction3, {L\"parameter1\" _ L\"parameter2\"}, int(MyClass::*)(int, const WString&))\n\n    // 12) Inject global functions as methods:\n    CLASS_MEMBER_EXTERNALMETHOD(MyNewName5, {L\"parameter\"}, int(MyClass::*)(int), mynamespace::AGlobalFunction)\n\n    // 13) Inject a method and specify how to generate C++ code, \"*\" means not able to generate.\n    CLASS_MEMBER_EXTERNALMETHOD_TEMPLATE(MyNewName5, {L\"parameter1\" _ L\"parameter2\"}, int(MyClass::*)(int, const WString&), [](MyClass* a, int b, const WString& c){return 0;}, L\"*\", L\"*\")\n\n    // 14) Add unoverloaded static functions\n    CLASS_MEMBER_STATIC_METHOD(MyFunction4, NO_PARAMETER)\n    CLASS_MEMBER_STATIC_METHOD(MyFunction5, {L\"parameter1\" _ L\"parameter2\"})\n\n    // 15) Add overloaded static functions\n    CLASS_MEMBER_STATIC_METHOD_OVERLOAD(MyFunction6, NO_PARAMETER, int(*)())\n    CLASS_MEMBER_STATIC_METHOD_OVERLOAD(MyFunction6, {L\"parameter\"}, int(*)(int))\n    CLASS_MEMBER_STATIC_METHOD_OVERLOAD(MyFunction6, {L\"parameter1\" _ L\"parameter2\"}, int(*)(int, const WString&))\n\n    // 16) Inject global functions as static methods:\n    CLASS_MEMBER_STATIC_EXTERNALMETHOD(MyNewName6, {L\"parameter\"}, int(*)(int), mynamespace::AGlobalFunction2)\n\n    // 17) Inject a static method and specify how to generate C++ code, \"*\" means not able to generate.\n    CLASS_MEMBER_STATIC_EXTERNALMETHOD_TEMPLATE(MyNewName6, {L\"parameter1\" _ L\"parameter2\"}, int(*)(int, const WString&), [](int b, const WString& c){return 0;}, L\"*\")\n\n    // 18) Add a getter function as a property\n    CLASS_MEMBER_PROPERTY_READONLY_FAST(X)\n    // which is short for\n    CLASS_MEMBER_METHOD(GetX, NO_PARAMETER)\n    CLASS_MEMBER_PROPERTY_READONLY(X, GetX)\n\n    // 19) Add a pair of getter and setter functions as a property\n    CLASS_MEMBER_PROPERTY_FAST(X)\n    // which is short for\n    CLASS_MEMBER_METHOD(GetX, NO_PARAMETER)\n    CLASS_MEMBER_METHOD(SetX, {L\"value\"})\n    CLASS_MEMBER_PROPERTY(X, GetX, SetX)\n\n    // 20) Add a getter function as a property with a property changed event\n    CLASS_MEMBER_EVENT(XChanged)\n    CLASS_MEMBER_PROPERTY_EVENT_READONLY_FAST(X, XChanged)\n    // which is short for\n    CLASS_MEMBER_EVENT(XChanged)\n    CLASS_MEMBER_METHOD(GetX, NO_PARAMETER)\n    CLASS_MEMBER_PROPERTY_EVENT_READONLY(X, GetX, XChanged)\n\n    // 21) Add a pair of getter and setter functions as a property with a property changed event\n    CLASS_MEMBER_EVENT(XChanged)\n    CLASS_MEMBER_PROPERTY_EVENT_FAST(X, XChanged)\n    // which is short for\n    CLASS_MEMBER_EVENT(XChanged)\n    CLASS_MEMBER_METHOD(GetX, NO_PARAMETER)\n    CLASS_MEMBER_METHOD(SetX, {L\"value\"})\n    CLASS_MEMBER_PROPERTY_EVENT(X, GetX, SetX, XChanged)\n\nEND_CLASS_MEMBER(MyClass)"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Paragraph",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "\n                            If the code compiles, the class should look like this\n                            "
+                              },
+                              {
+                                "kind": "Program",
+                                "code": "class MyClass : public Description<MyClass>\n{\npublic:\n    MyClass();\n    MyClass(int numberParameter, const WString& stringParameter);\n\n    int MyFunction1();\n    int MyFunction2(int parameter1, const WString& parameter2);\n    int MyFunction3();\n    int MyFunction3(int parameter);\n    int MyFunction3(int parameter1, const WString& parameter2);\n\n    static int MyFunction4();\n    static int MyFunction5(int parameter1, const WString& parameter2);\n    static int MyFunction6();\n    static int MyFunction6(int parameter);\n    static int MyFunction6(int parameter1, const WString& parameter2);\n\n    Event<void()> XChanged;\n    int GetX();\n    void SetX(int value);\n};\n\nPtr<MyClass> CreateMyClass(int numberParameter, const WString7 stringParameter);\nint GlobalFunction(MyClass* self, int parameter);"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ParagraphListItem",
+                        "paragraphs": [
+                          {
+                            "kind": "Paragraph",
+                            "content": [
+                              {
+                                "kind": "Strong",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "interface"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "Text",
+                                "text": ":\n                            A C++ class can be registered as a reflectable interface if:\n                            "
+                              },
+                              {
+                                "kind": "List",
+                                "ordered": false,
+                                "items": [
+                                  {
+                                    "kind": "ContentListItem",
+                                    "content": [
+                                      {
+                                        "kind": "Text",
+                                        "text": "Directly or indirectly inherits [T:vl.reflection.IDescriptable]"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "kind": "ContentListItem",
+                                    "content": [
+                                      {
+                                        "kind": "Text",
+                                        "text": "The only registered constructor (if exists) should use Ptr<[T:vl.reflection.description.IValueInterfaceProxy]> as a parameter, so that a Workflow script class could implement this interface."
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Paragraph",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "\n                            Suppose you have an interface like this:\n                            "
+                              },
+                              {
+                                "kind": "Program",
+                                "code": "class IMyInterface : public virtual IDescriptable, public Description<IMyInterface>\n{\npublic:\n    int GetX();\n    void SetX(int value);\n};"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Paragraph",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "\n                            If you want to allow a Workflow script class implement this interface, you should first add a proxy like this:\n                            "
+                              },
+                              {
+                                "kind": "Program",
+                                "code": "#pragma warning(push)\n#pragma warning(disable:4250)\nBEGIN_INTERFACE_PROXY_NOPARENT_RAWPTR(IMyInterface)\n    // or BEGIN_INTERFACE_PROXY_RAWPTR(IMyInterface, baseInterfaces...)\n    // or BEGIN_INTERFACE_PROXY_NOPARENT_SHAREDPTR(IMyInterface)\n    // or BEGIN_INTERFACE_PROXY_SHAREDPTR(IMyInterface, baseInterfaces...)\n    int GetX()override\n    {\n        INVOKEGET_INTERFACE_PROXY_NOPARAMS(GetX)\n    }\n\n    void SetX(int value)override\n    {\n        INVOKE_INTERFACE_PROXY(SetX, value)\n    }\nEND_INTERFACE_PROXY(IMyInterface)\n#pragma warning(pop)"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Paragraph",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "\n                            And then use this code to register the interface:\n                            "
+                              },
+                              {
+                                "kind": "Program",
+                                "code": "BEGIN_INTERFACE_MEMBER(IMyInterface)\n    ...\nEND_INTERFACE_MEMBER(IMyInterface)"
+                              }
+                            ]
+                          },
+                          {
+                            "kind": "Paragraph",
+                            "content": [
+                              {
+                                "kind": "Text",
+                                "text": "\n                            Everything else is the same as registering classes.\n                            Use "
+                              },
+                              {
+                                "kind": "Strong",
+                                "content": [
+                                  {
+                                    "kind": "Text",
+                                    "text": "BEGIN_INTERFACE_MEMBER_NOPROXY"
+                                  }
+                                ]
+                              },
+                              {
+                                "kind": "Text",
+                                "text": " to register an interface without a proxy,\n                            which means a Workflow script class cannot implement this interface.\n                            "
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "ContentListItem",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "\n                            Undefine the macro for comma:\n                            "
+                          },
+                          {
+                            "kind": "Program",
+                            "code": "#undef _"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "（在 cpp 文件中）"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " Create a type loader:\n                    "
+                  },
+                  {
+                    "kind": "Program",
+                    "code": "class MyTypeLoader : public Object, public ITypeLoader\n{\npublic:\n    void Load(ITypeManager* manager)\n    {\n        MY_TYPELIST(ADD_TYPE_INFO)\n    }\n\n    void Unload(ITypeManager* manager)\n    {\n    }\n};"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\n                    Before using reflection on registered types, you need to register the type loader:\n                    "
+                  },
+                  {
+                    "kind": "Program",
+                    "code": "vl::reflection::description::GetGlobalTypeManager()->AddTypeLoader(new MyTypeLoader);"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

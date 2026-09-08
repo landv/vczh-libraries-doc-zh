@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>托管模式与远程协议 -- GPU 加速的 C++ 用户界面 (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "gacui",
+    "modes",
+    "home"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "GacUI",
+      "selected": false,
+      "path": [
+        "gacui",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": " ",
+          "name": "构建你的第一个 GacUI 应用！",
+          "selected": false,
+          "path": [
+            "gacui",
+            "running"
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "知识库",
+          "selected": false,
+          "path": [
+            "gacui",
+            "kb",
+            "home"
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "GacUI XML 资源",
+          "selected": false,
+          "path": [
+            "gacui",
+            "xmlres",
+            "home"
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "GacUI 组件",
+          "selected": false,
+          "path": [
+            "gacui",
+            "components",
+            "home"
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "高级主题",
+          "selected": false,
+          "path": [
+            "gacui",
+            "advanced",
+            "home"
+          ]
+        },
+        {
+          "icon": "-",
+          "name": "托管模式与远程协议",
+          "selected": true,
+          "path": [
+            "gacui",
+            "modes",
+            "home"
+          ],
+          "subNodes": [
+            {
+              "icon": " ",
+              "name": "远程协议核心应用",
+              "selected": false,
+              "path": [
+                "gacui",
+                "modes",
+                "remote_core"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "远程协议客户端应用",
+              "selected": false,
+              "path": [
+                "gacui",
+                "modes",
+                "remote_client"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "远程协议通道层",
+              "selected": false,
+              "path": [
+                "gacui",
+                "modes",
+                "remote_communication"
+              ]
+            }
+          ]
+        },
+        {
+          "icon": " ",
+          "name": "Coding Agent 支持",
+          "selected": false,
+          "subNodes": [
+            {
+              "icon": " ",
+              "name": "AutomationService",
+              "selected": false,
+              "path": [
+                "gacui",
+                "coding-agent",
+                "automation-service"
+              ]
+            }
+          ]
+        },
+        {
+          "icon": " ",
+          "name": "自 1.0 以来的破坏性变更",
+          "selected": false,
+          "path": [
+            "gacui",
+            "upgrade"
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "参考",
+          "selected": false,
+          "path": [
+            "gacui",
+            "ref"
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": true,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "托管模式与远程协议",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            使用\n            "
+          },
+          {
+            "kind": "List",
+            "ordered": false,
+            "items": [
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "SetupHostedWindowsDirect2DRenderer"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "SetupHostedWindowsGDIRenderer"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "SetupWGacHostedRenderer"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "SetupOSXHostedCoreGraphicsRenderer"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "\n            即可运行托管模式的 GacUI 应用。\n            托管模式的 GacUI 应用只会启动一个操作系统原生窗口，\n            其它窗口都会虚拟地渲染在该窗口内部。\n            默认情况下，系统对话框会被预定义的 GacUI 对话框取代，\n            从而让所有内容都严格位于操作系统原生窗口内部。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            使用 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "SetupRemoteNativeController"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 可让 GacUI 应用以远程协议方式运行（强制为托管模式），\n            该应用将变成无头（headless）模式，\n            它不会在屏幕上渲染任何内容，\n            而是把渲染命令发送给远程客户端。\n            这部分内容会在 "
+          },
+          {
+            "kind": "PageLink",
+            "href": "/gacui/modes/remote_core.html",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "远程协议核心应用"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            如果你想要一个仍能与 GacUI 其它组件配合工作的远程协议渲染器，\n            "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "GuiRemoteRendererSingle"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 实现了远程协议所需的全部功能并启动一个窗口，\n            显示来自核心 GacUI 应用的任何内容，\n            同时涵盖用户交互。\n            这部分内容会在 "
+          },
+          {
+            "kind": "PageLink",
+            "href": "/gacui/modes/remote_client.html",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "远程协议客户端应用"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            "
+          },
+          {
+            "kind": "PageLink",
+            "href": "https://github.com/vczh-libraries/GacJS",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "GacJS"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 也实现了浏览器中的 GacUI 渲染器，\n            通过 HTTP 协议连接到 GacUI 应用。\n            但该 HTTP 协议实现并非官方实现，\n            仅供演示使用，\n            不提供任何安全保证。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            GacUI 为远程协议提供一个 JSON 通道层，\n            由 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "vl::inter_process"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 实现。\n            一个 C++ 核心应用通常会启动一个 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "GuiRemoteProtocolNetworkChannelServer"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "，\n            并通过 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "GuiRemoteProtocolLocalChannelClient"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 连接自身，\n            并等待一个通过 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "GuiRemoteProtocolChannelClient"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 连接的渲染器。\n            底层的数据传输实现仍由应用自行选择。\n            VlppOS 的传输选择包括：\n            "
+          },
+          {
+            "kind": "List",
+            "ordered": false,
+            "items": [
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "vl::inter_process::async_tcp_socket::NetworkProtocolServer<TAsyncSocketServer>"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 与 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "NetworkProtocolClient<TAsyncSocketClient>"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "，用于 Windows、Linux 与 macOS 上基于长度帧的直接回环 TCP。"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "vl::inter_process::async_tcp_socket::SocketHttpServer"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 与 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "vl::inter_process::async_tcp_socket::SocketHttpClient"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "，用于回环 TCP 上的跨平台 Mini HTTP。\n            使用 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "CreateDefaultAsyncSocketServer"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 与 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "CreateDefaultAsyncSocketClient"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "。"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "vl::inter_process::named_pipe::NamedPipeServer"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 和 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "vl::inter_process::named_pipe::NamedPipeClient"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 用于 Windows。"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "vl::inter_process::windows_http::HttpServer"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 和 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "vl::inter_process::windows_http::HttpClient"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "，在 Windows 上使用 HTTP.sys 与 WinHTTP 实现。"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            VlppOS 提供 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "INetworkProtocol"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 和 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "IChannel"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 接口系列，仅用于测试目的的本地跨进程通信。\n            应用可以直接使用这些公开契约，但强烈建议产品代码提供自己的实现，并保持 GacUI JSON 通道类不变。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            通过实现来自 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "vl::inter_process"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 的这些接口，即可添加自定义的数据传输实现：\n            "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "INetworkProtocolConnection"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "、"
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "INetworkProtocolCallback"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "、"
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "INetworkProtocolClient"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 与 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "INetworkProtocolServer"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "。\n            这些接口虽然被命名为网络协议接口，但实现并不一定要是网络协议；\n            stdio、DLL 函数调用、共享内存、WebAssembly/JavaScript 桥、套接字或任何其它异步消息传输都可以放在这一层。\n            这部分内容会在 "
+          },
+          {
+            "kind": "PageLink",
+            "href": "/gacui/modes/remote_communication.html",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "远程协议通道层"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            完整的 Windows 测试项目为\n            "
+          },
+          {
+            "kind": "PageLink",
+            "href": "https://github.com/vczh-libraries/GacUI/tree/master/Test/GacUISrc/RemotingTest_Core",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "RemotingTest_Core"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 与\n            "
+          },
+          {
+            "kind": "PageLink",
+            "href": "https://github.com/vczh-libraries/GacUI/tree/master/Test/GacUISrc/RemotingTest_Rendering_Win32",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "RemotingTest_Rendering_Win32"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "。\n            它们提供 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "/Pipe"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "、"
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "/Http"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 和 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "/MiniHttp"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 模式，用于 Windows 命名管道、Windows HTTP 以及可移植 Mini HTTP 配置。\n        "
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

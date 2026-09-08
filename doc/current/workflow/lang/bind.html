@@ -1,0 +1,2075 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>数据绑定 -- GPU 加速的 C++ 用户界面 (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "workflow",
+    "lang",
+    "bind"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "Workflow 脚本",
+      "selected": false,
+      "path": [
+        "workflow",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": "-",
+          "name": "语法",
+          "selected": false,
+          "path": [
+            "workflow",
+            "lang"
+          ],
+          "subNodes": [
+            {
+              "icon": " ",
+              "name": "模块",
+              "selected": false,
+              "path": [
+                "workflow",
+                "lang",
+                "module"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "函数与变量",
+              "selected": false,
+              "path": [
+                "workflow",
+                "lang",
+                "funcvar"
+              ]
+            },
+            {
+              "icon": "+",
+              "name": "类型",
+              "selected": false,
+              "path": [
+                "workflow",
+                "lang",
+                "type"
+              ]
+            },
+            {
+              "icon": "+",
+              "name": "表达式",
+              "selected": false,
+              "path": [
+                "workflow",
+                "lang",
+                "expr"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "语句",
+              "selected": false,
+              "path": [
+                "workflow",
+                "lang",
+                "stat"
+              ]
+            },
+            {
+              "icon": "-",
+              "name": "数据绑定",
+              "selected": true,
+              "path": [
+                "workflow",
+                "lang",
+                "bind"
+              ],
+              "subNodes": [
+                {
+                  "icon": " ",
+                  "name": "显式观察事件",
+                  "selected": false,
+                  "path": [
+                    "workflow",
+                    "lang",
+                    "bind_observe"
+                  ]
+                }
+              ]
+            },
+            {
+              "icon": "+",
+              "name": "协程",
+              "selected": false,
+              "path": [
+                "workflow",
+                "lang",
+                "coroutine"
+              ]
+            },
+            {
+              "icon": "+",
+              "name": "状态机",
+              "selected": false,
+              "path": [
+                "workflow",
+                "lang",
+                "state"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "关键字索引",
+              "selected": false,
+              "path": [
+                "workflow",
+                "lang",
+                "index"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "错误索引",
+              "selected": false,
+              "path": [
+                "workflow",
+                "lang",
+                "error"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": true,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "数据绑定",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            数据绑定表达式 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "bind(EXPR)"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": " 通过给所有与属性关联的事件挂接回调来观察 "
+          },
+          {
+            "kind": "Strong",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "EXPR"
+              }
+            ]
+          },
+          {
+            "kind": "Text",
+            "text": "\n            的变化。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "定义数据绑定",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                当我们说属性 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "A"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 与事件 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "AChanged"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 关联时，\n                意味着该属性必须以下列方式之一来声明：\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "prop A: Type {}"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "prop A: Type {const}"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "prop A: Type {getter, AChanged}"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "prop A: Type {getter, setter, AChanged}"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "bind"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 和 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "this"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 不允许出现在 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "bind"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 中，除非它们位于 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "bind"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 内部的匿名函数或 new 接口表达式的函数体中。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                在匿名函数或 new 接口表达式的函数体里被使用的属性所关联的任何事件，都不会被观察。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                需要被观察的属性必须写成 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "EXPR.PROP"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 的形式。例如：\n                "
+              },
+              {
+                "kind": "Program",
+                "code": "class C\n{\n    prop A: int = 0; {}\n\n    new()\n    {\n        var x = bind(A + 1);\n        var self = this;\n        var y = bind(self.A + 1);\n    }\n}"
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "x"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 不观察 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "A"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "，因为它不是 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "EXPR.PROP"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 的形式。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "y"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 观察 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "A"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "，但由于 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "this"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 不允许出现在 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "bind"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "Text",
+                        "text": " 中，因此需要先存入一个变量。"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "监听数据绑定",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                一个 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "bind"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 表达式返回 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "system::Subscription^"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                在观察生效之前，需要调用 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Open"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 方法。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                当不再需要观察时，需要调用 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Close"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 方法。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "ValueChanged"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 会在被观察的事件被触发时被调用。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                当一个订阅(subscription)观察某些对象时，\n                这个订阅的引用会被挂接到属性上的事件处理器捕获，\n                同时这些对象也会被保存进该订阅，因为 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "detach"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 需要在之后被调用，\n                这会导致循环引用。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                调用 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Close"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "，\n                即可解除这些循环引用，\n                从而避免内存泄漏。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Program",
+                "code": "module sampleModule;\n\nclass Numbers\n{\n    prop A: int = 0 {}\n    prop B: int = 0 {}\n    prop C: int = 0 {}\n}\n\nfunc main(): string\n{\n    var numbers = new Numbers^();\n    var sub = bind(numbers.A + numbers.B + numbers.C);\n\n    var r = {\"\"};\n    attach(sub.ValueChanged, func(newValue: object): void\n    {\n        r[0] = $\"$(r[0])$(cast int newValue); \";\n    });\n    sub.Open();\n\n    numbers.A = 1;\n    numbers.B = 2;\n    numbers.C = 3;\n\n    sub.Close();\n    return r[0];\n}"
+              },
+              {
+                "kind": "Text",
+                "text": "\n                该函数返回 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\"1; 3; 6; \""
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "，\n                因为对属性赋值时，"
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "AChanged"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "、"
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "BChanged"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 和 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "CChanged"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 都会被触发，\n                所以 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "bind"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 表达式观察到了 3 次变化，\n                回调被调用了 3 次。\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "观察属性链",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                属性链也是可观察的，\n                所有相关的事件都会被挂接。\n                "
+              },
+              {
+                "kind": "Program",
+                "code": "module sampleModule;\n\nclass ClassA\n{\n    prop B: ClassB^ = new ClassB^() {}\n}\n\nclass ClassB\n{\n    prop C: ClassC^ = new ClassC^() {}\n}\n\nclass ClassC\n{\n    prop X: int = 0 {}\n}\n\nfunc main(): string\n{\n    var a = new ClassA^();\n    var sub = bind(a.B.C.X);\n\n    var r = {\"\"};\n    attach(sub.ValueChanged, func(newValue: object): void\n    {\n        r[0] = $\"$(r[0])$(cast int newValue); \";\n    });\n    sub.Open();\n\n    {\n        a.B.C.X = 100;\n    }\n    {\n        var c = new ClassC^();\n        c.X = 200;\n        a.B.C = c;\n    }\n    {\n        var b = new ClassB^();\n        b.C.X = 300;\n        a.B = b;\n    }\n\n    sub.Close();\n    return r[0];\n}"
+              },
+              {
+                "kind": "Text",
+                "text": "\n                该函数返回 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\"100; 200; 300; \""
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "，\n                因为对 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "a.B"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "、"
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "a.B.C"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 和 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "a.B.C.X"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 的赋值都会触发已挂接的事件。\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "捕获值",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                在 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "bind"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 表达式中捕获的值与匿名函数和 new 接口表达式中的情况一样，\n                都是浅拷贝。\n                "
+              },
+              {
+                "kind": "Program",
+                "code": "module sampleModule;\n\nclass Numbers\n{\n    prop A: int = 0 {}\n    prop B: int = 0 {}\n    prop C: int = 0 {}\n}\n\nfunc main(): string\n{\n    var init = 0;\n    var numbers = new Numbers^();\n    var sub = bind(init + numbers.A + numbers.B + numbers.C);\n\n    var r = {\"\"};\n    attach(sub.ValueChanged, func(newValue: object): void\n    {\n        r[0] = $\"$(r[0])$(cast int newValue); \";\n    });\n    sub.Open();\n\n    init = 100;\n    numbers.A = 1;\n    init = 200;\n    numbers.B = 2;\n    init = 300;\n    numbers.C = 3;\n\n    sub.Close();\n    return r[0];\n}"
+              },
+              {
+                "kind": "Text",
+                "text": "\n                该函数返回 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\"1; 3; 6; \""
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "，\n                因为 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "init"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 的变化在 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "bind"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 中不可见。\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "使用不可观察的属性",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Program",
+                "code": "module sampleModule;\n\nclass Numbers\n{\n    prop A: int = 0 {not observe}\n    prop B: int = 0 {not observe}\n    prop C: int = 0 {}\n}\n\nfunc main(): string\n{\n    var numbers = new Numbers^();\n    var sub = bind(numbers.A + numbers.B + numbers.C);\n\n    var r = {\"\"};\n    attach(sub.ValueChanged, func(newValue: object): void\n    {\n        r[0] = $\"$(r[0])$(cast int newValue); \";\n    });\n    sub.Open();\n\n    numbers.A = 1;\n    numbers.B = 2;\n    numbers.C = 3;\n\n    sub.Close();\n    return r[0];\n}"
+              },
+              {
+                "kind": "Text",
+                "text": "\n                该函数返回 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\"6; \""
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "，\n                因为 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "A"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 和 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "B"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 不可观察，\n                回调只在 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "C"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 被修改时才会触发。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                但我们也可以通过调用 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "Update"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 来手动触发回调：\n                "
+              },
+              {
+                "kind": "Program",
+                "code": "numbers.A = 1;\nsub.Update();\nnumbers.B = 2;\nsub.Update();\nnumbers.C = 3;"
+              },
+              {
+                "kind": "Text",
+                "text": "\n                这样一来，它返回 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\"1; 3; 6; \""
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "。\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "警惕属性链中不可观察的属性",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                拥有被观察属性的对象会被保存在 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "bind"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 中，因为 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "detach"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 需要被调用。\n                "
+              },
+              {
+                "kind": "Program",
+                "code": "module sampleModule;\n\nclass ClassA\n{\n    prop B: ClassB^ = new ClassB^() {not observe}\n}\n\nclass ClassB\n{\n    prop C: ClassC^ = new ClassC^() {not observe}\n}\n\nclass ClassC\n{\n    prop X: int = 0 {}\n}\n\nfunc main(): string\n{\n    var a = new ClassA^();\n    var sub = bind(a.B.C.X);\n\n    var r = {\"\"};\n    attach(sub.ValueChanged, func(newValue: object): void\n    {\n        r[0] = $\"$(r[0])$(cast int newValue); \";\n    });\n    sub.Open();\n\n    var oldC = a.B.C;\n    {\n        a.B.C.X = 100;\n    }\n    {\n        var c = new ClassC^();\n        c.X = 200;\n        a.B.C = c;\n    }\n    {\n        var b = new ClassB^();\n        b.C.X = 300;\n        a.B = b;\n    }\n    oldC.X = 400;\n\n    sub.Close();\n    return r[0];\n}"
+              },
+              {
+                "kind": "Text",
+                "text": "\n                该函数返回 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\"100; 400; \""
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "a.B"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 和 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "a.B.C"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 不可观察，\n                所以对它们的赋值不会触发回调。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                但是当 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "oldC.X = 400;"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 被调用时，\n                回调会以 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "400"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 被触发，\n                而这显然不是 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "a.B.C.X"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 在 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "bind"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 中指定的实际值。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                因为 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "a.B.C"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 被缓存了。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "a.B"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 和 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "a.B.C"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 不可观察，\n                所以当我们写 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "bind(a.B.C.X)"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 时，\n                它实际上等价于 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "let cachedObject = a.B.C in (bind(cachedObject.X))"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                当 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "a.B"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 变为可观察，但 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "a.B.C"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 仍不可观察时，\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "a.B.C"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 会在 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "a.B"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 被修改时更新。\n                如果 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "a.B"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 在 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "a.B.C"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 被重新赋值时没有被修改，\n                那么对被观察表达式的求值仍会使用旧的 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "a.B.C"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 值。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                在前面的示例中，\n                请把 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "不观察"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "（位于 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "prop B"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 中）移除，\n                并修改 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "sub.Open()"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 与 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "sub.Close"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 之间的一些代码，如下所示：\n                "
+              },
+              {
+                "kind": "Program",
+                "code": "module sampleModule;\n\nclass ClassA\n{\n    prop B: ClassB^ = new ClassB^() {}\n}\n\nclass ClassB\n{\n    prop C: ClassC^ = new ClassC^() {not observe}\n}\n\nclass ClassC\n{\n    prop X: int = 0 {}\n}\n\nfunc main(): string\n{\n    var a = new ClassA^();\n    var sub = bind(a.B.C.X);\n\n    var r = {\"\"};\n    attach(sub.ValueChanged, func(newValue: object): void\n    {\n        r[0] = $\"$(r[0])$(cast int newValue); \";\n    });\n    sub.Open();\n\n    {\n        var b = new ClassB^();\n        b.C.X = 100;\n        a.B = b;\n    }\n    {\n        a.B.C.X = 200;\n    }\n    var oldC = a.B.C;\n    {\n        var c = new ClassC^();\n        c.X = 300;\n        a.B.C = c;\n    }\n    oldC.X = 400;\n\n    sub.Close();\n    return r[0];\n}"
+              },
+              {
+                "kind": "Text",
+                "text": "\n                该函数返回 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\"100; 200; 400; \""
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                修改 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "a.B.C"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 不会触发事件，\n                因为 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "C"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 不可观察。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                修改 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "oldC.X"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 会触发事件，\n                因为之前的 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "a.B.C"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 被缓存在订阅中，\n                即使 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "a.B.C"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 已改变也是如此。\n                所以它实际上并不会求值 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "a.B.C.X"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "，\n                而是求值 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "oldC.X"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                但如果再次修改 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "a.B"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "，\n                缓存的 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "ClassC^"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 对象会被刷新，\n                它便不再是 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "oldC"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "。\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "A ? B : C",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Program",
+                "code": "module sampleModule;\n\nclass Cond\n{\n    prop Value: bool = false {}\n}\n\nclass Int\n{\n    prop Value: int = 0 {}\n}\n\nfunc main(): string\n{\n    var c = new Cond^();\n    var a = new Int^();\n    var b = new Int^();\n    var sub = bind(c.Value ? a.Value : b.Value);\n\n    var r = {\"\"};\n    attach(sub.ValueChanged, func(newValue: object): void\n    {\n        r[0] = $\"$(r[0])$(cast int newValue); \";\n    });\n    sub.Open();\n\n    c.Value = true;\n    a.Value = 100;\n    b.Value = 200;\n    c.Value = false;\n    a.Value = 300;\n    b.Value = 400;\n\n    sub.Close();\n    return r[0];\n}"
+              },
+              {
+                "kind": "Text",
+                "text": "\n                该函数返回 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\"0; 100; 100; 200; 200; 400; \""
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                即使 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "一个"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 和 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "b"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 位于 if 表达式的不同分支中，\n                它们的事件也会全部被挂接。\n                当 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "a.Value"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 或 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "b.Value"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 被修改时，\n                即使它并未参与求值，\n                也仍然会触发回调。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                如果 if 表达式的分支中有属性链，\n                所有 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "attach"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 与 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "detach"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 都将在上游属性被修改时执行，\n                拥有可观察属性的对象会被求值并缓存，\n                相关属性的 getter 也会被调用，\n                而与条件表达式求值出什么无关。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                让我们看一个更复杂的示例：\n                "
+              },
+              {
+                "kind": "Program",
+                "code": "module sampleModule;\n\nclass Cond\n{\n    prop Value: bool = false {}\n}\n\nclass Holder\n{\n    prop Value: Int^ = new Int^() {}\n}\n\nclass Int\n{\n    prop Value: int = 0 {}\n}\n\nfunc main(): string\n{\n    var c = new Cond^();\n    var a = new Holder^();\n    var b = new Holder^();\n    var sub = bind((c.Value ? a.Value : b.Value).Value);\n\n    var r = {\"\"};\n    attach(sub.ValueChanged, func(newValue: object): void\n    {\n        r[0] = $\"$(r[0])$(cast int newValue); \";\n    });\n    sub.Open();\n\n    c.Value = true;\n    a.Value.Value = 100;\n    b.Value.Value = 200;\n    c.Value = false;\n    a.Value.Value = 300;\n    b.Value.Value = 400;\n\n    sub.Close();\n    return r[0];\n}"
+              },
+              {
+                "kind": "Text",
+                "text": "\n                该函数返回 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\"0; 100; 200; 400; \""
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                当 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "c.Value = true;"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 执行时，\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "0;"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 会被打印。\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "(c.Value ? a.Value : b.Value)"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 变为 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "a.Value"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "，\n                因此 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "a.Value.ValueChanged"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 被挂接，\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "b.Value.ValueChanged"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 被分离。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                当 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "a.Value.Value = 100;"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 执行时，\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "100;"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 会被打印，这显而易见。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                当 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "b.Value.Value = 200;"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 执行时，\n                什么都不会发生，\n                因为 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "b.Value.ValueChanged"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 已经被分离了。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                当 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "c.Value = false;"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 执行时，\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "200;"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 会被打印。\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "(c.Value ? a.Value : b.Value)"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 变为 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "b.Value"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": "，\n                因此 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "a.Value.ValueChanged"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 被分离，\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "b.Value.ValueChanged"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 被挂接。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                当 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "a.Value.Value = 300;"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 执行时，\n                什么都不会发生，\n                因为 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "a.Value.ValueChanged"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 已经被分离了。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                当 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "b.Value.Value = 400;"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 执行时，\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "400;"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 会被打印，这显而易见。\n            "
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>调查与优化任务 -- GPU 加速的 C++ 用户界面 (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "coding-agent",
+    "jobs"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "使用 Coding Agent",
+      "selected": false,
+      "path": [
+        "coding-agent",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": " ",
+          "name": "安装所需工具",
+          "selected": false,
+          "subNodes": [
+            {
+              "icon": " ",
+              "name": "Windows",
+              "selected": false,
+              "path": [
+                "coding-agent",
+                "installing",
+                "windows"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "Linux",
+              "selected": false,
+              "path": [
+                "coding-agent",
+                "installing",
+                "linux"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "macOS",
+              "selected": false,
+              "path": [
+                "coding-agent",
+                "installing",
+                "macos"
+              ]
+            }
+          ]
+        },
+        {
+          "icon": "+",
+          "name": "准备上下文文件",
+          "selected": false,
+          "path": [
+            "coding-agent",
+            "context"
+          ]
+        },
+        {
+          "icon": " ",
+          "name": "调查与优化任务",
+          "selected": true,
+          "path": [
+            "coding-agent",
+            "jobs"
+          ]
+        },
+        {
+          "icon": " ",
+          "name": "AutomationService 与基础计算机操作",
+          "selected": false,
+          "path": [
+            "coding-agent",
+            "gacui-debugging"
+          ]
+        },
+        {
+          "icon": " ",
+          "name": "创建远程协议与外部视图模型",
+          "selected": false,
+          "path": [
+            "coding-agent",
+            "remoting"
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": true,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "调查与优化任务",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Name",
+            "text": "AGENTS.md"
+          },
+          {
+            "kind": "Text",
+            "text": " 与 "
+          },
+          {
+            "kind": "Name",
+            "text": "CLAUDE.md"
+          },
+          {
+            "kind": "Text",
+            "text": " 会将简短请求关键字路由到 "
+          },
+          {
+            "kind": "Name",
+            "text": ".github/prompts"
+          },
+          {
+            "kind": "Text",
+            "text": "。\n            这些任务使编码代理的工作可重复执行，因为代理会编写持久化的任务文档、使用复制而来的知识库，并遵循仓库的构建与调试脚本。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "investigate",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                对于需要分析、实现、验证并记录决策的编码工作，可使用 "
+              },
+              {
+                "kind": "Name",
+                "text": "investigate"
+              },
+              {
+                "kind": "Text",
+                "text": "。\n                它不限于修复缺陷，也能处理新功能、重构、行为变更、回归问题，以及可能最终涉及源码修改的深入调研。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                常见的请求形式有：\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Name",
+                        "text": "investigate repro ..."
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ": 开启一项全新任务，并将问题或功能请求复制到 "
+                      },
+                      {
+                        "kind": "Name",
+                        "text": "Copilot_Investigate.md"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": "。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Name",
+                        "text": "investigate continue ..."
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ": 在当前调查中追加一条更新，并从已有方案继续推进。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Name",
+                        "text": "investigate report ..."
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ": 要求代理汇总已确认的方案及其权衡取舍。"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                该任务会写入 "
+              },
+              {
+                "kind": "Name",
+                "text": ".github/TaskLogs/Copilot_Investigate.md"
+              },
+              {
+                "kind": "Text",
+                "text": "。\n                它会记录问题描述、测试或确认标准、建议的解决方案、代码改动，以及每个方案是否得到确认或否定。\n                提示词期望代理在必要时进行构建、运行测试与调试。\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "refine",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                当已完成的工作产出了包含可复用经验的任务日志后，可使用 "
+              },
+              {
+                "kind": "Name",
+                "text": "refine"
+              },
+              {
+                "kind": "Text",
+                "text": "。\n                该任务会阅读已归档的任务文档，提炼用户偏好与项目特有经验，并将其写入：\n                "
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Name",
+                        "text": ".github/KnowledgeBase/Learning.md"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ": 跨项目的通用经验。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Name",
+                        "text": ".github/Learning/Learning_Coding.md"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ": 本仓库的源码经验。"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Name",
+                        "text": ".github/Learning/Learning_Testing.md"
+                      },
+                      {
+                        "kind": "Text",
+                        "text": ": 本仓库的测试代码与验证经验。"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                refine 任务刻意只处理文档。\n                它不应修改源代码。\n                当更正、评审讨论或调试结果需要影响后续代理行为时，它很有用。\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "其他关键字",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                复制的上下文中还包含仅用于分析问题的 "
+              },
+              {
+                "kind": "Name",
+                "text": "ask"
+              },
+              {
+                "kind": "Text",
+                "text": "，以及用于起草或更新知识库文档的 "
+              },
+              {
+                "kind": "Name",
+                "text": "kb"
+              },
+              {
+                "kind": "Text",
+                "text": "。\n                如果用户请求不是以已知关键字开头，根说明会将普通编码工作归类为 "
+              },
+              {
+                "kind": "Name",
+                "text": "investigate repro"
+              },
+              {
+                "kind": "Text",
+                "text": " 风格的任务。\n            "
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

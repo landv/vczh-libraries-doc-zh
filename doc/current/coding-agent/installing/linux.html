@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Linux -- GPU 加速的 C++ 用户界面 (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "coding-agent",
+    "installing",
+    "linux"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "使用 Coding Agent",
+      "selected": false,
+      "path": [
+        "coding-agent",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": " ",
+          "name": "安装所需工具",
+          "selected": false,
+          "subNodes": [
+            {
+              "icon": " ",
+              "name": "Windows",
+              "selected": false,
+              "path": [
+                "coding-agent",
+                "installing",
+                "windows"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "Linux",
+              "selected": true,
+              "path": [
+                "coding-agent",
+                "installing",
+                "linux"
+              ]
+            },
+            {
+              "icon": " ",
+              "name": "macOS",
+              "selected": false,
+              "path": [
+                "coding-agent",
+                "installing",
+                "macos"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": true,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "在 Linux 上安装所需工具",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            Linux 代理的工作流程由 "
+          },
+          {
+            "kind": "Name",
+            "text": ".github/Ubuntu/build.sh"
+          },
+          {
+            "kind": "Text",
+            "text": " 驱动。\n            它会将 "
+          },
+          {
+            "kind": "Name",
+            "text": ".github/Ubuntu/vl/cmd"
+          },
+          {
+            "kind": "Text",
+            "text": " 添加到 "
+          },
+          {
+            "kind": "Name",
+            "text": "PATH"
+          },
+          {
+            "kind": "Text",
+            "text": "，运行 "
+          },
+          {
+            "kind": "Name",
+            "text": "vmake --make"
+          },
+          {
+            "kind": "Text",
+            "text": "，然后使用 "
+          },
+          {
+            "kind": "Name",
+            "text": "vbuild"
+          },
+          {
+            "kind": "Text",
+            "text": " 构建。\n            代理说明特意让构建经由该脚本完成，而不是直接调用 "
+          },
+          {
+            "kind": "Name",
+            "text": "cmake"
+          },
+          {
+            "kind": "Text",
+            "text": "、"
+          },
+          {
+            "kind": "Name",
+            "text": "make"
+          },
+          {
+            "kind": "Text",
+            "text": "、"
+          },
+          {
+            "kind": "Name",
+            "text": "clang++"
+          },
+          {
+            "kind": "Text",
+            "text": "、"
+          },
+          {
+            "kind": "Name",
+            "text": "g++"
+          },
+          {
+            "kind": "Text",
+            "text": " 或 "
+          },
+          {
+            "kind": "Name",
+            "text": "gdb"
+          },
+          {
+            "kind": "Text",
+            "text": " 等命令。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            请准备一个带 C++ 编译器工具链、Bash 与 LLDB 的 Linux 环境。\n            复制 Release 的 "
+          },
+          {
+            "kind": "Name",
+            "text": ".github"
+          },
+          {
+            "kind": "Text",
+            "text": " 文件夹后，如果检出（checkout）会阻塞执行位，请将复制的脚本设为可执行：\n            "
+          },
+          {
+            "kind": "Program",
+            "code": "chmod +x .github/Ubuntu/build.sh\nchmod +x .github/Ubuntu/vl/cmd/*",
+            "language": "bash"
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            请从包含目标 "
+          },
+          {
+            "kind": "Name",
+            "text": "vmake"
+          },
+          {
+            "kind": "Text",
+            "text": " 文件的文件夹进行构建：\n            "
+          },
+          {
+            "kind": "List",
+            "ordered": false,
+            "items": [
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "对于只有一个 Linux 项目的仓库，请使用 "
+                  },
+                  {
+                    "kind": "Name",
+                    "text": "REPO-ROOT/Test/Linux"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "。"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "对于有多个 Linux 项目的仓库，请使用 "
+                  },
+                  {
+                    "kind": "Name",
+                    "text": "REPO-ROOT/Test/Linux/PROJECT-NAME"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": "。"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "运行 "
+                  },
+                  {
+                    "kind": "Name",
+                    "text": "REPO-ROOT/.github/Ubuntu/build.sh"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 以进行增量构建。"
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "运行 "
+                  },
+                  {
+                    "kind": "Name",
+                    "text": "REPO-ROOT/.github/Ubuntu/build.sh -f"
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 以进行完整重建。"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            Linux 调试工作应使用 "
+          },
+          {
+            "kind": "Name",
+            "text": "lldb"
+          },
+          {
+            "kind": "Text",
+            "text": " 进行交互式终端会话。\n            复制的指南期望代理从包含 "
+          },
+          {
+            "kind": "Name",
+            "text": "vmake"
+          },
+          {
+            "kind": "Text",
+            "text": " 文件的同一文件夹启动 LLDB，以确保二进制与源文件的相对路径保持正确。\n        "
+          }
+        ]
+      },
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            如果应用使用 Release 工具，请在 Release 仓库中运行 "
+          },
+          {
+            "kind": "Name",
+            "text": "Release/Tools/BuildExecutables.sh"
+          },
+          {
+            "kind": "Text",
+            "text": "。\n            它将生成 "
+          },
+          {
+            "kind": "Name",
+            "text": "CodePack"
+          },
+          {
+            "kind": "Text",
+            "text": "、"
+          },
+          {
+            "kind": "Name",
+            "text": "CppMerge"
+          },
+          {
+            "kind": "Text",
+            "text": "、"
+          },
+          {
+            "kind": "Name",
+            "text": "GacGen"
+          },
+          {
+            "kind": "Text",
+            "text": " 与 "
+          },
+          {
+            "kind": "Name",
+            "text": "GlrParserGen"
+          },
+          {
+            "kind": "Text",
+            "text": "，并输出到 "
+          },
+          {
+            "kind": "Name",
+            "text": "Release/Tools"
+          },
+          {
+            "kind": "Text",
+            "text": ".\n        "
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>

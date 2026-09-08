@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Handling Unexpected Inputs -- GPU Accelerated C++ User Interface (vczh)</title>
+<link rel="shortcut icon" href="/doc/current/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="/doc/current/global.css" />
+<link rel="stylesheet" type="text/css" href="/doc/current/article.css" />
+<script src="/doc/current/scripts/rootView.js"></script>
+<script src="/doc/current/scripts/directoryView.js"></script>
+<script src="/doc/current/scripts/articleView.js"></script>
+
+</head>
+<body>
+<div id="MVC-ViewContainer"></div>
+<script lang="javascript">
+{
+  const mvcModel = {
+  "path": [
+    "workflow",
+    "lang",
+    "state_switch"
+  ]
+};
+  const mvcViews = [
+  {
+    "targetObject": "MVC-ViewContainer",
+    "viewName": "Gaclib-RootView"
+  },
+  {
+    "targetObject": "rootViewContainer",
+    "viewName": "Gaclib-DirectoryView"
+  },
+  {
+    "targetObject": "directoryViewContainer",
+    "viewName": "Gaclib-ArticleView"
+  }
+];
+  const hrefPrefix = "/doc/current";
+  const directoryInfo = {
+  "subNodes": [
+    {
+      "icon": "-",
+      "name": "Workflow 脚本",
+      "selected": false,
+      "path": [
+        "workflow",
+        "home"
+      ],
+      "subNodes": [
+        {
+          "icon": "-",
+          "name": "语法",
+          "selected": false,
+          "path": [
+            "workflow",
+            "lang"
+          ],
+          "subNodes": [
+            {
+              "icon": "-",
+              "name": "状态机",
+              "selected": false,
+              "path": [
+                "workflow",
+                "lang",
+                "state"
+              ],
+              "subNodes": [
+                {
+                  "icon": " ",
+                  "name": "使用输入法",
+                  "selected": false,
+                  "path": [
+                    "workflow",
+                    "lang",
+                    "state_input"
+                  ]
+                },
+                {
+                  "icon": " ",
+                  "name": "处理意外输入",
+                  "selected": true,
+                  "path": [
+                    "workflow",
+                    "lang",
+                    "state_switch"
+                  ]
+                },
+                {
+                  "icon": " ",
+                  "name": "状态之间跳转",
+                  "selected": false,
+                  "path": [
+                    "workflow",
+                    "lang",
+                    "state_jump"
+                  ]
+                },
+                {
+                  "icon": " ",
+                  "name": "示例：计算器",
+                  "selected": false,
+                  "path": [
+                    "workflow",
+                    "lang",
+                    "state_calculator"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+  const article = {
+  "index": true,
+  "numberBeforeTitle": false,
+  "topic": {
+    "kind": "Topic",
+    "title": "处理意外输入",
+    "content": [
+      {
+        "kind": "Paragraph",
+        "content": [
+          {
+            "kind": "Text",
+            "text": "\n            Workflow offers built-in strategy for handling unexpected inputs.\n            "
+          },
+          {
+            "kind": "List",
+            "ordered": false,
+            "items": [
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "$switch(raise)"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " raises an exception on unexpected input and stops the state machine."
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "$switch()"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 以及 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "$switch(return)"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " consume the unexpected input."
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "$switch(continue)"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 以及 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "$switch(continue, return)"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " do not consume the unexpected input."
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "$switch()"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 以及 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "$switch(continue)"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " stop the current "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "$switch"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " and continue."
+                  }
+                ]
+              },
+              {
+                "kind": "ContentListItem",
+                "content": [
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "$switch(return)"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " 以及 "
+                  },
+                  {
+                    "kind": "Strong",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "$switch(continue, return)"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "Text",
+                    "text": " stop the current state and continue."
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "$switch()",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "$switch()"
+                  }
+                ]
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "ignores and consumes an unpected input"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "继续执行……之后的代码 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "$switch"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "Program",
+                "code": "module sampleModule;\n\nusing system::*;\n\nclass MySM : StateMachine\n{\n    prop Output: string = \"\" {not observe}\n\n    func Append(text: string): void\n    {\n        Output = $\"$(Output)$(text); \";\n    }\n\n    $state_machine\n    {\n        $state_input A(name: string);\n        $state_input B(name: string);\n        $state_input C(name: string);\n\n        $state WaitForName()\n        {\n            $switch ()\n            {\n            case A(name):\n                {\n                    Append($\"A($(name))\");\n                }\n            case B(name):\n                {\n                    Append($\"B($(name))\");\n                }\n            }\n            Append(\"Finishes WaitForName()\");\n        }\n\n        $state default()\n        {\n            $push_state WaitForName();\n            Append(\"Finishes default()\");\n        }\n    }\n}\n\nfunc main(): string\n{\n    var sm = new MySM^();\n    try\n    {\n        sm.C(\"John\");\n    }\n    catch (ex)\n    {\n        sm.Append(ex.Message);\n    }\n    return sm.Output;\n}"
+              },
+              {
+                "kind": "Text",
+                "text": "\n                该 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "main"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 函数返回 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\"Finishes WaitForName(); Finishes default(); \""
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                When "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "C(\"John\")"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 被调用时，\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "$switch"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 发现这是一个意外的输入，\n                它会继续运行……之后的代码 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "$switch"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "$switch(raise)",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "$switch()"
+                  }
+                ]
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "throws an exception when an unpected input happens"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "stops the state machine"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "Program",
+                "code": "module sampleModule;\n\nusing system::*;\n\nclass MySM : StateMachine\n{\n    prop Output: string = \"\" {not observe}\n\n    func Append(text: string): void\n    {\n        Output = $\"$(Output)$(text); \";\n    }\n\n    $state_machine\n    {\n        $state_input A(name: string);\n        $state_input B(name: string);\n        $state_input C(name: string);\n\n        $state WaitForName()\n        {\n            $switch (raise)\n            {\n            case A(name):\n                {\n                    Append($\"A($(name))\");\n                }\n            case B(name):\n                {\n                    Append($\"B($(name))\");\n                }\n            }\n            Append(\"Finishes WaitForName()\");\n        }\n\n        $state default()\n        {\n            $push_state WaitForName();\n            Append(\"Finishes default()\");\n        }\n    }\n}\n\nfunc main(): string\n{\n    var sm = new MySM^();\n    try\n    {\n        sm.C(\"John\");\n    }\n    catch (ex)\n    {\n        sm.Append(ex.Message);\n    }\n    try\n    {\n        sm.A(\"John\");\n    }\n    catch (ex)\n    {\n        sm.Append(ex.Message);\n    }\n    return sm.Output;\n}"
+              },
+              {
+                "kind": "Text",
+                "text": "\n                该 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "main"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 函数返回 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\"Method \"C\" of class \"MySM\" cannot be called at this moment.; The state machine has been stopped.; \""
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                When "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "C(\"John\")"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 被调用时，\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "$switch"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " found that this is an unexpected input,\n                it throws an exception,\n                and the state machine is stopped.\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "$switch(return)",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "$switch()"
+                  }
+                ]
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "遇到了意外的输入"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "停止当前状态"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "继续执行该状态之后的代码"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "Program",
+                "code": "module sampleModule;\n\nusing system::*;\n\nclass MySM : StateMachine\n{\n    prop Output: string = \"\" {not observe}\n\n    func Append(text: string): void\n    {\n        Output = $\"$(Output)$(text); \";\n    }\n\n    $state_machine\n    {\n        $state_input A(name: string);\n        $state_input B(name: string);\n        $state_input C(name: string);\n\n        $state WaitForName()\n        {\n            $switch (return)\n            {\n            case A(name):\n                {\n                    Append($\"A($(name))\");\n                }\n            case B(name):\n                {\n                    Append($\"B($(name))\");\n                }\n            }\n            Append(\"Finishes WaitForName()\");\n        }\n\n        $state default()\n        {\n            $push_state WaitForName();\n            Append(\"Finishes default()\");\n        }\n    }\n}\n\nfunc main(): string\n{\n    var sm = new MySM^();\n    try\n    {\n        sm.C(\"John\");\n    }\n    catch (ex)\n    {\n        sm.Append(ex.Message);\n    }\n    return sm.Output;\n}"
+              },
+              {
+                "kind": "Text",
+                "text": "\n                该 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "main"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 函数返回 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\"Finishes default(); \""
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                When "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "C(\"John\")"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 被调用时，\n                "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "$switch"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 发现这是一个意外的输入，\n                它就会停止 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "$state WaitForName()"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 并在……中继续 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "$state default()"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "$switch(continue)",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "$switch(continue)"
+                  }
+                ]
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "遇到了意外的输入"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "继续执行……之后的代码 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "$switch"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "该意外的输入不会被消费，它会留给下一个 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "$switch"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "Program",
+                "code": "module sampleModule;\n\nusing system::*;\n\nclass MySM : StateMachine\n{\n    prop Output: string = \"\" {not observe}\n\n    func Append(text: string): void\n    {\n        Output = $\"$(Output)$(text); \";\n    }\n\n    $state_machine\n    {\n        $state_input A(name: string);\n        $state_input B(name: string);\n        $state_input C(name: string);\n\n        $state WaitForName()\n        {\n            $switch (continue)\n            {\n            case A(name):\n                {\n                    Append($\"1st A($(name))\");\n                }\n            case B(name):\n                {\n                    Append($\"1st($(name))\");\n                }\n            }\n            $switch (raise)\n            {\n            case A(name):\n                {\n                    Append($\"2nd A($(name))\");\n                }\n            case B(name):\n                {\n                    Append($\"2nd B($(name))\");\n                }\n            case C(name):\n                {\n                    Append($\"2nd C($(name))\");\n                }\n            }\n            Append(\"Finishes WaitForName()\");\n        }\n\n        $state default()\n        {\n            $push_state WaitForName();\n            $switch (raise)\n            {\n            case A(name):\n                {\n                    Append($\"3rd A($(name))\");\n                }\n            case B(name):\n                {\n                    Append($\"3rd B($(name))\");\n                }\n            case C(name):\n                {\n                    Append($\"3rd C($(name))\");\n                }\n            }\n            Append(\"Finishes default()\");\n        }\n    }\n}\n\nfunc main(): string\n{\n    var sm = new MySM^();\n    try\n    {\n        sm.C(\"John\");\n        sm.C(\"John\");\n    }\n    catch (ex)\n    {\n        sm.Append(ex.Message);\n    }\n    return sm.Output;\n}"
+              },
+              {
+                "kind": "Text",
+                "text": "\n                该 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "main"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 函数返回 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\"2nd C(John); Finishes WaitForName(); 3rd C(John); Finishes default(); \""
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                When "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "C(\"John\")"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 被调用时，\n                第一个 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "$switch"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 发现这是一个意外的输入，\n                它会继续运行……之后的代码 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "$switch"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                And then the second "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "$switch"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 被执行，\n                它发现 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "C(\"John\")"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 此刻是预期的输入，\n                并消费它。\n            "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "Topic",
+        "title": "$switch(continue, return)",
+        "content": [
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "$switch(continue)"
+                  }
+                ]
+              },
+              {
+                "kind": "List",
+                "ordered": false,
+                "items": [
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "遇到了意外的输入"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "停止当前状态"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "继续执行该状态之后的代码"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "ContentListItem",
+                    "content": [
+                      {
+                        "kind": "Text",
+                        "text": "该意外的输入不会被消费，它会留给下一个 "
+                      },
+                      {
+                        "kind": "Strong",
+                        "content": [
+                          {
+                            "kind": "Text",
+                            "text": "$switch"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "Program",
+                "code": "module sampleModule;\n\nusing system::*;\n\nclass MySM : StateMachine\n{\n    prop Output: string = \"\" {not observe}\n\n    func Append(text: string): void\n    {\n        Output = $\"$(Output)$(text); \";\n    }\n\n    $state_machine\n    {\n        $state_input A(name: string);\n        $state_input B(name: string);\n        $state_input C(name: string);\n\n        $state WaitForName()\n        {\n            $switch (continue, return)\n            {\n            case A(name):\n                {\n                    Append($\"1st A($(name))\");\n                }\n            case B(name):\n                {\n                    Append($\"1st($(name))\");\n                }\n            }\n            $switch (raise)\n            {\n            case A(name):\n                {\n                    Append($\"2nd A($(name))\");\n                }\n            case B(name):\n                {\n                    Append($\"2nd B($(name))\");\n                }\n            case C(name):\n                {\n                    Append($\"2nd C($(name))\");\n                }\n            }\n            Append(\"Finishes WaitForName()\");\n        }\n\n        $state default()\n        {\n            $push_state WaitForName();\n            $switch (raise)\n            {\n            case A(name):\n                {\n                    Append($\"3rd A($(name))\");\n                }\n            case B(name):\n                {\n                    Append($\"3rd B($(name))\");\n                }\n            case C(name):\n                {\n                    Append($\"3rd C($(name))\");\n                }\n            }\n            Append(\"Finishes default()\");\n        }\n    }\n}\n\nfunc main(): string\n{\n    var sm = new MySM^();\n    try\n    {\n        sm.C(\"John\");\n        sm.C(\"John\");\n    }\n    catch (ex)\n    {\n        sm.Append(ex.Message);\n    }\n    return sm.Output;\n}"
+              },
+              {
+                "kind": "Text",
+                "text": "\n                该 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "main"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 函数返回 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "\"3rd C(John); Finishes default(); The state machine has been stopped.; \""
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                When "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "C(\"John\")"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 被调用时，\n                第一个 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "$switch"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 发现这是一个意外的输入，\n                它就会停止 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "$state WaitForName()"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 并在……中继续 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "$state default()"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": ".\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                The second "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "$switch"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " is skipped.\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                And then the third "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "$switch"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 被执行，\n                它发现 "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "C(\"John\")"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " 此刻是预期的输入，\n                并消费它。\n            "
+              }
+            ]
+          },
+          {
+            "kind": "Paragraph",
+            "content": [
+              {
+                "kind": "Text",
+                "text": "\n                When "
+              },
+              {
+                "kind": "Strong",
+                "content": [
+                  {
+                    "kind": "Text",
+                    "text": "C(\"John\")"
+                  }
+                ]
+              },
+              {
+                "kind": "Text",
+                "text": " is called for the second time,\n                the state machine has stopped,\n                it throws an exception.\n            "
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+};
+  window["MVC-Resources.mvcModel"] = mvcModel;
+  window["MVC-Resources.mvcViews"] = mvcViews;
+  window["MVC-Resources.hrefPrefix"] = hrefPrefix;
+  window["MVC-Resources.directoryInfo"] = directoryInfo;
+  window["MVC-Resources.article"] = article;
+  for (const view of mvcViews) {
+    window[view.viewName].renderView(mvcModel, document.getElementById(view.targetObject));
+  }
+  const renderedScriptTags = document.getElementById("MVC-ViewContainer").getElementsByTagName("script");
+  for (const scriptTag of renderedScriptTags) {
+    eval(
+      "(function(){" + scriptTag.innerHTML + "})()"
+    );
+  }
+}
+</script>
+</body>
+</html>
