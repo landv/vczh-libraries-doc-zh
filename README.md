@@ -1,7 +1,7 @@
 # vczh-libraries 文档站点
 
 ## 项目简介
-本项目是 **vczh-libraries** 官方文档站点，提供了所有组件、工具库、接口和示例的中文文档。站点使用 GitHub Pages 自动部署，访问地址为：
+本项目是 **vczh-libraries** 非官方文档站点，提供了所有组件、工具库、接口和示例的中文文档。站点使用 GitHub Pages 自动部署，访问地址为：
 ```
 https://landv.github.io/vczh-libraries-doc-zh/
 ```
