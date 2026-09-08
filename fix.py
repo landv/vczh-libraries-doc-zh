@@ -18,10 +18,13 @@ ATTR_IN = re.compile(r'(\b[\w-]+=)(["\'])/(?!/)')
 CONST_RE = re.compile(r'(hrefPrefix\s*=\s*)(["\'])/(?!/)')
 
 def fix_html(text):
-    # 1) 仅处理 <tag ...> 内部静态属性
-    def tagfix(tm):
-        return ATTR_IN.sub(lambda m: m.group(1) + m.group(2) + PREFIX, tm.group(0))
-    text = TAG_RE.sub(tagfix, text)
+    # 1) 只处理 <head> 内静态资源属性（避免误改正文代码样例）
+    def tagfix(seg):
+        return ATTR_IN.sub(lambda m: m.group(1) + m.group(2) + PREFIX, seg)
+    headm = re.search(r'(<head[^>]*>)(.*?)(</head>)', text, re.S | re.I)
+    if headm:
+        head_in = tagfix(headm.group(2))
+        text = text[:headm.start(2)] + head_in + text[headm.end(2):]
     # 2) hrefPrefix 常量值烘焙 SITE_BASE（其值本身是版本根，如 /doc/current）
     text = CONST_RE.sub(lambda m: m.group(1) + m.group(2) + PREFIX, text)
     return text
@@ -89,7 +92,7 @@ def run_html():
             if new != txt:
                 n += 1
                 if WRITE:
-                    open(p, "w", encoding="utf-8", newline="").write(new)
+                    open(p, "w", encoding="utf-8", newline="\r\n").write(new)
     print("HTML changed:", n)
 
 def run_js():
@@ -98,18 +101,16 @@ def run_js():
         txt = open(p, encoding="utf-8").read()
         new = js_attr(txt)
         new = js_body(new)
-        if new != txt:
-            print("JS attr/body changed:", rel)
-            if WRITE:
-                open(p, "w", encoding="utf-8", newline="").write(new)
+        if WRITE:
+            open(p, "w", encoding="utf-8", newline="\r\n").write(new)
+            print("JS written:", rel)
     for rel in JS_BODY:
         p = os.path.join(ROOT, rel)
         txt = open(p, encoding="utf-8").read()
         new = js_body(txt)
-        if new != txt:
-            print("JS body changed:", rel)
-            if WRITE:
-                open(p, "w", encoding="utf-8", newline="").write(new)
+        if WRITE:
+            open(p, "w", encoding="utf-8", newline="\r\n").write(new)
+            print("JS written:", rel)
 
 if __name__ == "__main__":
     if "--html" in sys.argv:
