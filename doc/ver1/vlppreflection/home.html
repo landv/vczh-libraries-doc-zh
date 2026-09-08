@@ -127,14 +127,14 @@
   "numberBeforeTitle": false,
   "topic": {
     "kind": "Topic",
-    "title": "Introduction to VlppReflection",
+    "title": "VlppReflection 简介",
     "content": [
       {
         "kind": "Paragraph",
         "content": [
           {
             "kind": "Text",
-            "text": "\n            VlppReflection provides runtime reflection for C++ types.\n        "
+            "text": "\n            VlppReflection 为 C++ 类型提供运行时反射。\n        "
           }
         ]
       },
@@ -143,7 +143,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            If a project includes VlppReflection source code,\n            it doesn't necessarily mean that the project uses reflection at runtime,\n            because reflectable class must inherits from "
+            "text": "\n            如果一个项目包含 VlppReflection 源代码，\n            这并不一定意味着项目在运行时使用了反射。\n            因为可反射类必须继承自 "
           },
           {
             "kind": "Strong",
@@ -169,7 +169,7 @@
           },
           {
             "kind": "Text",
-            "text": ",\n            which are defined in VlppReflection.\n        "
+            "text": "，\n            在 VlppReflection 中定义的。\n        "
           }
         ]
       },
@@ -178,7 +178,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            The same source code could be used in compilers or code generators,\n            typically these kind of tools uses reflection at runtime,\n            so source code that defines reflectable C++ types are required to compile\n            regardless weather "
+            "text": "\n            相同的源代码可用于编译器或代码生成器中，\n            通常这类工具会使用运行时反射。\n            因此，定义可反射 C++ 类型的源代码必须编译\n            无论天气 "
           },
           {
             "kind": "Strong",
@@ -191,13 +191,13 @@
           },
           {
             "kind": "Text",
-            "text": " is on or off,\n            so that to share the same code to consumers which don't need runtime reflection.\n        "
+            "text": " 可开启或关闭，\n            以便让不需要运行时反射的消费者共享相同的代码。\n        "
           }
         ]
       },
       {
         "kind": "Topic",
-        "title": "Projects in Gaclib that use reflection",
+        "title": "使用反射的 Gaclib 项目",
         "content": [
           {
             "kind": "Paragraph",
@@ -217,7 +217,7 @@
               },
               {
                 "kind": "Text",
-                "text": " project, generated C++ code from "
+                "text": " 项目，从生成的 C++ 代码 "
               },
               {
                 "kind": "Strong",
@@ -230,7 +230,7 @@
               },
               {
                 "kind": "Text",
-                "text": " will remove type registration code\n                when "
+                "text": " 将移除类型注册代码\n                当 "
               },
               {
                 "kind": "Strong",
@@ -243,7 +243,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is on.\n                All generated AST classes from the grammar is reflectable.\n            "
+                "text": " 为开启状态。\n                从语法生成的所有 AST 类都是可反射的。\n            "
               }
             ]
           },
@@ -265,7 +265,7 @@
               },
               {
                 "kind": "Text",
-                "text": " project, compiling and running Workflow script relies on reflection,\n                so they are moved to separated files.\n                When you only uses generated C++ code from Workflow script,\n                only include part of the file and set "
+                "text": " 项目、编译和运行工作流脚本依赖于反射。\n                因此它们被移动到了独立的文件中。\n                当你只使用工作流脚本生成的 C++ 代码时，\n                仅包含文件的一部分并设置 "
               },
               {
                 "kind": "Strong",
@@ -300,7 +300,7 @@
               },
               {
                 "kind": "Text",
-                "text": " project, type registration and GacUI XML resource compiler uses reflection,\n                so they are moved to separated files.\n                When you don't need dynamic resource loading for controls,\n                only include part of the file and set "
+                "text": " 项目、类型注册和 GacUI XML 资源编译器使用反射，\n                因此它们被移动到了独立的文件中。\n                当你不需要为控件动态加载资源时，\n                仅包含文件的一部分并设置 "
               },
               {
                 "kind": "Strong",
@@ -322,7 +322,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Setting "
+                "text": "\n                设置 "
               },
               {
                 "kind": "Strong",
@@ -335,7 +335,7 @@
               },
               {
                 "kind": "Text",
-                "text": " on reduces size of reflectable C++ types,\n                and significantly reduces 90% of the executable size for GacUI applications.\n                This improves performance a lot.\n            "
+                "text": " on 减少了可反射的 C++ 类型的大小\n                和显著减少了90%的GacUI应用程序可执行文件大小。\n                这大大提升了性能。\n            "
               }
             ]
           }
@@ -343,14 +343,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Authoring reflectable C++ types",
+        "title": "编写可反射的 C++ 类型",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "In namespace "
+                "text": "在命名空间 "
               },
               {
                 "kind": "Strong",
@@ -372,7 +372,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                In API naming convention, "
+                "text": "\n                在 API 命名约定中， "
               },
               {
                 "kind": "Strong",
@@ -385,7 +385,7 @@
               },
               {
                 "kind": "Text",
-                "text": " uses "
+                "text": " 使用 "
               },
               {
                 "kind": "Strong",
@@ -398,7 +398,7 @@
               },
               {
                 "kind": "Text",
-                "text": " for reference types, and "
+                "text": " 用于引用类型，以及 "
               },
               {
                 "kind": "Strong",
@@ -411,7 +411,7 @@
               },
               {
                 "kind": "Text",
-                "text": " for data type.\n                A reference type can only be created and stored in a pointer, it contains fields, methods, properties, events, it also allow inheritance.\n                A data type contains only data, there is no methods and events, and inheritance is not allowed.\n            "
+                "text": " 用于数据类型。\n                引用类型只能创建并存储在指针中，它包含字段、方法、属性、事件，还允许继承。\n                数据类型只包含数据，没有方法和事件，也不允许继承。\n            "
               }
             ]
           },
@@ -420,7 +420,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                C++ primitive types, important types and containers from "
+                "text": "\n                C++ 基本类型、重要类型和容器来自 "
               },
               {
                 "kind": "Strong",
@@ -433,7 +433,7 @@
               },
               {
                 "kind": "Text",
-                "text": " are all reflectable.\n            "
+                "text": " 都是可反射的。\n            "
               }
             ]
           },
@@ -442,7 +442,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                A reflectable C++ class must inherit from "
+                "text": "\n                可反射的C++类必须继承自 "
               },
               {
                 "kind": "Strong",
@@ -468,7 +468,7 @@
               },
               {
                 "kind": "Text",
-                "text": ".\n                To make a class member reflectable, types that are used in that member should also be reflectable.\n            "
+                "text": ".\n                要使类成员可反射，该成员中使用的类型也应是可反射的。\n            "
               }
             ]
           }
@@ -476,14 +476,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Functors and containers",
+        "title": "函数对象和容器",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "In namespace "
+                "text": "在命名空间 "
               },
               {
                 "kind": "Strong",
@@ -505,7 +505,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                For functors, only "
+                "text": "\n                对于函数对象，仅 "
               },
               {
                 "kind": "Strong",
@@ -518,7 +518,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is reflectable. Most containers are reflectable.\n            "
+                "text": " 支持反射。大多数容器都支持反射\n            "
               }
             ]
           },
@@ -527,7 +527,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                When a functor is boxed, an instance of "
+                "text": "\n                当一个函数对象被包装时，一个实例 "
               },
               {
                 "kind": "Strong",
@@ -540,7 +540,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is created.\n                When a boxed functor is unboxed,\n                you don't get the "
+                "text": " 已创建。\n                当一个打包函数对象被解包时，\n                你没有得到 "
               },
               {
                 "kind": "Strong",
@@ -553,7 +553,7 @@
               },
               {
                 "kind": "Text",
-                "text": " object before boxing,\n                instead you get a new "
+                "text": " 对象在装箱之前，\n                而是您会得到一个新的 "
               },
               {
                 "kind": "Strong",
@@ -566,7 +566,7 @@
               },
               {
                 "kind": "Text",
-                "text": " object that calls this "
+                "text": " 调用此对象的实体 "
               },
               {
                 "kind": "Strong",
@@ -579,7 +579,7 @@
               },
               {
                 "kind": "Text",
-                "text": " instance.\n            "
+                "text": " 实例。\n            "
               }
             ]
           },
@@ -588,7 +588,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                When a container is boxed, an instance of "
+                "text": "\n                当一个容器被框选时，一个实例的 "
               },
               {
                 "kind": "Strong",
@@ -627,7 +627,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is created.\n                It depends on the type of the container.\n                This instance references the container before boxing,\n                it can update the container,\n                so when the container is deleted, calling this instance will crash.\n                When a boxed container is unboxed,\n                you get a copy of the container.\n            "
+                "text": " 已创建。\n                它取决于容器的类型。\n                此实例在装箱之前引用了容器。\n                它可以更新容器，\n                因此，当容器被删除时，调用此实例会导致崩溃。\n                当一个打包容器被解包时，\n                您会得到容器的一个副本。\n            "
               }
             ]
           }
@@ -635,14 +635,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Boxing and unboxing",
+        "title": "装箱和拆箱",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "In namespace "
+                "text": "在命名空间 "
               },
               {
                 "kind": "Strong",
@@ -664,7 +664,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                For non-generic types and "
+                "text": "\n                对于非泛型类型和 "
               },
               {
                 "kind": "Strong",
@@ -690,7 +690,7 @@
               },
               {
                 "kind": "Text",
-                "text": " and "
+                "text": " 和 "
               },
               {
                 "kind": "Strong",
@@ -703,7 +703,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is recommended.\n            "
+                "text": " 建议使用\n            "
               }
             ]
           },
@@ -712,7 +712,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                For functors and containers,\n                "
+                "text": "\n                对于函数对象和容器，\n                "
               },
               {
                 "kind": "Strong",
@@ -725,7 +725,7 @@
               },
               {
                 "kind": "Text",
-                "text": " and "
+                "text": " 和 "
               },
               {
                 "kind": "Strong",
@@ -738,7 +738,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is required.\n                These two function can also box and unbox non-generic types and "
+                "text": " 是必需的。\n                这两个函数也可以对非泛型类型进行装箱和拆箱，并且 "
               },
               {
                 "kind": "Strong",
@@ -751,7 +751,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                but it is not as convenient as "
+                "text": "，\n                但它不如 "
               },
               {
                 "kind": "Strong",
@@ -764,7 +764,7 @@
               },
               {
                 "kind": "Text",
-                "text": " and "
+                "text": " 和 "
               },
               {
                 "kind": "Strong",
@@ -785,14 +785,14 @@
       },
       {
         "kind": "Topic",
-        "title": "When to use reflection",
+        "title": "何时使用反射",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                You are recommended not to use reflection at runtime if you can.\n            "
+                "text": "\n                如果可以，不建议您在运行时使用反射。\n            "
               }
             ]
           },
@@ -801,7 +801,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Reflection are mostly built for compiling and running Workflow script.\n                A Workflow script class can even inherit from multiple reflectable C++ classes (must inherit from "
+                "text": "\n                反射主要用于编译和运行工作流脚本。\n                A工作流脚本类甚至可以从多个可反射的C++类继承（必须从 "
               },
               {
                 "kind": "Strong",
@@ -814,7 +814,7 @@
               },
               {
                 "kind": "Text",
-                "text": ").\n                In order to do "
+                "text": ").\n                为了执行 "
               },
               {
                 "kind": "Strong",
@@ -827,7 +827,7 @@
               },
               {
                 "kind": "Text",
-                "text": " correctly,\n                you are recommended to use the "
+                "text": " 正确地，\n                建议您使用 "
               },
               {
                 "kind": "Strong",
@@ -840,7 +840,7 @@
               },
               {
                 "kind": "Text",
-                "text": " function, which exist in all reflectable C++ classes.\n            "
+                "text": " 函数，存在于所有可反射的 C++ 类中。\n            "
               }
             ]
           },
@@ -849,7 +849,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Running Workflow script requires reflection to be available,\n                while running the generated C++ code from Workflow script does not.\n            "
+                "text": "\n                运行工作流脚本需要反射功能可用，\n                但运行从工作流脚本生成的 C++ 代码时则不会。\n            "
               }
             ]
           },
@@ -871,7 +871,7 @@
               },
               {
                 "kind": "Text",
-                "text": ", all controls in GacUI XML resource files are converted to workflow script files during compiling.\n                In order to create these controls,\n                you are recommended to use generated C++ code from them directly.\n                These are all done by "
+                "text": "，所有 GacUI XML 资源文件中的控件在编译时都会转换为工作流脚本文件。\n                为了创建这些控件，\n                建议直接使用由它们生成的 C++ 代码。\n                这些都是由 "
               },
               {
                 "kind": "Strong",
@@ -889,7 +889,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                You can load compiled resource files and script files at runtime to create controls,\n                but this is not recommended.\n            "
+                "text": "\n                您可以在运行时加载编译后的资源文件和脚本文件以创建控件，\n                但不建议这样做。\n            "
               }
             ]
           },
@@ -898,7 +898,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                When runtime reflection is not needed, you must set "
+                "text": "\n                当不需要运行时反射时，您必须设置 "
               },
               {
                 "kind": "Strong",
@@ -911,7 +911,7 @@
               },
               {
                 "kind": "Text",
-                "text": " on.\n                This is a preprocessor definition for C++ compiler.\n                You can also detect this option using "
+                "text": " on.\n                这是 C++ 编译器的预处理器定义。\n                您还可以使用检测此选项 "
               },
               {
                 "kind": "Strong",

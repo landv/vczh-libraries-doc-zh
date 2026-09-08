@@ -138,14 +138,14 @@
   "numberBeforeTitle": false,
   "topic": {
     "kind": "Topic",
-    "title": "Inheriting C++ Interfaces",
+    "title": "继承 C++ 接口",
     "content": [
       {
         "kind": "Paragraph",
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Involved files:\n            "
+            "text": "\n            涉及的文件：\n            "
           },
           {
             "kind": "List",
@@ -175,7 +175,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            You are able to implement a reflectable C++ interface in Workflow using anonymous interface expression.\n            You are able to write classes in Workflow script, but classes are not allowed to implement interfaces.\n        "
+            "text": "\n            您能够在 Workflow 中使用匿名接口表达式实现可反射的 C++ 接口。\n            您能够在 Workflow 脚本中编写类，但类不允许实现接口。\n        "
           }
         ]
       },
@@ -184,7 +184,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            For example, we can define this C++ interface, and make it reflectable:\n            "
+            "text": "\n            例如，我们可以定义这个 C++ 接口，并使其可反射：\n            "
           },
           {
             "kind": "Program",
@@ -197,7 +197,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            By inheriting from "
+            "text": "\n            通过从...继承 "
           },
           {
             "kind": "Strong",
@@ -210,7 +210,7 @@
           },
           {
             "kind": "Text",
-            "text": " and "
+            "text": " 和 "
           },
           {
             "kind": "Strong",
@@ -223,7 +223,7 @@
           },
           {
             "kind": "Text",
-            "text": ",\n            instances of this interface are accessible in Workflow scripts.\n            But in order to make Workflow scripts being able to implement this interface,\n            more things need to be done:\n            "
+            "text": "，\n            此接口的实例可在工作流脚本中访问。\n            但是为了使工作流脚本能够实现此接口，\n            需要完成更多事情：\n            "
           },
           {
             "kind": "Program",
@@ -231,7 +231,7 @@
           },
           {
             "kind": "Text",
-            "text": "\n            Unfortunately it looks boring,\n            but this version of reflection requires you to write such code to allow it to be implemented by Workflow script code.\n        "
+            "text": "\n            不幸的是，它看起来很无趣，\n            但此版本的反射要求您编写此类代码以允许Workflow脚本代码实现它。\n        "
           }
         ]
       },
@@ -240,7 +240,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Here we use "
+            "text": "\n            在这里我们使用 "
           },
           {
             "kind": "Strong",
@@ -253,7 +253,7 @@
           },
           {
             "kind": "Text",
-            "text": ",\n            because we want instances of this interface to be shared pointers.\n        "
+            "text": "，\n            因为我们希望这个接口的实例是共享指针。\n        "
           }
         ]
       },
@@ -262,7 +262,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Now, we are able to implement this interface in Workflow script:\n            "
+            "text": "\n            现在，我们能够在工作流脚本中实现此接口：\n            "
           },
           {
             "kind": "Program",
@@ -270,7 +270,7 @@
           },
           {
             "kind": "Text",
-            "text": "\n            And call it in C++:\n            "
+            "text": "\n            并在C++中调用它：\n            "
           },
           {
             "kind": "Program",

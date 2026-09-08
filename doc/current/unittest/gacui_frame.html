@@ -110,7 +110,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            If you let the unit test framework create a window from a GacUI XML resource,\n            You can set the 4th parametero of "
+            "text": "\n            如果你让单元测试框架从 GacUI XML 资源创建一个窗口，\n            您可以设置第 4 个参数的 "
           },
           {
             "kind": "Strong",
@@ -123,7 +123,7 @@
           },
           {
             "kind": "Text",
-            "text": " to offer some callbacks.\n            The type is "
+            "text": " 提供一些回调函数。\n            类型是 "
           },
           {
             "kind": "Strong",
@@ -136,7 +136,7 @@
           },
           {
             "kind": "Text",
-            "text": " and it has these members:\n            "
+            "text": " 并且它有这些成员：\n            "
           },
           {
             "kind": "List",
@@ -156,7 +156,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " it is called before the window is created."
+                    "text": " 它在窗口创建之前被调用。"
                   }
                 ]
               },
@@ -174,7 +174,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " it is called before the window is opened."
+                    "text": " 它在窗口打开之前被调用。"
                   }
                 ]
               },
@@ -192,7 +192,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " it is called after the window is closed."
+                    "text": " 它在窗口关闭后被调用。"
                   }
                 ]
               },
@@ -210,7 +210,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " more configurations, including font list, screen size, etc."
+                    "text": " 更多配置，包括字体列表、屏幕尺寸等。"
                   }
                 ]
               }
@@ -223,7 +223,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            A test case typically begins with a call to "
+            "text": "\n            一个测试用例通常以调用开始： "
           },
           {
             "kind": "Strong",
@@ -236,7 +236,7 @@
           },
           {
             "kind": "Text",
-            "text": " with multiple frames created.\n            You are recommended to follow the rule:\n            "
+            "text": " 创建了多个框架。\n            建议您遵循以下规则：\n            "
           },
           {
             "kind": "List",
@@ -247,7 +247,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "The name of the first frame should be "
+                    "text": "第一个帧的名称应为 "
                   },
                   {
                     "kind": "Strong",
@@ -269,7 +269,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "Names of other frames describe what has been done in the previous frame."
+                    "text": "其他帧的名称描述了前一帧中所执行的操作。"
                   }
                 ]
               },
@@ -278,7 +278,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "In each frame visible UI changes must be triggered."
+                    "text": "在每个可见帧中，UI 变化必须被触发。"
                   }
                 ]
               },
@@ -287,7 +287,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "As each IO operation is completed after all events are handled in the GacUI application, if an operation calls any blocking function, wrap it in "
+                    "text": "由于每个IO操作在GacUI应用程序中所有事件处理完毕后才完成，如果一个操作调用了任何阻塞函数，应将其包装在 "
                   },
                   {
                     "kind": "Strong",
@@ -309,7 +309,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "When an action is taken, if the side effect happens immediately, assertion should be placed right after the action."
+                    "text": "当执行一个操作时，如果副作用是立即发生的，断言应放置在操作之后。"
                   }
                 ]
               },
@@ -318,7 +318,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "When an action is taken, if the side effect happens async but fast, assertion should be placed at the beginning of the next frame."
+                    "text": "当执行一个操作时，如果副作用是异步但快速发生的，断言应放置在下一帧的开始处。"
                   }
                 ]
               },
@@ -327,7 +327,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "Whenever possible keep the last frame only calling the "
+                    "text": "尽可能只保留上一帧的调用， "
                   },
                   {
                     "kind": "Strong",
@@ -340,7 +340,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " function. This rule could sometimes conflict with the previous rule, the previous rule has higher priority."
+                    "text": " 函数。此规则有时可能与前一条规则冲突，前一条规则优先级更高。"
                   }
                 ]
               }
@@ -350,14 +350,14 @@
       },
       {
         "kind": "Topic",
-        "title": "About Visible UI Change",
+        "title": "关于可见 UI 变化",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                A visible UI change means something that cause GacUI to refresh any window in your application.\n                This includes changing texts, sizes, layouts; showing or hiding windows or controls; enabling or disabling controls; select anything or type anything in a control; etc.\n                The unit test framework will detect whether any visible UI change has been made in a frame,\n                and the test fail if there is not.\n                "
+                "text": "\n                可见的 UI 变化是指导致 GacUI 刷新您应用程序中任何窗口的更改。\n                这包括更改文本、大小、布局；显示或隐藏窗口或控件；启用或禁用控件；在控件中选择或输入任何内容等。\n                单元测试框架将检测在某一帧中是否发生了任何可见的UI更改，\n                并且如果不存在，则测试失败。\n                "
               },
               {
                 "kind": "Strong",
@@ -370,7 +370,7 @@
               },
               {
                 "kind": "Text",
-                "text": " DO NOT make a frame just for assertion as it doesn't cause any visible UI change.\n            "
+                "text": " 不要仅为了断言而创建一个框架，因为它不会引起任何可见的 UI 变化。\n            "
               }
             ]
           }
@@ -378,14 +378,14 @@
       },
       {
         "kind": "Topic",
-        "title": "About Blocking Function",
+        "title": "关于阻塞函数",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Blocking functions are anything that does not return but the application is still running.\n                For example, "
+                "text": "\n                阻塞函数是指不会返回但应用程序仍在运行的任何函数。\n                例如， "
               },
               {
                 "kind": "Strong",
@@ -437,7 +437,7 @@
               },
               {
                 "kind": "Text",
-                "text": ", etc.\n                Any IO interaction inside a frame only returns after GacUI handles all events.\n                For example, "
+                "text": ", etc.\n                任何在帧内进行的IO交互，只有在GacUI处理完所有事件后才会返回。\n                例如， "
               },
               {
                 "kind": "Strong",
@@ -463,7 +463,7 @@
               },
               {
                 "kind": "Text",
-                "text": " as well as all other mouse events are handled.\n                If in any of this event a blocking function is called,\n                "
+                "text": " 以及所有其他鼠标事件都被处理。\n                如果在任何此类事件中调用了阻塞函数，\n                "
               },
               {
                 "kind": "Strong",
@@ -476,7 +476,7 @@
               },
               {
                 "kind": "Text",
-                "text": " blocks the current frame,\n                and the unit test framework detects such action and fail the test.\n                In this case, call "
+                "text": " 阻塞当前帧，\n                并且单元测试框架检测到此类操作并使测试失败。\n                在这种情况下，调用 "
               },
               {
                 "kind": "Strong",
@@ -502,7 +502,7 @@
               },
               {
                 "kind": "Text",
-                "text": " instead.\n                "
+                "text": " 而是。\n                "
               },
               {
                 "kind": "Program",

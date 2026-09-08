@@ -216,11 +216,11 @@
   "numberBeforeTitle": false,
   "topic": {
     "kind": "Topic",
-    "title": "API References for GacUI",
+    "title": "GacUI API 参考",
     "content": [
       {
         "kind": "Topic",
-        "title": "Resources",
+        "title": "资源",
         "content": [
           {
             "kind": "Paragraph",
@@ -238,13 +238,13 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "Tutorial"
+                            "text": "教程"
                           }
                         ]
                       },
                       {
                         "kind": "Text",
-                        "text": ": build your first GacUI application."
+                        "text": ": 构建您的第一个 GacUI 应用程序。"
                       }
                     ]
                   },
@@ -257,13 +257,13 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "Download"
+                            "text": "下载"
                           }
                         ]
                       },
                       {
                         "kind": "Text",
-                        "text": ": download this library."
+                        "text": ": 下载此库。"
                       }
                     ]
                   }
@@ -276,7 +276,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                If you don't need runtime reflection on C++ classes,\n                it is recommended to add "
+                "text": "\n                如果你不需要对 C++ 类进行运行时反射，\n                建议添加 "
               },
               {
                 "kind": "Strong",
@@ -297,13 +297,13 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "preprocessor definitions"
+                    "text": "预处理器定义"
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": ".\n                By doing this, unnecessary code are eliminated, which significantly reduces both executable size and object sizes, and improves performance.\n            "
+                "text": ".\n                通过这样做，不必要的代码被消除，这显著减少了可执行文件大小和对象大小，并提高了性能。\n            "
               }
             ]
           }
@@ -311,11 +311,11 @@
       },
       {
         "kind": "Topic",
-        "title": "Source Files for GacUI",
+        "title": "GacUI的源文件",
         "content": [
           {
             "kind": "Topic",
-            "title": "for typical GacUI applications",
+            "title": "对于典型的 GacUI 应用程序",
             "content": [
               {
                 "kind": "Paragraph",
@@ -338,7 +338,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " and "
+                            "text": " 和 "
                           },
                           {
                             "kind": "Strong",
@@ -365,7 +365,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " and "
+                            "text": " 和 "
                           },
                           {
                             "kind": "Strong",
@@ -392,7 +392,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " and "
+                            "text": " 和 "
                           },
                           {
                             "kind": "Strong",
@@ -414,7 +414,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    It is highly recommended to use generated C++ code from GacUI XML resource compiled using "
+                    "text": "\n                    强烈建议使用 GacUI XML 资源编译生成的 C++ 代码 "
                   },
                   {
                     "kind": "Strong",
@@ -427,7 +427,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " (see the "
+                    "text": " （参见 "
                   },
                   {
                     "kind": "PageLink",
@@ -435,13 +435,13 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "tutorial"
+                        "text": "教程"
                       }
                     ]
                   },
                   {
                     "kind": "Text",
-                    "text": ").\n                    By not using reflection, it reduces about 90% of the execution size, which significantly improves performance.\n                "
+                    "text": ").\n                    通过不使用反射，它减少了约90%的执行大小，显著提高了性能。\n                "
                   }
                 ]
               }
@@ -449,7 +449,7 @@
           },
           {
             "kind": "Topic",
-            "title": "for loading compiled GacUI XML resource without using generated C++ code",
+            "title": "用于加载已编译的 GacUI XML 资源而不使用生成的 C++ 代码",
             "content": [
               {
                 "kind": "Paragraph",
@@ -463,7 +463,7 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "(all source files above)"
+                            "text": "（以上所有源文件）"
                           }
                         ]
                       },
@@ -481,7 +481,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " and "
+                            "text": " 和 "
                           },
                           {
                             "kind": "Strong",
@@ -508,7 +508,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " and "
+                            "text": " 和 "
                           },
                           {
                             "kind": "Strong",
@@ -530,7 +530,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    If you need to dynamically load UI from other sources,\n                    reflection is always needed because classes for windows and controls are generated using Workflow script.\n                    After compiling, they are stores in multiple binary files (or in memory) for different platforms.\n                "
+                    "text": "\n                    如果需要从其他来源动态加载UI，\n                    反射总是必需的，因为窗口和控件的类是使用工作流脚本生成的。\n                    编译后，它们会存储在多个二进制文件中（或在内存中），以供不同平台使用。\n                "
                   }
                 ]
               }
@@ -538,7 +538,7 @@
           },
           {
             "kind": "Topic",
-            "title": "for compileing GacUI XML resource at runtime",
+            "title": "在运行时编译 GacUI XML 资源",
             "content": [
               {
                 "kind": "Paragraph",
@@ -552,7 +552,7 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "(all source files above)"
+                            "text": "（以上所有源文件）"
                           }
                         ]
                       },
@@ -570,7 +570,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " and "
+                            "text": " 和 "
                           },
                           {
                             "kind": "Strong",
@@ -593,11 +593,11 @@
       },
       {
         "kind": "Topic",
-        "title": "Dependencies",
+        "title": "依赖项",
         "content": [
           {
             "kind": "Topic",
-            "title": "for typical GacUI applications",
+            "title": "对于典型的 GacUI 应用程序",
             "content": [
               {
                 "kind": "Paragraph",
@@ -620,7 +620,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " and "
+                            "text": " 和 "
                           },
                           {
                             "kind": "Strong",
@@ -647,7 +647,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " and "
+                            "text": " 和 "
                           },
                           {
                             "kind": "Strong",
@@ -674,7 +674,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " and "
+                            "text": " 和 "
                           },
                           {
                             "kind": "Strong",
@@ -701,7 +701,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " and "
+                            "text": " 和 "
                           },
                           {
                             "kind": "Strong",
@@ -728,7 +728,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " and "
+                            "text": " 和 "
                           },
                           {
                             "kind": "Strong",
@@ -755,7 +755,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " and "
+                            "text": " 和 "
                           },
                           {
                             "kind": "Strong",
@@ -776,7 +776,7 @@
           },
           {
             "kind": "Topic",
-            "title": "for loading compiled GacUI XML resource without using generated C++ code",
+            "title": "用于加载已编译的 GacUI XML 资源而不使用生成的 C++ 代码",
             "content": [
               {
                 "kind": "Paragraph",
@@ -790,7 +790,7 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "(all source files above)"
+                            "text": "（以上所有源文件）"
                           }
                         ]
                       },
@@ -808,7 +808,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " and "
+                            "text": " 和 "
                           },
                           {
                             "kind": "Strong",
@@ -829,7 +829,7 @@
           },
           {
             "kind": "Topic",
-            "title": "for compileing GacUI XML resource at runtime",
+            "title": "在运行时编译 GacUI XML 资源",
             "content": [
               {
                 "kind": "Paragraph",
@@ -843,7 +843,7 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "(all source files above)"
+                            "text": "（以上所有源文件）"
                           }
                         ]
                       },
@@ -861,7 +861,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " and "
+                            "text": " 和 "
                           },
                           {
                             "kind": "Strong",

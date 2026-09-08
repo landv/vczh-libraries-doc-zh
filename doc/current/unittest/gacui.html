@@ -133,7 +133,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            A typical test file would be:\n            "
+            "text": "\n            一个典型的测试文件会是：\n            "
           },
           {
             "kind": "Program",
@@ -142,7 +142,7 @@
           },
           {
             "kind": "Text",
-            "text": "\n            Or if you are loading an existing window instead of making one from GacUI XML resource:\n            "
+            "text": "\n            或者如果你正在加载一个现有的窗口而不是从 GacUI XML 资源创建一个：\n            "
           },
           {
             "kind": "Program",
@@ -153,14 +153,14 @@
       },
       {
         "kind": "Topic",
-        "title": "About Snapshots and Frames",
+        "title": "关于快照和帧",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                This test case will create a bunch of file in "
+                "text": "\n                此测试用例将在 "
               },
               {
                 "kind": "Strong",
@@ -173,7 +173,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                under the path "
+                "text": "，\n                在路径下 "
               },
               {
                 "kind": "Strong",
@@ -186,7 +186,7 @@
               },
               {
                 "kind": "Text",
-                "text": ".\n                There will be "
+                "text": ".\n                将会有 "
               },
               {
                 "kind": "Strong",
@@ -199,7 +199,7 @@
               },
               {
                 "kind": "Text",
-                "text": " and two "
+                "text": " 并且两个 "
               },
               {
                 "kind": "Strong",
@@ -212,7 +212,7 @@
               },
               {
                 "kind": "Text",
-                "text": ", with some other "
+                "text": "，以及其他一些 "
               },
               {
                 "kind": "Strong",
@@ -225,20 +225,20 @@
               },
               {
                 "kind": "Text",
-                "text": " files.\n                If you "
+                "text": " 文件。\n                如果你 "
               },
               {
                 "kind": "Strong",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "git commit"
+                    "text": "git 提交"
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": " them,\n                after running a test case you can easily find out which test cases have been affected.\n            "
+                "text": " 他们，\n                在运行一个测试用例后，你可以轻松找出哪些测试用例受到了影响。\n            "
               }
             ]
           },
@@ -247,7 +247,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                In this test case, the unit test framework does the following thing:\n                "
+                "text": "\n                在此测试用例中，单元测试框架执行以下操作：\n                "
               },
               {
                 "kind": "List",
@@ -258,7 +258,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "Compile the resource and run "
+                        "text": "编译资源并运行 "
                       },
                       {
                         "kind": "Strong",
@@ -271,7 +271,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " as the main window, offering no arguments."
+                        "text": " 作为主窗口，不提供任何参数。"
                       }
                     ]
                   },
@@ -311,7 +311,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "Click the button."
+                        "text": "单击按钮。"
                       }
                     ]
                   },
@@ -351,7 +351,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "exit."
+                        "text": "退出。"
                       }
                     ]
                   }
@@ -364,7 +364,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Each frame needs to make some visible UI changes,\n                the unit test framework will detect and fail if no visible UI change has been made.\n            "
+                "text": "\n                每个框架都需要进行一些可见的UI更改，\n                单元测试框架将检测并失败，如果未做出任何可见的用户界面更改。\n            "
               }
             ]
           },
@@ -373,7 +373,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Each frame should not call blocking functions directly.\n                For example, if a button displays a dialog,\n                the "
+                "text": "\n                每个框架不应直接调用阻塞函数。\n                例如，如果一个按钮显示一个对话框，\n                该 "
               },
               {
                 "kind": "Strong",
@@ -412,7 +412,7 @@
               },
               {
                 "kind": "Text",
-                "text": " function only returns after the dialog is closed,\n                such functions are blocking functions.\n                In case when clicking a button displaying a dialog,\n                you should use:\n                "
+                "text": " 函数仅在对话框关闭后返回，\n                这些函数是阻塞函数。\n                当点击显示对话框的按钮时，\n                您应该使用：\n                "
               },
               {
                 "kind": "Program",
@@ -421,7 +421,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                The next frame will starts right after the dialog is shown,\n                and you can then interact with it.\n                "
+                "text": "\n                下一帧将在对话框显示后立即开始，\n                然后您可以与它交互。\n                "
               },
               {
                 "kind": "Strong",
@@ -434,7 +434,7 @@
               },
               {
                 "kind": "Text",
-                "text": " does not have such limitation.\n            "
+                "text": " 没有这样的限制。\n            "
               }
             ]
           },
@@ -443,7 +443,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                So the title of the frame should describe what the UI looks like before the action,\n                or just describe what the previous frame has done,\n                as a snapshot is taken combining with the title name before executing the code inside a frame.\n            "
+                "text": "\n                因此，框架的标题应描述操作前UI的外观。\n                或者只是描述前一帧所做的操作，\n                在执行帧内代码之前，作为快照结合标题名称进行捕获。\n            "
               }
             ]
           }
@@ -451,7 +451,7 @@
       },
       {
         "kind": "Topic",
-        "title": "Using Images",
+        "title": "使用图像",
         "content": [
           {
             "kind": "Paragraph",
@@ -467,7 +467,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is the working directly when compiling the GacUI XML resource.\n                If it needs to add other resource files, e.g. images, you can put them there.\n            "
+                "text": " GacUI 资源在编译时是否直接生效？\n                如果需要添加其他资源文件，例如图像，你可以将它们放在这里。\n            "
               }
             ]
           },
@@ -476,7 +476,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n             The following code shows how to reference image files in the resource:\n                "
+                "text": "\n             以下代码展示了如何在资源中引用图像文件：\n                "
               },
               {
                 "kind": "Program",
@@ -485,7 +485,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                By saying this, "
+                "text": "\n                通过这样说， "
               },
               {
                 "kind": "Strong",
@@ -511,7 +511,7 @@
               },
               {
                 "kind": "Text",
-                "text": " should be put under "
+                "text": " 应置于 under "
               },
               {
                 "kind": "Strong",
@@ -571,7 +571,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                The unit test framework will not actually read the image file,\n                but in order to perform UI layouting,\n                it will instead read "
+                "text": "\n                单元测试框架实际上不会读取图像文件，\n                但为了执行UI布局，\n                它将改而读取 "
               },
               {
                 "kind": "Strong",
@@ -584,7 +584,7 @@
               },
               {
                 "kind": "Text",
-                "text": " to search for the metadata of the image.\n                In this example,\n                "
+                "text": " 搜索图像的元数据。\n                在此示例中，\n                "
               },
               {
                 "kind": "Strong",
@@ -597,7 +597,7 @@
               },
               {
                 "kind": "Text",
-                "text": " will match the record "
+                "text": " 将匹配记录 "
               },
               {
                 "kind": "Strong",

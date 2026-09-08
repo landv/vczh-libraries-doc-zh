@@ -169,7 +169,7 @@
           },
           {
             "kind": "Text",
-            "text": " to switch view one after another\n            when itself is required to do so. \n        "
+            "text": " 依次切换视图\n            当自身需要时。 \n        "
           }
         ]
       },
@@ -219,7 +219,7 @@
       },
       {
         "kind": "Topic",
-        "title": "Managing child GuiResponsiveCompositionBase",
+        "title": "管理子 GuiResponsiveCompositionBase",
         "content": [
           {
             "kind": "Paragraph",
@@ -313,7 +313,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Eventually "
+                "text": "\n                最终 "
               },
               {
                 "kind": "Strong",
@@ -383,7 +383,7 @@
               },
               {
                 "kind": "Text",
-                "text": " than "
+                "text": " 比 "
               },
               {
                 "kind": "Strong",
@@ -494,7 +494,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                When "
+                "text": "\n                当 "
               },
               {
                 "kind": "Strong",
@@ -561,7 +561,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                This property represents how many different view it could have.\n                It is \"sum of "
+                "text": "\n                此属性表示它可能具有多少种不同的视图。\n                它是“总和” "
               },
               {
                 "kind": "Strong",
@@ -587,7 +587,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\" - \"the number of all managed "
+                "text": "- 所有已管理的项目数量 "
               },
               {
                 "kind": "Strong",
@@ -609,7 +609,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                For example,\n                there are 3 managed "
+                "text": "\n                例如，\n                有3个托管的 "
               },
               {
                 "kind": "Strong",
@@ -635,7 +635,7 @@
               },
               {
                 "kind": "Text",
-                "text": " are 2, 3 and 4:\n                "
+                "text": " 是 2、3 和 4：\n                "
               },
               {
                 "kind": "List",
@@ -655,7 +655,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " is 2 means that composition could change 1 times from smallest to largest."
+                        "text": " 2 表示组合可以从最小到最大更改 1 次。"
                       }
                     ]
                   },
@@ -673,7 +673,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " is 3 means that composition could change 2 times from smallest to largest."
+                        "text": " 3 表示组合可以从最小到最大改变 2 次。"
                       }
                     ]
                   },
@@ -691,7 +691,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " is 4 means that composition could change 3 times from smallest to largest."
+                        "text": " 4 表示组合可以从最小变为最大，共可改变 3 次。"
                       }
                     ]
                   }
@@ -699,7 +699,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                So in total this "
+                "text": "\n                所以总共这 "
               },
               {
                 "kind": "Strong",
@@ -712,7 +712,7 @@
               },
               {
                 "kind": "Text",
-                "text": " could change 1 + 2 + 3 = 6 times from smallest to largest,\n                its "
+                "text": " 可以将 1 + 2 + 3 = 6 从最小到最大改变 6 次，\n                它的 "
               },
               {
                 "kind": "Strong",
@@ -725,7 +725,7 @@
               },
               {
                 "kind": "Text",
-                "text": " must be 7,\n                which is exactly \"2 + 3 + 4 - 3(numbers of managed) + 1\".\n            "
+                "text": " 必须是 7\n                这正好是“2 + 3 + 4 - 3（已管理的数目）+ 1”。\n            "
               }
             ]
           },
@@ -864,7 +864,7 @@
               },
               {
                 "kind": "Text",
-                "text": " will find a smallest managed "
+                "text": " 将找到一个最小的托管 "
               },
               {
                 "kind": "Strong",
@@ -877,7 +877,7 @@
               },
               {
                 "kind": "Text",
-                "text": " in size\n                to switch to a larger view.\n                If it fails (usually because it has already switched to its largest view),\n                then "
+                "text": " 在大小中\n                切换到更大的视图。\n                如果失败（通常因为它已经切换到最大视图），\n                然后 "
               },
               {
                 "kind": "Strong",
@@ -890,7 +890,7 @@
               },
               {
                 "kind": "Text",
-                "text": " will find the next smallest one,\n                until one succeeded.\n            "
+                "text": " 将找到下一个最小的。\n                直到其中一个成功。\n            "
               }
             ]
           },
@@ -938,7 +938,7 @@
               },
               {
                 "kind": "Text",
-                "text": " will find a largest managed "
+                "text": " 将找到一个最大的托管 "
               },
               {
                 "kind": "Strong",
@@ -951,7 +951,7 @@
               },
               {
                 "kind": "Text",
-                "text": " in size\n                to switch to a smaller view.\n                If it fails (usually because it has already switched to its smallest view),\n                then "
+                "text": " 在大小中\n                切换到较小的视图。\n                如果失败（通常是因为它已经切换到最小视图），\n                然后 "
               },
               {
                 "kind": "Strong",
@@ -964,7 +964,7 @@
               },
               {
                 "kind": "Text",
-                "text": " will find the next largest one,\n                until one succeeded.\n            "
+                "text": " 将找到下一个最大的一个，\n                直到其中一个成功。\n            "
               }
             ]
           },
@@ -982,7 +982,7 @@
               },
               {
                 "kind": "Text",
-                "text": " measures the size of a "
+                "text": " 测量大小 "
               },
               {
                 "kind": "Strong",
@@ -995,7 +995,7 @@
               },
               {
                 "kind": "Text",
-                "text": " according to "
+                "text": " 根据 "
               },
               {
                 "kind": "Strong",
@@ -1028,7 +1028,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": size equals to its width."
+                        "text": ": 大小等于其宽度。"
                       }
                     ]
                   },
@@ -1046,7 +1046,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": size equals to its height."
+                        "text": ": 大小等于其高度。"
                       }
                     ]
                   },
@@ -1064,7 +1064,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": size equals to its area."
+                        "text": ": 大小等于其面积。"
                       }
                     ]
                   }

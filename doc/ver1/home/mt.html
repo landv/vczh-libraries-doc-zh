@@ -91,14 +91,14 @@
   "numberBeforeTitle": false,
   "topic": {
     "kind": "Topic",
-    "title": "Thread Safety",
+    "title": "线程安全",
     "content": [
       {
         "kind": "Paragraph",
         "content": [
           {
             "kind": "Text",
-            "text": "\n            There are only a few classes whose instances can be shared between threads.\n        "
+            "text": "\n            只有少数类的实例可以在线程之间共享。\n        "
           }
         ]
       },
@@ -133,7 +133,7 @@
           },
           {
             "kind": "Text",
-            "text": " starts the UI,\n            so every UI related stuff (except what are listed below) can only be used in the UI thread.\n            "
+            "text": " 启动 UI\n            因此，所有与UI相关的功能（以下列出的除外）只能在UI线程中使用。\n            "
           },
           {
             "kind": "Strong",
@@ -146,7 +146,7 @@
           },
           {
             "kind": "Text",
-            "text": " doesn't check for that.\n            Calling "
+            "text": " 不检查那个。\n            调用 "
           },
           {
             "kind": "Strong",
@@ -159,7 +159,7 @@
           },
           {
             "kind": "Text",
-            "text": " stuff concurrently results in racing condition,\n            which could cause memory leaks or crashing.\n        "
+            "text": " 同时进行某些操作会导致竞争条件，\n            这可能导致内存泄漏或崩溃。\n        "
           }
         ]
       },
@@ -216,7 +216,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": calling the function is safe only when the function itself is self."
+                        "text": ": 调用该函数仅在函数自身是自洽的情况下才安全。"
                       }
                     ]
                   },
@@ -234,7 +234,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": using the referenced object is safe only when the object itself is safe."
+                        "text": ": 使用引用对象仅在对象本身安全时才安全。"
                       }
                     ]
                   },
@@ -558,7 +558,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": only the following methods can be used concurrently\n                        "
+                        "text": ": 仅以下方法可以并发使用\n                        "
                       },
                       {
                         "kind": "List",

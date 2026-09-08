@@ -166,7 +166,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            OS provider is the key to make GacUI cross-platform.\n        "
+            "text": "\n            操作系统提供程序是使 GacUI 跨平台的关键。\n        "
           }
         ]
       },
@@ -175,20 +175,20 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            If you want to port GacUI to a new platform,\n            this is what you should do:\n        "
+            "text": "\n            如果你想将 GacUI 移植到一个新的平台，\n            这就是你应该做的：\n        "
           }
         ]
       },
       {
         "kind": "Topic",
-        "title": "Implement INativeWindowService and INativeWindow",
+        "title": "实现 INativeWindowService 和 INativeWindow",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                These two interfaces is the key of any OS provider.\n            "
+                "text": "\n                这两个接口是任何操作系统提供程序的关键。\n            "
               }
             ]
           },
@@ -197,7 +197,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Typically,\n                an instance of "
+                "text": "\n                通常，\n                一个实例 "
               },
               {
                 "kind": "Strong",
@@ -210,7 +210,7 @@
               },
               {
                 "kind": "Text",
-                "text": " controls a window in the target OS.\n                If multiple graphics API is usable (like GDI and Direct2D on Windows),\n                they usually share the same "
+                "text": " 控制目标操作系统中的一个窗口。\n                如果可用多个图形API（例如Windows上的GDI和Direct2D），\n                它们通常共享相同的 "
               },
               {
                 "kind": "Strong",
@@ -223,7 +223,7 @@
               },
               {
                 "kind": "Text",
-                "text": " implementation.\n            "
+                "text": " 实现。\n            "
               }
             ]
           }
@@ -231,14 +231,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Implement Element Renderers in Your Favorite Graphics API",
+        "title": "在您喜欢的图形 API 中实现元素渲染器",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                All elements have their own renderer object.\n                When an element is put in a window,\n                a renderer object will be associated to this element.\n                Instances of the same element type have their own renderer object,\n                they don't share renderer objects.\n                So it is very easy to cache necessary system resources in the renderer.\n            "
+                "text": "\n                所有元素都有自己的渲染器对象。\n                当一个元素被放入窗口时，\n                一个渲染器对象将与该元素关联。\n                相同元素类型的实例拥有自己的渲染器对象，\n                它们不共享渲染器对象。\n                因此在渲染器中非常容易缓存必要的系统资源。\n            "
               }
             ]
           },
@@ -260,7 +260,7 @@
               },
               {
                 "kind": "Text",
-                "text": " in your renderer class,\n                all boilerplate code will be ready,\n                and you just need to call the static "
+                "text": " 在你的渲染器类中，\n                所有样板代码都将准备就绪，\n                您只需要调用静态 "
               },
               {
                 "kind": "Strong",
@@ -273,7 +273,7 @@
               },
               {
                 "kind": "Text",
-                "text": " function.\n            "
+                "text": " 函数。\n            "
               }
             ]
           },
@@ -282,7 +282,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                When an element needs to be renderered,\n                it will find the registered renderer class,\n                create an instance and associate it to the element itself.\n            "
+                "text": "\n                当一个元素需要被渲染时，\n                它将找到已注册的渲染器类，\n                创建一个实例并将其关联到元素本身。\n            "
               }
             ]
           }
@@ -290,7 +290,7 @@
       },
       {
         "kind": "Topic",
-        "title": "Implement GuiGraphicsResourceManager and IGuiGraphicsRenderTarget",
+        "title": "实现 GuiGraphicsResourceManager 和 IGuiGraphicsRenderTarget",
         "content": [
           {
             "kind": "Paragraph",
@@ -306,7 +306,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is the core object for rendering.\n                It is a class, but it has a few abstract functions to override.\n                "
+                "text": " 是渲染的核心对象。\n                它是一个类，但有一些抽象函数需要重写。\n                "
               },
               {
                 "kind": "Strong",
@@ -319,7 +319,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is required to register your implementation of "
+                "text": " 要求注册您的实现。 "
               },
               {
                 "kind": "Strong",
@@ -350,7 +350,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is part of the element interfaces\n                to give all renderer objects access to a window's system resource.\n            "
+                "text": " 是元素接口的一部分\n                使所有渲染器对象都能访问窗口的系统资源。\n            "
               }
             ]
           },
@@ -359,7 +359,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Usually you will also need to create an instance of "
+                "text": "\n                通常您还需要创建一个 "
               },
               {
                 "kind": "Strong",
@@ -372,7 +372,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                it is a convenient way to track the creating and destroying of "
+                "text": "，\n                这是一种方便的方式来跟踪创建和销毁 "
               },
               {
                 "kind": "Strong",
@@ -385,7 +385,7 @@
               },
               {
                 "kind": "Text",
-                "text": " instances and keep your code decoupled.\n                When a "
+                "text": " 实例并保持你的代码解耦。\n                当一个 "
               },
               {
                 "kind": "Strong",
@@ -398,7 +398,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is created,\n                usually an implementation of "
+                "text": " 已创建，\n                通常是一个实现 "
               },
               {
                 "kind": "Strong",
@@ -411,7 +411,7 @@
               },
               {
                 "kind": "Text",
-                "text": " will also be created and associated to the window.\n            "
+                "text": " 也将被创建并关联到窗口。\n            "
               }
             ]
           },
@@ -429,7 +429,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                is one of the important function to implement.\n                When a window needs to refresh it self,\n                this function will be called to retrive an implementation of "
+                "text": "\n                是要实现的重要功能之一。\n                当窗口需要刷新自身时，\n                此函数将被调用以检索一个实现 "
               },
               {
                 "kind": "Strong",
@@ -442,7 +442,7 @@
               },
               {
                 "kind": "Text",
-                "text": " from an "
+                "text": " 从一个 "
               },
               {
                 "kind": "Strong",
@@ -455,7 +455,7 @@
               },
               {
                 "kind": "Text",
-                "text": ".\n                And the render target will be send to all instances of renderer objects for all elements.\n            "
+                "text": ".\n                并且渲染目标将发送给所有元素的所有渲染器对象实例。\n            "
               }
             ]
           },
@@ -464,7 +464,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Since in "
+                "text": "\n                由于在 "
               },
               {
                 "kind": "Strong",
@@ -477,7 +477,7 @@
               },
               {
                 "kind": "Text",
-                "text": " you have already specify\n                the underlying type that is also created by you to implement "
+                "text": " 您已经指定了\n                底层类型，也是由您创建以实现的 "
               },
               {
                 "kind": "Strong",
@@ -490,7 +490,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                whenever a render target is offered to a element renderers,\n                "
+                "text": "，\n                每当一个渲染目标被提供给元素渲染器时，\n                "
               },
               {
                 "kind": "Strong",
@@ -503,7 +503,7 @@
               },
               {
                 "kind": "Text",
-                "text": " will be called with the real render target type.\n                This is a good chance to recreate system resources that depend on this particular render target.\n                After that,\n                the render target will be stored in the protected "
+                "text": " 将使用实际的渲染目标类型调用。\n                这是一个重新创建依赖于这个特定渲染目标的系统资源的好机会。\n                那之后，\n                渲染目标将存储在受保护的 "
               },
               {
                 "kind": "Strong",
@@ -516,7 +516,7 @@
               },
               {
                 "kind": "Text",
-                "text": " field.\n            "
+                "text": " 字段。\n            "
               }
             ]
           },
@@ -525,7 +525,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                For graphics API like DirectX,\n                sometimes the device context will be invalid and the whole thing must be restarted.\n                In this case,\n                a new render target will be created and set to all renderer objects\n                by calling "
+                "text": "\n                对于像 DirectX 这样的图形 API，\n                有时设备上下文会无效，必须重新启动整个过程。\n                在这种情况下，\n                将创建一个新的渲染目标并设置到所有渲染器对象上\n                通过调用 "
               },
               {
                 "kind": "Strong",
@@ -538,7 +538,7 @@
               },
               {
                 "kind": "Text",
-                "text": " again.\n            "
+                "text": " 再次。\n            "
               }
             ]
           }
@@ -546,7 +546,7 @@
       },
       {
         "kind": "Topic",
-        "title": "Implement INativeController",
+        "title": "实现 INativeController",
         "content": [
           {
             "kind": "Paragraph",
@@ -562,7 +562,7 @@
               },
               {
                 "kind": "Text",
-                "text": " consists of multiple services:\n                "
+                "text": " 由多个服务组成：\n                "
               },
               {
                 "kind": "List",
@@ -582,7 +582,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": Managing "
+                        "text": ": 管理 "
                       },
                       {
                         "kind": "Strong",
@@ -595,7 +595,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " objects so that different components can receive system messages and keep the code decoupled."
+                        "text": " 以便不同的组件可以接收系统消息并保持代码解耦。"
                       }
                     ]
                   },
@@ -613,7 +613,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": Managing and executing task queues in multiple threads."
+                        "text": ": 在多个线程中管理并执行任务队列。"
                       }
                     ]
                   },
@@ -631,7 +631,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": Accessing cursors and fonts from the OS."
+                        "text": ": 从操作系统访问光标和字体。"
                       }
                     ]
                   },
@@ -649,7 +649,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": Accessing clipboard from the OS."
+                        "text": ": 从操作系统访问剪贴板"
                       }
                     ]
                   },
@@ -667,7 +667,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": Accessing physical monitors from the OS."
+                        "text": ": 从操作系统访问物理显示器。"
                       }
                     ]
                   },
@@ -685,7 +685,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": Accessing default dialogs from the OS."
+                        "text": ": 从操作系统访问默认对话框。"
                       }
                     ]
                   },
@@ -703,7 +703,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": Loading image from files or memories."
+                        "text": ": 从文件或内存加载图像。"
                       }
                     ]
                   },
@@ -721,7 +721,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": Managing windows using OS's window manager."
+                        "text": ": 使用操作系统的窗口管理器来管理窗口。"
                       }
                     ]
                   },
@@ -739,7 +739,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": Accessing global keyboard status and timer."
+                        "text": ": 从操作系统访问全局键盘状态和计时器。"
                       }
                     ]
                   }
@@ -751,7 +751,7 @@
       },
       {
         "kind": "Topic",
-        "title": "Hosted Mode",
+        "title": "托管模式",
         "content": [
           {
             "kind": "Paragraph",
@@ -780,7 +780,7 @@
               },
               {
                 "kind": "Text",
-                "text": " can create a hosted mode implementation of "
+                "text": " 可以创建 "
               },
               {
                 "kind": "Strong",
@@ -793,7 +793,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                on top of a native "
+                "text": "\n                在原生之上 "
               },
               {
                 "kind": "Strong",
@@ -806,7 +806,7 @@
               },
               {
                 "kind": "Text",
-                "text": " instance.\n                Checkout "
+                "text": " 实例。\n                结账 "
               },
               {
                 "kind": "Strong",
@@ -832,7 +832,7 @@
               },
               {
                 "kind": "Text",
-                "text": " for details.\n                When running GacUI with remote protocol,\n                "
+                "text": " 详细信息。\n                当使用远程协议运行 GacUI 时，\n                "
               },
               {
                 "kind": "Strong",
@@ -845,7 +845,7 @@
               },
               {
                 "kind": "Text",
-                "text": " will create "
+                "text": " 将创建 "
               },
               {
                 "kind": "Strong",
@@ -858,7 +858,7 @@
               },
               {
                 "kind": "Text",
-                "text": " on top of "
+                "text": " 在……之上 "
               },
               {
                 "kind": "Strong",
@@ -893,7 +893,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is running as a native OS provider to "
+                "text": " 以本机操作系统提供者身份运行 "
               },
               {
                 "kind": "Strong",
@@ -906,7 +906,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                it has to handle extra works for rendering in "
+                "text": "，\n                它必须处理额外的渲染工作 "
               },
               {
                 "kind": "Strong",
@@ -939,7 +939,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " will be called to detect if the render target is working."
+                        "text": " 将被调用以检测渲染目标是否正常工作。"
                       }
                     ]
                   },
@@ -957,7 +957,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ". This is called only under hosted mode, so that all subsequent rendering calls are hinted."
+                        "text": ". 这仅在托管模式下调用，以便后续所有渲染调用都得到提示。"
                       }
                     ]
                   },
@@ -966,7 +966,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "Multiple "
+                        "text": "多个 "
                       },
                       {
                         "kind": "Strong",
@@ -992,7 +992,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " calls sent from the window."
+                        "text": " 从窗口发出的调用。"
                       }
                     ]
                   },
@@ -1010,7 +1010,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ", if any "
+                        "text": "，如果任何 "
                       },
                       {
                         "kind": "Strong",
@@ -1023,7 +1023,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " fails, this should fail with the same reason."
+                        "text": " 失败，这应该以相同的原因失败。"
                       }
                     ]
                   }
@@ -1040,7 +1040,7 @@
               },
               {
                 "kind": "Text",
-                "text": " can be used to simplifies the implementation,\n                therefore only one call to "
+                "text": " 可以用于简化实现，\n                因此，只调用一次 "
               },
               {
                 "kind": "Strong",
@@ -1066,7 +1066,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is sent to the render target.\n            "
+                "text": " 被发送到渲染目标。\n            "
               }
             ]
           }
@@ -1074,14 +1074,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Development Note",
+        "title": "开发说明",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Implementing "
+                "text": "\n                实现 "
               },
               {
                 "kind": "Strong",
@@ -1094,7 +1094,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is a super complex topic.\n                In order to port GacUI to a new platform,\n                you must know everything about how GacUI interact with the OS.\n                It is highly recommended to read the\n                "
+                "text": " 是一个非常复杂的话题。\n                为了将 GacUI 移植到新平台，\n                你必须了解 GacUI 如何与操作系统交互的全部内容。\n                强烈建议阅读\n                "
               },
               {
                 "kind": "PageLink",
@@ -1136,7 +1136,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                implementation for "
+                "text": "\n                实现 "
               },
               {
                 "kind": "Strong",
@@ -1149,7 +1149,7 @@
               },
               {
                 "kind": "Text",
-                "text": " before creating yours.\n                Especially there are GDI and Direct2D support in Windows,\n                it is a good example to know how to allow multiple rendering techniques in one OS.\n            "
+                "text": " 在创建您自己的之前。\n                特别是在Windows中，支持GDI和Direct2D，\n                这是一个很好的例子，可以了解如何在单个操作系统中允许多种渲染技术。\n            "
               }
             ]
           }

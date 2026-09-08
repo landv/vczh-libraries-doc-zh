@@ -163,20 +163,20 @@
   "numberBeforeTitle": false,
   "topic": {
     "kind": "Topic",
-    "title": "Introduction to Vlpp",
+    "title": "Vlpp 简介",
     "content": [
       {
         "kind": "Paragraph",
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Vlpp provides basic constructions for writing C++ programs. Here is what you can get from this library:\n        "
+            "text": "\n            Vlpp 提供了编写 C++ 程序的基本结构。你可以从这个库中获得以下内容：\n        "
           }
         ]
       },
       {
         "kind": "Topic",
-        "title": "Data types",
+        "title": "数据类型",
         "content": [
           {
             "kind": "Paragraph",
@@ -234,7 +234,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ", which are base classes for reference types and interfaces. Almost everything inherit from one or both of them."
+                        "text": "，这是引用类型和接口的基类。几乎所有东西都从它们之一或两者继承。"
                       }
                     ]
                   },
@@ -291,7 +291,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": data containers."
+                        "text": ": 数据容器。"
                       }
                     ]
                   },
@@ -374,7 +374,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": basic primitive types."
+                        "text": ": 基本原语类型。"
                       }
                     ]
                   },
@@ -405,7 +405,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": basic exception types."
+                        "text": ": 基本异常类型。"
                       }
                     ]
                   },
@@ -436,7 +436,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": strongly-typed functor that can contain function pointers, method pointers or lambda expressions."
+                        "text": ": 强类型函数对象，可以包含函数指针、方法指针或lambda表达式。"
                       }
                     ]
                   },
@@ -454,7 +454,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " and related functions."
+                        "text": " 以及相关函数。"
                       }
                     ]
                   },
@@ -475,7 +475,7 @@
       },
       {
         "kind": "Topic",
-        "title": "String conversion operations",
+        "title": "字符串转换操作",
         "content": [
           {
             "kind": "Paragraph",
@@ -677,7 +677,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "Lower and upper case: "
+                        "text": "大小写： "
                       },
                       {
                         "kind": "Strong",
@@ -702,7 +702,7 @@
       },
       {
         "kind": "Topic",
-        "title": "String encoding operations",
+        "title": "字符串编码操作",
         "content": [
           {
             "kind": "Paragraph",
@@ -740,7 +740,7 @@
               },
               {
                 "kind": "Text",
-                "text": " for big endian Utf-16 character.\n            "
+                "text": " 用于大端序的Utf-16字符。\n            "
               }
             ]
           },
@@ -765,7 +765,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " to convert strings from and to Utf-32, using "
+                        "text": " 使用 UTF-32 转换字符串 "
                       },
                       {
                         "kind": "Strong",
@@ -791,7 +791,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " static member functions."
+                        "text": " 静态成员函数。"
                       }
                     ]
                   },
@@ -809,7 +809,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": convert between strings."
+                        "text": ": 在字符串之间进行转换。"
                       }
                     ]
                   },
@@ -827,7 +827,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": convert between UTF strings. "
+                        "text": ": 在 UTF 字符串之间进行转换。 "
                       },
                       {
                         "kind": "Strong",
@@ -853,7 +853,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " must be one of "
+                        "text": " 必须是以下之一 "
                       },
                       {
                         "kind": "Strong",
@@ -918,7 +918,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                A string reader concept implemented by combination of classes with the following members:\n                "
+                "text": "\n                由以下成员组合而成的字符串读取器概念：\n                "
               },
               {
                 "kind": "List",
@@ -1021,7 +1021,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": The index of the last successful called to "
+                        "text": ": 最后一次成功调用的索引。 "
                       },
                       {
                         "kind": "Strong",
@@ -1034,7 +1034,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ", beginning from 0."
+                        "text": "，从 0 开始。"
                       }
                     ]
                   },
@@ -1052,7 +1052,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": The position of the sub array in source code points of the last successful called to "
+                        "text": ": 源代码中子数组位置的偏移量，对应于最后一次成功调用的。 "
                       },
                       {
                         "kind": "Strong",
@@ -1078,7 +1078,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                A string consumer concept implemented by combination of classes with the following members:\n                "
+                "text": "\n                字符串消费者概念由以下成员的类组合实现：\n                "
               },
               {
                 "kind": "List",
@@ -1176,7 +1176,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "\n                        To convert a reader to a consumer, use "
+                        "text": "\n                        要将读取器转换为消费者，请使用， "
                       },
                       {
                         "kind": "Strong",
@@ -1202,7 +1202,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " could offer a replacement implementation of "
+                        "text": " 可以提供对 "
                       },
                       {
                         "kind": "Strong",
@@ -1215,7 +1215,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ",\n                        but if it is not needed, just pass "
+                        "text": "，\n                        但如果不需要，只需传递 "
                       },
                       {
                         "kind": "Strong",
@@ -1228,7 +1228,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " to it.\n                    "
+                        "text": " 到它。\n                    "
                       }
                     ]
                   },
@@ -1237,7 +1237,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "\n                        Use "
+                        "text": "\n                        使用 "
                       },
                       {
                         "kind": "Strong",
@@ -1250,7 +1250,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " to create a consumer,\n                        offering code points stored in a zero-terminated pointer.\n                        "
+                        "text": " 创建消费者，\n                        提供存储在以零结尾的指针中的代码点。\n                        "
                       },
                       {
                         "kind": "Strong",
@@ -1337,7 +1337,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "\n                        Use "
+                        "text": "\n                        使用 "
                       },
                       {
                         "kind": "Strong",
@@ -1350,7 +1350,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " to create a consumer,\n                        offering code points stored in a range by two pointers.\n                        "
+                        "text": " 创建消费者，\n                        通过两个指针提供的范围内存储的代码点。\n                        "
                       },
                       {
                         "kind": "Strong",
@@ -1441,7 +1441,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                When you have a string consumer to offer code points to be converted,\n                use "
+                "text": "\n                当你有一个字符串消费者来提供要转换的代码点时，\n                使用 "
               },
               {
                 "kind": "Strong",
@@ -1454,7 +1454,7 @@
               },
               {
                 "kind": "Text",
-                "text": " to create a reader.\n                "
+                "text": " 创建一个阅读器。\n                "
               },
               {
                 "kind": "Strong",
@@ -1558,7 +1558,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is optional.\n                "
+                "text": " 是可选的。\n                "
               },
               {
                 "kind": "List",
@@ -1569,7 +1569,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "\n                        Use "
+                        "text": "\n                        使用 "
                       },
                       {
                         "kind": "Strong",
@@ -1582,7 +1582,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " to create a reader,\n                        convert code points stored in a zero-terminated pointer.\n                    "
+                        "text": " 要创建一个读取器，\n                        转换以空终止的指针中的代码点。\n                    "
                       }
                     ]
                   },
@@ -1591,7 +1591,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "\n                        Use "
+                        "text": "\n                        使用 "
                       },
                       {
                         "kind": "Strong",
@@ -1604,7 +1604,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " to create a reader,\n                        convert code points stored in a range by two pointers.\n                    "
+                        "text": " 要创建一个读取器，\n                        转换由两个指针指定范围内的代码点。\n                    "
                       }
                     ]
                   }
@@ -1616,7 +1616,7 @@
       },
       {
         "kind": "Topic",
-        "title": "Containers and collections operations",
+        "title": "容器和集合操作",
         "content": [
           {
             "kind": "Paragraph",
@@ -1694,7 +1694,7 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "Dictionary<K, V>"
+                            "text": "字典<K, V>"
                           }
                         ]
                       },
@@ -1713,7 +1713,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": linear containers."
+                        "text": ": 线性容器。"
                       }
                     ]
                   },
@@ -1731,7 +1731,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": Lazy evaluated read-only containers with rich operations, similar to Linq."
+                        "text": ": 懒加载的只读容器，具有丰富的操作，类似于Linq。"
                       }
                     ]
                   },
@@ -1749,7 +1749,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": Partial ordering and strong connected component discovering."
+                        "text": ": 部分排序和强连通分量发现。"
                       }
                     ]
                   },
@@ -1767,7 +1767,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " function for doing inner join on two "
+                        "text": " 函数用于对两个进行内连接 "
                       },
                       {
                         "kind": "Strong",
@@ -1780,7 +1780,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " containers."
+                        "text": " 容器。"
                       }
                     ]
                   },
@@ -1811,7 +1811,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " for iterating containers."
+                        "text": " 用于遍历容器。"
                       }
                     ]
                   },
@@ -1829,7 +1829,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": Convert a range to a "
+                        "text": ": 将范围转换为 "
                       },
                       {
                         "kind": "Strong",
@@ -1860,7 +1860,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": Convert array, pointer range or collection types to "
+                        "text": ": 将数组、指针范围或集合类型转换为 "
                       },
                       {
                         "kind": "Strong",
@@ -1891,7 +1891,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": Find an item in a sorted array, returning the position of the item, and the position to insert the item."
+                        "text": ": 在排序数组中查找一个项，返回该项的位置以及插入该项的位置。"
                       }
                     ]
                   },
@@ -1922,7 +1922,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": Sort items in an array."
+                        "text": ": 对数组中的项进行排序。"
                       }
                     ]
                   },
@@ -1944,7 +1944,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Members of "
+                "text": "\n                成员的 "
               },
               {
                 "kind": "Strong",
@@ -1968,7 +1968,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "Collection functions: "
+                        "text": "集合函数： "
                       },
                       {
                         "kind": "Strong",
@@ -2094,7 +2094,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "Aggregation functions: "
+                        "text": "聚合函数： "
                       },
                       {
                         "kind": "Strong",
@@ -2246,7 +2246,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "Projection functions: "
+                        "text": "投影函数： "
                       },
                       {
                         "kind": "Strong",
@@ -2333,7 +2333,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "Set functions: "
+                        "text": "设置函数： "
                       },
                       {
                         "kind": "Strong",
@@ -2406,7 +2406,7 @@
       },
       {
         "kind": "Topic",
-        "title": "Console I/O",
+        "title": "控制台输入/输出",
         "content": [
           {
             "kind": "Paragraph",
@@ -2435,7 +2435,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Simple string reading and writing for command-line applications.\n                Character encodings are correctly handled for stream redirections.\n            "
+                "text": "\n                用于命令行应用程序的简单字符串读写。\n                字符编码在流重定向中被正确处理。\n            "
               }
             ]
           }
@@ -2472,7 +2472,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                An easy-to-use unit test framework.\n                You are able to organize test cases in nested categories,\n                and either run all the way to the end,\n                or tell the IDE to stop at the first failed test assertion.\n            "
+                "text": "\n                一个易于使用的单元测试框架。\n                您能够将测试用例组织在嵌套的类别中，\n                并要么一直运行到结束，\n                或告诉 IDE 在第一个失败的断言处停止。\n            "
               }
             ]
           },
@@ -2481,7 +2481,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Calling "
+                "text": "\n                调用 "
               },
               {
                 "kind": "Strong",
@@ -2494,7 +2494,7 @@
               },
               {
                 "kind": "Text",
-                "text": " to start a unit test CLI application and the following CLI arguments are supported by default:\n                "
+                "text": " 启动单元测试 CLI 应用程序，以下 CLI 参数默认受支持：\n                "
               },
               {
                 "kind": "List",
@@ -2568,7 +2568,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": Only run test cases defined in this file.\n                        Multiple instances are allowed at the same time to execute a specified group of files.\n                        Wildcards are supported, e.g., "
+                        "text": ": 仅运行在此文件中定义的测试用例。\n                        允许同时存在多个实例来执行指定的一组文件。\n                        支持通配符，例如， "
                       },
                       {
                         "kind": "Strong",
@@ -2594,7 +2594,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " only filters test files by file names, file path is not considered.\n                    "
+                        "text": " 仅根据文件名过滤测试文件，不考虑文件路径。\n                    "
                       }
                     ]
                   }
@@ -2650,13 +2650,13 @@
               },
               {
                 "kind": "Text",
-                "text": " is activated if a debugger is attached to the process from the beginning.\n            "
+                "text": " 如果从开始就附加了调试器，则会激活。\n            "
               }
             ]
           },
           {
             "kind": "Topic",
-            "title": "Mocking DateTime",
+            "title": "模拟日期时间",
             "content": [
               {
                 "kind": "Paragraph",
@@ -2751,7 +2751,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " calls.\n                "
+                    "text": " 调用。\n                "
                   }
                 ]
               }

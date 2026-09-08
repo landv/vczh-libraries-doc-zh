@@ -83,14 +83,14 @@
   "numberBeforeTitle": false,
   "topic": {
     "kind": "Topic",
-    "title": "Registration Macros and Attributes",
+    "title": "注册宏和属性",
     "content": [
       {
         "kind": "Paragraph",
         "content": [
           {
             "kind": "Text",
-            "text": "\n            VlppReflection registers C++ types by executing type loader code.\n            The source comment above "
+            "text": "\n            VlppReflection 通过执行类型加载器代码来注册 C++ 类型。\n            上方的源注释 "
           },
           {
             "kind": "Strong",
@@ -103,7 +103,7 @@
           },
           {
             "kind": "Text",
-            "text": " in VlppReflection contains the complete macro walkthrough;\n            this page summarizes the registration workflow and documents the attribute macros used to attach metadata to registered types, members and parameters.\n            These attributes are VlppReflection metadata, not C++ language attributes.\n        "
+            "text": " in VlppReflection 包含完整的宏遍历说明；\n            本页总结了注册工作流程，并记录了用于将元数据附加到已注册类型、成员和参数的属性宏。\n            这些属性是 VlppReflection 元数据，而不是 C++ 语言属性。\n        "
           }
         ]
       },
@@ -112,7 +112,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Type registration code is compiled only when "
+            "text": "\n            类型注册代码仅在 "
           },
           {
             "kind": "Strong",
@@ -125,20 +125,20 @@
           },
           {
             "kind": "Text",
-            "text": " is not defined.\n            Code that declares reflectable classes still needs to compile without runtime reflection, but member registration and attributes are part of the reflection build.\n        "
+            "text": " 未定义。\n            声明可反射类的代码仍然需要在没有运行时反射的情况下编译，但成员注册和属性是反射构建的一部分。\n        "
           }
         ]
       },
       {
         "kind": "Topic",
-        "title": "Registration Workflow",
+        "title": "注册工作流程",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                A registration unit usually follows this shape:\n            "
+                "text": "\n                注册单元通常遵循以下结构：\n            "
               }
             ]
           },
@@ -154,7 +154,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "Define one typelist macro that enumerates fully qualified C++ types."
+                        "text": "定义一个类型列表宏，用于枚举完全限定的C++类型。"
                       }
                     ]
                   },
@@ -163,7 +163,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "In headers, expand the typelist with "
+                        "text": "在头文件中，用 "
                       },
                       {
                         "kind": "Strong",
@@ -185,7 +185,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "In one C++ file, expand the typelist with "
+                        "text": "在一个 C++ 文件中，使用以下内容扩展类型列表 "
                       },
                       {
                         "kind": "Strong",
@@ -220,7 +220,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "Register enum items, struct fields, class members or interface members."
+                        "text": "注册枚举项、结构字段、类成员或接口成员。"
                       }
                     ]
                   },
@@ -229,7 +229,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "Create an "
+                        "text": "创建一个 "
                       },
                       {
                         "kind": "Strong",
@@ -242,7 +242,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " and call "
+                        "text": " 并调用 "
                       },
                       {
                         "kind": "Strong",
@@ -255,7 +255,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " for every type in the typelist."
+                        "text": " 对于类型列表中的每种类型。"
                       }
                     ]
                   },
@@ -264,7 +264,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "Install the loader through "
+                        "text": "通过以下方式安装加载器 "
                       },
                       {
                         "kind": "Strong",
@@ -277,7 +277,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " before reading reflected metadata."
+                        "text": " 在读取反射元数据之前。"
                       }
                     ]
                   }
@@ -290,7 +290,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Member registration macros often need a temporary comma macro because parameter name lists are written inside macro arguments:\n            "
+                "text": "\n                成员注册宏通常需要一个临时的逗号宏，因为参数名称列表写在宏参数内：\n            "
               }
             ]
           },
@@ -309,7 +309,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                The big source comment above "
+                "text": "\n                上方的大段源代码注释 "
               },
               {
                 "kind": "Strong",
@@ -322,7 +322,7 @@
               },
               {
                 "kind": "Text",
-                "text": " also lists these registration macro families:\n            "
+                "text": " 也列出这些注册宏族：\n            "
               }
             ]
           },
@@ -338,7 +338,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "Enums: "
+                        "text": "枚举： "
                       },
                       {
                         "kind": "Strong",
@@ -412,7 +412,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "Structs: "
+                        "text": "结构体： "
                       },
                       {
                         "kind": "Strong",
@@ -460,7 +460,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "Classes: "
+                        "text": "类： "
                       },
                       {
                         "kind": "Strong",
@@ -625,7 +625,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "Interfaces: "
+                        "text": "接口： "
                       },
                       {
                         "kind": "Strong",
@@ -742,7 +742,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                A reflectable interface must directly or indirectly inherit "
+                "text": "\n                可反射的接口必须直接或间接继承 "
               },
               {
                 "kind": "Strong",
@@ -755,7 +755,7 @@
               },
               {
                 "kind": "Text",
-                "text": ".\n                If Workflow script classes should be able to implement the interface, register a proxy and use a constructor that accepts "
+                "text": ".\n                如果工作流脚本类能够实现该接口，注册代理并使用接受 "
               },
               {
                 "kind": "Strong",
@@ -781,7 +781,7 @@
               },
               {
                 "kind": "Text",
-                "text": " only when script implementation is not required.\n            "
+                "text": " 仅当不需要脚本实现时。\n            "
               }
             ]
           }
@@ -789,14 +789,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Attribute Macros",
+        "title": "属性宏",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Attribute macros create "
+                "text": "\n                属性宏创建 "
               },
               {
                 "kind": "Strong",
@@ -809,7 +809,7 @@
               },
               {
                 "kind": "Text",
-                "text": " objects and store them in an "
+                "text": " 对象并将其存储在一个 "
               },
               {
                 "kind": "Strong",
@@ -861,7 +861,7 @@
               },
               {
                 "kind": "Text",
-                "text": " expose attributes through "
+                "text": " 通过 "
               },
               {
                 "kind": "Strong",
@@ -887,7 +887,7 @@
               },
               {
                 "kind": "Text",
-                "text": ".\n                Each attribute records its reflected struct type and the boxed values passed to the macro.\n            "
+                "text": ".\n                每个属性记录其反射的结构类型以及传递给宏的装箱值。\n            "
               }
             ]
           },
@@ -896,7 +896,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                The attribute type must satisfy these rules:\n            "
+                "text": "\n                属性类型必须满足以下规则：\n            "
               }
             ]
           },
@@ -912,7 +912,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "The type must be registered in reflection."
+                        "text": "类型必须在反射中注册。"
                       }
                     ]
                   },
@@ -921,7 +921,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "The registered type descriptor must be a struct, not a class or interface."
+                        "text": "注册的类型描述符必须是结构体，而不是类或接口"
                       }
                     ]
                   },
@@ -939,7 +939,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " must compile for the arguments passed to the macro."
+                        "text": " 必须为传递给宏的参数进行编译。"
                       }
                     ]
                   },
@@ -948,7 +948,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "Each argument should be "
+                        "text": "每个参数都应是 "
                       },
                       {
                         "kind": "Strong",
@@ -961,7 +961,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " or a reflected serializable value type, so metadata logging and generated metadata can write it back."
+                        "text": " 或一个反射的可序列化值类型，以便元数据日志和生成的元数据能够将其写回。"
                       }
                     ]
                   },
@@ -970,7 +970,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "Zero arguments are allowed for marker attributes."
+                        "text": "标记属性不允许有零个参数。"
                       }
                     ]
                   }
@@ -983,7 +983,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Use these macros inside a type member registration block:\n            "
+                "text": "\n                在类型成员注册块中使用这些宏：\n            "
               }
             ]
           },
@@ -1008,7 +1008,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": attaches the attribute to the current type descriptor."
+                        "text": ": 将属性附加到当前类型描述符。"
                       }
                     ]
                   },
@@ -1026,7 +1026,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": attaches the attribute to the most recently registered field, property, event, method or constructor. Put it immediately after the member macro it decorates."
+                        "text": ": 将属性附加到最近注册的字段、属性、事件、方法或构造函数上。应直接放在它所修饰的成员宏之后。"
                       }
                     ]
                   },
@@ -1044,7 +1044,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": attaches the attribute to a named parameter of the most recently registered method or constructor. The parameter name must match exactly one parameter."
+                        "text": ": 将属性附加到最近注册的方法或构造函数的命名参数上。参数名称必须与其中一个参数完全匹配。"
                       }
                     ]
                   }
@@ -1056,14 +1056,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Adding a Custom Attribute",
+        "title": "添加自定义属性",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                A custom attribute is just a reflected struct that is later attached by one of the attribute macros.\n                Keep it small and data-only.\n                The field order is the argument order seen by "
+                "text": "\n                自定义属性只是一个稍后通过属性宏附加的反射结构。\n                保持小而仅包含数据。\n                字段顺序是看到的参数顺序 "
               },
               {
                 "kind": "Strong",
@@ -1095,7 +1095,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                To read attributes, iterate the "
+                "text": "\n                要读取属性，遍历 "
               },
               {
                 "kind": "Strong",
@@ -1108,7 +1108,7 @@
               },
               {
                 "kind": "Text",
-                "text": ", check "
+                "text": "，检查 "
               },
               {
                 "kind": "Strong",
@@ -1121,7 +1121,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                then read each argument through "
+                "text": "，\n                然后通过读取每个参数 "
               },
               {
                 "kind": "Strong",
@@ -1147,7 +1147,7 @@
               },
               {
                 "kind": "Text",
-                "text": ".\n                If an attribute argument is a type reference, the value type is "
+                "text": ".\n                如果属性参数是类型引用，则值类型为 "
               },
               {
                 "kind": "Strong",
@@ -1160,7 +1160,7 @@
               },
               {
                 "kind": "Text",
-                "text": " and the boxed value stores an "
+                "text": " 以及包装的值存储一个 "
               },
               {
                 "kind": "Strong",
@@ -1182,7 +1182,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Workflow source attributes use the syntax "
+                "text": "\n                Workflow 源属性使用以下语法 "
               },
               {
                 "kind": "Strong",
@@ -1195,7 +1195,7 @@
               },
               {
                 "kind": "Text",
-                "text": ".\n                The Workflow analyzer resolves this to "
+                "text": ".\n                工作流分析器将其解析为 "
               },
               {
                 "kind": "Strong",
@@ -1208,7 +1208,7 @@
               },
               {
                 "kind": "Text",
-                "text": ".\n                The resolved type must be a reflected struct with zero fields or one field.\n                A one-field Workflow attribute takes one argument, and Workflow C++ generation currently emits only string values and "
+                "text": ".\n                解析的类型必须是零字段或一个字段的反射结构体\n                单字段工作流属性接受一个参数，而工作流 C++ 生成目前仅发出字符串值。 "
               },
               {
                 "kind": "Strong",
@@ -1221,7 +1221,7 @@
               },
               {
                 "kind": "Text",
-                "text": " values for attributes.\n            "
+                "text": " 属性的值。\n            "
               }
             ]
           }
@@ -1229,14 +1229,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Existing Production Attributes",
+        "title": "现有生产属性",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                A scan of the sibling source repositories found production attribute declarations only in the Workflow repo.\n                Test attributes in VlppReflection tests are intentionally excluded.\n                GacUI and generated sources use Workflow attributes, but they do not declare additional production attribute structs.\n            "
+                "text": "\n                对兄弟源代码库的扫描发现生产属性声明仅存在于工作流仓库中。\n                在 VlppReflection 测试中，测试属性被有意排除。\n                GacUI 和生成的源代码使用 Workflow 属性，但不声明额外的生产属性结构。\n            "
               }
             ]
           },
@@ -1245,7 +1245,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                All existing production attributes live in C++ namespace "
+                "text": "\n                所有现有的生产属性都位于 C++ 命名空间中 "
               },
               {
                 "kind": "Strong",
@@ -1258,7 +1258,7 @@
               },
               {
                 "kind": "Text",
-                "text": " and are reflected under "
+                "text": " 和在下面反映 "
               },
               {
                 "kind": "Strong",
@@ -1309,7 +1309,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": one "
+                        "text": ": 一个 "
                       },
                       {
                         "kind": "Strong",
@@ -1322,7 +1322,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ". Workflow "
+                        "text": ". 工作流 "
                       },
                       {
                         "kind": "Strong",
@@ -1335,7 +1335,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " controls the generated C++ file pair for a class."
+                        "text": " 控制为一个类生成的C++文件对。"
                       }
                     ]
                   },
@@ -1379,7 +1379,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " leaves a generated constructor, destructor or function body for user code merging."
+                        "text": " 为用户代码合并保留一个生成的构造函数、析构函数或函数体。"
                       }
                     ]
                   },
@@ -1423,7 +1423,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " emits the decorated generated C++ class member in a private section."
+                        "text": " 在私有部分中发出装饰过的生成 C++ 类成员。"
                       }
                     ]
                   },
@@ -1467,7 +1467,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " emits the decorated generated C++ class member in a protected section."
+                        "text": " 在保护部分中发出装饰过的生成 C++ 类成员。"
                       }
                     ]
                   },
@@ -1498,20 +1498,20 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": one "
+                        "text": ": 一个 "
                       },
                       {
                         "kind": "Strong",
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "ITypeDescriptor* argument"
+                            "text": "ITypeDescriptor* 参数"
                           }
                         ]
                       },
                       {
                         "kind": "Text",
-                        "text": ". Workflow "
+                        "text": ". 工作流 "
                       },
                       {
                         "kind": "Strong",
@@ -1524,7 +1524,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " emits a C++ friend declaration."
+                        "text": " 发出 C++ 友元声明。"
                       }
                     ]
                   },
@@ -1555,7 +1555,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": marker used by Workflow RPC validation to identify RPC interfaces."
+                        "text": ": Workflow RPC验证中用于识别RPC接口的标记。"
                       }
                     ]
                   },
@@ -1586,7 +1586,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": marker used by Workflow RPC generation for constructor metadata."
+                        "text": ": Workflow RPC生成中用于构造函数元数据的标记。"
                       }
                     ]
                   },
@@ -1617,7 +1617,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": marker used by Workflow RPC generation for by-value transport decisions."
+                        "text": ": Workflow RPC生成中用于按值传输决策的标记。"
                       }
                     ]
                   },
@@ -1648,7 +1648,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": marker used by Workflow RPC generation for by-reference transport decisions."
+                        "text": ": Workflow RPC生成中用于按引用传输决策的标记。"
                       }
                     ]
                   },
@@ -1679,7 +1679,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": marker used by Workflow RPC generation for cached by-reference behavior."
+                        "text": ": Workflow RPC生成中用于缓存按引用行为的标记。"
                       }
                     ]
                   },
@@ -1710,7 +1710,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": marker used by Workflow RPC generation for dynamic RPC behavior."
+                        "text": ": Workflow RPC生成中用于动态RPC行为的标记。"
                       }
                     ]
                   },
@@ -1741,7 +1741,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": one "
+                        "text": ": 一个 "
                       },
                       {
                         "kind": "Strong",
@@ -1754,7 +1754,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ". Workflow RPC metadata uses it for stable string ids."
+                        "text": ". 工作流 RPC 元数据使用它来获取稳定的字符串 ID。"
                       }
                     ]
                   },
@@ -1785,20 +1785,20 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": one "
+                        "text": ": 一个 "
                       },
                       {
                         "kind": "Strong",
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "vint argument"
+                            "text": "vint 参数"
                           }
                         ]
                       },
                       {
                         "kind": "Text",
-                        "text": ". Workflow RPC metadata uses it for stable numeric ids."
+                        "text": ". 工作流 RPC 元数据使用它来获取稳定的数字 ID。"
                       }
                     ]
                   }
@@ -1811,7 +1811,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                The C++ code generation attributes affect generated C++ layout only.\n                For example, "
+                "text": "\n                C++ 代码生成属性仅影响生成的 C++ 布局。\n                例如， "
               },
               {
                 "kind": "Strong",
@@ -1837,7 +1837,7 @@
               },
               {
                 "kind": "Text",
-                "text": " do not change Workflow visibility rules.\n            "
+                "text": " 不会更改工作流的可见性规则。\n            "
               }
             ]
           }

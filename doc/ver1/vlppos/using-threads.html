@@ -83,7 +83,7 @@
   "numberBeforeTitle": false,
   "topic": {
     "kind": "Topic",
-    "title": "Using Threads and Locks",
+    "title": "使用线程和锁",
     "content": [
       {
         "kind": "Paragraph",
@@ -93,7 +93,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "Lock protects resources, lock does not protect code."
+                "text": "锁保护资源，锁不保护代码。"
               }
             ]
           }
@@ -108,19 +108,19 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "The synchronization topic in MSDN"
+                "text": "MSDN中的同步主题"
               }
             ]
           },
           {
             "kind": "Text",
-            "text": " is recommended for learning how to write concurrent programs correctly in details.\n        "
+            "text": " 建议用于详细了解如何正确编写并发程序\n        "
           }
         ]
       },
       {
         "kind": "Topic",
-        "title": "Thread and thread pool",
+        "title": "线程和线程池",
         "content": [
           {
             "kind": "Paragraph",
@@ -136,7 +136,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is always recommended to use whenever possible, instead of using "
+                "text": " 建议始终尽可能使用，而不是使用 "
               },
               {
                 "kind": "Strong",
@@ -149,7 +149,7 @@
               },
               {
                 "kind": "Text",
-                "text": ".\n                Waiting for a thread to exit is a little bit tricky,\n                it is much safer to use "
+                "text": ".\n                等待线程退出有点棘手，\n                使用它要安全得多 "
               },
               {
                 "kind": "Strong",
@@ -162,7 +162,7 @@
               },
               {
                 "kind": "Text",
-                "text": " for this purpose.\n                This is why you are not recommended to use "
+                "text": " 为此目的。\n                这就是为什么不建议您使用 "
               },
               {
                 "kind": "Strong",
@@ -175,7 +175,7 @@
               },
               {
                 "kind": "Text",
-                "text": " directly.\n            "
+                "text": " 直接。\n            "
               }
             ]
           },
@@ -184,7 +184,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                To start a background task, this is the easiest way:\n                "
+                "text": "\n                要启动后台任务，这是最简单的方法：\n                "
               },
               {
                 "kind": "Program",
@@ -197,7 +197,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                An auto-delete thread is also able to do the same job:\n                "
+                "text": "\n                一个自动删除的线程也可以完成同样的工作：\n                "
               },
               {
                 "kind": "Program",
@@ -205,7 +205,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                By passing "
+                "text": "\n                通过传递 "
               },
               {
                 "kind": "Strong",
@@ -218,7 +218,7 @@
               },
               {
                 "kind": "Text",
-                "text": " as the second argument,\n                the "
+                "text": " 作为第二个参数，\n                该 "
               },
               {
                 "kind": "Strong",
@@ -231,7 +231,7 @@
               },
               {
                 "kind": "Text",
-                "text": " object will be deleted after the function finishes.\n                It is very important to notice that,\n                when you get the returned "
+                "text": " 对象将在函数结束之后被删除。\n                必须注意的是，\n                当你获取返回值时 "
               },
               {
                 "kind": "Strong",
@@ -244,7 +244,7 @@
               },
               {
                 "kind": "Text",
-                "text": " object from the "
+                "text": " 来自对象的 "
               },
               {
                 "kind": "Strong",
@@ -257,7 +257,7 @@
               },
               {
                 "kind": "Text",
-                "text": " function,\n                the thread could have finished and then the object was deleted.\n            "
+                "text": " 函数，\n                线程可能已经完成，然后对象被删除了。\n            "
               }
             ]
           },
@@ -266,7 +266,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                To wait for a task to complete,\n                A manual-unsignal "
+                "text": "\n                等待任务完成，\n                手动取消信号 "
               },
               {
                 "kind": "Strong",
@@ -279,7 +279,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is always recommended.\n                Manual-unsignal means that, when the event object is signaled and something pick up the event,\n                the event object will not be automatically unsignaled.\n                "
+                "text": " 建议始终使用。\n                手动取消信号意味着，当事件对象被信号触发且有某个对象接收该事件时，\n                事件对象不会自动取消信号。\n                "
               },
               {
                 "kind": "Program",
@@ -291,14 +291,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Thread local variables",
+        "title": "线程局部变量",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                By using "
+                "text": "\n                通过使用 "
               },
               {
                 "kind": "Strong",
@@ -311,7 +311,7 @@
               },
               {
                 "kind": "Text",
-                "text": " as a global variable,\n                a thread local variable is created.\n                "
+                "text": " 作为全局变量，\n                创建了一个线程局部变量。\n                "
               },
               {
                 "kind": "Program",
@@ -323,7 +323,7 @@
       },
       {
         "kind": "Topic",
-        "title": "Mutex, CriticalSection and SpinLock",
+        "title": "Mutex、CriticalSection 和 SpinLock",
         "content": [
           {
             "kind": "Paragraph",
@@ -352,7 +352,7 @@
               },
               {
                 "kind": "Text",
-                "text": " and "
+                "text": " 和 "
               },
               {
                 "kind": "Strong",
@@ -365,7 +365,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is very similar.\n                When multiple threads are waiting for a "
+                "text": " 非常相似。\n                当多个线程正在等待一个 "
               },
               {
                 "kind": "Strong",
@@ -391,7 +391,7 @@
               },
               {
                 "kind": "Text",
-                "text": " or a "
+                "text": " 或一个 "
               },
               {
                 "kind": "Strong",
@@ -404,7 +404,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                only one thread could pick it up at the same time.\n            "
+                "text": "，\n                同一时间只能有一个线程获取它。\n            "
               }
             ]
           },
@@ -422,7 +422,7 @@
               },
               {
                 "kind": "Text",
-                "text": " uses system resource. It is recommended when:\n                "
+                "text": " 使用系统资源。建议在以下情况使用：\n                "
               },
               {
                 "kind": "List",
@@ -433,7 +433,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "Owning a mutex for a long time could happen."
+                        "text": "长时间拥有互斥锁的情况可能发生。"
                       }
                     ]
                   },
@@ -442,7 +442,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "Synchronize multiple operations across processes. A global mutex requires a name to create."
+                        "text": "在多个进程之间同步多个操作。全局互斥量需要一个名称来创建。"
                       }
                     ]
                   }
@@ -464,7 +464,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is a bit faster than "
+                "text": " 比 "
               },
               {
                 "kind": "Strong",
@@ -477,7 +477,7 @@
               },
               {
                 "kind": "Text",
-                "text": ". It is recommended when:\n                "
+                "text": ". 当以下情况时建议使用：\n                "
               },
               {
                 "kind": "List",
@@ -488,7 +488,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "Owning a critical section for a long time could happen."
+                        "text": "长时间拥有临界区的情况可能发生。"
                       }
                     ]
                   },
@@ -500,13 +500,13 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "(Windows only)"
+                            "text": "（仅限 Windows）"
                           }
                         ]
                       },
                       {
                         "kind": "Text",
-                        "text": " You need a composable lock. When a critical section is owned by a thread, this particular thread can pick up the critical section again without result in a deadlock."
+                        "text": " 您需要一个可组合的锁。当临界区被一个线程拥有时，该特定线程可以再次获取临界区而不会导致死锁。"
                       }
                     ]
                   }
@@ -528,7 +528,7 @@
               },
               {
                 "kind": "Text",
-                "text": " macro is a convenient way to wait for a critical section:\n                "
+                "text": " 宏是一种方便的等待临界区的方法：\n                "
               },
               {
                 "kind": "Program",
@@ -550,7 +550,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is recommended when.\n                "
+                "text": " 建议在...时使用\n                "
               },
               {
                 "kind": "List",
@@ -561,7 +561,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "Always owning a spin lock for a very short time."
+                        "text": "始终仅短暂地拥有自旋锁。"
                       }
                     ]
                   }
@@ -583,7 +583,7 @@
               },
               {
                 "kind": "Text",
-                "text": " macro is a convenient way to wait for a spin lock:\n                "
+                "text": " 宏是一种方便的等待自旋锁的方式：\n                "
               },
               {
                 "kind": "Program",
@@ -595,7 +595,7 @@
       },
       {
         "kind": "Topic",
-        "title": "Semaphore",
+        "title": "信号量",
         "content": [
           {
             "kind": "Paragraph",
@@ -611,7 +611,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is simlar to "
+                "text": " 类似于 "
               },
               {
                 "kind": "Strong",
@@ -624,7 +624,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                the main difference is that,\n                multiple threads can pick up the same semaphore at the same time.\n                You can set a maximum number of owning threads.\n            "
+                "text": "，\n                主要区别在于，\n                多个线程可以同时获取同一个信号量。\n                您可以设置最大拥有线程数。\n            "
               }
             ]
           },
@@ -633,7 +633,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                A semaphore could be created as a global object to use across processes, it requires a name to create.\n            "
+                "text": "\n                信号量可以作为全局对象创建以在进程间使用，它需要一个名称来创建。\n            "
               }
             ]
           }
@@ -657,7 +657,7 @@
               },
               {
                 "kind": "Text",
-                "text": " cannot be owned by a thread. Instead, it is used to notify that something happens.\n            "
+                "text": " 不能被线程拥有。相反，它用于通知某事发生。\n            "
               }
             ]
           },
@@ -669,13 +669,13 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "(Windows only)"
+                    "text": "（仅限 Windows）"
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": " An event object could be created as a global object to use across processes, it requires a name to create.\n            "
+                "text": " 可以将事件对象创建为全局对象以在进程间使用，它需要一个名称来创建。\n            "
               }
             ]
           },
@@ -684,7 +684,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                A auto-unsignal event is initialized using "
+                "text": "\n                A自动取消信号事件使用 "
               },
               {
                 "kind": "Strong",
@@ -697,7 +697,7 @@
               },
               {
                 "kind": "Text",
-                "text": ".\n                When multiple threads is waiting on an auto-unsignal event,\n                if this event is signaled, only one thread get noticed, and the event is automatically unsignaled.\n            "
+                "text": ".\n                当多个线程正在等待自动取消信号事件时，\n                如果此事件被信号通知，只有一个线程会收到通知，并且事件会自动取消信号。\n            "
               }
             ]
           },
@@ -706,7 +706,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                A manual-unsignal event is initialized using "
+                "text": "\n                手动取消信号事件通过 "
               },
               {
                 "kind": "Strong",
@@ -719,7 +719,7 @@
               },
               {
                 "kind": "Text",
-                "text": ".\n                When multiple threads is waiting on an auto-unsignal event,\n                if this event is signaled, all threads get noticed.\n            "
+                "text": ".\n                当多个线程正在等待自动取消信号事件时，\n                如果此事件被信号通知，所有线程都会收到通知。\n            "
               }
             ]
           }
@@ -743,20 +743,20 @@
               },
               {
                 "kind": "Text",
-                "text": " can be owned by multiple thread in "
+                "text": " 可以在多个线程中被拥有 "
               },
               {
                 "kind": "Strong",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "reader mode"
+                    "text": "阅读模式"
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": ".\n                If any thread owns a "
+                "text": ".\n                如果任何线程拥有一个 "
               },
               {
                 "kind": "Strong",
@@ -776,20 +776,20 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "reader mode"
+                    "text": "阅读模式"
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": ", no thread can own it in "
+                "text": "，在中没有线程可以拥有它 "
               },
               {
                 "kind": "Strong",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "writer mode"
+                    "text": "写入模式"
                   }
                 ]
               },
@@ -813,20 +813,20 @@
               },
               {
                 "kind": "Text",
-                "text": " can be owned by only one thread in "
+                "text": " 只能在单个线程中被拥有 "
               },
               {
                 "kind": "Strong",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "writer mode"
+                    "text": "写入模式"
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": ".\n                If any thread owns a "
+                "text": ".\n                如果任何线程拥有一个 "
               },
               {
                 "kind": "Strong",
@@ -846,20 +846,20 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "writer mode"
+                    "text": "写入模式"
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": ", no thread can own it in "
+                "text": "，在中没有线程可以拥有它 "
               },
               {
                 "kind": "Strong",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "reader mode"
+                    "text": "阅读模式"
                   }
                 ]
               },
@@ -874,7 +874,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                It is recommended to use "
+                "text": "\n                建议使用 "
               },
               {
                 "kind": "Strong",
@@ -887,7 +887,7 @@
               },
               {
                 "kind": "Text",
-                "text": " in this way:\n                "
+                "text": " 以这种方式：\n                "
               },
               {
                 "kind": "Program",
@@ -915,7 +915,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is used when you need to temporarily give up a "
+                "text": " 当您需要暂时放弃时使用 "
               },
               {
                 "kind": "Strong",
@@ -928,7 +928,7 @@
               },
               {
                 "kind": "Text",
-                "text": " or a "
+                "text": " 或一个 "
               },
               {
                 "kind": "Strong",
@@ -941,7 +941,7 @@
               },
               {
                 "kind": "Text",
-                "text": " to wait for a signal.\n            "
+                "text": " 等待信号。\n            "
               }
             ]
           },
@@ -950,7 +950,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                You are not recommended to use "
+                "text": "\n                不建议您使用 "
               },
               {
                 "kind": "Strong",
@@ -963,7 +963,7 @@
               },
               {
                 "kind": "Text",
-                "text": " in such scenario,\n                because it is very easy to run into a deadlock.\n            "
+                "text": " 在这种情况下\n                因为很容易陷入死锁。\n            "
               }
             ]
           },
@@ -972,7 +972,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                The "
+                "text": "\n                该 "
               },
               {
                 "kind": "Strong",
@@ -985,7 +985,7 @@
               },
               {
                 "kind": "Text",
-                "text": " method is used to termporarily give up a "
+                "text": " 方法用于暂时放弃一个 "
               },
               {
                 "kind": "Strong",
@@ -1005,13 +1005,13 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "(Windows only)"
+                    "text": "（仅限 Windows）"
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": " There are also "
+                "text": " 也有 "
               },
               {
                 "kind": "Strong",
@@ -1024,7 +1024,7 @@
               },
               {
                 "kind": "Text",
-                "text": " and "
+                "text": " 和 "
               },
               {
                 "kind": "Strong",
@@ -1050,7 +1050,7 @@
               },
               {
                 "kind": "Text",
-                "text": ".\n                Functions above are only allowed to call when a thread actually owns the lock to give up.\n            "
+                "text": ".\n                上述函数仅允许在某个线程实际拥有锁时调用以释放。\n            "
               }
             ]
           },
@@ -1059,7 +1059,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                For example:\n                "
+                "text": "\n                例如：\n                "
               },
               {
                 "kind": "Program",
@@ -1072,7 +1072,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                You can wake one pending thread by calling the "
+                "text": "\n                您可以通过调用来唤醒一个挂起的线程 "
               },
               {
                 "kind": "Strong",
@@ -1085,7 +1085,7 @@
               },
               {
                 "kind": "Text",
-                "text": " method,\n                or "
+                "text": " 方法，\n                or "
               },
               {
                 "kind": "Strong",
@@ -1098,7 +1098,7 @@
               },
               {
                 "kind": "Text",
-                "text": " for all threads.\n            "
+                "text": " 用于所有线程。\n            "
               }
             ]
           }

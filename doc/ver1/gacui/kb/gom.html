@@ -159,14 +159,14 @@
   "numberBeforeTitle": false,
   "topic": {
     "kind": "Topic",
-    "title": "GacUI Object Models",
+    "title": "GacUI 对象模型",
     "content": [
       {
         "kind": "Paragraph",
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Most of the important GacUI objects can be categorized into:\n            "
+            "text": "\n            大多数重要的 GacUI 对象可以分为：\n            "
           },
           {
             "kind": "List",
@@ -186,7 +186,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ": An element is a renderable graphics object, including shapes, and texts."
+                    "text": ": 元素是可渲染的图形对象，包括形状和文本。"
                   }
                 ]
               },
@@ -204,7 +204,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ": A composition controls layout with user input events, deciding bounds of elements."
+                    "text": ": 一个通过用户输入事件控制布局的组合，决定元素的边界。"
                   }
                 ]
               },
@@ -222,7 +222,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ": A control provides a set of functionalities that applications most likely need."
+                    "text": ": 控件提供应用程序最有可能需要的一组功能。"
                   }
                 ]
               },
@@ -234,13 +234,13 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "Control Templates"
+                        "text": "控件模板"
                       }
                     ]
                   },
                   {
                     "kind": "Text",
-                    "text": ": A control template is designed for a certain kind of control, controlling how controls look like."
+                    "text": ": 控件模板是为某种控件设计的，控制控件的外观。"
                   }
                 ]
               },
@@ -252,13 +252,13 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "Item Templates"
+                        "text": "项目模板"
                       }
                     ]
                   },
                   {
                     "kind": "Text",
-                    "text": ": An item template works like a control template, but it controls repetitive parts in controls, like list items."
+                    "text": ": 项模板类似于控件模板，但用于控制控件中的重复部分，如列表项。"
                   }
                 ]
               }
@@ -268,14 +268,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Organization of Objects",
+        "title": "对象的组织结构",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                GacUI maintains objects in two trees in a window.\n                The boundary and user inputs are controlled by "
+                "text": "\n                GacUI 在窗口中维护两个树形结构的对象。\n                边界和用户输入由 "
               },
               {
                 "kind": "Strong",
@@ -288,7 +288,7 @@
               },
               {
                 "kind": "Text",
-                "text": " and "
+                "text": " 和 "
               },
               {
                 "kind": "Strong",
@@ -307,7 +307,7 @@
           },
           {
             "kind": "Topic",
-            "title": "Composition Tree",
+            "title": "组合树",
             "content": [
               {
                 "kind": "Paragraph",
@@ -323,7 +323,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " is the root object of a composition tree.\n                "
+                    "text": " 是组合树的根对象。\n                "
                   }
                 ]
               },
@@ -332,7 +332,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    All visible effects and user inputs are handled by a composition tree.\n                    A composition could has other compositions as its child compositions,\n                    and it could also has up to one element as its child element.\n                "
+                    "text": "\n                    所有可见效果和用户输入都由组合树处理。\n                    一个组合可以有其他组合作为其子组合，\n                    并且它最多可以有一个元素作为其子元素。\n                "
                   }
                 ]
               },
@@ -341,7 +341,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    When a composition has an element,\n                    the element fills the whole area of this composition,\n                    telling this composition about size constraints.\n                "
+                    "text": "\n                    当一个组合包含一个元素时，\n                    该元素填充了此组合的整个区域，\n                    告知此组合关于大小限制。\n                "
                   }
                 ]
               },
@@ -350,7 +350,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    A composition can choose to listen to all size constraints of child compositions and the child element.\n                    Different kinds of compositions have its own algorithms to controls where to put child compositions,\n                    so that child compositions can be required to organized like a list, a table, or even complex behaviors.\n                "
+                    "text": "\n                    一个组合可以选择监听所有子组合和子元素的大小约束。\n                    不同类型的组合有其自己的算法来控制子组合的放置位置，\n                    以便子组合可以被要求以列表、表格甚至更复杂的行为方式进行组织。\n                "
                   }
                 ]
               },
@@ -359,7 +359,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    When a composition is hidden,\n                    all child composition are also hidden,\n                    but the size constraints are still there,\n                    they are not ignored while doing layouts.\n                "
+                    "text": "\n                    当一个组合被隐藏时，\n                    所有子组合也隐藏，\n                    但尺寸约束仍然存在，\n                    它们在进行布局时不会被忽略。\n                "
                   }
                 ]
               }
@@ -367,7 +367,7 @@
           },
           {
             "kind": "Topic",
-            "title": "Control Tree",
+            "title": "控件树",
             "content": [
               {
                 "kind": "Paragraph",
@@ -383,7 +383,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " is the root object of a control tree.\n                    A control controls behaviors of its child controls.\n                "
+                    "text": " 是控件树的根对象。\n                    控件控制其子控件的行为。\n                "
                   }
                 ]
               },
@@ -392,7 +392,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    For example,\n                    when a control is disabled,\n                    all child controls are also disabled.\n                    When a control changes its font,\n                    all child controls are also get their fonts changed,\n                    unless for those who are explicitly assigned with other fonts.\n                "
+                    "text": "\n                    例如，\n                    当控件被禁用时，\n                    所有子控件也被禁用。\n                    当一个控件更改其字体时，\n                    所有子控件也会更改其字体，\n                    除非那些被明确分配了其他字体的人。\n                "
                   }
                 ]
               },
@@ -401,20 +401,20 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    When a control is focused,\n                    it removes the focus from the last control in the same window.\n                    In this case, its "
+                    "text": "\n                    当一个控件获得焦点时，\n                    它会从同一窗口中的最后一个控件移除焦点。\n                    在这种情况下，它的 "
                   },
                   {
                     "kind": "Strong",
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "focusable composition"
+                        "text": "可聚焦组合"
                       }
                     ]
                   },
                   {
                     "kind": "Text",
-                    "text": " receives all keyboard input.\n                "
+                    "text": " 接收所有键盘输入。\n                "
                   }
                 ]
               }
@@ -422,14 +422,14 @@
           },
           {
             "kind": "Topic",
-            "title": "Control Templates",
+            "title": "控件模板",
             "content": [
               {
                 "kind": "Paragraph",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Visible effects are controlled by control templates or item templates.\n                    A control just be assigned a control template when it is created,\n                    but another control template can be reassigned to the same control to replace the old control template.\n                "
+                    "text": "\n                    可见效果由控制模板或项模板控制。\n                    控件在创建时只需分配一个控件模板，\n                    但是另一个控件模板可以重新分配给同一控件以替换旧的控件模板。\n                "
                   }
                 ]
               },
@@ -438,7 +438,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    A control template is a composition,\n                    but in order to create visible effects for a control when it is performing some work or handling user inputs,\n                    there is more thing in a control template that is specifically designed for a control.\n                "
+                    "text": "\n                    控件模板是一个组合，\n                    但为了在控件执行某些工作或处理用户输入时创建可见效果，\n                    控件模板中还有其他一些专门针对控件设计的内容。\n                "
                   }
                 ]
               },
@@ -447,7 +447,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    If you assign a control template to a wrong kind of control,\n                    it crashes.\n                "
+                    "text": "\n                    如果你将控件模板分配给不正确的控件类型，\n                    它崩溃了。\n                "
                   }
                 ]
               }
@@ -455,14 +455,14 @@
           },
           {
             "kind": "Topic",
-            "title": "Item Templates",
+            "title": "项目模板",
             "content": [
               {
                 "kind": "Paragraph",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Some list controls could also be assigned with an item template.\n                    Multiple instances of the assigned item template are created when multiple list items are required to display in this control.\n                    When a list item is scrolled out of the control,\n                    its item template is deleted.\n                "
+                    "text": "\n                    一些列表控件也可以分配一个项目模板。\n                    当需要在该控件中显示多个列表项时，会创建多个指定项模板的实例。\n                    当列表项滚动出控件范围时，\n                    它的项模板已被删除。\n                "
                   }
                 ]
               },
@@ -471,7 +471,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Instead of relying on compositions,\n                    list controls have its own configurable way to organize items,\n                    ensuring that an item only takes a minimum resource when it is out of sight.\n                "
+                    "text": "\n                    而不是依赖组合，\n                    列表控件具有其自身可配置的项目组织方式，\n                    确保当项目不可见时仅占用最小资源。\n                "
                   }
                 ]
               }
@@ -479,40 +479,40 @@
           },
           {
             "kind": "Topic",
-            "title": "Putting Controls and Compositions Together",
+            "title": "将控件和组合放在一起",
             "content": [
               {
                 "kind": "Paragraph",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    A control has a "
+                    "text": "\n                    控件有一个 "
                   },
                   {
                     "kind": "Strong",
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "bounds composition"
+                        "text": "边界组合"
                       }
                     ]
                   },
                   {
                     "kind": "Text",
-                    "text": " and a "
+                    "text": " 和一个 "
                   },
                   {
                     "kind": "Strong",
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "container composition"
+                        "text": "容器组合"
                       }
                     ]
                   },
                   {
                     "kind": "Text",
-                    "text": ",\n                    which are explicitly specified by its control template.\n                "
+                    "text": "，\n                    由其控件模板显式指定的。\n                "
                   }
                 ]
               },
@@ -521,33 +521,33 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    The "
+                    "text": "\n                    该 "
                   },
                   {
                     "kind": "Strong",
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "bounds composition"
+                        "text": "边界组合"
                       }
                     ]
                   },
                   {
                     "kind": "Text",
-                    "text": " is the bounding composition of this control.\n                    When a control is placed inside another control or composition,\n                    the "
+                    "text": " 是此控件的边界组合。\n                    当一个控件被放置在另一个控件或组合内时，\n                    该 "
                   },
                   {
                     "kind": "Strong",
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "bounds composition"
+                        "text": "边界组合"
                       }
                     ]
                   },
                   {
                     "kind": "Text",
-                    "text": " is placed inside the parent control or composition.\n                "
+                    "text": " 放置在父控件或组合中。\n                "
                   }
                 ]
               },
@@ -556,33 +556,33 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    The "
+                    "text": "\n                    该 "
                   },
                   {
                     "kind": "Strong",
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "container composition"
+                        "text": "容器组合"
                       }
                     ]
                   },
                   {
                     "kind": "Text",
-                    "text": " is a place to store controls a compositions that are wanted to be place inside this control.\n                    When a control or a composition is placed inside this control,\n                    they are placed inside the "
+                    "text": " 是一个用于存储控件的组合，这些控件希望被放置在这个控件内部。\n                    当一个控件或组合被放置在此控件内时，\n                    它们被放置在内部 "
                   },
                   {
                     "kind": "Strong",
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "container composition"
+                        "text": "容器组合"
                       }
                     ]
                   },
                   {
                     "kind": "Text",
-                    "text": " of this control.\n                "
+                    "text": " 此控件的。\n                "
                   }
                 ]
               },
@@ -591,7 +591,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Whenever you change the parent-child relationships of controls or compositions,\n                    the control tree and the composition tree are automatically maintained.\n                "
+                    "text": "\n                    每当您更改控件或组合的父子关系时，\n                    控件树和合成树会自动维护。\n                "
                   }
                 ]
               }
@@ -601,14 +601,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Life Cycle",
+        "title": "生命周期",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                When a composition is deleted,\n                all child compositions are also deleted.\n            "
+                "text": "\n                当一个组合被删除时，\n                所有子组合也被删除。\n            "
               }
             ]
           },
@@ -617,7 +617,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                When a control is deleted,\n                all child controls are also deleted.\n                All compositions inside a deleted control will also be deleted.\n            "
+                "text": "\n                当一个控件被删除时，\n                所有子控件也被删除。\n                删除控件内的所有组合也将被删除。\n            "
               }
             ]
           },
@@ -626,20 +626,20 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Most of the cases you only need to delete a window,\n                which destroys everything.\n                But sometimes when you delete a composition that is not the "
+                "text": "\n                大多数情况下你只需要删除一个窗口，\n                这将销毁所有内容。\n                但有时当你删除一个不是 "
               },
               {
                 "kind": "Strong",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "bounds composition"
+                    "text": "边界组合"
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": " of a control while some children are.\n                And compositions or controls could be still staying in their parent objects when you are deleting them.\n                it could cause memory leaks if you just call the "
+                "text": " 控件的某些子项。\n                并且组合或控件在删除时仍可能保留在其父对象中，\n                如果只是调用它，可能会导致内存泄漏。 "
               },
               {
                 "kind": "Strong",
@@ -652,7 +652,7 @@
               },
               {
                 "kind": "Text",
-                "text": " operator of C++.\n            "
+                "text": " C++ 的运算符\n            "
               }
             ]
           },
@@ -661,7 +661,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                In order to prevent from all these issues,\n                "
+                "text": "\n                为了防止所有这些问题，\n                "
               },
               {
                 "kind": "Strong",
@@ -674,7 +674,7 @@
               },
               {
                 "kind": "Text",
-                "text": " and "
+                "text": " 和 "
               },
               {
                 "kind": "Strong",
@@ -687,7 +687,7 @@
               },
               {
                 "kind": "Text",
-                "text": " are highly recommended to use.\n                They handle every possible cases.\n            "
+                "text": " 强烈建议使用。\n                它们处理所有可能的情况。\n            "
               }
             ]
           },
@@ -696,7 +696,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                It is safe to delete a "
+                "text": "\n                可以安全地删除一个 "
               },
               {
                 "kind": "Strong",
@@ -709,7 +709,7 @@
               },
               {
                 "kind": "Text",
-                "text": " by using the "
+                "text": " 通过使用 "
               },
               {
                 "kind": "Strong",
@@ -722,7 +722,7 @@
               },
               {
                 "kind": "Text",
-                "text": " operator of C++.\n            "
+                "text": " C++ 的运算符\n            "
               }
             ]
           }
@@ -730,14 +730,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Global Objects",
+        "title": "全局对象",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                There are also some global objects in GacUI applications.\n            "
+                "text": "\n                GacUI应用程序中也存在一些全局对象。\n            "
               }
             ]
           },
@@ -755,7 +755,7 @@
               },
               {
                 "kind": "Text",
-                "text": " controls life cycles of all windows,\n                and also offers features so that the UI thread and other threads are able to communicate.\n            "
+                "text": " 控制所有窗口的生命周期，\n                还提供了功能，使得UI线程和其他线程能够通信。\n            "
               }
             ]
           },
@@ -773,7 +773,7 @@
               },
               {
                 "kind": "Text",
-                "text": " exposed operating system features.\n                When a GacUI application is running on different platforms,\n                different "
+                "text": " 暴露的操作系统功能。\n                当 GacUI 应用程序在不同平台上运行时，\n                不同 "
               },
               {
                 "kind": "Strong",
@@ -786,7 +786,7 @@
               },
               {
                 "kind": "Text",
-                "text": " kicks in.\n                To port GacUI to a new platform,\n                or to run GacUI in a virtual environment\n                (e.g. running all GacUI objects in a window that completely controlled by you, typically when developing games),\n                you need to provide your own implementation of "
+                "text": " 启动。\n                要将 GacUI 移植到新平台，\n                或在虚拟环境中运行 GacUI\n                （例如，在一个完全由您控制的窗口中运行所有 GacUI 对象，通常在开发游戏时）\n                您需要提供您自己的实现 "
               },
               {
                 "kind": "Strong",
@@ -807,27 +807,27 @@
       },
       {
         "kind": "Topic",
-        "title": "Thread Safety",
+        "title": "线程安全",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                All GacUI objects and their methods are not thread safe,\n                and almost all of them "
+                "text": "\n                所有 GacUI 对象及其方法都不是线程安全的，\n                和几乎所有的视图 "
               },
               {
                 "kind": "Strong",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "must only be accessed by the UI thread"
+                    "text": "只能由UI线程访问"
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": ",\n                even for readonly operations.\n            "
+                "text": "，\n                即使是只读操作。\n            "
               }
             ]
           },
@@ -836,7 +836,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                One exception is that,\n                when a composition or a control has not been added to a window,\n                it can be operated by a non-UI thread.\n                But it is still not safe when multiple threads are accessing the same object at the same time.\n            "
+                "text": "\n                一个例外是，\n                当一个组合或控件尚未添加到窗口时，\n                它可以通过非UI线程进行操作。\n                但是当多个线程同时访问同一对象时，它仍然不安全。\n            "
               }
             ]
           }

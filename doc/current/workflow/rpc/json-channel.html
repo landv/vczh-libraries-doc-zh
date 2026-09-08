@@ -85,7 +85,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n\t\t\tThe JSON RPC layer separates RPC object semantics from data transmission. RpcJsonDispatcher, RpcJsonLifecycle, RpcJsonObjectOps, and RpcJsonObjectEventOps know how to turn RPC operations into JSON nodes. IRpcJsonMessageDispatcher is the boundary that sends those JSON nodes to another endpoint and receives JSON nodes back.\n\t\t"
+            "text": "\n\t\t\tJSON RPC 层将 RPC 对象语义与数据传输分离开。RpcJsonDispatcher、RpcJsonLifecycle、RpcJsonObjectOps 和 RpcJsonObjectEventOps 知道如何将 RPC 操作转换为 JSON 节点。IRpcJsonMessageDispatcher 是将这些 JSON 节点发送到另一个端点并接收返回的 JSON 节点的边界。\n\t\t"
           }
         ]
       },
@@ -94,20 +94,20 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n\t\t\tUse this page when wiring a JSON RPC endpoint to a transport. Implement IRpcJsonMessageDispatcher for a custom transport. Use the channeling classes when vl::inter_process should provide the transport.\n\t\t"
+            "text": "\n\t\t\t当将 JSON RPC 端点连接到传输时使用此页面。对于自定义传输，请实现 IRpcJsonMessageDispatcher。当 vl::inter_process 应提供传输时，请使用通道类。\n\t\t"
           }
         ]
       },
       {
         "kind": "Topic",
-        "title": "IRpcJsonMessageDispatcher Contract",
+        "title": "IRpcJsonMessageDispatcher 合约",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n\t\t\t\tIRpcJsonMessageDispatcher has two runtime responsibilities:\n\t\t\t\t"
+                "text": "\n\t\t\t\tIRpcJsonMessageDispatcher 有两个运行时职责：\n\t\t\t\t"
               },
               {
                 "kind": "List",
@@ -118,7 +118,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "AllocateRequestId returns a unique request id for outgoing JSON RPC messages from this endpoint."
+                        "text": "AllocateRequestId 为从此端点发出的出站 JSON RPC 消息分配一个唯一的请求 ID。"
                       }
                     ]
                   },
@@ -127,7 +127,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "OnJsonRequest sends one JSON request according to the RequestType and returns the response JSON node when a response is expected."
+                        "text": "OnJsonRequest 根据 RequestType 发送一个 JSON 请求，并在需要响应时返回响应的 JSON 节点。"
                       }
                     ]
                   }
@@ -140,7 +140,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n\t\t\t\tRequestType describes the routing behavior:\n\t\t\t\t"
+                "text": "\n\t\t\t\tRequestType 描述了路由行为：\n\t\t\t\t"
               },
               {
                 "kind": "List",
@@ -151,7 +151,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "Direct sends a request to the target client and waits for the matching response."
+                        "text": "直接向目标客户端发送请求并等待匹配的响应。"
                       }
                     ]
                   },
@@ -160,7 +160,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "Broadcast sends a request through the server-side broker and waits for the broker response."
+                        "text": "广播通过服务器端代理发送请求并等待代理响应。"
                       }
                     ]
                   },
@@ -169,7 +169,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "BroadcastAndDrop sends a broadcast message that does not produce a response. Service declarations use this mode."
+                        "text": "BroadcastAndDrop 发送一个广播消息，该消息不会产生响应。服务声明使用此模式。"
                       }
                     ]
                   }
@@ -182,7 +182,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n\t\t\t\tWhen a transport receives a JSON RPC request for the local endpoint, call IRpcJsonMessageDispatcher::DefaultTranslate with the local object operations, event operations, dispatcher and lifecycle. DefaultTranslate invokes the local RPC operation and returns the response JSON node when the request needs one.\n\t\t\t"
+                "text": "\n\t\t\t\t当传输接收到针对本地端点的 JSON RPC 请求时，调用 IRpcJsonMessageDispatcher::DefaultTranslate，并传入本地对象操作、事件操作、分发器和生命周期。DefaultTranslate 调用本地 RPC 操作，并在请求需要响应时返回响应的 JSON 节点。\n\t\t\t"
               }
             ]
           },
@@ -191,7 +191,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n\t\t\t\tA custom transport usually follows this shape:\n\t\t\t\t"
+                "text": "\n\t\t\t\t自定义传输通常遵循以下结构：\n\t\t\t\t"
               },
               {
                 "kind": "Program",
@@ -205,7 +205,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n\t\t\t\tThe functions named SendDirectAndWaitForResponse, SendBroadcastAndWaitForResponse, SendBroadcastAndDrop, ClassifyIncomingRequest and SendJsonResponse are transport-specific. They may use sockets, pipes, HTTP, shared memory or another message bus. The RPC layer only requires that request ids and response routing stay consistent.\n\t\t\t"
+                "text": "\n\t\t\t\t名为 SendDirectAndWaitForResponse、SendBroadcastAndWaitForResponse、SendBroadcastAndDrop、ClassifyIncomingRequest 和 SendJsonResponse 的函数是传输特定的。它们可能使用套接字、管道、HTTP、共享内存或另一种消息总线。RPC 层仅要求请求 ID 和响应路由保持一致。\n\t\t\t"
               }
             ]
           }
@@ -213,14 +213,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Default vl::inter_process Channeling",
+        "title": "默认 vl::inter_process 通道",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n\t\t\t\tThe default implementation is in namespace vl::rpc_controller::channeling. It implements IRpcJsonMessageDispatcher on top of vl::inter_process channels:\n\t\t\t\t"
+                "text": "\n\t\t\t\t默认实现位于命名空间 vl::rpc_controller::channeling 中。它在 vl::inter_process 通道之上实现了 IRpcJsonMessageDispatcher：\n\t\t\t\t"
               },
               {
                 "kind": "List",
@@ -240,7 +240,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "JsonChannel is vl::inter_process::IChannel<JsonPackage>."
+                        "text": "JsonChannel 是 vl::inter_process::IChannel<JsonPackage>。"
                       }
                     ]
                   },
@@ -249,7 +249,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "JsonNetworkChannelClient and JsonNetworkChannelServer connect JSON packages to an INetworkProtocol transport."
+                        "text": "JsonNetworkChannelClient 和 JsonNetworkChannelServer 将 JSON 包连接到 INetworkProtocol 传输。"
                       }
                     ]
                   },
@@ -258,7 +258,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "JsonLocalChannelClient connects an in-process endpoint to the same channel server."
+                        "text": "JsonLocalChannelClient 将进程内端点连接到相同的通道服务器。"
                       }
                     ]
                   },
@@ -267,7 +267,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "RpcJsonDispatcherClient implements IRpcJsonMessageDispatcher and IChannelReader<JsonPackage> for one endpoint."
+                        "text": "RpcJsonDispatcherClient 实现了 IRpcJsonMessageDispatcher 和 IChannelReader<JsonPackage> 接口，用于一个端点。"
                       }
                     ]
                   },
@@ -276,7 +276,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "RpcJsonDispatcherServer implements IChannelReader<JsonPackage> for the server-side broadcast broker."
+                        "text": "RpcJsonDispatcherServer 实现了 IChannelReader<JsonPackage> 接口，用于服务器端广播代理。"
                       }
                     ]
                   }
@@ -289,7 +289,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n\t\t\t\tThe channel server is a broker. It must have one local channel client owned by RpcJsonDispatcherServer. That local client receives broadcast requests, service declarations and broadcast responses. Normal clients, whether local or remote, are registered with the broker after they connect.\n\t\t\t"
+                "text": "\n\t\t\t\t通道服务器是一个代理。它必须有一个由 RpcJsonDispatcherServer 拥有的本地通道客户端。该本地客户端接收广播请求、服务声明和广播响应。普通客户端，无论是本地还是远程，在连接后都会向代理注册。\n\t\t\t"
               }
             ]
           }
@@ -297,14 +297,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Shared Channel Client Glue",
+        "title": "共享通道客户端粘合层",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n\t\t\t\tA JSON channel client must declare at least one channel name. The RPC dispatcher only needs the channel object for that name:\n\t\t\t\t"
+                "text": "\n\t\t\t\tJSON 通道客户端必须声明至少一个通道名称。RPC 调度器只需要该名称对应的通道对象：\n\t\t\t\t"
               },
               {
                 "kind": "Program",
@@ -317,14 +317,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Endpoint Dispatcher Client",
+        "title": "端点分发器客户端",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n\t\t\t\tRpcJsonDispatcherClientForTaskQueue already implements IRpcJsonMessageDispatcher by sending JSON packages through a JsonChannel. A project still needs a small subclass to create RpcJsonDispatcher and RpcJsonLifecycle, then register the RPC metadata and helper operations for the loaded module.\n\t\t\t"
+                "text": "\n\t\t\t\tRpcJsonDispatcherClientForTaskQueue 已经通过 JsonChannel 发送 JSON 包实现了 IRpcJsonMessageDispatcher。一个项目仍然需要一个小的子类来创建 RpcJsonDispatcher 和 RpcJsonLifecycle，然后注册已加载模块的 RPC 元数据和辅助操作。\n\t\t\t"
               }
             ]
           },
@@ -333,7 +333,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n\t\t\t\tThe module-specific registration is represented below by ConfigureLifecycleForRpcModule. It should set the id map, serializer, object ops, event ops, event attachers and wrapper factory for the module being used.\n\t\t\t\t"
+                "text": "\n\t\t\t\t模块特定的注册由 ConfigureLifecycleForRpcModule 表示。它应为所使用的模块设置 ID 映射、序列化器、对象操作、事件操作、事件附加器和包装器工厂。\n\t\t\t\t"
               },
               {
                 "kind": "Program",
@@ -346,14 +346,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Server Channel Setup",
+        "title": "服务器通道设置",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n\t\t\t\tThe server channel accepts only clients that declare the RPC channel name. After the broker local client is connected, every accepted normal client is registered with RpcJsonDispatcherServer.\n\t\t\t\tThe admission callback receives "
+                "text": "\n\t\t\t\t服务器通道仅接受声明了RPC通道名称的客户端。在代理本地客户端连接后，每个接受的普通客户端都将注册到RpcJsonDispatcherServer中。\n\t\t\t\t入门回调接收 "
               },
               {
                 "kind": "Strong",
@@ -366,7 +366,7 @@
               },
               {
                 "kind": "Text",
-                "text": " for a local client so the producer's existing reference counter remains valid throughout the callback; it is null for a network client.\n\t\t\t\tForward or store that "
+                "text": " 对于本地客户端，以确保生产者的现有引用计数在回调期间保持有效；对于网络客户端，该值为 null。\n\t\t\t\t转发或存储该内容 "
               },
               {
                 "kind": "Strong",
@@ -379,7 +379,7 @@
               },
               {
                 "kind": "Text",
-                "text": " directly, and use "
+                "text": " 直接，并使用 "
               },
               {
                 "kind": "Strong",
@@ -392,7 +392,7 @@
               },
               {
                 "kind": "Text",
-                "text": " only for an operation that requires a raw pointer. Never create another "
+                "text": " 仅用于需要原始指针的操作。切勿创建另一个 "
               },
               {
                 "kind": "Strong",
@@ -405,7 +405,7 @@
               },
               {
                 "kind": "Text",
-                "text": " from the raw result.\n\t\t\t\t"
+                "text": " 从原始结果。\n\t\t\t\t"
               },
               {
                 "kind": "Program",
@@ -418,14 +418,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Hosting a Local Service Endpoint",
+        "title": "托管本地服务端点",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n\t\t\t\tA process can host services through a local channel client connected to the same channel server. This is useful when the process that owns the channel server also owns local services.\n\t\t\t\t"
+                "text": "\n\t\t\t\t一个进程可以通过连接到同一通道服务器的本地通道客户端托管服务。当拥有通道服务器的进程也拥有本地服务时，这很有用。\n\t\t\t\t"
               },
               {
                 "kind": "Program",
@@ -438,14 +438,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Connecting a Remote Client",
+        "title": "连接远程客户端",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n\t\t\t\tA remote client uses JsonNetworkChannelClient over a raw transport such as "
+                "text": "\n\t\t\t\t远程客户端使用JsonNetworkChannelClient通过原始传输（如 "
               },
               {
                 "kind": "Strong",
@@ -471,7 +471,7 @@
               },
               {
                 "kind": "Text",
-                "text": ". The channel connection supplies the client id; OnConnected initializes the RPC lifecycle for that id.\n\t\t\t\t"
+                "text": "通道连接提供客户端ID；OnConnected 为该ID 初始化 RPC 生命周期。\n\t\t\t\t"
               },
               {
                 "kind": "Program",
@@ -485,7 +485,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n\t\t\t\tAfter ConnectRemoteRpcClient returns, use dispatcher->GetRpcLifecycle() to request remote services. The server sends a login message through the broker, so a network client does not call SetServerLocalClientId.\n\t\t\t"
+                "text": "\n\t\t\t\tConnectRemoteRpcClient 返回后，使用 dispatcher->GetRpcLifecycle() 请求远程服务。服务器通过代理发送登录消息，因此网络客户端不需要调用 SetServerLocalClientId。\n\t\t\t"
               }
             ]
           }

@@ -140,11 +140,11 @@
   "numberBeforeTitle": false,
   "topic": {
     "kind": "Topic",
-    "title": "API References for Workflow",
+    "title": "工作流的 API 参考",
     "content": [
       {
         "kind": "Topic",
-        "title": "Resources",
+        "title": "资源",
         "content": [
           {
             "kind": "Paragraph",
@@ -162,7 +162,7 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "Tutorial"
+                            "text": "教程"
                           }
                         ]
                       },
@@ -181,7 +181,7 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "Download"
+                            "text": "下载"
                           }
                         ]
                       },
@@ -235,18 +235,18 @@
       },
       {
         "kind": "Topic",
-        "title": "Source Files for Workflow",
+        "title": "工作流的源文件",
         "content": [
           {
             "kind": "Topic",
-            "title": "VlppWorkflowLibrary.h and VlppWorkflowLibrary.cpp",
+            "title": "VlppWorkflowLibrary.h 和 VlppWorkflowLibrary.cpp",
             "content": [
               {
                 "kind": "Paragraph",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    They are needed for using Workflow. They contain.\n                    "
+                    "text": "\n                    它们用于使用工作流。它们包含。\n                    "
                   },
                   {
                     "kind": "List",
@@ -257,7 +257,7 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "Predefined libraries for Workflow script."
+                            "text": "工作流脚本的预定义库。"
                           }
                         ]
                       },
@@ -266,7 +266,7 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "Helper functions for C++ code that generated from Workflow script."
+                            "text": "用于从工作流脚本生成的 C++ 代码的辅助函数。"
                           }
                         ]
                       }
@@ -278,14 +278,14 @@
           },
           {
             "kind": "Topic",
-            "title": "VlppWorkflowRuntime.h and VlppWorkflowRuntime.cpp",
+            "title": "VlppWorkflowRuntime.h 和 VlppWorkflowRuntime.cpp",
             "content": [
               {
                 "kind": "Paragraph",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    They are needed for executing compiled binaries from Workflow script.\n                "
+                    "text": "\n                    它们用于执行工作流脚本中的已编译二进制文件。\n                "
                   }
                 ]
               },
@@ -294,7 +294,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    There are 2 ways to run Workflow script:\n                    "
+                    "text": "\n                    有两种运行工作流脚本的方法：\n                    "
                   },
                   {
                     "kind": "List",
@@ -305,7 +305,7 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "Generate C++ code from Workflow script, and add them to your project. This is highly recommended especially for running GacUI applications."
+                            "text": "从工作流脚本生成 C++ 代码，并将其添加到您的项目中。这特别推荐用于运行 GacUI 应用程序。"
                           }
                         ]
                       },
@@ -314,7 +314,7 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "Load compiled binaries from Workflow script and run classes at runtime."
+                            "text": "从工作流脚本加载已编译的二进制文件，并在运行时执行类。"
                           }
                         ]
                       }
@@ -327,7 +327,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    An in-process debugger interface is also included.\n                "
+                    "text": "\n                    还包含一个进程内调试器接口。\n                "
                   }
                 ]
               }
@@ -335,14 +335,14 @@
           },
           {
             "kind": "Topic",
-            "title": "VlppWorkflowCompiler.h and VlppWorkflowCompiler.cpp",
+            "title": "VlppWorkflowCompiler.h 和 VlppWorkflowCompiler.cpp",
             "content": [
               {
                 "kind": "Paragraph",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    They are needed for compiling Workflow script.\n                "
+                    "text": "\n                    它们用于编译工作流脚本。\n                "
                   }
                 ]
               },
@@ -351,7 +351,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    There is no IO or other data exchange functionalities in predefined libraries.\n                    In order to make Workflow script works,\n                    usually you need to provide your own API to your script.\n                "
+                    "text": "\n                    预定义库中没有 IO 或其他数据交换功能。\n                    为了使工作流脚本正常工作，\n                    通常你需要为你的脚本提供自己的 API。\n                "
                   }
                 ]
               },
@@ -360,7 +360,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Typically, this is done by writing reflectable C++ class,\n                    loading type information and then running the compiler in the same process.\n                    And then you get a binary from compiled scripts,\n                    all classes defined in scripts are accessible.\n                    You can use "
+                    "text": "\n                    通常，这是通过编写可反射的 C++ 类来完成的，\n                    加载类型信息，然后在同一进程中运行编译器。\n                    然后你从编译的脚本中得到一个二进制文件，\n                    脚本中定义的所有类都是可访问的。\n                    您可以使用 "
                   },
                   {
                     "kind": "Strong",
@@ -373,7 +373,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " to run classes in scripts.\n                "
+                    "text": " 在脚本中运行类。\n                "
                   }
                 ]
               },
@@ -382,7 +382,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    The Workflow compiler can also generate C++ code.\n                    Using generated C++ code directly is always highly recommended when possible.\n                "
+                    "text": "\n                    工作流编译器也可以生成 C++ 代码。\n                    当可能时，始终强烈建议直接使用生成的C++代码。\n                "
                   }
                 ]
               }
@@ -392,7 +392,7 @@
       },
       {
         "kind": "Topic",
-        "title": "Dependencies",
+        "title": "依赖项",
         "content": [
           {
             "kind": "Paragraph",

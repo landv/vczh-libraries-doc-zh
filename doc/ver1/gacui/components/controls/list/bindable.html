@@ -220,27 +220,27 @@
   "numberBeforeTitle": false,
   "topic": {
     "kind": "Topic",
-    "title": "Bindable List Controls",
+    "title": "可绑定列表控件",
     "content": [
       {
         "kind": "Paragraph",
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Instead of using a certain fixed type for items in a certain list control,\n            bindable list controls allow items to be any class or interface type.\n        "
+            "text": "\n            而不是对某个列表控件中的项目使用某种固定类型，\n            可绑定的列表控件允许项为任何类或接口类型\n        "
           }
         ]
       },
       {
         "kind": "Topic",
-        "title": "ItemSource property",
+        "title": "ItemSource 属性",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                All bindable list controls have a "
+                "text": "\n                所有可绑定的列表控件都有一个 "
               },
               {
                 "kind": "Strong",
@@ -253,14 +253,14 @@
               },
               {
                 "kind": "Text",
-                "text": " property.\n                This property could be any collection type.\n                But if it is an "
+                "text": " 属性。\n                此属性可以是任何集合类型。\n                但若它是一个 "
               },
               {
                 "kind": "Strong",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "observe T[]"
+                    "text": "观察 T[]"
                   }
                 ]
               },
@@ -279,7 +279,7 @@
               },
               {
                 "kind": "Text",
-                "text": " in C++,\n                the bindable list control will keep itself always sync to the collection.\n            "
+                "text": " in C++,\n                可绑定列表控件将始终保持与集合同步。\n            "
               }
             ]
           },
@@ -288,7 +288,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Creating a "
+                "text": "\n                创建一个 "
               },
               {
                 "kind": "Strong",
@@ -301,7 +301,7 @@
               },
               {
                 "kind": "Text",
-                "text": " in C++ is easy.\n                Use "
+                "text": " 在 C++ 中很容易。\n                使用 "
               },
               {
                 "kind": "Strong",
@@ -314,7 +314,7 @@
               },
               {
                 "kind": "Text",
-                "text": " instead of "
+                "text": " 而不是 "
               },
               {
                 "kind": "Strong",
@@ -327,7 +327,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                you can get a "
+                "text": "，\n                您可以获取一个 "
               },
               {
                 "kind": "Strong",
@@ -340,7 +340,7 @@
               },
               {
                 "kind": "Text",
-                "text": " by calling the "
+                "text": " 通过调用 "
               },
               {
                 "kind": "Strong",
@@ -353,7 +353,7 @@
               },
               {
                 "kind": "Text",
-                "text": " method.\n            "
+                "text": " 方法。\n            "
               }
             ]
           }
@@ -361,14 +361,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Property and Writable Property",
+        "title": "属性和可写属性",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                After assigning a collection to a bindable list control,\n                you also needs to teach the control how to read/write your item object.\n            "
+                "text": "\n                在将集合分配给可绑定列表控件后，\n                您还需要教控件如何读取/写入您的项对象。\n            "
               }
             ]
           },
@@ -377,7 +377,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                For the most common cases,\n                if a property in items in "
+                "text": "\n                对于最常见的用例，\n                如果项中的属性在 "
               },
               {
                 "kind": "Strong",
@@ -390,7 +390,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is exactly what you need,\n                for example a "
+                "text": " 正是你需要的，\n                例如一个 "
               },
               {
                 "kind": "Strong",
@@ -403,7 +403,7 @@
               },
               {
                 "kind": "Text",
-                "text": " property returning "
+                "text": " 属性返回 "
               },
               {
                 "kind": "Strong",
@@ -429,7 +429,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                will be displayed directly in a "
+                "text": "\n                将直接显示在一个 "
               },
               {
                 "kind": "Strong",
@@ -442,7 +442,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                just write the property name in the XML for "
+                "text": "，\n                在XML中只写属性名： "
               },
               {
                 "kind": "Strong",
@@ -455,7 +455,7 @@
               },
               {
                 "kind": "Text",
-                "text": " like:\n                "
+                "text": " 例如：\n                "
               },
               {
                 "kind": "Program",
@@ -468,7 +468,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                By doing this,\n                "
+                "text": "\n                通过这样做，\n                "
               },
               {
                 "kind": "Strong",
@@ -481,7 +481,7 @@
               },
               {
                 "kind": "Text",
-                "text": " will read the "
+                "text": " 将读取 "
               },
               {
                 "kind": "Strong",
@@ -494,7 +494,7 @@
               },
               {
                 "kind": "Text",
-                "text": " property\n                in all "
+                "text": " 属性\n                在所有 "
               },
               {
                 "kind": "Strong",
@@ -507,7 +507,7 @@
               },
               {
                 "kind": "Text",
-                "text": " in its "
+                "text": " 在其 "
               },
               {
                 "kind": "Strong",
@@ -520,7 +520,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                and shows all names in the list control.\n                "
+                "text": "，\n                和显示列表控件中的所有名称。\n                "
               },
               {
                 "kind": "Strong",
@@ -533,7 +533,7 @@
               },
               {
                 "kind": "Text",
-                "text": ":\n                If there are items in "
+                "text": "：\n                如果有项目在 "
               },
               {
                 "kind": "Strong",
@@ -546,7 +546,7 @@
               },
               {
                 "kind": "Text",
-                "text": " that is not "
+                "text": " 那不是 "
               },
               {
                 "kind": "Strong",
@@ -559,7 +559,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                which is specified in "
+                "text": "，\n                由...指定 "
               },
               {
                 "kind": "Strong",
@@ -572,7 +572,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                it will crash.\n            "
+                "text": "，\n                它会崩溃。\n            "
               }
             ]
           },
@@ -590,7 +590,7 @@
               },
               {
                 "kind": "Text",
-                "text": " and "
+                "text": " 和 "
               },
               {
                 "kind": "Strong",
@@ -603,7 +603,7 @@
               },
               {
                 "kind": "Text",
-                "text": " can be put in any tag inside "
+                "text": " 可以放在任何标签内部 "
               },
               {
                 "kind": "Strong",
@@ -616,20 +616,20 @@
               },
               {
                 "kind": "Text",
-                "text": ".\n                These attributes only control how to interpret the string for "
+                "text": ".\n                这些属性仅控制如何解释字符串以用于 "
               },
               {
                 "kind": "Strong",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "Property and Writable Property"
+                    "text": "属性和可写属性"
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": ".\n                In this case they control what does "
+                "text": ".\n                在这种情况下，它们控制什么 "
               },
               {
                 "kind": "Strong",
@@ -642,7 +642,7 @@
               },
               {
                 "kind": "Text",
-                "text": " mean for "
+                "text": " 表示 "
               },
               {
                 "kind": "Strong",
@@ -664,7 +664,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                assume all items in "
+                "text": "\n                假设所有项目在 "
               },
               {
                 "kind": "Strong",
@@ -677,7 +677,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is or inherits from "
+                "text": " 是或继承自 "
               },
               {
                 "kind": "Strong",
@@ -701,7 +701,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "call "
+                        "text": "调用 "
                       },
                       {
                         "kind": "Strong",
@@ -727,7 +727,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " is a property."
+                        "text": " 是一个属性。"
                       }
                     ]
                   },
@@ -736,7 +736,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "call "
+                        "text": "调用 "
                       },
                       {
                         "kind": "Strong",
@@ -762,7 +762,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " is a field."
+                        "text": " 是一个字段。"
                       }
                     ]
                   }
@@ -775,7 +775,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Different bindable list controls have different requirements.\n                For example,\n                "
+                "text": "\n                不同的可绑定列表控件有不同的要求。\n                例如，\n                "
               },
               {
                 "kind": "Strong",
@@ -788,7 +788,7 @@
               },
               {
                 "kind": "Text",
-                "text": " has "
+                "text": " 有 "
               },
               {
                 "kind": "Strong",
@@ -801,7 +801,7 @@
               },
               {
                 "kind": "Text",
-                "text": " and "
+                "text": " 和 "
               },
               {
                 "kind": "Strong",
@@ -814,7 +814,7 @@
               },
               {
                 "kind": "Text",
-                "text": " properties.\n                "
+                "text": " 属性。\n                "
               },
               {
                 "kind": "Strong",
@@ -827,7 +827,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is a\n                "
+                "text": " 是一个\n                "
               },
               {
                 "kind": "PageLink",
@@ -835,13 +835,13 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    readable property\n                "
+                    "text": "\n                    可读属性\n                "
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": ",\n                which means the control will read a text from an item.\n                "
+                "text": "，\n                这意味着控件将从一个项目中读取文本。\n                "
               },
               {
                 "kind": "Strong",
@@ -854,7 +854,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is a\n                "
+                "text": " 是一个\n                "
               },
               {
                 "kind": "PageLink",
@@ -862,13 +862,13 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    writable property\n                "
+                    "text": "\n                    可写属性\n                "
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": ",\n                which means the control will not only read a checked mark from an item,\n                it will also set a checked mark to an item.\n            "
+                "text": "，\n                这意味着控件不仅会从一项中读取一个选中标记，\n                它还会为该项目设置一个选中标记。\n            "
               }
             ]
           },
@@ -877,7 +877,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Please check out\n                "
+                "text": "\n                请检出\n                "
               },
               {
                 "kind": "PageLink",
@@ -885,13 +885,13 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    this tutorial project\n                "
+                    "text": "\n                    此教程项目\n                "
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": "\n                for details about using "
+                "text": "\n                关于使用 "
               },
               {
                 "kind": "Strong",
@@ -912,7 +912,7 @@
       },
       {
         "kind": "Topic",
-        "title": "Updating Items",
+        "title": "更新项目",
         "content": [
           {
             "kind": "Paragraph",
@@ -932,14 +932,14 @@
               },
               {
                 "kind": "Text",
-                "text": " is an observable collection,\n                when you add an item to the collection,\n                or remove an item from the collection,\n                or replace an item in the collection,\n                the list control will know and show the latest result.\n                But changing properties in items will not trigger refreshing the list control,\n                because "
+                "text": " 是一个可观察集合，\n                当您向集合中添加一项时，\n                或从集合中移除一项，\n                或替换集合中的项，\n                列表控件将知道并显示最新结果。\n                但更改项中的属性不会触发刷新列表控件，\n                因为 "
               },
               {
                 "kind": "Strong",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "Property and Write Property are not data binding"
+                    "text": "属性和写属性不是数据绑定"
                   }
                 ]
               },
@@ -954,7 +954,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                When data in an item is modified,\n                there are 3 ways to notify the list control:\n                "
+                "text": "\n                当项目中的数据被修改时，\n                有三种方式可以通知列表控件：\n                "
               },
               {
                 "kind": "List",
@@ -965,7 +965,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "\n                        When using "
+                        "text": "\n                        当使用 "
                       },
                       {
                         "kind": "Strong",
@@ -991,7 +991,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " to notify the list control.\n                        This method accepts a range of indices,\n                        all items in that range will be treated like they are changed.\n                    "
+                        "text": " 通知列表控件。\n                        此方法接受一个索引范围，\n                        该范围内的所有项都将被视为已更改。\n                    "
                       }
                     ]
                   },
@@ -1000,7 +1000,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "\n                        Trigger the "
+                        "text": "\n                        触发 "
                       },
                       {
                         "kind": "Strong",
@@ -1013,7 +1013,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " event to notify the list control.\n                        When data in items are modified,\n                        it means there is no adding to or removing from the collection,\n                        so always keep the second and the third argument having the same value.\n                        This event accepts a range of indices,\n                        all items in that range will be treated like they are changed.\n                    "
+                        "text": " 通知列表控件的事件。\n                        当项目中的数据被修改时，\n                        这意味着集合中没有添加或移除任何内容。\n                        因此，请始终确保第二个和第三个参数具有相同的值。\n                        此事件接受一个索引范围，\n                        该范围内的所有项都将被视为已更改。\n                    "
                       }
                     ]
                   },
@@ -1022,7 +1022,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "\n                        When using "
+                        "text": "\n                        当使用 "
                       },
                       {
                         "kind": "Strong",
@@ -1035,7 +1035,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ",\n                        or when the observable collection is created using "
+                        "text": "，\n                        或当可观察集合使用时 "
                       },
                       {
                         "kind": "Strong",
@@ -1048,7 +1048,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " script,\n                        replacing an item with itself also notify the list control.\n                    "
+                        "text": " 脚本，\n                        用自身替换项也会通知列表控件。\n                    "
                       }
                     ]
                   }
@@ -1060,14 +1060,14 @@
       },
       {
         "kind": "Topic",
-        "title": "ItemTemplate Property",
+        "title": "ItemTemplate 属性",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Item objects in "
+                "text": "\n                项目对象在 "
               },
               {
                 "kind": "Strong",
@@ -1080,7 +1080,7 @@
               },
               {
                 "kind": "Text",
-                "text": " will be used to create instances from "
+                "text": " 将用于从创建实例 "
               },
               {
                 "kind": "Strong",
@@ -1093,20 +1093,20 @@
               },
               {
                 "kind": "Text",
-                "text": ".\n                Some properties of the item template will be assigned to values\n                that are read from the item object using "
+                "text": ".\n                项目模板的某些属性将被赋值为\n                通过使用项目对象读取的 "
               },
               {
                 "kind": "Strong",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "Property and Writable Property"
+                    "text": "属性和可写属性"
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": ".\n                But since the item template already knows the item object,\n                it could read from the object directly.\n            "
+                "text": ".\n                但由于项目模板已经知道项目对象，\n                它可以直接从对象读取。\n            "
               }
             ]
           }

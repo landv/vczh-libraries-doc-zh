@@ -138,14 +138,14 @@
   "numberBeforeTitle": false,
   "topic": {
     "kind": "Topic",
-    "title": "Inheriting C++ Classes",
+    "title": "继承 C++ 类",
     "content": [
       {
         "kind": "Paragraph",
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Involved files:\n            "
+            "text": "\n            涉及的文件：\n            "
           },
           {
             "kind": "List",
@@ -175,7 +175,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Workflow classes are allowed to inherit from reflectable C++ classes.\n            Here we have a C++ class, with two properties:\n            "
+            "text": "\n            工作流类允许从可反射的 C++ 类继承。\n            这里我们有一个 C++ 类，包含两个属性：\n            "
           },
           {
             "kind": "Program",
@@ -183,7 +183,7 @@
           },
           {
             "kind": "Text",
-            "text": "\n            The destructor code is important, so it is not hidden.\n        "
+            "text": "\n            析构函数代码很重要，因此不会被隐藏。\n        "
           }
         ]
       },
@@ -192,7 +192,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            An inheritable class need to use "
+            "text": "\n            一个可继承的类需要使用 "
           },
           {
             "kind": "Strong",
@@ -205,7 +205,7 @@
           },
           {
             "kind": "Text",
-            "text": " instead of "
+            "text": " 而不是 "
           },
           {
             "kind": "Strong",
@@ -231,7 +231,7 @@
           },
           {
             "kind": "Text",
-            "text": " is also very important.\n            If this function is not called when destructing a Workflow class that inherits from App,\n            it will crash by design.\n        "
+            "text": " 也很重要。\n            如果此函数在销毁继承自 App 的 Workflow 类时未被调用，\n            它会按设计崩溃。\n        "
           }
         ]
       },
@@ -240,7 +240,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Inheriting a reflectable C++ class is very straight forward,\n            but there is no virtual methods in classes in this version of Workflow script,\n            so you cannot override virtual methods in reflectable C++ classes.\n        "
+            "text": "\n            继承一个可反射的 C++ 类非常直接，\n            但在此版本的Workflow脚本中，类中没有虚方法，\n            因此，您无法重写可反射 C++ 类中的虚方法。\n        "
           }
         ]
       },
@@ -253,7 +253,7 @@
           },
           {
             "kind": "Text",
-            "text": "\n            Constructors and destructors are allowed in Workflow classes.\n        "
+            "text": "\n            允许在工作流类中使用构造函数和析构函数。\n        "
           }
         ]
       },
@@ -262,7 +262,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Data binding will not be explained in detail here,\n            basically the code is tracking the changing of "
+            "text": "\n            这里不会详细解释数据绑定，\n            基本上代码正在跟踪 "
           },
           {
             "kind": "Strong",
@@ -288,7 +288,7 @@
           },
           {
             "kind": "Text",
-            "text": " property is changed,\n            it is obviously that the result of this expression is also changed.\n            Whenever the data binding is changed, "
+            "text": " 属性已更改，\n            显然，该表达式的结果也发生了改变。\n            当数据绑定被更改时， "
           },
           {
             "kind": "Strong",
@@ -301,7 +301,7 @@
           },
           {
             "kind": "Text",
-            "text": " will be called.\n            Here it prints the formatted string to the console window.\n        "
+            "text": " 将被调用。\n            这里将格式化的字符串打印到控制台窗口。\n        "
           }
         ]
       },
@@ -310,7 +310,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            All classes and interfaces defined in Workflow scripts will be registered when loadong an assembly.\n            This is why you cannot load it twice,\n            because types are conflict with each other.\n        "
+            "text": "\n            在加载程序集时，Workflow 脚本中定义的所有类和接口都将被注册。\n            这就是为什么您不能加载两次，\n            因为类型之间存在冲突。\n        "
           }
         ]
       },
@@ -319,7 +319,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            When a reflectable class is loaded,\n            regardless whether it is implemented in Workflow or C++,\n            the way to call does not change.\n            But since it inherits from "
+            "text": "\n            当一个可反射类被加载时，\n            无论它是用工作流还是C++实现的\n            调用方式不会改变。\n            但是因为它继承自 "
           },
           {
             "kind": "Strong",
@@ -332,7 +332,7 @@
           },
           {
             "kind": "Text",
-            "text": ",\n            it is much easier to get an instance of "
+            "text": "，\n            获取实例要容易得多 "
           },
           {
             "kind": "Strong",
@@ -353,7 +353,7 @@
           },
           {
             "kind": "Text",
-            "text": "\n            This code creates "
+            "text": "\n            此代码创建 "
           },
           {
             "kind": "Strong",
@@ -366,7 +366,7 @@
           },
           {
             "kind": "Text",
-            "text": " with a string passed to the constructor.\n            It changes "
+            "text": " 传递给构造函数的字符串。\n            它会更改 "
           },
           {
             "kind": "Strong",
@@ -379,7 +379,7 @@
           },
           {
             "kind": "Text",
-            "text": " three times, so four lines will be printed to the console window.\n            The last one is from the destructor.\n        "
+            "text": " 三次，因此将在控制台窗口中打印四行。\n            最后一个来自析构函数。\n        "
           }
         ]
       }

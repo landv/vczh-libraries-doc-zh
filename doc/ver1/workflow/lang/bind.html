@@ -180,14 +180,14 @@
   "numberBeforeTitle": false,
   "topic": {
     "kind": "Topic",
-    "title": "Data Bindings",
+    "title": "数据绑定",
     "content": [
       {
         "kind": "Paragraph",
         "content": [
           {
             "kind": "Text",
-            "text": "\n            A data binding expressions "
+            "text": "\n            数据绑定表达式 "
           },
           {
             "kind": "Strong",
@@ -200,7 +200,7 @@
           },
           {
             "kind": "Text",
-            "text": " observes the changing of "
+            "text": " 观察变化 "
           },
           {
             "kind": "Strong",
@@ -213,20 +213,20 @@
           },
           {
             "kind": "Text",
-            "text": "\n            by attaching callbacks to all involved events that are associated with properties.\n        "
+            "text": "\n            通过为所有与属性关联的事件附加回调函数。\n        "
           }
         ]
       },
       {
         "kind": "Topic",
-        "title": "Defining a data binding",
+        "title": "定义数据绑定",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                When we say property "
+                "text": "\n                当我们说属性时 "
               },
               {
                 "kind": "Strong",
@@ -239,7 +239,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is associated with event "
+                "text": " 与事件相关联 "
               },
               {
                 "kind": "Strong",
@@ -252,7 +252,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                it means that the property must be declared in one of the following ways:\n                "
+                "text": "，\n                这意味着该属性必须以以下方式之一进行声明：\n                "
               },
               {
                 "kind": "List",
@@ -266,7 +266,7 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "prop A: Type {}"
+                            "text": "属性 A：类型 {}"
                           }
                         ]
                       }
@@ -280,7 +280,7 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "prop A: Type {const}"
+                            "text": "属性 A：类型 {const}"
                           }
                         ]
                       }
@@ -294,7 +294,7 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "prop A: Type {getter, AChanged}"
+                            "text": "属性 A：类型 {getter, AChanged}"
                           }
                         ]
                       }
@@ -308,7 +308,7 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "prop A: Type {getter, setter, AChanged}"
+                            "text": "属性 A：类型 {getter, setter, AChanged}"
                           }
                         ]
                       }
@@ -332,7 +332,7 @@
               },
               {
                 "kind": "Text",
-                "text": " and "
+                "text": " 和 "
               },
               {
                 "kind": "Strong",
@@ -345,7 +345,7 @@
               },
               {
                 "kind": "Text",
-                "text": " are not allowed in "
+                "text": " 不允许在 "
               },
               {
                 "kind": "Strong",
@@ -358,7 +358,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                unless they are in a function body of a lambda expression or a new interface expression inside "
+                "text": "，\n                除非它们位于 lambda 表达式的函数体或内部的新接口表达式中 "
               },
               {
                 "kind": "Strong",
@@ -380,7 +380,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Any event that is associated with properties that\n                are used in a function body of a lambda expression or a new interface expressions\n                will not be observed.\n            "
+                "text": "\n                任何与属性相关联的事件\n                被用于lambda表达式或新接口表达式中的函数体\n                将不会被观察。\n            "
               }
             ]
           },
@@ -389,7 +389,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Properties that need to be observed\n                must be written in "
+                "text": "\n                需要观察的属性\n                必须用 "
               },
               {
                 "kind": "Strong",
@@ -402,7 +402,7 @@
               },
               {
                 "kind": "Text",
-                "text": ".\n                For example:\n                "
+                "text": ".\n                例如：\n                "
               },
               {
                 "kind": "Program",
@@ -426,7 +426,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " doesn't observe "
+                        "text": " 不观察 "
                       },
                       {
                         "kind": "Strong",
@@ -439,7 +439,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ", because it is not in the "
+                        "text": "，因为它不在 "
                       },
                       {
                         "kind": "Strong",
@@ -452,7 +452,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " form."
+                        "text": " 表单。"
                       }
                     ]
                   },
@@ -470,7 +470,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " observes "
+                        "text": " 观察 "
                       },
                       {
                         "kind": "Strong",
@@ -483,7 +483,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ", but since "
+                        "text": "，但因为 "
                       },
                       {
                         "kind": "Strong",
@@ -496,7 +496,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " is not allowed in "
+                        "text": " 不允许在 "
                       },
                       {
                         "kind": "Strong",
@@ -509,7 +509,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ", it needs to be stored in a variable."
+                        "text": "，它需要存储在一个变量中。"
                       }
                     ]
                   }
@@ -521,7 +521,7 @@
       },
       {
         "kind": "Topic",
-        "title": "Listening to a data binding",
+        "title": "监听数据绑定",
         "content": [
           {
             "kind": "Paragraph",
@@ -541,7 +541,7 @@
               },
               {
                 "kind": "Text",
-                "text": " expression returns "
+                "text": " 表达式返回 "
               },
               {
                 "kind": "Strong",
@@ -563,7 +563,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                The "
+                "text": "\n                该 "
               },
               {
                 "kind": "Strong",
@@ -576,7 +576,7 @@
               },
               {
                 "kind": "Text",
-                "text": " method needs to be called before the observation takes effect.\n            "
+                "text": " 方法必须在观察生效前被调用。\n            "
               }
             ]
           },
@@ -585,7 +585,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                The "
+                "text": "\n                该 "
               },
               {
                 "kind": "Strong",
@@ -598,7 +598,7 @@
               },
               {
                 "kind": "Text",
-                "text": " method needs to be called when the observation is no longer needed.\n            "
+                "text": " 当观察不再需要时，必须调用该方法。\n            "
               }
             ]
           },
@@ -616,7 +616,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is called when observed events are triggered.\n            "
+                "text": " 在观察到的事件被触发时被调用。\n            "
               }
             ]
           },
@@ -625,7 +625,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                When a subscription observes some objects,\n                the reference of this subscription is captured by event handlers that are attached on properties,\n                and these objects are also stored in this subscription because "
+                "text": "\n                当一个订阅观察某些对象时，\n                此订阅的引用由附加到属性上的事件处理程序捕获。\n                并且这些对象也存储在此订阅中，因为 "
               },
               {
                 "kind": "Strong",
@@ -638,7 +638,7 @@
               },
               {
                 "kind": "Text",
-                "text": " needs to be called later,\n                which makes cycle referencing.\n            "
+                "text": " 需要稍后调用，\n                这会导致循环引用。\n            "
               }
             ]
           },
@@ -647,7 +647,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                By calling "
+                "text": "\n                通过调用 "
               },
               {
                 "kind": "Strong",
@@ -660,7 +660,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                these cycle referencing are removed,\n                so that memory leaks don't happen.\n            "
+                "text": "，\n                这些循环引用已被移除，\n                以避免内存泄漏。\n            "
               }
             ]
           },
@@ -673,7 +673,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                This function returns "
+                "text": "\n                此函数返回 "
               },
               {
                 "kind": "Strong",
@@ -686,7 +686,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                because by assigning to properties,\n                "
+                "text": "，\n                因为通过分配给属性，\n                "
               },
               {
                 "kind": "Strong",
@@ -712,7 +712,7 @@
               },
               {
                 "kind": "Text",
-                "text": " and "
+                "text": " 和 "
               },
               {
                 "kind": "Strong",
@@ -725,7 +725,7 @@
               },
               {
                 "kind": "Text",
-                "text": " are all triggered,\n                so the "
+                "text": " 都会触发，\n                所以 "
               },
               {
                 "kind": "Strong",
@@ -738,7 +738,7 @@
               },
               {
                 "kind": "Text",
-                "text": " expression observes 3 changes,\n                and the callback is executed 3 times.\n            "
+                "text": " 表达式观察3个变化，\n                以及回调将执行 3 次。\n            "
               }
             ]
           }
@@ -746,14 +746,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Observing property chains",
+        "title": "观察属性链",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Property chains are also observable,\n                all related events will be attached.\n                "
+                "text": "\n                属性链也是可观察的，\n                所有相关事件都将附加。\n                "
               },
               {
                 "kind": "Program",
@@ -761,7 +761,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                This function returns "
+                "text": "\n                此函数返回 "
               },
               {
                 "kind": "Strong",
@@ -774,7 +774,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                because assigned to "
+                "text": "，\n                因为分配给 "
               },
               {
                 "kind": "Strong",
@@ -800,7 +800,7 @@
               },
               {
                 "kind": "Text",
-                "text": " and "
+                "text": " 和 "
               },
               {
                 "kind": "Strong",
@@ -813,7 +813,7 @@
               },
               {
                 "kind": "Text",
-                "text": " all trigger attached events.\n            "
+                "text": " 所有触发附加事件。\n            "
               }
             ]
           }
@@ -821,14 +821,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Capturing values",
+        "title": "捕获值",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Values captured in "
+                "text": "\n                在中捕获的值 "
               },
               {
                 "kind": "Strong",
@@ -841,7 +841,7 @@
               },
               {
                 "kind": "Text",
-                "text": " expressions just like lambda expressions and new interface expressions,\n                they are shallow copied.\n                "
+                "text": " 表达式，就像lambda表达式和新的接口表达式一样，\n                它们是浅拷贝的。\n                "
               },
               {
                 "kind": "Program",
@@ -849,7 +849,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                This function returns "
+                "text": "\n                此函数返回 "
               },
               {
                 "kind": "Strong",
@@ -862,7 +862,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                because the change of "
+                "text": "，\n                因为 "
               },
               {
                 "kind": "Strong",
@@ -875,7 +875,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is not visible in "
+                "text": " 在中不可见 "
               },
               {
                 "kind": "Strong",
@@ -896,7 +896,7 @@
       },
       {
         "kind": "Topic",
-        "title": "Using unobservable properties",
+        "title": "使用不可观察的属性",
         "content": [
           {
             "kind": "Paragraph",
@@ -907,7 +907,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                This function returns "
+                "text": "\n                此函数返回 "
               },
               {
                 "kind": "Strong",
@@ -933,7 +933,7 @@
               },
               {
                 "kind": "Text",
-                "text": " and "
+                "text": " 和 "
               },
               {
                 "kind": "Strong",
@@ -946,7 +946,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is not observable,\n                the callback is triggered only when "
+                "text": " 不可观察，\n                回调仅在 "
               },
               {
                 "kind": "Strong",
@@ -959,7 +959,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is changed.\n            "
+                "text": " 被更改。\n            "
               }
             ]
           },
@@ -968,7 +968,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                But we can manually trigger the callback by calling "
+                "text": "\n                但我们可以手动通过调用 "
               },
               {
                 "kind": "Strong",
@@ -989,7 +989,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                Not it returns "
+                "text": "\n                不，它返回 "
               },
               {
                 "kind": "Strong",
@@ -1010,14 +1010,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Be carefule about unobservable properties in property chains",
+        "title": "注意属性链中的不可观测属性",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Objects that own observed properties will be stored inside "
+                "text": "\n                拥有观察属性的对象将存储在 "
               },
               {
                 "kind": "Strong",
@@ -1043,7 +1043,7 @@
               },
               {
                 "kind": "Text",
-                "text": " needs to be called.\n                "
+                "text": " 需要被调用。\n                "
               },
               {
                 "kind": "Program",
@@ -1051,7 +1051,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                This function returns "
+                "text": "\n                此函数返回 "
               },
               {
                 "kind": "Strong",
@@ -1082,7 +1082,7 @@
               },
               {
                 "kind": "Text",
-                "text": " and "
+                "text": " 和 "
               },
               {
                 "kind": "Strong",
@@ -1095,7 +1095,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is not observable,\n                so assigning to them don't trigger the callback.\n            "
+                "text": " 不可观察，\n                因此，对它们赋值不会触发回调。\n            "
               }
             ]
           },
@@ -1104,7 +1104,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                But when "
+                "text": "\n                但当 "
               },
               {
                 "kind": "Strong",
@@ -1117,7 +1117,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is called,\n                the callback is triggered with "
+                "text": " 被调用，\n                回调以以下方式触发： "
               },
               {
                 "kind": "Strong",
@@ -1130,7 +1130,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                which is obviously not the actually value of "
+                "text": "，\n                这显然不是实际的值 "
               },
               {
                 "kind": "Strong",
@@ -1143,7 +1143,7 @@
               },
               {
                 "kind": "Text",
-                "text": " that is specified in "
+                "text": " 指定的 "
               },
               {
                 "kind": "Strong",
@@ -1165,7 +1165,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Because "
+                "text": "\n                因为 "
               },
               {
                 "kind": "Strong",
@@ -1178,7 +1178,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is cached.\n            "
+                "text": " 被缓存。\n            "
               }
             ]
           },
@@ -1196,7 +1196,7 @@
               },
               {
                 "kind": "Text",
-                "text": " and "
+                "text": " 和 "
               },
               {
                 "kind": "Strong",
@@ -1209,7 +1209,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is not observable,\n                so when we write "
+                "text": " 不可观察，\n                所以当我们写 "
               },
               {
                 "kind": "Strong",
@@ -1222,14 +1222,14 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                it is actually "
+                "text": "，\n                实际上 "
               },
               {
                 "kind": "Strong",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "let cachedObject = a.B.C in (bind(cachedObject.X))"
+                    "text": "让缓存对象 = a.B.C，在（绑定（缓存对象.X））中"
                   }
                 ]
               },
@@ -1244,7 +1244,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                When "
+                "text": "\n                当 "
               },
               {
                 "kind": "Strong",
@@ -1257,7 +1257,7 @@
               },
               {
                 "kind": "Text",
-                "text": " becomes observable but "
+                "text": " 变得可观察但 "
               },
               {
                 "kind": "Strong",
@@ -1270,7 +1270,7 @@
               },
               {
                 "kind": "Text",
-                "text": " still not,\n                "
+                "text": " 仍然不是。\n                "
               },
               {
                 "kind": "Strong",
@@ -1283,7 +1283,7 @@
               },
               {
                 "kind": "Text",
-                "text": " will be updated when "
+                "text": " 将在更新时 "
               },
               {
                 "kind": "Strong",
@@ -1296,7 +1296,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is changed.\n                If "
+                "text": " 被更改。\n                If "
               },
               {
                 "kind": "Strong",
@@ -1309,7 +1309,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is not changed when "
+                "text": " 在更改时不会被调用， "
               },
               {
                 "kind": "Strong",
@@ -1322,7 +1322,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is reassigned,\n                the evaluation of the observed expression is still using the old previous "
+                "text": " 被重新分配，\n                对观察表达式的求值仍然使用旧的 previous "
               },
               {
                 "kind": "Strong",
@@ -1335,7 +1335,7 @@
               },
               {
                 "kind": "Text",
-                "text": " value.\n            "
+                "text": " 值。\n            "
               }
             ]
           },
@@ -1344,14 +1344,14 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                In the previous example,\n                remove "
+                "text": "\n                在之前的示例中，\n                删除 "
               },
               {
                 "kind": "Strong",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "not observe"
+                    "text": "未观察"
                   }
                 ]
               },
@@ -1364,13 +1364,13 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "prop B"
+                    "text": "属性 B"
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": ",\n                and change some code between "
+                "text": "，\n                并在 "
               },
               {
                 "kind": "Strong",
@@ -1383,7 +1383,7 @@
               },
               {
                 "kind": "Text",
-                "text": " and "
+                "text": " 和 "
               },
               {
                 "kind": "Strong",
@@ -1396,7 +1396,7 @@
               },
               {
                 "kind": "Text",
-                "text": " like this:\n                "
+                "text": " 像这样：\n                "
               },
               {
                 "kind": "Program",
@@ -1404,7 +1404,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                This function returns "
+                "text": "\n                此函数返回 "
               },
               {
                 "kind": "Strong",
@@ -1426,7 +1426,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Changing "
+                "text": "\n                更改 "
               },
               {
                 "kind": "Strong",
@@ -1439,7 +1439,7 @@
               },
               {
                 "kind": "Text",
-                "text": " doesn't trigger the event,\n                because "
+                "text": " 不触发事件，\n                因为 "
               },
               {
                 "kind": "Strong",
@@ -1452,7 +1452,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is not observable.\n            "
+                "text": " 不可观察。\n            "
               }
             ]
           },
@@ -1461,7 +1461,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Changing "
+                "text": "\n                更改 "
               },
               {
                 "kind": "Strong",
@@ -1474,7 +1474,7 @@
               },
               {
                 "kind": "Text",
-                "text": " triggers the event,\n                because the previous "
+                "text": " 触发事件，\n                因为之前 "
               },
               {
                 "kind": "Strong",
@@ -1487,7 +1487,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is cached in the subscription\n                even after "
+                "text": " 在订阅中缓存\n                即使在 "
               },
               {
                 "kind": "Strong",
@@ -1500,7 +1500,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is changed.\n                So it doesn't actually evaluate "
+                "text": " 被更改。\n                因此它实际上不会求值 "
               },
               {
                 "kind": "Strong",
@@ -1513,7 +1513,7 @@
               },
               {
                 "kind": "Text",
-                "text": ".\n                Instead, it evaluate "
+                "text": ".\n                相反，它会评估 "
               },
               {
                 "kind": "Strong",
@@ -1535,7 +1535,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                But if we change "
+                "text": "\n                但若我们更改 "
               },
               {
                 "kind": "Strong",
@@ -1548,7 +1548,7 @@
               },
               {
                 "kind": "Text",
-                "text": " again,\n                the cached "
+                "text": " 再次，\n                缓存的 "
               },
               {
                 "kind": "Strong",
@@ -1561,7 +1561,7 @@
               },
               {
                 "kind": "Text",
-                "text": " object will be refreshed,\n                and it is not "
+                "text": " 对象将被刷新，\n                并且它不是 "
               },
               {
                 "kind": "Strong",
@@ -1574,7 +1574,7 @@
               },
               {
                 "kind": "Text",
-                "text": " anymore.\n            "
+                "text": " 不再。\n            "
               }
             ]
           }
@@ -1593,7 +1593,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                This function returns "
+                "text": "\n                此函数返回 "
               },
               {
                 "kind": "Strong",
@@ -1615,7 +1615,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Even if "
+                "text": "\n                即使 "
               },
               {
                 "kind": "Strong",
@@ -1628,7 +1628,7 @@
               },
               {
                 "kind": "Text",
-                "text": " and "
+                "text": " 和 "
               },
               {
                 "kind": "Strong",
@@ -1641,7 +1641,7 @@
               },
               {
                 "kind": "Text",
-                "text": " are in different branches of the if-expression,\n                their events are all attached.\n                When "
+                "text": " 在 if 表达式的不同分支中，\n                它们的事件都已附加。\n                当 "
               },
               {
                 "kind": "Strong",
@@ -1667,7 +1667,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is changed,\n                even if it is not involved in evaluation,\n                it still triggers the callback.\n            "
+                "text": " 被更改，\n                即使它不参与评估，\n                它仍然会触发回调。\n            "
               }
             ]
           },
@@ -1676,7 +1676,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                If there are property chains in branches of an if-expression,\n                all "
+                "text": "\n                如果条件表达式的分支中有属性链，\n                所有 "
               },
               {
                 "kind": "Strong",
@@ -1689,7 +1689,7 @@
               },
               {
                 "kind": "Text",
-                "text": " and "
+                "text": " 和 "
               },
               {
                 "kind": "Strong",
@@ -1702,7 +1702,7 @@
               },
               {
                 "kind": "Text",
-                "text": " will happen when up-stream properties are changed,\n                caching of objects that own observable properties are evaluated,\n                related property getters will are called,\n                regardless of what is evaluated from the condition expression.\n            "
+                "text": " 当上游属性被更改时会发生什么，\n                缓存拥有可观察属性的对象时进行评估，\n                相关属性的获取器将被调用，\n                无论条件表达式的求值结果如何。\n            "
               }
             ]
           },
@@ -1711,7 +1711,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Let's see a more complex example:\n                "
+                "text": "\n                让我们看一个更复杂的例子：\n                "
               },
               {
                 "kind": "Program",
@@ -1719,7 +1719,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                This function returns "
+                "text": "\n                此函数返回 "
               },
               {
                 "kind": "Strong",
@@ -1741,7 +1741,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                When "
+                "text": "\n                当 "
               },
               {
                 "kind": "Strong",
@@ -1754,7 +1754,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is executed,\n                "
+                "text": " 被执行，\n                "
               },
               {
                 "kind": "Strong",
@@ -1767,7 +1767,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is printed.\n                "
+                "text": " 已打印。\n                "
               },
               {
                 "kind": "Strong",
@@ -1780,7 +1780,7 @@
               },
               {
                 "kind": "Text",
-                "text": " becomes "
+                "text": " 变成 "
               },
               {
                 "kind": "Strong",
@@ -1806,7 +1806,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is attached,\n                "
+                "text": " 已附加，\n                "
               },
               {
                 "kind": "Strong",
@@ -1819,7 +1819,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is detached.\n            "
+                "text": " 已分离。\n            "
               }
             ]
           },
@@ -1828,7 +1828,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                When "
+                "text": "\n                当 "
               },
               {
                 "kind": "Strong",
@@ -1841,7 +1841,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is executed,\n                "
+                "text": " 被执行，\n                "
               },
               {
                 "kind": "Strong",
@@ -1854,7 +1854,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is printed, obviously.\n            "
+                "text": " 已打印，显然。\n            "
               }
             ]
           },
@@ -1863,7 +1863,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                When "
+                "text": "\n                当 "
               },
               {
                 "kind": "Strong",
@@ -1876,7 +1876,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is executed,\n                nothing happens,\n                because "
+                "text": " 被执行，\n                什么也没发生，\n                因为 "
               },
               {
                 "kind": "Strong",
@@ -1889,7 +1889,7 @@
               },
               {
                 "kind": "Text",
-                "text": " has already been detached.\n            "
+                "text": " 已经被分离。\n            "
               }
             ]
           },
@@ -1898,7 +1898,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                When "
+                "text": "\n                当 "
               },
               {
                 "kind": "Strong",
@@ -1911,7 +1911,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is executed,\n                "
+                "text": " 被执行，\n                "
               },
               {
                 "kind": "Strong",
@@ -1924,7 +1924,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is printed.\n                "
+                "text": " 已打印。\n                "
               },
               {
                 "kind": "Strong",
@@ -1937,7 +1937,7 @@
               },
               {
                 "kind": "Text",
-                "text": " becomes "
+                "text": " 变成 "
               },
               {
                 "kind": "Strong",
@@ -1963,7 +1963,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is detached,\n                "
+                "text": " 已分离，\n                "
               },
               {
                 "kind": "Strong",
@@ -1976,7 +1976,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is attached.\n            "
+                "text": " 已附加。\n            "
               }
             ]
           },
@@ -1985,7 +1985,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                When "
+                "text": "\n                当 "
               },
               {
                 "kind": "Strong",
@@ -1998,7 +1998,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is executed,\n                nothing happens,\n                because "
+                "text": " 被执行，\n                什么也没发生，\n                因为 "
               },
               {
                 "kind": "Strong",
@@ -2011,7 +2011,7 @@
               },
               {
                 "kind": "Text",
-                "text": " has already been detached.\n            "
+                "text": " 已经被分离。\n            "
               }
             ]
           },
@@ -2020,7 +2020,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                When "
+                "text": "\n                当 "
               },
               {
                 "kind": "Strong",
@@ -2033,7 +2033,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is executed,\n                "
+                "text": " 被执行，\n                "
               },
               {
                 "kind": "Strong",
@@ -2046,7 +2046,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is printed, obviously.\n            "
+                "text": " 已打印，显然。\n            "
               }
             ]
           }

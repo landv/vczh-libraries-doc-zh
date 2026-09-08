@@ -159,14 +159,14 @@
   "numberBeforeTitle": false,
   "topic": {
     "kind": "Topic",
-    "title": "Cross XML Resource References",
+    "title": "跨 XML 资源引用",
     "content": [
       {
         "kind": "Paragraph",
         "content": [
           {
             "kind": "Text",
-            "text": "\n            A GacUI XML Resource could\n            "
+            "text": "\n            A GacUI XML资源可以\n            "
           },
           {
             "kind": "PageLink",
@@ -174,13 +174,13 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                use some resources in another XML\n            "
+                "text": "\n                在另一个 XML 中使用一些资源\n            "
               }
             ]
           },
           {
             "kind": "Text",
-            "text": ".\n            There are 3 types of resources:\n            "
+            "text": ".\n            有3种类型的资源：\n            "
           },
           {
             "kind": "List",
@@ -191,7 +191,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "Resource files: They could be accessed using "
+                    "text": "资源文件：它们可以使用 "
                   },
                   {
                     "kind": "Strong",
@@ -204,14 +204,14 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " in the "
+                    "text": " 在 "
                   },
                   {
                     "kind": "Strong",
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "-uri binding"
+                        "text": "-uri 绑定"
                       }
                     ]
                   },
@@ -226,7 +226,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "Objects that compiled to Workflow: They could be accessed using their generated class or interface names."
+                    "text": "编译为工作流的对象：它们可以使用其生成的类或接口名称访问。"
                   }
                 ]
               },
@@ -235,7 +235,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "Everything else: They could not be accessed from another XML."
+                    "text": "其他所有内容：它们无法从另一个 XML 访问。"
                   }
                 ]
               }
@@ -245,14 +245,14 @@
       },
       {
         "kind": "Topic",
-        "title": "XML Resource Header",
+        "title": "XML 资源头",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                To make a GacUI XML Resource be able to depend on or be depended by another resource,\n                a header is required in "
+                "text": "\n                要使 GacUI XML 资源能够依赖或被另一个资源依赖，\n                在中需要一个标题 "
               },
               {
                 "kind": "Strong",
@@ -265,7 +265,7 @@
               },
               {
                 "kind": "Text",
-                "text": " like this:\n                "
+                "text": " 像这样：\n                "
               },
               {
                 "kind": "Program",
@@ -289,7 +289,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ":\n                        The name of the resource.\n                        All resources that loaded into an application should either have a unique name or have no name.\n                        If a resource want to depend on or to be depended by another resource,\n                        it should have a name.\n                    "
+                        "text": "：\n                        资源的名称。\n                        加载到应用程序中的所有资源应具有唯一名称或无名称。\n                        如果一个资源想要依赖另一个资源或被另一个资源依赖，\n                        它应该有一个名称。\n                    "
                       }
                     ]
                   },
@@ -307,7 +307,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ":\n                        The only legal value is "
+                        "text": "：\n                        唯一合法的值是 "
                       },
                       {
                         "kind": "Strong",
@@ -320,7 +320,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ".\n                        It is bounded to the GacUI XML Resource Compiler (GacGen32.exe or GacGen64.exe).\n                        To ensure that all depended resources are compiled using a compatible version of compiler,\n                        an resource could only depend on another resource that has exactly the same version.\n                    "
+                        "text": ".\n                        它与 GacUI XML 资源编译器（GacGen32.exe 或 GacGen64.exe）绑定。\n                        为确保所有依赖资源均使用兼容版本的编译器进行编译，\n                        一个资源只能依赖于另一个具有完全相同版本的资源。\n                    "
                       }
                     ]
                   },
@@ -338,7 +338,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ":\n                        Here are all resources that the current resource depends on.\n                        The name must match their "
+                        "text": "：\n                        这里列出了当前资源所依赖的所有资源：\n                        名称必须匹配它们的 "
                       },
                       {
                         "kind": "Strong",
@@ -351,7 +351,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " in their metadata.\n                    "
+                        "text": " 在它们的元数据中。\n                    "
                       }
                     ]
                   }
@@ -363,7 +363,7 @@
       },
       {
         "kind": "Topic",
-        "title": "Compile Resource with Dependencies",
+        "title": "使用依赖项编译资源",
         "content": [
           {
             "kind": "Paragraph",
@@ -380,7 +380,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                is the only tool to properly compile resources with dependencies.\n            "
+                "text": "\n                是唯一能够正确编译具有依赖关系的资源的工具。\n            "
               }
             ]
           },
@@ -389,7 +389,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                You need to have a file called "
+                "text": "\n                您需要有一个名为 "
               },
               {
                 "kind": "Strong",
@@ -410,7 +410,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                A GacUI XML Resource and all its dependeices must be put inside the folder containing "
+                "text": "\n                A GacUI XML资源及其所有依赖项必须放置在包含 "
               },
               {
                 "kind": "Strong",
@@ -423,7 +423,7 @@
               },
               {
                 "kind": "Text",
-                "text": ".\n                Resource files could be put in any level of sub folders.\n            "
+                "text": ".\n                资源文件可以放在任何层级的子文件夹中。\n            "
               }
             ]
           },
@@ -432,7 +432,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Then you could call "
+                "text": "\n                然后你可以调用 "
               },
               {
                 "kind": "Strong",
@@ -458,7 +458,7 @@
               },
               {
                 "kind": "Text",
-                "text": ".\n                All resource files in the folder containing "
+                "text": ".\n                包含的文件夹中的所有资源文件 "
               },
               {
                 "kind": "Strong",
@@ -471,7 +471,7 @@
               },
               {
                 "kind": "Text",
-                "text": " will be found and compiled in the dependency order.\n            "
+                "text": " 将按依赖顺序找到并编译。\n            "
               }
             ]
           },
@@ -489,7 +489,7 @@
               },
               {
                 "kind": "Text",
-                "text": " forces incremental build.\n                If a resource is not changed,\n                and all its dependencies are not changed,\n                then the resource will not be compiled again.\n                You could use "
+                "text": " 强制增量构建。\n                如果一个资源未被更改，\n                并且所有依赖项均未更改，\n                则资源将不会再次编译。\n                您可以使用 "
               },
               {
                 "kind": "Strong",
@@ -502,7 +502,7 @@
               },
               {
                 "kind": "Text",
-                "text": " to clear all cache,\n                the next time "
+                "text": " 清除所有缓存，\n                下次 "
               },
               {
                 "kind": "Strong",
@@ -515,7 +515,7 @@
               },
               {
                 "kind": "Text",
-                "text": " will recompile every resource files.\n            "
+                "text": " 将重新编译所有资源文件。\n            "
               }
             ]
           },
@@ -524,7 +524,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Generated resource binaries, workflow binaries and C++ code will be put in places\n                "
+                "text": "\n                生成的资源二进制文件、工作流二进制文件和 C++ 代码将放置在指定位置\n                "
               },
               {
                 "kind": "PageLink",
@@ -532,7 +532,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    specified in each GacUI XML Resource\n                "
+                    "text": "\n                    在每个 GacUI XML 资源中指定\n                "
                   }
                 ]
               },
@@ -546,7 +546,7 @@
       },
       {
         "kind": "Topic",
-        "title": "Loading Resource Dependencies in your C++ Application",
+        "title": "在您的 C++ 应用程序中加载资源依赖项",
         "content": [
           {
             "kind": "Paragraph",
@@ -562,7 +562,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                is the only function to load compiled resource binaries:\n                "
+                "text": "\n                是唯一加载已编译资源二进制文件的函数：\n                "
               },
               {
                 "kind": "List",
@@ -609,7 +609,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " here to load a resource from file.\n                    "
+                        "text": " 这里用于从文件加载资源。\n                    "
                       }
                     ]
                   },
@@ -627,7 +627,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ":\n                        If the resource could not be loaded,\n                        errors will be stored in this list.\n                        An empty error list after calling this function means the resource is loaded properly.\n                        If the "
+                        "text": "：\n                        如果资源无法加载，\n                        错误将存储在此列表中。\n                        调用此函数后返回一个空的错误列表，表示资源已正确加载。\n                        如果 "
                       },
                       {
                         "kind": "Strong",
@@ -640,7 +640,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " argument is not use,\n                        then the function will crash if there is any error.\n                    "
+                        "text": " 参数未被使用，\n                        如果存在任何错误，该函数将崩溃。\n                    "
                       }
                     ]
                   },
@@ -671,7 +671,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " if you include all Workflow binaries into this resource file,\n                        and "
+                        "text": " 如果您将所有工作流二进制文件包含在此资源文件中，\n                        和 "
                       },
                       {
                         "kind": "Strong",
@@ -684,7 +684,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " if not.\n                        A resource binary containing Workflow binaries could be produced using\n                        "
+                        "text": " 如果不是。\n                        包含工作流二进制的资源二进制可以使用\n                        "
                       },
                       {
                         "kind": "PageLink",
@@ -701,7 +701,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " and "
+                            "text": " 和 "
                           },
                           {
                             "kind": "Strong",
@@ -719,13 +719,13 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "The content of Workflow binaries is different for x86 or x64"
+                            "text": "Workflow 二进制文件的内容对于 x86 或 x64 是不同的"
                           }
                         ]
                       },
                       {
                         "kind": "Text",
-                        "text": ",\n                        you need to load the correct one.\n                    "
+                        "text": "，\n                        您需要加载正确的那个。\n                    "
                       }
                     ]
                   }
@@ -733,7 +733,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                Typically,\n                if you use compiled resource with generated C++ files instead of Workflow binaries,\n                you only need the first argument.\n            "
+                "text": "\n                通常，\n                如果您使用编译资源并用生成的 C++ 文件代替工作流二进制文件，\n                你只需要第一个参数。\n            "
               }
             ]
           },
@@ -742,7 +742,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                You don't need to worry about the order to load resource files,\n                they will be taken care of in this function,\n                just call "
+                "text": "\n                您不需要担心加载资源文件的顺序，\n                它们将在此函数中处理。\n                只需调用 "
               },
               {
                 "kind": "Strong",
@@ -755,7 +755,7 @@
               },
               {
                 "kind": "Text",
-                "text": " for all of them.\n            "
+                "text": " 用于所有它们。\n            "
               }
             ]
           },
@@ -764,7 +764,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Calling "
+                "text": "\n                调用 "
               },
               {
                 "kind": "Strong",
@@ -777,7 +777,7 @@
               },
               {
                 "kind": "Text",
-                "text": " without all depended resources prepared\n                results in delay loading.\n                Such resource will be automatically loaded after all depended resources are loaded.\n                You could call "
+                "text": " 未准备所有依赖资源\n                导致延迟加载。\n                这样的资源将在所有依赖资源加载后自动加载。\n                您可以调用 "
               },
               {
                 "kind": "Strong",
@@ -790,7 +790,7 @@
               },
               {
                 "kind": "Text",
-                "text": " to see if a resource has already been loaded or not.\n                If it returns "
+                "text": " 查看资源是否已被加载\n                如果它返回 "
               },
               {
                 "kind": "Strong",
@@ -803,7 +803,7 @@
               },
               {
                 "kind": "Text",
-                "text": " but "
+                "text": " 但是 "
               },
               {
                 "kind": "Strong",
@@ -816,7 +816,7 @@
               },
               {
                 "kind": "Text",
-                "text": " succeeded,\n                it means some depended resources are not prepared yet,\n                and the loading is delayed.\n            "
+                "text": " 成功，\n                这意味着某些依赖资源尚未准备就绪。\n                并且加载被延迟。\n            "
               }
             ]
           }
@@ -824,14 +824,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Get Rid of Resource Files",
+        "title": "删除资源文件",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                By using\n                "
+                "text": "\n                通过使用\n                "
               },
               {
                 "kind": "PageLink",
@@ -876,7 +876,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                you will get multiple cpp files for each GacUI XML Resource.\n                Link all these cpp files to your project,\n                resource binaries will be compiled into your executable file.\n                When your application starts,\n                all resources will be properly loaded before "
+                "text": "，\n                您将为每个 GacUI XML 资源获得多个 CPP 文件。\n                将所有这些cpp文件链接到你的项目中，\n                资源二进制文件将被编译到你的可执行文件中。\n                当您的应用程序启动时，\n                所有资源将在 "
               },
               {
                 "kind": "Strong",
@@ -897,14 +897,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Using Resource in Dependedcies",
+        "title": "在依赖项中使用资源",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                If there is a resource object "
+                "text": "\n                如果有一个资源对象 "
               },
               {
                 "kind": "Strong",
@@ -917,7 +917,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                in a GacUI XML Resource called "
+                "text": "\n                在一个名为 "
               },
               {
                 "kind": "Strong",
@@ -930,7 +930,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                another GacUI XML Resource depending on it could use\n                "
+                "text": "，\n                另一个依赖于它的GacUI XML资源可以使用\n                "
               },
               {
                 "kind": "Strong",
@@ -943,14 +943,14 @@
               },
               {
                 "kind": "Text",
-                "text": ".\n                Such resource path could be use in "
+                "text": ".\n                这样的资源路径可以在 "
               },
               {
                 "kind": "Strong",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "-uri binding"
+                    "text": "-uri 绑定"
                   }
                 ]
               },
@@ -969,7 +969,7 @@
               },
               {
                 "kind": "Text",
-                "text": " method in all\n                "
+                "text": " 方法 in all\n                "
               },
               {
                 "kind": "PageLink",
@@ -977,7 +977,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "root UI instance"
+                    "text": "根 UI 实例"
                   }
                 ]
               },
@@ -992,7 +992,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                If a resource is compiled to Workflow classes or instances,\n                just use the class or interface names directly.\n                But if the resource is not in the dependency list\n                ("
+                "text": "\n                如果一个资源被编译为工作流类或实例，\n                直接使用类或接口名称。\n                但若资源不在依赖项列表中\n                ("
               },
               {
                 "kind": "Strong",
@@ -1005,7 +1005,7 @@
               },
               {
                 "kind": "Text",
-                "text": "),\n                the class or interface name will not be found when running "
+                "text": "),\n                运行时将找不到类或接口名称 "
               },
               {
                 "kind": "Strong",
@@ -1018,7 +1018,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                errors will be generated and the resource cannot be compiled.\n            "
+                "text": "，\n                将生成错误，且资源无法编译。\n            "
               }
             ]
           }

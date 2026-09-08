@@ -127,7 +127,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            A coroutine provider is a class with methods that following a naming convention.\n        "
+            "text": "\n            协程提供者是一个具有特定命名约定方法的类。\n        "
           }
         ]
       },
@@ -136,13 +136,13 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            A coroutine provider could be written in either C++ with reflection, or just Workflow.\n        "
+            "text": "\n            协程提供者可以用带反射的 C++ 或者 Workflow 编写。\n        "
           }
         ]
       },
       {
         "kind": "Topic",
-        "title": "Naming your coroutine",
+        "title": "命名你的协程",
         "content": [
           {
             "kind": "Paragraph",
@@ -215,7 +215,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " could be a class or an interface.\n                    "
+                        "text": " 可以是类或接口。\n                    "
                       }
                     ]
                   },
@@ -246,7 +246,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " could both appear.\n                        This makes coroutine functions being able to return both "
+                        "text": " 可以同时出现。\n                        这使得协程函数能够返回两种 "
                       },
                       {
                         "kind": "Strong",
@@ -281,7 +281,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "\n                        The return type of "
+                        "text": "\n                        的返回类型 "
                       },
                       {
                         "kind": "Strong",
@@ -294,7 +294,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " must be compatible with the return type of coroutine functions:\n                        "
+                        "text": " 必须与协程函数的返回类型兼容：\n                        "
                       },
                       {
                         "kind": "List",
@@ -318,7 +318,7 @@
                               },
                               {
                                 "kind": "Text",
-                                "text": " returns "
+                                "text": " 返回 "
                               },
                               {
                                 "kind": "Strong",
@@ -331,7 +331,7 @@
                               },
                               {
                                 "kind": "Text",
-                                "text": ", then coroutine functions could return "
+                                "text": "，然后协程函数可以返回 "
                               },
                               {
                                 "kind": "Strong",
@@ -344,7 +344,7 @@
                               },
                               {
                                 "kind": "Text",
-                                "text": " or any of its base type."
+                                "text": " 或其任何基类型。"
                               }
                             ]
                           },
@@ -366,7 +366,7 @@
                               },
                               {
                                 "kind": "Text",
-                                "text": " returns "
+                                "text": " 返回 "
                               },
                               {
                                 "kind": "Strong",
@@ -379,7 +379,7 @@
                               },
                               {
                                 "kind": "Text",
-                                "text": ", then coroutine functions could return a generic version of "
+                                "text": "，然后协程函数可以返回一个通用版本的 "
                               },
                               {
                                 "kind": "Strong",
@@ -405,7 +405,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "\n                        The only argument of "
+                        "text": "\n                        唯一的参数是 "
                       },
                       {
                         "kind": "Strong",
@@ -431,7 +431,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " should be a function:\n                        "
+                        "text": " 应该是一个函数：\n                        "
                       },
                       {
                         "kind": "List",
@@ -442,7 +442,7 @@
                             "content": [
                               {
                                 "kind": "Text",
-                                "text": "It takes a raw pointer of an object for storing internal states."
+                                "text": "接收一个对象的原始指针用于存储内部状态。"
                               }
                             ]
                           },
@@ -451,7 +451,7 @@
                             "content": [
                               {
                                 "kind": "Text",
-                                "text": "It must return "
+                                "text": "必须返回 "
                               },
                               {
                                 "kind": "Strong",
@@ -481,7 +481,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                When a coroutine function is called,\n                either "
+                "text": "\n                当一个协程函数被调用时，\n                或者 "
               },
               {
                 "kind": "Strong",
@@ -507,7 +507,7 @@
               },
               {
                 "kind": "Text",
-                "text": " will be called.\n                You are responsible to create the object for storing internal states,\n                and then a "
+                "text": " 将被调用。\n                您负责创建用于存储内部状态的对象，\n                然后一个 "
               },
               {
                 "kind": "Strong",
@@ -520,7 +520,7 @@
               },
               {
                 "kind": "Text",
-                "text": " will be given to you.\n            "
+                "text": " 将提供给您。\n            "
               }
             ]
           },
@@ -529,7 +529,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                The coroutine function takes and stores the internal state object.\n                When any method in the coroutine provider is called because of\n                coroutine providers, "
+                "text": "\n                协程函数获取并存储内部状态对象。\n                当由于以下原因调用协程提供程序中的任何方法时，\n                协程提供者， "
               },
               {
                 "kind": "Strong",
@@ -555,7 +555,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                this object will be used as the first argument.\n            "
+                "text": "，\n                此对象将用作第一个参数。\n            "
               }
             ]
           },
@@ -564,7 +564,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Nothing in the coroutine function is executed before the first call to "
+                "text": "\n                协程函数中在第一次调用之前不会执行任何内容 "
               },
               {
                 "kind": "Strong",
@@ -586,7 +586,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Whenever a coroutine operation is called,\n                the coroutine pauses,\n                and another call to "
+                "text": "\n                每当调用协程操作时，\n                协程暂停，\n                和另一个调用 "
               },
               {
                 "kind": "Strong",
@@ -599,7 +599,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is required to continue the coroutine function.\n            "
+                "text": " 用于继续协程函数。\n            "
               }
             ]
           },
@@ -608,7 +608,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                After "
+                "text": "\n                在 "
               },
               {
                 "kind": "Strong",
@@ -647,7 +647,7 @@
               },
               {
                 "kind": "Text",
-                "text": " must be read in order to correctly handle coroutine operations.\n            "
+                "text": " 必须按顺序读取，以正确处理协程操作。\n            "
               }
             ]
           }
@@ -655,7 +655,7 @@
       },
       {
         "kind": "Topic",
-        "title": "Define coroutine operations",
+        "title": "定义协程操作",
         "content": [
           {
             "kind": "Paragraph",
@@ -683,7 +683,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                If you want to support both\n                "
+                "text": "\n                如果您想同时支持\n                "
               },
               {
                 "kind": "Program",
@@ -712,7 +712,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Overloading is allowed.\n            "
+                "text": "\n                允许重载。\n            "
               }
             ]
           },
@@ -721,7 +721,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                When a coroutine operation is called,\n                one of these methods will be called,\n                and the created "
+                "text": "\n                当一个协程操作被调用时，\n                这些方法中的一个将被调用，\n                以及创建的 "
               },
               {
                 "kind": "Strong",
@@ -734,7 +734,7 @@
               },
               {
                 "kind": "Text",
-                "text": " will pause right after that.\n            "
+                "text": " 将在那之后立即暂停。\n            "
               }
             ]
           },
@@ -743,7 +743,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                All methods for coroutine operations must return "
+                "text": "\n                所有协程操作的方法必须返回 "
               },
               {
                 "kind": "Strong",
@@ -756,7 +756,7 @@
               },
               {
                 "kind": "Text",
-                "text": ".\n                After the coroutine is resumed,\n                the return value from the coroutine operation comes from the second argument in "
+                "text": ".\n                协程恢复后，\n                协程操作的返回值来自第二个参数。 "
               },
               {
                 "kind": "Strong",
@@ -778,7 +778,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                This argument is a "
+                "text": "\n                此参数是 "
               },
               {
                 "kind": "Strong",
@@ -802,7 +802,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "If the coroutine operation succeeds, the return value is stored in the "
+                        "text": "如果协程操作成功，返回值将存储在 "
                       },
                       {
                         "kind": "Strong",
@@ -815,7 +815,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " property."
+                        "text": " 属性。"
                       }
                     ]
                   },
@@ -824,7 +824,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "If the coroutine operation succeeds, the exception is stored in the "
+                        "text": "如果协程操作成功，异常将存储在 "
                       },
                       {
                         "kind": "Strong",
@@ -837,7 +837,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " property."
+                        "text": " 属性。"
                       }
                     ]
                   },
@@ -859,7 +859,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " is not null,\n                        "
+                        "text": " 不为 null，\n                        "
                       },
                       {
                         "kind": "Strong",
@@ -872,7 +872,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " will be ignored.\n                        and an exception is thrown.\n                        If there is no "
+                        "text": " 将被忽略。\n                        将抛出一个异常。\n                        如果没有 "
                       },
                       {
                         "kind": "Strong",
@@ -885,7 +885,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " in this coroutine function,\n                        the coroutine stops immediately with this exception.\n                    "
+                        "text": " 在此协程函数中，\n                        协程会立即以该异常停止。\n                    "
                       }
                     ]
                   }
@@ -897,7 +897,7 @@
       },
       {
         "kind": "Topic",
-        "title": "Define the return statement",
+        "title": "定义返回语句",
         "content": [
           {
             "kind": "Paragraph",
@@ -946,7 +946,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Both methods could appear together.\n            "
+                "text": "\n                两种方法可以同时出现。\n            "
               }
             ]
           },
@@ -955,7 +955,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                When "
+                "text": "\n                当 "
               },
               {
                 "kind": "Strong",
@@ -981,7 +981,7 @@
               },
               {
                 "kind": "Text",
-                "text": " will be called,\n                and the coroutine stops immediately.\n            "
+                "text": " 将被调用，\n                以及协程立即停止。\n            "
               }
             ]
           }
@@ -989,14 +989,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Define the $ expression",
+        "title": "定义 $ 表达式",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                If you want to suppor the "
+                "text": "\n                如果您想支持 "
               },
               {
                 "kind": "Strong",
@@ -1009,7 +1009,7 @@
               },
               {
                 "kind": "Text",
-                "text": " expression,\n                you are required to add this method to your coroutine provider:\n                "
+                "text": " 表达式，\n                您需要向您的协程提供者添加此方法：\n                "
               },
               {
                 "kind": "Program",
@@ -1017,7 +1017,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                and the return value from "
+                "text": "\n                并且从 "
               },
               {
                 "kind": "Strong",
@@ -1030,7 +1030,7 @@
               },
               {
                 "kind": "Text",
-                "text": " becomes "
+                "text": " 变成 "
               },
               {
                 "kind": "Strong",
@@ -1051,14 +1051,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Example",
+        "title": "示例",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Let's see the example "
+                "text": "\n                让我们看这个例子 "
               },
               {
                 "kind": "PageLink",
@@ -1066,7 +1066,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "here"
+                    "text": "这里"
                   }
                 ]
               },
@@ -1094,7 +1094,7 @@
               },
               {
                 "kind": "Text",
-                "text": " defines:\n                "
+                "text": " 定义：\n                "
               },
               {
                 "kind": "List",
@@ -1114,7 +1114,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": Stores a collection of values."
+                        "text": ": 存储一组值。"
                       }
                     ]
                   },
@@ -1132,7 +1132,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": Read a value from the stored collection, returns "
+                        "text": ": 从存储的集合中读取一个值，返回 "
                       },
                       {
                         "kind": "Strong",
@@ -1145,7 +1145,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " after all values are read."
+                        "text": " 在所有值被读取后。"
                       }
                     ]
                   },
@@ -1163,7 +1163,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": Finish the coroutine with a result."
+                        "text": ": 使用结果完成协程。"
                       }
                     ]
                   }
@@ -1176,7 +1176,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                After the coroutine pauses,\n                you need to know which coroutine operation is called.\n                In this example,\n                the "
+                "text": "\n                协程暂停后，\n                你需要知道调用了哪个协程操作。\n                在此示例中，\n                该 "
               },
               {
                 "kind": "Strong",
@@ -1189,7 +1189,7 @@
               },
               {
                 "kind": "Text",
-                "text": " field in "
+                "text": " 字段在 "
               },
               {
                 "kind": "Strong",
@@ -1202,7 +1202,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is used for this purpose.\n            "
+                "text": " 用于此目的。\n            "
               }
             ]
           },
@@ -1263,7 +1263,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is called.\n                The default value of "
+                "text": " 被调用。\n                的默认值是 "
               },
               {
                 "kind": "Strong",
@@ -1289,7 +1289,7 @@
               },
               {
                 "kind": "Text",
-                "text": ".\n                If all values are read,\n                the assignment is not executed,\n                so "
+                "text": ".\n                如果所有值都被读取，\n                赋值未执行，\n                so "
               },
               {
                 "kind": "Strong",
@@ -1302,7 +1302,7 @@
               },
               {
                 "kind": "Text",
-                "text": " returns "
+                "text": " 返回 "
               },
               {
                 "kind": "Strong",
@@ -1337,7 +1337,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is called before "
+                "text": " 在……之前被调用 "
               },
               {
                 "kind": "Strong",
@@ -1350,7 +1350,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                it crashes because the "
+                "text": "，\n                它崩溃是因为 "
               },
               {
                 "kind": "Strong",
@@ -1363,7 +1363,7 @@
               },
               {
                 "kind": "Text",
-                "text": " field is "
+                "text": " 字段是 "
               },
               {
                 "kind": "Strong",
@@ -1385,7 +1385,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                After that, "
+                "text": "\n                那之后， "
               },
               {
                 "kind": "Strong",
@@ -1398,7 +1398,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is called,\n                this is how the return value from "
+                "text": " 被调用，\n                这是返回值的获取方式 "
               },
               {
                 "kind": "Strong",
@@ -1411,7 +1411,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is specified.\n            "
+                "text": " 已指定。\n            "
               }
             ]
           },
@@ -1420,7 +1420,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Finally "
+                "text": "\n                最后 "
               },
               {
                 "kind": "Strong",
@@ -1433,7 +1433,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is called,\n                it first stores 10 numbers,\n                and then read them out one by one,\n                and add them together.\n            "
+                "text": " 被调用，\n                它首先存储10个数字，\n                然后逐个读取它们，\n                并把它们相加。\n            "
               }
             ]
           },
@@ -1455,7 +1455,7 @@
               },
               {
                 "kind": "Text",
-                "text": " function,\n                it keeps calling "
+                "text": " 函数，\n                它一直在调用 "
               },
               {
                 "kind": "Strong",
@@ -1468,7 +1468,7 @@
               },
               {
                 "kind": "Text",
-                "text": " until the whole coroutine function finishes.\n                The return value is read from the "
+                "text": " 直到整个协程函数执行完毕。\n                返回值从 "
               },
               {
                 "kind": "Strong",
@@ -1481,7 +1481,7 @@
               },
               {
                 "kind": "Text",
-                "text": " field,\n                because "
+                "text": " 字段，\n                因为 "
               },
               {
                 "kind": "Strong",
@@ -1494,7 +1494,7 @@
               },
               {
                 "kind": "Text",
-                "text": " use this field to store the value given to the return statement.\n            "
+                "text": " 使用此字段存储传递给 return 语句的值。\n            "
               }
             ]
           },
@@ -1503,7 +1503,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                By executing "
+                "text": "\n                通过执行 "
               },
               {
                 "kind": "Strong",
@@ -1516,7 +1516,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                methods in "
+                "text": "，\n                方法在 "
               },
               {
                 "kind": "Strong",
@@ -1529,7 +1529,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is called in the following order:\n                "
+                "text": " 按以下顺序被调用：\n                "
               },
               {
                 "kind": "List",
@@ -1582,7 +1582,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "\n                        Call 10 times:\n                        "
+                        "text": "\n                        调用 10 次：\n                        "
                       },
                       {
                         "kind": "List",

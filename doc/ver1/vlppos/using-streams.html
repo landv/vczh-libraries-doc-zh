@@ -83,14 +83,14 @@
   "numberBeforeTitle": false,
   "topic": {
     "kind": "Topic",
-    "title": "Using Streams",
+    "title": "使用流",
     "content": [
       {
         "kind": "Paragraph",
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Streams in this library are composable.\n        "
+            "text": "\n            此库中的流是可组合的。\n        "
           }
         ]
       },
@@ -99,7 +99,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Let's say we need to read a file, it has a BOM at the beginning of the file to indicate the text encoding.\n            Now we need to print the file line by line to the screen,\n            and save the file in UTF-8 and UTF-16 without BOM, in two separated files.\n        "
+            "text": "\n            假设我们需要读取一个文件，文件开头有BOM来指示文本编码。\n            现在我们需要将文件逐行打印到屏幕上，\n            和以UTF-8和UTF-16（无BOM）两种格式分别保存文件。\n        "
           }
         ]
       },
@@ -108,7 +108,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Here is what we need:\n            "
+            "text": "\n            我们需要以下内容：\n            "
           },
           {
             "kind": "List",
@@ -128,7 +128,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " for accessing files."
+                    "text": " 用于访问文件。"
                   }
                 ]
               },
@@ -146,7 +146,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " for copy content to multiple streams."
+                    "text": " 用于将内容复制到多个流。"
                   }
                 ]
               },
@@ -164,7 +164,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " for reading data from a stream, and save what is read to another stream."
+                    "text": " 用于从流中读取数据，并将读取的内容保存到另一个流。"
                   }
                 ]
               },
@@ -182,7 +182,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " and "
+                    "text": " 和 "
                   },
                   {
                     "kind": "Strong",
@@ -195,7 +195,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " for handling text encoding."
+                    "text": " 用于处理文本编码。"
                   }
                 ]
               }
@@ -203,7 +203,7 @@
           },
           {
             "kind": "Text",
-            "text": "\n            We compose these streams in this way:\n            "
+            "text": "\n            我们以这种方式组合这些流：\n            "
           },
           {
             "kind": "Image",
@@ -216,7 +216,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            When we read text from the "
+            "text": "\n            当我们从 "
           },
           {
             "kind": "Strong",
@@ -242,7 +242,7 @@
           },
           {
             "kind": "Text",
-            "text": " reads data from the "
+            "text": " 从读取数据 "
           },
           {
             "kind": "Strong",
@@ -255,7 +255,7 @@
           },
           {
             "kind": "Text",
-            "text": ",\n            which reads data from the "
+            "text": "，\n            读取数据的 "
           },
           {
             "kind": "Strong",
@@ -277,7 +277,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            At the same time, the "
+            "text": "\n            同时，该 "
           },
           {
             "kind": "Strong",
@@ -290,7 +290,7 @@
           },
           {
             "kind": "Text",
-            "text": " write all bytes that is read to the "
+            "text": " 将读取的所有字节写入 "
           },
           {
             "kind": "Strong",
@@ -303,7 +303,7 @@
           },
           {
             "kind": "Text",
-            "text": ",\n            which writes data to two "
+            "text": "，\n            将数据写入两个 "
           },
           {
             "kind": "Strong",
@@ -334,7 +334,7 @@
           },
           {
             "kind": "Text",
-            "text": " uses the assigned decoder to convert raw bytes from the "
+            "text": " 使用分配的解码器将原始字节转换为 "
           },
           {
             "kind": "Strong",
@@ -373,7 +373,7 @@
           },
           {
             "kind": "Text",
-            "text": " uses the assigned encoder to convert "
+            "text": " 使用分配的编码器进行转换 "
           },
           {
             "kind": "Strong",
@@ -386,7 +386,7 @@
           },
           {
             "kind": "Text",
-            "text": " to raw bytes and write to the "
+            "text": " 转换为原始字节并写入 "
           },
           {
             "kind": "Strong",
@@ -408,7 +408,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            By composing all streams together,\n            what we need to do is just read text line by line from the "
+            "text": "\n            通过将所有流组合在一起，\n            我们需要做的只是逐行读取文本 "
           },
           {
             "kind": "Strong",
@@ -421,7 +421,7 @@
           },
           {
             "kind": "Text",
-            "text": ",\n            and everything else will be done by all these connected streams.\n        "
+            "text": "，\n            并且所有其他工作将由所有这些连接的流完成。\n        "
           }
         ]
       },

@@ -101,14 +101,14 @@
   "numberBeforeTitle": false,
   "topic": {
     "kind": "Topic",
-    "title": "Generated APIs",
+    "title": "生成的 API",
     "content": [
       {
         "kind": "Paragraph",
         "content": [
           {
             "kind": "Text",
-            "text": "\n            If you enable everything (by default) in "
+            "text": "\n            如果您启用了所有内容（默认情况下） "
           },
           {
             "kind": "Strong",
@@ -121,7 +121,7 @@
           },
           {
             "kind": "Text",
-            "text": ",\n            AST will generates following APIs for creating and accessing AST types:\n            "
+            "text": "，\n            AST 将为创建和访问 AST 类型生成以下 API：\n            "
           },
           {
             "kind": "List",
@@ -145,7 +145,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " there is a "
+                    "text": " 有一个 "
                   },
                   {
                     "kind": "Strong",
@@ -158,7 +158,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " class, call its default constructor and you can create the whole AST tree with this fluent interface. After all fields are prepared the created object can be obtained by static_cast<Ptr<ClassType>>."
+                    "text": " 类，调用其默认构造函数，你可以使用此流畅接口创建整个AST树。所有字段准备完毕后，可以通过 static_cast<Ptr<ClassType>> 获取创建的对象。"
                   }
                 ]
               },
@@ -167,7 +167,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "Each base class has a "
+                    "text": "每个基类都有一个 "
                   },
                   {
                     "kind": "Strong",
@@ -180,7 +180,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " interface and a "
+                    "text": " 接口和一个 "
                   },
                   {
                     "kind": "Strong",
@@ -193,7 +193,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " function. The "
+                    "text": " 函数。此 "
                   },
                   {
                     "kind": "Strong",
@@ -206,7 +206,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " function accepts an implementation of the "
+                    "text": " 函数接受一个实现 "
                   },
                   {
                     "kind": "Strong",
@@ -219,7 +219,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " interface, and one member in "
+                    "text": " 接口，以及一个成员在 "
                   },
                   {
                     "kind": "Strong",
@@ -232,7 +232,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " will be called according to the actual type of "
+                    "text": " 将根据实际类型调用 "
                   },
                   {
                     "kind": "Strong",
@@ -263,7 +263,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " for each "
+                    "text": " 每个 "
                   },
                   {
                     "kind": "Strong",
@@ -276,7 +276,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ". It has all members implemented doing nothing. You can use this class to implement your own algorithm when only a few types need to be handled."
+                    "text": ". 它所有成员都实现为空操作。当只需要处理少数类型时，您可以使用此类来实现自己的算法。"
                   }
                 ]
               },
@@ -333,7 +333,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ", its "
+                    "text": "，它的 "
                   },
                   {
                     "kind": "Strong",
@@ -346,7 +346,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " field has a copy of the whole AST tree."
+                    "text": " 字段包含整个AST树的副本。"
                   }
                 ]
               },
@@ -403,7 +403,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ", its "
+                    "text": "，它的 "
                   },
                   {
                     "kind": "Strong",
@@ -416,7 +416,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " field has a serialized JSON document. The JSON document also follows the design of AST."
+                    "text": " 字段包含一个序列化的 JSON 文档。该 JSON 文档也遵循 AST 的设计。"
                   }
                 ]
               },
@@ -447,7 +447,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " here is the AST group's name. Call "
+                    "text": " 这里是 AST 组的名称。调用 "
                   },
                   {
                     "kind": "Strong",
@@ -460,7 +460,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " to reconstruct a "
+                    "text": " 重建一个 "
                   },
                   {
                     "kind": "Strong",
@@ -473,7 +473,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " from compact, range-free JSON emitted by the matching "
+                    "text": " 来自匹配项生成的紧凑型、无范围的 JSON "
                   },
                   {
                     "kind": "Strong",
@@ -486,7 +486,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ". The required string "
+                    "text": ". 所需的字符串 "
                   },
                   {
                     "kind": "Strong",
@@ -499,7 +499,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " chooses the concrete generated class. Missing ordinary fields keep deterministic defaults; malformed fields, values, or nested AST types throw "
+                    "text": " 选择具体的生成类。缺失的普通字段保持确定的默认值；格式错误的字段、值或嵌套的AST类型会抛出异常。 "
                   },
                   {
                     "kind": "Strong",
@@ -569,7 +569,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ", every object in the AST tree will calls a "
+                    "text": "，AST树中的每个对象都会调用一个 "
                   },
                   {
                     "kind": "Strong",
@@ -582,7 +582,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " function from the top base type "
+                    "text": " 函数来自顶部基类型 "
                   },
                   {
                     "kind": "Strong",
@@ -595,7 +595,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " all the way to its actual type  in order, and "
+                    "text": " 一直到其实际类型，按顺序，和 "
                   },
                   {
                     "kind": "Strong",
@@ -608,7 +608,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " when all members of an AST object are traversed, from its actual type all the way to the top base type "
+                    "text": " 当遍历 AST 对象的所有成员时，从其实际类型一直到最顶层的基类型 "
                   },
                   {
                     "kind": "Strong",
@@ -621,7 +621,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ". There is also a "
+                    "text": ". 还有一个 "
                   },
                   {
                     "kind": "Strong",
@@ -634,7 +634,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " function for "
+                    "text": " 函数用于 "
                   },
                   {
                     "kind": "Strong",
@@ -673,7 +673,7 @@
           },
           {
             "kind": "Text",
-            "text": " decorated with a "
+            "text": " 使用一个 "
           },
           {
             "kind": "Strong",
@@ -699,7 +699,7 @@
           },
           {
             "kind": "Text",
-            "text": " function is generated in the "
+            "text": " 函数在生成 "
           },
           {
             "kind": "Strong",
@@ -712,7 +712,7 @@
           },
           {
             "kind": "Text",
-            "text": " class. Here "
+            "text": " 类。这里 "
           },
           {
             "kind": "Strong",
@@ -725,7 +725,7 @@
           },
           {
             "kind": "Text",
-            "text": " is the name of the parser defined in "
+            "text": " 是定义在中的解析器的名称 "
           },
           {
             "kind": "Strong",
@@ -738,7 +738,7 @@
           },
           {
             "kind": "Text",
-            "text": ".\n            You can either put a string or a List<RegexToken> to this function.\n            It returns an AST tree when succeeded,\n            otherwise it triggers the "
+            "text": ".\n            您可以向此函数传递一个字符串或 List<RegexToken>。\n            成功时返回一个 AST 树，\n            否则会触发 "
           },
           {
             "kind": "Strong",
@@ -751,7 +751,7 @@
           },
           {
             "kind": "Text",
-            "text": " event.\n            In this event, you can choose to stop the parse function to throw an exception,\n            and it will just returns null.\n        "
+            "text": " 事件。\n            在此事件中，您可以选择停止解析函数并抛出异常，\n            并且它只会返回null。\n        "
           }
         ]
       },
@@ -760,7 +760,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            For the predefined XML parser,\n            you are not recommended to call the "
+            "text": "\n            对于预定义的 XML 解析器，\n            不建议调用 "
           },
           {
             "kind": "Strong",
@@ -773,7 +773,7 @@
           },
           {
             "kind": "Text",
-            "text": " class directly,\n            because some post processing is required to fix the AST tree.\n            Instead pass this "
+            "text": " 类直接，\n            因为需要一些后处理来修复AST树。\n            而是传递这个 "
           },
           {
             "kind": "Strong",
@@ -786,7 +786,7 @@
           },
           {
             "kind": "Text",
-            "text": " class to "
+            "text": " 类到 "
           },
           {
             "kind": "Strong",

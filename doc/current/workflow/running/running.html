@@ -175,7 +175,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Running a Workflow script is quite simple,\n            just start the reflection,\n            compile the code,\n            and call the function you need.\n        "
+            "text": "\n            运行工作流脚本非常简单，\n            只需开始反射。\n            编译代码，\n            并调用你需要的函数。\n        "
           }
         ]
       },
@@ -184,7 +184,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            A typical Workflow script needs to use primitive types and a very simple predefined Workflow library.\n            Both compiling and running a Workflow script needs type information from above types.\n            In order to load these types,\n            two functions need to be called:\n            "
+            "text": "\n            一个典型的工作流脚本需要使用基本类型和一个非常简单的预定义工作流库。\n            编译和运行工作流脚本都需要上述类型的类型信息。\n            为了加载这些类型，\n            需要调用两个函数：\n            "
           },
           {
             "kind": "Program",
@@ -197,7 +197,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Now, we begin to run this Workflow script:\n            "
+            "text": "\n            现在，我们开始运行此工作流脚本：\n            "
           },
           {
             "kind": "Program",
@@ -219,7 +219,7 @@
           },
           {
             "kind": "Text",
-            "text": " function creates the parser table for parsing Workflow scripts.\n            Loading this table takes times, and it takes a few seconds when debugging your host C++ application.\n            So it is recommended to cache the table.\n        "
+            "text": " 函数为解析工作流脚本创建解析表。\n            加载此表需要时间，当调试宿主 C++ 应用程序时需要几秒钟。\n            因此建议缓存该表。\n        "
           }
         ]
       },
@@ -228,7 +228,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Firstly we need to compile the code and get the assembly:\n            "
+            "text": "\n            首先我们需要编译代码并获取程序集：\n            "
           },
           {
             "kind": "Program",
@@ -236,7 +236,7 @@
           },
           {
             "kind": "Text",
-            "text": "\n            If it fails to compile, you will get a null assembly,\n            and the "
+            "text": "\n            如果编译失败，你将得到一个空程序集，\n            以及 "
           },
           {
             "kind": "Strong",
@@ -249,7 +249,7 @@
           },
           {
             "kind": "Text",
-            "text": " variable stores all mistakes that are found in the script.\n            Note that the compiler stops at the first syntax error.\n        "
+            "text": " 变量存储脚本中发现的所有错误。\n            注意编译器会在第一个语法错误处停止\n        "
           }
         ]
       },
@@ -258,7 +258,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Secondly we need to create the runtime environment for executing the script:\n            "
+            "text": "\n            其次，我们需要创建用于执行脚本的运行时环境：\n            "
           },
           {
             "kind": "Program",
@@ -266,7 +266,7 @@
           },
           {
             "kind": "Text",
-            "text": "\n            Only one "
+            "text": "\n            仅一个 "
           },
           {
             "kind": "Strong",
@@ -279,7 +279,7 @@
           },
           {
             "kind": "Text",
-            "text": " is allowed to create per assembly.\n            In most cases you cannot load the assembly from file twice in order to get two assembilies and two context for separate execution environment.\n            Because Workflow scripts could create classes and interfaces,\n            all of them will also be registered to the global type manager, just like C++ reflection.\n            Loading them twice will result in an error.\n        "
+            "text": " 允许为每个程序集创建\n            在大多数情况下，您无法从文件中两次加载程序集以获取两个程序集和两个独立执行环境的上下文。\n            因为工作流脚本可以创建类和接口，\n            它们也将被注册到全局类型管理器中，就像C++反射一样。\n            重复加载它们会导致错误。\n        "
           }
         ]
       },
@@ -288,7 +288,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            The next step is to initialize global variables.\n            In a Workflow script, global variables should be initialized with default values,\n            but by loading the assembly these variables are not initialized.\n            So you always need to run the exported function "
+            "text": "\n            下一步是初始化全局变量。\n            在工作流脚本中，全局变量应使用默认值进行初始化，\n            但通过加载程序集，这些变量不会被初始化。\n            因此您始终需要运行导出的函数 "
           },
           {
             "kind": "Strong",
@@ -301,7 +301,7 @@
           },
           {
             "kind": "Text",
-            "text": " to do it.\n        "
+            "text": " 去做它。\n        "
           }
         ]
       },
@@ -310,7 +310,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Now everything is prepared, we can call the "
+            "text": "\n            现在一切都准备好了，我们可以调用 "
           },
           {
             "kind": "Strong",
@@ -323,7 +323,7 @@
           },
           {
             "kind": "Text",
-            "text": " function to get the result:\n            "
+            "text": " 函数以获取结果：\n            "
           },
           {
             "kind": "Program",
@@ -331,7 +331,7 @@
           },
           {
             "kind": "Text",
-            "text": "\n            Unlike C++, an Workflow script is not required to have a "
+            "text": "\n            与C++不同，工作流脚本不需要具有一个 "
           },
           {
             "kind": "Strong",
@@ -344,7 +344,7 @@
           },
           {
             "kind": "Text",
-            "text": " function.\n            Here "
+            "text": " 函数。\n            这里 "
           },
           {
             "kind": "Strong",
@@ -357,7 +357,7 @@
           },
           {
             "kind": "Text",
-            "text": " is just a trivial name.\n        "
+            "text": " 只是一个简单的名称。\n        "
           }
         ]
       }

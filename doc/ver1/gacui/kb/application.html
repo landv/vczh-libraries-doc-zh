@@ -166,7 +166,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            A GacUI application requires a user defined function "
+            "text": "\n            A GacUI应用程序需要一个用户定义的函数 "
           },
           {
             "kind": "Strong",
@@ -179,7 +179,7 @@
           },
           {
             "kind": "Text",
-            "text": ".\n            In order to start a GacUI application,\n            one of the following functions must be called in entry function.\n            "
+            "text": ".\n            为了启动一个 GacUI 应用程序，\n            以下函数之一必须在入口函数中调用。\n            "
           },
           {
             "kind": "List",
@@ -190,7 +190,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    For Windows,\n                    "
+                    "text": "\n                    对于 Windows，\n                    "
                   },
                   {
                     "kind": "Strong",
@@ -216,7 +216,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " must be called in "
+                    "text": " 必须在 "
                   },
                   {
                     "kind": "Strong",
@@ -229,7 +229,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ",\n                    which initialize necessary objects and call "
+                    "text": "，\n                    初始化必要的对象并调用 "
                   },
                   {
                     "kind": "Strong",
@@ -242,7 +242,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " with different rendering techniques.\n                "
+                    "text": " 使用不同的渲染技术。\n                "
                   }
                 ]
               },
@@ -251,7 +251,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    For macOS,\n                    "
+                    "text": "\n                    对于 macOS，\n                    "
                   },
                   {
                     "kind": "Strong",
@@ -264,7 +264,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " must be called in "
+                    "text": " 必须在 "
                   },
                   {
                     "kind": "Strong",
@@ -286,7 +286,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    For Linux,\n                    "
+                    "text": "\n                    对于 Linux，\n                    "
                   },
                   {
                     "kind": "Strong",
@@ -299,7 +299,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " must be called in "
+                    "text": " 必须在 "
                   },
                   {
                     "kind": "Strong",
@@ -325,7 +325,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            When "
+            "text": "\n            当 "
           },
           {
             "kind": "Strong",
@@ -338,7 +338,7 @@
           },
           {
             "kind": "Text",
-            "text": " is called,\n            the "
+            "text": " 被调用，\n            该 "
           },
           {
             "kind": "Strong",
@@ -351,7 +351,7 @@
           },
           {
             "kind": "Text",
-            "text": " object is ready,\n            which can be accessed by the "
+            "text": " 对象已就绪，\n            可以通过 "
           },
           {
             "kind": "Strong",
@@ -364,7 +364,7 @@
           },
           {
             "kind": "Text",
-            "text": " function.\n            A typical "
+            "text": " 函数。\n            一个典型的 "
           },
           {
             "kind": "Strong",
@@ -377,7 +377,7 @@
           },
           {
             "kind": "Text",
-            "text": " function looks like:\n            "
+            "text": " 函数看起来像：\n            "
           },
           {
             "kind": "Program",
@@ -399,7 +399,7 @@
           },
           {
             "kind": "Text",
-            "text": " must be called before creating any UI object to\n            "
+            "text": " 必须在创建任何 UI 对象之前调用\n            "
           },
           {
             "kind": "PageLink",
@@ -407,13 +407,13 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "register a set of default control templates"
+                "text": "注册一组默认控件模板"
               }
             ]
           },
           {
             "kind": "Text",
-            "text": "\n            for all controls.\n            "
+            "text": "\n            用于所有控件。\n            "
           },
           {
             "kind": "Strong",
@@ -426,7 +426,7 @@
           },
           {
             "kind": "Text",
-            "text": " and "
+            "text": " 和 "
           },
           {
             "kind": "Strong",
@@ -439,7 +439,7 @@
           },
           {
             "kind": "Text",
-            "text": " can be used to manage all registered themes.\n            A single theme object is not required to provide control templates for all controls,\n            but all registered themes must cover all controls.\n            The latest registered theme has the top priority.\n        "
+            "text": " 可以用于管理所有注册的主题。\n            单个主题对象不需要为所有控件提供控件模板，\n            但是所有注册的主题必须覆盖所有控件。\n            最后注册的主题具有最高优先级。\n        "
           }
         ]
       },
@@ -448,14 +448,14 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            When a theme is created using "
+            "text": "\n            当使用创建一个主题时， "
           },
           {
             "kind": "Strong",
             "content": [
               {
                 "kind": "Text",
-                "text": "GacUI XML Resource"
+                "text": "GacUI XML 资源"
               }
             ]
           },
@@ -474,7 +474,7 @@
           },
           {
             "kind": "Text",
-            "text": " for this theme is required to call after the associated resource file is loaded.\n            It is difficult to know the exact timing,\n            so GacUI provideds an efficient plugin system to solve this problem.\n            You can create a plugin to register this theme and declare that this theme is depended on its resource like this:\n            "
+            "text": " 对于此主题，必须在关联的资源文件加载后调用。\n            很难确切知道时间\n            因此，GacUI 提供了一个高效的插件系统来解决这个问题。\n            您可以创建一个插件来注册此主题，并像这样声明此主题依赖于其资源：\n            "
           },
           {
             "kind": "Program",
@@ -487,7 +487,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            When the default control templates and "
+            "text": "\n            当默认控件模板和 "
           },
           {
             "kind": "Strong",
@@ -500,7 +500,7 @@
           },
           {
             "kind": "Text",
-            "text": " are ready,\n            it is time to create a very simple "
+            "text": " 已准备就绪，\n            是时候创建一个非常简单的 "
           },
           {
             "kind": "Strong",
@@ -513,7 +513,7 @@
           },
           {
             "kind": "Text",
-            "text": " to start the application:\n            "
+            "text": " 启动应用程序：\n            "
           },
           {
             "kind": "Program",
@@ -526,7 +526,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            All GacUI objects must only be used in the UI thread.\n            In order to make communications between threads possible,\n            "
+            "text": "\n            所有 GacUI 对象必须仅在 UI 线程中使用。\n            为了使线程间通信成为可能，\n            "
           },
           {
             "kind": "Strong",
@@ -539,7 +539,7 @@
           },
           {
             "kind": "Text",
-            "text": " provides all following functions to run tasks:\n            "
+            "text": " 提供以下所有功能来运行任务：\n            "
           },
           {
             "kind": "List",
@@ -559,7 +559,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ": Check if the current thread is the UI thread or not."
+                    "text": ": 检查当前线程是否为UI线程。"
                   }
                 ]
               },
@@ -577,7 +577,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ": Execute a task in a random background thread."
+                    "text": ": 在随机的后台线程中执行一个任务。"
                   }
                 ]
               },
@@ -595,7 +595,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ": Execute a task in the UI thread."
+                    "text": ": 在UI线程中执行一个任务。"
                   }
                 ]
               },
@@ -613,7 +613,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ": Execute a task in the UI thread and wait for its completion."
+                    "text": ": 在UI线程中执行一个任务并等待其完成。"
                   }
                 ]
               },
@@ -631,7 +631,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ": Execute a task in a random background thread after a specified amount of time."
+                    "text": ": 在指定时间后，在随机的后台线程中执行一个任务。"
                   }
                 ]
               },
@@ -649,7 +649,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ": Execute a task in the UI thread after a specified amount of time."
+                    "text": ": 在指定时间后，在UI线程中执行一个任务。"
                   }
                 ]
               },
@@ -667,7 +667,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ": Execute a task in the UI thread and wait for its completion."
+                    "text": ": 在UI线程中执行一个任务并等待其完成。"
                   }
                 ]
               }
@@ -689,7 +689,7 @@
           },
           {
             "kind": "Text",
-            "text": " can be called in any thread.\n            This function queues a task,\n            which will be executed later.\n            It is OK to call this function in the UI thread,\n            which is a very common pattern to trigger something immediately but not exactly \"now\".\n        "
+            "text": " 可以在任何线程中调用。\n            此函数将一个任务加入队列，\n            稍后将执行。\n            在 UI 线程中调用此函数是可以的，\n            这是一种非常常见的模式，用于立即触发某些操作，但并非严格意义上的“现在”。\n        "
           }
         ]
       },
@@ -698,7 +698,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            For example,\n            when you put a button in a tab header to remove the tab page,\n            you cannot just remove and delete the tab page in the button's "
+            "text": "\n            例如，\n            当您在标签页标题中放置一个按钮以删除标签页时，\n            您不能直接在按钮中移除和删除选项卡页。 "
           },
           {
             "kind": "Strong",
@@ -711,7 +711,7 @@
           },
           {
             "kind": "Text",
-            "text": " event,\n            because there are still other events to trigger after this "
+            "text": " 事件，\n            因为在此之后还有其他事件要触发 "
           },
           {
             "kind": "Strong",
@@ -724,7 +724,7 @@
           },
           {
             "kind": "Text",
-            "text": " event,\n            which requires the button and all ancestors to be alive.\n            In this case,\n            you can ask "
+            "text": " 事件，\n            这要求按钮及其所有祖先都必须是活动的。\n            在这种情况下，\n            你可以提问 "
           },
           {
             "kind": "Strong",
@@ -737,7 +737,7 @@
           },
           {
             "kind": "Text",
-            "text": " to delete the tab header,\n            it will happen after all required things is done for this particular click,\n            and "
+            "text": " 删除选项卡标题，\n            这将发生在为此次点击完成所有必要操作之后。\n            和 "
           },
           {
             "kind": "Strong",
@@ -750,7 +750,7 @@
           },
           {
             "kind": "Text",
-            "text": " will just work.\n        "
+            "text": " 将直接生效。\n        "
           }
         ]
       },
@@ -768,7 +768,7 @@
           },
           {
             "kind": "Text",
-            "text": " cannot be called in the UI thread.\n            If you do this,\n            it will complain by throwing an exception.\n            You can also ask this function to return if the task does not complete in the specified amount of time.\n            In this case, the task will not be canceled.\n        "
+            "text": " 不能在UI线程中调用。\n            如果你这样做，\n            它会通过抛出异常来报错。\n            您还可以要求此函数在指定时间未完成任务时返回\n            在这种情况下，任务不会被取消。\n        "
           }
         ]
       },
@@ -786,7 +786,7 @@
           },
           {
             "kind": "Text",
-            "text": " works like "
+            "text": " 像……一样工作 "
           },
           {
             "kind": "Strong",
@@ -799,7 +799,7 @@
           },
           {
             "kind": "Text",
-            "text": ",\n            but it is OK to call in the UI thread.\n            It will return only after the task is completed.\n        "
+            "text": "，\n            但可以在UI线程中调用。\n            只有在任务完成后才会返回。\n        "
           }
         ]
       }

@@ -101,14 +101,14 @@
   "numberBeforeTitle": false,
   "topic": {
     "kind": "Topic",
-    "title": "Runtime Instructions",
+    "title": "运行时指令",
     "content": [
       {
         "kind": "Paragraph",
         "content": [
           {
             "kind": "Text",
-            "text": "\n            This is for reference only.\n            You are not expected to generate instructions by yourself,\n            but it could be useful when programming against the Workflow script debugger interface.\n        "
+            "text": "\n            这仅用于参考。\n            您不应自行生成指令，\n            但在针对工作流脚本调试器接口编程时可能有用。\n        "
           }
         ]
       },
@@ -117,7 +117,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            All instructions are defined in "
+            "text": "\n            所有指令都定义在 "
           },
           {
             "kind": "Strong",
@@ -139,7 +139,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            An instruction could have two types of arguments:\n            "
+            "text": "\n            一条指令可以有两种类型的参数：\n            "
           },
           {
             "kind": "List",
@@ -153,13 +153,13 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "Embedded arguments"
+                        "text": "嵌入的参数"
                       }
                     ]
                   },
                   {
                     "kind": "Text",
-                    "text": ": They are generated at compile time and are saved in fields of "
+                    "text": ": 它们在编译时生成并保存在 "
                   },
                   {
                     "kind": "Strong",
@@ -184,13 +184,13 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "Stack arguments"
+                        "text": "栈参数"
                       }
                     ]
                   },
                   {
                     "kind": "Text",
-                    "text": ": They are stored in the stack at runtime, most of them will be consumed and removed from the stack after executing the instruction."
+                    "text": ": 它们在运行时存储在栈中，大多数将在执行指令后被消耗并从栈中移除。"
                   }
                 ]
               }
@@ -198,7 +198,7 @@
           },
           {
             "kind": "Text",
-            "text": "\n            Argument schema of each instructions are defined by static methods of "
+            "text": "\n            每条指令的参数模式由 "
           },
           {
             "kind": "Strong",
@@ -220,20 +220,20 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            When an instruction is named after, for example, "
+            "text": "\n            当一条指令以例如 "
           },
           {
             "kind": "Strong",
             "content": [
               {
                 "kind": "Text",
-                "text": "ConvertToType(flag, type)"
+                "text": "ConvertToType(标志, 类型)"
               }
             ]
           },
           {
             "kind": "Text",
-            "text": ",\n            it means the name of the instruction is "
+            "text": "，\n            它表示指令的名称是 "
           },
           {
             "kind": "Strong",
@@ -246,7 +246,7 @@
           },
           {
             "kind": "Text",
-            "text": ",\n            and embedded arguments are stored in field "
+            "text": "，\n            并嵌入的参数存储在字段中 "
           },
           {
             "kind": "Strong",
@@ -259,7 +259,7 @@
           },
           {
             "kind": "Text",
-            "text": " and "
+            "text": " 和 "
           },
           {
             "kind": "Strong",
@@ -278,18 +278,18 @@
       },
       {
         "kind": "Topic",
-        "title": "Stack Operations",
+        "title": "堆栈操作",
         "content": [
           {
             "kind": "Topic",
-            "title": "Nop",
+            "title": "无操作",
             "content": [
               {
                 "kind": "Paragraph",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern before:\n                    "
+                    "text": "\n                    之前的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -302,7 +302,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern after:\n                    "
+                    "text": "\n                    之后的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -315,7 +315,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    This instruction does nothing.\n                "
+                    "text": "\n                    此指令不执行任何操作。\n                "
                   }
                 ]
               }
@@ -330,7 +330,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern before:\n                    "
+                    "text": "\n                    之前的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -343,7 +343,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern after:\n                    "
+                    "text": "\n                    之后的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -356,7 +356,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Push a value to the stack.\n                "
+                    "text": "\n                    向堆栈推送一个值。\n                "
                   }
                 ]
               }
@@ -371,7 +371,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern before:\n                    "
+                    "text": "\n                    之前的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -384,7 +384,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern after:\n                    "
+                    "text": "\n                    之后的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -397,7 +397,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Push the function index to the stack.\n                    This instruction load functions for creating closures.\n                    To push a function value to the stack,\n                    use "
+                    "text": "\n                    将函数索引推送到堆栈。\n                    此指令加载用于创建闭包的函数。\n                    要将函数值推送到堆栈，\n                    使用 "
                   },
                   {
                     "kind": "Strong",
@@ -410,7 +410,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " instead.\n                "
+                    "text": " 而是。\n                "
                   }
                 ]
               }
@@ -425,7 +425,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern before:\n                    "
+                    "text": "\n                    之前的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -438,7 +438,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern after:\n                    "
+                    "text": "\n                    之后的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -451,7 +451,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Push the exception object of the current thread context to the stack.\n                "
+                    "text": "\n                    将当前线程上下文的异常对象推送到堆栈。\n                "
                   }
                 ]
               }
@@ -466,7 +466,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern before:\n                    "
+                    "text": "\n                    之前的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -479,7 +479,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern after:\n                    "
+                    "text": "\n                    之后的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -492,7 +492,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Push the value of the local variable of the specified index to the stack.\n                    Local variables are stored in the current stack frame.\n                "
+                    "text": "\n                    将指定索引的局部变量的值推送到堆栈。\n                    局部变量存储在当前堆栈帧中。\n                "
                   }
                 ]
               }
@@ -507,7 +507,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern before:\n                    "
+                    "text": "\n                    之前的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -520,7 +520,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern after:\n                    "
+                    "text": "\n                    之后的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -533,7 +533,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Push the value of the captured variable of the specified index to the stack.\n                    Captured variables are stored in the closure context that is assigned to the current stack frame.\n                "
+                    "text": "\n                    将指定索引的捕获变量的值推送到堆栈。\n                    捕获的变量存储在分配给当前堆栈帧的闭包上下文中。\n                "
                   }
                 ]
               }
@@ -548,7 +548,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern before:\n                    "
+                    "text": "\n                    之前的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -561,7 +561,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern after:\n                    "
+                    "text": "\n                    之后的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -574,7 +574,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Push the value of the global variable of the specified index to the stack.\n                "
+                    "text": "\n                    将指定索引的全局变量的值推送到堆栈。\n                "
                   }
                 ]
               }
@@ -589,7 +589,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern before:\n                    "
+                    "text": "\n                    之前的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -602,7 +602,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern after:\n                    "
+                    "text": "\n                    之后的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -615,7 +615,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Push the "
+                    "text": "\n                    推送 "
                   },
                   {
                     "kind": "Strong",
@@ -628,7 +628,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " object to the stack.\n                "
+                    "text": " 对象压入堆栈。\n                "
                   }
                 ]
               }
@@ -643,7 +643,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern before:\n                    "
+                    "text": "\n                    之前的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -656,7 +656,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern after:\n                    "
+                    "text": "\n                    之后的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -669,7 +669,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Push the closure of the "
+                    "text": "\n                    将闭包的 "
                   },
                   {
                     "kind": "Strong",
@@ -682,7 +682,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " object to the stack.\n                    It is created by calling "
+                    "text": " 对象压入堆栈。\n                    通过调用创建 "
                   },
                   {
                     "kind": "Strong",
@@ -695,7 +695,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ",\n                    this function returns a function object that can be invoked.\n                "
+                    "text": "，\n                    此函数返回一个可调用的函数对象。\n                "
                   }
                 ]
               }
@@ -710,7 +710,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern before:\n                    "
+                    "text": "\n                    之前的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -723,7 +723,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern after:\n                    "
+                    "text": "\n                    之后的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -736,7 +736,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Push the closure context of the current stack frame to the stack.\n                    Local variables are stored in the current stack frame.\n                "
+                    "text": "\n                    将当前堆栈帧的闭包上下文推送到堆栈。\n                    局部变量存储在当前堆栈帧中。\n                "
                   }
                 ]
               }
@@ -751,7 +751,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern before:\n                    "
+                    "text": "\n                    之前的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -764,7 +764,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern after:\n                    "
+                    "text": "\n                    之后的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -777,7 +777,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Pop a value from the stack to update a specified local variable.\n                "
+                    "text": "\n                    从栈中弹出一个值以更新指定的局部变量。\n                "
                   }
                 ]
               }
@@ -792,7 +792,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern before:\n                    "
+                    "text": "\n                    之前的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -805,7 +805,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern after:\n                    "
+                    "text": "\n                    之后的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -818,7 +818,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Pop a value from the stack to update a specified captured variable.\n                    Captured variables are stored in the closure context that is assigned to the current stack frame.\n                "
+                    "text": "\n                    从栈中弹出一个值以更新指定的捕获变量。\n                    捕获的变量存储在分配给当前堆栈帧的闭包上下文中。\n                "
                   }
                 ]
               }
@@ -833,7 +833,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern before:\n                    "
+                    "text": "\n                    之前的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -846,7 +846,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern after:\n                    "
+                    "text": "\n                    之后的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -859,7 +859,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Pop a value from the stack to update a specified global variable.\n                "
+                    "text": "\n                    从栈中弹出一个值以更新指定的全局变量。\n                "
                   }
                 ]
               }
@@ -867,14 +867,14 @@
           },
           {
             "kind": "Topic",
-            "title": "Duplicate",
+            "title": "重复",
             "content": [
               {
                 "kind": "Paragraph",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern before:\n                    "
+                    "text": "\n                    之前的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -887,7 +887,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern after:\n                    "
+                    "text": "\n                    之后的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -900,7 +900,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Duplicate the top value in the stack.\n                "
+                    "text": "\n                    复制堆栈顶部的值。\n                "
                   }
                 ]
               }
@@ -908,14 +908,14 @@
           },
           {
             "kind": "Topic",
-            "title": "Pop",
+            "title": "弹出",
             "content": [
               {
                 "kind": "Paragraph",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern before:\n                    "
+                    "text": "\n                    之前的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -928,7 +928,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern after:\n                    "
+                    "text": "\n                    之后的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -941,7 +941,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Pop a value from the stack.\n                "
+                    "text": "\n                    从栈中弹出一个值。\n                "
                   }
                 ]
               }
@@ -951,7 +951,7 @@
       },
       {
         "kind": "Topic",
-        "title": "Jumping Operations",
+        "title": "跳跃操作",
         "content": [
           {
             "kind": "Topic",
@@ -962,7 +962,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern before:\n                    "
+                    "text": "\n                    之前的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -975,7 +975,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern after:\n                    "
+                    "text": "\n                    之后的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -988,7 +988,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Pop a value as a function return value,\n                    pop the current stack frame so that all remaining values of this stack frame is removed,\n                    push the return value to the next stack frame,\n                    and the function ends, jumping to the next instruction from one that calling into the current function.\n                    If there is not stack frame after running this instruction,\n                    the return value will be the only value in the stack,\n                    and the script ends.\n                "
+                    "text": "\n                    弹出一个值作为函数返回值，\n                    弹出当前堆栈帧，以移除该堆栈帧中所有剩余的值。\n                    将返回值推送到下一个堆栈帧。\n                    并且函数结束，跳转到从当前函数调用的下一个指令。\n                    如果执行此指令后没有堆栈帧，\n                    返回值将是堆栈中的唯一值。\n                    并且脚本结束。\n                "
                   }
                 ]
               }
@@ -1003,7 +1003,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Jump to the specified instruction.\n                "
+                    "text": "\n                    跳转到指定指令。\n                "
                   }
                 ]
               }
@@ -1018,7 +1018,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern before:\n                    "
+                    "text": "\n                    之前的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -1031,7 +1031,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern after:\n                    "
+                    "text": "\n                    之后的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -1044,7 +1044,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Pop a value from the stack.\n                    If it is "
+                    "text": "\n                    从栈中弹出一个值。\n                    如果它是 "
                   },
                   {
                     "kind": "Strong",
@@ -1057,7 +1057,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ", jump to the specified instruction.\n                    If it is "
+                    "text": "，跳转到指定的指令。\n                    如果它是 "
                   },
                   {
                     "kind": "Strong",
@@ -1070,7 +1070,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ", continue to execute the next instruction.\n                    If it is not a boolean value, exception occurs.\n                "
+                    "text": "，继续执行下一个指令。\n                    如果它不是布尔值，将抛出异常。\n                "
                   }
                 ]
               }
@@ -1078,14 +1078,14 @@
           },
           {
             "kind": "Topic",
-            "title": "Invoke(index, count)",
+            "title": "Invoke(索引, 数量)",
             "content": [
               {
                 "kind": "Paragraph",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern before:\n                    "
+                    "text": "\n                    之前的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -1098,7 +1098,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern after:\n                    "
+                    "text": "\n                    之后的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -1111,7 +1111,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Jump to the specified function, taking a specified number of stack values as arguments.\n                    Arguments are transferred to the new stack frame,\n                    so after the function ends,\n                    they are all gone.\n                "
+                    "text": "\n                    跳转到指定函数，以指定数量的栈值作为参数。\n                    参数被传递到新的栈帧中，\n                    因此，函数结束后，\n                    他们都走了。\n                "
                   }
                 ]
               }
@@ -1119,27 +1119,27 @@
           },
           {
             "kind": "Topic",
-            "title": "InvokeWithContext(index, count)",
+            "title": "InvokeWithContext(索引, 数量)",
             "content": [
               {
                 "kind": "Paragraph",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Works like "
+                    "text": "\n                    类似于 "
                   },
                   {
                     "kind": "Strong",
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "Invoke(index, count)"
+                        "text": "Invoke(索引, 数量)"
                       }
                     ]
                   },
                   {
                     "kind": "Text",
-                    "text": ",\n                    but the target function shares captured values of the current function.\n                    This happens when methods of the same interface implementation are calling each other,\n                    because all of these methods share the same captured values.\n                "
+                    "text": "，\n                    但目标函数共享当前函数捕获的值。\n                    当同一接口实现的方法互相调用时，会发生这种情况，\n                    因为所有这些方法共享相同的捕获值。\n                "
                   }
                 ]
               }
@@ -1154,7 +1154,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Push a new trap frame with the entry instruction to the "
+                    "text": "\n                    向堆栈推送一个带有入口指令的新陷阱帧， "
                   },
                   {
                     "kind": "Strong",
@@ -1167,7 +1167,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " handler.\n                    "
+                    "text": " 处理程序。\n                    "
                   },
                   {
                     "kind": "Strong",
@@ -1180,7 +1180,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " must be called pairing with "
+                    "text": " 必须与 pairing 一起调用 "
                   },
                   {
                     "kind": "Strong",
@@ -1208,7 +1208,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Pop a new trap frame.\n                    Keep the specified number of stack values right after this trap frame.\n                    This happens when no exception occurs while evaluating the left operand of the "
+                    "text": "\n                    弹出一个新的陷阱框架。\n                    保留指定数量的栈值在该陷阱帧之后。\n                    当在计算逻辑与运算符（&&）的左操作数时没有发生异常时，会发生这种情况 "
                   },
                   {
                     "kind": "Strong",
@@ -1221,7 +1221,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " operator,\n                    the value of the left operand becomes the value of the whole expression,\n                    which should be kept in the stack.\n                "
+                    "text": " operator,\n                    左操作数的值成为整个表达式的值，\n                    应保留在堆栈中。\n                "
                   }
                 ]
               }
@@ -1236,7 +1236,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Raise an exception.\n                "
+                    "text": "\n                    抛出一个异常。\n                "
                   }
                 ]
               },
@@ -1245,7 +1245,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    When an exception occurs,\n                    all stack frames and stack values that are pushed after the top trap frame will be removed,\n                    and jump to the specified instruction of the top trap frame.\n                    If there is no trap frame,\n                    the script ends with this exception.\n                "
+                    "text": "\n                    当发生异常时，\n                    所有在顶部陷阱帧之后压入的堆栈帧和堆栈值都将被移除，\n                    并跳转到最顶层陷阱框架的指定指令。\n                    如果没有陷阱帧，\n                    脚本以这个异常结束。\n                "
                   }
                 ]
               }
@@ -1255,7 +1255,7 @@
       },
       {
         "kind": "Topic",
-        "title": "Object Creating Operations",
+        "title": "对象创建操作",
         "content": [
           {
             "kind": "Topic",
@@ -1266,7 +1266,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern before:\n                    "
+                    "text": "\n                    之前的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -1279,7 +1279,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern after:\n                    "
+                    "text": "\n                    之后的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -1292,7 +1292,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Pop the specified number of values from the stack,\n                    push the created array containing these values in popping order.\n                "
+                    "text": "\n                    从栈中弹出指定数量的值，\n                    按弹出顺序推送包含这些值的已创建数组。\n                "
                   }
                 ]
               }
@@ -1307,7 +1307,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern before:\n                    "
+                    "text": "\n                    之前的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -1320,7 +1320,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern after:\n                    "
+                    "text": "\n                    之后的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -1333,7 +1333,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Pop the specified number of values from the stack,\n                    push the created observable list containing these values in popping order.\n                "
+                    "text": "\n                    从栈中弹出指定数量的值，\n                    将创建的可观察列表按弹出顺序推送。\n                "
                   }
                 ]
               }
@@ -1348,7 +1348,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern before:\n                    "
+                    "text": "\n                    之前的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -1361,7 +1361,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern after:\n                    "
+                    "text": "\n                    之后的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -1374,7 +1374,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Pop the specified number of value-key-pair from the stack,\n                    push the created observable map.\n                    A pair is two values on the stack instead of being a pair object.\n                    The order of keys in the map depends on value of keys.\n                "
+                    "text": "\n                    从栈中弹出指定数量的值-键对，\n                    推送已创建的可观察映射。\n                    一对值是栈上的两个值，而不是一个对对象。\n                    映射中键的顺序取决于键的值。\n                "
                   }
                 ]
               }
@@ -1389,7 +1389,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern before:\n                    "
+                    "text": "\n                    之前的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -1402,7 +1402,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern after:\n                    "
+                    "text": "\n                    之后的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -1415,7 +1415,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Pop the specified number of values from the stack,\n                    push the created closure context containing these values in reverse popping order.\n                    If there is no value to be stored, the created context will be "
+                    "text": "\n                    从栈中弹出指定数量的值，\n                    将创建的闭包上下文按反向弹出顺序压入。\n                    如果没有要存储的值，创建的上下文将是 "
                   },
                   {
                     "kind": "Strong",
@@ -1443,7 +1443,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern before:\n                    "
+                    "text": "\n                    之前的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -1456,7 +1456,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern after:\n                    "
+                    "text": "\n                    之后的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -1469,7 +1469,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Pop the index of global function and a closure context,\n                    push the created closure to the stack.\n                "
+                    "text": "\n                    弹出全局函数的索引和一个闭包上下文，\n                    将创建的闭包推入栈中。\n                "
                   }
                 ]
               }
@@ -1477,14 +1477,14 @@
           },
           {
             "kind": "Topic",
-            "title": "CreateInterface(method, count)",
+            "title": "CreateInterface(方法, 数量)",
             "content": [
               {
                 "kind": "Paragraph",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern before:\n                    "
+                    "text": "\n                    之前的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -1497,7 +1497,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern after:\n                    "
+                    "text": "\n                    之后的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -1510,7 +1510,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Pop the specified number of function-method-pair from the stack.\n                    Push the created interface to the stack.\n                    A pair is two values on the stack instead of being a pair object,\n                    declaring that which method is implemented by which global function.\n                "
+                    "text": "\n                    从栈中弹出指定数量的函数-方法对。\n                    将创建的接口推送到堆栈。\n                    一对值是栈上的两个值，而不是一个对对象。\n                    声明由哪个全局函数实现的方法。\n                "
                   }
                 ]
               },
@@ -1519,7 +1519,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    The "
+                    "text": "\n                    该 "
                   },
                   {
                     "kind": "Strong",
@@ -1532,7 +1532,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " of the instruction is the constructor of the interface.\n                    Such interface must be registered using one of the "
+                    "text": " 该指令的构造函数是接口的构造函数。\n                    这样的接口必须使用以下之一进行注册： "
                   },
                   {
                     "kind": "Strong",
@@ -1545,7 +1545,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " macro.\n                    Please check out "
+                    "text": " 宏。\n                    请检出 "
                   },
                   {
                     "kind": "PageLink",
@@ -1553,13 +1553,13 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "class Description"
+                        "text": "类 描述"
                       }
                     ]
                   },
                   {
                     "kind": "Text",
-                    "text": " for more details.\n                "
+                    "text": " 用于获取更多详情。\n                "
                   }
                 ]
               }
@@ -1574,7 +1574,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern before:\n                    "
+                    "text": "\n                    之前的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -1587,7 +1587,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern after:\n                    "
+                    "text": "\n                    之后的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -1600,7 +1600,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Pop the value of ending and beginning in order,\n                    push the created range,\n                    which is a enumerable collection,\n                    including the value of beginning but excluding the value of ending.\n                    Each value is one greater than the previous one in this collection.\n                "
+                    "text": "\n                    按顺序弹出结束值和开始值，\n                    推送创建的范围，\n                    这是一个可枚举的集合，\n                    包括起始值但不包括结束值。\n                    此集合中的每个值都比前一个值大一。\n                "
                   }
                 ]
               }
@@ -1608,14 +1608,14 @@
           },
           {
             "kind": "Topic",
-            "title": "CreateStruct(flag, type)",
+            "title": "CreateStruct(标志, 类型)",
             "content": [
               {
                 "kind": "Paragraph",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern before:\n                    "
+                    "text": "\n                    之前的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -1628,7 +1628,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern after:\n                    "
+                    "text": "\n                    之后的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -1641,7 +1641,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Create a struct of the specified type and push to the stack.\n                    All fields are filled with default values according to their types.\n                "
+                    "text": "\n                    创建指定类型的结构并压入栈中。\n                    所有字段都根据其类型填充默认值。\n                "
                   }
                 ]
               }
@@ -1656,7 +1656,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern before:\n                    "
+                    "text": "\n                    之前的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -1669,7 +1669,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern after:\n                    "
+                    "text": "\n                    之后的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -1682,7 +1682,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Pop a value from the stack and delete it.\n                    If the value is not a raw pointer,\n                    then it is just popped but not deleted.\n                    Otherwise, "
+                    "text": "\n                    从栈中弹出一个值并删除它。\n                    如果值不是原始指针，\n                    然后它只是被弹出，但没有被删除。\n                    否则， "
                   },
                   {
                     "kind": "PageLink",
@@ -1696,7 +1696,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " is called.\n                "
+                    "text": " 被调用。\n                "
                   }
                 ]
               }
@@ -1706,18 +1706,18 @@
       },
       {
         "kind": "Topic",
-        "title": "Type Operations",
+        "title": "类型操作",
         "content": [
           {
             "kind": "Topic",
-            "title": "ConvertToType(flag, type)",
+            "title": "ConvertToType(标志, 类型)",
             "content": [
               {
                 "kind": "Paragraph",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern before:\n                    "
+                    "text": "\n                    之前的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -1730,7 +1730,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern after:\n                    "
+                    "text": "\n                    之后的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -1743,7 +1743,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Pop a value from the stack and push the converted value to the stack.\n                    This instruction performs a "
+                    "text": "\n                    从栈中弹出一个值并将其转换后的值推入栈中。\n                    此指令执行一个 "
                   },
                   {
                     "kind": "PageLink",
@@ -1751,13 +1751,13 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "strong casting"
+                        "text": "强类型转换"
                       }
                     ]
                   },
                   {
                     "kind": "Text",
-                    "text": " on a value.\n                    Exception occurs if the conversion fails.\n                "
+                    "text": " 在值上。\n                    如果转换失败，则会发生异常。\n                "
                   }
                 ]
               }
@@ -1765,14 +1765,14 @@
           },
           {
             "kind": "Topic",
-            "title": "TryConvertToType(flag, type)",
+            "title": "TryConvertToType(标志, 类型)",
             "content": [
               {
                 "kind": "Paragraph",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern before:\n                    "
+                    "text": "\n                    之前的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -1785,7 +1785,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern after:\n                    "
+                    "text": "\n                    之后的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -1798,7 +1798,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Pop a value from the stack and push the converted value to the stack.\n                    This instruction performs a "
+                    "text": "\n                    从栈中弹出一个值并将其转换后的值推入栈中。\n                    此指令执行一个 "
                   },
                   {
                     "kind": "PageLink",
@@ -1806,13 +1806,13 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "strong casting"
+                        "text": "强类型转换"
                       }
                     ]
                   },
                   {
                     "kind": "Text",
-                    "text": " on a value.\n                    "
+                    "text": " 在值上。\n                    "
                   },
                   {
                     "kind": "Strong",
@@ -1825,7 +1825,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " will be pushed to the stack if the conversion fails.\n                "
+                    "text": " 如果转换失败，将被推送到堆栈中。\n                "
                   }
                 ]
               }
@@ -1833,14 +1833,14 @@
           },
           {
             "kind": "Topic",
-            "title": "TestType(flag, type)",
+            "title": "TestType(标志, 类型)",
             "content": [
               {
                 "kind": "Paragraph",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern before:\n                    "
+                    "text": "\n                    之前的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -1853,7 +1853,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern after:\n                    "
+                    "text": "\n                    之后的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -1866,7 +1866,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Pop a value from the stack and perform a "
+                    "text": "\n                    从栈中弹出一个值并执行一个 "
                   },
                   {
                     "kind": "PageLink",
@@ -1874,7 +1874,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "type testing"
+                        "text": "类型测试"
                       }
                     ]
                   },
@@ -1893,7 +1893,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " will be pushed to the stack if the testing succeeds.\n                    Otherwise "
+                    "text": " 如果测试成功，将被推入堆栈。\n                    否则 "
                   },
                   {
                     "kind": "Strong",
@@ -1921,7 +1921,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern before:\n                    "
+                    "text": "\n                    之前的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -1934,7 +1934,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern after:\n                    "
+                    "text": "\n                    之后的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -1947,7 +1947,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Pop a value from the stack and get its type descriptor.\n                    For "
+                    "text": "\n                    从栈中弹出一个值并获取其类型描述符。\n                    For "
                   },
                   {
                     "kind": "Strong",
@@ -1960,7 +1960,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ", its type descriptor is also "
+                    "text": "，它的类型描述符也是 "
                   },
                   {
                     "kind": "Strong",
@@ -1983,7 +1983,7 @@
       },
       {
         "kind": "Topic",
-        "title": "Reflection Operations",
+        "title": "反射操作",
         "content": [
           {
             "kind": "Topic",
@@ -1994,7 +1994,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern before:\n                    "
+                    "text": "\n                    之前的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -2007,7 +2007,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern after:\n                    "
+                    "text": "\n                    之后的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -2020,7 +2020,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Pop a value from the stack as the object,\n                    push the value of the specified property of this object.\n                "
+                    "text": "\n                    从栈中弹出一个值作为对象，\n                    推送此对象的指定属性的值。\n                "
                   }
                 ]
               }
@@ -2035,7 +2035,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern before:\n                    "
+                    "text": "\n                    之前的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -2048,7 +2048,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern after:\n                    "
+                    "text": "\n                    之后的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -2061,7 +2061,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Pop a value from the stack as the object,\n                    pop a value as the new value of the property\n                    update the value of the specified property of this object.\n                "
+                    "text": "\n                    从栈中弹出一个值作为对象，\n                    弹出一个值作为属性的新值\n                    更新此对象的指定属性的值。\n                "
                   }
                 ]
               }
@@ -2076,7 +2076,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern before:\n                    "
+                    "text": "\n                    之前的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -2089,7 +2089,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern after:\n                    "
+                    "text": "\n                    之后的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -2102,7 +2102,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Pop a value from the stack as the object,\n                    pop a value as the new value of the property\n                    update the value of the specified property of this object.\n                    Unlike "
+                    "text": "\n                    从栈中弹出一个值作为对象，\n                    弹出一个值作为属性的新值\n                    更新此对象的指定属性的值。\n                    与……不同 "
                   },
                   {
                     "kind": "Strong",
@@ -2115,7 +2115,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ",\n                    the value of the object will be pushed back to the stack after executing this instruction.\n                "
+                    "text": "，\n                    执行此指令后，对象的值将被推回堆栈。\n                "
                   }
                 ]
               }
@@ -2130,7 +2130,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern before:\n                    "
+                    "text": "\n                    之前的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -2143,7 +2143,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern after:\n                    "
+                    "text": "\n                    之后的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -2156,7 +2156,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Pop the function along with a specified number of stack values as arguments from the stack,\n                    run the function with arguments,\n                    push the return value to the stack.\n                "
+                    "text": "\n                    从栈中弹出函数以及指定数量的栈值作为参数，\n                    用参数运行该函数，\n                    将返回值推入堆栈。\n                "
                   }
                 ]
               },
@@ -2165,7 +2165,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    If the function is a global function or a lambda expression in the same assembly,\n                    instead of creating a new thread context,\n                    the current stack will be use to store the new stack frame for this function.\n                "
+                    "text": "\n                    如果函数是全局函数或在同一程序集中的lambda表达式，\n                    而不是创建一个新的线程上下文，\n                    当前堆栈将用于存储此函数的新堆栈帧。\n                "
                   }
                 ]
               }
@@ -2180,7 +2180,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern before:\n                    "
+                    "text": "\n                    之前的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -2193,7 +2193,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern after:\n                    "
+                    "text": "\n                    之后的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -2206,7 +2206,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Pop the object along with a specified number of stack values as arguments from the stack,\n                    run the specified method on that object with arguments,\n                    push the return value to the stack.\n                "
+                    "text": "\n                    弹出对象以及指定数量的栈值作为参数从栈中。\n                    在该对象上运行指定的方法并传入参数，\n                    将返回值推入堆栈。\n                "
                   }
                 ]
               },
@@ -2215,7 +2215,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    If the method is implemented by another piece of Workflow script in the same assembly,\n                    instead of creating a new thread context,\n                    the current stack will be use to store the new stack frame for this function.\n                    For non-static method,\n                    the object will becomes the only captured value.\n                "
+                    "text": "\n                    如果方法由同一程序集中的另一段工作流脚本实现，\n                    而不是创建一个新的线程上下文，\n                    当前堆栈将用于存储此函数的新堆栈帧。\n                    对于非静态方法，\n                    对象将成为唯一捕获的值。\n                "
                   }
                 ]
               }
@@ -2230,7 +2230,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern before:\n                    "
+                    "text": "\n                    之前的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -2243,7 +2243,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern after:\n                    "
+                    "text": "\n                    之后的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -2256,7 +2256,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Pop the object along with a specified number of stack values as arguments from the stack,\n                    run the specified event on that object with arguments,\n                    push "
+                    "text": "\n                    弹出对象以及指定数量的栈值作为参数从栈中。\n                    在该对象上运行指定的事件并传入参数，\n                    推送 "
                   },
                   {
                     "kind": "Strong",
@@ -2269,7 +2269,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " as the return value to the stack.\n                "
+                    "text": " 作为返回值压入栈中。\n                "
                   }
                 ]
               }
@@ -2277,14 +2277,14 @@
           },
           {
             "kind": "Topic",
-            "title": "InvokeBaseCtor(method, count)",
+            "title": "InvokeBaseCtor(方法, 数量)",
             "content": [
               {
                 "kind": "Paragraph",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern before:\n                    "
+                    "text": "\n                    之前的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -2297,7 +2297,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern after:\n                    "
+                    "text": "\n                    之后的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -2310,7 +2310,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Pop the object along with a specified number of stack values as arguments from the stack,\n                    run the specified method on that object with arguments,\n                    push "
+                    "text": "\n                    弹出对象以及指定数量的栈值作为参数从栈中。\n                    在该对象上运行指定的方法并传入参数，\n                    推送 "
                   },
                   {
                     "kind": "Strong",
@@ -2323,7 +2323,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " as the return value to the stack.\n                "
+                    "text": " 作为返回值压入栈中。\n                "
                   }
                 ]
               },
@@ -2332,7 +2332,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    This instruction is used in classes that defined using Workflow script.\n                "
+                    "text": "\n                    此指令用于使用工作流脚本定义的类中。\n                "
                   }
                 ]
               },
@@ -2341,7 +2341,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    If the base constructor is implemented by another piece of Workflow script in the same assembly,\n                    instead of creating a new thread context,\n                    the current stack will be use to store the new stack frame for this function.\n                "
+                    "text": "\n                    如果基构造函数由同一程序集中的另一段工作流脚本实现，\n                    而不是创建一个新的线程上下文，\n                    当前堆栈将用于存储此函数的新堆栈帧。\n                "
                   }
                 ]
               },
@@ -2350,7 +2350,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    If the base constructor is implemented by another piece of Workflow script in another assembly,\n                    the base constructor will be applied to the object directly.\n                "
+                    "text": "\n                    如果基构造函数由另一个程序集中的另一段工作流脚本实现，\n                    基本构造函数将直接应用于该对象。\n                "
                   }
                 ]
               },
@@ -2359,7 +2359,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    If the base constructor is implemented by C++,\n                    aggregation will be used to bind the object and the created C++ instance.\n                "
+                    "text": "\n                    如果基构造函数由 C++ 实现，\n                    将使用聚合来绑定对象和创建的C++实例。\n                "
                   }
                 ]
               }
@@ -2374,7 +2374,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern before:\n                    "
+                    "text": "\n                    之前的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -2387,7 +2387,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern after:\n                    "
+                    "text": "\n                    之后的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -2400,7 +2400,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Pop the callback function and the object from the stack,\n                    attach the callback function to the specified event of the object,\n                    push the event handler to the stack.\n                "
+                    "text": "\n                    从栈中弹出回调函数和对象，\n                    将回调函数附加到对象的指定事件上，\n                    将事件处理程序推入堆栈。\n                "
                   }
                 ]
               }
@@ -2415,7 +2415,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern before:\n                    "
+                    "text": "\n                    之前的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -2428,7 +2428,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern after:\n                    "
+                    "text": "\n                    之后的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -2441,7 +2441,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Pop the event handler and the object from the stack,\n                    detach the event handler from the specified event of the object.\n                    "
+                    "text": "\n                    从栈中弹出事件处理器和对象，\n                    从对象的指定事件中分离事件处理程序。\n                    "
                   },
                   {
                     "kind": "Strong",
@@ -2454,7 +2454,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " will be pushed to the stack if the detaching succeeds.\n                "
+                    "text": " 如果分离成功，将被推入堆栈。\n                "
                   }
                 ]
               }
@@ -2464,7 +2464,7 @@
       },
       {
         "kind": "Topic",
-        "title": "Set Operations",
+        "title": "设置操作",
         "content": [
           {
             "kind": "Topic",
@@ -2475,7 +2475,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern before:\n                    "
+                    "text": "\n                    之前的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -2488,7 +2488,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Stack pattern after:\n                    "
+                    "text": "\n                    之后的栈模式：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -2501,7 +2501,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Pop the set and the value from the stack,\n                    test if the element is in the set.\n                    "
+                    "text": "\n                    从栈中弹出集合和值，\n                    测试元素是否在集合中。\n                    "
                   },
                   {
                     "kind": "Strong",
@@ -2514,7 +2514,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " will be pushed to the stack if the testing succeeds.\n                "
+                    "text": " 如果测试成功，将被推入堆栈。\n                "
                   }
                 ]
               }
@@ -2524,14 +2524,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Comparison Operations",
+        "title": "比较操作",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Stack pattern before:\n                "
+                "text": "\n                之前的栈模式：\n                "
               },
               {
                 "kind": "Program",
@@ -2544,7 +2544,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Stack pattern after:\n                "
+                "text": "\n                之后的栈模式：\n                "
               },
               {
                 "kind": "Program",
@@ -2561,7 +2561,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Compare booleans, numbers or strings.\n                "
+                    "text": "\n                    比较布尔值、数字或字符串。\n                "
                   }
                 ]
               },
@@ -2570,7 +2570,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Push "
+                    "text": "\n                    推送 "
                   },
                   {
                     "kind": "Strong",
@@ -2583,7 +2583,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " to the stack if the left operand is smaller.\n                    Push "
+                    "text": " 如果左操作数较小，则将其压入堆栈。\n                    推送 "
                   },
                   {
                     "kind": "Strong",
@@ -2596,7 +2596,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " to the stack if the left operand is larger.\n                    Push "
+                    "text": " 如果左操作数较大，则将其压入堆栈。\n                    推送 "
                   },
                   {
                     "kind": "Strong",
@@ -2609,7 +2609,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " to the stack if operands are equal to each other.\n                "
+                    "text": " 如果操作数彼此相等，则将其压入堆栈。\n                "
                   }
                 ]
               }
@@ -2624,7 +2624,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Compare two pointers.\n                "
+                    "text": "\n                    比较两个指针。\n                "
                   }
                 ]
               },
@@ -2633,7 +2633,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Push "
+                    "text": "\n                    推送 "
                   },
                   {
                     "kind": "Strong",
@@ -2646,7 +2646,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " to the stack if operands are equal to each other.\n                    Push "
+                    "text": " 如果操作数彼此相等，则将其压入堆栈。\n                    推送 "
                   },
                   {
                     "kind": "Strong",
@@ -2659,7 +2659,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " to the stack if operands are not equal to each other, or any of them is not a pointer.\n                "
+                    "text": " 如果操作数不相等，或者其中任何一个不是指针，则将其压入堆栈。\n                "
                   }
                 ]
               }
@@ -2674,7 +2674,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Compare two values.\n                "
+                    "text": "\n                    比较两个值。\n                "
                   }
                 ]
               },
@@ -2683,7 +2683,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Push "
+                    "text": "\n                    推送 "
                   },
                   {
                     "kind": "Strong",
@@ -2696,7 +2696,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " to the stack if operands are equal to each other.\n                    Push "
+                    "text": " 如果操作数彼此相等，则将其压入堆栈。\n                    推送 "
                   },
                   {
                     "kind": "Strong",
@@ -2709,7 +2709,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " to the stack if operands are not equal to each other.\n                "
+                    "text": " 如果操作数不相等，则将其压入堆栈。\n                "
                   }
                 ]
               }
@@ -2724,7 +2724,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    This instruction executes "
+                    "text": "\n                    此指令执行 "
                   },
                   {
                     "kind": "Strong",
@@ -2752,7 +2752,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    This instruction executes "
+                    "text": "\n                    此指令执行 "
                   },
                   {
                     "kind": "Strong",
@@ -2780,7 +2780,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    This instruction executes "
+                    "text": "\n                    此指令执行 "
                   },
                   {
                     "kind": "Strong",
@@ -2808,7 +2808,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    This instruction executes "
+                    "text": "\n                    此指令执行 "
                   },
                   {
                     "kind": "Strong",
@@ -2836,7 +2836,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    This instruction executes "
+                    "text": "\n                    此指令执行 "
                   },
                   {
                     "kind": "Strong",
@@ -2864,7 +2864,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    This instruction executes "
+                    "text": "\n                    此指令执行 "
                   },
                   {
                     "kind": "Strong",
@@ -2887,14 +2887,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Unary Operations",
+        "title": "一元运算",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Stack pattern before:\n                "
+                "text": "\n                之前的栈模式：\n                "
               },
               {
                 "kind": "Program",
@@ -2907,7 +2907,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Stack pattern after:\n                "
+                "text": "\n                之后的栈模式：\n                "
               },
               {
                 "kind": "Program",
@@ -2920,7 +2920,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Pop the operand, push the result of a specified unary operator.\n                Instructions in this category apply "
+                "text": "\n                弹出操作数，压入指定一元运算符的结果。\n                此类中的指令适用 "
               },
               {
                 "kind": "PageLink",
@@ -2928,13 +2928,13 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "unary operators"
+                    "text": "一元运算符"
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": " on the operand.\n            "
+                "text": " 在操作数上。\n            "
               }
             ]
           },
@@ -2947,14 +2947,14 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    This instruction executes "
+                    "text": "\n                    此指令执行 "
                   },
                   {
                     "kind": "Strong",
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "not operand"
+                        "text": "非操作数"
                       }
                     ]
                   },
@@ -2975,14 +2975,14 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    This instruction executes "
+                    "text": "\n                    此指令执行 "
                   },
                   {
                     "kind": "Strong",
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "+ operand"
+                        "text": "+ 操作符"
                       }
                     ]
                   },
@@ -3003,14 +3003,14 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    This instruction executes "
+                    "text": "\n                    此指令执行 "
                   },
                   {
                     "kind": "Strong",
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "- operand"
+                        "text": "- 操作数"
                       }
                     ]
                   },
@@ -3026,14 +3026,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Binary Operations",
+        "title": "二元运算",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Stack pattern before:\n                "
+                "text": "\n                之前的栈模式：\n                "
               },
               {
                 "kind": "Program",
@@ -3046,7 +3046,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Stack pattern after:\n                "
+                "text": "\n                之后的栈模式：\n                "
               },
               {
                 "kind": "Program",
@@ -3059,7 +3059,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Pop the right and left operands in order, push the result of a specified binary operator.\n                Instructions in this category apply "
+                "text": "\n                按顺序弹出右操作数和左操作数，压入指定二元运算符的结果。\n                此类中的指令适用 "
               },
               {
                 "kind": "PageLink",
@@ -3067,13 +3067,13 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "binary operators"
+                    "text": "二元运算符"
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": " on operands.\n            "
+                "text": " 操作数。\n            "
               }
             ]
           },
@@ -3086,20 +3086,20 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    This instruction executes "
+                    "text": "\n                    此指令执行 "
                   },
                   {
                     "kind": "Strong",
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "left & right"
+                        "text": "左 & 右"
                       }
                     ]
                   },
                   {
                     "kind": "Text",
-                    "text": " on strings.\n                "
+                    "text": " 在字符串上。\n                "
                   }
                 ]
               }
@@ -3114,7 +3114,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    This instruction executes "
+                    "text": "\n                    此指令执行 "
                   },
                   {
                     "kind": "Strong",
@@ -3142,7 +3142,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    This instruction executes "
+                    "text": "\n                    此指令执行 "
                   },
                   {
                     "kind": "Strong",
@@ -3170,14 +3170,14 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    This instruction executes "
+                    "text": "\n                    此指令执行 "
                   },
                   {
                     "kind": "Strong",
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "left - right"
+                        "text": "左 - 右"
                       }
                     ]
                   },
@@ -3198,7 +3198,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    This instruction executes "
+                    "text": "\n                    此指令执行 "
                   },
                   {
                     "kind": "Strong",
@@ -3226,7 +3226,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    This instruction executes "
+                    "text": "\n                    此指令执行 "
                   },
                   {
                     "kind": "Strong",
@@ -3254,14 +3254,14 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    This instruction executes "
+                    "text": "\n                    此指令执行 "
                   },
                   {
                     "kind": "Strong",
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "left / right"
+                        "text": "左 / 右"
                       }
                     ]
                   },
@@ -3282,14 +3282,14 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    This instruction executes "
+                    "text": "\n                    此指令执行 "
                   },
                   {
                     "kind": "Strong",
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "left shl right"
+                        "text": "左移右"
                       }
                     ]
                   },
@@ -3310,14 +3310,14 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    This instruction executes "
+                    "text": "\n                    此指令执行 "
                   },
                   {
                     "kind": "Strong",
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "left shr right"
+                        "text": "左移右"
                       }
                     ]
                   },
@@ -3338,14 +3338,14 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    This instruction executes "
+                    "text": "\n                    此指令执行 "
                   },
                   {
                     "kind": "Strong",
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "left xor right"
+                        "text": "left 异或 right"
                       }
                     ]
                   },
@@ -3366,14 +3366,14 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    This instruction executes "
+                    "text": "\n                    此指令执行 "
                   },
                   {
                     "kind": "Strong",
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "left and right"
+                        "text": "左和右"
                       }
                     ]
                   },
@@ -3388,7 +3388,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    For flags,\n                    values are converted to "
+                    "text": "\n                    对于标志，\n                    值被转换为 "
                   },
                   {
                     "kind": "Strong",
@@ -3401,7 +3401,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ",\n                    and then converted back after running this instruction.\n                "
+                    "text": "，\n                    然后在运行此指令后转换回来。\n                "
                   }
                 ]
               }
@@ -3416,14 +3416,14 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    This instruction executes "
+                    "text": "\n                    此指令执行 "
                   },
                   {
                     "kind": "Strong",
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "left or right"
+                        "text": "左或右"
                       }
                     ]
                   },
@@ -3438,7 +3438,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    For flags,\n                    values are converted to "
+                    "text": "\n                    对于标志，\n                    值被转换为 "
                   },
                   {
                     "kind": "Strong",
@@ -3451,7 +3451,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ",\n                    and then converted back after running this instruction.\n                "
+                    "text": "，\n                    然后在运行此指令后转换回来。\n                "
                   }
                 ]
               }

@@ -159,14 +159,14 @@
   "numberBeforeTitle": false,
   "topic": {
     "kind": "Topic",
-    "title": "Creating New List Controls",
+    "title": "创建新列表控件",
     "content": [
       {
         "kind": "Paragraph",
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Customizing "
+            "text": "\n            自定义 "
           },
           {
             "kind": "Strong",
@@ -192,7 +192,7 @@
           },
           {
             "kind": "Text",
-            "text": " by providing new item templates ,\n            should be the most common way to create a new list control experience.\n            But you could still create your new list control.\n        "
+            "text": " 通过提供新的项模板，\n            应是最常见的创建新列表控件体验的方式。\n            但您仍然可以创建您的新列表控件。\n        "
           }
         ]
       },
@@ -201,7 +201,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            In GacUI 1.0,\n            any new classes created completely by C++\n            (instead of by "
+            "text": "\n            在 GacUI 1.0 中，\n            任何完全由 C++ 创建的新类\n            （而不是通过 "
           },
           {
             "kind": "Strong",
@@ -214,7 +214,7 @@
           },
           {
             "kind": "Text",
-            "text": " in GacUI XML Resource)\n            is not accessible in the GacUI XML Resource,\n            because the compiler doesn't know about that.\n        "
+            "text": " 在 GacUI XML 资源中）\n            在 GacUI XML 资源中不可访问，\n            因为编译器不知道这一点。\n        "
           }
         ]
       },
@@ -223,7 +223,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Any new list control is expected to derives from "
+            "text": "\n            任何新的列表控件都预期从 "
           },
           {
             "kind": "Strong",
@@ -236,7 +236,7 @@
           },
           {
             "kind": "Text",
-            "text": " directly.\n            If list items are not selectable,\n            then "
+            "text": " 直接。\n            如果列表项不可选择，\n            然后 "
           },
           {
             "kind": "Strong",
@@ -249,20 +249,20 @@
           },
           {
             "kind": "Text",
-            "text": " could be used to reduce runtime overhead.\n        "
+            "text": " 可用于减少运行时开销。\n        "
           }
         ]
       },
       {
         "kind": "Topic",
-        "title": "GuiListControl::IItemProvider, the constructor argument",
+        "title": "GuiListControl::IItemProvider，构造函数参数",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                An instance of "
+                "text": "\n                一个 "
               },
               {
                 "kind": "Strong",
@@ -275,7 +275,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is required in the constructor of\n                "
+                "text": " 在……的构造函数中必需。\n                "
               },
               {
                 "kind": "Strong",
@@ -288,7 +288,7 @@
               },
               {
                 "kind": "Text",
-                "text": " and "
+                "text": " 和 "
               },
               {
                 "kind": "Strong",
@@ -301,7 +301,7 @@
               },
               {
                 "kind": "Text",
-                "text": ".\n                The base class doesn't control the life cycle of this instance,\n                it should be properly disposed in the derived class.\n            "
+                "text": ".\n                基类不控制此实例的生命周期，\n                它应在派生类中正确释放。\n            "
               }
             ]
           },
@@ -310,7 +310,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                This interface offers a bridge so that "
+                "text": "\n                此接口提供了一个桥接，以便 "
               },
               {
                 "kind": "Strong",
@@ -323,7 +323,7 @@
               },
               {
                 "kind": "Text",
-                "text": " could access its items.\n                "
+                "text": " 可以访问其项。\n                "
               },
               {
                 "kind": "List",
@@ -356,7 +356,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " could be installed to an "
+                        "text": " 可以安装到一个 "
                       },
                       {
                         "kind": "Strong",
@@ -369,7 +369,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ".\n                        When a callback is properly installed,\n                        its "
+                        "text": ".\n                        当一个回调被正确安装时，\n                        它的 "
                       },
                       {
                         "kind": "Strong",
@@ -382,7 +382,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " must be called immediately.\n                    "
+                        "text": " 必须立即调用。\n                    "
                       }
                     ]
                   },
@@ -400,7 +400,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ":\n                        This method is called to remove an installed "
+                        "text": "：\n                        当要移除一个已安装的 "
                       },
                       {
                         "kind": "Strong",
@@ -413,7 +413,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ".\n                        When a callback is properly uninstalled,\n                        its "
+                        "text": ".\n                        当一个回调被正确卸载时，\n                        它的 "
                       },
                       {
                         "kind": "Strong",
@@ -426,7 +426,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " must be called immediately.\n                    "
+                        "text": " 必须立即调用。\n                    "
                       }
                     ]
                   },
@@ -444,7 +444,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ":\n                        This method is called when the list control enters another level of editing mode.\n                    "
+                        "text": "：\n                        当列表控件进入另一个编辑模式时，会调用此方法。\n                    "
                       }
                     ]
                   },
@@ -462,7 +462,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ":\n                        This method is called when the list control leaves one level of editing mode.\n                    "
+                        "text": "：\n                        当列表控件退出编辑模式的某一层时调用此方法。\n                    "
                       }
                     ]
                   },
@@ -480,7 +480,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ":\n                        This method should return "
+                        "text": "：\n                        此方法应返回 "
                       },
                       {
                         "kind": "Strong",
@@ -493,7 +493,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " if at least one level of editing mode is still in the list control.\n                    "
+                        "text": " 如果至少有一个编辑模式级别仍在列表控件中\n                    "
                       }
                     ]
                   },
@@ -511,7 +511,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ":\n                        This method should return the total number of items in the list control.\n                        In "
+                        "text": "：\n                        此方法应返回列表控件中的项目总数。\n                        In "
                       },
                       {
                         "kind": "Strong",
@@ -524,7 +524,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ",\n                        all collapsed items are not counted.\n                        Although they exist in the logical tree,\n                        but if a node is collapsed,\n                        all sub items will be treated as removed by calling "
+                        "text": "，\n                        所有折叠的项目都不计入。\n                        尽管它们存在于逻辑树中，\n                        但如果节点是折叠的，\n                        所有子项目将通过调用 "
                       },
                       {
                         "kind": "Strong",
@@ -537,7 +537,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ".\n                        And when a node is expanded,\n                        all sub items come back in the same way.\n                    "
+                        "text": ".\n                        当一个节点被展开时，\n                        所有子项目将以相同方式返回。\n                    "
                       }
                     ]
                   },
@@ -555,7 +555,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ":\n                        This method should return a text representation for a given item.\n                        The value will be copied to the "
+                        "text": "：\n                        此方法应为给定项目返回一个文本表示。\n                        该值将被复制到 "
                       },
                       {
                         "kind": "Strong",
@@ -568,7 +568,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " property of a item template.\n                    "
+                        "text": " 项目模板的属性。\n                    "
                       }
                     ]
                   },
@@ -586,7 +586,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ":\n                        This method should return a "
+                        "text": "：\n                        此方法应返回一个 "
                       },
                       {
                         "kind": "Strong",
@@ -599,7 +599,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " object for a given item,\n                        if data binding for item source is available in this control.\n                        For non-bindable list controls,\n                        a "
+                        "text": " 用于给定项的对象，\n                        如果此控件支持项源的数据绑定。\n                        对于非绑定列表控件，\n                        a "
                       },
                       {
                         "kind": "Strong",
@@ -612,7 +612,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " object should be returned by calling the constructor of the return value with no argument,\n                        for example, "
+                        "text": " 对象应通过调用返回值的无参构造函数来返回。\n                        例如， "
                       },
                       {
                         "kind": "Strong",
@@ -643,7 +643,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ":\n                        This method provides a way to decouple between the list control and the details of items.\n                        "
+                        "text": "：\n                        此方法提供了一种将列表控件与项目细节解耦的方式。\n                        "
                       },
                       {
                         "kind": "Strong",
@@ -656,7 +656,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " should handle the life cycle of all returned views.\n                    "
+                        "text": " 应处理所有返回视图的生命周期。\n                    "
                       }
                     ]
                   }
@@ -678,7 +678,7 @@
               },
               {
                 "kind": "Text",
-                "text": " could be used to create an "
+                "text": " 可以用于创建一个 "
               },
               {
                 "kind": "Strong",
@@ -691,7 +691,7 @@
               },
               {
                 "kind": "Text",
-                "text": ".\n                The following methods are implemented in this class:\n                "
+                "text": ".\n                以下方法在此类中实现：\n                "
               },
               {
                 "kind": "List",
@@ -771,7 +771,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                You need to implement the rest to complete an "
+                "text": "\n                您需要实现其余部分以完成一个 "
               },
               {
                 "kind": "Strong",
@@ -797,7 +797,7 @@
               },
               {
                 "kind": "Text",
-                "text": " method is provider to call "
+                "text": " 方法是提供调用的 "
               },
               {
                 "kind": "Strong",
@@ -810,7 +810,7 @@
               },
               {
                 "kind": "Text",
-                "text": " in all installed callbacks.\n            "
+                "text": " 在所有已安装的回调函数中。\n            "
               }
             ]
           }
@@ -818,14 +818,14 @@
       },
       {
         "kind": "Topic",
-        "title": "GuiListControl::IItemProviderCallback, the constructor argument",
+        "title": "GuiListControl::IItemProviderCallback，构造函数参数",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                The "
+                "text": "\n                该 "
               },
               {
                 "kind": "Strong",
@@ -838,7 +838,7 @@
               },
               {
                 "kind": "Text",
-                "text": " allow "
+                "text": " 允许 "
               },
               {
                 "kind": "Strong",
@@ -851,7 +851,7 @@
               },
               {
                 "kind": "Text",
-                "text": " to report\n                one change of consecutive items:\n                "
+                "text": " 报告\n                连续项的一个更改：\n                "
               },
               {
                 "kind": "List",
@@ -871,7 +871,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": The index of the first item in all changing consecutive items."
+                        "text": ": 所有连续更改项中第一个项的索引。"
                       }
                     ]
                   },
@@ -889,7 +889,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": The numbers of all changing consecutive items."
+                        "text": ": 所有连续更改项的总数。"
                       }
                     ]
                   },
@@ -907,7 +907,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": The numbers of new items that all changing consecutive items change into."
+                        "text": ": 所有连续更改项变为的新项的总数。"
                       }
                     ]
                   }
@@ -920,7 +920,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                If changes happens in multiple groups of consecutive items,\n                each group should be reported in separate call to "
+                "text": "\n                如果在多个连续项组中发生更改，\n                每组应在单独的调用中报告 "
               },
               {
                 "kind": "Strong",
@@ -933,7 +933,7 @@
               },
               {
                 "kind": "Text",
-                "text": ".\n                You must try your best to ensure that,\n                "
+                "text": ".\n                您必须尽力确保，\n                "
               },
               {
                 "kind": "Strong",
@@ -972,7 +972,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                and all related methods in views from "
+                "text": "\n                以及视图中所有相关方法 "
               },
               {
                 "kind": "Strong",
@@ -985,7 +985,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                should not see any unreported changes.\n            "
+                "text": "\n                不应看到任何未报告的更改。\n            "
               }
             ]
           },
@@ -994,7 +994,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Call "
+                "text": "\n                调用 "
               },
               {
                 "kind": "Strong",
@@ -1007,7 +1007,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                when a group of items are inserted to the position "
+                "text": "\n                当一组项目被插入到某个位置时 "
               },
               {
                 "kind": "Strong",
@@ -1020,7 +1020,7 @@
               },
               {
                 "kind": "Text",
-                "text": ".\n                If one item is inserted,\n                "
+                "text": ".\n                如果插入了一项，\n                "
               },
               {
                 "kind": "Strong",
@@ -1033,7 +1033,7 @@
               },
               {
                 "kind": "Text",
-                "text": " should be "
+                "text": " 应为 "
               },
               {
                 "kind": "Strong",
@@ -1055,20 +1055,20 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Call "
+                "text": "\n                调用 "
               },
               {
                 "kind": "Strong",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "OnItemModified(start, count, 0)"
+                    "text": "OnItemModified(开始, 数量, 0)"
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": "\n                when a group of items are removed from the position "
+                "text": "\n                当一组项目从位置中移除时 "
               },
               {
                 "kind": "Strong",
@@ -1081,7 +1081,7 @@
               },
               {
                 "kind": "Text",
-                "text": ".\n                If one item is removed,\n                "
+                "text": ".\n                如果移除了一项，\n                "
               },
               {
                 "kind": "Strong",
@@ -1094,7 +1094,7 @@
               },
               {
                 "kind": "Text",
-                "text": " should be "
+                "text": " 应为 "
               },
               {
                 "kind": "Strong",
@@ -1116,20 +1116,20 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Call "
+                "text": "\n                调用 "
               },
               {
                 "kind": "Strong",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "OnItemModified(start, count, count)"
+                    "text": "OnItemModified(开始, 数量, 数量)"
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": "\n                when a group of items are updated beginning from the position "
+                "text": "\n                当一组项目从某个位置开始被更新时 "
               },
               {
                 "kind": "Strong",
@@ -1142,7 +1142,7 @@
               },
               {
                 "kind": "Text",
-                "text": ".\n                If one item is updated,\n                "
+                "text": ".\n                如果更新了一项，\n                "
               },
               {
                 "kind": "Strong",
@@ -1155,7 +1155,7 @@
               },
               {
                 "kind": "Text",
-                "text": " should be "
+                "text": " 应为 "
               },
               {
                 "kind": "Strong",
@@ -1168,7 +1168,7 @@
               },
               {
                 "kind": "Text",
-                "text": ".\n                An item is updated,\n                if the item is replaced,\n                or any interested content inside this item is updated.\n            "
+                "text": ".\n                项目被更新，\n                如果项被替换，\n                或此项内的任何感兴趣的内容已更新。\n            "
               }
             ]
           }
@@ -1176,7 +1176,7 @@
       },
       {
         "kind": "Topic",
-        "title": "GuiListControl::IItemArranger, the item layouting",
+        "title": "GuiListControl::IItemArranger，项目布局",
         "content": [
           {
             "kind": "Paragraph",
@@ -1192,7 +1192,7 @@
               },
               {
                 "kind": "Text",
-                "text": " handles rendering of list items.\n                An "
+                "text": " 处理列表项的渲染。\n                An "
               },
               {
                 "kind": "Strong",
@@ -1205,7 +1205,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is attached to a list control\n                using its "
+                "text": " 被附加到列表控件\n                使用其 "
               },
               {
                 "kind": "Strong",
@@ -1218,7 +1218,7 @@
               },
               {
                 "kind": "Text",
-                "text": " property\n                or its protected method "
+                "text": " 属性\n                或其受保护的方法 "
               },
               {
                 "kind": "Strong",
@@ -1240,7 +1240,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                There are already some\n                "
+                "text": "\n                已经有一些\n                "
               },
               {
                 "kind": "PageLink",
@@ -1248,13 +1248,13 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    built-in IItemArranger implementations\n                "
+                    "text": "\n                    内置的 IItemArranger 实现\n                "
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": ".\n                Check them out to see if any of the works,\n                so you don't have to implement this interface.\n                It is pretty difficult.\n            "
+                "text": ".\n                检查一下，看看有没有任何作品，\n                因此，您无需实现此接口。\n                这相当困难\n            "
               }
             ]
           },
@@ -1272,7 +1272,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is also the base class of "
+                "text": " 也是 的基类 "
               },
               {
                 "kind": "Strong",
@@ -1298,7 +1298,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is attached to a list control,\n                it will be installed as a callback to "
+                "text": " 被附加到列表控件，\n                它将作为回调安装 "
               },
               {
                 "kind": "Strong",
@@ -1324,7 +1324,7 @@
               },
               {
                 "kind": "Text",
-                "text": " could update the rendering when any item is changed.\n            "
+                "text": " 当任何项目更改时，可以更新渲染。\n            "
               }
             ]
           },
@@ -1346,7 +1346,7 @@
               },
               {
                 "kind": "Text",
-                "text": " should be aware of the\n                "
+                "text": " 应意识到\n                "
               },
               {
                 "kind": "PageLink",
@@ -1360,7 +1360,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                property of a list control.\n                If this property returns "
+                "text": "\n                列表控件的属性。\n                如果此属性返回 "
               },
               {
                 "kind": "Strong",
@@ -1373,7 +1373,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                all item template instances returned from "
+                "text": "，\n                从返回的所有项模板实例 "
               },
               {
                 "kind": "Strong",
@@ -1386,7 +1386,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                should be contained in a "
+                "text": "\n                应包含在一个 "
               },
               {
                 "kind": "Strong",
@@ -1399,7 +1399,7 @@
               },
               {
                 "kind": "Text",
-                "text": " as the item background using\n                "
+                "text": " 使用作为项目背景。\n                "
               },
               {
                 "kind": "List",
@@ -1410,7 +1410,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "The "
+                        "text": "该 "
                       },
                       {
                         "kind": "Strong",
@@ -1423,7 +1423,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " as the theme of this button."
+                        "text": " 作为此按钮的主题。"
                       }
                     ]
                   },
@@ -1441,7 +1441,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " as the control template of this button."
+                        "text": " 作为此按钮的控件模板。"
                       }
                     ]
                   }
@@ -1454,7 +1454,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                All locations, sizes and margins involved in this interface are all "
+                "text": "\n                此界面中涉及的所有位置、大小和边距均为 "
               },
               {
                 "kind": "Strong",
@@ -1480,7 +1480,7 @@
               },
               {
                 "kind": "Text",
-                "text": " just need to provide item layout in the "
+                "text": " 只需提供项目布局即可 "
               },
               {
                 "kind": "Strong",
@@ -1493,7 +1493,7 @@
               },
               {
                 "kind": "Text",
-                "text": " direction.\n                The \n                "
+                "text": " 方向。\n                该 \n                "
               },
               {
                 "kind": "PageLink",
@@ -1512,7 +1512,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                property will be used by the list control\n                to adjust locations and sizes of all visible items to layout them in the expected direction.\n            "
+                "text": "\n                属性将由列表控件使用\n                调整所有可见项的位置和大小，以将其布局到预期的方向。\n            "
               }
             ]
           },
@@ -1521,7 +1521,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Here are all methods to implemement:\n                "
+                "text": "\n                这里列出了所有需要实现的方法：\n                "
               },
               {
                 "kind": "List",
@@ -1544,7 +1544,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": ":\n                            This method is called when it is attached to a list control.\n                        "
+                            "text": "：\n                            当它附加到列表控件时，会调用此方法。\n                        "
                           }
                         ]
                       }
@@ -1567,7 +1567,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": ":\n                            This method is called when it is detached from a list control.\n                        "
+                            "text": "：\n                            当它从列表控件分离时，会调用此方法。\n                        "
                           }
                         ]
                       }
@@ -1590,7 +1590,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": ":\n                            Get the argument from the last "
+                            "text": "：\n                            从最后一个获取参数 "
                           },
                           {
                             "kind": "Strong",
@@ -1603,7 +1603,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " call.\n                        "
+                            "text": " 调用。\n                        "
                           }
                         ]
                       }
@@ -1626,7 +1626,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": ":\n                            This method is called when it is attached to a list control.\n                            Only one callback will be installed to "
+                            "text": "：\n                            当它附加到列表控件时，会调用此方法。\n                            仅一个回调将被安装到 "
                           },
                           {
                             "kind": "Strong",
@@ -1639,7 +1639,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": ".\n                            This callback provides everything that an "
+                            "text": ".\n                            此回调提供一个 "
                           },
                           {
                             "kind": "Strong",
@@ -1652,7 +1652,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " could do the a list control.\n                        "
+                            "text": " 可以执行列表控件。\n                        "
                           }
                         ]
                       }
@@ -1675,7 +1675,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": ":\n                            Return the total size of all items in their layout.\n                        "
+                            "text": "：\n                            返回所有项目在布局中的总大小。\n                        "
                           }
                         ]
                       }
@@ -1698,7 +1698,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": ":\n                            This method should return the item template instance for a give item.\n                            If the item is invisible because it is scrolled out of the visible area of the list control,\n                            it should return "
+                            "text": "：\n                            此方法应为给定项目返回项目模板实例。\n                            如果项目因滚动出列表控件的可见区域而不可见，\n                            它应该返回 "
                           },
                           {
                             "kind": "Strong",
@@ -1720,7 +1720,7 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "\n                            Living item template instances for items could be managed using\n                            "
+                            "text": "\n                            可以使用\n                            "
                           },
                           {
                             "kind": "Strong",
@@ -1733,7 +1733,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " and "
+                            "text": " 和 "
                           },
                           {
                             "kind": "Strong",
@@ -1769,7 +1769,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": ":\n                            This method should return the item index for a given item template instance.\n                            If such an instance is unknown to this "
+                            "text": "：\n                            此方法应为给定项目模板实例返回项目索引。\n                            如果此实例对此未知 "
                           },
                           {
                             "kind": "Strong",
@@ -1782,7 +1782,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": ",\n                            it should return "
+                            "text": "，\n                            它应该返回 "
                           },
                           {
                             "kind": "Strong",
@@ -1818,7 +1818,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": ":\n                            Recreate all UI objects for visible items.\n                            Items don't need to be recreated immediately,\n                            but all UI objects for items should be disposed in the call to this method.\n                        "
+                            "text": "：\n                            为可见项重新创建所有UI对象。\n                            项目不需要立即重新创建，\n                            但是所有项目的 UI 对象都应在调用此方法时被释放。\n                        "
                           }
                         ]
                       },
@@ -1836,7 +1836,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " and "
+                            "text": " 和 "
                           },
                           {
                             "kind": "Strong",
@@ -1849,7 +1849,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " could pretend that all items are invisible\n                            until the next call to "
+                            "text": " 可以假装所有项目都不可见\n                            直到下次调用 "
                           },
                           {
                             "kind": "Strong",
@@ -1885,7 +1885,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": ":\n                            This method is called to tell the "
+                            "text": "：\n                            此方法用于通知 "
                           },
                           {
                             "kind": "Strong",
@@ -1898,7 +1898,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": "\n                            what is the visible part in "
+                            "text": "\n                            可见部分是什么 "
                           },
                           {
                             "kind": "Strong",
@@ -1929,7 +1929,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " could only create UI objects for items in this area,\n                            to reduce the memory pressure and improve the performance.\n                            "
+                            "text": " 只能为此区域中的项目创建 UI 对象，\n                            以减少内存压力并提高性能。\n                            "
                           },
                           {
                             "kind": "Strong",
@@ -1942,14 +1942,14 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " could also create UI objects for all items if performance is not important.\n                            All items with their UI objects created are "
+                            "text": " 如果性能不重要，也可以为所有项创建UI对象。\n                            所有已创建 UI 对象的项目都是 "
                           },
                           {
                             "kind": "Strong",
                             "content": [
                               {
                                 "kind": "Text",
-                                "text": "visible items"
+                                "text": "可见项"
                               }
                             ]
                           },
@@ -1964,7 +1964,7 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "\n                            Living item template instances for items could be managed using\n                            "
+                            "text": "\n                            可以使用\n                            "
                           },
                           {
                             "kind": "Strong",
@@ -1977,7 +1977,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " and "
+                            "text": " 和 "
                           },
                           {
                             "kind": "Strong",
@@ -2013,7 +2013,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": ":\n                            Search a next item from the specified item "
+                            "text": "：\n                            从指定项开始搜索下一个项目 "
                           },
                           {
                             "kind": "Strong",
@@ -2026,7 +2026,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " using a keyboard operation "
+                            "text": " 使用键盘操作 "
                           },
                           {
                             "kind": "Strong",
@@ -2052,14 +2052,14 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " could be returned if no reasonable item is definded as "
+                            "text": " 如果没有定义合理的项目，则可以返回 "
                           },
                           {
                             "kind": "Strong",
                             "content": [
                               {
                                 "kind": "Text",
-                                "text": "the next item"
+                                "text": "下一个项目"
                               }
                             ]
                           },
@@ -2085,7 +2085,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ":\n                        This method is called if the list control want to scroll to an area to make a given item visible.\n                        "
+                        "text": "：\n                        当列表控件想要滚动到某个区域以使给定项可见时，会调用此方法。\n                        "
                       },
                       {
                         "kind": "Strong",
@@ -2098,7 +2098,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " is usually called as a respond.\n                        "
+                        "text": " 通常被称为响应。\n                        "
                       },
                       {
                         "kind": "Strong",
@@ -2111,7 +2111,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " could be called in "
+                        "text": " 可以在 "
                       },
                       {
                         "kind": "Strong",
@@ -2142,7 +2142,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ":\n                        Return a reasonable size for the visible area of items,\n                        if the list control is used as a combo box dropdown list.\n                    "
+                        "text": "：\n                        返回项目可见区域的合理大小，\n                        如果列表控件用作组合框的下拉列表。\n                    "
                       }
                     ]
                   }
@@ -2154,14 +2154,14 @@
       },
       {
         "kind": "Topic",
-        "title": "GuiListControl::IItemArrangerCallback, the item layouting",
+        "title": "GuiListControl::IItemArrangerCallback，项目布局",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                All locations, sizes and margins involved in this interface are all "
+                "text": "\n                此界面中涉及的所有位置、大小和边距均为 "
               },
               {
                 "kind": "Strong",
@@ -2187,7 +2187,7 @@
               },
               {
                 "kind": "Text",
-                "text": " just need to provide item layout in the "
+                "text": " 只需提供项目布局即可 "
               },
               {
                 "kind": "Strong",
@@ -2200,7 +2200,7 @@
               },
               {
                 "kind": "Text",
-                "text": " direction.\n                The \n                "
+                "text": " 方向。\n                该 \n                "
               },
               {
                 "kind": "PageLink",
@@ -2219,7 +2219,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                property will be used by the list control\n                to adjust locations and sizes of all visible items to layout them in the expected direction.\n            "
+                "text": "\n                属性将由列表控件使用\n                调整所有可见项的位置和大小，以将其布局到预期的方向。\n            "
               }
             ]
           },
@@ -2244,7 +2244,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ":\n                        Ask the list control to create an item template instance for a specific item.\n                        An item template instance that is released by calling "
+                        "text": "：\n                        要求列表控件为特定项创建一个项模板实例。\n                        通过调用释放的项目模板实例 "
                       },
                       {
                         "kind": "Strong",
@@ -2257,7 +2257,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": "\n                        could be reused for a different item.\n                    "
+                        "text": "\n                        可以用于不同的项目。\n                    "
                       }
                     ]
                   },
@@ -2275,7 +2275,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ":\n                        Ask the list control to dispose an item template instance for a specific item.\n                        The item template instance will be deleted from the memory later if necessary,\n                        the pointer should not be used anymore after calling this method.\n                    "
+                        "text": "：\n                        要求列表控件为特定项释放一个项模板实例。\n                        如果需要，项模板实例稍后将从内存中删除，\n                        调用此方法后，指针不应再使用。\n                    "
                       }
                     ]
                   },
@@ -2293,7 +2293,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ":\n                        Tell the list control what should be the left-top corner of the visible area.\n                        But the list control could move the visible area to a different location closed by\n                        if it thinks this is better.\n                    "
+                        "text": "：\n                        告诉列表控件可见区域的左上角位置。\n                        但列表控件可能会将可见区域移动到由\n                        如果它认为这样更好。\n                    "
                       }
                     ]
                   },
@@ -2311,7 +2311,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ":\n                        Read the size of the "
+                        "text": "：\n                        读取的大小为 "
                       },
                       {
                         "kind": "Strong",
@@ -2324,7 +2324,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " property of a compositon contained by list control.\n                        "
+                        "text": " 由列表控件包含的组合属性。\n                        "
                       },
                       {
                         "kind": "Strong",
@@ -2337,7 +2337,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": the result is "
+                        "text": ": 结果是 "
                       },
                       {
                         "kind": "Strong",
@@ -2350,7 +2350,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ".\n                        Do not use this property directly,\n                        use this method instead.\n                    "
+                        "text": ".\n                        不要直接使用此属性，\n                        请改用此方法。\n                    "
                       }
                     ]
                   },
@@ -2381,7 +2381,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " property of a composition contained by list control.\n                        "
+                        "text": " 列表控件中包含的组合属性。\n                        "
                       },
                       {
                         "kind": "Strong",
@@ -2394,7 +2394,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": the result is "
+                        "text": ": 结果是 "
                       },
                       {
                         "kind": "Strong",
@@ -2407,7 +2407,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ".\n                        Do not use this property directly,\n                        use this method instead.\n                    "
+                        "text": ".\n                        不要直接使用此属性，\n                        请改用此方法。\n                    "
                       }
                     ]
                   },
@@ -2438,7 +2438,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " property of a composition contained by list control.\n                        "
+                        "text": " 列表控件中包含的组合属性。\n                        "
                       },
                       {
                         "kind": "Strong",
@@ -2451,7 +2451,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": the result is "
+                        "text": ": 结果是 "
                       },
                       {
                         "kind": "Strong",
@@ -2464,7 +2464,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ".\n                        Do not use this property directly,\n                        use this method instead.\n                    "
+                        "text": ".\n                        不要直接使用此属性，\n                        请改用此方法。\n                    "
                       }
                     ]
                   },
@@ -2495,7 +2495,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " property of a composition contained by list control.\n                        "
+                        "text": " 列表控件中包含的组合属性。\n                        "
                       },
                       {
                         "kind": "Strong",
@@ -2508,7 +2508,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": the result is "
+                        "text": ": 结果是 "
                       },
                       {
                         "kind": "Strong",
@@ -2521,7 +2521,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ".\n                        Do not use this property directly,\n                        use this method instead.\n                    "
+                        "text": ".\n                        不要直接使用此属性，\n                        请改用此方法。\n                    "
                       }
                     ]
                   },
@@ -2539,7 +2539,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ":\n                        Get the composition as a container to store all UI objects for items.\n                    "
+                        "text": "：\n                        获取组合以作为容器来存储所有项目的 UI 对象。\n                    "
                       }
                     ]
                   },
@@ -2557,7 +2557,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ":\n                        Call this method to tell the list control that\n                        "
+                        "text": "：\n                        调用此方法以通知列表控件\n                        "
                       },
                       {
                         "kind": "Strong",
@@ -2570,7 +2570,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " has been changed.\n                    "
+                        "text": " 已被更改。\n                    "
                       }
                     ]
                   }
@@ -2582,14 +2582,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Using IItemProvider::RequestView Properly",
+        "title": "正确使用 IItemProvider::RequestView",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                A list control could override "
+                "text": "\n                列表控件可以重写 "
               },
               {
                 "kind": "Strong",
@@ -2602,7 +2602,7 @@
               },
               {
                 "kind": "Text",
-                "text": " from "
+                "text": " 从 "
               },
               {
                 "kind": "Strong",
@@ -2615,7 +2615,7 @@
               },
               {
                 "kind": "Text",
-                "text": ".\n                This method is called when an item template instance is binded to a list item.\n            "
+                "text": ".\n                当项模板实例绑定到列表项时，会调用此方法。\n            "
               }
             ]
           },
@@ -2624,7 +2624,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                A new list control class typlically defines a new item template class for an item.\n                the new item template class adds new properties to define how an item for this new list control should look like.\n            "
+                "text": "\n                新的列表控件类通常会为项定义一个新的项模板类。\n                新的项模板类添加了新属性，用于定义此新列表控件中的项应如何显示。\n            "
               }
             ]
           },
@@ -2633,7 +2633,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                One or more views could be defined to read or write details for an item for this particular list control class.\n                Then the list control class could call "
+                "text": "\n                可以定义一个或多个视图来读取或写入此特定列表控件类的项的详细信息。\n                然后列表控件类可以调用 "
               },
               {
                 "kind": "Strong",
@@ -2646,7 +2646,7 @@
               },
               {
                 "kind": "Text",
-                "text": " for a view using a unique identifier string,\n                to bind data from the view to item template instances.\n            "
+                "text": " 用于使用唯一标识符字符串的视图，\n                将数据从视图绑定到项模板实例。\n            "
               }
             ]
           },
@@ -2655,7 +2655,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                For example:\n                "
+                "text": "\n                例如：\n                "
               },
               {
                 "kind": "Strong",
@@ -2668,7 +2668,7 @@
               },
               {
                 "kind": "Text",
-                "text": " defines the "
+                "text": " 定义 "
               },
               {
                 "kind": "Strong",
@@ -2681,7 +2681,7 @@
               },
               {
                 "kind": "Text",
-                "text": " view to add the "
+                "text": " view 添加到 "
               },
               {
                 "kind": "Strong",
@@ -2694,7 +2694,7 @@
               },
               {
                 "kind": "Text",
-                "text": " property to items.\n            "
+                "text": " 属性到项目。\n            "
               }
             ]
           },
@@ -2712,7 +2712,7 @@
               },
               {
                 "kind": "Text",
-                "text": " could also defines its own views.\n                For example,\n                "
+                "text": " 也可以定义自己的视图。\n                例如，\n                "
               },
               {
                 "kind": "Strong",
@@ -2725,7 +2725,7 @@
               },
               {
                 "kind": "Text",
-                "text": " defines "
+                "text": " 定义 "
               },
               {
                 "kind": "Strong",
@@ -2738,7 +2738,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                to read columns from the list control\n                to render column headers.\n                Any list control using "
+                "text": "\n                从列表控件中读取列\n                渲染列标题。\n                任何使用列表控件的 "
               },
               {
                 "kind": "Strong",
@@ -2751,7 +2751,7 @@
               },
               {
                 "kind": "Text",
-                "text": " should make sure that\n                "
+                "text": " 应确保\n                "
               },
               {
                 "kind": "Strong",
@@ -2764,7 +2764,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is implemented and accessible from "
+                "text": " 已实现并可从 "
               },
               {
                 "kind": "Strong",
@@ -2786,7 +2786,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                You can define your own view for any purpose,\n                as long as it is only used to read or write details of for items.\n            "
+                "text": "\n                您可以为任何目的定义自己的视图，\n                只要它仅用于读取或写入项目详细信息。\n            "
               }
             ]
           }
@@ -2794,14 +2794,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Data Binding on Items",
+        "title": "项目数据绑定",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                A data bindable list control could read or write items from a item source implementing "
+                "text": "\n                一个可数据绑定的列表控件可以从实现以下接口的项源中读取或写入项： "
               },
               {
                 "kind": "Strong",
@@ -2814,7 +2814,7 @@
               },
               {
                 "kind": "Text",
-                "text": ".\n                This object could also implement any derived interfaces like:\n                "
+                "text": ".\n                此对象也可以实现任何派生接口，例如：\n                "
               },
               {
                 "kind": "List",
@@ -2866,7 +2866,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                If the item source implements "
+                "text": "\n                如果项目源实现了， "
               },
               {
                 "kind": "Strong",
@@ -2879,7 +2879,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                then the list control is expected to update automatically when items are changed.\n            "
+                "text": "，\n                然后，当项目更改时，列表控件应自动更新。\n            "
               }
             ]
           },
@@ -2892,13 +2892,13 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    The readable property type\n                "
+                    "text": "\n                    可读属性类型\n                "
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": " and\n                "
+                "text": " 和\n                "
               },
               {
                 "kind": "PageLink",
@@ -2906,13 +2906,13 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    the writable property type\n                "
+                    "text": "\n                    可写属性类型\n                "
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": "\n                could be used to let the user tell you how to access details from items.\n                "
+                "text": "\n                可用于让用户告诉您如何从项目中访问详细信息。\n                "
               },
               {
                 "kind": "Strong",
@@ -2925,7 +2925,7 @@
               },
               {
                 "kind": "Text",
-                "text": " and "
+                "text": " 和 "
               },
               {
                 "kind": "Strong",
@@ -2938,7 +2938,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                could be used on these property types in C++.\n            "
+                "text": "\n                可以用于C++中的这些属性类型。\n            "
               }
             ]
           }
@@ -2946,14 +2946,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Sample",
+        "title": "示例",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                You are strongly recommended to read the source code of\n                "
+                "text": "\n                强烈建议您阅读源代码的\n                "
               },
               {
                 "kind": "Strong",
@@ -2966,7 +2966,7 @@
               },
               {
                 "kind": "Text",
-                "text": " and "
+                "text": " 和 "
               },
               {
                 "kind": "Strong",
@@ -2979,7 +2979,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                before creating your own list control classes.\n            "
+                "text": "\n                在创建您自己的列表控件类之前。\n            "
               }
             ]
           }

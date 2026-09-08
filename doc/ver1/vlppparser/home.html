@@ -127,14 +127,14 @@
   "numberBeforeTitle": false,
   "topic": {
     "kind": "Topic",
-    "title": "Introduction to VlppParser",
+    "title": "VlppParser 简介",
     "content": [
       {
         "kind": "Paragraph",
         "content": [
           {
             "kind": "Text",
-            "text": "\n            VlppParser provides GLR parser generator for C++,\n            with generated XML and JSON parsers.\n        "
+            "text": "\n            VlppParser 为 C++ 提供了 GLR 解析器生成器。\n            带有生成的XML和JSON解析器。\n        "
           }
         ]
       },
@@ -152,20 +152,20 @@
           },
           {
             "kind": "Text",
-            "text": " here means abstract syntax tree, which are strong-typed representation of text in a specific format.\n        "
+            "text": " 这里表示抽象语法树，是特定格式文本的强类型表示。\n        "
           }
         ]
       },
       {
         "kind": "Topic",
-        "title": "JSON parser",
+        "title": "JSON 解析器",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "In namespace "
+                "text": "在命名空间 "
               },
               {
                 "kind": "Strong",
@@ -203,7 +203,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": Takes a JSON string and the return value from "
+                        "text": ": 接收一个 JSON 字符串和返回值 "
                       },
                       {
                         "kind": "Strong",
@@ -216,7 +216,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ",\n                        returns the AST for the JSON string.\n                        You are recommended to cache the return value from "
+                        "text": "，\n                        返回 JSON 字符串的 AST。\n                        建议您缓存从 "
                       },
                       {
                         "kind": "Strong",
@@ -229,7 +229,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " to improve performance.\n                    "
+                        "text": " 以提高性能。\n                    "
                       }
                     ]
                   },
@@ -247,7 +247,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " and "
+                        "text": " 和 "
                       },
                       {
                         "kind": "Strong",
@@ -260,7 +260,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": Serialize JSON from AST back to string.\n                    "
+                        "text": ": 从AST反序列化为JSON字符串。\n                    "
                       }
                     ]
                   }
@@ -282,7 +282,7 @@
               },
               {
                 "kind": "Text",
-                "text": ": The parser does not support surrogate pairs in HEX codes.\n            "
+                "text": ": 解析器不支持十六进制代码中的代理对。\n            "
               }
             ]
           }
@@ -290,14 +290,14 @@
       },
       {
         "kind": "Topic",
-        "title": "XML parser",
+        "title": "XML 解析器",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "In namespace "
+                "text": "在命名空间 "
               },
               {
                 "kind": "Strong",
@@ -335,7 +335,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": Takes an XML string and the return value from "
+                        "text": ": 接收一个XML字符串和来自 "
                       },
                       {
                         "kind": "Strong",
@@ -348,7 +348,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ",\n                        returns the AST for the XML string.\n                        You are recommended to cache the return value from "
+                        "text": "，\n                        返回 XML 字符串的 AST。\n                        建议您缓存从 "
                       },
                       {
                         "kind": "Strong",
@@ -361,7 +361,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " to improve performance.\n                    "
+                        "text": " 以提高性能。\n                    "
                       }
                     ]
                   },
@@ -392,7 +392,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " and "
+                        "text": " 和 "
                       },
                       {
                         "kind": "Strong",
@@ -405,7 +405,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": Serialize XML from AST back to string.\n                    "
+                        "text": ": 从AST序列化XML回字符串。\n                    "
                       }
                     ]
                   },
@@ -449,7 +449,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " and "
+                        "text": " 和 "
                       },
                       {
                         "kind": "Strong",
@@ -462,7 +462,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": Helper functions for reading XML in AST.\n                    "
+                        "text": ": 用于在AST中读取XML的辅助函数。\n                    "
                       }
                     ]
                   }
@@ -484,7 +484,7 @@
               },
               {
                 "kind": "Text",
-                "text": ": The XML parser only accept a subset of the XML standard:\n                "
+                "text": ": XML 解析器仅接受 XML 标准的一个子集：\n                "
               },
               {
                 "kind": "List",
@@ -495,7 +495,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "Prologue nodes only accept instructions and comments."
+                        "text": "段落节点仅接受指令和注释。"
                       }
                     ]
                   },
@@ -504,7 +504,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "Elements only accept elements, text nodes, cdata nodes and comments as sub nodes."
+                        "text": "元素只接受元素、文本节点、CDATA节点和注释作为子节点。"
                       }
                     ]
                   },
@@ -574,7 +574,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": "(&quot;) must be escaped in attribute values and text nodes."
+                        "text": "(\") 必须在属性值和文本节点中进行转义。"
                       }
                     ]
                   },
@@ -583,7 +583,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "The "
+                        "text": "该 "
                       },
                       {
                         "kind": "Strong",
@@ -596,7 +596,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " attribute is ignored during parsing."
+                        "text": " 属性在解析时被忽略。"
                       }
                     ]
                   }
@@ -608,14 +608,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Writing your own parsers.",
+        "title": "编写您自己的解析器。",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                You are recommended to learn "
+                "text": "\n                建议您学习 "
               },
               {
                 "kind": "PageLink",
@@ -629,7 +629,7 @@
               },
               {
                 "kind": "Text",
-                "text": " before using the parser generator.\n            "
+                "text": " 在使用解析器生成器之前。\n            "
               }
             ]
           },
@@ -638,7 +638,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                To write your own parser:\n                "
+                "text": "\n                编写您自己的解析器：\n                "
               },
               {
                 "kind": "List",
@@ -649,7 +649,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "\n                        Prepare "
+                        "text": "\n                        准备 "
                       },
                       {
                         "kind": "PageLink",
@@ -657,13 +657,13 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "a grammar file"
+                            "text": "一个语法文件"
                           }
                         ]
                       },
                       {
                         "kind": "Text",
-                        "text": " for your parser.\n                    "
+                        "text": " 用于你的解析器。\n                    "
                       }
                     ]
                   },
@@ -672,7 +672,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "\n                        Use "
+                        "text": "\n                        使用 "
                       },
                       {
                         "kind": "Strong",
@@ -685,7 +685,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " from the release to process this file.\n                    "
+                        "text": " 从释放以处理此文件。\n                    "
                       }
                     ]
                   },
@@ -694,7 +694,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "\n                        Some C++ source files will be generated in the same folder that contains the grammar file.\n                        Add them to your project.\n                    "
+                        "text": "\n                        一些C++源文件将在包含语法文件的同一文件夹中生成。\n                        将它们添加到您的项目中。\n                    "
                       }
                     ]
                   },
@@ -703,7 +703,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "\n                        For example, if you have such configuration in your grammar file:\n                        "
+                        "text": "\n                        例如，如果您在语法文件中有这样的配置：\n                        "
                       },
                       {
                         "kind": "Program",
@@ -711,7 +711,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": "\n                        Then you can call "
+                        "text": "\n                        然后你可以调用 "
                       },
                       {
                         "kind": "Strong",
@@ -724,7 +724,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " to do parsing.\n                        You are recommended to cache the return value from the load table function.\n                    "
+                        "text": " 进行解析。\n                        建议您缓存从加载表格函数返回的值。\n                    "
                       }
                     ]
                   }
@@ -737,7 +737,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Here are some sample grammar files:\n                "
+                "text": "\n                这里是一些示例语法文件：\n                "
               },
               {
                 "kind": "List",
@@ -752,7 +752,7 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "JSON parser"
+                            "text": "JSON 解析器"
                           }
                         ]
                       },
@@ -771,7 +771,7 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "XML parser"
+                            "text": "XML 解析器"
                           }
                         ]
                       },
@@ -790,7 +790,7 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "Workflow script parser"
+                            "text": "Workflow 脚本解析器"
                           }
                         ]
                       },
@@ -809,13 +809,13 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "Instance query parser"
+                            "text": "实例查询解析器"
                           }
                         ]
                       },
                       {
                         "kind": "Text",
-                        "text": " for GacUI XML resource,\n                        working like the CSS selector but it is inspired by XPath.\n                    "
+                        "text": " 用于 GacUI XML 资源，\n                        类似于CSS选择器，但受XPath启发。\n                    "
                       }
                     ]
                   }

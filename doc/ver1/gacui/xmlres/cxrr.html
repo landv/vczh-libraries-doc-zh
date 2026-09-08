@@ -189,7 +189,7 @@
   "numberBeforeTitle": false,
   "topic": {
     "kind": "Topic",
-    "title": "Cross XML Resource References",
+    "title": "跨 XML 资源引用",
     "content": [
       {
         "kind": "Paragraph",
@@ -203,13 +203,13 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "GacUI XML Resource"
+                "text": "GacUI XML 资源"
               }
             ]
           },
           {
             "kind": "Text",
-            "text": " can import types from other resource files.\n            These resource files should satisfy the following conditions:\n            "
+            "text": " 可以从其他资源文件导入类型。\n            这些资源文件应满足以下条件：\n            "
           },
           {
             "kind": "List",
@@ -220,7 +220,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "They should be able to be discovered under one "
+                    "text": "它们应该能够在单一 "
                   },
                   {
                     "kind": "Strong",
@@ -242,7 +242,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "The resource file being imported must have a name in its metadata."
+                    "text": "被导入的资源文件必须在其元数据中具有名称"
                   }
                 ]
               },
@@ -251,7 +251,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "The resource file importing others must specify dependencies in its metadata."
+                    "text": "引用其他资源的资源文件必须在其元数据中指定依赖项。"
                   }
                 ]
               }
@@ -264,7 +264,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            These items will be removed from the resource binary and cannot be imported:\n            "
+            "text": "\n            这些项将从资源二进制文件中移除，且无法导入：\n            "
           },
           {
             "kind": "List",
@@ -283,7 +283,7 @@
           },
           {
             "kind": "Text",
-            "text": "\n            These items can be imported by URI like "
+            "text": "\n            这些项可以通过 URI 导入，例如 "
           },
           {
             "kind": "Strong",
@@ -342,7 +342,7 @@
           },
           {
             "kind": "Text",
-            "text": "\n            These items will be removed from the resource binary, but their generated types can be used in resource files that import them:\n            "
+            "text": "\n            这些项将从资源二进制文件中移除，但它们生成的类型仍可在导入它们的资源文件中使用：\n            "
           },
           {
             "kind": "List",
@@ -393,7 +393,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Note: in <Script/> only types can be exported,\n            global variables and functions are invisible to other resource files.\n            Names in resource files that are eventually loaded to the same GacUI application process must be unique.\n            All created Workflow types must be unique too.\n        "
+            "text": "\n            注意：在<Script/>中只有类型可以被导出，\n            全局变量和函数对其他资源文件不可见。\n            资源文件中最终加载到同一 GacUI 应用程序进程中的名称必须是唯一的。\n            所有创建的工作流类型也必须是唯一的\n        "
           }
         ]
       },
@@ -402,7 +402,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Here are some examples:\n            "
+            "text": "\n            这里有一些示例：\n            "
           },
           {
             "kind": "List",
@@ -423,7 +423,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ":\n                    A custom control which provides functionalities of rich text document editing and shared UIs.\n                "
+                    "text": "：\n                    一个提供富文本文档编辑和共享 UI 功能的自定义控件。\n                "
                   }
                 ]
               },
@@ -442,7 +442,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ":\n                    A document editor using toolstrip, with the above custom control being imported.\n                "
+                    "text": "：\n                    使用工具栏的文档编辑器，导入了上述自定义控件。\n                "
                   }
                 ]
               },
@@ -461,7 +461,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ":\n                    A document editor using ribbon, with the above custom control being imported.\n                "
+                    "text": "：\n                    使用功能区的文档编辑器，导入了上述自定义控件。\n                "
                   }
                 ]
               }

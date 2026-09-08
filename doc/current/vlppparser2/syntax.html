@@ -101,14 +101,14 @@
   "numberBeforeTitle": false,
   "topic": {
     "kind": "Topic",
-    "title": "Syntax Definition",
+    "title": "语法定义",
     "content": [
       {
         "kind": "Paragraph",
         "content": [
           {
             "kind": "Text",
-            "text": "\n            An AST definition consists of multiple rules.\n            A "
+            "text": "\n            一个AST定义由多个规则组成。\n            A "
           },
           {
             "kind": "Strong",
@@ -130,7 +130,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            One rule consits of multiple clauses, each clauses is defined by EBNF-like syntax:\n            "
+            "text": "\n            一条规则由多个子句组成，每个子句由类似EBNF的语法定义：\n            "
           },
           {
             "kind": "List",
@@ -150,7 +150,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ": Match the rule or token and store the result to the field. The class type of this clause can be either specified or inferred. "
+                    "text": ": 匹配规则或标记，并将结果存储到字段中。此子句的类类型可以显式指定或推断。 "
                   },
                   {
                     "kind": "Strong",
@@ -163,7 +163,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " here should not be a partial rule."
+                    "text": " 这里不应是一个部分规则。"
                   }
                 ]
               },
@@ -181,7 +181,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ": The whole rule will modify fields in the same object from "
+                    "text": ": 整个规则将修改同一对象中的字段。 "
                   },
                   {
                     "kind": "Strong",
@@ -194,7 +194,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " instead of creating a new object."
+                    "text": " 而不是创建一个新对象。"
                   }
                 ]
               },
@@ -212,7 +212,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ": Match "
+                    "text": ": 匹配 "
                   },
                   {
                     "kind": "Strong",
@@ -225,7 +225,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ", just for fixing operator priority."
+                    "text": "，仅用于修复操作符优先级。"
                   }
                 ]
               },
@@ -243,7 +243,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ": Match "
+                    "text": ": 匹配 "
                   },
                   {
                     "kind": "Strong",
@@ -256,7 +256,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " optionally."
+                    "text": " 可选地。"
                   }
                 ]
               },
@@ -274,7 +274,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ": Match "
+                    "text": ": 匹配 "
                   },
                   {
                     "kind": "Strong",
@@ -287,7 +287,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " optionally, when ambiguity occurs, the opt-in one wins."
+                    "text": " 可选地，当出现歧义时，选择加入的优先。"
                   }
                 ]
               },
@@ -305,7 +305,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ": Match "
+                    "text": ": 匹配 "
                   },
                   {
                     "kind": "Strong",
@@ -349,7 +349,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ": Match either "
+                    "text": ": 匹配任一 "
                   },
                   {
                     "kind": "Strong",
@@ -437,7 +437,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " separating by "
+                    "text": " 按...分隔 "
                   },
                   {
                     "kind": "Strong",
@@ -450,14 +450,14 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ". This is a shortcut for "
+                    "text": ". 这是 "
                   },
                   {
                     "kind": "Strong",
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "[SyntaxA {SyntaxB SyntaxA}]"
+                        "text": "[语法A {语法B 语法A}]"
                       }
                     ]
                   },
@@ -471,7 +471,7 @@
           },
           {
             "kind": "Text",
-            "text": "\n            A rule is defined by:\n            "
+            "text": "\n            规则定义为：\n            "
           },
           {
             "kind": "Program",
@@ -487,7 +487,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "If any clause matches, the rule matches. If multiple clauses match, ambiguity happens."
+                    "text": "如果任何子句匹配，则规则匹配。如果多个子句匹配，则会发生歧义。"
                   }
                 ]
               },
@@ -496,7 +496,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "There are optional, alternative and loop syntax in clauses, if multiple paths of a clause match, ambiguity happens."
+                    "text": "子句中存在可选、替代和循环语法，如果一个子句的多个路径匹配，则会出现歧义。"
                   }
                 ]
               },
@@ -505,7 +505,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "Each clause has a type, either specified or inferred. If "
+                    "text": "每个子句都有一个类型，可以显式指定或推断。如果 "
                   },
                   {
                     "kind": "Strong",
@@ -518,7 +518,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " is not omitted, it becomes the most detailed common type of all clauses."
+                    "text": " 不被省略，它成为所有子句中最详细的共同类型。"
                   }
                 ]
               },
@@ -527,7 +527,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "All clauses must be partial or not partial at the same time in a rule."
+                    "text": "规则中的所有子句必须同时为部分或非部分。"
                   }
                 ]
               },
@@ -545,7 +545,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " can be used before a rule to make it visible to other syntax files."
+                    "text": " 可以在规则前使用，使其对其他语法文件可见。"
                   }
                 ]
               },
@@ -563,7 +563,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " can be used before a rule to make a public function generated for the parser class for this rule. Rules without "
+                    "text": " 可以在规则前使用，以生成一个用于此规则的解析器类的公共函数。没有 "
                   },
                   {
                     "kind": "Strong",
@@ -576,7 +576,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " is not accessible in C++."
+                    "text": " 在 C++ 中不可访问。"
                   }
                 ]
               },
@@ -611,7 +611,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " are used, put "
+                    "text": " 被使用，放置 "
                   },
                   {
                     "kind": "Strong",
@@ -624,7 +624,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " before "
+                    "text": " 在 "
                   },
                   {
                     "kind": "Strong",
@@ -647,7 +647,7 @@
       },
       {
         "kind": "Topic",
-        "title": "Ordinary Clause",
+        "title": "普通条款",
         "content": [
           {
             "kind": "Paragraph",
@@ -657,13 +657,13 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "Syntax as ClassType"
+                    "text": "语法作为 ClassType"
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": " creates an ordinary clause.\n                An ordinary clause should not contain "
+                "text": " 创建一个普通子句。\n                普通子句不应包含， "
               },
               {
                 "kind": "Strong",
@@ -676,7 +676,7 @@
               },
               {
                 "kind": "Text",
-                "text": " in its syntax.\n                When such clause matches, a new object of "
+                "text": " 在其语法中。\n                当此类语句匹配时，将创建一个新对象 "
               },
               {
                 "kind": "Strong",
@@ -689,7 +689,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is created to store the results of this clause.\n            "
+                "text": " 用于存储此子句的结果。\n            "
               }
             ]
           }
@@ -697,7 +697,7 @@
       },
       {
         "kind": "Topic",
-        "title": "Reuse Clause",
+        "title": "重用条款",
         "content": [
           {
             "kind": "Paragraph",
@@ -713,7 +713,7 @@
               },
               {
                 "kind": "Text",
-                "text": " creates a reuse clause.\n                A reuse clause should have exactly one "
+                "text": " 创建一个重用子句。\n                重用子句应恰好有一个 "
               },
               {
                 "kind": "Strong",
@@ -726,7 +726,7 @@
               },
               {
                 "kind": "Text",
-                "text": " in its all possible paths.\n                Such clause modify fields in the object from that "
+                "text": " 在其所有可能的路径中。\n                这样的子句从该对象中修改字段 "
               },
               {
                 "kind": "Strong",
@@ -739,7 +739,7 @@
               },
               {
                 "kind": "Text",
-                "text": " instead of creating a new object.\n            "
+                "text": " 而不是创建一个新对象。\n            "
               }
             ]
           }
@@ -747,7 +747,7 @@
       },
       {
         "kind": "Topic",
-        "title": "Partial Clause",
+        "title": "部分子句",
         "content": [
           {
             "kind": "Paragraph",
@@ -757,13 +757,13 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "Syntax as partial ClassType"
+                    "text": "语法作为部分 ClassType"
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": " creates an ordinary clause.\n                A partial clause should not contain "
+                "text": " 创建一个普通子句。\n                部分子句不应包含 "
               },
               {
                 "kind": "Strong",
@@ -776,7 +776,7 @@
               },
               {
                 "kind": "Text",
-                "text": " in its syntax.\n                The syntax of the partial clause will be copy-pasted to everywhere that uses this rule,\n                if there are multiple partial clauses in this rule,\n                they are treated like an alternative syntax.\n                The clause that use this rule must use the same ClassType or its sub type.\n            "
+                "text": " 在其语法中。\n                部分子句的语法将被复制粘贴到使用此规则的任何地方，\n                如果此规则包含多个部分条件，\n                它们被视为一种替代语法。\n                使用此规则的语句必须使用相同的ClassType或其子类型。\n            "
               }
             ]
           }
@@ -784,14 +784,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Additional Field Assignments",
+        "title": "附加字段赋值",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                At the very end of the syntax there can be additional field assignment,\n                only for fields that are enum types:\n                "
+                "text": "\n                在语法的最后可以有额外的字段赋值，\n                仅用于枚举类型的字段：\n                "
               },
               {
                 "kind": "Strong",
@@ -813,7 +813,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Field assignments cannot be used in the middle of the syntax.\n            "
+                "text": "\n                字段赋值不能在语法中间使用。\n            "
               }
             ]
           }
@@ -821,14 +821,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Switches",
+        "title": "切换器",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Switches can be used when you want to exclude something when matching a rule.\n                "
+                "text": "\n                当您希望在匹配规则时排除某些内容时，可以使用开关。\n                "
               },
               {
                 "kind": "Strong",
@@ -841,7 +841,7 @@
               },
               {
                 "kind": "Text",
-                "text": " must appear at the very top of a syntax definition to declare all used switches in this file.\n                Switches are visible to all syntax files therefore their names must be unique globally.\n                Each switch has its default value, here "
+                "text": " 必须出现在语法定义的最顶部，以声明此文件中使用的所有开关。\n                开关对所有语法文件可见，因此它们的名称必须在全球范围内唯一。\n                每个开关都有其默认值，这里 "
               },
               {
                 "kind": "Strong",
@@ -854,7 +854,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is on and "
+                "text": " 为开启状态， "
               },
               {
                 "kind": "Strong",
@@ -867,7 +867,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is off.\n            "
+                "text": " 为关闭状态。\n            "
               }
             ]
           },
@@ -876,7 +876,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                If we want to make some syntax that only available with certain switches are turned on or off:\n                "
+                "text": "\n                如果我们想要实现某些仅在特定开关开启或关闭时才可用的语法：\n                "
               },
               {
                 "kind": "Strong",
@@ -889,7 +889,7 @@
               },
               {
                 "kind": "Text",
-                "text": ".\n                This is a switch-enabled alternative syntax.\n                Each branch is available only when its condition is satisfied.\n            "
+                "text": ".\n                这是一种启用开关的替代语法。\n                每个分支仅在满足其条件时才可用。\n            "
               }
             ]
           },
@@ -898,7 +898,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                A condition could look like\n                "
+                "text": "\n                一个条件可能看起来像\n                "
               },
               {
                 "kind": "Strong",
@@ -920,7 +920,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                In the switch-enabled alternative syntax,\n                each branch is tested in order,\n                only the first satisfying branch becomes selected.\n                "
+                "text": "\n                在启用切换的替代语法中，\n                每个分支按顺序进行测试，\n                只有第一个满足条件的分支会被选中。\n                "
               },
               {
                 "kind": "Strong",
@@ -933,7 +933,7 @@
               },
               {
                 "kind": "Text",
-                "text": " means an invalid syntax,\n                when it is selected, the whole clause is disabled.\n                If such selected invalid syntax is in another alternative syntax,\n                only that branch becomes invalid.\n            "
+                "text": " 表示语法无效。\n                当它被选中时，整个子句将被禁用。\n                如果此类选择的无效语法位于另一个备选语法中，\n                只有该分支变得无效。\n            "
               }
             ]
           },
@@ -942,7 +942,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                To specify switch values for a piece of syntax:\n                "
+                "text": "\n                要为一段语法指定开关值：\n                "
               },
               {
                 "kind": "Strong",
@@ -955,7 +955,7 @@
               },
               {
                 "kind": "Text",
-                "text": ".\n                Only inside "
+                "text": ".\n                仅在内部 "
               },
               {
                 "kind": "Strong",
@@ -968,7 +968,7 @@
               },
               {
                 "kind": "Text",
-                "text": " referenced switches have new values assigned.\n                In this example, "
+                "text": " 引用的开关已分配新值。\n                在此示例中， "
               },
               {
                 "kind": "Strong",
@@ -981,7 +981,7 @@
               },
               {
                 "kind": "Text",
-                "text": " becomes off and "
+                "text": " 变成关闭状态，并且 "
               },
               {
                 "kind": "Strong",
@@ -994,7 +994,7 @@
               },
               {
                 "kind": "Text",
-                "text": " becomes on.\n            "
+                "text": " 变成开启状态。\n            "
               }
             ]
           },
@@ -1003,7 +1003,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Switches with new values will be taken into "
+                "text": "\n                带有新值的开关将被纳入考虑。 "
               },
               {
                 "kind": "Strong",
@@ -1016,7 +1016,7 @@
               },
               {
                 "kind": "Text",
-                "text": " recursively until it hits another switch value assignment.\n            "
+                "text": " 递归地进行，直到遇到另一个 switch 值赋值。\n            "
               }
             ]
           }
@@ -1024,14 +1024,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Calculator Example",
+        "title": "计算器示例",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                AST Definition:\n                "
+                "text": "\n                AST 定义：\n                "
               },
               {
                 "kind": "Program",
@@ -1040,7 +1040,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                Lexer Definition:\n                "
+                "text": "\n                词法定义：\n                "
               },
               {
                 "kind": "Program",
@@ -1049,7 +1049,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                Syntax Definition:\n                "
+                "text": "\n                语法定义：\n                "
               },
               {
                 "kind": "Program",
@@ -1062,27 +1062,27 @@
       },
       {
         "kind": "Topic",
-        "title": "Switch Example",
+        "title": "切换示例",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                This sample demos one of the way to solve the ambiguity if-else problem.\n                Actually the best approach is to use "
+                "text": "\n                此示例演示了解决if-else歧义问题的一种方法。\n                实际上，最佳方法是使用 "
               },
               {
                 "kind": "Strong",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "if condition then statements +[else statements]"
+                    "text": "如果条件则语句 + [否则语句]"
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": ",\n                so using switches for this problem is not recommended but it can still be an example:\n                "
+                "text": "，\n                因此，虽然不推荐使用开关来解决这个问题，但它仍然可以作为一个示例：\n                "
               },
               {
                 "kind": "Program",
@@ -1091,7 +1091,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                For this input\n                "
+                "text": "\n                对于此输入\n                "
               },
               {
                 "kind": "Program",
@@ -1115,7 +1115,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " matches the whole input, it has to be "
+                        "text": " 匹配整个输入，它必须是 "
                       },
                       {
                         "kind": "Strong",
@@ -1146,7 +1146,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " consumes the first 3 tokens and living "
+                        "text": " 消费前3个标记并存活 "
                       },
                       {
                         "kind": "Strong",
@@ -1190,7 +1190,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " has two choices:\n                        "
+                        "text": " 有两种选择：\n                        "
                       },
                       {
                         "kind": "List",
@@ -1234,7 +1234,7 @@
                                     "content": [
                                       {
                                         "kind": "Text",
-                                        "text": "It means using "
+                                        "text": "它意味着使用 "
                                       },
                                       {
                                         "kind": "Strong",
@@ -1260,7 +1260,7 @@
                                       },
                                       {
                                         "kind": "Text",
-                                        "text": ", leaving "
+                                        "text": "，留下 "
                                       },
                                       {
                                         "kind": "Strong",
@@ -1295,7 +1295,7 @@
                                     "content": [
                                       {
                                         "kind": "Text",
-                                        "text": "Now it tries to match "
+                                        "text": "现在它尝试匹配 "
                                       },
                                       {
                                         "kind": "Strong",
@@ -1330,7 +1330,7 @@
                                     "content": [
                                       {
                                         "kind": "Text",
-                                        "text": "The second level of "
+                                        "text": "第二层的 "
                                       },
                                       {
                                         "kind": "Strong",
@@ -1343,7 +1343,7 @@
                                       },
                                       {
                                         "kind": "Text",
-                                        "text": " still consumes 3 tokens and leaving "
+                                        "text": " 仍然消耗 3 个令牌并留下 "
                                       },
                                       {
                                         "kind": "Strong",
@@ -1369,7 +1369,7 @@
                                       },
                                       {
                                         "kind": "Text",
-                                        "text": " also with "
+                                        "text": " 也与 "
                                       },
                                       {
                                         "kind": "Strong",
@@ -1391,7 +1391,7 @@
                                     "content": [
                                       {
                                         "kind": "Text",
-                                        "text": "It has to match "
+                                        "text": "它必须匹配 "
                                       },
                                       {
                                         "kind": "Strong",
@@ -1426,7 +1426,7 @@
                                     "content": [
                                       {
                                         "kind": "Text",
-                                        "text": "Since "
+                                        "text": "由于 "
                                       },
                                       {
                                         "kind": "Strong",
@@ -1439,7 +1439,7 @@
                                       },
                                       {
                                         "kind": "Text",
-                                        "text": " is off, "
+                                        "text": " 为关闭状态， "
                                       },
                                       {
                                         "kind": "Strong",
@@ -1452,7 +1452,7 @@
                                       },
                                       {
                                         "kind": "Text",
-                                        "text": " is invalid as all branches in fails, so the current "
+                                        "text": " 无效，因为所有分支都失败，所以当前 "
                                       },
                                       {
                                         "kind": "Strong",
@@ -1465,7 +1465,7 @@
                                       },
                                       {
                                         "kind": "Text",
-                                        "text": " is rewritten to "
+                                        "text": " 被重写为 "
                                       },
                                       {
                                         "kind": "Strong",
@@ -1487,7 +1487,7 @@
                                     "content": [
                                       {
                                         "kind": "Text",
-                                        "text": "Obviously it cannot match "
+                                        "text": "显然它无法匹配 "
                                       },
                                       {
                                         "kind": "Strong",
@@ -1500,7 +1500,7 @@
                                       },
                                       {
                                         "kind": "Text",
-                                        "text": ", therefore fails."
+                                        "text": "，因此失败。"
                                       }
                                     ]
                                   }
@@ -1546,7 +1546,7 @@
                                     "content": [
                                       {
                                         "kind": "Text",
-                                        "text": "Given that when "
+                                        "text": "给定当 "
                                       },
                                       {
                                         "kind": "Strong",
@@ -1559,7 +1559,7 @@
                                       },
                                       {
                                         "kind": "Text",
-                                        "text": " is on, "
+                                        "text": " 为开启状态， "
                                       },
                                       {
                                         "kind": "Strong",
@@ -1572,7 +1572,7 @@
                                       },
                                       {
                                         "kind": "Text",
-                                        "text": " accepts all forms, so it succeeds."
+                                        "text": " 接受所有形式，因此成功。"
                                       }
                                     ]
                                   }
@@ -1589,7 +1589,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "So the \"else\" associates with the second \"if\", instead of the first one or both."
+                        "text": "因此，“else”与第二个“if”相关联，而不是第一个或两个都关联。"
                       }
                     ]
                   }

@@ -114,14 +114,14 @@
   "numberBeforeTitle": true,
   "topic": {
     "kind": "Topic",
-    "title": "Build your first GacUI Application!",
+    "title": "构建你的第一个 GacUI 应用程序！",
     "content": [
       {
         "kind": "Paragraph",
         "content": [
           {
             "kind": "Text",
-            "text": "\n            This is a walkthrough of building a Hello World application in GacUI.\n            It based on "
+            "text": "\n            这是使用 GacUI 构建一个“Hello World”应用程序的逐步指南。\n            它基于 "
           },
           {
             "kind": "PageLink",
@@ -129,13 +129,13 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "one of the demo project"
+                "text": "其中一个示例项目"
               }
             ]
           },
           {
             "kind": "Text",
-            "text": " released with GacUI.\n            You need to prepare the following first:\n            "
+            "text": " 随 GacUI 发布。\n            您需要先准备好以下内容：\n            "
           },
           {
             "kind": "List",
@@ -150,13 +150,13 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "Download"
+                        "text": "下载"
                       }
                     ]
                   },
                   {
                     "kind": "Text",
-                    "text": " GacUI from github."
+                    "text": " GacUI 来自 GitHub。"
                   }
                 ]
               },
@@ -178,7 +178,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ",\n                    Install Visual Studio 2017 Community or newer version\n                    "
+                    "text": "，\n                    安装 Visual Studio 2017 Community 或更高版本\n                    "
                   },
                   {
                     "kind": "List",
@@ -189,7 +189,7 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "Go to "
+                            "text": "转到 "
                           },
                           {
                             "kind": "PageLink",
@@ -208,7 +208,7 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "Or use "
+                            "text": "或者使用 "
                           },
                           {
                             "kind": "PageLink",
@@ -222,7 +222,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " with "
+                            "text": " 带有 "
                           },
                           {
                             "kind": "PageLink",
@@ -230,13 +230,13 @@
                             "content": [
                               {
                                 "kind": "Text",
-                                "text": "Visual C++ Build Tools"
+                                "text": "Visual C++ 构建工具"
                               }
                             ]
                           },
                           {
                             "kind": "Text",
-                            "text": " instead."
+                            "text": " 而是。"
                           }
                         ]
                       }
@@ -262,7 +262,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ",\n                    (article to be completed)\n                "
+                    "text": "，\n                    (文章待完成)\n                "
                   }
                 ]
               },
@@ -284,7 +284,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ",\n                    (article to be completed)\n                "
+                    "text": "，\n                    (文章待完成)\n                "
                   }
                 ]
               }
@@ -294,7 +294,7 @@
       },
       {
         "kind": "Topic",
-        "title": "Prepare your folder structure",
+        "title": "准备您的文件夹结构",
         "content": [
           {
             "kind": "Paragraph",
@@ -331,7 +331,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " folder\n                        "
+                        "text": " 文件夹\n                        "
                       },
                       {
                         "kind": "List",
@@ -351,7 +351,7 @@
                               },
                               {
                                 "kind": "Text",
-                                "text": " folder: empty, storing generated C++ files from Resource.xml"
+                                "text": " 文件夹：为空，用于存储从 Resource.xml 生成的 C++ 文件"
                               }
                             ]
                           },
@@ -387,7 +387,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " folder: copy files to this folder from "
+                        "text": " 文件夹：从该文件夹复制文件 "
                       },
                       {
                         "kind": "PageLink",
@@ -395,13 +395,13 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "here"
+                            "text": "这里"
                           }
                         ]
                       },
                       {
                         "kind": "Text",
-                        "text": ". Choose all files in \"Files you need for a typical GacUI application\" from the "
+                        "text": ". 从“典型 GacUI 应用程序所需文件”中选择所有文件 "
                       },
                       {
                         "kind": "PageLink",
@@ -409,13 +409,13 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "Download"
+                            "text": "下载"
                           }
                         ]
                       },
                       {
                         "kind": "Text",
-                        "text": " page.\n                    "
+                        "text": " 页面。\n                    "
                       }
                     ]
                   },
@@ -460,7 +460,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    GacUI allow resource files to have dependency to other resource files.\n                    GacUI.xml is placed in the root folder.\n                    Run GacBuild.ps1 on GacUI.xml and it will search all resource files recursively.\n                "
+                    "text": "\n                    GacUI 允许资源文件依赖其他资源文件。\n                    GacUI.xml 放置在根目录中。\n                    在 GacUI.xml 上运行 GacBuild.ps1，它将递归搜索所有资源文件。\n                "
                   }
                 ]
               },
@@ -469,7 +469,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    In this tutorial, we only have one resource file,\n                    that is UI\\Resource.xml.\n                    In this case, concent of GacUI.xml is very simple:\n                "
+                    "text": "\n                    在本教程中，我们只有一个资源文件，\n                    即 UI\\Resource.xml。\n                    在这种情况下，GacUI.xml的内容非常简单：\n                "
                   }
                 ]
               },
@@ -494,7 +494,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    In this file, we specify the following informations:\n                    "
+                    "text": "\n                    在此文件中，我们指定了以下信息：\n                    "
                   },
                   {
                     "kind": "List",
@@ -505,7 +505,7 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "Where to store generated C++ files"
+                            "text": "存储生成的C++文件的位置"
                           }
                         ]
                       },
@@ -514,7 +514,7 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "Where to store the generated binary resource file"
+                            "text": "存储生成的二进制资源文件的位置"
                           }
                         ]
                       },
@@ -523,7 +523,7 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "Include \"GacUI.h\" because we don't need runtime reflection"
+                            "text": "包含 \"GacUI.h\"，因为我们不需要运行时反射"
                           }
                         ]
                       },
@@ -532,7 +532,7 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "The name is HelloWorld"
+                            "text": "名称为 HelloWorld"
                           }
                         ]
                       },
@@ -541,7 +541,7 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "Describe the HelloWorld window"
+                            "text": "描述HelloWorld窗口"
                           }
                         ]
                       }
@@ -565,14 +565,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Build GacUI Resource File",
+        "title": "构建 GacUI 资源文件",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                In the root folder, run "
+                "text": "\n                在根文件夹中，运行 "
               },
               {
                 "kind": "PageLink",
@@ -586,7 +586,7 @@
               },
               {
                 "kind": "Text",
-                "text": ", with parameter \"GacUI.xml\".\n            "
+                "text": "，参数为 \"GacUI.xml\"。\n            "
               }
             ]
           },
@@ -604,7 +604,7 @@
               },
               {
                 "kind": "Text",
-                "text": " performs incremental build,\n                when you have multiple GacUI resource files.\n            "
+                "text": " 执行增量构建，\n                当你有多个 GacUI 资源文件时。\n            "
               }
             ]
           },
@@ -622,7 +622,7 @@
               },
               {
                 "kind": "Text",
-                "text": " deletes all log files created by GacBuild.ps1,\n                to cause GacBuild.ps1 perform a full build in the next time.\n            "
+                "text": " 删除由 GacBuild.ps1 创建的所有日志文件，\n                以使 GacBuild.ps1 在下次执行完整构建\n            "
               }
             ]
           },
@@ -631,7 +631,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                If it build successfully,\n                you will see "
+                "text": "\n                如果构建成功，\n                您将看到 "
               },
               {
                 "kind": "Strong",
@@ -644,7 +644,7 @@
               },
               {
                 "kind": "Text",
-                "text": " on the root folder,\n                and also some files in "
+                "text": " 在根文件夹中，\n                和一些文件中的 "
               },
               {
                 "kind": "Strong",
@@ -657,7 +657,7 @@
               },
               {
                 "kind": "Text",
-                "text": " folder.\n                We only need:\n                "
+                "text": " 文件夹。\n                我们只需要：\n                "
               },
               {
                 "kind": "List",
@@ -699,7 +699,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                There is also a "
+                "text": "\n                还有一个 "
               },
               {
                 "kind": "Strong",
@@ -712,7 +712,7 @@
               },
               {
                 "kind": "Text",
-                "text": " folder created.\n                This folder contains build results for GacBuild.ps1 for incremental build.\n                It is safe to be deleted.\n            "
+                "text": " 文件夹已创建。\n                此文件夹包含 GacBuild.ps1 的增量构建结果，\n                可以安全地删除。\n            "
               }
             ]
           }
@@ -727,7 +727,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                To build this file,\n                you need to include necessary files to your VC++ project:\n                "
+                "text": "\n                构建此文件，\n                您需要将必要的文件包含到您的 VC++ 项目中：\n                "
               },
               {
                 "kind": "List",
@@ -792,7 +792,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "Selected files in "
+                        "text": "已选中的文件在 "
                       },
                       {
                         "kind": "Strong",
@@ -805,7 +805,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " folder."
+                        "text": " 文件夹。"
                       }
                     ]
                   }
@@ -818,7 +818,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                We don't need runtime reflection in this project,\n                so you have to define a empty "
+                "text": "\n                在这个项目中我们不需要运行时反射，\n                因此你必须定义一个空的 "
               },
               {
                 "kind": "Strong",
@@ -831,7 +831,7 @@
               },
               {
                 "kind": "Text",
-                "text": " macro using "
+                "text": " 宏 使用 "
               },
               {
                 "kind": "PageLink",
@@ -839,13 +839,13 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "preprocessor definitions"
+                    "text": "预处理器定义"
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": ".\n                You can either to this by updating your project properties,\n                or use the /D compiler option if you are using Visual Studio Code.\n            "
+                "text": ".\n                您可以通过更新项目属性来实现这一点，\n                或者在使用 Visual Studio Code 时，使用 /D 编译器选项。\n            "
               }
             ]
           },
@@ -854,7 +854,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                You need to add "
+                "text": "\n                您需要添加 "
               },
               {
                 "kind": "Strong",
@@ -867,7 +867,7 @@
               },
               {
                 "kind": "Text",
-                "text": " to your "
+                "text": " 到您的 "
               },
               {
                 "kind": "PageLink",
@@ -875,13 +875,13 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "include folder list"
+                    "text": "包含文件夹列表"
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": ".\n                You can either to this by updating your project properties,\n                or use the /I compiler option if you are using Visual Studio Code.\n            "
+                "text": ".\n                您可以通过更新项目属性来实现这一点，\n                或者在使用 Visual Studio Code 时使用 /I 编译器选项。\n            "
               }
             ]
           },
@@ -900,7 +900,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Please note that, you need to carefully place "
+                "text": "\n                请注意，您需要仔细放置 "
               },
               {
                 "kind": "Strong",
@@ -913,7 +913,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                and search for this file at runtime.\n                "
+                "text": "，\n                和在运行时搜索此文件。\n                "
               },
               {
                 "kind": "Strong",
@@ -926,14 +926,14 @@
               },
               {
                 "kind": "Text",
-                "text": " is a relative path,\n                it will try to find the file in your working directory.\n                When you press F5 in Visual Studio, the working directory is the folder containing the \".vcxproj\" file.\n                When you double click the executable file, the working directory is where the executable file is in.\n                You are recommended to "
+                "text": " 是一个相对路径，\n                它会尝试在您的工作目录中查找该文件。\n                当你在 Visual Studio 中按下 F5 时，工作目录是包含“.vcxproj”文件的文件夹。\n                当你双击可执行文件时，工作目录是可执行文件所在的目录。\n                建议您 "
               },
               {
                 "kind": "Strong",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "Calculate a absolute path based on the full path of the executable file"
+                    "text": "基于可执行文件的完整路径计算绝对路径"
                   }
                 ]
               },
@@ -952,7 +952,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is useful here.\n            "
+                "text": " 在这里很有用。\n            "
               }
             ]
           }
@@ -976,7 +976,7 @@
               },
               {
                 "kind": "Text",
-                "text": " function is the entry of a Windows GUI program.\n            "
+                "text": " 函数是 Windows GUI 程序的入口。\n            "
               }
             ]
           },
@@ -995,7 +995,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                The "
+                "text": "\n                该 "
               },
               {
                 "kind": "Strong",
@@ -1008,7 +1008,7 @@
               },
               {
                 "kind": "Text",
-                "text": " class uses the predefined "
+                "text": " 类使用预定义的 "
               },
               {
                 "kind": "Strong",
@@ -1021,7 +1021,7 @@
               },
               {
                 "kind": "Text",
-                "text": " as the default control template.\n            "
+                "text": " 作为默认控件模板。\n            "
               }
             ]
           },
@@ -1030,7 +1030,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                You can write your own control template to override default ones for some controls.\n                You can also write control template for all controls and get rid of the "
+                "text": "\n                您可以编写自己的控件模板以覆盖某些控件的默认模板。\n                您还可以为所有控件编写控件模板并消除 "
               },
               {
                 "kind": "Strong",
@@ -1052,7 +1052,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Every control needs a default control template assigned in order to launch a GacUI program.\n            "
+                "text": "\n                每个控件都需要分配一个默认控件模板，以便启动 GacUI 程序。\n            "
               }
             ]
           }
@@ -1060,7 +1060,7 @@
       },
       {
         "kind": "Topic",
-        "title": "Build and run your program!",
+        "title": "构建并运行你的程序！",
         "content": [
           {
             "kind": "Paragraph",

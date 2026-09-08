@@ -159,14 +159,14 @@
   "numberBeforeTitle": false,
   "topic": {
     "kind": "Topic",
-    "title": "Data Bindings",
+    "title": "数据绑定",
     "content": [
       {
         "kind": "Paragraph",
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Data bindings in GacUI relies on "
+            "text": "\n            GacUI 中的数据绑定依赖于 "
           },
           {
             "kind": "PageLink",
@@ -174,13 +174,13 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "Workflow expression"
+                "text": "工作流表达式"
               }
             ]
           },
           {
             "kind": "Text",
-            "text": ".\n            Basically,\n            an expression is observable if it uses properties,\n            and these properties must be observable by having their property changing events on the object.\n            You are still able to combine some events on a property temporary just for this expression to make it observable.\n        "
+            "text": ".\n            基本上，\n            如果表达式使用了属性，则该表达式是可观察的。\n            并且这些属性必须通过在对象上具有属性更改事件来使其可观察。\n            您仍然可以临时将某些事件组合到一个属性上，仅为了使此表达式可观察。\n        "
           }
         ]
       },
@@ -189,7 +189,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            In GacUI XML Resource,\n            "
+            "text": "\n            在 GacUI 资源 XML 中，\n            "
           },
           {
             "kind": "PageLink",
@@ -227,7 +227,7 @@
           },
           {
             "kind": "Text",
-            "text": " and\n            "
+            "text": " 和\n            "
           },
           {
             "kind": "PageLink",
@@ -246,20 +246,20 @@
           },
           {
             "kind": "Text",
-            "text": "\n            are based on data bindings.\n        "
+            "text": "\n            基于数据绑定。\n        "
           }
         ]
       },
       {
         "kind": "Topic",
-        "title": "Binding to Control Properties",
+        "title": "绑定到控件属性",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                This is the most basic kind of data binding.\n            "
+                "text": "\n                这是最基本的数据绑定类型。\n            "
               }
             ]
           },
@@ -268,7 +268,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                If you are binding something to a text property which will be displayed on the UI,\n                e.g. "
+                "text": "\n                如果你将某些内容绑定到文本属性，该属性将在用户界面中显示，\n                e.g. "
               },
               {
                 "kind": "Strong",
@@ -281,7 +281,7 @@
               },
               {
                 "kind": "Text",
-                "text": " of a "
+                "text": " 的 "
               },
               {
                 "kind": "Strong",
@@ -294,7 +294,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                make sure that:\n                "
+                "text": "，\n                请确保：\n                "
               },
               {
                 "kind": "List",
@@ -305,7 +305,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "The layout of controls is properly handled, so that they will re-arrange themselves to make sure that no truncation of text rendering will happen."
+                        "text": "控件的布局被正确处理，以确保它们会重新排列自身，以确保不会发生文本渲染截断。"
                       }
                     ]
                   },
@@ -314,7 +314,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "If the application could be send to people using different language, please consider using "
+                        "text": "如果应用程序可以发送给使用不同语言的人，请考虑使用 "
                       },
                       {
                         "kind": "Strong",
@@ -327,7 +327,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " from the very beginning."
+                        "text": " 从最开始。"
                       }
                     ]
                   }
@@ -340,7 +340,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Binding view models to control is also very straight-forward.\n                A "
+                "text": "\n                将视图模型绑定到控件也非常直接。\n                A "
               },
               {
                 "kind": "Strong",
@@ -353,7 +353,7 @@
               },
               {
                 "kind": "Text",
-                "text": " creates a property that will never change once the window is created.\n                The "
+                "text": " 创建一个一旦窗口创建后将永不改变的属性。\n                该 "
               },
               {
                 "kind": "Strong",
@@ -366,7 +366,7 @@
               },
               {
                 "kind": "Text",
-                "text": " property of "
+                "text": " 属性 "
               },
               {
                 "kind": "Strong",
@@ -379,7 +379,7 @@
               },
               {
                 "kind": "Text",
-                "text": " can be binded to a control property just by:\n                "
+                "text": " 可以通过以下方式绑定到控件属性：\n                "
               },
               {
                 "kind": "Program",
@@ -392,7 +392,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                It is also very simple to use data binding with your own objects like:\n                "
+                "text": "\n                使用数据绑定与您自己的对象也非常简单，例如：\n                "
               },
               {
                 "kind": "Program",
@@ -400,7 +400,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                Since "
+                "text": "\n                由于 "
               },
               {
                 "kind": "Strong",
@@ -413,7 +413,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is a member of the window,\n                you must first give the window a name "
+                "text": " 是窗口的一个成员，\n                您必须首先给窗口命名 "
               },
               {
                 "kind": "Strong",
@@ -426,7 +426,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                to make XML knows what is "
+                "text": "，\n                让 XML 知道什么是 "
               },
               {
                 "kind": "Strong",
@@ -447,7 +447,7 @@
       },
       {
         "kind": "Topic",
-        "title": "Binding between Composition Properties",
+        "title": "组合属性之间的绑定",
         "content": [
           {
             "kind": "Paragraph",
@@ -468,7 +468,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                The built-in layout algorithm already make compositions bidirectionally react to each other.\n                Binding one property in a composition to another property in (maybe) another composition\n                could cause the reaction never end.\n            "
+                "text": "\n                内置的布局算法已经使组合元素能够双向相互响应。\n                将组合中的一个属性绑定到另一个组合中的另一个属性（可能位于不同组合中）\n                可能导致反应永远无法结束。\n            "
               }
             ]
           },
@@ -477,7 +477,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Here is a very bad example:\n                "
+                "text": "\n                这是一个非常糟糕的例子：\n                "
               },
               {
                 "kind": "Program",
@@ -490,7 +490,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                When "
+                "text": "\n                当 "
               },
               {
                 "kind": "Strong",
@@ -503,7 +503,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is changed,\n                the observed expression is notified to re-evaluate,\n                and than cause "
+                "text": " 被更改，\n                观察到的表达式被通知重新求值，\n                并导致 "
               },
               {
                 "kind": "Strong",
@@ -516,7 +516,7 @@
               },
               {
                 "kind": "Text",
-                "text": " to change.\n            "
+                "text": " 更改。\n            "
               }
             ]
           },
@@ -534,7 +534,7 @@
               },
               {
                 "kind": "Text",
-                "text": " causes "
+                "text": " 引起 "
               },
               {
                 "kind": "Strong",
@@ -547,7 +547,7 @@
               },
               {
                 "kind": "Text",
-                "text": " to re-evaluate\n                because "
+                "text": " 重新评估\n                因为 "
               },
               {
                 "kind": "Strong",
@@ -569,7 +569,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Now parent grows bigger because "
+                "text": "\n                现在父级变大了，因为 "
               },
               {
                 "kind": "Strong",
@@ -582,7 +582,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is not "
+                "text": " 不是 "
               },
               {
                 "kind": "Strong",
@@ -608,7 +608,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                which causes "
+                "text": "，\n                导致 "
               },
               {
                 "kind": "Strong",
@@ -621,7 +621,7 @@
               },
               {
                 "kind": "Text",
-                "text": " to change again.\n            "
+                "text": " 再次更改。\n            "
               }
             ]
           },
@@ -630,7 +630,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                The loop is infinite,\n                and when it begins to happen (usually because of the window border is dragging to resize),\n                "
+                "text": "\n                循环是无限的，\n                当它开始发生时（通常是因为窗口边框正在拖动以调整大小），\n                "
               },
               {
                 "kind": "Strong",
@@ -643,7 +643,7 @@
               },
               {
                 "kind": "Text",
-                "text": " will soon grows to super big and you are no longer able to properly operate against the window.\n            "
+                "text": " 很快就会变得非常大，以至于你无法再正常操作窗口。\n            "
               }
             ]
           }
@@ -651,14 +651,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Binding to ViewModel Properties",
+        "title": "绑定到 ViewModel 属性",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                You could also bind something back to the view model by using "
+                "text": "\n                您也可以通过使用将某些内容绑定回视图模型 "
               },
               {
                 "kind": "Strong",
@@ -671,7 +671,7 @@
               },
               {
                 "kind": "Text",
-                "text": " property:\n                "
+                "text": " 属性：\n                "
               },
               {
                 "kind": "Program",
@@ -688,7 +688,7 @@
               },
               {
                 "kind": "Text",
-                "text": " here tells XML that,\n                properties referenced in the tag "
+                "text": " 这里告诉 XML，\n                标签中引用的属性 "
               },
               {
                 "kind": "Strong",
@@ -701,7 +701,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                are in the object returning from the "
+                "text": "\n                在从 "
               },
               {
                 "kind": "Strong",
@@ -714,7 +714,7 @@
               },
               {
                 "kind": "Text",
-                "text": " property of the window,\n                which is the view model in "
+                "text": " 窗口的属性，\n                哪个是视图模型？ "
               },
               {
                 "kind": "Strong",
@@ -740,7 +740,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is changed,\n                the value will be updated to "
+                "text": " 被更改，\n                值将被更新为 "
               },
               {
                 "kind": "Strong",
@@ -753,7 +753,7 @@
               },
               {
                 "kind": "Text",
-                "text": " immediately.\n            "
+                "text": " 立即。\n            "
               }
             ]
           }
@@ -761,14 +761,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Bidirectional Binding",
+        "title": "双向绑定",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Bidirectional binding is a special type of binding,\n                when two properties update each other.\n            "
+                "text": "\n                双向绑定是一种特殊的绑定类型，\n                当两个属性相互更新时。\n            "
               }
             ]
           },
@@ -792,7 +792,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is a good example:\n                "
+                "text": " 是一个很好的例子：\n                "
               },
               {
                 "kind": "Program",
@@ -800,7 +800,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                In this example,\n                when "
+                "text": "\n                在此示例中，\n                当 "
               },
               {
                 "kind": "Strong",
@@ -813,7 +813,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is changed, the value will be updates to "
+                "text": " 被更改，值将更新为 "
               },
               {
                 "kind": "Strong",
@@ -839,7 +839,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is changed, the value will be updates to "
+                "text": " 被更改，值将更新为 "
               },
               {
                 "kind": "Strong",
@@ -852,7 +852,7 @@
               },
               {
                 "kind": "Text",
-                "text": ".\n                Such biditional binding keep these two properties in sync,\n                by using "
+                "text": ".\n                这样的双向绑定使这两个属性保持同步，\n                通过使用 "
               },
               {
                 "kind": "Strong",
@@ -865,7 +865,7 @@
               },
               {
                 "kind": "Text",
-                "text": " twice on each other.\n            "
+                "text": " 彼此两次。\n            "
               }
             ]
           },
@@ -874,7 +874,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                This doesn't cause the update loop to run infinitely\n                because these two "
+                "text": "\n                这不会导致更新循环无限运行\n                因为这两个 "
               },
               {
                 "kind": "Strong",
@@ -887,7 +887,7 @@
               },
               {
                 "kind": "Text",
-                "text": " properties don't trigger their property changing event\n                if the updated value is the same to the value before updating.\n            "
+                "text": " 属性不会触发其属性更改事件\n                如果更新后的值与更新前的值相同。\n            "
               }
             ]
           },
@@ -896,20 +896,20 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Properties create by the "
+                "text": "\n                属性由 "
               },
               {
                 "kind": "Strong",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "prop Name : TYPE {}"
+                    "text": "属性 名称 : 类型 {}"
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": " syntax\n                will not trigger the "
+                "text": " 语法\n                不会触发 "
               },
               {
                 "kind": "Strong",
@@ -922,7 +922,7 @@
               },
               {
                 "kind": "Text",
-                "text": " event if the same value is updated to the property again.\n                But for properties with explicit getter and setter,\n                you must handle the setter properly:\n                "
+                "text": " 即使相同的值再次更新到属性。\n                但对于具有显式 getter 和 setter 的属性，\n                您必须正确处理设置器：\n                "
               },
               {
                 "kind": "Program",
@@ -930,7 +930,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                Otherwise using bidirectional binding on this property will trigger an infinite loop.\n            "
+                "text": "\n                否则在此属性上使用双向绑定将触发无限循环。\n            "
               }
             ]
           }

@@ -101,14 +101,14 @@
   "numberBeforeTitle": false,
   "topic": {
     "kind": "Topic",
-    "title": "Lexer Definition",
+    "title": "词法分析器定义",
     "content": [
       {
         "kind": "Paragraph",
         "content": [
           {
             "kind": "Text",
-            "text": "\n            An lexer definition consists of multiple tokens.\n            Names of non-discarded tokens can be used in syntax definitions.\n        "
+            "text": "\n            词法定义由多个标记组成。\n            非废弃标记的名称可用于语法定义中。\n        "
           }
         ]
       },
@@ -139,7 +139,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            A token can be defined by:\n            "
+            "text": "\n            一个标记可以由以下定义：\n            "
           },
           {
             "kind": "Program",
@@ -148,7 +148,7 @@
           },
           {
             "kind": "Text",
-            "text": "\n            Spaces are allowed before "
+            "text": "\n            空格允许出现在 "
           },
           {
             "kind": "Strong",
@@ -161,7 +161,7 @@
           },
           {
             "kind": "Text",
-            "text": " but not after, everything after "
+            "text": " 但之后，之后的一切 "
           },
           {
             "kind": "Strong",
@@ -174,7 +174,7 @@
           },
           {
             "kind": "Text",
-            "text": " in this line is considered the regular expression to define the token.\n        "
+            "text": " 在此行中被视为定义标记的正则表达式。\n        "
           }
         ]
       },
@@ -183,7 +183,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            A discarded token can be defined by:\n            "
+            "text": "\n            一个被丢弃的令牌可以定义为：\n            "
           },
           {
             "kind": "Program",
@@ -192,7 +192,7 @@
           },
           {
             "kind": "Text",
-            "text": "\n            Such token will be recognized and removed from the input.\n            You can use it for comments or whitespaces.\n        "
+            "text": "\n            这样的标记将被识别并从输入中移除。\n            您可以使用它来添加注释或空格。\n        "
           }
         ]
       },
@@ -201,7 +201,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            A token fragment can be defined by:\n            "
+            "text": "\n            一个标记片段可以由以下定义：\n            "
           },
           {
             "kind": "Program",
@@ -210,7 +210,7 @@
           },
           {
             "kind": "Text",
-            "text": "\n           This is not a token,\n           but it can be used in other regular expressions using "
+            "text": "\n           这不是一个标记，\n           但它可以在其他正则表达式中使用 "
           },
           {
             "kind": "Strong",
@@ -223,7 +223,7 @@
           },
           {
             "kind": "Text",
-            "text": ",\n           to paste the fragment at that position and avoid repeating the same pattern everywhere.\n           Here is an example of defining integer, hex and binary literal in C++:\n            "
+            "text": "，\n           在该位置粘贴片段，以避免在各处重复相同的模式。\n           这是在 C++ 中定义整数、十六进制和二进制字面量的示例：\n            "
           },
           {
             "kind": "Program",
@@ -232,7 +232,7 @@
           },
           {
             "kind": "Text",
-            "text": "\n            Token fragments are just simply copy-pasted, that's why "
+            "text": "\n            标记片段只是简单地复制粘贴，这就是为什么 "
           },
           {
             "kind": "Strong",
@@ -245,7 +245,7 @@
           },
           {
             "kind": "Text",
-            "text": " is needed here.\n        "
+            "text": " 在这里需要。\n        "
           }
         ]
       }

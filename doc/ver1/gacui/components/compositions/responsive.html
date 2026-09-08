@@ -239,14 +239,14 @@
   "numberBeforeTitle": false,
   "topic": {
     "kind": "Topic",
-    "title": "Responsive Design Series",
+    "title": "响应式设计系列",
     "content": [
       {
         "kind": "Paragraph",
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Responsive design compositions consist of following compositions:\n            "
+            "text": "\n            响应式设计组合包括以下组合：\n            "
           },
           {
             "kind": "List",
@@ -266,7 +266,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ":\n                    A composition that tells its "
+                    "text": "：\n                    一个告诉其 "
                   },
                   {
                     "kind": "Strong",
@@ -279,7 +279,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " to switch to a different view when the size of the <ResponsiveContainer/> is changed.\n                "
+                    "text": " 当 <ResponsiveContainer/> 的大小改变时，切换到不同的视图。\n                "
                   }
                 ]
               },
@@ -297,7 +297,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ":\n                    A composition that manages multiple views in order from large to small,\n                    it has following sub classes for different way of management:\n                    "
+                    "text": "：\n                    一个从大到小管理多个视图的组合，\n                    它具有以下用于不同管理方式的子类：\n                    "
                   },
                   {
                     "kind": "List",
@@ -317,7 +317,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": ":\n                            only has one level of view.\n                        "
+                            "text": "：\n                            只有一个视图层级。\n                        "
                           }
                         ]
                       },
@@ -335,7 +335,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": ":\n                            allow manually assigned views:\n                            "
+                            "text": "：\n                            允许手动分配视图：\n                            "
                           },
                           {
                             "kind": "List",
@@ -355,7 +355,7 @@
                                   },
                                   {
                                     "kind": "Text",
-                                    "text": " accepts multiple "
+                                    "text": " 接受多个 "
                                   },
                                   {
                                     "kind": "Strong",
@@ -368,7 +368,7 @@
                                   },
                                   {
                                     "kind": "Text",
-                                    "text": " in order from large to small as its levels of views.\n                                "
+                                    "text": " 按照从大到小的顺序，按其视图的层级。\n                                "
                                   }
                                 ]
                               },
@@ -386,7 +386,7 @@
                                   },
                                   {
                                     "kind": "Text",
-                                    "text": " accepts multiple controls.\n                                    When switching views,\n                                    a "
+                                    "text": " 接受多个控件。\n                                    切换视图时，\n                                    a "
                                   },
                                   {
                                     "kind": "Strong",
@@ -399,7 +399,7 @@
                                   },
                                   {
                                     "kind": "Text",
-                                    "text": " could move a referenced shared control from one view to another,\n                                    keeping all its status (especially for editable controls).\n                                "
+                                    "text": " 可以将引用的共享控件从一个视图移动到另一个视图，\n                                    保持其所有状态（特别是可编辑控件）。\n                                "
                                   }
                                 ]
                               }
@@ -421,7 +421,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": ":\n                            the number of its levels of views equals to one direct or indirect child "
+                            "text": "：\n                            其视图层级的数量等于一个直接或间接子项 "
                           },
                           {
                             "kind": "Strong",
@@ -434,7 +434,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": "\n                            that has the most levels of views.\n                            When it needs to switch to another view,\n                            it tells all direct or indirect child "
+                            "text": "\n                            具有最多视图层级的。\n                            当需要切换到另一个视图时，\n                            它告诉所有直接或间接的子元素 "
                           },
                           {
                             "kind": "Strong",
@@ -447,7 +447,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " to synchronize to the same level of view.\n                        "
+                            "text": " 同步到相同的视图级别。\n                        "
                           }
                         ]
                       },
@@ -465,7 +465,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": ":\n                            the number of its levels of views equals to the sum of levels of views in all direct or indirect child "
+                            "text": "：\n                            其视图层级数量等于所有直接或间接子项视图层级数量之和 "
                           },
                           {
                             "kind": "Strong",
@@ -478,7 +478,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": ".\n                            When it needs to switch to another view,\n                            it tells one indirect child "
+                            "text": ".\n                            当需要切换到另一个视图时，\n                            它告诉一个间接子项 "
                           },
                           {
                             "kind": "Strong",
@@ -491,7 +491,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " to switch view,\n                            unless all has switched to its largest or the smallest views.\n                        "
+                            "text": " 切换视图，\n                            除非所有都已切换到其最大或最小视图。\n                        "
                           }
                         ]
                       }
@@ -508,7 +508,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Usually, a "
+            "text": "\n            通常，一个 "
           },
           {
             "kind": "Strong",
@@ -521,7 +521,7 @@
           },
           {
             "kind": "Text",
-            "text": " is put inside a window and configured to change its size according to the window size.\n            And then use "
+            "text": " 放置在一个窗口内并配置为根据窗口大小调整其大小，\n            然后使用 "
           },
           {
             "kind": "Strong",
@@ -547,7 +547,7 @@
           },
           {
             "kind": "Text",
-            "text": " and "
+            "text": " 和 "
           },
           {
             "kind": "Strong",
@@ -560,7 +560,7 @@
           },
           {
             "kind": "Text",
-            "text": " together\n            to control how controls are reorganized to fit in different sizes of the container.\n            finally this "
+            "text": " 一起\n            以控制控件如何重新组织以适应不同大小的容器。\n            最后这个 "
           },
           {
             "kind": "Strong",
@@ -573,7 +573,7 @@
           },
           {
             "kind": "Text",
-            "text": " tree will be assigned to "
+            "text": " tree 将被分配给 "
           },
           {
             "kind": "Strong",
@@ -599,7 +599,7 @@
           },
           {
             "kind": "Text",
-            "text": "\n            to make the reorganizing automatically happens.\n        "
+            "text": "\n            使重新组织自动发生。\n        "
           }
         ]
       },
@@ -608,7 +608,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Typically,\n            "
+            "text": "\n            通常，\n            "
           },
           {
             "kind": "Strong",
@@ -621,7 +621,7 @@
           },
           {
             "kind": "Text",
-            "text": " will only be put in "
+            "text": " 只会被放入 "
           },
           {
             "kind": "Strong",
@@ -647,13 +647,13 @@
           },
           {
             "kind": "Text",
-            "text": "\n            when this level of view doesn't have sub levels of views.\n        "
+            "text": "\n            当该层级视图没有子层级视图时。\n        "
           }
         ]
       },
       {
         "kind": "Topic",
-        "title": "A responsive layout sample",
+        "title": "一个响应式布局示例",
         "content": [
           {
             "kind": "Paragraph",
@@ -667,7 +667,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "Source code: "
+                        "text": "源代码： "
                       },
                       {
                         "kind": "PageLink",
@@ -699,7 +699,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                There are three level of views:\n                "
+                "text": "\n                有三个级别的视图：\n                "
               },
               {
                 "kind": "List",
@@ -713,13 +713,13 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "View 1"
+                            "text": "视图 1"
                           }
                         ]
                       },
                       {
                         "kind": "Text",
-                        "text": ": Buttons with icons and titles on the left side, and video icons on the right side."
+                        "text": ": 左侧带有图标和标题、右侧带有视频图标的按钮。"
                       }
                     ]
                   },
@@ -731,13 +731,13 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "View 2"
+                            "text": "视图 2"
                           }
                         ]
                       },
                       {
                         "kind": "Text",
-                        "text": ": Buttons with icons on the left side, and video icons on the right side."
+                        "text": ": 左侧带图标的按钮，右侧带视频图标的按钮。"
                       }
                     ]
                   },
@@ -749,13 +749,13 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "View 3"
+                            "text": "视图 3"
                           }
                         ]
                       },
                       {
                         "kind": "Text",
-                        "text": ": Buttons in a menu on the top side, and video icons on the bottom side."
+                        "text": ": 菜单顶部的按钮和底部的视频图标。"
                       }
                     ]
                   }
@@ -771,26 +771,26 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "View 1"
+                    "text": "视图 1"
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": " is larger than "
+                "text": " 比 "
               },
               {
                 "kind": "Strong",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "View 2"
+                    "text": "视图 2"
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": " because titles of buttons are hidden.\n            "
+                "text": " 因为按钮的标题被隐藏了。\n            "
               }
             ]
           },
@@ -802,39 +802,39 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "View 2"
+                    "text": "视图 2"
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": " is larger than "
+                "text": " 比 "
               },
               {
                 "kind": "Strong",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "View 3"
+                    "text": "视图 3"
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": " because buttons are hidden.\n                Although the menu of "
+                "text": " 因为按钮被隐藏了。\n                尽管菜单的 "
               },
               {
                 "kind": "Strong",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "View 3"
+                    "text": "视图 3"
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": " increases the height,\n                but video icons are scrollable,\n                the list control could shrink vertically to make spaces for the menu.\n            "
+                "text": " 增加高度，\n                但视频图标是可滚动的，\n                列表控件可以垂直缩小以腾出空间给菜单。\n            "
               }
             ]
           }
@@ -842,40 +842,40 @@
       },
       {
         "kind": "Topic",
-        "title": "A basic idea to implement this sample",
+        "title": "实现此示例的基本思路",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                We will easily find that,\n                the difference between "
+                "text": "\n                我们会很容易发现，\n                之间的区别 "
               },
               {
                 "kind": "Strong",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "View 1"
+                    "text": "视图 1"
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": " and "
+                "text": " 和 "
               },
               {
                 "kind": "Strong",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "View 2"
+                    "text": "视图 2"
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": " is button titles.\n                so the button template itself could be a "
+                "text": " 是按钮标题。\n                因此，按钮模板本身可以是一个 "
               },
               {
                 "kind": "Strong",
@@ -888,7 +888,7 @@
               },
               {
                 "kind": "Text",
-                "text": " which has two "
+                "text": " 其中有两个 "
               },
               {
                 "kind": "Strong",
@@ -901,7 +901,7 @@
               },
               {
                 "kind": "Text",
-                "text": " in its "
+                "text": " 在其 "
               },
               {
                 "kind": "Strong",
@@ -914,7 +914,7 @@
               },
               {
                 "kind": "Text",
-                "text": " property:\n                "
+                "text": " 属性：\n                "
               },
               {
                 "kind": "List",
@@ -925,7 +925,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "The first (larger) view contains one icon and one title"
+                        "text": "第一个（较大）视图包含一个图标和一个标题"
                       }
                     ]
                   },
@@ -934,7 +934,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "The second (smaller) view contains only one icon"
+                        "text": "第二个（较小的）视图只包含一个图标"
                       }
                     ]
                   }
@@ -947,27 +947,27 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Now the button becomes responsive,\n                you don't need to create two different view for "
+                "text": "\n                现在按钮变得响应了，\n                你不需要为它创建两个不同的视图 "
               },
               {
                 "kind": "Strong",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "View 1"
+                    "text": "视图 1"
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": " and "
+                "text": " 和 "
               },
               {
                 "kind": "Strong",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "View 2"
+                    "text": "视图 2"
                   }
                 ]
               },
@@ -986,7 +986,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                which is wasting memories and reducing performance.\n                Instead,\n                you could use a "
+                "text": "，\n                这会浪费内存并降低性能。\n                相反，\n                您可以使用一个 "
               },
               {
                 "kind": "Strong",
@@ -999,7 +999,7 @@
               },
               {
                 "kind": "Text",
-                "text": " to contain these buttons.\n                Since all buttons have 2 levels of views,\n                so "
+                "text": " 包含这些按钮。\n                由于所有按钮都有两个层级的视图，\n                so "
               },
               {
                 "kind": "Strong",
@@ -1012,7 +1012,7 @@
               },
               {
                 "kind": "Text",
-                "text": " has 2 levels of views,\n                because all child "
+                "text": " 有2个级别的视图，\n                因为所有子项 "
               },
               {
                 "kind": "Strong",
@@ -1025,7 +1025,7 @@
               },
               {
                 "kind": "Text",
-                "text": " will synchronize to the same level of view.\n            "
+                "text": " 将同步到相同的视图级别。\n            "
               }
             ]
           },
@@ -1034,33 +1034,33 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Now "
+                "text": "\n                现在 "
               },
               {
                 "kind": "Strong",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "View 1"
+                    "text": "视图 1"
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": " and "
+                "text": " 和 "
               },
               {
                 "kind": "Strong",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "View 2"
+                    "text": "视图 2"
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": " are represented in one "
+                "text": " 以一个表示 "
               },
               {
                 "kind": "Strong",
@@ -1073,7 +1073,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                we have to create a "
+                "text": "，\n                我们必须创建一个 "
               },
               {
                 "kind": "Strong",
@@ -1086,7 +1086,7 @@
               },
               {
                 "kind": "Text",
-                "text": " to contain "
+                "text": " 包含 "
               },
               {
                 "kind": "Strong",
@@ -1099,33 +1099,33 @@
               },
               {
                 "kind": "Text",
-                "text": " and "
+                "text": " 和 "
               },
               {
                 "kind": "Strong",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "View 3"
+                    "text": "视图 3"
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": " as its two views.\n                "
+                "text": " 作为其两个视图。\n                "
               },
               {
                 "kind": "Strong",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "View 3"
+                    "text": "视图 3"
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": " is contained in a "
+                "text": " 包含在一个 "
               },
               {
                 "kind": "Strong",
@@ -1138,7 +1138,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                since all compositions in "
+                "text": "，\n                由于所有组合在 "
               },
               {
                 "kind": "Strong",
@@ -1164,7 +1164,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                must be "
+                "text": "\n                必须是 "
               },
               {
                 "kind": "Strong",
@@ -1186,7 +1186,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                The list control for video icons could be registered in "
+                "text": "\n                视频图标列表控件可以在 "
               },
               {
                 "kind": "Strong",
@@ -1212,7 +1212,7 @@
               },
               {
                 "kind": "Text",
-                "text": ".\n                When the application switches between views,\n                the list control will be moved to different view,\n                controlled by all "
+                "text": ".\n                当应用程序在视图之间切换时，\n                列表控件将被移动到不同的视图中，\n                由所有控制 "
               },
               {
                 "kind": "Strong",
@@ -1225,7 +1225,7 @@
               },
               {
                 "kind": "Text",
-                "text": " in each views.\n            "
+                "text": " 在每个视图中。\n            "
               }
             ]
           },
@@ -1234,7 +1234,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Finally, the code looks like this (button templates are inlined, which is only for demo, not the way to implement):\n                "
+                "text": "\n                最后，代码看起来像这样（按钮模板是内联的，仅用于演示，不是实现方式）：\n                "
               },
               {
                 "kind": "Program",
@@ -1249,7 +1249,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "A shared control must appears in "
+                        "text": "共享控件必须出现在 "
                       },
                       {
                         "kind": "Strong",
@@ -1275,7 +1275,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " in order to be referenced by multiple "
+                        "text": " 以便被多个引用 "
                       },
                       {
                         "kind": "Strong",
@@ -1306,7 +1306,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " in the code means the composition responsives to changing of its width."
+                        "text": " 在代码中表示组合对宽度变化的响应。"
                       }
                     ]
                   }
@@ -1319,7 +1319,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                The code organizes the "
+                "text": "\n                代码组织了 "
               },
               {
                 "kind": "Strong",
@@ -1332,7 +1332,7 @@
               },
               {
                 "kind": "Text",
-                "text": " as follows:\n                "
+                "text": " 如下所示：\n                "
               },
               {
                 "kind": "List",
@@ -1408,7 +1408,7 @@
                                               },
                                               {
                                                 "kind": "Text",
-                                                "text": " (button with icon and title)"
+                                                "text": " （带图标和标题的按钮）"
                                               }
                                             ]
                                           },
@@ -1430,7 +1430,7 @@
                                               },
                                               {
                                                 "kind": "Text",
-                                                "text": " (button with icon only)"
+                                                "text": " （仅带图标的按钮）"
                                               }
                                             ]
                                           }
@@ -1469,7 +1469,7 @@
                               },
                               {
                                 "kind": "Text",
-                                "text": " (button in menu)\n                            "
+                                "text": " （菜单中的按钮）\n                            "
                               }
                             ]
                           }
@@ -1486,7 +1486,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                When the window is getting smaller,\n                "
+                "text": "\n                当窗口变小时，\n                "
               },
               {
                 "kind": "Strong",
@@ -1499,7 +1499,7 @@
               },
               {
                 "kind": "Text",
-                "text": " shrinks all buttons at the same time (because it is a group not a stack)\n                to hide all button titles.\n            "
+                "text": " 同时缩小所有按钮（因为这是一个组而不是堆栈）\n                隐藏所有按钮标题。\n            "
               }
             ]
           },
@@ -1508,7 +1508,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                When the window is getting even smaller,\n                "
+                "text": "\n                当窗口变得更小时，\n                "
               },
               {
                 "kind": "Strong",
@@ -1521,7 +1521,7 @@
               },
               {
                 "kind": "Text",
-                "text": " cannot shrinks anymore,\n                so the root "
+                "text": " 不能再缩小了，\n                所以根 "
               },
               {
                 "kind": "Strong",
@@ -1534,7 +1534,7 @@
               },
               {
                 "kind": "Text",
-                "text": " switches to a second view in "
+                "text": " 切换到第二个视图 "
               },
               {
                 "kind": "Strong",
@@ -1547,7 +1547,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                to move all button inside a menu on the top.\n            "
+                "text": "\n                将菜单中的所有按钮移动到顶部。\n            "
               }
             ]
           }

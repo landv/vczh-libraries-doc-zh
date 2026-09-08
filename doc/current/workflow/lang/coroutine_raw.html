@@ -127,7 +127,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            A raw coroutine expression doesn't involve any coroutine provider,\n            it creates a "
+            "text": "\n            原始协程表达式不涉及任何协程提供者，\n            它创建一个 "
           },
           {
             "kind": "Strong",
@@ -140,13 +140,13 @@
           },
           {
             "kind": "Text",
-            "text": ".\n            In a raw coroutine,\n            you can pause itself whenever you want,\n            and exchange data with the caller.\n        "
+            "text": ".\n            在原始协程中，\n            您可以随时暂停它。\n            并与调用者交换数据。\n        "
           }
         ]
       },
       {
         "kind": "Topic",
-        "title": "Create a raw coroutine",
+        "title": "创建一个原始协程",
         "content": [
           {
             "kind": "Paragraph",
@@ -161,7 +161,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                The variable "
+                "text": "\n                变量 "
               },
               {
                 "kind": "Strong",
@@ -174,7 +174,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is captured by shallow copying,\n                so we use "
+                "text": " 通过浅拷贝被捕获，\n                所以我们使用 "
               },
               {
                 "kind": "Strong",
@@ -200,7 +200,7 @@
               },
               {
                 "kind": "Text",
-                "text": " to make it modifiable.\n            "
+                "text": " 使其可修改。\n            "
               }
             ]
           },
@@ -222,7 +222,7 @@
               },
               {
                 "kind": "Text",
-                "text": " function,\n                a raw coroutine is created.\n                It exchanges data with the caller 3 times by calling "
+                "text": " 函数，\n                创建一个原始协程。\n                它通过调用与调用者交换数据 3 次 "
               },
               {
                 "kind": "Strong",
@@ -235,7 +235,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                and eventually throws an exception.\n            "
+                "text": "，\n                并最终抛出一个异常。\n            "
               }
             ]
           },
@@ -244,7 +244,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                When the raw coroutine is created,\n                nothing is executed.\n                "
+                "text": "\n                当原始协程被创建时，\n                未执行任何操作。\n                "
               },
               {
                 "kind": "Strong",
@@ -257,7 +257,7 @@
               },
               {
                 "kind": "Text",
-                "text": " needs to be called to start or continue the coroutine.\n                "
+                "text": " 需要调用以启动或继续协程。\n                "
               },
               {
                 "kind": "List",
@@ -268,7 +268,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "\n                        The first argument controls whether "
+                        "text": "\n                        第一个参数控制是否 "
                       },
                       {
                         "kind": "Strong",
@@ -281,7 +281,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " throws exceptions.\n                        If an exception is thrown while executing a coroutine,\n                        the "
+                        "text": " 抛出异常。\n                        如果在执行协程时抛出异常，\n                        该 "
                       },
                       {
                         "kind": "Strong",
@@ -294,7 +294,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " of the coroutine becomes "
+                        "text": " 协程的成为 "
                       },
                       {
                         "kind": "Strong",
@@ -320,7 +320,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " stores the exception.\n                        If the first argument is "
+                        "text": " 存储异常。\n                        如果第一个参数是， "
                       },
                       {
                         "kind": "Strong",
@@ -333,7 +333,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ",\n                        the exception will also be thrown.\n                    "
+                        "text": "，\n                        异常也会被抛出。\n                    "
                       }
                     ]
                   },
@@ -342,7 +342,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "\n                        The second argument becomes "
+                        "text": "\n                        第二个参数变为 "
                       },
                       {
                         "kind": "Strong",
@@ -355,7 +355,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " in the raw coroutine,\n                        which is declared here: "
+                        "text": " 在原始协程中，\n                        在此处声明： "
                       },
                       {
                         "kind": "Strong",
@@ -368,7 +368,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ".\n                        The name is trivial.\n                        The type of "
+                        "text": ".\n                        名称是简单的。\n                        类型是 "
                       },
                       {
                         "kind": "Strong",
@@ -381,7 +381,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " is always "
+                        "text": " 始终是 "
                       },
                       {
                         "kind": "Strong",
@@ -407,7 +407,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                The coroutine calls "
+                "text": "\n                协程调用 "
               },
               {
                 "kind": "Strong",
@@ -420,7 +420,7 @@
               },
               {
                 "kind": "Text",
-                "text": " 3 times,\n                it means that "
+                "text": " 3次，\n                这意味着 "
               },
               {
                 "kind": "Strong",
@@ -433,7 +433,7 @@
               },
               {
                 "kind": "Text",
-                "text": " needs to be called for 4 times to finish the execution.\n            "
+                "text": " 需要调用 4 次才能完成执行。\n            "
               }
             ]
           },
@@ -442,7 +442,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                At the end,\n                the coroutine throws an exception,\n                causing "
+                "text": "\n                最后，\n                协程抛出了一个异常，\n                引起 "
               },
               {
                 "kind": "Strong",
@@ -468,7 +468,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                which stops the "
+                "text": "，\n                哪个停止了 "
               },
               {
                 "kind": "Strong",
@@ -481,7 +481,7 @@
               },
               {
                 "kind": "Text",
-                "text": " loop in the caller.\n            "
+                "text": " 在调用方中循环。\n            "
               }
             ]
           },
@@ -490,7 +490,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                The exception and then retrived using the "
+                "text": "\n                异常，然后使用 "
               },
               {
                 "kind": "Strong",
@@ -503,7 +503,7 @@
               },
               {
                 "kind": "Text",
-                "text": " property.\n            "
+                "text": " 属性。\n            "
               }
             ]
           },
@@ -512,7 +512,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Since the first argument given to "
+                "text": "\n                由于传递给 "
               },
               {
                 "kind": "Strong",
@@ -538,7 +538,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                so the exception is not actually thrown.\n            "
+                "text": "，\n                因此，异常实际上并未抛出。\n            "
               }
             ]
           },
@@ -581,14 +581,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Calling coroutine providers in raw coroutines",
+        "title": "在原始协程中调用协程提供者",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Let's see another example.\n                Previous we creates "
+                "text": "\n                让我们看另一个例子。\n                上一个我们创建了 "
               },
               {
                 "kind": "Strong",
@@ -601,7 +601,7 @@
               },
               {
                 "kind": "Text",
-                "text": " using a "
+                "text": " 使用 a "
               },
               {
                 "kind": "Strong",
@@ -614,7 +614,7 @@
               },
               {
                 "kind": "Text",
-                "text": " coroutine like this:\n                "
+                "text": " 协程像这样：\n                "
               },
               {
                 "kind": "Program",
@@ -670,7 +670,7 @@
               },
               {
                 "kind": "Text",
-                "text": " directly,\n                we are able to do the same thing using a raw coroutine:\n                "
+                "text": " 直接，\n                我们可以使用原始协程实现同样的事情：\n                "
               },
               {
                 "kind": "Program",
@@ -713,7 +713,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                The argument to "
+                "text": "\n                参数 "
               },
               {
                 "kind": "Strong",
@@ -726,7 +726,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is an ordered lambda expression.\n                It has one argument,\n                which is the first argument for every coroutine operator functions.\n            "
+                "text": " 是一个有序的lambda表达式\n                它有一个参数，\n                每个协程操作符函数的第一个参数是什么。\n            "
               }
             ]
           },
@@ -735,7 +735,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                The type of this argument veries in different coroutine providers.\n            "
+                "text": "\n                此参数的类型在不同的协程提供程序中有所不同。\n            "
               }
             ]
           },
@@ -770,7 +770,7 @@
               },
               {
                 "kind": "Text",
-                "text": " becomes "
+                "text": " 变成 "
               },
               {
                 "kind": "Strong",
@@ -783,7 +783,7 @@
               },
               {
                 "kind": "Text",
-                "text": " here.\n            "
+                "text": " 这里。\n            "
               }
             ]
           },
@@ -792,7 +792,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                In this coroutine,\n                we don't need the "
+                "text": "\n                在此协程中，\n                我们不需要 "
               },
               {
                 "kind": "Strong",
@@ -805,7 +805,7 @@
               },
               {
                 "kind": "Text",
-                "text": " argument as in the previous example,\n                because no data is comming in,\n                data only going out.\n            "
+                "text": " 参数如上一个示例中所示，\n                因为没有数据进入，\n                仅数据输出\n            "
               }
             ]
           }

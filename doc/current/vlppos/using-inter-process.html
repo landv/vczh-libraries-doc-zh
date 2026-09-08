@@ -101,7 +101,7 @@
   "numberBeforeTitle": false,
   "topic": {
     "kind": "Topic",
-    "title": "Using Inter-Process Channels",
+    "title": "使用进程间通道",
     "content": [
       {
         "kind": "Paragraph",
@@ -121,7 +121,7 @@
           },
           {
             "kind": "Text",
-            "text": " namespace is organized in layers.\n            Feature code normally uses the channel interfaces, because they describe typed named message delivery between connected participants.\n            Transport code implements the raw network protocol interfaces, because they describe how one server and many clients exchange asynchronous "
+            "text": " 命名空间是分层组织的。\n            功能代码通常使用通道接口，因为它们描述了连接参与者之间的有类型命名消息传递。\n            传输代码实现了原始网络协议接口，因为它们描述了一个服务器和多个客户端如何异步交换 "
           },
           {
             "kind": "Strong",
@@ -134,7 +134,7 @@
           },
           {
             "kind": "Text",
-            "text": " messages.\n            Portable async-socket transports and Windows-specific transports are composition choices that connect these two layers.\n        "
+            "text": " 消息。\n            可移植的异步套接字传输和Windows特定传输是连接这两层的组合选择。\n        "
           }
         ]
       },
@@ -143,7 +143,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            VlppOS provides the "
+            "text": "\n            VlppOS 提供了 "
           },
           {
             "kind": "Strong",
@@ -169,7 +169,7 @@
           },
           {
             "kind": "Text",
-            "text": " interface families only for test-purpose local cross-process communication.\n            Applications may use these public interfaces as integration contracts, but product code is strongly recommended to provide its own implementations instead of treating the bundled transports and channel stack as production networking.\n        "
+            "text": " 接口族仅用于测试目的的本地跨进程通信。\n            应用程序可以使用这些公共接口作为集成契约，但强烈建议产品代码提供其自身的实现，而不是将捆绑的传输和通道堆栈视为生产网络。\n        "
           }
         ]
       },
@@ -178,7 +178,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Despite the names, these contracts are not tied to TCP/IP.\n            Any mechanism that provides the required asynchronous message and lifecycle behavior can fit behind them, including stdio, DLL calls, shared memory, WebAssembly host calls, pipes, sockets, HTTP or a custom network protocol.\n        "
+            "text": "\n            尽管名称如此，这些契约并不与 TCP/IP 绑定。\n            任何提供所需异步消息和生命周期行为的机制都可以置于其后，包括标准输入输出（stdio）、DLL调用、共享内存、WebAssembly主机调用、管道、套接字、HTTP或自定义网络协议。\n        "
           }
         ]
       },
@@ -187,7 +187,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Keep this boundary in application code:\n            "
+            "text": "\n            在应用程序代码中保持此边界：\n            "
           },
           {
             "kind": "List",
@@ -198,7 +198,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "Use "
+                    "text": "使用 "
                   },
                   {
                     "kind": "Strong",
@@ -250,7 +250,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " when the feature sends and receives packages."
+                    "text": " 当该功能发送和接收数据包时。"
                   }
                 ]
               },
@@ -259,7 +259,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "Use "
+                    "text": "使用 "
                   },
                   {
                     "kind": "Strong",
@@ -311,7 +311,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " when adding a new pipe, socket, HTTP, shared-memory or other underlying transport."
+                    "text": " 当添加新的管道、套接字、HTTP、共享内存或其他底层传输时。"
                   }
                 ]
               },
@@ -320,7 +320,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "Use "
+                    "text": "使用 "
                   },
                   {
                     "kind": "Strong",
@@ -346,7 +346,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " when a channel should run on top of a raw protocol implementation."
+                    "text": " 当通道应在原始协议实现之上运行时。"
                   }
                 ]
               }
@@ -356,14 +356,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Channel Interfaces for Features",
+        "title": "功能的通道接口",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                A channel client is a participant with a server-assigned positive client id and a set of named channels.\n                A channel is not a socket and it is not owned by the server alone.\n                It is a logical lane shared by every connected participant that declares the same channel name.\n            "
+                "text": "\n                A通道客户端是具有服务器分配的正客户端ID和一组命名通道的参与者。\n                通道不是套接字，也不是仅由服务器拥有。\n                它是每个连接的参与者共享的逻辑通道，声明相同的通道名称。\n            "
               }
             ]
           },
@@ -372,7 +372,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                The channel interfaces are the stable API for feature code:\n                "
+                "text": "\n                通道接口是功能代码的稳定API：\n                "
               },
               {
                 "kind": "List",
@@ -392,7 +392,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " receives the sender client id and one typed package."
+                        "text": " 接收发送方客户端ID和一个类型化的包。"
                       }
                     ]
                   },
@@ -410,7 +410,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " exposes "
+                        "text": " 暴露 "
                       },
                       {
                         "kind": "Strong",
@@ -480,7 +480,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " exposes channel names, generated channel objects, client status, "
+                        "text": " 暴露通道名称、生成的通道对象、客户端状态， "
                       },
                       {
                         "kind": "Strong",
@@ -493,7 +493,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " and lifecycle callbacks."
+                        "text": " 和生命周期回调。"
                       }
                     ]
                   },
@@ -511,7 +511,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " accepts or rejects clients, records client ids, supports in-process local clients and broadcasts fatal channel errors."
+                        "text": " 接受或拒绝客户端，记录客户端 ID，支持进程内本地客户端并广播致命通道错误。"
                       }
                     ]
                   }
@@ -524,7 +524,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Channel names are user-defined strings.\n                A user channel name must not be empty and must not contain "
+                "text": "\n                通道名称是用户定义的字符串。\n                用户频道名称不能为空，且不能包含 "
               },
               {
                 "kind": "Strong",
@@ -537,7 +537,7 @@
               },
               {
                 "kind": "Text",
-                "text": ".\n                Names beginning with "
+                "text": ".\n                以 "
               },
               {
                 "kind": "Strong",
@@ -550,7 +550,7 @@
               },
               {
                 "kind": "Text",
-                "text": ", including "
+                "text": "，包括 "
               },
               {
                 "kind": "Strong",
@@ -576,7 +576,7 @@
               },
               {
                 "kind": "Text",
-                "text": ", are reserved for the implementation.\n            "
+                "text": "，保留用于实现。\n            "
               }
             ]
           },
@@ -594,7 +594,7 @@
               },
               {
                 "kind": "Text",
-                "text": " installs one reader and replays messages that arrived before the reader was installed.\n                There is no reader uninstallation.\n                "
+                "text": " 安装一个读取器并重放读取器安装前到达的消息。\n                没有读取器卸载。\n                "
               },
               {
                 "kind": "Strong",
@@ -607,7 +607,7 @@
               },
               {
                 "kind": "Text",
-                "text": " queues a direct message to one client id.\n                "
+                "text": " 向一个客户端ID排队直接消息。\n                "
               },
               {
                 "kind": "Strong",
@@ -620,7 +620,7 @@
               },
               {
                 "kind": "Text",
-                "text": " queues a message for all other participants on the same channel, optionally excluding selected receiver ids.\n                "
+                "text": " 在同一个频道上为所有其他参与者排队发送消息，可选地排除指定的接收者ID。\n                "
               },
               {
                 "kind": "Strong",
@@ -633,7 +633,7 @@
               },
               {
                 "kind": "Text",
-                "text": " flushes queued messages and reports disconnection through its output argument.\n            "
+                "text": " 刷新队列消息并通过其输出参数报告断开连接。\n            "
               }
             ]
           },
@@ -651,7 +651,7 @@
               },
               {
                 "kind": "Text",
-                "text": " manages delivery and bookkeeping.\n                It is not itself a channel speaker.\n                When server-side logic must send normal channel messages, create a "
+                "text": " 管理交付和账目记录。\n                它本身不是通道扬声器\n                当服务器端逻辑必须发送普通通道消息时，创建一个 "
               },
               {
                 "kind": "Strong",
@@ -664,7 +664,7 @@
               },
               {
                 "kind": "Text",
-                "text": ", connect it with "
+                "text": "，将其与 "
               },
               {
                 "kind": "Strong",
@@ -677,7 +677,7 @@
               },
               {
                 "kind": "Text",
-                "text": ", and send through that local client's channel objects.\n                This keeps every normal channel message tied to a real positive sender client id.\n            "
+                "text": "，并通过该本地客户端的通道对象发送。\n                这确保了每个普通频道消息都与一个真实的正发送客户端ID关联。\n            "
               }
             ]
           },
@@ -686,7 +686,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                A small channel client follows this shape:\n                "
+                "text": "\n                小型通道客户端遵循以下结构：\n                "
               },
               {
                 "kind": "Program",
@@ -699,14 +699,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Network Protocol Interfaces for Transports",
+        "title": "传输的网络协议接口",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                The raw protocol layer is the extension point for a new underlying implementation.\n                It intentionally knows nothing about channel names or package types.\n                One "
+                "text": "\n                原始协议层是用于新底层实现的扩展点\n                它有意地不知道通道名称或包类型。\n                一个 "
               },
               {
                 "kind": "Strong",
@@ -719,7 +719,7 @@
               },
               {
                 "kind": "Text",
-                "text": " exchanges asynchronous "
+                "text": " 交换异步 "
               },
               {
                 "kind": "Strong",
@@ -732,7 +732,7 @@
               },
               {
                 "kind": "Text",
-                "text": " messages with the other side.\n                This message contract can be implemented by a local pipe or socket, stdio, DLL calls, shared memory, a WebAssembly host bridge or another mechanism; the name "
+                "text": " 与其他方的消息。\n                此消息契约可由本地管道或套接字、标准输入输出、DLL 调用、共享内存、WebAssembly 主机桥接或其他机制实现；名称 "
               },
               {
                 "kind": "Strong",
@@ -745,7 +745,7 @@
               },
               {
                 "kind": "Text",
-                "text": " does not require an IP network.\n            "
+                "text": " 不需要 IP 网络。\n            "
               }
             ]
           },
@@ -754,7 +754,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Implement these interfaces for a new transport:\n                "
+                "text": "\n                为新传输实现这些接口：\n                "
               },
               {
                 "kind": "List",
@@ -774,7 +774,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": install or uninstall one callback, start the asynchronous read loop, send one string message and stop the connection."
+                        "text": ": 安装或卸载一个回调，启动异步读取循环，发送一条字符串消息并停止连接。"
                       }
                     ]
                   },
@@ -792,7 +792,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": receive strings, remote errors, local errors, connected and disconnected events. Callback methods may run on any thread, so implementations and users must be thread-safe."
+                        "text": ": 接收字符串、远程错误、本地错误、连接和断开连接事件。回调方法可能在任意线程上运行，因此实现和用户必须是线程安全的。"
                       }
                     ]
                   },
@@ -810,7 +810,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": own one connection, block in "
+                        "text": ": 拥有一个连接，阻塞在 "
                       },
                       {
                         "kind": "Strong",
@@ -823,7 +823,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " until the connection is established or fails, and report "
+                        "text": " 直到连接建立或失败并报告 "
                       },
                       {
                         "kind": "Strong",
@@ -854,7 +854,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": start accepting, call "
+                        "text": ": 开始接受，调用 "
                       },
                       {
                         "kind": "Strong",
@@ -880,7 +880,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " for accepted transport connections, stop all owned connections and report stopped state."
+                        "text": " 用于接受的传输连接，停止所有已拥有连接并报告已停止状态。"
                       }
                     ]
                   }
@@ -893,7 +893,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Connection-admission callbacks carry the producer's existing owning "
+                "text": "\n                连接-接入回调携带生产者的现有拥有 "
               },
               {
                 "kind": "Strong",
@@ -906,7 +906,7 @@
               },
               {
                 "kind": "Text",
-                "text": " through the asynchronous socket, HTTP request, network protocol and channel layers.\n                An override should accept that "
+                "text": " 通过异步套接字、HTTP 请求、网络协议和通道层。\n                重写应接受这一点 "
               },
               {
                 "kind": "Strong",
@@ -919,7 +919,7 @@
               },
               {
                 "kind": "Text",
-                "text": " and forward or store it without constructing another "
+                "text": " 并向前传递或存储它而不构造另一个 "
               },
               {
                 "kind": "Strong",
@@ -932,7 +932,7 @@
               },
               {
                 "kind": "Text",
-                "text": " from the callback argument or from "
+                "text": " 从回调参数或从 "
               },
               {
                 "kind": "Strong",
@@ -958,7 +958,7 @@
               },
               {
                 "kind": "Text",
-                "text": " only when an existing operation requires a temporary raw pointer; doing so does not transfer ownership.\n            "
+                "text": " 仅当现有操作需要临时原始指针时；这样做不会转移所有权。\n            "
               }
             ]
           },
@@ -976,7 +976,7 @@
               },
               {
                 "kind": "Text",
-                "text": " should call "
+                "text": " 应调用 "
               },
               {
                 "kind": "Strong",
@@ -989,7 +989,7 @@
               },
               {
                 "kind": "Text",
-                "text": " with the connection.\n                Passing "
+                "text": " 通过连接。\n                传递 "
               },
               {
                 "kind": "Strong",
@@ -1002,7 +1002,7 @@
               },
               {
                 "kind": "Text",
-                "text": " uninstalls the callback.\n                "
+                "text": " 卸载回调。\n                "
               },
               {
                 "kind": "Strong",
@@ -1015,7 +1015,7 @@
               },
               {
                 "kind": "Text",
-                "text": " starts receiving messages asynchronously, but callers must tolerate implementations that have already received data after the callback was installed.\n                "
+                "text": " 开始异步接收消息，但调用者必须容忍在安装回调后已接收数据的实现。\n                "
               },
               {
                 "kind": "Strong",
@@ -1028,7 +1028,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is the shutdown boundary; after it returns, pending transport callbacks should no longer touch the stopped object.\n            "
+                "text": " 是关闭边界；在此返回后，挂起的传输回调不应再访问已停止的对象。\n            "
               }
             ]
           },
@@ -1037,7 +1037,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                A raw client must return a connection object from "
+                "text": "\n                原始客户端必须从返回一个连接对象 "
               },
               {
                 "kind": "Strong",
@@ -1050,7 +1050,7 @@
               },
               {
                 "kind": "Text",
-                "text": ", but using that connection before "
+                "text": "，但在 "
               },
               {
                 "kind": "Strong",
@@ -1063,7 +1063,7 @@
               },
               {
                 "kind": "Text",
-                "text": " finishes is outside the contract.\n                A raw server should not report client-connected callbacks before "
+                "text": " 结束在合同之外。\n                原始服务器在报告客户端连接回调之前不应 "
               },
               {
                 "kind": "Strong",
@@ -1076,7 +1076,7 @@
               },
               {
                 "kind": "Text",
-                "text": " or after "
+                "text": " 或之后 "
               },
               {
                 "kind": "Strong",
@@ -1089,7 +1089,7 @@
               },
               {
                 "kind": "Text",
-                "text": ".\n                If a connection is lost, the same connection object does not reconnect; a reconnecting transport should create a new connection object.\n            "
+                "text": ".\n                如果连接丢失，相同的连接对象不会重新连接；重新连接的传输应创建一个新的连接对象。\n            "
               }
             ]
           },
@@ -1098,7 +1098,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                After a raw transport exists, reuse the channel bridge instead of reimplementing channel routing:\n                "
+                "text": "\n                在存在原始传输后，重用通道桥接而不是重新实现通道路由：\n                "
               },
               {
                 "kind": "Program",
@@ -1111,7 +1111,7 @@
       },
       {
         "kind": "Topic",
-        "title": "Default Channel Bridge",
+        "title": "默认通道桥接",
         "content": [
           {
             "kind": "Paragraph",
@@ -1153,7 +1153,7 @@
               },
               {
                 "kind": "Text",
-                "text": " translate channel batches into raw "
+                "text": " 将通道批次转换为原始数据 "
               },
               {
                 "kind": "Strong",
@@ -1166,7 +1166,7 @@
               },
               {
                 "kind": "Text",
-                "text": " protocol messages.\n                The bridge requires a serializer where:\n                "
+                "text": " 协议消息。\n                桥接需要一个序列化器，其中：\n                "
               },
               {
                 "kind": "List",
@@ -1248,7 +1248,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " stores optional serializer state, or "
+                        "text": " 存储可选的序列化状态，或 "
                       },
                       {
                         "kind": "Strong",
@@ -1261,7 +1261,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " when no state is required."
+                        "text": " 当不需要状态时。"
                       }
                     ]
                   },
@@ -1279,7 +1279,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " converts a package list to one "
+                        "text": " 将包列表转换为一个 "
                       },
                       {
                         "kind": "Strong",
@@ -1310,7 +1310,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " converts one "
+                        "text": " 转换一个 "
                       },
                       {
                         "kind": "Strong",
@@ -1323,7 +1323,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " back to a package list."
+                        "text": " 返回包列表。"
                       }
                     ]
                   }
@@ -1336,7 +1336,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                The bridge uses "
+                "text": "\n                桥接使用 "
               },
               {
                 "kind": "Strong",
@@ -1349,7 +1349,7 @@
               },
               {
                 "kind": "Text",
-                "text": " as the raw text envelope.\n                Its string shape is "
+                "text": " 作为原始文本包装器。\n                它的字符串形状是 "
               },
               {
                 "kind": "Strong",
@@ -1362,7 +1362,7 @@
               },
               {
                 "kind": "Text",
-                "text": ".\n                For client-to-server messages, "
+                "text": ".\n                对于客户端到服务器的消息， "
               },
               {
                 "kind": "Strong",
@@ -1375,7 +1375,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is the direct receiver id; an empty id means broadcast, and extra ids are blocked broadcast receivers.\n                For server-to-client messages, "
+                "text": " 是直接接收者 ID；空 ID 表示广播，额外的 ID 是被阻止的广播接收者。\n                对于服务器到客户端的消息， "
               },
               {
                 "kind": "Strong",
@@ -1388,7 +1388,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is the positive sender id.\n            "
+                "text": " 是正数发送者ID。\n            "
               }
             ]
           },
@@ -1397,7 +1397,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                A network channel client connects by sending one handshake package with an empty client id, an empty channel name and all supported channel names joined by "
+                "text": "\n                网络通道客户端通过发送一个握手包来连接，该握手包包含空的客户端ID、空的通道名称以及所有支持的通道名称，用分隔符连接。 "
               },
               {
                 "kind": "Strong",
@@ -1410,7 +1410,7 @@
               },
               {
                 "kind": "Text",
-                "text": ".\n                The server validates the names, assigns a positive client id, records channel membership and sends the id back in an empty-channel response.\n                After that, normal channel packages are delivered only when sender and receiver membership matches the channel name.\n            "
+                "text": ".\n                服务器验证名称，分配一个正的客户端ID，记录通道成员资格，并在空通道响应中将ID返回。\n                那之后，仅当发送方和接收方成员资格与频道名称匹配时，才会传递正常频道包。\n            "
               }
             ]
           },
@@ -1419,7 +1419,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                A channel server over a Windows named pipe can be declared like this:\n                "
+                "text": "\n                在 Windows 命名管道上的通道服务器可以这样声明：\n                "
               },
               {
                 "kind": "Program",
@@ -1432,14 +1432,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Portable Async-Socket Implementations",
+        "title": "便携式异步套接字实现",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                The types in "
+                "text": "\n                类型在 "
               },
               {
                 "kind": "Strong",
@@ -1452,7 +1452,7 @@
               },
               {
                 "kind": "Text",
-                "text": " form a portable, loopback-only stack for asynchronous TCP bytes, HTTP/1.1 requests and Mini HTTP services.\n                Platform-neutral factories select "
+                "text": " 构建一个便携式、仅支持回环的异步TCP字节、HTTP/1.1请求和小型HTTP服务栈。\n                平台中立的工厂选择 "
               },
               {
                 "kind": "Strong",
@@ -1530,20 +1530,20 @@
               },
               {
                 "kind": "Text",
-                "text": " at the application composition boundary.\n            "
+                "text": " 在应用程序组合边界处。\n            "
               }
             ]
           },
           {
             "kind": "Topic",
-            "title": "Direct Length-Framed Transport",
+            "title": "直接长度定界传输",
             "content": [
               {
                 "kind": "Paragraph",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Use "
+                    "text": "\n                    使用 "
                   },
                   {
                     "kind": "Strong",
@@ -1569,7 +1569,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " when both peers use VlppOS and HTTP compatibility is unnecessary.\n                    One logical connection is one physical TCP socket.\n                    Each "
+                    "text": " 当双方都使用 VlppOS 且无需 HTTP 兼容时。\n                    一个逻辑连接对应一个物理 TCP 套接字。\n                    每个 "
                   },
                   {
                     "kind": "Strong",
@@ -1582,7 +1582,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " is framed with its character count and native "
+                    "text": " 是用其字符数和原生 "
                   },
                   {
                     "kind": "Strong",
@@ -1595,7 +1595,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " bytes, so this is not a portable wire encoding between peers with different "
+                    "text": " 字节，因此在具有不同 "
                   },
                   {
                     "kind": "Strong",
@@ -1608,7 +1608,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " representations.\n                "
+                    "text": " 表示。\n                "
                   }
                 ]
               },
@@ -1617,7 +1617,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    These templates construct their socket backend from forwarded constructor arguments, so choose the concrete type for the target:\n                    "
+                    "text": "\n                    这些模板从转发的构造函数参数中构建其套接字后端，因此请为目标选择具体类型：\n                    "
                   },
                   {
                     "kind": "Strong",
@@ -1695,7 +1695,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ", and pass the port to the protocol adapter.\n                    They do not accept an injected "
+                    "text": "，并将端口传递给协议适配器。\n                    它们不接受注入的 "
                   },
                   {
                     "kind": "Strong",
@@ -1778,7 +1778,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " expose the underlying ordered full-duplex byte streams.\n                    The interface-returning "
+                    "text": " 暴露底层的有序全双工字节流。\n                    返回接口的 "
                   },
                   {
                     "kind": "Strong",
@@ -1804,7 +1804,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " factories are for code that consumes these socket interfaces, including the injected "
+                    "text": " 工厂用于消耗这些套接字接口的代码，包括注入的 "
                   },
                   {
                     "kind": "Strong",
@@ -1830,7 +1830,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " dependencies below.\n                    Each socket exposes its immutable loopback port through "
+                    "text": " 下面的依赖项。\n                    每个套接字都通过其不可变的回环端口暴露 "
                   },
                   {
                     "kind": "Strong",
@@ -1856,7 +1856,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " creates a fresh client for another physical lane on the same endpoint.\n                "
+                    "text": " 在同一端点的另一个物理通道上创建一个新的客户端。\n                "
                   }
                 ]
               }
@@ -1864,14 +1864,14 @@
           },
           {
             "kind": "Topic",
-            "title": "HTTP-Compatible Socket Transport",
+            "title": "HTTP 兼容套接字传输",
             "content": [
               {
                 "kind": "Paragraph",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Use "
+                    "text": "\n                    使用 "
                   },
                   {
                     "kind": "Strong",
@@ -1897,7 +1897,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " when the transport must use the VlppOS HTTP wire protocol or interoperate with the Windows HTTP implementation.\n                    They implement "
+                    "text": " 当传输必须使用 VlppOS HTTP 传输协议或与 Windows HTTP 实现互操作时。\n                    它们实现 "
                   },
                   {
                     "kind": "Strong",
@@ -1936,7 +1936,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " over the portable Mini HTTP stack.\n                "
+                    "text": " 通过便携式迷你HTTP堆栈。\n                "
                   }
                 ]
               },
@@ -1945,7 +1945,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    The public construction surface keeps native socket composition explicit:\n                    "
+                    "text": "\n                    公共构造表面保持原生套接字组合的显式性：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -1959,7 +1959,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    The server adapter uses the injected listener and never creates another one.\n                    The client uses the injected client for its first physical lane and calls "
+                    "text": "\n                    服务器适配器使用注入的监听器，从不创建另一个监听器。\n                    客户端使用注入的客户端作为其第一个物理通道并调用 "
                   },
                   {
                     "kind": "Strong",
@@ -1972,7 +1972,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " for the additional lanes required by full-duplex polling and recovery.\n                    The server name must select loopback, and the URL prefix is empty for the origin root or begins with "
+                    "text": " 对于全双工轮询和恢复所需的附加通道。\n                    服务器名称必须选择回环，且URL前缀对于源根为空或以开始。 "
                   },
                   {
                     "kind": "Strong",
@@ -1994,7 +1994,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    The adapter uses the same "
+                    "text": "\n                    适配器使用相同的 "
                   },
                   {
                     "kind": "Strong",
@@ -2033,7 +2033,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " routes as "
+                    "text": " 路由作为 "
                   },
                   {
                     "kind": "Strong",
@@ -2059,7 +2059,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ".\n                    The protocol has no message-level delivery acknowledgement, deduplication, heartbeat or disconnect route, so it must not be treated as exactly-once delivery.\n                "
+                    "text": ".\n                    该协议没有消息级别的交付确认、去重、心跳或断开连接路由，因此不应被视为精确一次交付\n                "
                   }
                 ]
               }
@@ -2067,7 +2067,7 @@
           },
           {
             "kind": "Topic",
-            "title": "Portable Mini HTTP Request Helpers",
+            "title": "便携式迷你 HTTP 请求辅助工具",
             "content": [
               {
                 "kind": "Paragraph",
@@ -2135,7 +2135,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " provide the lower HTTP/1.1 message layer.\n                    Use them when code needs complete binary-safe request and response objects and controls each connection directly.\n                "
+                    "text": " 提供较低的 HTTP/1.1 消息层。\n                    当代码需要完整的二进制安全请求和响应对象，并且直接控制每个连接时使用它们。\n                "
                   }
                 ]
               },
@@ -2179,7 +2179,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " add prefix dispatch and request/response conveniences.\n                    A server API receives "
+                    "text": " 添加前缀分派和请求/响应便捷功能。\n                    服务器 API 接收 "
                   },
                   {
                     "kind": "Strong",
@@ -2192,7 +2192,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ", and multiple APIs share one listener only when they receive the exact same server object.\n                    Override "
+                    "text": "，并且多个 API 仅在接收到完全相同的服务器对象时才共享一个监听器。\n                    Override "
                   },
                   {
                     "kind": "Strong",
@@ -2205,7 +2205,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ", inspect the relative path, query or UTF-8 body, and complete the one-shot context with "
+                    "text": "，检查相对路径、查询或UTF-8正文，并用 "
                   },
                   {
                     "kind": "Strong",
@@ -2270,7 +2270,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ".\n                    A client API receives "
+                    "text": ".\n                    客户端 API 接收 "
                   },
                   {
                     "kind": "Strong",
@@ -2283,7 +2283,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " and queues asynchronous "
+                    "text": " 并将异步操作加入队列。 "
                   },
                   {
                     "kind": "Strong",
@@ -2296,7 +2296,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " calls.\n                "
+                    "text": " 调用。\n                "
                   }
                 ]
               },
@@ -2314,7 +2314,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " uses the "
+                    "text": " 使用 "
                   },
                   {
                     "kind": "Strong",
@@ -2353,7 +2353,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " value types, but those types are platform-neutral and using them here does not invoke WinHTTP.\n                    The TCP, HTTP and Mini HTTP implementations in this section are local test, validation and demonstration infrastructure rather than a production web stack.\n                "
+                    "text": " 值类型，但这些类型是平台中立的，此处使用它们不会调用 WinHTTP。\n                    本节中的 TCP、HTTP 和 Mini HTTP 实现是本地测试、验证和演示基础设施，而非生产级 Web 堆栈。\n                "
                   }
                 ]
               }
@@ -2363,20 +2363,20 @@
       },
       {
         "kind": "Topic",
-        "title": "Windows Implementations",
+        "title": "Windows 实现",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Named pipes and the legacy HTTP.sys/WinHTTP transport are Windows-only.\n                They are available for local tests and as reference implementations for the raw protocol contract, but do not make portable feature code depend on them or treat them as production communication stacks.\n            "
+                "text": "\n                命名管道和传统的 HTTP.sys/WinHTTP 传输仅限于 Windows。\n                它们可用于本地测试，并作为原始协议合约的参考实现，但不应使可移植的功能代码依赖它们，也不应将其视为生产通信栈。\n            "
               }
             ]
           },
           {
             "kind": "Topic",
-            "title": "Named Pipe Transport",
+            "title": "命名管道传输",
             "content": [
               {
                 "kind": "Paragraph",
@@ -2392,7 +2392,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " implements "
+                    "text": " 实现 "
                   },
                   {
                     "kind": "Strong",
@@ -2431,7 +2431,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " and implements "
+                    "text": " 并实现 "
                   },
                   {
                     "kind": "Strong",
@@ -2457,7 +2457,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " implements "
+                    "text": " 实现 "
                   },
                   {
                     "kind": "Strong",
@@ -2479,7 +2479,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    The server starts overlapped named-pipe accepting in "
+                    "text": "\n                    服务器在中启动重叠命名管道接受。 "
                   },
                   {
                     "kind": "Strong",
@@ -2492,7 +2492,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " and owns both accepted connections and pending accepts.\n                    The client opens "
+                    "text": " 并拥有已接受的连接和待处理的连接。\n                    客户端打开 "
                   },
                   {
                     "kind": "Strong",
@@ -2505,7 +2505,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ", waits for the server and switches the pipe into message-read mode.\n                    "
+                    "text": "，等待服务器并切换管道到消息读取模式。\n                    "
                   },
                   {
                     "kind": "Strong",
@@ -2518,7 +2518,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " frames one "
+                    "text": " 框架一个 "
                   },
                   {
                     "kind": "Strong",
@@ -2531,7 +2531,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " with length data.\n                    The implementation chunks writes because a Windows named pipe message is limited to 64K bytes.\n                    Broken-pipe cases become disconnection events, and fatal local pipe failures become "
+                    "text": " 带长度数据。\n                    实现分块写入，因为Windows命名管道消息限制为64K字节。\n                    破碎管道情况会变成断开连接事件，致命的本地管道故障会变成 "
                   },
                   {
                     "kind": "Strong",
@@ -2544,7 +2544,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " followed by disconnection.\n                "
+                    "text": " 然后断开连接。\n                "
                   }
                 ]
               }
@@ -2552,7 +2552,7 @@
           },
           {
             "kind": "Topic",
-            "title": "HTTP Transport",
+            "title": "HTTP 传输",
             "content": [
               {
                 "kind": "Paragraph",
@@ -2581,7 +2581,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " and implements "
+                    "text": " 并实现 "
                   },
                   {
                     "kind": "Strong",
@@ -2607,7 +2607,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " implements both "
+                    "text": " 同时实现 "
                   },
                   {
                     "kind": "Strong",
@@ -2633,7 +2633,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ".\n                    This transport is a raw protocol implementation over Windows HTTP APIs, not a general web framework.\n                "
+                    "text": ".\n                    此传输是基于 Windows HTTP API 的原始协议实现，而非通用的 Web 框架。\n                "
                   }
                 ]
               },
@@ -2642,7 +2642,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    The raw HTTP protocol uses these routes under the configured base URL:\n                    "
+                    "text": "\n                    原始 HTTP 协议在配置的基 URL 下使用这些路由：\n                    "
                   },
                   {
                     "kind": "List",
@@ -2662,7 +2662,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " creates a logical connection and returns per-connection request and response URLs."
+                            "text": " 创建一个逻辑连接并返回每个连接的请求和响应 URL。"
                           }
                         ]
                       },
@@ -2680,7 +2680,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " is the client-maintained long-poll request for server-to-client messages."
+                            "text": " 是客户端维护的长轮询请求，用于接收服务器到客户端的消息。"
                           }
                         ]
                       },
@@ -2698,7 +2698,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " sends client-to-server messages and may also receive one queued server-to-client message."
+                            "text": " 发送客户端到服务器的消息，并可能接收一个排队的服务器到客户端消息。"
                           }
                         ]
                       }
@@ -2720,7 +2720,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " sends the connect request, validates the returned URLs, records them and reports connection.\n                    "
+                    "text": " 发送连接请求，验证返回的URL，记录并报告连接状态。\n                    "
                   },
                   {
                     "kind": "Strong",
@@ -2733,7 +2733,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " starts the long-poll request loop.\n                    "
+                    "text": " 启动长轮询请求循环。\n                    "
                   },
                   {
                     "kind": "Strong",
@@ -2746,7 +2746,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " posts to the response URL.\n                    Connect and response failures retry a limited number of times; request failures retry while the client is still running.\n                "
+                    "text": " 发布到响应URL。\n                    连接和响应失败会有限次数重试；请求失败则在客户端仍在运行时持续重试。\n                "
                   }
                 ]
               },
@@ -2764,7 +2764,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " creates a "
+                    "text": " 创建一个 "
                   },
                   {
                     "kind": "Strong",
@@ -2777,7 +2777,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " for each connect request.\n                    Server-to-client messages are returned through a pending long-poll request when possible, or queued until the next request.\n                    Client-to-server request bodies are dispatched as inbound strings.\n                    When the server stops, pending long-poll requests are cancelled and connection callbacks receive disconnection.\n                "
+                    "text": " 每个连接请求。\n                    服务器到客户端的消息会尽可能通过挂起的长轮询请求返回，否则将被排队，直到下一次请求。\n                    客户端到服务器的请求体作为传入字符串分派。\n                    当服务器停止时，挂起的长轮询请求将被取消，连接回调将收到断开连接的通知。\n                "
                   }
                 ]
               }
@@ -2785,7 +2785,7 @@
           },
           {
             "kind": "Topic",
-            "title": "Windows HTTP Helper APIs",
+            "title": "Windows HTTP 助手 API",
             "content": [
               {
                 "kind": "Paragraph",
@@ -2814,7 +2814,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " are lower-level Windows helpers used by "
+                    "text": " 是由 "
                   },
                   {
                     "kind": "Strong",
@@ -2840,7 +2840,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ".\n                    Use them directly when a Windows feature needs asynchronous HTTP request and response behavior without adopting the raw "
+                    "text": ".\n                    当 Windows 功能需要异步 HTTP 请求和响应行为但又不采用原始的 "
                   },
                   {
                     "kind": "Strong",
@@ -2853,7 +2853,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " transport shape.\n                "
+                    "text": " 传输形状。\n                "
                   }
                 ]
               },
@@ -2871,7 +2871,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " owns one WinHTTP session and connection for a host and port.\n                    "
+                    "text": " 拥有一个用于主机和端口的 WinHTTP 会话和连接。\n                    "
                   },
                   {
                     "kind": "Strong",
@@ -2884,7 +2884,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " sends one asynchronous request described by "
+                    "text": " 发送一个由描述的异步请求 "
                   },
                   {
                     "kind": "Strong",
@@ -2897,7 +2897,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ", whose fields include method, query, body, content type, accept types, credentials, cookies, extra headers and timeouts.\n                    Results are either "
+                    "text": "，其字段包括方法、查询、正文、内容类型、接受类型、凭证、Cookie、额外头信息和超时。\n                    结果为 "
                   },
                   {
                     "kind": "Strong",
@@ -2923,7 +2923,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": "; HTTP status codes such as 404 are represented as "
+                    "text": "; HTTP 状态码，例如 404，表示为 "
                   },
                   {
                     "kind": "Strong",
@@ -2936,7 +2936,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " values.\n                "
+                    "text": " 值。\n                "
                   }
                 ]
               },
@@ -2954,7 +2954,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " owns one HTTP.sys URL prefix.\n                    Override "
+                    "text": " 拥有一个 HTTP.sys URL 预缀。\n                    Override "
                   },
                   {
                     "kind": "Strong",
@@ -2967,7 +2967,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " to dispatch requests and "
+                    "text": " 分派请求和 "
                   },
                   {
                     "kind": "Strong",
@@ -2980,7 +2980,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " to clean up feature state.\n                    Helpers such as "
+                    "text": " 清理功能状态。\n                    诸如 "
                   },
                   {
                     "kind": "Strong",
@@ -3019,7 +3019,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " handle common request-body and response tasks.\n                "
+                    "text": " 处理常见的请求体和响应任务。\n                "
                   }
                 ]
               }

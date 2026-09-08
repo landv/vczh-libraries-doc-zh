@@ -166,7 +166,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Control templates change controls' outfit,\n            and they are working based on data bindings.\n        "
+            "text": "\n            控件模板改变控件的外观，\n            并且它们基于数据绑定工作。\n        "
           }
         ]
       },
@@ -175,7 +175,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Controls have their own control template types.\n            For example, "
+            "text": "\n            控件具有自己的控件模板类型。\n            例如， "
           },
           {
             "kind": "Strong",
@@ -188,7 +188,7 @@
           },
           {
             "kind": "Text",
-            "text": " needs "
+            "text": " 需要 "
           },
           {
             "kind": "Strong",
@@ -201,7 +201,7 @@
           },
           {
             "kind": "Text",
-            "text": ".\n            Any derived classes of "
+            "text": ".\n            任何派生类 "
           },
           {
             "kind": "Strong",
@@ -214,7 +214,7 @@
           },
           {
             "kind": "Text",
-            "text": " is acceptable,\n            but extra members will be ignored.\n        "
+            "text": " 是可以接受的，\n            但额外的成员将被忽略。\n        "
           }
         ]
       },
@@ -223,7 +223,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            A control template has input properties and output properties.\n            Input properties are for data binding,\n            when the control's state is changed,\n            these properties will be changed,\n            and the control template reacts to these properties and changes how it looks,\n            for example, some colors.\n            Output properties are configuration to the control's outfit related behavior,\n            almost all of them will only be read once,\n            so changing them at runtime takes no effect.\n        "
+            "text": "\n            控件模板有输入属性和输出属性。\n            输入属性用于数据绑定，\n            当控件的状态发生改变时，\n            这些属性将被更改，\n            以及控件模板会响应这些属性并改变其外观，\n            例如，一些颜色。\n            输出属性是与控件外观相关行为的配置，\n            几乎所有都只读取一次，\n            因此在运行时更改它们不会产生任何效果。\n        "
           }
         ]
       },
@@ -232,7 +232,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Here we demo how to write a control template for "
+            "text": "\n            这里我们演示如何为编写控件模板 "
           },
           {
             "kind": "Strong",
@@ -245,7 +245,7 @@
           },
           {
             "kind": "Text",
-            "text": ".\n            When the mouse is hovering on the button,\n            it becomes brighter.\n            When the button is selected,\n            it becomes less brighter.\n        "
+            "text": ".\n            当鼠标悬停在按钮上时，\n            它变得更亮了。\n            当按钮被选中时，\n            它变得不那么明亮了。\n        "
           }
         ]
       },
@@ -281,7 +281,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "Input Properties:"
+                        "text": "输入属性："
                       }
                     ]
                   },
@@ -303,7 +303,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": ": True when the control is focused."
+                            "text": ": 当控件获得焦点时为真。"
                           }
                         ]
                       },
@@ -321,7 +321,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": ": Trhe when the control is enabled. It requires all parent controls to be enabled."
+                            "text": ": 当控件启用时。它要求所有父控件都必须启用。"
                           }
                         ]
                       },
@@ -339,7 +339,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": ": The control's font. If a font is not associated to the control, it will be the font from a parent control."
+                            "text": ": 控件的字体。如果控件未关联字体，则将使用父控件的字体。"
                           }
                         ]
                       },
@@ -370,7 +370,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " property."
+                            "text": " 属性。"
                           }
                         ]
                       },
@@ -401,7 +401,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " property."
+                            "text": " 属性。"
                           }
                         ]
                       }
@@ -417,7 +417,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "Output Properties:"
+                        "text": "输出属性："
                       }
                     ]
                   },
@@ -439,7 +439,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": ": A composition for control's children, anything put in <SelectableButton></SelectableButton> will be in this composition."
+                            "text": ": 一个用于控件子元素的组合，任何放入<SelectableButton></SelectableButton>中的内容都将位于此组合中。"
                           }
                         ]
                       },
@@ -457,7 +457,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": ": A composition for receiving keyboard events. It works only when the control is focusable."
+                            "text": ": 一个用于接收键盘事件的组合。仅当控件可获得焦点时才有效。"
                           }
                         ]
                       }
@@ -514,7 +514,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "Input Properties:"
+                        "text": "输入属性："
                       }
                     ]
                   },
@@ -536,7 +536,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": ": The button's state, can be "
+                            "text": ": 按钮的状态，可以是 "
                           },
                           {
                             "kind": "Strong",
@@ -593,7 +593,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": ": True when the button is selected."
+                            "text": ": 当按钮被选中时为真。"
                           }
                         ]
                       }
@@ -610,7 +610,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            We can use all of them to create a control template for "
+            "text": "\n            我们可以使用所有这些来为 "
           },
           {
             "kind": "Strong",
@@ -636,7 +636,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            And then a window containing three check boxes with this control template:\n            "
+            "text": "\n            然后一个包含三个复选框的窗口，使用此控件模板：\n            "
           },
           {
             "kind": "Program",
@@ -649,7 +649,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            With a style to assign control templates to all check boxes:\n            "
+            "text": "\n            使用样式为所有复选框分配控件模板：\n            "
           },
           {
             "kind": "Program",
@@ -680,7 +680,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            With this new control template,\n            we can create a more complex control template for tab control.\n        "
+            "text": "\n            使用此新的控件模板，\n            我们可以为标签控件创建一个更复杂的控件模板。\n        "
           }
         ]
       },
@@ -698,7 +698,7 @@
           },
           {
             "kind": "Text",
-            "text": " needs "
+            "text": " 需要 "
           },
           {
             "kind": "Strong",
@@ -711,7 +711,7 @@
           },
           {
             "kind": "Text",
-            "text": ",\n            and it has two important properties: "
+            "text": "，\n            并且它有两个重要属性： "
           },
           {
             "kind": "Strong",
@@ -737,7 +737,7 @@
           },
           {
             "kind": "Text",
-            "text": ".\n            These are all input properties.\n            "
+            "text": ".\n            这些都是输入属性。\n            "
           },
           {
             "kind": "Strong",
@@ -750,7 +750,7 @@
           },
           {
             "kind": "Text",
-            "text": " is an interface with a method "
+            "text": " 是一个具有方法的接口 "
           },
           {
             "kind": "Strong",
@@ -763,7 +763,7 @@
           },
           {
             "kind": "Text",
-            "text": " for activate a tab page.\n            "
+            "text": " 用于激活一个标签页。\n            "
           },
           {
             "kind": "Strong",
@@ -776,7 +776,7 @@
           },
           {
             "kind": "Text",
-            "text": " is an observable collection for all tab pages at runtime.\n        "
+            "text": " 是运行时所有选项卡页面的可观察集合\n        "
           }
         ]
       },
@@ -785,7 +785,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            By binding "
+            "text": "\n            通过绑定 "
           },
           {
             "kind": "Strong",
@@ -811,7 +811,7 @@
           },
           {
             "kind": "Text",
-            "text": ",\n            we can easily create a list of buttons for each tab pages.\n            When tab pages are inserted to or removed from the tab control,\n            the list of buttons will be automatically refreshed.\n        "
+            "text": "，\n            我们可以轻松为每个选项卡页面创建一个按钮列表。\n            当标签页被插入或从标签控件中移除时，\n            按钮列表将自动刷新。\n        "
           }
         ]
       },
@@ -820,7 +820,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Firstly we create a control template for "
+            "text": "\n            首先我们为 "
           },
           {
             "kind": "Strong",
@@ -841,7 +841,7 @@
           },
           {
             "kind": "Text",
-            "text": "\n            In this control template,\n            we create a list of buttons using "
+            "text": "\n            在此控件模板中，\n            我们使用创建一个按钮列表 "
           },
           {
             "kind": "Strong",
@@ -854,7 +854,7 @@
           },
           {
             "kind": "Text",
-            "text": " on the left side,\n            and create a container for tab page contents on the right side.\n        "
+            "text": " 在左侧，\n            并在右侧创建一个用于标签页内容的容器。\n        "
           }
         ]
       },
@@ -863,7 +863,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            The item template in "
+            "text": "\n            在项模板中 "
           },
           {
             "kind": "Strong",
@@ -876,7 +876,7 @@
           },
           {
             "kind": "Text",
-            "text": " is named "
+            "text": " 命名为 "
           },
           {
             "kind": "Strong",
@@ -889,7 +889,7 @@
           },
           {
             "kind": "Text",
-            "text": ",\n            which is:\n            "
+            "text": "，\n            即：\n            "
           },
           {
             "kind": "Program",
@@ -924,7 +924,7 @@
           },
           {
             "kind": "Text",
-            "text": " property,\n            it needs to be assigned in "
+            "text": " 属性，\n            它需要被分配在 "
           },
           {
             "kind": "Strong",
@@ -937,7 +937,7 @@
           },
           {
             "kind": "Text",
-            "text": ",\n            so that when a tab header is clicked,\n            it can tell the tab control to switch to that tab.\n        "
+            "text": "，\n            这样，当点击标签头时，\n            它可以告诉标签控件切换到该标签。\n        "
           }
         ]
       },
@@ -955,7 +955,7 @@
           },
           {
             "kind": "Text",
-            "text": " reacts to "
+            "text": " 响应于 "
           },
           {
             "kind": "Strong",
@@ -968,7 +968,7 @@
           },
           {
             "kind": "Text",
-            "text": " event in "
+            "text": " 事件在 "
           },
           {
             "kind": "Strong",
@@ -981,7 +981,7 @@
           },
           {
             "kind": "Text",
-            "text": ",\n            by accessing "
+            "text": "，\n            通过访问 "
           },
           {
             "kind": "Strong",
@@ -994,7 +994,7 @@
           },
           {
             "kind": "Text",
-            "text": " which is provided by the event,\n            it knows a new item template is created,\n            and grab that item template to set the "
+            "text": " 由事件提供的\n            它知道已创建一个新的项目模板，\n            并获取该项模板以设置 "
           },
           {
             "kind": "Strong",
@@ -1007,7 +1007,7 @@
           },
           {
             "kind": "Text",
-            "text": " property.\n        "
+            "text": " 属性。\n        "
           }
         ]
       },
@@ -1016,7 +1016,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            This ensures that whenever a new item template for the tab header appears in the tab control,\n            the "
+            "text": "\n            这确保每当标签控件中出现新的标签头项模板时，\n            该 "
           },
           {
             "kind": "Strong",
@@ -1029,7 +1029,7 @@
           },
           {
             "kind": "Text",
-            "text": " property has already been assigned.\n        "
+            "text": " 属性已分配。\n        "
           }
         ]
       },
@@ -1051,7 +1051,7 @@
           },
           {
             "kind": "Text",
-            "text": " there is "
+            "text": " 有 "
           },
           {
             "kind": "Strong",
@@ -1064,7 +1064,7 @@
           },
           {
             "kind": "Text",
-            "text": ".\n            This code binds "
+            "text": ".\n            此代码绑定 "
           },
           {
             "kind": "Strong",
@@ -1103,7 +1103,7 @@
           },
           {
             "kind": "Text",
-            "text": "\n            tells it to create "
+            "text": "\n            告诉它创建 "
           },
           {
             "kind": "Strong",
@@ -1116,7 +1116,7 @@
           },
           {
             "kind": "Text",
-            "text": " for each tab page.\n        "
+            "text": " 对于每个选项卡页面。\n        "
           }
         ]
       },
@@ -1125,7 +1125,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            The assigned tab page for a particular "
+            "text": "\n            为特定 "
           },
           {
             "kind": "Strong",
@@ -1138,7 +1138,7 @@
           },
           {
             "kind": "Text",
-            "text": " will be in "
+            "text": " 将位于 "
           },
           {
             "kind": "Strong",
@@ -1151,7 +1151,7 @@
           },
           {
             "kind": "Text",
-            "text": ",\n            which is a readonly property and constructor argument.\n        "
+            "text": "，\n            这是一个只读属性和构造函数参数。\n        "
           }
         ]
       },
@@ -1160,7 +1160,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Knowledge base for item templates will be introduces in the next chapter.\n        "
+            "text": "\n            项目模板的知识库将在下一章中介绍。\n        "
           }
         ]
       },
@@ -1169,7 +1169,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Finally, we create a window with three tab pages to see how it works:\n            "
+            "text": "\n            最后，我们创建一个包含三个标签页的窗口，以查看其工作方式：\n            "
           },
           {
             "kind": "Program",
@@ -1182,7 +1182,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Here we have a button for the first tab page,\n            three check boxes for the second tab page,\n            and three radio buttons for the third tab page.\n            Each radio button is assigned the same group controller so that they know they are exclusive to each other.\n            By assigning different group controllers to radio buttons,\n            it is very easy to tell these radio buttons who are their allies.\n        "
+            "text": "\n            这里我们有一个第一个标签页的按钮，\n            第二个标签页上的三个复选框，\n            并且第三个标签页的三个单选按钮。\n            每个单选按钮都分配了相同的组控制器，以便它们知道彼此是互斥的。\n            通过为单选按钮分配不同的组控制器，\n            很容易告诉这些单选按钮它们的盟友是谁。\n        "
           }
         ]
       },

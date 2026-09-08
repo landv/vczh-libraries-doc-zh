@@ -139,7 +139,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            New interface expressions are the only way to implement interfaces.\n        "
+            "text": "\n            新接口表达式是实现接口的唯一方式。\n        "
           }
         ]
       },
@@ -148,7 +148,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            An new interface expression implements one interface,\n            but this interface can inherit from multiple other interfaces.\n        "
+            "text": "\n            一个新的接口表达式实现了一个接口，\n            但此接口可以继承多个其他接口。\n        "
           }
         ]
       },
@@ -164,7 +164,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "interface IThatInterface { ... }"
+                "text": "接口 IThatInterface { ... }"
               }
             ]
           },
@@ -183,7 +183,7 @@
           },
           {
             "kind": "Text",
-            "text": ",\n            to create an object that hold by a shared pointer.\n        "
+            "text": "，\n            创建一个由共享指针持有的对象。\n        "
           }
         ]
       },
@@ -199,7 +199,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "interface IThatInterface* { ... }"
+                "text": "接口 IThatInterface* { ... }"
               }
             ]
           },
@@ -218,7 +218,7 @@
           },
           {
             "kind": "Text",
-            "text": ",\n            to create an object that hold by a raw pointer.\n            If such object is not deleted, it cause memory leaks.\n        "
+            "text": "，\n            创建一个由原始指针持有的对象。\n            如果此类对象未被删除，会导致内存泄漏。\n        "
           }
         ]
       },
@@ -227,7 +227,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Besides of members in the interface,\n            the new interface expressions could also contain:\n            "
+            "text": "\n            除了接口中的成员之外，\n            新的接口表达式还可以包含：\n            "
           },
           {
             "kind": "List",
@@ -238,7 +238,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "variables"
+                    "text": "变量"
                   }
                 ]
               },
@@ -247,7 +247,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "functions not starting with "
+                    "text": "以不开头的函数 "
                   },
                   {
                     "kind": "Strong",
@@ -265,7 +265,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "one delete{} block"
+                    "text": "一个 delete{} 块"
                   }
                 ]
               }
@@ -278,20 +278,20 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            All of them are only accessible by name inside the new interface expressions.\n        "
+            "text": "\n            它们都只能通过名称在新的接口表达式中访问。\n        "
           }
         ]
       },
       {
         "kind": "Topic",
-        "title": "Delete block in a new interface expression",
+        "title": "在新的接口表达式中删除块",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                A new interface expression can contain one delete{} block.\n                It declares cleanup code for the anonymous implementation object.\n            "
+                "text": "\n                新的接口表达式可以包含一个 delete{} 块。\n                它为匿名实现对象声明清理代码。\n            "
               }
             ]
           },
@@ -300,7 +300,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                The block has no name, arguments, return type, or override keyword:\n                "
+                "text": "\n                该块没有名称、参数、返回类型或 override 关键字：\n                "
               },
               {
                 "kind": "Program",
@@ -313,7 +313,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                For a shared interface object, the delete{} block runs when the last shared pointer releases the object.\n                For a raw interface object, it runs when the object is deleted directly,\n                or when the object has been converted to a shared pointer and the last shared pointer releases it.\n            "
+                "text": "\n                对于一个共享接口对象，delete{} 块在最后一个共享指针释放对象时运行，\n                对于一个原始接口对象，它在对象被直接删除时运行，\n                或者当对象已被转换为共享指针，并且最后一个共享指针释放它时。\n            "
               }
             ]
           },
@@ -322,7 +322,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                The block is used for resources owned by the anonymous implementation object,\n                such as unregistering callbacks, closing subscriptions, or releasing native handles.\n            "
+                "text": "\n                该块用于由匿名实现对象拥有的资源，\n                例如，取消注册回调、关闭订阅或释放原生句柄。\n            "
               }
             ]
           }
@@ -330,7 +330,7 @@
       },
       {
         "kind": "Topic",
-        "title": "New and delete objects implementing shared interfaces",
+        "title": "使用 new 和 delete 创建实现共享接口的对象",
         "content": [
           {
             "kind": "Paragraph",
@@ -359,14 +359,14 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                because the interface is not "
+                "text": "\n                因为接口不是 "
               },
               {
                 "kind": "Strong",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "interface IMyInterface*"
+                    "text": "接口 IMyInterface*"
                   }
                 ]
               },
@@ -462,7 +462,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "cast IMyInterface^ my2"
+                    "text": "将 IMyInterface^ my2 转换为"
                   }
                 ]
               },
@@ -503,7 +503,7 @@
               },
               {
                 "kind": "Text",
-                "text": " values.\n            "
+                "text": " 值。\n            "
               }
             ]
           },
@@ -542,7 +542,7 @@
       },
       {
         "kind": "Topic",
-        "title": "New and delete objects implementing raw interfaces",
+        "title": "使用 new 和 delete 创建和删除实现原始接口的对象",
         "content": [
           {
             "kind": "Paragraph",
@@ -571,14 +571,14 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                because the interface is "
+                "text": "\n                因为接口是 "
               },
               {
                 "kind": "Strong",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "interface IMyInterface*"
+                    "text": "接口 IMyInterface*"
                   }
                 ]
               },
@@ -674,7 +674,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "cast IMyInterface^ my"
+                    "text": "将 IMyInterface^ my 转换为"
                   }
                 ]
               },
@@ -715,7 +715,7 @@
               },
               {
                 "kind": "Text",
-                "text": " values.\n            "
+                "text": " 值。\n            "
               }
             ]
           },
@@ -755,7 +755,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                In order to delete "
+                "text": "\n                为了删除 "
               },
               {
                 "kind": "Strong",
@@ -768,7 +768,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                you either call "
+                "text": "，\n                你要么调用 "
               },
               {
                 "kind": "Strong",
@@ -788,7 +788,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "cast IMyInterface^ my"
+                    "text": "将 IMyInterface^ my 转换为"
                   }
                 ]
               },
@@ -802,14 +802,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Memory leaks",
+        "title": "内存泄漏",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                If two objects hold each other by shared points,\n                it causes memory leaks:\n                "
+                "text": "\n                如果两个对象通过共享指针相互持有，\n                它会导致内存泄漏：\n                "
               },
               {
                 "kind": "Program",
@@ -817,7 +817,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                Until you break the connection manually.\n            "
+                "text": "\n                直到您手动断开连接。\n            "
               }
             ]
           }

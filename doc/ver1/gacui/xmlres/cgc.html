@@ -189,14 +189,14 @@
   "numberBeforeTitle": false,
   "topic": {
     "kind": "Topic",
-    "title": "Code Generation Configuration",
+    "title": "代码生成配置",
     "content": [
       {
         "kind": "Paragraph",
         "content": [
           {
             "kind": "Text",
-            "text": "\n            The configuration is written in the XML as follow:\n            "
+            "text": "\n            配置以如下XML格式编写：\n            "
           },
           {
             "kind": "Program",
@@ -209,7 +209,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Here are all available options:\n            "
+            "text": "\n            这里列出了所有可用的选项：\n            "
           },
           {
             "kind": "List",
@@ -245,7 +245,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": ": Base name of C++ files and contents, could be any valid C++ identifier."
+                            "text": ": C++ 文件和内容的基本名称，可以是任何有效的 C++ 标识符。"
                           }
                         ]
                       },
@@ -263,7 +263,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": ": Relative folder to this resource file to store generated C++ files."
+                            "text": ": 相对于此资源文件的相对文件夹，用于存储生成的C++文件。"
                           }
                         ]
                       },
@@ -281,7 +281,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": ": Files to include in headers, typically "
+                            "text": ": 要包含在头文件中的文件，通常是 "
                           },
                           {
                             "kind": "Strong",
@@ -294,7 +294,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": ". Multiple files are separated by \";\"."
+                            "text": "多个文件以“;”分隔。"
                           }
                         ]
                       },
@@ -312,7 +312,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " (optional): Files to include in headers when reflection is turned on, typically "
+                            "text": " (可选)：当启用反射时包含在头文件中的文件，通常为 "
                           },
                           {
                             "kind": "Strong",
@@ -325,7 +325,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": ". Multiple files are separated by \";\"."
+                            "text": "多个文件以“;”分隔。"
                           }
                         ]
                       },
@@ -343,7 +343,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " (optional): Output path for a neutral resource binary."
+                            "text": " (可选) 中性资源二进制文件的输出路径。"
                           }
                         ]
                       },
@@ -361,14 +361,14 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " (optional, "
+                            "text": " （可选的， "
                           },
                           {
                             "kind": "Strong",
                             "content": [
                               {
                                 "kind": "Text",
-                                "text": "not recommended"
+                                "text": "不推荐"
                               }
                             ]
                           },
@@ -387,7 +387,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " but it is compressed."
+                            "text": " 但它是压缩的。"
                           }
                         ]
                       },
@@ -405,7 +405,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " (optional): A C++ file to get rid of loading the resource binary at runtime."
+                            "text": " （可选）：一个C++文件，用于在运行时避免加载资源二进制文件。"
                           }
                         ]
                       },
@@ -423,7 +423,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " (optional): Like "
+                            "text": " （可选）：类似于 "
                           },
                           {
                             "kind": "Strong",
@@ -436,7 +436,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " but the binary is compressed to reduce file size."
+                            "text": " 但二进制文件已压缩以减小文件大小。"
                           }
                         ]
                       }
@@ -471,7 +471,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " (optional): Control output paths for x86 or x64 resource binary.\n                    These options are necessary only when you don't want generated C++ code and decide to load resource binaries at runtime with reflection enabled.\n                    "
+                    "text": " (可选)：为 x86 或 x64 资源二进制文件设置输出路径。\n                    这些选项仅在您不希望生成 C++ 代码，并决定在运行时启用反射加载资源二进制文件时才需要。\n                    "
                   },
                   {
                     "kind": "List",
@@ -491,7 +491,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": ": Resource binary without any Workflow scripts. "
+                            "text": ": 不包含任何工作流脚本的资源二进制文件。 "
                           },
                           {
                             "kind": "Strong",
@@ -504,7 +504,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " is not required but you need to generate C++ code."
+                            "text": " 不是必需的，但你需要生成 C++ 代码。"
                           }
                         ]
                       },
@@ -522,7 +522,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " (optional): Resource binary with UI as Workflow scripts. "
+                            "text": " （可选）包含UI工作流脚本的资源二进制文件。 "
                           },
                           {
                             "kind": "Strong",
@@ -535,7 +535,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " is required to load this binary file."
+                            "text": " 要求加载此二进制文件。"
                           }
                         ]
                       },
@@ -553,7 +553,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " (optional): Like "
+                            "text": " （可选）：类似于 "
                           },
                           {
                             "kind": "Strong",
@@ -566,7 +566,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " but it is compressed."
+                            "text": " 但它是压缩的。"
                           }
                         ]
                       }
@@ -588,7 +588,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " (optional):\n                    An xml describing the name of the resource file and its dependencies.\n                    Only resources with a metadata can be depended by others.\n                    See "
+                    "text": " (optional):\n                    一个描述资源文件名称及其依赖项的 XML。\n                    只有带有元数据的资源才能被其他资源依赖。\n                    参见 "
                   },
                   {
                     "kind": "PageLink",
@@ -596,13 +596,13 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "Cross XML Resource References"
+                        "text": "跨 XML 资源引用"
                       }
                     ]
                   },
                   {
                     "kind": "Text",
-                    "text": " for details.\n                    "
+                    "text": " 详细信息。\n                    "
                   },
                   {
                     "kind": "Program",
@@ -619,20 +619,20 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            To compile "
+            "text": "\n            编译 "
           },
           {
             "kind": "Strong",
             "content": [
               {
                 "kind": "Text",
-                "text": "GacUI XML Resource"
+                "text": "GacUI XML 资源"
               }
             ]
           },
           {
             "kind": "Text",
-            "text": " files:\n            "
+            "text": " 文件：\n            "
           },
           {
             "kind": "List",
@@ -646,7 +646,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "\n                        put "
+                        "text": "\n                        放置 "
                       },
                       {
                         "kind": "Strong",
@@ -659,7 +659,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " with the following content in the root folder:\n                        "
+                        "text": " 在根文件夹中包含以下内容：\n                        "
                       },
                       {
                         "kind": "Program",
@@ -677,7 +677,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "\n                        put all resource files in their own sub folders.\n                    "
+                        "text": "\n                        将所有资源文件放入各自的子文件夹中。\n                    "
                       }
                     ]
                   }
@@ -691,7 +691,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "\n                        Open "
+                        "text": "\n                        打开 "
                       },
                       {
                         "kind": "Strong",
@@ -704,7 +704,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ",\n                        navigate to the root folder and run\n                        "
+                        "text": "，\n                        转到根文件夹并运行\n                        "
                       },
                       {
                         "kind": "Program",
@@ -712,7 +712,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": "\n                        You must use the correct path for "
+                        "text": "\n                        您必须使用正确的路径来 "
                       },
                       {
                         "kind": "Strong",
@@ -725,7 +725,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " which is in "
+                        "text": " 哪个在 "
                       },
                       {
                         "kind": "PageLink",
@@ -733,7 +733,7 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "here"
+                            "text": "这里"
                           }
                         ]
                       },
@@ -753,7 +753,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "\n                        Some "
+                        "text": "\n                        一些 "
                       },
                       {
                         "kind": "Strong",
@@ -766,7 +766,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " folders will be create to containe intermediate files and log files,\n                        do not submit them to your source control.\n                        If there are errors,\n                        you can find details there.\n                        Otherwise you will get generated files ready in your specified folders.\n                    "
+                        "text": " 将创建文件夹以包含中间文件和日志文件，\n                        不要将它们提交到你的源代码控制中。\n                        如果有错误，\n                        您可以在那里找到详细信息。\n                        否则，您将在指定的文件夹中获得生成的文件。\n                    "
                       }
                     ]
                   }
@@ -781,7 +781,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            If you specify "
+            "text": "\n            如果你指定了 "
           },
           {
             "kind": "Strong",
@@ -807,7 +807,7 @@
           },
           {
             "kind": "Text",
-            "text": ",\n            you don't need to load resource binary before creating the main window.\n            Instead,\n            you add that generated C++ code (cannot add both) to your project,\n            and it will handle the rest for you.\n        "
+            "text": "，\n            您不需要在创建主窗口之前加载资源二进制文件。\n            相反，\n            您将生成的 C++ 代码（不能同时添加两者）添加到您的项目中。\n            它会为你处理其余部分。\n        "
           }
         ]
       },
@@ -816,7 +816,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Otherwise, use the following code to load a resource binary before creating any windows:\n            "
+            "text": "\n            否则，请使用以下代码在创建任何窗口之前加载资源二进制文件：\n            "
           },
           {
             "kind": "Program",
@@ -833,7 +833,7 @@
           },
           {
             "kind": "Text",
-            "text": "\n            is highly recommended to calculate an absolute path to the resource binary,\n            instead of specifying a relative path in C++.\n        "
+            "text": "\n            是强烈建议计算资源二进制文件的绝对路径，\n            而不是在 C++ 中指定相对路径\n        "
           }
         ]
       },
@@ -842,7 +842,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            When the resource binary is compressed:\n            "
+            "text": "\n            当资源二进制被压缩时：\n            "
           },
           {
             "kind": "Program",

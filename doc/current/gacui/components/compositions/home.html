@@ -259,13 +259,13 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "Composition"
+                "text": "组合"
               }
             ]
           },
           {
             "kind": "Text",
-            "text": " offer layout algorithms based on constraints.\n            Usually, developers using GacUI places nested controls and compositions in a window,\n            by defining constraints between compositions,\n            the window knows its minimum size,\n            and how to change sizes of child controls when the window is resizing.\n        "
+            "text": " 提供基于约束的布局算法。\n            通常，使用 GacUI 的开发人员会将嵌套控件和组合放置在窗口中，\n            通过定义组合之间的约束关系，\n            窗口知道它的最小尺寸，\n            以及如何在窗口调整大小时更改子控件的大小。\n        "
           }
         ]
       },
@@ -274,7 +274,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            There are a lot of predefined compositions as follows,\n            each defines a kind of constraint:\n            "
+            "text": "\n            有许多预定义的组合，如下所示，\n            每个都定义了一种约束：\n            "
           },
           {
             "kind": "List",
@@ -601,13 +601,13 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Here we introduce common constraints and configuration of all compositions first.\n        "
+            "text": "\n            首先，我们介绍所有组合的常用约束和配置。\n        "
           }
         ]
       },
       {
         "kind": "Topic",
-        "title": "TransparentToMouse property",
+        "title": "TransparentToMouse 属性",
         "content": [
           {
             "kind": "Paragraph",
@@ -649,7 +649,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                this composition becomes transparent to the mouse.\n                When a mouse clicks on this composition,\n                the click just go through this composition and hit a non-transparent one under this composition.\n            "
+                "text": "，\n                此组合对鼠标变得透明。\n                当鼠标点击此组合时，\n                点击会穿过此组合，击中此组合下方的非透明元素。\n            "
               }
             ]
           },
@@ -667,7 +667,7 @@
               },
               {
                 "kind": "Text",
-                "text": ":\n                by setting it to "
+                "text": "：\n                通过将其设置为 "
               },
               {
                 "kind": "Strong",
@@ -680,7 +680,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                it doesn't makes child compositions become transparent to the mouse.\n                If you want a whole composition tree to be transparent to the mouse,\n                every single composition in this tree must have this property set to "
+                "text": "，\n                它不会使子组合对鼠标变得透明。\n                如果希望整个组合树对鼠标透明，\n                此树中的每个组合都必须将此属性设置为 "
               },
               {
                 "kind": "Strong",
@@ -701,14 +701,14 @@
       },
       {
         "kind": "Topic",
-        "title": "AssociatedCursor property",
+        "title": "AssociatedCursor 属性",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                This property defines how the cursor should look like\n                when the cursor is over this composition.\n            "
+                "text": "\n                此属性定义了光标应显示为何种样式\n                当光标位于此组合之上时。\n            "
               }
             ]
           },
@@ -717,7 +717,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                If this property is not set,\n                it will ask its parent composition for a value.\n            "
+                "text": "\n                如果未设置此属性，则\n                它会向其父级组合请求一个值。\n            "
               }
             ]
           },
@@ -733,13 +733,13 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "GacUI XML Resource"
+                    "text": "GacUI XML 资源"
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": ",\n                the type of this property is "
+                "text": "，\n                此属性的类型是 "
               },
               {
                 "kind": "Strong",
@@ -760,14 +760,14 @@
       },
       {
         "kind": "Topic",
-        "title": "AssociatedHitTestResult property",
+        "title": "AssociatedHitTestResult 属性",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                The property defines how the window should behave\n                when the mouse is interacting with this composition.\n            "
+                "text": "\n                该属性定义了窗口的行为方式\n                当鼠标正在与该组合交互时。\n            "
               }
             ]
           },
@@ -798,7 +798,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Usually this property is used when implementing a control template for "
+                "text": "\n                通常此属性用于实现控件模板时 "
               },
               {
                 "kind": "Strong",
@@ -811,7 +811,7 @@
               },
               {
                 "kind": "Text",
-                "text": ".\n                For example,\n                the window template will have a close button\n                and "
+                "text": ".\n                例如，\n                窗口模板将包含一个关闭按钮\n                和 "
               },
               {
                 "kind": "Strong",
@@ -824,7 +824,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is set to the "
+                "text": " 设置为 "
               },
               {
                 "kind": "Strong",
@@ -837,7 +837,7 @@
               },
               {
                 "kind": "Text",
-                "text": " property of this button's "
+                "text": " 此按钮的属性 "
               },
               {
                 "kind": "Strong",
@@ -850,7 +850,7 @@
               },
               {
                 "kind": "Text",
-                "text": ".\n                When the mouse clicks this button,\n                the OS will know that this button is for closing the window,\n                and then raise a sequence of events and close the window if it is not interrupted.\n                No code is needed for the "
+                "text": ".\n                当鼠标单击此按钮时，\n                操作系统将知道此按钮用于关闭窗口，\n                然后引发一系列事件，并在未被中断的情况下关闭窗口。\n                不需要代码 "
               },
               {
                 "kind": "Strong",
@@ -863,7 +863,7 @@
               },
               {
                 "kind": "Text",
-                "text": " event of this button.\n            "
+                "text": " 此按钮的事件。\n            "
               }
             ]
           }
@@ -871,7 +871,7 @@
       },
       {
         "kind": "Topic",
-        "title": "Visible property",
+        "title": "Visible 属性",
         "content": [
           {
             "kind": "Paragraph",
@@ -913,20 +913,20 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                anything inside this composition will not be rendered,\n                "
+                "text": "，\n                此组合中的任何内容都不会被渲染，\n                "
               },
               {
                 "kind": "Strong",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "but they still affect the sizing"
+                    "text": "但它们仍然会影响大小调整"
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": " as they are visible.\n            "
+                "text": " 因为它们是可见的。\n            "
               }
             ]
           }
@@ -934,7 +934,7 @@
       },
       {
         "kind": "Topic",
-        "title": "Box Model",
+        "title": "盒模型",
         "content": [
           {
             "kind": "Paragraph",
@@ -953,13 +953,13 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "DO NOT"
+                    "text": "不要"
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": " control layout by code, "
+                "text": " 通过代码控制布局 "
               },
               {
                 "kind": "Strong",
@@ -972,7 +972,7 @@
               },
               {
                 "kind": "Text",
-                "text": " control layout by assigning proper values to properties mentioned below.\n                the layout will be fixed as soon as possible after properties of elements are changed,\n                and it is fast enough,\n                but the timing is not guaranteed.\n            "
+                "text": " 通过为以下属性分配适当的值来控制布局。\n                元素属性更改后，布局将尽快固定。\n                并且速度足够快，\n                但时间点无法保证。\n            "
               }
             ]
           },
@@ -981,20 +981,20 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Any attempts to read the position of size of composition by programming could lead to unexpected result.\n            "
+                "text": "\n                通过编程尝试读取组合的大小位置可能会导致意外结果。\n            "
               }
             ]
           },
           {
             "kind": "Topic",
-            "title": "Minimum size of the composition",
+            "title": "组合的最小大小",
             "content": [
               {
                 "kind": "Paragraph",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    The minimum size is controlled by the following properties:\n                    "
+                    "text": "\n                    最小尺寸由以下属性控制：\n                    "
                   },
                   {
                     "kind": "List",
@@ -1028,7 +1028,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " when "
+                            "text": " 当 "
                           },
                           {
                             "kind": "Strong",
@@ -1081,7 +1081,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " when "
+                            "text": " 当 "
                           },
                           {
                             "kind": "Strong",
@@ -1111,7 +1111,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": "\n                    And also by the following properties that only exist in "
+                    "text": "\n                    以及以下仅存在于 "
                   },
                   {
                     "kind": "Strong",
@@ -1124,7 +1124,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " and its derived classes:\n                    "
+                    "text": " 及其派生类：\n                    "
                   },
                   {
                     "kind": "List",
@@ -1144,7 +1144,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": "'s size"
+                            "text": "的大小"
                           }
                         ]
                       },
@@ -1153,7 +1153,7 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "Children's "
+                            "text": "子项 "
                           },
                           {
                             "kind": "Strong",
@@ -1166,7 +1166,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " when "
+                            "text": " 当 "
                           },
                           {
                             "kind": "Strong",
@@ -1201,7 +1201,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    A composition has a default minimum size to 0.\n                "
+                    "text": "\n                    组合具有默认最小尺寸0。\n                "
                   }
                 ]
               },
@@ -1210,7 +1210,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    By assigning an element to the "
+                    "text": "\n                    通过将元素分配给 "
                   },
                   {
                     "kind": "Strong",
@@ -1223,7 +1223,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " property,\n                    the element is binded to this composition.\n                    The element is rendered using the composition's position and size.\n                "
+                    "text": " 属性，\n                    该元素已绑定到此组合。\n                    元素使用组合的位置和大小进行渲染。\n                "
                   }
                 ]
               },
@@ -1232,7 +1232,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Sometimes the element requires a minimum size to render its full content\n                    (typically for "
+                    "text": "\n                    有时元素需要最小尺寸才能完整渲染其内容\n                    （通常用于 "
                   },
                   {
                     "kind": "Strong",
@@ -1245,7 +1245,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " without enabling trailing ellipses).\n                    To assign the minimum size to this composition,\n                    simply just set "
+                    "text": " 未启用尾部省略号的情况下）。\n                    要为该组合分配最小尺寸，\n                    只需设置 "
                   },
                   {
                     "kind": "Strong",
@@ -1293,7 +1293,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    If this composition has children,\n                    there will also be a minimum size to render all children.\n                    To assign the minimum size to this composition,\n                    simply just set "
+                    "text": "\n                    如果此组合具有子项，\n                    还将有一个最小尺寸以渲染所有子项。\n                    要为该组合分配最小尺寸，\n                    只需设置 "
                   },
                   {
                     "kind": "Strong",
@@ -1328,7 +1328,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    You can also assign a minimum size to this composition using the "
+                    "text": "\n                    您也可以使用 "
                   },
                   {
                     "kind": "Strong",
@@ -1341,7 +1341,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " property.\n                "
+                    "text": " 属性。\n                "
                   }
                 ]
               }
@@ -1349,14 +1349,14 @@
           },
           {
             "kind": "Topic",
-            "title": "Position of the composition",
+            "title": "组合的位置",
             "content": [
               {
                 "kind": "Paragraph",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    The position is controlled by the following properties:\n                    "
+                    "text": "\n                    位置由以下属性控制：\n                    "
                   },
                   {
                     "kind": "List",
@@ -1376,7 +1376,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": ", defaults to (-1,-1,-1,-1).\n                            Any component of "
+                            "text": ", defaults to (-1,-1,-1,-1).\n                            任何组件 "
                           },
                           {
                             "kind": "Strong",
@@ -1389,7 +1389,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " must be -1 or non-negative.\n                            "
+                            "text": " 必须为 -1 或非负数。\n                            "
                           },
                           {
                             "kind": "Strong",
@@ -1402,7 +1402,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " is the gap between this composition and its parent compositon.\n                        "
+                            "text": " 是此组合与其父组合之间的间隙。\n                        "
                           }
                         ]
                       },
@@ -1438,7 +1438,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " of the parent composition, defaults to (0,0,0,0).\n                            Any component of "
+                            "text": " 父组合的，默认为 (0,0,0,0)。\n                            任何组件 "
                           },
                           {
                             "kind": "Strong",
@@ -1451,7 +1451,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " must be non-negative.\n                            "
+                            "text": " 必须为非负数。\n                            "
                           },
                           {
                             "kind": "Strong",
@@ -1464,7 +1464,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " adds a gap between this component and its children compositions.\n                            A component of "
+                            "text": " 在该组件与其子组件之间添加间距。\n                            一个组件 "
                           },
                           {
                             "kind": "Strong",
@@ -1477,7 +1477,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " is considered when the corresponding component of "
+                            "text": " 当考虑相应的组件时 "
                           },
                           {
                             "kind": "Strong",
@@ -1490,7 +1490,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " of a child composition is "
+                            "text": " 子组合的 "
                           },
                           {
                             "kind": "Strong",
@@ -1516,7 +1516,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Considering "
+                    "text": "\n                    考虑 "
                   },
                   {
                     "kind": "Strong",
@@ -1566,7 +1566,7 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "\n                            If both are not -1,\n                            the gap between this composition and its parent is defined by "
+                            "text": "\n                            如果两者均不为 -1，\n                            此组合与其父级之间的间隙由以下定义： "
                           },
                           {
                             "kind": "Strong",
@@ -1601,7 +1601,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " is -1 and "
+                            "text": " 是 -1 和 "
                           },
                           {
                             "kind": "Strong",
@@ -1614,7 +1614,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " is not,\n                            the right gap is defined by "
+                            "text": " 不是，\n                            右侧间隙由定义 "
                           },
                           {
                             "kind": "Strong",
@@ -1627,7 +1627,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": ",\n                            the left gap is decided by the component's width.\n                        "
+                            "text": "，\n                            左侧的间距由组件的宽度决定。\n                        "
                           }
                         ]
                       },
@@ -1649,7 +1649,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " is not -1 and "
+                            "text": " 不为 -1 且 "
                           },
                           {
                             "kind": "Strong",
@@ -1662,7 +1662,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " is not,\n                            the left gap is defined by "
+                            "text": " 不是，\n                            左侧间隙由定义 "
                           },
                           {
                             "kind": "Strong",
@@ -1684,7 +1684,7 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "\n                            If both are -1,\n                            the left gap is defined by "
+                            "text": "\n                            如果两者都是 -1，\n                            左侧间隙由定义 "
                           },
                           {
                             "kind": "Strong",
@@ -1697,7 +1697,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " combining with its parent's "
+                            "text": " 与其父级结合 "
                           },
                           {
                             "kind": "Strong",
@@ -1740,7 +1740,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " and height are similar to what is described above.\n                "
+                    "text": " 和高度类似于上面所描述的。\n                "
                   }
                 ]
               },
@@ -1758,7 +1758,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " also affects the minimum size of the parent composition\n                    if "
+                    "text": " 也会影响父组合的最小尺寸\n                    if "
                   },
                   {
                     "kind": "Strong",
@@ -1771,7 +1771,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " of the parent composition is set to "
+                    "text": " 父组合的设置为 "
                   },
                   {
                     "kind": "Strong",
@@ -1802,7 +1802,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ":\n                    some compositions like "
+                    "text": "：\n                    一些组合如 "
                   },
                   {
                     "kind": "Strong",
@@ -1828,7 +1828,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": "\n                    ignores "
+                    "text": "\n                    忽略 "
                   },
                   {
                     "kind": "Strong",
@@ -1849,14 +1849,14 @@
           },
           {
             "kind": "Topic",
-            "title": "Keeping a button at the right-bottom corner of the window",
+            "title": "将按钮保持在窗口的右下角",
             "content": [
               {
                 "kind": "Paragraph",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    This is very straightforward:\n                    "
+                    "text": "\n                    这非常直接：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -1869,7 +1869,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    By doing this,\n                    the button will keep its right 5 pixel (96 dpi) away from its parent's right,\n                    also its bottom 5 pixel (96 dpi) away from its parent's bottom.\n                    When the size of its parent changes,\n                    the button will stick to the right-bottom corner.\n                "
+                    "text": "\n                    通过这样做，\n                    按钮将保持距离其父容器右侧5像素（96 dpi）的位置。\n                    并且距离其父控件底部5像素（96 dpi）\n                    当其父控件的大小改变时，\n                    按钮将贴靠在右下角。\n                "
                   }
                 ]
               },
@@ -1887,7 +1887,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ":\n                    you are recommended to use "
+                    "text": "：\n                    建议您使用 "
                   },
                   {
                     "kind": "Strong",
@@ -1900,7 +1900,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " when you can,\n                    since the size of the button could change because it has different text under different OS language configuration.\n                    "
+                    "text": " 当你可以的时候，\n                    由于按钮的大小可能会因不同操作系统语言配置下的文本不同而改变。\n                    "
                   },
                   {
                     "kind": "Strong",
@@ -1913,7 +1913,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " helps to organize the button and the content above the button,\n                    or when there are multiple button on the right-bottom size.\n                "
+                    "text": " 帮助组织按钮和按钮上方的内容。\n                    或当右下角有多个按钮时。\n                "
                   }
                 ]
               }
@@ -1923,14 +1923,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Data Binding on Positioning Properties",
+        "title": "定位属性的数据绑定",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Just "
+                "text": "\n                只是 "
               },
               {
                 "kind": "Strong",
@@ -1961,7 +1961,7 @@
               },
               {
                 "kind": "Text",
-                "text": " to bind one positining properties to another.\n                For example,\n                you may want to keep a composition takes exactly the left half of its parent composition.\n                But if you bind "
+                "text": " 将一个定位属性绑定到另一个定位属性。\n                例如，\n                您可能希望保持一个组合恰好占据其父组合的左半部分。\n                但如果你绑定 "
               },
               {
                 "kind": "Strong",
@@ -1974,7 +1974,7 @@
               },
               {
                 "kind": "Text",
-                "text": " of this composition to its size,\n                it could results in keeping growing its parent composition.\n            "
+                "text": " 的此组合的大小，\n                它可能导致其父组合持续增长。\n            "
               }
             ]
           },
@@ -1983,7 +1983,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                When the parent composition grows (e.g. dragging the window),\n                the child composition also grows because it wants to keep the gap exactly to "
+                "text": "\n                当父组合对象增大时（例如拖动窗口），\n                子组合也会增长，因为它希望保持间隙完全一致。 "
               },
               {
                 "kind": "Strong",
@@ -1996,7 +1996,7 @@
               },
               {
                 "kind": "Text",
-                "text": ".\n                After that "
+                "text": ".\n                之后 "
               },
               {
                 "kind": "Strong",
@@ -2009,7 +2009,7 @@
               },
               {
                 "kind": "Text",
-                "text": " also grows because the child composition grows,\n                and it makes the parent composition to grow again because the gap increases.\n                This process never stops,\n                the window will keep growing when it is resizing,\n                until forever.\n            "
+                "text": " 也随着子组件的增加而增长，\n                并且这会导致父级组合重新增长，因为间隙增大了。\n                此过程永不停止，\n                窗口在调整大小时会持续增长。\n                直到永远。\n            "
               }
             ]
           }
@@ -2017,7 +2017,7 @@
       },
       {
         "kind": "Topic",
-        "title": "Other Properties",
+        "title": "其他属性",
         "content": [
           {
             "kind": "Topic",
@@ -2028,7 +2028,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    This property returns the control,\n                    whose "
+                    "text": "\n                    此属性返回控件，\n                    所属的 "
                   },
                   {
                     "kind": "Strong",
@@ -2041,7 +2041,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " is this composition.\n                "
+                    "text": " 这是组合吗？\n                "
                   }
                 ]
               },
@@ -2063,7 +2063,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " when this composition is not a "
+                    "text": " 当此组合不是 "
                   },
                   {
                     "kind": "Strong",
@@ -2076,7 +2076,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " of a control.\n                "
+                    "text": " 控件的\n                "
                   }
                 ]
               }
@@ -2091,7 +2091,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    This property returns the most inner control that contains this composition.\n                "
+                    "text": "\n                    此属性返回包含此组合的最内层控件。\n                "
                   }
                 ]
               },
@@ -2113,7 +2113,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " when this composition has not been put in a control yet.\n                "
+                    "text": " 当此组合尚未放入控件中时。\n                "
                   }
                 ]
               }
@@ -2128,7 +2128,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    This property returns the window that contains this composition.\n                "
+                    "text": "\n                    此属性返回包含此组合的窗口。\n                "
                   }
                 ]
               },
@@ -2150,7 +2150,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " when this composition has not been put in a control yet.\n                    Or the control has not been put in a window yet.\n                "
+                    "text": " 当此组合尚未放入控件中时。\n                    或者该控件尚未放入窗口中。\n                "
                   }
                 ]
               }
@@ -2160,14 +2160,14 @@
       },
       {
         "kind": "Topic",
-        "title": "The timing of layout calculation",
+        "title": "布局计算的时机",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                GacUI will trigger layout calculation automatically,\n                once on each frame until calculation becomes table,\n                and it stops.\n            "
+                "text": "\n                GacUI 将自动触发布局计算，\n                每次帧更新时执行一次，直到计算变为表格。\n                并且它停止了。\n            "
               }
             ]
           },
@@ -2176,7 +2176,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                It can also be triggered by calling the "
+                "text": "\n                也可以通过调用触发 "
               },
               {
                 "kind": "Strong",
@@ -2189,7 +2189,7 @@
               },
               {
                 "kind": "Text",
-                "text": " method on a composition you want to process.\n                It calculates the layout of the composition and all its direct and indirect child compositions.\n            "
+                "text": " 在您想要处理的组合上使用方法。\n                它计算组合及其所有直接和间接子组合的布局。\n            "
               }
             ]
           },
@@ -2198,7 +2198,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Only when the calculation is completed,\n                the following properties of a composition are updated:\n                "
+                "text": "\n                仅当计算完成时，\n                以下组合的属性将被更新：\n                "
               },
               {
                 "kind": "List",
@@ -2231,7 +2231,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " property."
+                        "text": " 属性。"
                       }
                     ]
                   },
@@ -2262,7 +2262,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " property."
+                        "text": " 属性。"
                       }
                     ]
                   },
@@ -2293,7 +2293,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " property."
+                        "text": " 属性。"
                       }
                     ]
                   },
@@ -2324,7 +2324,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " property."
+                        "text": " 属性。"
                       }
                     ]
                   }
@@ -2334,14 +2334,14 @@
           },
           {
             "kind": "Topic",
-            "title": "ForceCalculateSizeImmediately Method",
+            "title": "ForceCalculateSizeImmediately 方法",
             "content": [
               {
                 "kind": "Paragraph",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    This function makes this property refresh its size based on constraints immediately.\n                    But if elements in this composition have not been rendered yet,\n                    or have not been rendered since some properties of elements are changed,\n                    this function could return an inaccurate result.\n                    This depends on the implementation of element renderers.\n                "
+                    "text": "\n                    此函数使此属性立即根据约束条件重新刷新其大小。\n                    但如果此组合中的元素尚未渲染，则\n                    或由于某些元素的属性被更改而尚未重新渲染，\n                    此函数可能返回不准确的结果。\n                    这取决于元素渲染器的实现。\n                "
                   }
                 ]
               }
@@ -2349,14 +2349,14 @@
           },
           {
             "kind": "Topic",
-            "title": "CachedMinSize property",
+            "title": "CachedMinSize 属性",
             "content": [
               {
                 "kind": "Paragraph",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    The minimum size of a composition.\n                "
+                    "text": "\n                    组合的最小尺寸。\n                "
                   }
                 ]
               }
@@ -2364,14 +2364,14 @@
           },
           {
             "kind": "Topic",
-            "title": "CachedMinClientSize property",
+            "title": "CachedMinClientSize 属性",
             "content": [
               {
                 "kind": "Paragraph",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    The minimum client size of a composition,\n                    which is "
+                    "text": "\n                    组合的最小客户端大小，\n                    哪个是 "
                   },
                   {
                     "kind": "Strong",
@@ -2405,14 +2405,14 @@
           },
           {
             "kind": "Topic",
-            "title": "CachedBounds property",
+            "title": "CachedBounds 属性",
             "content": [
               {
                 "kind": "Paragraph",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    The position and actual size of a composition in its parent's coordinate space.\n                "
+                    "text": "\n                    组合在其父坐标系中的位置和实际大小。\n                "
                   }
                 ]
               }
@@ -2420,14 +2420,14 @@
           },
           {
             "kind": "Topic",
-            "title": "CachedClientArea property",
+            "title": "CachedClientArea 属性",
             "content": [
               {
                 "kind": "Paragraph",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    The position and actual size of a composition's client area in its parent's coordinate space,\n                    which is "
+                    "text": "\n                    组合在父坐标系中的位置和实际客户区域大小，\n                    哪个是 "
                   },
                   {
                     "kind": "Strong",

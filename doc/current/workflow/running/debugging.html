@@ -175,7 +175,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            It is able to debug a running Workflow script, if it is not converted to C++.\n            In this section, we will use the debugger to debug this Workflow script:\n            "
+            "text": "\n            如果未转换为 C++，它能够调试正在运行的 Workflow 脚本。\n            在此部分中，我们将使用调试器来调试此工作流脚本：\n            "
           },
           {
             "kind": "Program",
@@ -183,7 +183,7 @@
           },
           {
             "kind": "Text",
-            "text": "\n            We will set a break point at "
+            "text": "\n            我们将在 "
           },
           {
             "kind": "Strong",
@@ -196,7 +196,7 @@
           },
           {
             "kind": "Text",
-            "text": ",\n            and change the "
+            "text": "，\n            并更改 "
           },
           {
             "kind": "Strong",
@@ -209,7 +209,7 @@
           },
           {
             "kind": "Text",
-            "text": " variable,\n            and continue running the script.\n        "
+            "text": " 变量，\n            并继续运行脚本。\n        "
           }
         ]
       },
@@ -218,7 +218,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Firstly, after initializing the assembly, we start debugging:\n            "
+            "text": "\n            首先，在初始化程序集后，我们开始调试：\n            "
           },
           {
             "kind": "Program",
@@ -235,7 +235,7 @@
           },
           {
             "kind": "Text",
-            "text": " inherits "
+            "text": " 继承 "
           },
           {
             "kind": "Strong",
@@ -248,7 +248,7 @@
           },
           {
             "kind": "Text",
-            "text": ", it will be explained later.\n        "
+            "text": "，它将在后面解释。\n        "
           }
         ]
       },
@@ -257,7 +257,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Secondly, we set a break point:\n            "
+            "text": "\n            其次，我们设置一个断点：\n            "
           },
           {
             "kind": "Program",
@@ -265,7 +265,7 @@
           },
           {
             "kind": "Text",
-            "text": "\n            \"0\" means the first file, and \"9\" means the 10th line,\n            which is "
+            "text": "\n            \"0\" 表示第一个文件，\"9\" 表示第10行，\n            哪个是 "
           },
           {
             "kind": "Strong",
@@ -287,7 +287,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            We run the script as usual.\n            After the "
+            "text": "\n            我们像往常一样运行脚本。\n            在 "
           },
           {
             "kind": "Strong",
@@ -300,7 +300,7 @@
           },
           {
             "kind": "Text",
-            "text": " function is executed,\n            we stop debugging:\n            "
+            "text": " 函数被执行，\n            我们停止调试：\n            "
           },
           {
             "kind": "Program",
@@ -313,7 +313,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Now, before "
+            "text": "\n            现在，在 "
           },
           {
             "kind": "Strong",
@@ -326,7 +326,7 @@
           },
           {
             "kind": "Text",
-            "text": " is called,\n            the debugger will be notified.\n            Please note that,\n            after a break point is triggered,\n            if "
+            "text": " 被调用，\n            调试器将收到通知。\n            请注意，\n            在断点被触发后，\n            if "
           },
           {
             "kind": "Strong",
@@ -339,14 +339,14 @@
           },
           {
             "kind": "Text",
-            "text": " or other similar functions are not called,\n            "
+            "text": " 或其他类似函数未被调用\n            "
           },
           {
             "kind": "Strong",
             "content": [
               {
                 "kind": "Text",
-                "text": "mainFunction() will be blocked forever."
+                "text": "mainFunction() 将永远被阻塞。"
               }
             ]
           }
@@ -357,7 +357,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            In order to take action when a break point is triggered,\n            we need to override "
+            "text": "\n            为了在断点被触发时采取行动，\n            我们需要重写 "
           },
           {
             "kind": "Strong",
@@ -383,7 +383,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Details of Workflow runtime API will not be explained here.\n            Basically what this function does is that,\n            we first get the thread context that we are currently debugging against,\n            and then use the metadata in the assembly to know how to change the "
+            "text": "\n            Workflow运行时API的细节将不会在此处解释。\n            基本上这个函数所做的就是，\n            我们首先获取当前正在调试的线程上下文，\n            然后使用程序集中元数据来知道如何更改 "
           },
           {
             "kind": "Strong",
@@ -396,7 +396,7 @@
           },
           {
             "kind": "Text",
-            "text": " variable.\n            After it is done,\n            continue running the script.\n        "
+            "text": " 变量。\n            完成后，\n            继续运行脚本。\n        "
           }
         ]
       },
@@ -405,7 +405,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Since we only set one break point,\n            so we don't need to tell which break point is triggered in "
+            "text": "\n            由于我们只设置了一个断点，\n            所以我们不需要说明是哪个断点被触发了 "
           },
           {
             "kind": "Strong",
@@ -427,7 +427,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Here is what we need to know when debugging Workflow scripts:\n            "
+            "text": "\n            当调试工作流脚本时，我们需要知道以下内容：\n            "
           },
           {
             "kind": "List",
@@ -438,7 +438,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "Threads are by default not assigned with any debugger."
+                    "text": "线程默认未分配任何调试器。"
                   }
                 ]
               },
@@ -447,7 +447,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "A debugger is activated when it is assigned to a specific thread."
+                    "text": "调试器在分配给特定线程时被激活。"
                   }
                 ]
               },
@@ -456,7 +456,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "The same debugger can be assigned to multiple threads."
+                    "text": "相同的调试器可以分配给多个线程。"
                   }
                 ]
               },
@@ -465,7 +465,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Each call to a function returned from "
+                    "text": "\n                    每次调用从函数返回 "
                   },
                   {
                     "kind": "Strong",
@@ -478,7 +478,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " creates a separate "
+                    "text": " 创建一个独立的 "
                   },
                   {
                     "kind": "Strong",
@@ -491,7 +491,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " object.\n                    Do not assume that you will always get the same "
+                    "text": " 对象。\n                    不要假设你总是会得到相同的 "
                   },
                   {
                     "kind": "Strong",
@@ -504,7 +504,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " object per thread.\n                "
+                    "text": " 每个线程一个对象。\n                "
                   }
                 ]
               }

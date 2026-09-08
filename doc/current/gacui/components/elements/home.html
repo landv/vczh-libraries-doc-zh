@@ -147,7 +147,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "Elements"
+                "text": "元素"
               }
             ]
           },
@@ -162,7 +162,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Elements render differently under different DPI and text scaling.\n        "
+            "text": "\n            元素在不同DPI和文本缩放下渲染方式不同。\n        "
           }
         ]
       },
@@ -171,7 +171,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            GacUI with Windows GDI renderer does not support high DPI.\n            Rendering will be performed under 96 DPI with 100% text scaling,\n            and Windows will blur the window using its default behavior.\n        "
+            "text": "\n            GacUI 使用 Windows GDI 渲染器不支持高 DPI。\n            渲染将在 96 DPI 下以 100% 文本缩放进行，\n            并且 Windows 将使用其默认行为对窗口进行模糊处理。\n        "
           }
         ]
       },
@@ -180,7 +180,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            GacUI with Windows Direct2D renderer supports high DPI.\n            Text size will scale with the system,\n            and line width will be enlarged with higher DPI.\n            For example, "
+            "text": "\n            GacUI 使用 Windows Direct2D 渲染器支持高 DPI。\n            文本大小将随系统缩放。\n            并且在高DPI下，线条宽度会增大。\n            例如， "
           },
           {
             "kind": "Strong",
@@ -193,7 +193,7 @@
           },
           {
             "kind": "Text",
-            "text": " draw a one pixel border in 96 DPI.\n            But for 192 DPI, the border becomes 2 pixels.\n            The differences between Direct2D and GDI with higher DPI is that,\n            texts and images are not blurred for Direct2D.\n        "
+            "text": " 在 96 DPI 下绘制一个像素的边框。\n            但对于192 DPI，边框变为2像素。\n            Direct2D 与高 DPI 下的 GDI 之间的差异在于，\n            文本和图像在 Direct2D 中不会模糊。\n        "
           }
         ]
       },
@@ -202,20 +202,20 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Some renderers do not support alpha channel.\n            For example, GDI ignores the value in the alpha channel.\n            But when the alpha channel has a value of zero for geometry elements,\n            it doesn't render.\n        "
+            "text": "\n            某些渲染器不支持Alpha通道。\n            例如，GDI 忽略 alpha 通道中的值。\n            但当几何元素的 alpha 通道值为零时，\n            它不会渲染。\n        "
           }
         ]
       },
       {
         "kind": "Topic",
-        "title": "Format of Shape property",
+        "title": "Shape 属性的格式",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Some elements has a "
+                "text": "\n                一些元素具有一个 "
               },
               {
                 "kind": "Strong",
@@ -228,7 +228,7 @@
               },
               {
                 "kind": "Text",
-                "text": " property to define its shape.\n                It accepts 3 kinds of values:\n                "
+                "text": " 属性来定义其形状。\n                它接受 3 种类型的值：\n                "
               },
               {
                 "kind": "List",
@@ -248,7 +248,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": A rectangle."
+                        "text": ": 矩形。"
                       }
                     ]
                   },
@@ -266,7 +266,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": An ellipse."
+                        "text": ": 椭圆。"
                       }
                     ]
                   },
@@ -284,7 +284,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ": A rectangle with round coners. Radius on X and Y axis for corners are required in the value."
+                        "text": ": 带圆角的矩形。值中需要指定角的X轴和Y轴半径。"
                       }
                     ]
                   }
@@ -296,14 +296,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Format of Color property",
+        "title": "Color 属性的格式",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Some elements has one or more color properties to define colors.\n                The value could be "
+                "text": "\n                一些元素有一个或多个颜色属性来定义颜色。\n                该值可以是 "
               },
               {
                 "kind": "Strong",
@@ -353,7 +353,7 @@
               },
               {
                 "kind": "Text",
-                "text": " renders an OS dependent rectangle for a focused visual effect.\n                In Windows it is formed by multiple dots,\n                which are applied with XOR operator.\n            "
+                "text": " 为聚焦效果渲染一个操作系统相关的矩形。\n                在 Windows 中，它由多个点组成，\n                应用了异或运算符的。\n            "
               }
             ]
           }
@@ -377,7 +377,7 @@
               },
               {
                 "kind": "Text",
-                "text": " renders a border of a specified shape.\n            "
+                "text": " 渲染指定形状的边框。\n            "
               }
             ]
           },
@@ -420,7 +420,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " property defines the color of the border."
+                        "text": " 属性定义了边框的颜色。"
                       }
                     ]
                   }
@@ -448,7 +448,7 @@
               },
               {
                 "kind": "Text",
-                "text": " fills color in a specified shape.\n            "
+                "text": " 填充指定形状的颜色。\n            "
               }
             ]
           },
@@ -491,7 +491,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " property defines the color of the shape."
+                        "text": " 属性定义了形状的颜色。"
                       }
                     ]
                   }
@@ -519,7 +519,7 @@
               },
               {
                 "kind": "Text",
-                "text": " renders a border of a 3D-like rectangle.\n            "
+                "text": " 渲染一个三维效果的矩形边框。\n            "
               }
             ]
           },
@@ -601,7 +601,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                the element looks like a raised rectangle.\n            "
+                "text": "，\n                该元素看起来像一个凸起的矩形。\n            "
               }
             ]
           },
@@ -636,7 +636,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                the element looks like a sink rectangle.\n            "
+                "text": "，\n                该元素看起来像一个下陷的矩形。\n            "
               }
             ]
           }
@@ -660,7 +660,7 @@
               },
               {
                 "kind": "Text",
-                "text": " renders a border of a 3D-like line.\n            "
+                "text": " 渲染一个三维效果的边框线条。\n            "
               }
             ]
           },
@@ -721,7 +721,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " property defines the direction of the line. The value could be "
+                        "text": " 属性定义了线条的方向。该值可以是 "
                       },
                       {
                         "kind": "Strong",
@@ -786,7 +786,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                the element looks like a raised line.\n            "
+                "text": "，\n                该元素看起来像一条凸起的线。\n            "
               }
             ]
           },
@@ -821,7 +821,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                the element looks like a sink line.\n            "
+                "text": "，\n                该元素看起来像一条水槽线。\n            "
               }
             ]
           }
@@ -845,7 +845,7 @@
               },
               {
                 "kind": "Text",
-                "text": " fills gradient colors in a specified shape.\n            "
+                "text": " 填充指定形状的渐变颜色。\n            "
               }
             ]
           },
@@ -888,7 +888,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " property defines the beginning color."
+                        "text": " 属性定义了起始颜色。"
                       }
                     ]
                   },
@@ -906,7 +906,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " property defines the ending color."
+                        "text": " 属性定义了结束颜色。"
                       }
                     ]
                   },
@@ -924,7 +924,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " property defines the direction of the gradient. The value could be "
+                        "text": " 属性定义了渐变的方向。该值可以是 "
                       },
                       {
                         "kind": "Strong",
@@ -1004,7 +1004,7 @@
               },
               {
                 "kind": "Text",
-                "text": " renders a border with gradient colors of a specified shape.\n            "
+                "text": " 用指定形状的渐变颜色绘制边框。\n            "
               }
             ]
           },
@@ -1029,7 +1029,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " defines the width of the border."
+                        "text": " 定义边框的宽度。"
                       }
                     ]
                   },
@@ -1047,7 +1047,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " property defines the outer color of the border. It fades to "
+                        "text": " 属性定义了边框的外侧颜色。它会渐变为 "
                       },
                       {
                         "kind": "Strong",
@@ -1060,7 +1060,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " towards the center."
+                        "text": " 朝中心方向。"
                       }
                     ]
                   }
@@ -1088,7 +1088,7 @@
               },
               {
                 "kind": "Text",
-                "text": " renders text.\n            "
+                "text": " 渲染文本。\n            "
               }
             ]
           },
@@ -1113,7 +1113,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " defines the color of the text."
+                        "text": " 定义文本的颜色。"
                       }
                     ]
                   },
@@ -1131,7 +1131,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " defines the font of the text. It could be binded to the "
+                        "text": " 定义文本的字体。它可以绑定到 "
                       },
                       {
                         "kind": "Strong",
@@ -1144,7 +1144,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " property of a control or the "
+                        "text": " 控件或的属性 "
                       },
                       {
                         "kind": "Strong",
@@ -1157,7 +1157,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " property of a control template.\n                        The type of this property is "
+                        "text": " 控件模板的属性。\n                        此属性的类型是 "
                       },
                       {
                         "kind": "Strong",
@@ -1170,7 +1170,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ", which is a "
+                        "text": "，这是一个 "
                       },
                       {
                         "kind": "PageLink",
@@ -1202,7 +1202,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " defines the width of the text."
+                        "text": " 定义文本的宽度。"
                       }
                     ]
                   },
@@ -1220,7 +1220,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " defines the content of the text."
+                        "text": " 定义文本的内容。"
                       }
                     ]
                   },
@@ -1404,7 +1404,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ", the element wraps the text to multiple line if it exceeds the expected width."
+                        "text": "，如果文本超出预期宽度，则该元素将文本换行到多行。"
                       }
                     ]
                   },
@@ -1448,7 +1448,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ", the element renders out-of-bound text to "
+                        "text": "，该元素将超出边界的文本渲染到 "
                       },
                       {
                         "kind": "Strong",
@@ -1461,7 +1461,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " line if it exceeds the expected width."
+                        "text": " 如果超过预期宽度。"
                       }
                     ]
                   },
@@ -1505,7 +1505,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ", the element interpret "
+                        "text": "，该元素解释 "
                       },
                       {
                         "kind": "Strong",
@@ -1518,7 +1518,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " as a line break."
+                        "text": " 作为换行符。"
                       }
                     ]
                   },
@@ -1562,7 +1562,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ", the minimum size of the element does not consider "
+                        "text": "，该元素的最小尺寸不考虑 "
                       },
                       {
                         "kind": "Strong",
@@ -1588,7 +1588,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ", the minimum height of the element depends on the expected width, and the minimum width is the expected width.\n                    "
+                        "text": "，该元素的最小高度取决于预期宽度，最小宽度为预期宽度。\n                    "
                       }
                     ]
                   }
@@ -1616,7 +1616,7 @@
               },
               {
                 "kind": "Text",
-                "text": " renders an image.\n            "
+                "text": " 渲染图像。\n            "
               }
             ]
           },
@@ -1641,7 +1641,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " defines the source of an image.\n                        It could be binded to image properties of a control or a control template.\n                        The "
+                        "text": " 定义图像的来源。\n                        它可以绑定到控件或控件模板的图像属性\n                        该 "
                       },
                       {
                         "kind": "PageLink",
@@ -1655,7 +1655,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " binding could be used to specify an image from the resource.\n                    "
+                        "text": " 绑定可用于指定来自资源的图像\n                    "
                       }
                     ]
                   },
@@ -1673,7 +1673,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " defaults to 0. It specified the target frame in the image to render. All image contains only one frame except "
+                        "text": " 默认为 0。它指定了要渲染的图像中的目标帧。所有图像仅包含一个帧，除非 "
                       },
                       {
                         "kind": "Strong",
@@ -1870,7 +1870,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ", image fills the expected size instead of keeping its original size. And the minimum size of this element becomes 0."
+                        "text": "，图像会填充预期大小而不是保持其原始大小。并且该元素的最小大小变为 0。"
                       }
                     ]
                   },
@@ -1914,7 +1914,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ", the element renders a gray-scaled image. Typically this is used on icons of toolstrip buttons."
+                        "text": "，该元素渲染灰度图像。通常用于工具栏按钮的图标。"
                       }
                     ]
                   }
@@ -1942,7 +1942,7 @@
               },
               {
                 "kind": "Text",
-                "text": " renders a polygon with a border color and a filling color.\n            "
+                "text": " 用边框颜色和填充颜色绘制一个多边形。\n            "
               }
             ]
           },
@@ -1980,7 +1980,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ". It defines the color of the border."
+                        "text": ". 它定义了边框的颜色。"
                       }
                     ]
                   },
@@ -2011,7 +2011,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ". It defines the color of the shape."
+                        "text": ". 它定义了形状的颜色。"
                       }
                     ]
                   },
@@ -2029,7 +2029,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " defines the size of the polygon. It also becomes the minimum size of this element."
+                        "text": " 定义多边形的大小。它也变为此元素的最小大小。"
                       }
                     ]
                   },
@@ -2047,7 +2047,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " is an array of "
+                        "text": " 是一个数组 "
                       },
                       {
                         "kind": "Strong",
@@ -2060,7 +2060,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ". It defines all vertices of the polygon in order.\n                    "
+                        "text": ". 它按顺序定义多边形的所有顶点。\n                    "
                       }
                     ]
                   }
@@ -2086,7 +2086,7 @@
               },
               {
                 "kind": "Text",
-                "text": " property creates a coordinate space for "
+                "text": " 属性创建了一个坐标空间 "
               },
               {
                 "kind": "Strong",
@@ -2099,7 +2099,7 @@
               },
               {
                 "kind": "Text",
-                "text": " with (0,0) in the top-left corner.\n                When the size of the element is larger than the minimum size,\n                the coordinate space is aligned to the center.\n            "
+                "text": " 以(0,0)位于左上角。\n                当元素的大小大于最小尺寸时，\n                坐标空间以中心对齐。\n            "
               }
             ]
           }
@@ -2107,14 +2107,14 @@
       },
       {
         "kind": "Topic",
-        "title": "<ColorizedTextElement> and <DocumentElement>",
+        "title": "<ColorizedTextElement> 和 <DocumentElement>",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                These elements are for implementing editing and rendering of all text box controls.\n                They are not supposed to be used directly.\n            "
+                "text": "\n                这些元素用于实现所有文本框控件的编辑和渲染。\n                它们不打算直接使用。\n            "
               }
             ]
           }

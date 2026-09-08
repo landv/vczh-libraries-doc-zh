@@ -127,7 +127,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Enums can be defined in "
+            "text": "\n            枚举可以在 "
           },
           {
             "kind": "Strong",
@@ -188,7 +188,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            There are two kinds of enums: enumerations and flags.\n            The main difference between them is that,\n            the \""
+            "text": "\n            有两种类型的枚举：枚举和标志。\n            它们之间的主要区别是，\n            the \""
           },
           {
             "kind": "Strong",
@@ -214,7 +214,7 @@
           },
           {
             "kind": "Text",
-            "text": "\" operator is not defined for enumerations.\n        "
+            "text": "\" 运算符未为枚举定义。\n        "
           }
         ]
       },
@@ -223,7 +223,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            A value of any enum can be explicitly converted to "
+            "text": "\n            任何枚举类型的值都可以显式转换为 "
           },
           {
             "kind": "Strong",
@@ -236,7 +236,7 @@
           },
           {
             "kind": "Text",
-            "text": ".\n            A value of "
+            "text": ".\n            的值为 "
           },
           {
             "kind": "Strong",
@@ -249,20 +249,20 @@
           },
           {
             "kind": "Text",
-            "text": " can also be explicitly converted to any enum type,\n            but the runtime does not check if the conversion result is a valid enum value or not.\n        "
+            "text": " 也可以显式转换为任何枚举类型，\n            但运行时不会检查转换结果是否为有效的枚举值。\n        "
           }
         ]
       },
       {
         "kind": "Topic",
-        "title": "Enumerations",
+        "title": "枚举",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                An enumeration is a type that has finite values.\n                "
+                "text": "\n                枚举是一种具有有限值的类型。\n                "
               },
               {
                 "kind": "Program",
@@ -286,7 +286,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "The first item must be assigned with 0."
+                        "text": "第一个项必须赋值为0"
                       }
                     ]
                   },
@@ -295,7 +295,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "Any other item must be 1 greater than the previous item."
+                        "text": "任何其他项必须比前一项大1"
                       }
                     ]
                   },
@@ -330,7 +330,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                There is 4 ways to use an enum item:\n                "
+                "text": "\n                使用枚举项有 4 种方式：\n                "
               },
               {
                 "kind": "Program",
@@ -374,7 +374,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                When the place accepting an enum item expression has a known type,\n                the name of the enum item is enough.\n                Variable "
+                "text": "\n                当接受枚举项表达式的占位符具有已知类型时，\n                枚举项的名称就足够了。\n                变量 "
               },
               {
                 "kind": "Strong",
@@ -387,7 +387,7 @@
               },
               {
                 "kind": "Text",
-                "text": " has its type explicitly declared.\n                The parameter type of function "
+                "text": " 其类型已显式声明。\n                函数的参数类型 "
               },
               {
                 "kind": "Strong",
@@ -400,7 +400,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is also explicitly declared.\n                So "
+                "text": " 也被显式声明了。\n                So "
               },
               {
                 "kind": "Strong",
@@ -413,7 +413,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is not needed.\n            "
+                "text": " 不需要。\n            "
               }
             ]
           },
@@ -440,7 +440,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Another way is to explicitly say the name of the enum.\n            "
+                "text": "\n                另一种方法是显式地写出枚举的名称。\n            "
               }
             ]
           },
@@ -452,7 +452,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "var c = Autumn of Seasons;"
+                    "text": "var c = 季节的秋"
                   }
                 ]
               },
@@ -467,7 +467,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                The third way is to explicitly declare the type of the expression.\n                This usage is similar to "
+                "text": "\n                第三种方法是显式声明表达式的类型。\n                此用法类似于 "
               },
               {
                 "kind": "Strong",
@@ -493,7 +493,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                by explicitly declared that "
+                "text": "，\n                通过显式声明 "
               },
               {
                 "kind": "Strong",
@@ -519,20 +519,20 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                the place accepting an enum item is \""
+                "text": "，\n                接受枚举项的位置是“"
               },
               {
                 "kind": "Strong",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "<HERE> of Seasons"
+                    "text": "季节的<HERE>"
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": "\"\",\n                so this place has a known type.\n            "
+                "text": "\"\",\n                所以这个地方有一个已知的类型。\n            "
               }
             ]
           }
@@ -540,14 +540,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Flags",
+        "title": "标志",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                A flag is a type that has finite values and their combinations.\n                "
+                "text": "\n                标志是一种具有有限值及其组合的类型。\n                "
               },
               {
                 "kind": "Program",
@@ -571,7 +571,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "The first item must be assigned with 0. Usually the first item is "
+                        "text": "第一个项必须赋值为0。通常第一个项是 "
                       },
                       {
                         "kind": "Strong",
@@ -584,7 +584,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ", you are free to use any name."
+                        "text": "，你可以自由使用任何名称。"
                       }
                     ]
                   },
@@ -593,7 +593,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "Any other item must be twice as much as the previous item."
+                        "text": "任何其他项必须是前一项的两倍"
                       }
                     ]
                   },
@@ -602,7 +602,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "Aliases of item combinations must be placed after all items."
+                        "text": "项目组合的别名必须放在所有项目之后。"
                       }
                     ]
                   },
@@ -637,7 +637,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Just like enums, flags also have type inferencing:\n                "
+                "text": "\n                就像枚举一样，标志位也具有类型推断功能：\n                "
               },
               {
                 "kind": "Program",
@@ -650,7 +650,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                As you can see,\n                the operator \""
+                "text": "\n                如你所见，\n                运算符 \""
               },
               {
                 "kind": "Strong",
@@ -676,7 +676,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\" are automatically defined for flags.\n                When it is used on flags,\n                it requires that both operands must be the same type.\n                The type of the result is the same to its operands.\n                "
+                "text": "\" 都会自动为标志定义。\n                当它用于标志时，\n                它要求两个操作数必须是相同的类型。\n                结果的类型与操作数相同。\n                "
               },
               {
                 "kind": "List",
@@ -700,7 +700,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": "\" returns the union of two operands."
+                        "text": "\" 返回两个操作数的并集。"
                       }
                     ]
                   },
@@ -722,7 +722,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": "\" returns the intersection of two operands."
+                        "text": "\" 返回两个操作数的交集。"
                       }
                     ]
                   }
@@ -730,7 +730,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                These two operators are also defined for integers.\n            "
+                "text": "\n                这两个运算符也定义为整数。\n            "
               }
             ]
           }

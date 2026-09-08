@@ -127,7 +127,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Structs can be defined in "
+            "text": "\n            结构体可以在 "
           },
           {
             "kind": "Strong",
@@ -188,7 +188,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            A struct is a tuple with all fields assigned a name:\n            "
+            "text": "\n            结构体是所有字段都分配了名称的元组：\n            "
           },
           {
             "kind": "Program",
@@ -196,7 +196,7 @@
           },
           {
             "kind": "Text",
-            "text": "\n            Types of fields should only be value types, like:\n            "
+            "text": "\n            字段的类型应仅为值类型，例如：\n            "
           },
           {
             "kind": "List",
@@ -216,7 +216,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "enums"
+                    "text": "枚举"
                   }
                 ]
               },
@@ -225,7 +225,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "structs"
+                    "text": "结构体"
                   }
                 ]
               },
@@ -243,7 +243,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "nullable types"
+                    "text": "可为空类型"
                   }
                 ]
               }
@@ -251,7 +251,7 @@
           },
           {
             "kind": "Text",
-            "text": "\n            A struct is not allowed to have itself or its nullable type as a direct or indirect field.\n        "
+            "text": "\n            结构体不允许具有自身或其可空类型作为直接或间接字段。\n        "
           }
         ]
       },
@@ -260,7 +260,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Structs cannot inherit from other structs.\n        "
+            "text": "\n            结构体不能从其他结构体继承。\n        "
           }
         ]
       },
@@ -273,7 +273,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                The constructor expression is the only way to allocate a value of a struct type:\n                "
+                "text": "\n                构造函数表达式是分配结构体类型值的唯一方式：\n                "
               },
               {
                 "kind": "Program",
@@ -281,7 +281,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                A constructor expression does not have an explicit type,\n                so the place receiving this expression must have an explicit type,\n                otherwise an error will be generated.\n            "
+                "text": "\n                构造函数表达式没有显式类型，\n                因此接收此表达式的地点必须具有显式类型，\n                否则将生成一个错误。\n            "
               }
             ]
           },
@@ -299,7 +299,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is not allowed to be assigned to a variable of a struct type.\n                But there is an optional type that helps in this case:\n                "
+                "text": " 不允许赋值给结构类型变量。\n                但有一种可选类型可以帮助这种情况：\n                "
               },
               {
                 "kind": "Program",
@@ -311,7 +311,7 @@
       },
       {
         "kind": "Topic",
-        "title": "Accessing fields",
+        "title": "访问字段",
         "content": [
           {
             "kind": "Paragraph",
@@ -357,7 +357,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is 1, and "
+                "text": " 是 1， "
               },
               {
                 "kind": "Strong",
@@ -370,7 +370,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is 2.\n            "
+                "text": " 是 2。\n            "
               }
             ]
           },
@@ -418,7 +418,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is 7, and "
+                "text": " 是 7， "
               },
               {
                 "kind": "Strong",
@@ -431,7 +431,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is 8.\n            "
+                "text": " 是 8。\n            "
               }
             ]
           },
@@ -440,7 +440,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                When "
+                "text": "\n                当 "
               },
               {
                 "kind": "Strong",
@@ -453,7 +453,7 @@
               },
               {
                 "kind": "Text",
-                "text": " becomes "
+                "text": " 变成 "
               },
               {
                 "kind": "Strong",
@@ -466,7 +466,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                accessing fields in "
+                "text": "，\n                访问字段在 "
               },
               {
                 "kind": "Strong",
@@ -479,7 +479,7 @@
               },
               {
                 "kind": "Text",
-                "text": " will result in throwing an exception.\n            "
+                "text": " 将导致抛出异常。\n            "
               }
             ]
           },
@@ -488,7 +488,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Struct fields are readonly,\n                after a struct is allocated,\n                fields cannot be re-assigned.\n                But the struct variable itself can be assigned with a new value.\n            "
+                "text": "\n                结构体字段是只读的，\n                在结构体被分配后，\n                字段不能重新赋值。\n                但结构体变量本身可以用新值赋值。\n            "
               }
             ]
           }
@@ -496,14 +496,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Ambiguity",
+        "title": "歧义",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Due to rich kinds of expression that Workflow supports,\n                sometimes the constructor expression could introduce ambiguity.\n                In this case,\n                semicolons are allowed after every fields:\n                "
+                "text": "\n                由于工作流支持丰富的表达形式，\n                有时构造函数表达式可能会引入二义性。\n                在这种情况下，\n                分号允许出现在每个字段之后：\n                "
               },
               {
                 "kind": "Program",
@@ -511,7 +511,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                Please note that,\n                semicolons must either appear after all fields,\n                or completely be comiited.\n            "
+                "text": "\n                请注意，\n                分号必须出现在所有字段之后，\n                或完全提交。\n            "
               }
             ]
           }

@@ -132,14 +132,14 @@
   "numberBeforeTitle": false,
   "topic": {
     "kind": "Topic",
-    "title": "Implementing (interface)",
+    "title": "实现（接口）",
     "content": [
       {
         "kind": "Paragraph",
         "content": [
           {
             "kind": "Text",
-            "text": "\n            New interface expressions are the only way to implement interfaces.\n        "
+            "text": "\n            新接口表达式是实现接口的唯一方式。\n        "
           }
         ]
       },
@@ -148,7 +148,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            An new interface expression implements one interface,\n            but this interface can inherit from multiple other interfaces.\n        "
+            "text": "\n            一个新的接口表达式实现了一个接口，\n            但此接口可以继承多个其他接口。\n        "
           }
         ]
       },
@@ -157,20 +157,20 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            If the interface is  "
+            "text": "\n            如果接口是，  "
           },
           {
             "kind": "Strong",
             "content": [
               {
                 "kind": "Text",
-                "text": "interface IThatInterface { ... }"
+                "text": "接口 IThatInterface { ... }"
               }
             ]
           },
           {
             "kind": "Text",
-            "text": ",\n            the new interface expressions should use "
+            "text": "，\n            新的界面表达式应使用 "
           },
           {
             "kind": "Strong",
@@ -183,7 +183,7 @@
           },
           {
             "kind": "Text",
-            "text": ",\n            to create an object that hold by a shared pointer.\n        "
+            "text": "，\n            创建一个由共享指针持有的对象。\n        "
           }
         ]
       },
@@ -192,20 +192,20 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            If the interface is  "
+            "text": "\n            如果接口是，  "
           },
           {
             "kind": "Strong",
             "content": [
               {
                 "kind": "Text",
-                "text": "interface IThatInterface* { ... }"
+                "text": "接口 IThatInterface* { ... }"
               }
             ]
           },
           {
             "kind": "Text",
-            "text": ",\n            the new interface expressions should use "
+            "text": "，\n            新的界面表达式应使用 "
           },
           {
             "kind": "Strong",
@@ -218,7 +218,7 @@
           },
           {
             "kind": "Text",
-            "text": ",\n            to create an object that hold by a raw pointer.\n            If such object is not deleted, it cause memory leaks.\n        "
+            "text": "，\n            创建一个由原始指针持有的对象。\n            如果此类对象未被删除，会导致内存泄漏。\n        "
           }
         ]
       },
@@ -227,7 +227,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Besides of members in the interface,\n            the new interface expressions could also contain:\n            "
+            "text": "\n            除了接口中的成员之外，\n            新的接口表达式还可以包含：\n            "
           },
           {
             "kind": "List",
@@ -238,7 +238,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "variables"
+                    "text": "变量"
                   }
                 ]
               },
@@ -247,7 +247,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "functions not starting with "
+                    "text": "以不开头的函数 "
                   },
                   {
                     "kind": "Strong",
@@ -264,13 +264,13 @@
           },
           {
             "kind": "Text",
-            "text": "\n            All of them are only accessible by name inside the new interface expressions.\n        "
+            "text": "\n            它们都只能通过名称在新的接口表达式中访问。\n        "
           }
         ]
       },
       {
         "kind": "Topic",
-        "title": "New and delete objects implementing shared interfaces",
+        "title": "使用 new 和 delete 创建实现共享接口的对象",
         "content": [
           {
             "kind": "Paragraph",
@@ -286,7 +286,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                You are not allowed to write "
+                "text": "\n                您不允许编写 "
               },
               {
                 "kind": "Strong",
@@ -299,14 +299,14 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                because the interface is not "
+                "text": "\n                因为接口不是 "
               },
               {
                 "kind": "Strong",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "interface IMyInterface*"
+                    "text": "接口 IMyInterface*"
                   }
                 ]
               },
@@ -321,7 +321,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                The type of "
+                "text": "\n                类型是 "
               },
               {
                 "kind": "Strong",
@@ -347,7 +347,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                but you can still get a "
+                "text": "，\n                但你仍然可以获取一个 "
               },
               {
                 "kind": "Strong",
@@ -360,7 +360,7 @@
               },
               {
                 "kind": "Text",
-                "text": " by doing an explicit cast:\n                "
+                "text": " 通过显式转换：\n                "
               },
               {
                 "kind": "Strong",
@@ -382,7 +382,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                When the object that "
+                "text": "\n                当对象的 "
               },
               {
                 "kind": "Strong",
@@ -395,20 +395,20 @@
               },
               {
                 "kind": "Text",
-                "text": " points to is still alive,\n                "
+                "text": " 指向的对象仍然存活，\n                "
               },
               {
                 "kind": "Strong",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "cast IMyInterface^ my2"
+                    "text": "将 IMyInterface^ my2 转换为"
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": " is safe.\n            "
+                "text": " 是安全的。\n            "
               }
             ]
           },
@@ -417,7 +417,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                When all "
+                "text": "\n                当所有 "
               },
               {
                 "kind": "Strong",
@@ -430,7 +430,7 @@
               },
               {
                 "kind": "Text",
-                "text": " values end their life cycles,\n                the object will be deleted,\n                even if there are still "
+                "text": " 值会结束它们的生命周期，\n                对象将被删除，\n                即使仍然有 "
               },
               {
                 "kind": "Strong",
@@ -443,7 +443,7 @@
               },
               {
                 "kind": "Text",
-                "text": " values.\n            "
+                "text": " 值。\n            "
               }
             ]
           },
@@ -452,7 +452,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                It crashes if you call a member on a deleted object.\n            "
+                "text": "\n                如果调用已删除对象的成员，它会崩溃。\n            "
               }
             ]
           },
@@ -461,7 +461,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                It crashes if you "
+                "text": "\n                如果你 "
               },
               {
                 "kind": "Strong",
@@ -474,7 +474,7 @@
               },
               {
                 "kind": "Text",
-                "text": " an object that hold by shared pointers.\n            "
+                "text": " 一个由共享指针持有的对象。\n            "
               }
             ]
           }
@@ -482,7 +482,7 @@
       },
       {
         "kind": "Topic",
-        "title": "New and delete objects implementing raw interfaces",
+        "title": "使用 new 和 delete 创建和删除实现原始接口的对象",
         "content": [
           {
             "kind": "Paragraph",
@@ -498,7 +498,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                You are not allowed to write "
+                "text": "\n                您不允许编写 "
               },
               {
                 "kind": "Strong",
@@ -511,14 +511,14 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                because the interface is "
+                "text": "\n                因为接口是 "
               },
               {
                 "kind": "Strong",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "interface IMyInterface*"
+                    "text": "接口 IMyInterface*"
                   }
                 ]
               },
@@ -533,7 +533,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                The type of "
+                "text": "\n                类型是 "
               },
               {
                 "kind": "Strong",
@@ -559,7 +559,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                but you can still get a "
+                "text": "，\n                但你仍然可以获取一个 "
               },
               {
                 "kind": "Strong",
@@ -572,7 +572,7 @@
               },
               {
                 "kind": "Text",
-                "text": " by doing an explicit cast:\n                "
+                "text": " 通过显式转换：\n                "
               },
               {
                 "kind": "Strong",
@@ -594,7 +594,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                When the object that "
+                "text": "\n                当对象的 "
               },
               {
                 "kind": "Strong",
@@ -607,20 +607,20 @@
               },
               {
                 "kind": "Text",
-                "text": " points to is still alive,\n                "
+                "text": " 指向的对象仍然存活，\n                "
               },
               {
                 "kind": "Strong",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "cast IMyInterface^ my"
+                    "text": "将 IMyInterface^ my 转换为"
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": " is safe.\n            "
+                "text": " 是安全的。\n            "
               }
             ]
           },
@@ -629,7 +629,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                When all "
+                "text": "\n                当所有 "
               },
               {
                 "kind": "Strong",
@@ -642,7 +642,7 @@
               },
               {
                 "kind": "Text",
-                "text": " values end their life cycles,\n                the object will be deleted,\n                even if there are still "
+                "text": " 值会结束它们的生命周期，\n                对象将被删除，\n                即使仍然有 "
               },
               {
                 "kind": "Strong",
@@ -655,7 +655,7 @@
               },
               {
                 "kind": "Text",
-                "text": " values.\n            "
+                "text": " 值。\n            "
               }
             ]
           },
@@ -664,7 +664,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                It crashes if you call a member on a deleted object.\n            "
+                "text": "\n                如果调用已删除对象的成员，它会崩溃。\n            "
               }
             ]
           },
@@ -673,7 +673,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                It crashes if you "
+                "text": "\n                如果你 "
               },
               {
                 "kind": "Strong",
@@ -686,7 +686,7 @@
               },
               {
                 "kind": "Text",
-                "text": " an object that hold by shared pointers.\n            "
+                "text": " 一个由共享指针持有的对象。\n            "
               }
             ]
           },
@@ -695,7 +695,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                In order to delete "
+                "text": "\n                为了删除 "
               },
               {
                 "kind": "Strong",
@@ -708,7 +708,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                you either call "
+                "text": "，\n                你要么调用 "
               },
               {
                 "kind": "Strong",
@@ -728,7 +728,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "cast IMyInterface^ my"
+                    "text": "将 IMyInterface^ my 转换为"
                   }
                 ]
               },
@@ -742,14 +742,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Memory leaks",
+        "title": "内存泄漏",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                If two objects hold each other by shared points,\n                it causes memory leaks:\n                "
+                "text": "\n                如果两个对象通过共享指针相互持有，\n                它会导致内存泄漏：\n                "
               },
               {
                 "kind": "Program",
@@ -757,7 +757,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                Until you break the connection manually.\n            "
+                "text": "\n                直到您手动断开连接。\n            "
               }
             ]
           }

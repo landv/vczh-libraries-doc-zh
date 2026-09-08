@@ -176,14 +176,14 @@
   "numberBeforeTitle": false,
   "topic": {
     "kind": "Topic",
-    "title": "Introduction to GacUI",
+    "title": "GacUI 简介",
     "content": [
       {
         "kind": "Paragraph",
         "content": [
           {
             "kind": "Text",
-            "text": "\n            GacUI is a high performance cross-platform C++ UI library with built-in\n            "
+            "text": "\n            GacUI 是一个内置的高性能跨平台 C++ UI 库。\n            "
           },
           {
             "kind": "List",
@@ -194,7 +194,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "rich control libraries"
+                    "text": "丰富控件库"
                   }
                 ]
               },
@@ -203,7 +203,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "powerful layout mechanism"
+                    "text": "强大的布局机制"
                   }
                 ]
               },
@@ -212,7 +212,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "control/item template mechanism"
+                    "text": "控件/项目模板机制"
                   }
                 ]
               },
@@ -221,7 +221,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "reactive design"
+                    "text": "响应式设计"
                   }
                 ]
               },
@@ -239,7 +239,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "MVVM support"
+                    "text": "MVVM 支持"
                   }
                 ]
               }
@@ -252,7 +252,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            GacUI XML Resource is an recommended to build a GacUI application.\n            The provided toolchain consumes GacUI XML Resource and output:\n            "
+            "text": "\n            GacUI XML 资源是构建 GacUI 应用程序的推荐方式。\n            提供的工具链消耗 GacUI XML 资源并输出：\n            "
           },
           {
             "kind": "List",
@@ -266,7 +266,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "\n                        A compiled binary resource format.\n                    "
+                        "text": "\n                        一种编译后的二进制资源格式。\n                    "
                       }
                     ]
                   },
@@ -275,7 +275,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "\n                        Such binary files contain only resources like\n                        text, image, rich text documents, etc.\n                    "
+                        "text": "\n                        这样的二进制文件仅包含资源，例如\n                        文本、图像、富文本文档等。\n                    "
                       }
                     ]
                   }
@@ -289,7 +289,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "\n                        Per-platform compiled "
+                        "text": "\n                        跨平台编译 "
                       },
                       {
                         "kind": "Strong",
@@ -302,7 +302,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " assemblies. "
+                        "text": " 程序集。 "
                       },
                       {
                         "kind": "Strong",
@@ -320,7 +320,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "\n                        These assemblies are compiled from XML descripted\n                        UIs, animations, localed texts, etc.\n                    "
+                        "text": "\n                        这些程序集是从XML描述编译的\n                        UI、动画、本地化文本等。\n                    "
                       }
                     ]
                   },
@@ -329,7 +329,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "\n                        You need to know what CPU platform the application is running one\n                        to load the correct assembly file at runtime.\n                        Reflection must be enabled in order to execute the assembly.\n                    "
+                        "text": "\n                        您需要知道应用程序正在运行的 CPU 平台\n                        在运行时加载正确的程序集文件。\n                        必须启用反射才能执行程序集。\n                    "
                       }
                     ]
                   }
@@ -343,7 +343,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "\n                        C++/14 C++ files translated from above assemblies. "
+                        "text": "\n                        从上述程序集转换的 C++/14 C++ 文件。 "
                       },
                       {
                         "kind": "Strong",
@@ -361,7 +361,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "\n                        These C++ files are compiled from XML descripted\n                        UIs, animations, located texts, etc.\n                    "
+                        "text": "\n                        这些 C++ 文件是由 XML 描述编译的\n                        UI、动画、定位文本等。\n                    "
                       }
                     ]
                   },
@@ -370,14 +370,14 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "\n                        If all UI objects are known and no code need to be dynamically downloaded,\n                        instead of loading assemblies with reflection enabled at runtime,\n                        you can link all generated C++ code with your application\n                        "
+                        "text": "\n                        如果所有 UI 对象都是已知的，并且不需要动态下载任何代码，\n                        而不是在运行时使用反射启用加载程序集，\n                        您可以将所有生成的 C++ 代码链接到您的应用程序中\n                        "
                       },
                       {
                         "kind": "Strong",
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "to avoid enabling Reflection"
+                            "text": "以避免启用反射"
                           }
                         ]
                       },
@@ -392,7 +392,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "\n                        In this way your application could start very quickly\n                        and reduce 90% of the binary size.\n                    "
+                        "text": "\n                        以这种方式，您的应用程序可以非常快速地启动\n                        并减少90%的二进制大小。\n                    "
                       }
                     ]
                   }
@@ -407,7 +407,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            These platforms are supported at this moment:\n            "
+            "text": "\n            当前支持以下平台：\n            "
           },
           {
             "kind": "List",
@@ -421,13 +421,13 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "Win32 Subsystem"
+                        "text": "Win32子系统"
                       }
                     ]
                   },
                   {
                     "kind": "Text",
-                    "text": ": You could use either GDI or Direct2D 1.0/1.1 to render UI."
+                    "text": ": 您可以使用 GDI 或 Direct2D 1.0/1.1 来渲染 UI。"
                   }
                 ]
               },
@@ -445,7 +445,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ": Experimental but it is working. ("
+                    "text": ": 实验性功能，但目前可以工作。("
                   },
                   {
                     "kind": "PageLink",
@@ -477,7 +477,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ": Finished but you have to built toolchain by yourself. ("
+                    "text": ": 已完成，但你需要自己构建工具链。("
                   },
                   {
                     "kind": "PageLink",
@@ -499,7 +499,7 @@
           },
           {
             "kind": "Text",
-            "text": "\n            In the future, more platforms will be included in GacUI like:\n            "
+            "text": "\n            在未来，GacUI 将包含更多平台，例如：\n            "
           },
           {
             "kind": "List",
@@ -519,7 +519,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "WASM running on browsers"
+                    "text": "WASM 在浏览器上运行"
                   }
                 ]
               },
@@ -528,7 +528,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "Command-line interface applications"
+                    "text": "命令行界面应用程序"
                   }
                 ]
               },
@@ -537,7 +537,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "Single-window mode, which renders menus and dialog boxes in the main window, instead of creating new native windows for them."
+                    "text": "单窗口模式，将菜单和对话框渲染在主窗口中，而不是为它们创建新的原生窗口。"
                   }
                 ]
               },
@@ -556,7 +556,7 @@
       },
       {
         "kind": "Topic",
-        "title": "In this topic ...",
+        "title": "在本主题中...",
         "content": [
           {
             "kind": "Paragraph",
@@ -574,13 +574,13 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "Build your first GacUI Application!"
+                            "text": "构建你的第一个 GacUI 应用程序！"
                           }
                         ]
                       },
                       {
                         "kind": "Text",
-                        "text": ":\n                        A step-by-step tutorial for creating a GacUI application.\n                    "
+                        "text": "：\n                        创建 GacUI 应用程序的分步教程。\n                    "
                       }
                     ]
                   },
@@ -593,13 +593,13 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "Knowledge Base"
+                            "text": "知识库"
                           }
                         ]
                       },
                       {
                         "kind": "Text",
-                        "text": ":\n                        Basic concepts to know before learning GacUI.\n                    "
+                        "text": "：\n                        在学习 GacUI 之前需要了解的基本概念。\n                    "
                       }
                     ]
                   },
@@ -612,13 +612,13 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "GacUI XMl Resource"
+                            "text": "GacUI XML 资源"
                           }
                         ]
                       },
                       {
                         "kind": "Text",
-                        "text": ":\n                        A complete guide for GacUI XML Resource.\n                    "
+                        "text": "：\n                        GacUI XML 资源的完整指南。\n                    "
                       }
                     ]
                   },
@@ -631,13 +631,13 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "GacUI Components"
+                            "text": "GacUI 组件"
                           }
                         ]
                       },
                       {
                         "kind": "Text",
-                        "text": ":\n                        A complete guide for all GacUI objects like\n                        elements, compositions, controls, templates and components.\n                    "
+                        "text": "：\n                        所有 GacUI 对象（如\n                        元素、组合、控件、模板和组件。\n                    "
                       }
                     ]
                   },
@@ -650,13 +650,13 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "Advanced Topics"
+                            "text": "高级主题"
                           }
                         ]
                       },
                       {
                         "kind": "Text",
-                        "text": ":\n                        Details about advanced features and patterns for GacUI.\n                    "
+                        "text": "：\n                        关于GacUI高级特性和模式的详细信息。\n                    "
                       }
                     ]
                   }

@@ -101,14 +101,14 @@
   "numberBeforeTitle": false,
   "topic": {
     "kind": "Topic",
-    "title": "C++ Code Generation",
+    "title": "C++ 代码生成",
     "content": [
       {
         "kind": "Paragraph",
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Attributies can be applied to Workflow classes, functions and members to control the result of C++ code generation.\n        "
+            "text": "\n            属性可以应用于工作流类、函数和成员，以控制 C++ 代码生成的结果。\n        "
           }
         ]
       },
@@ -121,7 +121,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                This attribute applies to "
+                "text": "\n                此属性适用于 "
               },
               {
                 "kind": "Strong",
@@ -134,7 +134,7 @@
               },
               {
                 "kind": "Text",
-                "text": ".\n                It creates a new pair of file "
+                "text": ".\n                它创建一对新文件 "
               },
               {
                 "kind": "Strong",
@@ -147,7 +147,7 @@
               },
               {
                 "kind": "Text",
-                "text": " and "
+                "text": " 和 "
               },
               {
                 "kind": "Strong",
@@ -169,7 +169,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Since internal classes in Workflow get translated to internal classes in C++,\n                if you assign different file name to class A and B when B is defined inside A,\n                it causes an error.\n            "
+                "text": "\n                由于工作流中的内部类会被转换为C++中的内部类，\n                如果您在定义 B 时为类 A 和 B 分配了不同的文件名，而 B 定义在 A 内部，\n                它会导致一个错误。\n            "
               }
             ]
           },
@@ -178,7 +178,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                This attribute is useful when the class has methods with "
+                "text": "\n                当类具有 "
               },
               {
                 "kind": "Strong",
@@ -206,20 +206,20 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                This attribute applies to "
+                "text": "\n                此属性适用于 "
               },
               {
                 "kind": "Strong",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "constructors, destructors and functions"
+                    "text": "构造函数、析构函数和函数"
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": " in classes.\n            "
+                "text": " 在类中。\n            "
               }
             ]
           },
@@ -228,7 +228,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Bodies of functions with "
+                "text": "\n                函数体包含 "
               },
               {
                 "kind": "Strong",
@@ -241,7 +241,7 @@
               },
               {
                 "kind": "Text",
-                "text": " are ignored,\n                they are left blank in the generated file,\n                allowing users to add custom code lines\n                between:\n                "
+                "text": " 被忽略，\n                它们在生成的文件中留为空白。\n                允许用户添加自定义代码行\n                在……之间：\n                "
               },
               {
                 "kind": "List",
@@ -284,7 +284,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                When a class contains methods with "
+                "text": "\n                当一个类包含具有 "
               },
               {
                 "kind": "Strong",
@@ -297,7 +297,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                custom members can also be added to the generated header file for this class\n                between:\n                "
+                "text": "，\n                可以在为此类生成的头文件中添加自定义成员\n                在……之间：\n                "
               },
               {
                 "kind": "List",
@@ -340,7 +340,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                When a file contains methods with "
+                "text": "\n                当文件包含具有 "
               },
               {
                 "kind": "Strong",
@@ -353,7 +353,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                custom global declarations can also be added to the generated header file for this class\n                between:\n                "
+                "text": "，\n                可以在为此类生成的头文件中添加自定义全局声明\n                在……之间：\n                "
               },
               {
                 "kind": "List",
@@ -396,7 +396,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                When the Workflow script is modified and re-generated,\n                new generated code and custom code lines in specific locations will be merged together,\n                so your work doesn't lost.\n            "
+                "text": "\n                当工作流脚本被修改并重新生成时，\n                新生成的代码和特定位置的自定义代码行将被合并在一起，\n                这样你的工作就不会丢失。\n            "
               }
             ]
           },
@@ -414,7 +414,7 @@
               },
               {
                 "kind": "Text",
-                "text": ":\n                If there are braces ("
+                "text": "：\n                如果有花括号（"
               },
               {
                 "kind": "Strong",
@@ -427,7 +427,7 @@
               },
               {
                 "kind": "Text",
-                "text": " and "
+                "text": " 和 "
               },
               {
                 "kind": "Strong",
@@ -440,7 +440,7 @@
               },
               {
                 "kind": "Text",
-                "text": ") in custom code lines,\n                they must take the whole line,\n                or the code merging will report errors.\n            "
+                "text": ") 在自定义代码行中，\n                它们必须占据整行。\n                否则代码合并时会报告错误。\n            "
               }
             ]
           }
@@ -448,27 +448,27 @@
       },
       {
         "kind": "Topic",
-        "title": "@cpp:Protected and @cpp:Private",
+        "title": "@cpp:Protected 和 @cpp:Private",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                These attributes apply to "
+                "text": "\n                这些属性适用于 "
               },
               {
                 "kind": "Strong",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "any members"
+                    "text": "任何成员"
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": " in classes, except non-auto properties.\n            "
+                "text": " 在类中，除了非自动属性。\n            "
               }
             ]
           },
@@ -477,7 +477,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                When a class member is annotated by "
+                "text": "\n                当一个类成员被标注为 "
               },
               {
                 "kind": "Strong",
@@ -490,7 +490,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                this part of the C++ code will be generated with "
+                "text": "，\n                此部分 C++ 代码将由 "
               },
               {
                 "kind": "Strong",
@@ -534,7 +534,7 @@
               },
               {
                 "kind": "Text",
-                "text": ": these attributes don't affect the Workflow compiler,\n                Workflow script treats all members as public members.\n            "
+                "text": ": 这些属性不会影响工作流编译器，\n                Workflow 脚本将所有成员视为公共成员。\n            "
               }
             ]
           }
@@ -549,7 +549,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                This attribute applies to "
+                "text": "\n                此属性适用于 "
               },
               {
                 "kind": "Strong",
@@ -562,7 +562,7 @@
               },
               {
                 "kind": "Text",
-                "text": ".\n                It generates "
+                "text": ".\n                它生成 "
               },
               {
                 "kind": "Strong",
@@ -575,7 +575,7 @@
               },
               {
                 "kind": "Text",
-                "text": " declaration in C++ code,\n                allowing "
+                "text": " C++代码中的声明，\n                允许 "
               },
               {
                 "kind": "Strong",
@@ -588,7 +588,7 @@
               },
               {
                 "kind": "Text",
-                "text": " to access protected or private members of the current class. \n            "
+                "text": " 访问当前类的受保护或私有成员。 \n            "
               }
             ]
           }
@@ -596,11 +596,11 @@
       },
       {
         "kind": "Topic",
-        "title": "Example",
+        "title": "示例",
         "content": [
           {
             "kind": "Topic",
-            "title": "Workflow Script",
+            "title": "工作流脚本",
             "content": [
               {
                 "kind": "Paragraph",
@@ -615,7 +615,7 @@
           },
           {
             "kind": "Topic",
-            "title": "Generated C++ Files",
+            "title": "生成的 C++ 文件",
             "content": [
               {
                 "kind": "Paragraph",
@@ -642,7 +642,7 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "\n                            The default file name is configurable,\n                            here we assume that it is "
+                            "text": "\n                            默认文件名可配置，\n                            这里我们假设它是 "
                           },
                           {
                             "kind": "Strong",
@@ -664,7 +664,7 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "\n                            This is not the full content of generated files.\n                            By following "
+                            "text": "\n                            这不是生成文件的完整内容。\n                            通过遵循 "
                           },
                           {
                             "kind": "PageLink",
@@ -672,13 +672,13 @@
                             "content": [
                               {
                                 "kind": "Text",
-                                "text": "Generating C++ Code"
+                                "text": "生成 C++ 代码"
                               }
                             ]
                           },
                           {
                             "kind": "Text",
-                            "text": " you will see everything.\n                        "
+                            "text": " 你将看到一切。\n                        "
                           }
                         ]
                       }

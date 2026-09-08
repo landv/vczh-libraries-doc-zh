@@ -132,14 +132,14 @@
   "numberBeforeTitle": false,
   "topic": {
     "kind": "Topic",
-    "title": "Generic (interface)",
+    "title": "通用（接口）",
     "content": [
       {
         "kind": "Paragraph",
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Interfaces do not actually support generic,\n            but sometimes it works like generic in "
+            "text": "\n            接口实际上不支持泛型，\n            但有时它在中表现得像泛型 "
           },
           {
             "kind": "PageLink",
@@ -147,7 +147,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "coroutines"
+                "text": "协程"
               }
             ]
           },
@@ -162,7 +162,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Here is an example of a coroutine that created by Workflow:\n            "
+            "text": "\n            这是一个由工作流创建的协程示例：\n            "
           },
           {
             "kind": "Program",
@@ -170,7 +170,7 @@
           },
           {
             "kind": "Text",
-            "text": "\n            The "
+            "text": "\n            该 "
           },
           {
             "kind": "Strong",
@@ -183,7 +183,7 @@
           },
           {
             "kind": "Text",
-            "text": " function does:\n            "
+            "text": " 函数执行：\n            "
           },
           {
             "kind": "List",
@@ -194,7 +194,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "calls "
+                    "text": "调用 "
                   },
                   {
                     "kind": "Strong",
@@ -207,7 +207,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " to set a number collection."
+                    "text": " 设置一个数字集合。"
                   }
                 ]
               },
@@ -216,7 +216,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "calls "
+                    "text": "调用 "
                   },
                   {
                     "kind": "Strong",
@@ -229,7 +229,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " to read numbers one by one."
+                    "text": " 逐个读取数字。"
                   }
                 ]
               },
@@ -238,7 +238,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "returns the sum of all numbers."
+                    "text": "返回所有数字的总和。"
                   }
                 ]
               }
@@ -246,7 +246,7 @@
           },
           {
             "kind": "Text",
-            "text": "\n            The "
+            "text": "\n            该 "
           },
           {
             "kind": "Strong",
@@ -259,7 +259,7 @@
           },
           {
             "kind": "Text",
-            "text": " function gets the coroutine created from "
+            "text": " 函数获取从 "
           },
           {
             "kind": "Strong",
@@ -272,7 +272,7 @@
           },
           {
             "kind": "Text",
-            "text": ",\n            drives the coroutine to run until a result is produced.\n        "
+            "text": "，\n            驱动协程运行直到产生结果。\n        "
           }
         ]
       },
@@ -285,7 +285,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                In the example there is:\n                "
+                "text": "\n                在示例中，有：\n                "
               },
               {
                 "kind": "Program",
@@ -293,7 +293,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                which expands to:\n                "
+                "text": "\n                扩展为：\n                "
               },
               {
                 "kind": "Program",
@@ -301,7 +301,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                So as:\n                "
+                "text": "\n                因此，例如：\n                "
               },
               {
                 "kind": "Program",
@@ -323,7 +323,7 @@
               },
               {
                 "kind": "Text",
-                "text": " simply creates an interface\n                which inherits from the one that is specified,\n                and add static functions "
+                "text": " 简单创建一个界面\n                继承自指定的那一个\n                并添加静态函数 "
               },
               {
                 "kind": "Strong",
@@ -336,7 +336,7 @@
               },
               {
                 "kind": "Text",
-                "text": " and "
+                "text": " 和 "
               },
               {
                 "kind": "Strong",
@@ -349,7 +349,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                for casting values between "
+                "text": "\n                用于在不同值之间进行强制转换， "
               },
               {
                 "kind": "Strong",
@@ -362,7 +362,7 @@
               },
               {
                 "kind": "Text",
-                "text": " and the generic argument that is specified.\n            "
+                "text": " 并且指定的泛型参数。\n            "
               }
             ]
           },
@@ -371,7 +371,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                This is how "
+                "text": "\n                这是 "
               },
               {
                 "kind": "Strong",
@@ -384,7 +384,7 @@
               },
               {
                 "kind": "Text",
-                "text": " knows the type of the return value.\n                obviously in:\n                "
+                "text": " 知道返回值的类型。\n                显然在：\n                "
               },
               {
                 "kind": "Program",
@@ -392,7 +392,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                the type of "
+                "text": "\n                类型 "
               },
               {
                 "kind": "Strong",
@@ -431,7 +431,7 @@
               },
               {
                 "kind": "Text",
-                "text": " returns "
+                "text": " 返回 "
               },
               {
                 "kind": "Strong",
@@ -444,7 +444,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                in which the "
+                "text": "，\n                其中， "
               },
               {
                 "kind": "Strong",
@@ -457,7 +457,7 @@
               },
               {
                 "kind": "Text",
-                "text": " function returns "
+                "text": " 函数返回 "
               },
               {
                 "kind": "Strong",
@@ -479,7 +479,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                It doesn't matter what the original interface looks like.\n            "
+                "text": "\n                原始接口的外观无关紧要。\n            "
               }
             ]
           }
@@ -487,14 +487,14 @@
       },
       {
         "kind": "Topic",
-        "title": "new TYPE^(using OBJECT)",
+        "title": "new TYPE^（使用 OBJECT）",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                This expression creates an object of interface "
+                "text": "\n                此表达式创建一个接口对象， "
               },
               {
                 "kind": "Strong",
@@ -507,7 +507,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                redirecting all methods to "
+                "text": "，\n                将所有方法重定向到 "
               },
               {
                 "kind": "Strong",
@@ -529,7 +529,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                It needs to meet the following requirements:\n                "
+                "text": "\n                它需要满足以下要求：\n                "
               },
               {
                 "kind": "List",
@@ -549,7 +549,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " and the type of "
+                        "text": " 并且类型为 "
                       },
                       {
                         "kind": "Strong",
@@ -562,7 +562,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " should both be interfaces."
+                        "text": " 两者都应为接口。"
                       }
                     ]
                   },
@@ -580,7 +580,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " must be different from the type of "
+                        "text": " 必须与类型不同 "
                       },
                       {
                         "kind": "Strong",
@@ -611,7 +611,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " must inherit from the type of "
+                        "text": " 必须从该类型继承 "
                       },
                       {
                         "kind": "Strong",
@@ -624,7 +624,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": ". It doesn't have to be the direct base type."
+                        "text": ". 它不必是直接的基类型。"
                       }
                     ]
                   },
@@ -642,7 +642,7 @@
                       },
                       {
                         "kind": "Text",
-                        "text": " must not have more members than the type of "
+                        "text": " 不能包含比类型更多的成员 "
                       },
                       {
                         "kind": "Strong",
@@ -671,13 +671,13 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "new TYPE*"
+                    "text": "new 类型*"
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": " is also available, according to how "
+                "text": " 也根据情况可用 "
               },
               {
                 "kind": "Strong",
@@ -690,7 +690,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is declared.\n            "
+                "text": " 已声明。\n            "
               }
             ]
           },
@@ -699,7 +699,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                For example:\n                "
+                "text": "\n                例如：\n                "
               },
               {
                 "kind": "Program",
@@ -716,7 +716,7 @@
               },
               {
                 "kind": "Text",
-                "text": " expands to:\n                "
+                "text": " 展开为：\n                "
               },
               {
                 "kind": "Program",
@@ -724,7 +724,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                It is clear that,\n                if "
+                "text": "\n                很明显，\n                if "
               },
               {
                 "kind": "Strong",
@@ -737,7 +737,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is a raw pointer,\n                then the created object holds a raw pointer to "
+                "text": " 是一个原始指针，\n                然后创建的对象持有一个原始指针 "
               },
               {
                 "kind": "Strong",
@@ -750,7 +750,7 @@
               },
               {
                 "kind": "Text",
-                "text": ".\n                In this case, you must be very careful to object life cycles.\n            "
+                "text": ".\n                在这种情况下，你必须非常小心对象的生命周期。\n            "
               }
             ]
           }

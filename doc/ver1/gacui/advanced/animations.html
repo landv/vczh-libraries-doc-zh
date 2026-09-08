@@ -159,14 +159,14 @@
   "numberBeforeTitle": false,
   "topic": {
     "kind": "Topic",
-    "title": "Animations",
+    "title": "动画",
     "content": [
       {
         "kind": "Paragraph",
         "content": [
           {
             "kind": "Text",
-            "text": "\n            The GacUI XML\n            "
+            "text": "\n            GacUI XML\n            "
           },
           {
             "kind": "PageLink",
@@ -185,7 +185,7 @@
           },
           {
             "kind": "Text",
-            "text": "\n            resource creates helper classes for animations.\n            It creates a class like this:\n            "
+            "text": "\n            资源创建动画辅助类。\n            它创建一个这样的类：\n            "
           },
           {
             "kind": "Program",
@@ -202,7 +202,7 @@
           },
           {
             "kind": "Text",
-            "text": " is a class with fields of number types or "
+            "text": " 是具有数字类型字段的类 "
           },
           {
             "kind": "Strong",
@@ -215,7 +215,7 @@
           },
           {
             "kind": "Text",
-            "text": ".\n            By creating an "
+            "text": ".\n            通过创建一个 "
           },
           {
             "kind": "Strong",
@@ -228,7 +228,7 @@
           },
           {
             "kind": "Text",
-            "text": " in a window like this:\n            "
+            "text": " 在一个窗口中像这样：\n            "
           },
           {
             "kind": "Program",
@@ -236,7 +236,7 @@
           },
           {
             "kind": "Text",
-            "text": "\n            You are able to bind the expression "
+            "text": "\n            您能够绑定表达式 "
           },
           {
             "kind": "Strong",
@@ -249,7 +249,7 @@
           },
           {
             "kind": "Text",
-            "text": " to any compatible property.\n            When the animation is running,\n            fields in "
+            "text": " 到任何兼容的属性。\n            当动画正在运行时，\n            字段在 "
           },
           {
             "kind": "Strong",
@@ -262,20 +262,20 @@
           },
           {
             "kind": "Text",
-            "text": " will keep updating,\n            so that to animate the UI.\n        "
+            "text": " 将不断更新，\n            以便对 UI 进行动画处理。\n        "
           }
         ]
       },
       {
         "kind": "Topic",
-        "title": "Interpolation Functions",
+        "title": "插值函数",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                The first step to animate a field in "
+                "text": "\n                在动画中操作字段的第一步是 "
               },
               {
                 "kind": "Strong",
@@ -288,7 +288,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is to set a proper interpolation function,\n                which is described in\n                "
+                "text": " 是设置一个合适的插值函数，\n                在其中描述的\n                "
               },
               {
                 "kind": "PageLink",
@@ -307,7 +307,7 @@
               },
               {
                 "kind": "Text",
-                "text": ".\n                Only fields that mentioned by a "
+                "text": ".\n                仅由 a 提及的字段 "
               },
               {
                 "kind": "Strong",
@@ -320,7 +320,7 @@
               },
               {
                 "kind": "Text",
-                "text": " tag could be animated.\n                All animated fields must associate an interpolation function.\n                There is also a place for a default interpolation function,\n                which will apply on all animated fields unless one is specified in "
+                "text": " 标签可以是动画的。\n                所有动画字段必须关联一个插值函数。\n                还有一个用于默认插值函数的位置，\n                将应用于所有动画字段，除非指定了其中一个 "
               },
               {
                 "kind": "Strong",
@@ -342,7 +342,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                An interpolation function is an Workflow expression in a function type,\n                which takes a "
+                "text": "\n                插值函数是函数类型中的工作流表达式，\n                哪个需要一个 "
               },
               {
                 "kind": "Strong",
@@ -355,7 +355,7 @@
               },
               {
                 "kind": "Text",
-                "text": " and returns a "
+                "text": " 和返回一个 "
               },
               {
                 "kind": "Strong",
@@ -377,7 +377,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                The function parameter is the progress of the animation from "
+                "text": "\n                函数参数是动画的进度从 "
               },
               {
                 "kind": "Strong",
@@ -403,7 +403,7 @@
               },
               {
                 "kind": "Text",
-                "text": ".\n                If an animation is 10 seconds long,\n                then "
+                "text": ".\n                如果动画时长为10秒，\n                然后 "
               },
               {
                 "kind": "Strong",
@@ -416,7 +416,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is the beginning,\n                "
+                "text": " 是开始，\n                "
               },
               {
                 "kind": "Strong",
@@ -429,7 +429,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is the ending,\n                and "
+                "text": " 是结尾，\n                和 "
               },
               {
                 "kind": "Strong",
@@ -442,20 +442,20 @@
               },
               {
                 "kind": "Text",
-                "text": " means "
+                "text": " 表示 "
               },
               {
                 "kind": "Strong",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "10 seconds * 0.4"
+                    "text": "10 秒 * 0.4"
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": " which is at the end of the 4th second.\n            "
+                "text": " 在第4秒结束时。\n            "
               }
             ]
           },
@@ -464,7 +464,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                The return value is the interpolation of the animation from "
+                "text": "\n                返回值是动画从 "
               },
               {
                 "kind": "Strong",
@@ -490,7 +490,7 @@
               },
               {
                 "kind": "Text",
-                "text": ".\n                If the begin state is "
+                "text": ".\n                如果起始状态是 "
               },
               {
                 "kind": "Strong",
@@ -503,7 +503,7 @@
               },
               {
                 "kind": "Text",
-                "text": " and the end state is "
+                "text": " 并且结束状态是 "
               },
               {
                 "kind": "Strong",
@@ -516,7 +516,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                then returning "
+                "text": "，\n                然后返回 "
               },
               {
                 "kind": "Strong",
@@ -529,7 +529,7 @@
               },
               {
                 "kind": "Text",
-                "text": " means "
+                "text": " 表示 "
               },
               {
                 "kind": "Strong",
@@ -542,7 +542,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                returning "
+                "text": "，\n                返回 "
               },
               {
                 "kind": "Strong",
@@ -555,7 +555,7 @@
               },
               {
                 "kind": "Text",
-                "text": " means "
+                "text": " 表示 "
               },
               {
                 "kind": "Strong",
@@ -568,7 +568,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                and returning "
+                "text": "，\n                和返回 "
               },
               {
                 "kind": "Strong",
@@ -581,7 +581,7 @@
               },
               {
                 "kind": "Text",
-                "text": " means the "
+                "text": " 表示 "
               },
               {
                 "kind": "Strong",
@@ -594,7 +594,7 @@
               },
               {
                 "kind": "Text",
-                "text": " which is "
+                "text": " 哪个是 "
               },
               {
                 "kind": "Strong",
@@ -616,7 +616,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                The interpolation calculate that,\n                where a field should go given the progress of the animation.\n                If a linear interpolation function is expected,\n                then just return the parameter.\n                Such a function would typically be:\n                "
+                "text": "\n                插值计算为，\n                给定动画的进度，字段应放置的位置。\n                如果需要一个线性插值函数，\n                然后直接返回参数。\n                这样的函数通常为：\n                "
               },
               {
                 "kind": "List",
@@ -635,7 +635,7 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "ordered lambda expression"
+                            "text": "有序lambda表达式"
                           }
                         ]
                       },
@@ -667,13 +667,13 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "lambda expression"
+                            "text": "lambda 表达式"
                           }
                         ]
                       },
                       {
                         "kind": "Text",
-                        "text": "\n                        : for example: "
+                        "text": "\n                        : 例如： "
                       },
                       {
                         "kind": "Strong",
@@ -690,7 +690,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                Sometimes it is better to make the field accelerate at the first half and decelerate at the second half,\n                such a function could be easily created using:\n                "
+                "text": "\n                有时最好使字段在前半段加速，后半段减速，\n                这样的函数可以很容易地使用：\n                "
               },
               {
                 "kind": "Program",
@@ -702,14 +702,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Running an Animation",
+        "title": "运行动画",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                In the "
+                "text": "\n                在 "
               },
               {
                 "kind": "Strong",
@@ -722,20 +722,20 @@
               },
               {
                 "kind": "Text",
-                "text": " generated class,\n                there is a "
+                "text": " 生成的类，\n                有一个 "
               },
               {
                 "kind": "Strong",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "CreateAnimation(state, time)"
+                    "text": "CreateAnimation(状态, 时间)"
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": " function,\n                which means the animation begins from the current state,\n                and run towards "
+                "text": " 函数，\n                这意味着动画从当前状态开始，\n                和朝向 "
               },
               {
                 "kind": "Strong",
@@ -761,7 +761,7 @@
               },
               {
                 "kind": "Text",
-                "text": " milliseconds.\n            "
+                "text": " 毫秒。\n            "
               }
             ]
           },
@@ -770,7 +770,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Calling this function doesn't make the animation run,\n                instead it returns an "
+                "text": "\n                调用此函数不会使动画运行，\n                而是返回一个 "
               },
               {
                 "kind": "Strong",
@@ -783,7 +783,7 @@
               },
               {
                 "kind": "Text",
-                "text": " object.\n                "
+                "text": " 对象。\n                "
               },
               {
                 "kind": "Strong",
@@ -796,7 +796,7 @@
               },
               {
                 "kind": "Text",
-                "text": " and "
+                "text": " 和 "
               },
               {
                 "kind": "Strong",
@@ -822,7 +822,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                controls how the animation run.\n                This class is the base class for all UI\n                "
+                "text": "\n                控制动画的运行方式。\n                此类是所有 UI\n                "
               },
               {
                 "kind": "PageLink",
@@ -830,7 +830,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    root instances\n                "
+                    "text": "\n                    根实例\n                "
                   }
                 ]
               },
@@ -849,7 +849,7 @@
               },
               {
                 "kind": "Text",
-                "text": " and "
+                "text": " 和 "
               },
               {
                 "kind": "Strong",
@@ -875,7 +875,7 @@
               },
               {
                 "kind": "Text",
-                "text": " and "
+                "text": " 和 "
               },
               {
                 "kind": "Strong",
@@ -888,7 +888,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                are accessible in the XML.\n            "
+                "text": "，\n                可在 XML 中访问。\n            "
               }
             ]
           },
@@ -906,7 +906,7 @@
               },
               {
                 "kind": "Text",
-                "text": " adds an "
+                "text": " 添加一个 "
               },
               {
                 "kind": "Strong",
@@ -919,7 +919,7 @@
               },
               {
                 "kind": "Text",
-                "text": " object to the UI object,\n                and start the animation immediately.\n            "
+                "text": " 对象到UI对象，\n                并立即开始动画。\n            "
               }
             ]
           },
@@ -937,7 +937,7 @@
               },
               {
                 "kind": "Text",
-                "text": " stops an "
+                "text": " 停止一个 "
               },
               {
                 "kind": "Strong",
@@ -950,7 +950,7 @@
               },
               {
                 "kind": "Text",
-                "text": " object that has been added to the UI object,\n                and stop the animation immediately.\n            "
+                "text": " 已添加到 UI 对象中的对象\n                并立即停止动画。\n            "
               }
             ]
           },
@@ -959,7 +959,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                For animations that need to switch from state to state for multiple times,\n                like a button when the mouse is moving in and out,\n                there is a pattern to control the animation:\n                "
+                "text": "\n                对于需要多次从一个状态切换到另一个状态的动画，\n                就像按钮在鼠标进入和离开时一样，\n                控制动画存在一种模式：\n                "
               },
               {
                 "kind": "Program",
@@ -967,7 +967,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                When the state needs to move to a new state when the animation is running,\n                this piece of code stops the current running animation,\n                and replace it with a new one.\n                The new animation moves the current state from where it is to a new state,\n                and it should look smooth.\n            "
+                "text": "\n                当动画运行时，状态需要转移到新状态，\n                这段代码将停止当前正在运行的动画。\n                并用一个新的替换它。\n                新的动画将当前状态从当前位置移动到新状态，\n                并且它应该看起来平滑。\n            "
               }
             ]
           },
@@ -985,7 +985,7 @@
               },
               {
                 "kind": "Text",
-                "text": " could accept "
+                "text": " 可以接受 "
               },
               {
                 "kind": "Strong",
@@ -998,7 +998,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                and it does nothing.\n            "
+                "text": "，\n                并且它什么也不做。\n            "
               }
             ]
           }
@@ -1006,14 +1006,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Managing Multiple Animations",
+        "title": "管理多个动画",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                It is easy to copy the above pattern multiple times for each animation.\n            "
+                "text": "\n                对于每个动画，很容易多次复制上述模式\n            "
               }
             ]
           },
@@ -1022,7 +1022,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Please remember that,\n                the created "
+                "text": "\n                请记住，\n                创建的 "
               },
               {
                 "kind": "Strong",
@@ -1035,7 +1035,7 @@
               },
               {
                 "kind": "Text",
-                "text": " will change "
+                "text": " 将更改 "
               },
               {
                 "kind": "Strong",
@@ -1048,7 +1048,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                when it is executing,\n                so if multiple animation needs to run at the same time,\n                multiple "
+                "text": "\n                当它正在执行时，\n                因此，如果需要同时运行多个动画，\n                多个 "
               },
               {
                 "kind": "Strong",
@@ -1061,7 +1061,7 @@
               },
               {
                 "kind": "Text",
-                "text": " and "
+                "text": " 和 "
               },
               {
                 "kind": "Strong",
@@ -1074,7 +1074,7 @@
               },
               {
                 "kind": "Text",
-                "text": " should be created at the same time.\n                Please give them good names to make the code looks clear.\n            "
+                "text": " 应同时创建。\n                请为它们赋予良好的名称，以使代码看起来清晰。\n            "
               }
             ]
           },
@@ -1083,7 +1083,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                When a UI object is disposing,\n                e.g. when the close button on a window is clicked,\n                all animations will be shut down,\n                and calling "
+                "text": "\n                当一个 UI 对象正在释放时，\n                例如，当窗口上的关闭按钮被点击时，\n                所有动画都将被关闭，\n                并调用 "
               },
               {
                 "kind": "Strong",
@@ -1096,7 +1096,7 @@
               },
               {
                 "kind": "Text",
-                "text": " will result in an exception.\n            "
+                "text": " 将导致异常。\n            "
               }
             ]
           },
@@ -1105,7 +1105,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                It is function idential to split all fields to multiple animation objects.\n                But if multiple fields represent different parts of the same animation,\n                do your best to make one animation for all these fields to increase the performance.\n            "
+                "text": "\n                它的功能等同于将所有字段拆分为多个动画对象\n                但若此组合中的多个字段表示同一动画的不同部分，\n                尽最大努力为所有这些字段制作一个动画以提高性能。\n            "
               }
             ]
           },
@@ -1122,13 +1122,13 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    this tutorial project\n                "
+                    "text": "\n                    此教程项目\n                "
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": ",\n                a button is controlled by 4 colors,\n                which changes in one animation because they represent different parts of the same animation.\n                So only one "
+                "text": "，\n                按钮由 4 种颜色控制，\n                在其中一个动画中的更改，因为它们代表同一动画的不同部分。\n                因此只有一个 "
               },
               {
                 "kind": "Strong",
@@ -1141,7 +1141,7 @@
               },
               {
                 "kind": "Text",
-                "text": " and only one instance of it is needed for one button.\n            "
+                "text": " 并且只需要一个实例用于一个按钮。\n            "
               }
             ]
           },
@@ -1150,7 +1150,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Here is how it looks like:\n            "
+                "text": "\n                这是它的显示效果：\n            "
               }
             ]
           },
@@ -1166,7 +1166,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "Source code: "
+                        "text": "源代码： "
                       },
                       {
                         "kind": "PageLink",

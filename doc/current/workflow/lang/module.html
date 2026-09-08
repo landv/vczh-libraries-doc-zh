@@ -175,7 +175,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Any Workflow script file should be a module, written as:\n            "
+            "text": "\n            任何工作流脚本文件都应是一个模块，写成如下形式：\n            "
           },
           {
             "kind": "Program",
@@ -188,13 +188,13 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            The module name does not matter,\n            but when multiple files are given to the compiler to build an assembly,\n            module names in this assembly are require to be unique.\n        "
+            "text": "\n            模块名称无关紧要，\n            但当向编译器提供多个文件以构建程序集时，\n            此程序集中的模块名称必须是唯一的。\n        "
           }
         ]
       },
       {
         "kind": "Topic",
-        "title": "Using declaration",
+        "title": "使用声明",
         "content": [
           {
             "kind": "Paragraph",
@@ -214,7 +214,7 @@
               },
               {
                 "kind": "Text",
-                "text": " declaration imports names in this module.\n            "
+                "text": " 声明导入此模块中的名称\n            "
               }
             ]
           },
@@ -232,7 +232,7 @@
               },
               {
                 "kind": "Text",
-                "text": " means that names under the namespace "
+                "text": " 表示命名空间下的名称 "
               },
               {
                 "kind": "Strong",
@@ -245,7 +245,7 @@
               },
               {
                 "kind": "Text",
-                "text": " can be used directly.\n                For example, you can use "
+                "text": " 可以直接使用。\n                例如，您可以使用 "
               },
               {
                 "kind": "Strong",
@@ -258,14 +258,14 @@
               },
               {
                 "kind": "Text",
-                "text": " in a module.\n                But writing the namespace everywhere is annoying,\n                so when "
+                "text": " 在一个模块中。\n                但到处写命名空间很烦人，\n                所以当 "
               },
               {
                 "kind": "Strong",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "using system::*"
+                    "text": "使用系统::*"
                   }
                 ]
               },
@@ -284,7 +284,7 @@
               },
               {
                 "kind": "Text",
-                "text": " directly.\n            "
+                "text": " 直接。\n            "
               }
             ]
           },
@@ -293,7 +293,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                The wildcard is not required to be a complete name.\n                When you have "
+                "text": "\n                通配符不需要是完整名称。\n                当你有 "
               },
               {
                 "kind": "PageLink",
@@ -301,13 +301,13 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "GacUI types"
+                    "text": "GacUI 类型"
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": " loaded,\n                "
+                "text": " 已加载，\n                "
               },
               {
                 "kind": "Strong",
@@ -320,7 +320,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is available.\n                But this name is too long,\n                even "
+                "text": " 可用。\n                但这个名字太长了，\n                即使 "
               },
               {
                 "kind": "Strong",
@@ -333,14 +333,14 @@
               },
               {
                 "kind": "Text",
-                "text": " is too long.\n                Now when "
+                "text": " 太长了。\n                现在当 "
               },
               {
                 "kind": "Strong",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "using presentation::compositions::Gui*Composition;"
+                    "text": "使用 presentation::compositions::Gui*Composition;"
                   }
                 ]
               },
@@ -359,7 +359,7 @@
               },
               {
                 "kind": "Text",
-                "text": " for that type.\n            "
+                "text": " 对于该类型。\n            "
               }
             ]
           },
@@ -368,7 +368,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Because when you replace the wildcard by "
+                "text": "\n                因为当你用替换通配符时， "
               },
               {
                 "kind": "Strong",
@@ -381,7 +381,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                it becomes "
+                "text": "，\n                它变成 "
               },
               {
                 "kind": "Strong",
@@ -394,7 +394,7 @@
               },
               {
                 "kind": "Text",
-                "text": ",\n                which is exactly the full name of the type.\n            "
+                "text": "，\n                这正是该类型的完整名称。\n            "
               }
             ]
           },
@@ -403,7 +403,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Sometimes wildcards could create ambiguity,\n                for example,\n                "
+                "text": "\n                有时通配符可能会造成歧义，\n                例如，\n                "
               },
               {
                 "kind": "Program",
@@ -411,7 +411,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                When we try to use "
+                "text": "\n                当我们尝试使用时 "
               },
               {
                 "kind": "Strong",
@@ -424,7 +424,7 @@
               },
               {
                 "kind": "Text",
-                "text": " in this module,\n                the compiler founds that all following types\n                "
+                "text": " 在此模块中，\n                编译器发现所有以下类型\n                "
               },
               {
                 "kind": "List",
@@ -461,7 +461,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                exist,\n                it cannot determine which type to use,\n                so an error is generated.\n            "
+                "text": "\n                存在，\n                它无法确定使用哪种类型，\n                因此会生成一个错误。\n            "
               }
             ]
           },
@@ -470,7 +470,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                In order to resolve this issue,\n                you are able to just use the full name,\n                or "
+                "text": "\n                为了解决此问题，\n                您可以直接使用完整名称。\n                or "
               },
               {
                 "kind": "Strong",
@@ -490,13 +490,13 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "using presentation::controls::*"
+                    "text": "使用 presentation::controls::*"
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": " appears in the module,\n                or even "
+                "text": " 出现在模块中，\n                或甚至 "
               },
               {
                 "kind": "Strong",
@@ -516,13 +516,13 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "using presentation::*"
+                    "text": "使用 presentation::*"
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": " appears in the module.\n            "
+                "text": " 出现在模块中。\n            "
               }
             ]
           }
@@ -530,14 +530,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Namespace declaration",
+        "title": "命名空间声明",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                You can create namespace by yourself like this:\n                "
+                "text": "\n                您可以像这样自己创建命名空间：\n                "
               },
               {
                 "kind": "Program",
@@ -545,7 +545,7 @@
               },
               {
                 "kind": "Text",
-                "text": "\n                Namespaces are allowed to be nested.\n            "
+                "text": "\n                命名空间允许嵌套。\n            "
               }
             ]
           },
@@ -576,7 +576,7 @@
               },
               {
                 "kind": "Text",
-                "text": " declarations are not allowed to be in namespaces.\n                In fact they should be declared before any other declarations,\n                right below the module name.\n            "
+                "text": " 声明不允许位于命名空间中\n                实际上，它们应该在其他声明之前声明，\n                在模块名称正下方。\n            "
               }
             ]
           }
@@ -584,14 +584,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Static Initialization",
+        "title": "静态初始化",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Static initialization are statements in "
+                "text": "\n                静态初始化是位于 "
               },
               {
                 "kind": "Strong",
@@ -604,7 +604,7 @@
               },
               {
                 "kind": "Text",
-                "text": " declarations.\n                Multiple "
+                "text": " 声明。\n                多个 "
               },
               {
                 "kind": "Strong",
@@ -617,7 +617,7 @@
               },
               {
                 "kind": "Text",
-                "text": " declarations could appear in a module or a namespace.\n                Statemenets inside them will be executed when the module is loaded.\n            "
+                "text": " 声明可以出现在模块或命名空间中。\n                它们内部的语句将在模块加载时执行。\n            "
               }
             ]
           },
@@ -626,7 +626,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                When loading and executing workflow script in runtime,\n                such initialization happens when running the "
+                "text": "\n                当在运行时加载和执行工作流脚本时，\n                此类初始化发生在运行时 "
               },
               {
                 "kind": "PageLink",
@@ -645,7 +645,7 @@
               },
               {
                 "kind": "Text",
-                "text": " function,\n                after global variables are initialized.\n            "
+                "text": " 函数，\n                在全局变量初始化之后。\n            "
               }
             ]
           },
@@ -654,7 +654,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                The execution order between multiple "
+                "text": "\n                多个之间的执行顺序 "
               },
               {
                 "kind": "Strong",
@@ -667,7 +667,7 @@
               },
               {
                 "kind": "Text",
-                "text": " declarations are not defined.\n            "
+                "text": " 声明未定义。\n            "
               }
             ]
           }

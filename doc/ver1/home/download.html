@@ -91,14 +91,14 @@
   "numberBeforeTitle": true,
   "topic": {
     "kind": "Topic",
-    "title": "Download Gaclib",
+    "title": "下载 Gaclib",
     "content": [
       {
         "kind": "Paragraph",
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Gaclib can be downloaded from:\n            "
+            "text": "\n            Gaclib 可从以下地址下载：\n            "
           },
           {
             "kind": "List",
@@ -192,20 +192,20 @@
           },
           {
             "kind": "Text",
-            "text": "\n            At this moment,\n            the Linux port and the macOS port have not been merged into the release repo yet,\n            but it will soon be done.\n        "
+            "text": "\n            在此时，\n            Linux 版本和 macOS 版本尚未合并到发布仓库中。\n            但很快就会完成。\n        "
           }
         ]
       },
       {
         "kind": "Topic",
-        "title": "Using C++ Source Code",
+        "title": "使用 C++ 源代码",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Here are dependencies of the source code.\n                Each box means a pair of .h and .cpp file.\n                For example, "
+                "text": "\n                这里列出了源代码的依赖项：\n                每个盒子表示一个 .h 和 .cpp 文件对。\n                例如， "
               },
               {
                 "kind": "Strong",
@@ -218,7 +218,7 @@
               },
               {
                 "kind": "Text",
-                "text": " means "
+                "text": " 表示 "
               },
               {
                 "kind": "Strong",
@@ -231,7 +231,7 @@
               },
               {
                 "kind": "Text",
-                "text": " and "
+                "text": " 和 "
               },
               {
                 "kind": "Strong",
@@ -262,7 +262,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Source code can be found in the "
+                "text": "\n                源代码可以在 "
               },
               {
                 "kind": "Strong",
@@ -275,7 +275,7 @@
               },
               {
                 "kind": "Text",
-                "text": " folder.\n            "
+                "text": " 文件夹。\n            "
               }
             ]
           },
@@ -288,7 +288,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    These files are basic C++ constructions.\n                    GacUI is built on these libraries.\n                    In most of the cases,\n                    you only need functions and classes from "
+                    "text": "\n                    这些文件是基本的C++构造。\n                    GacUI 基于这些库构建。\n                    在大多数情况下，\n                    你只需要来自的函数和类 "
                   },
                   {
                     "kind": "Strong",
@@ -301,7 +301,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " and "
+                    "text": " 和 "
                   },
                   {
                     "kind": "Strong",
@@ -329,20 +329,20 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    This file contains a very thin library for generated C++ code from "
+                    "text": "\n                    此文件包含一个非常轻量的库，用于从生成C++代码， "
                   },
                   {
                     "kind": "Strong",
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "the Workflow script language"
+                        "text": "工作流脚本语言"
                       }
                     ]
                   },
                   {
                     "kind": "Text",
-                    "text": ".\n                    UI elements of GacUI are recommended to create from XML.\n                    All resource files will be compiled to the Workflow script language first,\n                    and then scripts are generate C++ code from these scripts.\n                    You need this file to run your UI.\n                "
+                    "text": ".\n                    GacUI 的 UI 元素建议从 XML 创建。\n                    所有资源文件将首先编译为工作流脚本语言，\n                    然后脚本从这些脚本生成C++代码。\n                    您需要此文件来运行您的 UI。\n                "
                   }
                 ]
               }
@@ -350,7 +350,7 @@
           },
           {
             "kind": "Topic",
-            "title": "VlppWorkflowRuntime and VlppWorkflowCompiler",
+            "title": "VlppWorkflowRuntime 和 VlppWorkflowCompiler",
             "content": [
               {
                 "kind": "Paragraph",
@@ -360,7 +360,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "Usually you don't need these files."
+                        "text": "通常您不需要这些文件。"
                       }
                     ]
                   }
@@ -380,7 +380,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " contains virtual machine to run the Workflow script language directly.\n                    The runtime can serialize compiled script to a binary file and reload it.\n                    If some reflectable C++ classes are used in the script,\n                    please make sure all these classes are registered when loading it.\n                    "
+                    "text": " 包含虚拟机以直接运行工作流脚本语言。\n                    运行时可以将编译的脚本序列化为二进制文件并重新加载它。\n                    如果在脚本中使用了一些可反射的C++类，\n                    请确保在加载时注册所有这些类。\n                    "
                   },
                   {
                     "kind": "Strong",
@@ -393,7 +393,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " contains a compiler for the Workflow script language.\n                "
+                    "text": " 包含一个工作流脚本语言的编译器。\n                "
                   }
                 ]
               }
@@ -401,14 +401,14 @@
           },
           {
             "kind": "Topic",
-            "title": "GacUI, GacUIWindows and DarkSkin",
+            "title": "GacUI，GacUIWindows 和 DarkSkin",
             "content": [
               {
                 "kind": "Paragraph",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    This is the GacUI itself.\n                    "
+                    "text": "\n                    这是 GacUI 本身。\n                    "
                   },
                   {
                     "kind": "Strong",
@@ -421,7 +421,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " is the port to Windows OS.\n                    All Windows older than 7 are not supported.\n                    "
+                    "text": " 是针对 Windows 操作系统的端口。\n                    不支持所有早于 Windows 7 的 Windows 版本。\n                    "
                   },
                   {
                     "kind": "Strong",
@@ -434,7 +434,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " is the default skin.\n                    If you have created your own skin for every controls,\n                    you don't need this file.\n                "
+                    "text": " 是默认皮肤。\n                    如果你为每个控件创建了自己的皮肤，\n                    您不需要此文件。\n                "
                   }
                 ]
               }
@@ -442,7 +442,7 @@
           },
           {
             "kind": "Topic",
-            "title": "GacUIReflection and DarkSkinReflection",
+            "title": "GacUIReflection 和 DarkSkinReflection",
             "content": [
               {
                 "kind": "Paragraph",
@@ -452,7 +452,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "Usually you don't need these files."
+                        "text": "通常您不需要这些文件。"
                       }
                     ]
                   }
@@ -463,7 +463,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    These files register all reflectable classes for GacUI.\n                    You only need this when you need to dynamically compiler and execute Workflow scripts that access GacUI classes.\n                    "
+                    "text": "\n                    这些文件为GacUI注册所有可反射的类。\n                    您只有在需要动态编译并执行访问 GacUI 类的 Workflow 脚本时才需要这个。\n                    "
                   },
                   {
                     "kind": "List",
@@ -477,7 +477,7 @@
                             "content": [
                               {
                                 "kind": "Text",
-                                "text": "When you don't need reflection"
+                                "text": "当你不需要反射时"
                               }
                             ]
                           },
@@ -490,7 +490,7 @@
                                 "content": [
                                   {
                                     "kind": "Text",
-                                    "text": "Don't link these files."
+                                    "text": "不要链接这些文件。"
                                   }
                                 ]
                               },
@@ -499,7 +499,7 @@
                                 "content": [
                                   {
                                     "kind": "Text",
-                                    "text": "\n                                    You must add "
+                                    "text": "\n                                    您必须添加 "
                                   },
                                   {
                                     "kind": "Strong",
@@ -520,13 +520,13 @@
                                     "content": [
                                       {
                                         "kind": "Text",
-                                        "text": "preprocessor definitions"
+                                        "text": "预处理器定义"
                                       }
                                     ]
                                   },
                                   {
                                     "kind": "Text",
-                                    "text": ".\n                                    You can either to this by updating your project properties,\n                                    or use the /D compiler option if you are using Visual Studio Code.\n                                "
+                                    "text": ".\n                                    您可以通过更新项目属性来实现这一点，\n                                    或者在使用 Visual Studio Code 时，使用 /D 编译器选项。\n                                "
                                   }
                                 ]
                               },
@@ -535,7 +535,7 @@
                                 "content": [
                                   {
                                     "kind": "Text",
-                                    "text": "You will save about 20 megabytes in the executable file"
+                                    "text": "您将在可执行文件中节省大约 20 兆字节"
                                   }
                                 ]
                               }
@@ -551,7 +551,7 @@
                             "content": [
                               {
                                 "kind": "Text",
-                                "text": "When you need reflection"
+                                "text": "当你需要反射时"
                               }
                             ]
                           },
@@ -564,7 +564,7 @@
                                 "content": [
                                   {
                                     "kind": "Text",
-                                    "text": "Link these files."
+                                    "text": "链接这些文件。"
                                   }
                                 ]
                               },
@@ -573,7 +573,7 @@
                                 "content": [
                                   {
                                     "kind": "Text",
-                                    "text": "You must not add "
+                                    "text": "您不得添加 "
                                   },
                                   {
                                     "kind": "Strong",
@@ -608,7 +608,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "Usually you don't need these files."
+                        "text": "通常您不需要这些文件。"
                       }
                     ]
                   }
@@ -619,7 +619,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    This is the GacUI XML resource compiler.\n                    "
+                    "text": "\n                    这是 GacUI XML 资源编译器。\n                    "
                   },
                   {
                     "kind": "Strong",
@@ -632,7 +632,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " and "
+                    "text": " 和 "
                   },
                   {
                     "kind": "Strong",
@@ -645,7 +645,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " are the executable version of this file.\n                "
+                    "text": " 是此文件的可执行版本。\n                "
                   }
                 ]
               }
@@ -655,14 +655,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Using Build Tools",
+        "title": "使用构建工具",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Tools can be found in the "
+                "text": "\n                工具可以在 "
               },
               {
                 "kind": "Strong",
@@ -675,7 +675,7 @@
               },
               {
                 "kind": "Text",
-                "text": " folder.\n            "
+                "text": " 文件夹。\n            "
               }
             ]
           },
@@ -684,7 +684,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                You only need "
+                "text": "\n                您只需要 "
               },
               {
                 "kind": "Strong",
@@ -697,7 +697,7 @@
               },
               {
                 "kind": "Text",
-                "text": " and "
+                "text": " 和 "
               },
               {
                 "kind": "Strong",
@@ -710,7 +710,7 @@
               },
               {
                 "kind": "Text",
-                "text": ".\n                They required Powershell.\n                If crashes happen in the script instead of in executable files,\n                you may want to upgrade your Powershell version and try again.\n            "
+                "text": ".\n                它们需要 PowerShell。\n                如果崩溃发生在脚本中而不是可执行文件中，\n                您可能需要升级您的 PowerShell 版本并重试。\n            "
               }
             ]
           },
@@ -719,7 +719,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Please note that,\n                although you only need to run the above 2 script files,\n                all files in this folder are required.\n            "
+                "text": "\n                请注意，\n                虽然你只需要运行上面的 2 个脚本文件，\n                此文件夹中的所有文件都是必需的。\n            "
               }
             ]
           }
@@ -727,14 +727,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Using Demos",
+        "title": "使用示例",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                Please read "
+                "text": "\n                请阅读 "
               },
               {
                 "kind": "PageLink",
@@ -742,13 +742,13 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "the Demos page"
+                    "text": "示例页面"
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": " for more information.\n            "
+                "text": " 用于获取更多信息。\n            "
               }
             ]
           }

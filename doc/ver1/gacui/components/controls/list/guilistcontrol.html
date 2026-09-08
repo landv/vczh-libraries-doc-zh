@@ -170,7 +170,7 @@
   "numberBeforeTitle": false,
   "topic": {
     "kind": "Topic",
-    "title": "GuiListControl and GuiSelectableListControl",
+    "title": "GuiListControl 和 GuiSelectableListControl",
     "content": [
       {
         "kind": "Paragraph",
@@ -186,7 +186,7 @@
           },
           {
             "kind": "Text",
-            "text": " is the base class of all list controls.\n            This control transforms items in a collection to UI object with a specified layout.\n            When items are scrolled out of the control and becomes invisible,\n            UI objects for them are disposed.\n            Resources are not taken by invisible items.\n        "
+            "text": " 是所有列表控件的基类。\n            此控件将集合中的项转换为具有指定布局的UI对象。\n            当项目滚动出控件并变得不可见时，\n            它们的UI对象被释放。\n            资源不会被不可见项占用。\n        "
           }
         ]
       },
@@ -204,7 +204,7 @@
           },
           {
             "kind": "Text",
-            "text": " makes items selectable.\n        "
+            "text": " 使项目可选择。\n        "
           }
         ]
       },
@@ -213,7 +213,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            The "
+            "text": "\n            该 "
           },
           {
             "kind": "Strong",
@@ -226,7 +226,7 @@
           },
           {
             "kind": "Text",
-            "text": " theme is for item backgrounds,\n            which is a "
+            "text": " 主题用于项目背景。\n            哪个是 "
           },
           {
             "kind": "Strong",
@@ -239,7 +239,7 @@
           },
           {
             "kind": "Text",
-            "text": ".\n            But it will be overrides by "
+            "text": ".\n            但是它将被 "
           },
           {
             "kind": "Strong",
@@ -252,7 +252,7 @@
           },
           {
             "kind": "Text",
-            "text": "\n            in the control template for a list control.\n        "
+            "text": "\n            在列表控件的控件模板中。\n        "
           }
         ]
       },
@@ -265,7 +265,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                This property inherits from "
+                "text": "\n                此属性继承自 "
               },
               {
                 "kind": "Strong",
@@ -287,7 +287,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                All "
+                "text": "\n                全部 "
               },
               {
                 "kind": "Strong",
@@ -300,7 +300,7 @@
               },
               {
                 "kind": "Text",
-                "text": " properties in item template instances will keep sync to "
+                "text": " 项目模板实例中的属性将保持同步。 "
               },
               {
                 "kind": "Strong",
@@ -322,7 +322,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                For data grids, "
+                "text": "\n                对于数据网格， "
               },
               {
                 "kind": "Strong",
@@ -335,7 +335,7 @@
               },
               {
                 "kind": "Text",
-                "text": " in visualizers and editors will alsp keep sync.\n            "
+                "text": " 在可视化器和编辑器中也将保持同步。\n            "
               }
             ]
           },
@@ -353,7 +353,7 @@
               },
               {
                 "kind": "Text",
-                "text": ":\n                Even for item template instances, visualizers or editors that are created after "
+                "text": "：\n                即使是项模板实例，或在 "
               },
               {
                 "kind": "Strong",
@@ -366,7 +366,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is set,\n                their "
+                "text": " 被设置，\n                它们 "
               },
               {
                 "kind": "Strong",
@@ -379,7 +379,7 @@
               },
               {
                 "kind": "Text",
-                "text": " properties are assigned after their constructors.\n            "
+                "text": " 属性在构造函数之后被赋值。\n            "
               }
             ]
           }
@@ -394,7 +394,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                This function moves the scroll bar to ensure that\n                the specified item is visible.\n            "
+                "text": "\n                此函数移动滚动条以确保\n                指定的项是可见的。\n            "
               }
             ]
           }
@@ -402,14 +402,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Item Events",
+        "title": "项目事件",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                UI objects dynamically created for items,\n                it is not easy to handling mouse events for items\n                by "
+                "text": "\n                为项动态创建的UI对象，\n                处理项目鼠标事件并不容易\n                by "
               },
               {
                 "kind": "PageLink",
@@ -417,7 +417,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "events in compositions"
+                    "text": "组合中的事件"
                   }
                 ]
               },
@@ -436,7 +436,7 @@
               },
               {
                 "kind": "Text",
-                "text": " redirects all such events to the list control itself:\n                "
+                "text": " 将所有此类事件重定向到列表控件本身：\n                "
               },
               {
                 "kind": "List",
@@ -563,7 +563,7 @@
               },
               {
                 "kind": "Text",
-                "text": " is added to the second argument of handlers for these events\n                starting at "
+                "text": " 添加到这些事件处理程序的第二个参数中\n                从...开始 "
               },
               {
                 "kind": "Strong",
@@ -584,7 +584,7 @@
       },
       {
         "kind": "Topic",
-        "title": "GuiListControl Properties",
+        "title": "GuiListControl 属性",
         "content": [
           {
             "kind": "Topic",
@@ -595,7 +595,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    This is a readonly property.\n                    It reflects how the list control understand data in its items.\n                "
+                    "text": "\n                    这是一个只读属性。\n                    它反映了列表控件如何理解其项中的数据。\n                "
                   }
                 ]
               },
@@ -604,7 +604,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    This property returns an instance of "
+                    "text": "\n                    此属性返回一个实例 "
                   },
                   {
                     "kind": "Strong",
@@ -617,7 +617,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": "\n                    which provide access to the text representation of each item,\n                    plus a "
+                    "text": "\n                    提供对每个项目文本表示的访问权限，\n                    加一个 "
                   },
                   {
                     "kind": "Strong",
@@ -630,7 +630,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " representation\n                    for "
+                    "text": " 表示\n                    for "
                   },
                   {
                     "kind": "PageLink",
@@ -638,7 +638,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "reflection"
+                        "text": "反射"
                       }
                     ]
                   },
@@ -653,7 +653,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    When reflection is turned off (which is recommended)\n                    by using "
+                    "text": "\n                    当关闭反射时（这是推荐的）\n                    通过使用 "
                   },
                   {
                     "kind": "Strong",
@@ -666,7 +666,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ",\n                    you cannot access member via reflection in each item,\n                    but you can still do type testing or conversion.\n                "
+                    "text": "，\n                    您无法通过反射访问每个项中的成员。\n                    但你仍然可以进行类型测试或转换。\n                "
                   }
                 ]
               },
@@ -675,7 +675,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    The "
+                    "text": "\n                    该 "
                   },
                   {
                     "kind": "Strong",
@@ -688,7 +688,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " method is an userful way to extend data representation.\n                    This method is usually implemented by each list control because they require more than just text representation.\n                    Here are some predefined views for certain list controls:\n                    "
+                    "text": " 方法是一种有用的方式，用于扩展数据表示。\n                    此方法通常由每个列表控件实现，因为它们需要的不仅仅是文本表示。\n                    这里是一些为某些列表控件预定义的视图：\n                    "
                   },
                   {
                     "kind": "List",
@@ -708,7 +708,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " and "
+                            "text": " 和 "
                           },
                           {
                             "kind": "Strong",
@@ -748,7 +748,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " and "
+                            "text": " 和 "
                           },
                           {
                             "kind": "Strong",
@@ -788,7 +788,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " and "
+                            "text": " 和 "
                           },
                           {
                             "kind": "Strong",
@@ -814,7 +814,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " and "
+                            "text": " 和 "
                           },
                           {
                             "kind": "Strong",
@@ -854,7 +854,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": " and all view for list view"
+                            "text": " 和列表视图中的所有视图"
                           }
                         ]
                       }
@@ -873,7 +873,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Different list controls require different types of item templates.\n                    They also provide default item templates and usually require a proper "
+                    "text": "\n                    不同的列表控件需要不同类型的项模板。\n                    它们还提供默认项模板，并且通常需要一个适当的 "
                   },
                   {
                     "kind": "Strong",
@@ -886,7 +886,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " to display them as expected.\n                "
+                    "text": " 以期望的方式显示它们。\n                "
                   }
                 ]
               },
@@ -895,7 +895,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    When default item templates don't satisfy the need,\n                    typically "
+                    "text": "\n                    当默认项目模板无法满足需求时，\n                    通常 "
                   },
                   {
                     "kind": "Strong",
@@ -908,7 +908,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " and "
+                    "text": " 和 "
                   },
                   {
                     "kind": "Strong",
@@ -921,7 +921,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " is recommended\n                    because their item templates are very easy to implement.\n                "
+                    "text": " 建议使用\n                    因为它们的项模板非常容易实现。\n                "
                   }
                 ]
               },
@@ -930,7 +930,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    To implement the item template for tree views,\n                    the "
+                    "text": "\n                    要为树视图实现项目模板，\n                    该 "
                   },
                   {
                     "kind": "Strong",
@@ -943,7 +943,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " property needs to be carefully taken care of to render the visual effect of the hierarchy.\n                "
+                    "text": " 属性需要被仔细处理，以呈现层次结构的视觉效果。\n                "
                   }
                 ]
               },
@@ -952,7 +952,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Item templates for list views are not recommended to implement.\n                    For the "
+                    "text": "\n                    列表视图的项目模板不建议实现。\n                    对于 "
                   },
                   {
                     "kind": "Strong",
@@ -965,7 +965,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " view,\n                    it is much more easier to use "
+                    "text": " 视图，\n                    使用起来要容易得多 "
                   },
                   {
                     "kind": "Strong",
@@ -978,7 +978,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ".\n                    For other views,\n                    it is much more easier to use "
+                    "text": ".\n                    对于其他视图，\n                    使用起来要容易得多 "
                   },
                   {
                     "kind": "Strong",
@@ -991,7 +991,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " with expected arrangers for these views.\n                "
+                    "text": " 以及这些视图的预期排列方式。\n                "
                   }
                 ]
               },
@@ -1009,7 +1009,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ":\n                    UI object for each item consists of a background object and a foreground object.\n                    The foreground object is created from "
+                    "text": "：\n                    每个项的UI对象由一个背景对象和一个前景对象组成。\n                    前景对象由 "
                   },
                   {
                     "kind": "Strong",
@@ -1022,7 +1022,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ",\n                    but the background object is created from other template properties in the control template.\n                    The background object handles the UI effect for selection and mouse operations.\n                "
+                    "text": "，\n                    但背景对象是从控件模板中的其他模板属性创建的。\n                    背景对象处理选择和鼠标操作的UI效果。\n                "
                   }
                 ]
               },
@@ -1031,7 +1031,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    The above behavior is controlled "
+                    "text": "\n                    上述行为由 "
                   },
                   {
                     "kind": "Strong",
@@ -1044,7 +1044,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " property.\n                    If this property is set to "
+                    "text": " 属性。\n                    如果此属性设置为 "
                   },
                   {
                     "kind": "Strong",
@@ -1057,7 +1057,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ",\n                    background objects will not be created,\n                    and foreground objects need to handle UI effect for selection and mouse operations.\n                "
+                    "text": "，\n                    背景对象将不会被创建，\n                    并且前景对象需要处理选择和鼠标操作的UI效果。\n                "
                   }
                 ]
               },
@@ -1066,7 +1066,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Please check out\n                    "
+                    "text": "\n                    请检出\n                    "
                   },
                   {
                     "kind": "PageLink",
@@ -1077,7 +1077,7 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "Item Templates"
+                            "text": "项目模板"
                           }
                         ]
                       }
@@ -1085,7 +1085,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": "\n                    for details.\n                "
+                    "text": "\n                    详细信息。\n                "
                   }
                 ]
               }
@@ -1093,14 +1093,14 @@
           },
           {
             "kind": "Topic",
-            "title": "Arranger (ArrangerChanged)",
+            "title": "排列器（ArrangerChanged）",
             "content": [
               {
                 "kind": "Paragraph",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Implementing an arranger is not easy,\n                    but there are predefined arrangers for common requirements:\n                    "
+                    "text": "\n                    实现一个排列器并不容易，\n                    但有预定义的排列器用于常见需求：\n                    "
                   },
                   {
                     "kind": "List",
@@ -1120,7 +1120,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": ": Each item take a row, heights could be different."
+                            "text": ": 每个项目占用一行，高度可以不同。"
                           }
                         ]
                       },
@@ -1138,7 +1138,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": ": Each item take a row with the same height."
+                            "text": ": 每个项目占用一行，且高度相同。"
                           }
                         ]
                       },
@@ -1156,7 +1156,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": ": Layout items like a grid, each cell has the same size."
+                            "text": ": 像网格一样布局项目，每个单元格大小相同。"
                           }
                         ]
                       },
@@ -1174,7 +1174,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": ": Layout items like a grid, but each column could have a different width."
+                            "text": ": 像网格一样布局项目，但每列可以有不同的宽度。"
                           }
                         ]
                       },
@@ -1192,7 +1192,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": ": Each item take a row, contents are controlled by column headers."
+                            "text": ": 每个项目占用一行，内容由列标题控制。"
                           }
                         ]
                       }
@@ -1209,7 +1209,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ":\n                    the direction is controlled by "
+                    "text": "：\n                    方向由...控制 "
                   },
                   {
                     "kind": "Strong",
@@ -1235,7 +1235,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " instead of "
+                    "text": " 而不是 "
                   },
                   {
                     "kind": "Strong",
@@ -1248,7 +1248,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " or the default axis,\n                    "
+                    "text": " 或默认轴，\n                    "
                   },
                   {
                     "kind": "Strong",
@@ -1261,7 +1261,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " layout items from left to right instead of from top to bottom.\n                "
+                    "text": " 从左到右排列项目，而不是从上到下。\n                "
                   }
                 ]
               }
@@ -1269,7 +1269,7 @@
           },
           {
             "kind": "Topic",
-            "title": "Axis (AxisChanged)",
+            "title": "轴 (AxisChanged)",
             "content": [
               {
                 "kind": "Paragraph",
@@ -1298,7 +1298,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " is very similar to\n                    "
+                    "text": " 非常类似于\n                    "
                   },
                   {
                     "kind": "PageLink",
@@ -1330,7 +1330,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ".\n                    For some arrangers like "
+                    "text": ".\n                    对于某些排列器如 "
                   },
                   {
                     "kind": "Strong",
@@ -1343,7 +1343,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " which displays items in single dimension,\n                    "
+                    "text": " 以单维方式显示项目\n                    "
                   },
                   {
                     "kind": "Strong",
@@ -1356,7 +1356,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " and "
+                    "text": " 和 "
                   },
                   {
                     "kind": "Strong",
@@ -1369,7 +1369,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " do no difference.\n                    Same for other 3 pairs of values for "
+                    "text": " 没有区别。\n                    其他三组值也相同 "
                   },
                   {
                     "kind": "Strong",
@@ -1397,7 +1397,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    This property suggests a best size for the drop down container in a "
+                    "text": "\n                    此属性建议下拉容器的最佳大小， "
                   },
                   {
                     "kind": "Strong",
@@ -1425,7 +1425,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    The default value for this property is "
+                    "text": "\n                    这个属性的默认值 "
                   },
                   {
                     "kind": "Strong",
@@ -1447,7 +1447,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    See "
+                    "text": "\n                    参见 "
                   },
                   {
                     "kind": "Strong",
@@ -1460,7 +1460,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " for more information.\n                "
+                    "text": " 用于获取更多信息。\n                "
                   }
                 ]
               }
@@ -1470,14 +1470,14 @@
       },
       {
         "kind": "Topic",
-        "title": "GuiSelectableListControl Properties",
+        "title": "GuiSelectableListControl 属性",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n                This control enables list items to be selected by mouse or keyboard operations.\n            "
+                "text": "\n                此控件允许通过鼠标或键盘操作选择列表项。\n            "
               }
             ]
           },
@@ -1490,7 +1490,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    The default value for this property is "
+                    "text": "\n                    这个属性的默认值 "
                   },
                   {
                     "kind": "Strong",
@@ -1512,7 +1512,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Set this property to "
+                    "text": "\n                    将此属性设置为 "
                   },
                   {
                     "kind": "Strong",
@@ -1525,7 +1525,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " makes multiple list items\n                    could be selected at the same time.\n                    "
+                    "text": " 创建多个列表项\n                    可以同时被选中。\n                    "
                   },
                   {
                     "kind": "Strong",
@@ -1538,7 +1538,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " with a mouse click or "
+                    "text": " 通过鼠标单击或 "
                   },
                   {
                     "kind": "Strong",
@@ -1551,7 +1551,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " with direction keys\n                    could help select and unselect multiple items.\n                "
+                    "text": " 使用方向键\n                    可以帮助选择和取消选择多个项目。\n                "
                   }
                 ]
               }
@@ -1559,14 +1559,14 @@
           },
           {
             "kind": "Topic",
-            "title": "SelectedItems (SelectionChanged)",
+            "title": "SelectedItems（SelectionChanged）",
             "content": [
               {
                 "kind": "Paragraph",
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    This property is a readonly collection\n                    storing indices of selected items staring at "
+                    "text": "\n                    此属性是一个只读集合\n                    存储从开始的选定项索引 "
                   },
                   {
                     "kind": "Strong",
@@ -1594,7 +1594,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    This property returns the index of the selected item.\n                "
+                    "text": "\n                    此属性返回所选项的索引。\n                "
                   }
                 ]
               },
@@ -1603,7 +1603,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    If no item is selected,\n                    or if more than one item is selected,\n                    this property returns "
+                    "text": "\n                    如果没有选择任何项，\n                    或如果选择了多个项目，\n                    此属性返回 "
                   },
                   {
                     "kind": "Strong",
@@ -1631,7 +1631,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    This property returns the text representation of the selected item.\n                "
+                    "text": "\n                    此属性返回所选项的文本表示。\n                "
                   }
                 ]
               },
@@ -1640,7 +1640,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    If no item is selected,\n                    or if more than one item is selected,\n                    this property returns "
+                    "text": "\n                    如果没有选择任何项，\n                    或如果选择了多个项目，\n                    此属性返回 "
                   },
                   {
                     "kind": "Strong",
@@ -1663,11 +1663,11 @@
       },
       {
         "kind": "Topic",
-        "title": "GuiSelectableListControl Methods",
+        "title": "GuiSelectableListControl 方法",
         "content": [
           {
             "kind": "Topic",
-            "title": "GetSelected and SetSelected",
+            "title": "GetSelected 和 SetSelected",
             "content": [
               {
                 "kind": "Paragraph",
@@ -1683,7 +1683,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " tells if an item is selected.\n                "
+                    "text": " 指示项是否被选中。\n                "
                   }
                 ]
               },
@@ -1701,7 +1701,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " selects or unselects an item.\n                "
+                    "text": " 选择或取消选择一个项目。\n                "
                   }
                 ]
               }
@@ -1716,7 +1716,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    This method select items by simulate mouse operations.\n                "
+                    "text": "\n                    此方法通过模拟鼠标操作选择项目。\n                "
                   }
                 ]
               }
@@ -1731,7 +1731,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    This method select items by simulate keyboard operations.\n                "
+                    "text": "\n                    此方法通过模拟键盘操作选择项目。\n                "
                   }
                 ]
               }
@@ -1746,7 +1746,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    This method clear all selection.\n                "
+                    "text": "\n                    此方法清除所有选择。\n                "
                   }
                 ]
               }

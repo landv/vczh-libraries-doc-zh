@@ -140,27 +140,27 @@
   "numberBeforeTitle": false,
   "topic": {
     "kind": "Topic",
-    "title": "Workflow RPC",
+    "title": "工作流 RPC",
     "content": [
       {
         "kind": "Paragraph",
         "content": [
           {
             "kind": "Text",
-            "text": "\n\t\t\tWorkflow RPC describes service contracts with Workflow interfaces and runs them through a transport-independent lifecycle, dispatcher, serializer, and channel layer. The contract is written in Workflow; the runtime decides how object references, method calls, property access, and events travel between processes or machines.\n\t\t"
+            "text": "\n\t\t\tWorkflow RPC 通过使用 Workflow 接口来描述服务契约，并通过与传输无关的生命周期、分发器、序列化器和通道层来运行它们。契约以 Workflow 编写，运行时决定对象引用、方法调用、属性访问和事件如何在进程或机器之间传递。\n\t\t"
           }
         ]
       },
       {
         "kind": "Topic",
-        "title": "Declaring RPC Interfaces",
+        "title": "声明 RPC 接口",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n\t\t\t\tAn RPC service interface is a non-generic Workflow interface marked with @rpc:Interface. Base interfaces must also be RPC interfaces.\n\t\t\t"
+                "text": "\n\t\t\t\t一个 RPC 服务接口是一个用 @rpc:Interface 标记的非泛型工作流接口。基础接口也必须是 RPC 接口。\n\t\t\t"
               }
             ]
           },
@@ -169,7 +169,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n\t\t\t\tUse @rpc:Ctor on an RPC interface when that interface represents a service type that can be requested by clients.\n\t\t\t\t"
+                "text": "\n\t\t\t\t当 RPC 接口表示客户端可以请求的服务类型时，在该接口上使用 @rpc:Ctor。\n\t\t\t\t"
               },
               {
                 "kind": "Program",
@@ -182,7 +182,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n\t\t\t\tRPC members can use serializable values, shared pointers to RPC interfaces, and strong typed collections whose element types are serializable. void is valid only as a method return type.\n\t\t\t"
+                "text": "\n\t\t\t\tRPC 成员可以使用可序列化的值、RPC 接口的共享指针以及元素类型为可序列化的强类型集合。void 仅作为方法返回类型有效。\n\t\t\t"
               }
             ]
           }
@@ -190,14 +190,14 @@
       },
       {
         "kind": "Topic",
-        "title": "RPC Attributes",
+        "title": "RPC 属性",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n\t\t\t\tThe RPC analyzer recognizes these attributes:\n\t\t\t\t"
+                "text": "\n\t\t\t\tRPC 分析器识别这些属性：\n\t\t\t\t"
               },
               {
                 "kind": "List",
@@ -208,7 +208,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "@rpc:Interface: marks a Workflow interface as an RPC interface."
+                        "text": "@rpc:Interface: 将 Workflow 接口标记为 RPC 接口。"
                       }
                     ]
                   },
@@ -217,7 +217,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "@rpc:Ctor: marks an RPC interface as constructible through the RPC service model."
+                        "text": "@rpc:Ctor: 将 RPC 接口标记为可通过 RPC 服务模型构造。"
                       }
                     ]
                   },
@@ -226,7 +226,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "@rpc:Cached: marks an RPC property as cached by the client-side wrapper."
+                        "text": "@rpc:Cached: 将 RPC 属性标记为由客户端包装器缓存。"
                       }
                     ]
                   },
@@ -235,7 +235,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "@rpc:Dynamic: marks an RPC property as read from the remote object every time."
+                        "text": "@rpc:Dynamic: 将 RPC 属性标记为每次从远程对象读取。"
                       }
                     ]
                   },
@@ -244,7 +244,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "@rpc:Byval: transfers a strong typed collection by value."
+                        "text": "@rpc:Byval: 通过值传递强类型集合。"
                       }
                     ]
                   },
@@ -253,7 +253,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "@rpc:Byref: transfers a strong typed collection by reference."
+                        "text": "@rpc:Byref: 通过引用传递强类型集合。"
                       }
                     ]
                   }
@@ -266,7 +266,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n\t\t\t\t@rpc:Cached and @rpc:Dynamic can only be used on RPC properties and cannot appear together. A property is cached by default unless it is marked @rpc:Dynamic.\n\t\t\t"
+                "text": "\n\t\t\t\t@rpc:Cached 和 @rpc:Dynamic 只能在 RPC 属性上使用，且不能同时出现。除非标记为 @rpc:Dynamic，否则属性默认为缓存。\n\t\t\t"
               }
             ]
           },
@@ -275,7 +275,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n\t\t\t\t@rpc:Byval and @rpc:Byref can be used on RPC properties, method return values, and method parameters that are strong typed collections. They cannot appear together. When neither is written, observable collections and collections containing RPC interfaces default to reference transfer; other strong typed collections default to value transfer.\n\t\t\t"
+                "text": "\n\t\t\t\t@rpc:Byval 和 @rpc:Byref 可用于 RPC 属性、方法返回值和方法参数中强类型集合。它们不能同时出现。当两者均未指定时，可观察集合和包含 RPC 接口的集合默认按引用传递；其他强类型集合默认按值传递。\n\t\t\t"
               }
             ]
           }
@@ -283,14 +283,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Serializable Values",
+        "title": "可序列化的值",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n\t\t\t\tRPC payloads must be serializable. Supported payload shapes are:\n\t\t\t\t"
+                "text": "\n\t\t\t\tRPC 负载必须是可序列化的。支持的负载结构为：\n\t\t\t\t"
               },
               {
                 "kind": "List",
@@ -301,7 +301,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "primitive reflected values such as booleans, integers, floating point values, and strings;"
+                        "text": "原始反射值，如布尔值、整数、浮点数和字符串；"
                       }
                     ]
                   },
@@ -310,7 +310,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "reflected structs, normal enums, and flag enums;"
+                        "text": "反射结构体、普通枚举和标志枚举；"
                       }
                     ]
                   },
@@ -319,7 +319,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "nullable values whose element type is serializable;"
+                        "text": "可为空值，其元素类型可序列化；"
                       }
                     ]
                   },
@@ -328,7 +328,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "shared pointers to interfaces marked with @rpc:Interface;"
+                        "text": "带有 @rpc:Interface 标记的接口的共享指针；"
                       }
                     ]
                   },
@@ -337,7 +337,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "strong typed collections whose type arguments are serializable."
+                        "text": "强类型集合，其类型参数可序列化。"
                       }
                     ]
                   }
@@ -350,7 +350,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n\t\t\t\tReserved framework types such as object references and RPC exceptions are part of the transport protocol and are not valid as ordinary RPC member payloads.\n\t\t\t"
+                "text": "\n\t\t\t\t保留的框架类型，如对象引用和 RPC 异常，是传输协议的一部分，不能作为普通 RPC 成员负载使用。\n\t\t\t"
               }
             ]
           }
@@ -358,14 +358,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Service and Client Flow",
+        "title": "服务与客户端流程",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n\t\t\t\tA server creates an implementation object and registers it with IRpcLifecycle. A client asks the lifecycle for the same service name and casts the returned object to the service interface.\n\t\t\t\t"
+                "text": "\n\t\t\t\t服务器创建一个实现对象并将其注册到 IRpcLifecycle。客户端向生命周期请求相同的服务名称，并将返回的对象强制转换为服务接口。\n\t\t\t\t"
               },
               {
                 "kind": "Program",
@@ -378,7 +378,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n\t\t\t\trpc_GetIds() exposes the RPC interface id table for the loaded RPC module. RegisterLocalService binds a local implementation to an interface id. RequestService asks the remote side for a service by name and returns a wrapper object.\n\t\t\t"
+                "text": "\n\t\t\t\trpc_GetIds() 暴露了已加载的 RPC 模块的 RPC 接口 ID 表。RegisterLocalService 将本地实现绑定到接口 ID。RequestService 通过名称向远程端请求服务并返回一个包装对象。\n\t\t\t"
               }
             ]
           }
@@ -386,14 +386,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Runtime Objects",
+        "title": "运行时对象",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n\t\t\t\tThe Workflow RPC runtime separates protocol logic from transport:\n\t\t\t\t"
+                "text": "\n\t\t\t\t工作流 RPC 运行时将协议逻辑与传输分离：\n\t\t\t\t"
               },
               {
                 "kind": "List",
@@ -404,7 +404,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "IRpcLifecycle owns the per-client or per-session state. It maps local objects to object references, creates wrappers for remote object references, registers services, requests services, and exposes the serializer, dispatcher, and controller."
+                        "text": "IRpcLifecycle 拥有每个客户端或每个会话的状态。它将本地对象映射到对象引用，为远程对象引用创建包装器，注册服务，请求服务，并暴露序列化器、分发器和控制器。"
                       }
                     ]
                   },
@@ -413,7 +413,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "IRpcDispatcher routes object operations and event operations. It declares local services, sends object operations to clients, broadcasts object events, and has explicit initialize and finalize steps."
+                        "text": "IRpcDispatcher 路由对象操作和事件操作。它声明本地服务，将对象操作发送到客户端，广播对象事件，并具有显式的初始化和最终化步骤。"
                       }
                     ]
                   },
@@ -422,7 +422,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "IRpcController performs local object operations and event operations. It also controls whether property change events and collection item events are suppressed while an RPC operation is being applied."
+                        "text": "IRpcController 执行本地对象操作和事件操作。它还控制在应用 RPC 操作时是否抑制属性更改事件和集合项事件。"
                       }
                     ]
                   },
@@ -431,7 +431,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "IRpcSerializer converts reflected values, object references, exceptions, and operation records to and from the transport representation."
+                        "text": "IRpcSerializer 将反射值、对象引用、异常和操作记录转换为传输表示形式。"
                       }
                     ]
                   }
@@ -443,14 +443,14 @@
       },
       {
         "kind": "Topic",
-        "title": "Implementing a Dispatcher",
+        "title": "实现分派器",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n\t\t\t\tA dispatcher implementation owns the lifecycle of a transport connection. It should:\n\t\t\t\t"
+                "text": "\n\t\t\t\t调度器实现拥有传输连接的生命周期。它应该：\n\t\t\t\t"
               },
               {
                 "kind": "List",
@@ -461,7 +461,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "create or receive an IRpcLifecycle for each connected client;"
+                        "text": "为每个连接的客户端创建或接收一个 IRpcLifecycle；"
                       }
                     ]
                   },
@@ -470,7 +470,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "call Initialize before sending or receiving RPC operations;"
+                        "text": "在发送或接收 RPC 操作之前调用 Initialize；"
                       }
                     ]
                   },
@@ -479,7 +479,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "translate incoming transport messages to object operations, event operations, service declarations, or lifecycle operations;"
+                        "text": "将传入的传输消息转换为对象操作、事件操作、服务声明或生命周期操作；"
                       }
                     ]
                   },
@@ -488,7 +488,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "call DeclareLocalService when local services must become visible to the other side;"
+                        "text": "当本地服务必须对另一方可见时，调用 DeclareLocalService。"
                       }
                     ]
                   },
@@ -497,7 +497,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "send object operations through SendToClient_ObjectOps and object events through BroadcastFromClient_ObjectEventOps;"
+                        "text": "通过 SendToClient_ObjectOps 发送对象操作，通过 BroadcastFromClient_ObjectEventOps 发送对象事件；"
                       }
                     ]
                   },
@@ -506,7 +506,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "call Finalize when the transport is closed."
+                        "text": "当传输关闭时调用 Finalize。"
                       }
                     ]
                   }
@@ -519,7 +519,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n\t\t\t\tDispatchers should schedule user callbacks through the host task queue or event loop that owns the service objects. RPC callbacks can re-enter user code, so a dispatcher must keep its threading and lifetime policy consistent.\n\t\t\t"
+                "text": "\n\t\t\t\t调度器应通过拥有服务对象的主机任务队列或事件循环来安排用户回调。RPC 回调可以重新进入用户代码，因此调度器必须保持其线程和生命周期策略的一致性。\n\t\t\t"
               }
             ]
           }
@@ -527,14 +527,14 @@
       },
       {
         "kind": "Topic",
-        "title": "JSON RPC Channel Layer",
+        "title": "JSON RPC 通道层",
         "content": [
           {
             "kind": "Paragraph",
             "content": [
               {
                 "kind": "Text",
-                "text": "\n\t\t\t\tThe JSON implementation uses RpcJsonDispatcher, RpcJsonLifecycle, RpcJsonObjectOps, and RpcJsonObjectEventOps. IRpcJsonMessageDispatcher accepts JSON requests and classifies them as direct, broadcast, or broadcast-and-drop messages.\n\t\t\t"
+                "text": "\n\t\t\t\tJSON 实现使用了 RpcJsonDispatcher、RpcJsonLifecycle、RpcJsonObjectOps 和 RpcJsonObjectEventOps。IRpcJsonMessageDispatcher 接收 JSON 请求，并将其分类为直接消息、广播消息或广播并丢弃消息。\n\t\t\t"
               }
             ]
           },
@@ -543,7 +543,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n\t\t\t\tThe shared channel implementation connects the JSON dispatcher to "
+                "text": "\n\t\t\t\t共享通道实现将 JSON 调度器连接到 "
               },
               {
                 "kind": "PageLink",
@@ -557,7 +557,7 @@
               },
               {
                 "kind": "Text",
-                "text": " channels:\n\t\t\t\t"
+                "text": " 通道：\n\t\t\t\t"
               },
               {
                 "kind": "List",
@@ -568,7 +568,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "JsonPackage is a JSON node package."
+                        "text": "JsonPackage 是一个 JSON 节点包。"
                       }
                     ]
                   },
@@ -577,7 +577,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "JsonChannel is an IChannel<JsonPackage>."
+                        "text": "JsonChannel 是 IChannel<JsonPackage>。"
                       }
                     ]
                   },
@@ -586,7 +586,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "JsonChannelClient and JsonChannelServer are the channel endpoints used by the dispatcher."
+                        "text": "JsonChannelClient 和 JsonChannelServer 是调度器使用的通道端点。"
                       }
                     ]
                   },
@@ -595,7 +595,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "JsonNetworkChannelClient and JsonNetworkChannelServer use the network channel implementation."
+                        "text": "JsonNetworkChannelClient 和 JsonNetworkChannelServer 使用网络通道实现。"
                       }
                     ]
                   },
@@ -604,7 +604,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "JsonLocalChannelClient uses the local inter-process channel implementation."
+                        "text": "JsonLocalChannelClient 使用本地进程间通道实现。"
                       }
                     ]
                   }
@@ -617,7 +617,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "\n\t\t\t\tRpcJsonDispatcherClient receives JSON packages from a channel, waits for the server handshake, connects to local servers when needed, and exposes its RPC lifecycle and dispatcher. RpcJsonDispatcherServer receives JSON packages from clients, registers and disconnects clients, broadcasts service declarations, and forwards RPC requests. Both classes require a concrete ScheduleTask policy; the task-queue variants provide the standard implementation.\n\t\t\t"
+                "text": "\n\t\t\t\tRpcJsonDispatcherClient 从通道接收 JSON 包，等待服务器握手，必要时连接到本地服务器，并暴露其 RPC 生命周期和分发器。RpcJsonDispatcherServer 从客户端接收 JSON 包，注册和断开客户端连接，广播服务声明，并转发 RPC 请求。这两个类都需要一个具体的 ScheduleTask 策略；任务队列变体提供了标准实现。\n\t\t\t"
               }
             ]
           },
@@ -634,13 +634,13 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "JSON RPC Channel Setup"
+                    "text": "JSON RPC 通道设置"
                   }
                 ]
               },
               {
                 "kind": "Text",
-                "text": " for the IRpcJsonMessageDispatcher transport contract and concrete vl::inter_process setup code.\n\t\t\t"
+                "text": " 对于 IRpcJsonMessageDispatcher 传输协议和具体的 vl::inter_process 设置代码。\n\t\t\t"
               }
             ]
           }

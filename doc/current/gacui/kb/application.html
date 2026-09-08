@@ -326,7 +326,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "vl::presentation::elements::wgac::SetupWGacRenderer or SetupWGacHostedRenderer"
+                        "text": "vl::presentation::elements::wgac::SetupWGacRenderer 或 SetupWGacHostedRenderer"
                       }
                     ]
                   },
@@ -432,7 +432,7 @@
           },
           {
             "kind": "Text",
-            "text": " must be called before creating any UI object to\n            "
+            "text": " 必须在创建任何 UI 对象之前调用\n            "
           },
           {
             "kind": "PageLink",
@@ -440,13 +440,13 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "register a set of default control templates"
+                "text": "注册一组默认控件模板"
               }
             ]
           },
           {
             "kind": "Text",
-            "text": "\n            for all controls.\n            "
+            "text": "\n            用于所有控件。\n            "
           },
           {
             "kind": "Strong",
@@ -472,7 +472,7 @@
           },
           {
             "kind": "Text",
-            "text": " can be used to manage all registered themes.\n            A single theme object is not required to provide control templates for all controls,\n            but all registered themes must cover all controls.\n            The latest registered theme has the top priority.\n        "
+            "text": " 可以用于管理所有注册的主题。\n            单个主题对象不需要为所有控件提供控件模板，\n            但是所有注册的主题必须覆盖所有控件。\n            最后注册的主题具有最高优先级。\n        "
           }
         ]
       },
@@ -481,14 +481,14 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            When a theme is created using "
+            "text": "\n            当使用创建一个主题时， "
           },
           {
             "kind": "Strong",
             "content": [
               {
                 "kind": "Text",
-                "text": "GacUI XML Resource"
+                "text": "GacUI XML 资源"
               }
             ]
           },
@@ -507,7 +507,7 @@
           },
           {
             "kind": "Text",
-            "text": " for this theme is required to call after the associated resource file is loaded.\n            It is difficult to know the exact timing,\n            so GacUI provideds an efficient plugin system to solve this problem.\n            You can create a plugin to register this theme and declare that this theme is depended on its resource like this:\n            "
+            "text": " 对于此主题，必须在关联的资源文件加载后调用。\n            很难确切知道时间\n            因此，GacUI 提供了一个高效的插件系统来解决这个问题。\n            您可以创建一个插件来注册此主题，并像这样声明此主题依赖于其资源：\n            "
           },
           {
             "kind": "Program",
@@ -925,7 +925,7 @@
           },
           {
             "kind": "Text",
-            "text": " starts up a GacUI application with "
+            "text": " 启动一个 GacUI 应用程序 "
           },
           {
             "kind": "Strong",
@@ -938,7 +938,7 @@
           },
           {
             "kind": "Text",
-            "text": " only,\n            there will be no "
+            "text": " 仅，仅限\n            将不会有 "
           },
           {
             "kind": "Strong",
@@ -951,7 +951,7 @@
           },
           {
             "kind": "Text",
-            "text": " running and therefore no controls can be used.\n            This is useful when you want to run a remote protocol renderer that interacts with a user.\n            "
+            "text": " 运行中，因此无法使用任何控件。\n            当您想运行一个与用户交互的远程协议渲染器时，这会很有用。\n            "
           },
           {
             "kind": "Strong",
@@ -964,7 +964,7 @@
           },
           {
             "kind": "Text",
-            "text": " connects to one actual GacUI application that running with remote protoco.\n            "
+            "text": " 连接到一个实际的 GacUI 应用程序，该程序通过远程协议运行。\n            "
           },
           {
             "kind": "Strong",
@@ -977,7 +977,7 @@
           },
           {
             "kind": "Text",
-            "text": " you must implement the communicating by yourself.\n            GacUI has a default implementation of remote protocol serialization with JSON or string format.\n            But you must implement the sending and receiving.\n        "
+            "text": " 您必须自己实现通信功能。\n            GacUI 提供了默认的远程协议序列化实现，支持 JSON 或字符串格式。\n            但您必须实现发送和接收。\n        "
           }
         ]
       },
@@ -986,7 +986,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            When running GacUI with unit test framework,\n            it starts GacUI with remote protocol,\n            with an implementation of "
+            "text": "\n            当使用单元测试框架运行 GacUI 时，\n            它使用远程协议启动 GacUI，\n            带有实现的 "
           },
           {
             "kind": "Strong",
@@ -999,7 +999,7 @@
           },
           {
             "kind": "Text",
-            "text": " that logs the whole UI to multiple JSON files.\n            "
+            "text": " 将整个用户界面记录到多个 JSON 文件中。\n            "
           },
           {
             "kind": "Strong",
@@ -1025,7 +1025,7 @@
           },
           {
             "kind": "Text",
-            "text": "\n            offers an ability to render these JSON files with limited user interaction\n            to inspect what happened during the unit tests.\n            In order to ensure a test case creates exactly the same logging across multiple platforms,\n            text measurments are fake and limited to simple layout.\n            Therefore in the snapshot viewer you might find controls for displaying texts (e.g. a button) appear to be larger than expected,\n            that is normal.\n        "
+            "text": "\n            提供了一种能力，可以通过有限的用户交互来渲染这些JSON文件\n            检查单元测试期间发生的情况。\n            为了确保测试用例在多个平台上创建完全相同的日志记录，\n            文本测量是虚假的，并且仅限于简单布局。\n            因此，在快照查看器中，您可能会发现用于显示文本的控件（例如按钮）看起来比预期的要大。\n            这是正常的。\n        "
           }
         ]
       }

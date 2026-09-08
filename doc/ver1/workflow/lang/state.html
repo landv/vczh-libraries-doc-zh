@@ -210,14 +210,14 @@
   "numberBeforeTitle": false,
   "topic": {
     "kind": "Topic",
-    "title": "State Machines",
+    "title": "状态机",
     "content": [
       {
         "kind": "Paragraph",
         "content": [
           {
             "kind": "Text",
-            "text": "\n            A state machine works like a coroutine,\n            but unlike coroutine which only has "
+            "text": "\n            状态机的工作方式类似于协程，\n            但与协程不同，协程只具有 "
           },
           {
             "kind": "Strong",
@@ -230,7 +230,7 @@
           },
           {
             "kind": "Text",
-            "text": ",\n            a state machine could have multiple strong-typed inputs.\n        "
+            "text": "，\n            状态机可以有多个强类型输入。\n        "
           }
         ]
       },
@@ -239,7 +239,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            A state machine is a class.\n            It must inherit from "
+            "text": "\n            状态机是一个类。\n            必须从以下类继承 "
           },
           {
             "kind": "Strong",
@@ -252,7 +252,7 @@
           },
           {
             "kind": "Text",
-            "text": "\n            The last member must be "
+            "text": "\n            最后一个成员必须是 "
           },
           {
             "kind": "Strong",
@@ -274,7 +274,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            A state machine defines multiple states with arguments.\n            The entry state is called "
+            "text": "\n            状态机定义了多个带有参数的状态。\n            入口状态被称为 "
           },
           {
             "kind": "Strong",
@@ -300,7 +300,7 @@
           },
           {
             "kind": "Text",
-            "text": " and "
+            "text": " 和 "
           },
           {
             "kind": "Strong",
@@ -313,7 +313,7 @@
           },
           {
             "kind": "Text",
-            "text": " could be use for jump between states.\n        "
+            "text": " 可以用于在状态之间跳转。\n        "
           }
         ]
       },
@@ -322,7 +322,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            A state machine defines multiple strong-typed inputs.\n            The state machine is driven by input.\n            When a "
+            "text": "\n            状态机定义了多个强类型输入。\n            状态机由输入驱动。\n            当一个 "
           },
           {
             "kind": "Strong",
@@ -335,7 +335,7 @@
           },
           {
             "kind": "Text",
-            "text": " state is executed,\n            it waits for selected inputs.\n            A required input method must be called to resume the state machine.\n        "
+            "text": " 状态已执行，\n            它等待选定的输入。\n            必须调用一个必需的输入方法以恢复状态机。\n        "
           }
         ]
       },
@@ -344,7 +344,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Let's start with an example:\n            "
+            "text": "\n            让我们从一个例子开始：\n            "
           },
           {
             "kind": "Program",
@@ -352,7 +352,7 @@
           },
           {
             "kind": "Text",
-            "text": "\n            The "
+            "text": "\n            该 "
           },
           {
             "kind": "Strong",
@@ -365,14 +365,14 @@
           },
           {
             "kind": "Text",
-            "text": " function returns "
+            "text": " 函数返回 "
           },
           {
             "kind": "Strong",
             "content": [
               {
                 "kind": "Text",
-                "text": "\"First line; A(John); Last line; The state machine has been stopped.; \""
+                "text": "第一行；A(John)；最后一行；状态机已停止。；"
               }
             ]
           },
@@ -403,7 +403,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " is executed,\n                    the state machine is not started.\n                "
+                    "text": " 被执行，\n                    状态机尚未启动。\n                "
                   }
                 ]
               },
@@ -421,7 +421,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " is executed.\n                    Because this is the first time a "
+                    "text": " 被执行。\n                    因为这是第一次一个 "
                   },
                   {
                     "kind": "Strong",
@@ -434,7 +434,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " is called,\n                    the state machine starts.\n                "
+                    "text": " 被调用，\n                    状态机开始运行。\n                "
                   }
                 ]
               },
@@ -443,7 +443,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    The entry state of a state machine is "
+                    "text": "\n                    状态机的入口状态是 "
                   },
                   {
                     "kind": "Strong",
@@ -456,7 +456,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ",\n                    it immediately enters "
+                    "text": "，\n                    它立即进入 "
                   },
                   {
                     "kind": "Strong",
@@ -482,7 +482,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " is printed.\n                "
+                    "text": " 已打印。\n                "
                   }
                 ]
               },
@@ -500,7 +500,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " is executed,\n                    it jumps to "
+                    "text": " 被执行，\n                    它跳转到 "
                   },
                   {
                     "kind": "Strong",
@@ -522,7 +522,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    It is supposed to stop at "
+                    "text": "\n                    应该在 "
                   },
                   {
                     "kind": "Strong",
@@ -535,7 +535,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ".\n                    But because "
+                    "text": ".\n                    但因为 "
                   },
                   {
                     "kind": "Strong",
@@ -548,7 +548,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " has not been consumed,\n                    the state machine continues and choose "
+                    "text": " 尚未被消耗，\n                    状态机继续并选择 "
                   },
                   {
                     "kind": "Strong",
@@ -574,7 +574,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " is printed.\n                "
+                    "text": " 已打印。\n                "
                   }
                 ]
               },
@@ -583,7 +583,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Now "
+                    "text": "\n                    现在 "
                   },
                   {
                     "kind": "Strong",
@@ -596,7 +596,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " finishes.\n                    Because the state machine jumps to this state via "
+                    "text": " 完成。\n                    因为状态机通过此状态跳转， "
                   },
                   {
                     "kind": "Strong",
@@ -609,7 +609,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": ",\n                    so it still needs to go back to "
+                    "text": "，\n                    所以它仍然需要返回 "
                   },
                   {
                     "kind": "Strong",
@@ -635,7 +635,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " is printed.\n                "
+                    "text": " 已打印。\n                "
                   }
                 ]
               },
@@ -644,7 +644,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    The state machine stops.\n                "
+                    "text": "\n                    状态机停止。\n                "
                   }
                 ]
               },
@@ -662,7 +662,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " is executed,\n                    because the state machines has stopped,\n                    it throws an exception.\n                "
+                    "text": " 被执行，\n                    因为状态机已停止，\n                    它会抛出一个异常。\n                "
                   }
                 ]
               }
@@ -684,7 +684,7 @@
           },
           {
             "kind": "Text",
-            "text": " defines states.\n            "
+            "text": " 定义状态。\n            "
           },
           {
             "kind": "Strong",
@@ -697,7 +697,7 @@
           },
           {
             "kind": "Text",
-            "text": " defines inputs from outside.\n            State machines have more freedom in exchanging data comparing to coroutines.\n        "
+            "text": " 定义来自外部的输入。\n            与协程相比，状态机在数据交换方面具有更大的自由度。\n        "
           }
         ]
       }

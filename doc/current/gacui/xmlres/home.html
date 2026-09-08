@@ -293,13 +293,13 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "GacUI XML Resource"
+                "text": "GacUI XML 资源"
               }
             ]
           },
           {
             "kind": "Text",
-            "text": " is a very convenient way to create GacUI application.\n        "
+            "text": " 是创建 GacUI 应用程序的一种非常便捷的方式。\n        "
           }
         ]
       },
@@ -317,7 +317,7 @@
           },
           {
             "kind": "Text",
-            "text": " will perform increment building\n            on multiple GacUI resource files that are depending on each other.\n            There are two options in general to use the compiled resource files:\n            "
+            "text": " 将执行增量构建\n            在多个彼此依赖的 GacUI 资源文件中。\n            一般有两种使用编译资源文件的方法：\n            "
           },
           {
             "kind": "List",
@@ -331,7 +331,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "\n                        Compile everything in a binary file,\n                        "
+                        "text": "\n                        编译所有内容为一个二进制文件，\n                        "
                       },
                       {
                         "kind": "List",
@@ -342,7 +342,7 @@
                             "content": [
                               {
                                 "kind": "Text",
-                                "text": "\n                                pros:\n                                It offers a huge flexibility of developing UI,\n                                UI can be loaded at runtime dynamically.\n                            "
+                                "text": "\n                                优点：\n                                它提供了极大的灵活性来开发用户界面，\n                                UI 可以在运行时动态加载。\n                            "
                               }
                             ]
                           },
@@ -351,7 +351,7 @@
                             "content": [
                               {
                                 "kind": "Text",
-                                "text": "\n                                cons:\n                                The UI is running on a script engine,\n                                it is significantly slower that C++.\n                                and it also requires the application to enable "
+                                "text": "\n                                cons:\n                                用户界面正在脚本引擎上运行，\n                                它比 C++ 显著慢。\n                                并且还需要应用程序启用 "
                               },
                               {
                                 "kind": "PageLink",
@@ -359,13 +359,13 @@
                                 "content": [
                                   {
                                     "kind": "Text",
-                                    "text": "reflection"
+                                    "text": "反射"
                                   }
                                 ]
                               },
                               {
                                 "kind": "Text",
-                                "text": ",\n                                which usually cause the executable file to grow by 20MB.\n                            "
+                                "text": "，\n                                这通常会导致可执行文件增长20MB。\n                            "
                               }
                             ]
                           }
@@ -383,7 +383,7 @@
                     "content": [
                       {
                         "kind": "Text",
-                        "text": "\n                        Compile only resource in a binary file and generate C++ files for UI,\n                        "
+                        "text": "\n                        仅编译二进制文件中的资源并为UI生成C++文件，\n                        "
                       },
                       {
                         "kind": "List",
@@ -394,7 +394,7 @@
                             "content": [
                               {
                                 "kind": "Text",
-                                "text": "\n                                pros:\n                                All UI are converted to C++ code,\n                                the application can statically link to them and keep a high performance at runtime.\n                                And it offers an option to disable "
+                                "text": "\n                                优点：\n                                所有 UI 都转换为 C++ 代码，\n                                应用程序可以静态链接它们，并在运行时保持高性能。\n                                并提供一个禁用选项， "
                               },
                               {
                                 "kind": "PageLink",
@@ -402,13 +402,13 @@
                                 "content": [
                                   {
                                     "kind": "Text",
-                                    "text": "reflection"
+                                    "text": "反射"
                                   }
                                 ]
                               },
                               {
                                 "kind": "Text",
-                                "text": ",\n                                which significantly reduces the size of the executable file.\n                            "
+                                "text": "，\n                                这显著减少了可执行文件的大小。\n                            "
                               }
                             ]
                           },
@@ -417,7 +417,7 @@
                             "content": [
                               {
                                 "kind": "Text",
-                                "text": "\n                                cons:\n                                By disabling reflection,\n                                Workflow script is able to control UI,\n                                everything should be known at compile time and be in C++.\n                            "
+                                "text": "\n                                cons:\n                                通过禁用反射，\n                                Workflow 脚本能够控制 UI，\n                                所有内容都应在编译时已知，并且是C++的。\n                            "
                               }
                             ]
                           }
@@ -439,7 +439,7 @@
             "content": [
               {
                 "kind": "Text",
-                "text": "If you decide to include Workflow script in resource binaries instead of generating C++ files"
+                "text": "如果你决定将工作流脚本包含在资源二进制文件中，而不是生成 C++ 文件，"
               }
             ]
           },
@@ -459,7 +459,7 @@
           },
           {
             "kind": "Text",
-            "text": " will generate different resource binaries for x86 and x64 platforms.\n            Please be careful to load the correct one.\n        "
+            "text": " 将为 x86 和 x64 平台生成不同的资源二进制文件。\n            请务必加载正确的文件。\n        "
           }
         ]
       },
@@ -468,7 +468,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            If you want to keep your executable file stand-alone,\n            there is an extra option to generate the resource binary into the C++ code.\n            In this case,\n            you don't have to load the resource binary from file,\n            the generated C++ code will take care it for you.\n        "
+            "text": "\n            如果你希望你的可执行文件独立运行，\n            有一个额外的选项可以将资源二进制文件生成到 C++ 代码中。\n            在这种情况下，\n            您不必从文件加载资源二进制数据。\n            生成的 C++ 代码会为您处理它。\n        "
           }
         ]
       }
