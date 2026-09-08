@@ -100,7 +100,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Inherit from this class when you want to create a reflectable class.\n            It should be used like this:\n            "
+            "text": "\n            如果要创建可反射的类，请继承此类。\n            用法如下：\n            "
           },
           {
             "kind": "Program",
@@ -113,7 +113,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            If you want YourClass to be inheritable in scripts,\n            instead of using Description,\n            you should use "
+            "text": "\n            如果你希望 YourClass 可以在脚本中被继承，\n            则不要使用 Description，\n            而应使用 "
           },
           {
             "kind": "Strong",
@@ -126,7 +126,7 @@
           },
           {
             "kind": "Text",
-            "text": ">, like this:\n            "
+            "text": ">，用法如下：\n            "
           },
           {
             "kind": "Program",
@@ -139,7 +139,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            After you complete your type,\n            use the following macros and functions to register your class into the global type table.\n        "
+            "text": "\n            完成类型定义后，\n            使用以下宏和函数把你的类注册到全局类型表中。\n        "
           }
         ]
       },
@@ -148,7 +148,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Some of the predefined type has already been registered.\n            If your types depend on these types, you should load those types by calling some or all of them:\n            "
+            "text": "\n            部分预定义类型已经被注册。\n            如果你的类型依赖这些类型，应该通过调用其中部分或全部函数来加载它们：\n            "
           },
           {
             "kind": "List",
@@ -194,7 +194,7 @@
           },
           {
             "kind": "Text",
-            "text": "\n            But if you link "
+            "text": "\n            但是，如果你在项目中链接 "
           },
           {
             "kind": "Strong",
@@ -207,7 +207,7 @@
           },
           {
             "kind": "Text",
-            "text": " in your project and set "
+            "text": "，并把 "
           },
           {
             "kind": "Strong",
@@ -220,7 +220,7 @@
           },
           {
             "kind": "Text",
-            "text": " to off,\n            all types will be automatically loaded before "
+            "text": " 设为 off，\n            那么所有类型都会在 "
           },
           {
             "kind": "Strong",
@@ -242,7 +242,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            The order does not matter, because content of types are lazily loaded.\n        "
+            "text": "\n            先后顺序无关紧要，因为类型的内容都是按需（懒）加载的。\n        "
           }
         ]
       },
@@ -251,7 +251,7 @@
         "content": [
           {
             "kind": "Text",
-            "text": "\n            Everything below should be put in "
+            "text": "\n            以下所有内容都应放在 "
           },
           {
             "kind": "Strong",
@@ -264,7 +264,7 @@
           },
           {
             "kind": "Text",
-            "text": " namespaces.\n            "
+            "text": " 命名空间中。\n            "
           },
           {
             "kind": "List",
@@ -284,7 +284,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " Create a macro that contains all types that you want to register.\n                    Content in the list will become full names for registered type,\n                    so it is strongly recommended to use the full name.\n                    "
+                    "text": " 创建一个宏，其中包含所有你想要注册的类型。\n                    列表中的内容会成为已注册类型的完整名称，\n                    因此强烈建议使用完整名称。\n                    "
                   },
                   {
                     "kind": "Program",
@@ -350,7 +350,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " Register all members:\n                    "
+                    "text": " 注册所有成员：\n                    "
                   },
                   {
                     "kind": "List",
@@ -361,7 +361,7 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "\n                            You will need to define a macro for commas, Whatever name is fine.\n                            "
+                            "text": "\n                            你需要定义一个用于逗号的宏，叫什么名字都可以。\n                            "
                           },
                           {
                             "kind": "Program",
@@ -383,7 +383,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": ":\n                            use "
+                            "text": "：\n                            使用 "
                           },
                           {
                             "kind": "Strong",
@@ -425,13 +425,13 @@
                             "content": [
                               {
                                 "kind": "Text",
-                                "text": "enum class:"
+                                "text": "枚举类（enum class）："
                               }
                             ]
                           },
                           {
                             "kind": "Text",
-                            "text": "\n                            use "
+                            "text": "\n                            使用 "
                           },
                           {
                             "kind": "Strong",
@@ -479,7 +479,7 @@
                           },
                           {
                             "kind": "Text",
-                            "text": ":\n                            It doesn't necessary mean a struct in C++.\n                            Structs in reflection and Workflow script mean value types that carry only data, without methods and inheritance.\n                            "
+                            "text": "：\n                            它并不一定指 C++ 中的 struct。\n                            反射与 Workflow 脚本中的 Struct 指仅携带数据、没有方法和继承的值类型。\n                            "
                           },
                           {
                             "kind": "Program",
@@ -504,7 +504,7 @@
                               },
                               {
                                 "kind": "Text",
-                                "text": ":\n                            It doesn't necessary mean a class in C++.\n                            Classes in reflection and Workflow script mean reference types.\n                            "
+                                "text": "：\n                            它并不一定指 C++ 中的 class。\n                            反射与 Workflow 脚本中的 Class 指引用类型。\n                            "
                               }
                             ]
                           },
@@ -513,7 +513,7 @@
                             "content": [
                               {
                                 "kind": "Text",
-                                "text": "\n                            Here are all macros that register content of classes\n                            "
+                                "text": "\n                            以下是用于注册类内容的所有宏\n                            "
                               },
                               {
                                 "kind": "List",
@@ -627,7 +627,7 @@
                             "content": [
                               {
                                 "kind": "Text",
-                                "text": "\n                            If the code compiles, the class should look like this\n                            "
+                                "text": "\n                            如果代码可以编译，这个类看起来应该像这样\n                            "
                               },
                               {
                                 "kind": "Program",
@@ -654,7 +654,7 @@
                               },
                               {
                                 "kind": "Text",
-                                "text": ":\n                            A C++ class can be registered as a reflectable interface if:\n                            "
+                                "text": "：\n                            一个 C++ 类可以注册为可反射接口，前提是：\n                            "
                               },
                               {
                                 "kind": "List",
@@ -665,7 +665,7 @@
                                     "content": [
                                       {
                                         "kind": "Text",
-                                        "text": "Directly or indirectly inherits [T:vl.reflection.IDescriptable]"
+                                        "text": "直接或间接继承 [T:vl.reflection.IDescriptable]"
                                       }
                                     ]
                                   },
@@ -674,7 +674,7 @@
                                     "content": [
                                       {
                                         "kind": "Text",
-                                        "text": "The only registered constructor (if exists) should use Ptr<[T:vl.reflection.description.IValueInterfaceProxy]> as a parameter, so that a Workflow script class could implement this interface."
+                                        "text": "唯一的已注册构造函数（如果存在）应使用 Ptr<[T:vl.reflection.description.IValueInterfaceProxy]> 作为参数，这样 Workflow 脚本类就可以实现该接口。"
                                       }
                                     ]
                                   }
@@ -687,7 +687,7 @@
                             "content": [
                               {
                                 "kind": "Text",
-                                "text": "\n                            Suppose you have an interface like this:\n                            "
+                                "text": "\n                            假设你有这样一个接口：\n                            "
                               },
                               {
                                 "kind": "Program",
@@ -700,7 +700,7 @@
                             "content": [
                               {
                                 "kind": "Text",
-                                "text": "\n                            If you want to allow a Workflow script class implement this interface, you should first add a proxy like this:\n                            "
+                                "text": "\n                            如果你希望允许 Workflow 脚本类实现该接口，应首先添加一个这样的代理：\n                            "
                               },
                               {
                                 "kind": "Program",
@@ -713,7 +713,7 @@
                             "content": [
                               {
                                 "kind": "Text",
-                                "text": "\n                            And then use this code to register the interface:\n                            "
+                                "text": "\n                            然后使用这段代码注册该接口：\n                            "
                               },
                               {
                                 "kind": "Program",
@@ -726,7 +726,7 @@
                             "content": [
                               {
                                 "kind": "Text",
-                                "text": "\n                            Everything else is the same as registering classes.\n                            Use "
+                                "text": "\n                            其余部分与注册类完全相同。\n                            使用 "
                               },
                               {
                                 "kind": "Strong",
@@ -739,7 +739,7 @@
                               },
                               {
                                 "kind": "Text",
-                                "text": " to register an interface without a proxy,\n                            which means a Workflow script class cannot implement this interface.\n                            "
+                                "text": " 来注册一个没有代理的接口，\n                            这意味着 Workflow 脚本类不能实现该接口。\n                            "
                               }
                             ]
                           }
@@ -750,7 +750,7 @@
                         "content": [
                           {
                             "kind": "Text",
-                            "text": "\n                            Undefine the macro for comma:\n                            "
+                            "text": "\n                            取消定义用于逗号的宏：\n                            "
                           },
                           {
                             "kind": "Program",
@@ -776,7 +776,7 @@
                   },
                   {
                     "kind": "Text",
-                    "text": " Create a type loader:\n                    "
+                    "text": " 创建一个类型加载器：\n                    "
                   },
                   {
                     "kind": "Program",
@@ -789,7 +789,7 @@
                 "content": [
                   {
                     "kind": "Text",
-                    "text": "\n                    Before using reflection on registered types, you need to register the type loader:\n                    "
+                    "text": "\n                    在对已注册类型使用反射之前，需要先注册类型加载器：\n                    "
                   },
                   {
                     "kind": "Program",
