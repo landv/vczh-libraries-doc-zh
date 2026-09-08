@@ -7,7 +7,7 @@ var sanitized_Gaclib_RootView=(()=>{var M=Object.defineProperty;var X=Object.get
             <table class="ArticleTable" cellpadding="0" cellspacing="0">
                 <tr>
                     <td class="NavigateHeader" colspan="6" align="left">
-                        <a href="/"><img src="${e}/logo.gif" /></a>
+                        <a href="/vczh-libraries-doc-zh/"><img src="${e}/logo.gif" /></a>
                     </td>
                 </tr>
                 <tr>

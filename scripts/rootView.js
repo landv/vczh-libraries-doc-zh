@@ -10,7 +10,7 @@ var sanitized_Gaclib_RootView=(()=>{var V=Object.freeze,M=Object.defineProperty;
                         <table class="NavigateButtonTable">
                             <tr>
                                 <td colspan="6" align="left">
-                                    <img src="/logo.gif" />
+                                    <img src="/vczh-libraries-doc-zh/logo.gif" />
                                 </td>
                             </tr>
                             <tr>`,`
@@ -32,7 +32,7 @@ document.getElementById("nav" + activeButton).classList.add("Selected");
 <\/script>
 `])),$t.map(i=>{let[e,o,r]=i;return R`
                 <td align="center" valign="middle">
-                    <a id="nav${e}" class="MenuButton ${e}Button" href="/${o}.html">
+                    <a id="nav${e}" class="MenuButton ${e}Button" href="/vczh-libraries-doc-zh/${o}.html">
                         ${r}
                     </a>
                 </td>
